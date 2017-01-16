@@ -1,0 +1,7 @@
+<?php
+/*******************************************
+@author : bastikikang 
+@author email: bastikikang@gmail.com
+@author website : http://bastisapp.com/kmrs/
+*******************************************/
+$conn = mysql_connect("localhost", "root")
