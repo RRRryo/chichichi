@@ -31,11 +31,11 @@ function getcityvalue(id)
 ?>
      	
      	<div class="search-field">
-        
-        	<div class="search-select">
+        &nbsp;
+        	<!--<div class="search-select">
             	<a href="javascript:void(0)" class="toggel-click">城市</a>
                
-            </div>
+            </div>-->
         	<div class="search-input"><?php echo CHtml::textField('s',$kr_search_adrress,array(
          'placeholder'=>$placholder_search,
         'required'=>true

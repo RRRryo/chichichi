@@ -11,7 +11,7 @@
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-
+<link rel="stylesheet" type="text/css" href="assets/css/patch.css">
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

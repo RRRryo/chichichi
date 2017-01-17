@@ -269,7 +269,7 @@ class MerchantController extends CController
     	$this->render('sales-summary-report');
     }
     
-    public function actionOrderStatus()
+    /*public function actionOrderStatus()
     {
     	if (isset($_GET['Do'])){
     		if ( getOptionA('merchant_status_disabled')!=2){
@@ -280,7 +280,7 @@ class MerchantController extends CController
     	   $this->crumbsTitle=Yii::t("default","Order Status");
     	   $this->render('order-status');
     	}
-    }
+    }*/
     
     public function actionMerchantStatus()
     {
@@ -851,7 +851,7 @@ class MerchantController extends CController
 		} else $this->render('ingredients');		
 	}
 	
-	public function actionWithdrawals()
+	/*public function actionWithdrawals()
 	{
 		$wd_enabled_paypal=getOptionA('wd_enabled_paypal');
 		$wd_bank_deposit=getOptionA('wd_bank_deposit');		
@@ -867,9 +867,9 @@ class MerchantController extends CController
 		} else {
 			$this->render('error',array('message'=>t("Sorry but withdrawals is not available this time. admin has not yet set any payment method")));
 		}
-	}
+	}*/
 	
-	public function actionWithdrawalStep2()
+	/*public function actionWithdrawalStep2()
 	{
 		$this->crumbsTitle=Yii::t("default","Withdrawals Complete");		
 		$this->render('withdrawals-step2');
@@ -879,7 +879,7 @@ class MerchantController extends CController
 	{
 		$this->crumbsTitle=Yii::t("default","Withdrawal History");		
 		$this->render('withdrawals-history');
-	}
+	}*/
 	
 	public function actionFaxSettings()
 	{

@@ -310,22 +310,23 @@ if ( $home_search_mode=="address" || $home_search_mode=="") {
         <div id="owl-demo1" class="owl-carousel">
          
           <div class="item">
-          	<a href="<?php echo baseUrl()."/menu-11"?>" class="slider-img"><img src="upload/1481148194-3.png" alt="" /></a>
+<!--              --><?php //echo baseUrl()."/menu-11"?>
+          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481148194-3.png" alt="" /></a>
           </div>
            <div class="item">
-          	<a href="<?php echo baseUrl()."/menu-11"?>" class="slider-img"><img src="upload/1481324697-5.png" alt="" /></a>
+          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481324697-5.png" alt="" /></a>
           </div>
            <div class="item">
-          	<a href="<?php echo baseUrl()."/menu-11"?>" class="slider-img"><img src="upload/1481580406-2.png" alt="" /></a>
+          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481580406-2.png" alt="" /></a>
           </div>
            <div class="item">
-          	<a href="<?php echo baseUrl()."/menu-11"?>" class="slider-img"><img src="upload/1481604155-edadd4eagw1evr1s0z0lgj20kg0kp0xl.jpg" alt="" /></a>
+          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481604155-edadd4eagw1evr1s0z0lgj20kg0kp0xl.jpg" alt="" /></a>
           </div>
            <div class="item">
-          	<a href="<?php echo baseUrl()."/menu-11"?>" class="slider-img"><img src="upload/1481580959-6.png" alt="" /></a>
+          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481580959-6.png" alt="" /></a>
           </div>
            <div class="item">
-          	<a href="<?php echo baseUrl()."/menu-11"?>" class="slider-img"><img src="upload/1481146615-1.png" alt="" /></a>
+          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481146615-1.png" alt="" /></a>
           </div>
           
 
@@ -346,12 +347,12 @@ if ( $home_search_mode=="address" || $home_search_mode=="") {
 <div class="sections section-cuisine">
 <div class="container  nopad">
 
-<div class="col-md-3 nopad">
-<img src="<?php echo assetsURL()."/images/cuisine.png"?>" class="img-cuisine">
-</div>
+<!--<div class="col-md-3 nopad">
+<img src="<?php /*echo assetsURL()."/images/cuisine.png"*/?>" class="img-cuisine">
+</div>-->
 
-<div class="col-md-9  nopad">
-
+<div>
+<!--    class="col-md-9  nopad"-->
   <h2><?php echo t("Browse by cuisine")?></h2>
   <p class="sub-text center"><?php echo t("choose from your favorite cuisine")?></p>
   
@@ -364,9 +365,9 @@ if ( $home_search_mode=="address" || $home_search_mode=="") {
       <?php 
       $cuisine_json['cuisine_name_trans']=!empty($val['cuisine_name_trans'])?json_decode($val['cuisine_name_trans'],true):'';	 
       echo qTranslate($val['cuisine_name'],'cuisine_name',$cuisine_json);
-      if($val['total']>0){
+      /*if($val['total']>0){
       	echo "<span>(".$val['total'].")</span>";
-      }
+      }*/
       ?>
       </a>
     </div>   

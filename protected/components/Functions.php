@@ -1882,9 +1882,9 @@ class Functions extends CApplicationComponent
 
                                                 
 
-                array('visible'=>$this->hasMerchantAccess("orderStatus"),'tag'=>"orderStatus",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Order Status"),
+                /*array('visible'=>$this->hasMerchantAccess("orderStatus"),'tag'=>"orderStatus",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Order Status"),
 
-                'url'=>array('/merchant/orderStatus')),
+                'url'=>array('/merchant/orderStatus')),*/
 
                                                                                
 
@@ -1994,9 +1994,9 @@ class Functions extends CApplicationComponent
 
                    
 
-                   array('visible'=>$togle_com,'tag'=>'withdrawals', 'label'=>'<i class="fa fa-paypal"></i>'.t("Withdrawals"),
+                   /*array('visible'=>$togle_com,'tag'=>'withdrawals', 'label'=>'<i class="fa fa-paypal"></i>'.t("Withdrawals"),
 
-                   'url'=>array('merchant/withdrawals')),     
+                   'url'=>array('merchant/withdrawals')),  */
 
                                       
 

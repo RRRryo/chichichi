@@ -1425,13 +1425,13 @@ $lang["City"] = "城市";
 
 
 
-$lang["Post code/Zip code"] = "邮编 / 邮政编码";
+$lang["Post code/Zip code"] = "邮编";
 
 
 
 
 
-$lang["State/Region"] = "国家 / 地区";
+$lang["State/Region"] = "地区";
 
 
 
@@ -1749,7 +1749,7 @@ $lang["Payment Information"] = "付款信息";
 
 
 
-$lang["Cash On delivery"] = "只收现金";
+$lang["Cash On delivery"] = "现金";
 
 
 
@@ -2001,13 +2001,13 @@ $lang["AddOn Item Name"] = "插件项目名称";
 
 
 
-$lang["AddOn Category"] = "插件类";
+$lang["AddOn Category"] = "菜品二级类别";
 
 
 
 
 
-$lang["AddOn Item"] = "附加元件项目";
+$lang["AddOn Item"] = "菜品三级类别";
 
 
 
@@ -2067,13 +2067,13 @@ $lang["Cooking Ref. name"] = "烹饪参考名称";
 
 
 
-$lang["Ref#"] = "参考号码";
+$lang["Ref#"] = "编号";
 
 
 
 
 
-$lang["Item"] = "一项";
+$lang["Item"] = "菜品";
 
 
 
@@ -2097,7 +2097,7 @@ $lang["Tax"] = "税";
 
 
 
-$lang["Total W/Tax"] = "总的预扣税";
+$lang["Total W/Tax"] = "合计（含税）";
 
 
 
@@ -2115,7 +2115,7 @@ $lang["AddOn"] = "插件";
 
 
 
-$lang["Food Category"] = "食物类别";
+$lang["Food Category"] = "菜品一级类别";
 
 
 
@@ -2139,7 +2139,7 @@ $lang["Discount (numeric value)"] = "折扣 ( 数值 )";
 
 
 
-$lang["Cooking Reference"] = "烹饪的参考";
+$lang["Cooking Reference"] = "口味偏好";
 
 
 
@@ -2343,7 +2343,7 @@ $lang["Total Amount"] = "总金额";
 
 
 
-$lang["Merchant Logo"] = "商徽标";
+$lang["Merchant Logo"] = "商标";
 
 
 
@@ -2355,13 +2355,13 @@ $lang["Remove Logo"] = "删除徽标";
 
 
 
-$lang["Merchant Header/Background"] = "商家标题 / 背景";
+$lang["Merchant Header/Background"] = "商标背景";
 
 
 
 
 
-$lang["Minimum purchase amount."] = "最低购买金额";
+$lang["Minimum purchase amount."] = "最低消费额";
 
 
 
@@ -2811,7 +2811,7 @@ $lang["Address & Currency"] = "地址 & 货币";
 
 
 
-$lang["Contact Phone Number"] = "联系人电话号码";
+$lang["Contact Phone Number"] = "联系人电话";
 
 
 
@@ -3027,13 +3027,13 @@ $lang["Please check on of the row to delete."] = "请检查是否在要删除的
 
 
 
-$lang["Last 30 days Total Sales"] = "最后 30 天的总销售";
+$lang["Last 30 days Total Sales"] = "最近 30 天销售额";
 
 
 
 
 
-$lang["Last 30 days Total Sales By Item"] = "最后 30 天的总销售的项目。";
+$lang["Last 30 days Total Sales By Item"] = "最近 30 天各类菜品销售额";
 
 
 
@@ -3255,7 +3255,7 @@ $lang["Notice: Your merchant will not show on search result. Click on Publish yo
 
 
 
-$lang["Dashboard"] = "仪表板";
+$lang["Dashboard"] = "销售表";
 
 
 
@@ -3273,7 +3273,7 @@ $lang["Settings"] = "设置";
 
 
 
-$lang["Food Item"] = "菜品。";
+$lang["Food Item"] = "菜单设置";
 
 
 
@@ -3285,7 +3285,7 @@ $lang["AddOn Item"] = "附加元件项目";
 
 
 
-$lang["Receipt Settings"] = "接收设置";
+$lang["Receipt Settings"] = "电子邮件模板";
 
 
 
@@ -3297,19 +3297,19 @@ $lang["Payment Gateway"] = "支付网关";
 
 
 
-$lang["Reports"] = "报告";
+$lang["Reports"] = "销售统计";
 
 
 
 
 
-$lang["Sales Report"] = "销售报告";
+$lang["Sales Report"] = "订单列表";
 
 
 
 
 
-$lang["Sales Summary Report"] = "销售总结报告。";
+$lang["Sales Summary Report"] = "菜品销售数量统计";
 
 
 
@@ -3831,7 +3831,7 @@ $lang["Postal Code/Zip Code"] ="邮政编码/邮政编码";
 
 
 
-$lang["View Receipt"] ="查看收据";	
+$lang["View Receipt"] ="查看收据";
 
 
 
@@ -3999,7 +3999,7 @@ $lang["SMS Package Add"] ="SMS 软件包添加";
 
 
 
-$lang["New Order List For Today"] ="新的订单列表今天";
+$lang["New Order List For Today"] ="本日订单列表";
 
 
 
@@ -4281,7 +4281,7 @@ $lang["Broadcast Id"] ="广播 ID";
 
 
 
-$lang["Mobile"] ="电话号码";
+$lang["Mobile"] ="电话";
 
 
 
@@ -4593,13 +4593,13 @@ $lang["Website"] ="网站";
 
 
 
-$lang["Voucher List"] ="优惠券列表";
+$lang["Voucher List"] ="折扣码列表";
 
 
 
 
 
-$lang["Voucher name"] ="凭证名称";
+$lang["Voucher name"] ="折扣码";
 
 
 
@@ -4617,31 +4617,31 @@ $lang["Discount"] ="折扣";
 
 
 
-$lang["Voucher Status"] ="凭证状态";
+$lang["Voucher Status"] ="折扣码状态";
 
 
 
 
 
-$lang["Voucher amount discount."] ="优惠券数量折扣。";
+$lang["Voucher amount discount."] ="折扣码数量折扣。";
 
 
 
 
 
-$lang["Number of vouchers to be generated"] ="优惠券数量生成";
+$lang["Number of vouchers to be generated"] ="折扣码数量生成";
 
 
 
 
 
-$lang["Voucher amount discount."] ="优惠券数量折扣。";
+$lang["Voucher amount discount."] ="优惠券数量折扣";
 
 
 
 
 
-$lang["Voucher name is required"] ="优惠券名称是必需的";
+$lang["Voucher name is required"] ="折扣码是必需的";
 
 
 
@@ -4653,7 +4653,7 @@ $lang["Amount is required"] ="必须有金额";
 
 
 
-$lang["Number of voucher is required"] ="必须有号码的凭证";
+$lang["Number of voucher is required"] ="必须有折扣码";
 
 
 
@@ -4665,7 +4665,7 @@ $lang["Status is required"] ="必须有状态";
 
 
 
-$lang["Enabled Voucher"] ="启用凭证";
+$lang["Enabled Voucher"] ="可使用折扣码";
 
 
 
@@ -4677,37 +4677,37 @@ $lang["Filename of image must not have spaces"] ="文件名的图像不能有空
 
 
 
-$lang["Enter Voucher here"] ="输入的凭证在这里";
+$lang["Enter Voucher here"] ="请在此输入折扣码";
 
 
 
 
 
-$lang["Use Voucher"] ="使用优惠券";
+$lang["Use Voucher"] ="使用折扣码";
 
 
 
 
 
-$lang["Voucher code not found"] ="优惠券代码未找到";
+$lang["Voucher code not found"] ="折扣码未找到";
 
 
 
 
 
-$lang["You have entered voucher code that already been used."] ="您输入的优惠券代码已被使用";
+$lang["You have entered voucher code that already been used."] ="您输入的折扣码已被使用";
 
 
 
 
 
-$lang["Remove Voucher"] ="删除凭证";
+$lang["Remove Voucher"] ="删除折扣码";
 
 
 
 
 
-$lang["Less Voucher"] ="更少的凭证";
+$lang["Less Voucher"] ="更少的折扣码";
 
 
 
@@ -5343,13 +5343,13 @@ $lang['Disabled Table Booking']= '禁用表的订房';
 
 
 
-$lang['Table Booking']= '表订房';
+$lang['Table Booking']= '餐厅订位';
 
 
 
 
 
-$lang['Guest Name']= 'Guest 虚拟机名称';
+$lang['Guest Name']= '客人姓名';
 
 
 
@@ -5361,7 +5361,7 @@ $lang['Date Booking']= '预订日期';
 
 
 
-$lang['No. Of guest']= '号的 guest';
+$lang['No. Of guest']= '人数';
 
 
 
@@ -5775,7 +5775,7 @@ $lang['Maximum Order']= '最大的订单';
 
 
 
-$lang['Maximum purchase amount']= '最大采购数量';
+$lang['Maximum purchase amount']= '最高消费额';
 
 
 
@@ -5907,7 +5907,7 @@ $lang['Contact Number']= '联系人号码';
 
 
 
-$lang['Contact#']= '联系＃';
+$lang['Contact#']= '联系电话';
 
 
 
@@ -6105,7 +6105,7 @@ $lang['Search by address']= '搜索地址';
 
 
 
-$lang['Restaurant name']= '餐厅名称。';
+$lang['Restaurant name']= '餐厅名称';
 
 
 
@@ -6117,7 +6117,7 @@ $lang['Street name']= '街道名称';
 
 
 
-$lang['Cuisine']= '美食';
+$lang['Cuisine']= '菜系';
 
 
 
@@ -6309,7 +6309,7 @@ $lang['Available Tags {receipt} = full details or order']='可用的标签 { 收
 
 
 
-$lang['Packaging Charge']='包装费';
+$lang['Packaging Charge']='餐具费';
 
 
 
@@ -6813,7 +6813,7 @@ $lang['Error: cannot send bank instructions email']='错误 : 无法发送银行
 
 
 
-$lang['Offers']='提供';
+$lang['Offers']='优惠设置';
 
 
 
@@ -7173,7 +7173,7 @@ $lang['Gateway']='网关';
 
 
 
-$lang['Featured Restaurants']='特色餐厅';
+$lang['Featured Restaurants']='推荐餐厅';
 
 
 
@@ -7347,13 +7347,13 @@ $lang['Payment Request']='付款申请';
 
 
 
-$lang['Commission Settings']='委员会设置。';
+$lang['Commission Settings']='佣金设置。';
 
 
 
 
 
-$lang['Enabled Commission']='委员会已启用';
+$lang['Enabled Commission']='佣金已启用';
 
 
 
@@ -7407,7 +7407,7 @@ $lang['Membership Type']='成员类型';
 
 
 
-$lang['Commission']='委员会';
+$lang['Commission']='佣金';
 
 
 
@@ -7449,7 +7449,7 @@ $lang['Merchant Commission details']='商户委员会的详细信息';
 
 
 
-$lang['Commission price']='委员会价格';
+$lang['Commission price']='佣金价格';
 
 
 
@@ -7461,7 +7461,7 @@ $lang['Total Price']='总价格';
 
 
 
-$lang['Total Commission']='总委员会';
+$lang['Total Commission']='总佣金';
 
 
 
@@ -7509,19 +7509,19 @@ $lang['Continue']='继续';
 
 
 
-$lang['Set commission on']='设置委员会';
+$lang['Set commission on']='设置佣金';
 
 
 
 
 
-$lang['Commission on Sub total order']='委员会子总数的次序';
+$lang['Commission on Sub total order']='佣金子总数的次序';
 
 
 
 
 
-$lang['Commission on Total order']='委员会总数的次序';
+$lang['Commission on Total order']='佣金总数的次序';
 
 
 
@@ -7545,7 +7545,7 @@ $lang['Please choose below to continue to signup']='请选择下面的继续注�
 
 
 
-$lang['Commission Click here']='委员会请单击此处';
+$lang['Commission Click here']='佣金请单击此处';
 
 
 
@@ -7569,19 +7569,19 @@ $lang['Sorry but your not allowed to access this page']='抱歉但您不被允�
 
 
 
-$lang['Your balance']='您的账户';
+$lang['Your balance']='账户余额';
 
 
 
 
 
-$lang['Statement']='声明';
+$lang['Statement']='结算单';
 
 
 
 
 
-$lang['Earnings']='收益';
+$lang['Earnings']='收入';
 
 
 
@@ -7605,7 +7605,7 @@ $lang['Last 15 days']='过去 15 天';
 
 
 
-$lang['Sales earnings this month']='销售收入本月';
+$lang['Sales earnings this month']='本月销售收入';
 
 
 
@@ -7635,7 +7635,7 @@ $lang['based on list price of each item']='基于列表的价格 , 每个项目�
 
 
 
-$lang['Total value of your item sales']='总价值为您的项目销售';
+$lang['Total value of your item sales']='总销售额';
 
 
 
@@ -7701,7 +7701,7 @@ $lang['ingredients added']='成分添加';
 
 
 
-$lang['Withdrawal']='撤出';
+$lang['Withdrawal']='提款';
 
 
 
@@ -7719,7 +7719,7 @@ $lang['Incoming withdrawal']='传入的撤离';
 
 
 
-$lang['Withdrawal settings']='退出设置。';
+$lang['Withdrawal settings']='提款设置。';
 
 
 
@@ -7767,7 +7767,7 @@ $lang['Template Payout']='模板的支付';
 
 
 
-$lang['Disabled Withdrawal from merchant']='禁用退出商户';
+$lang['Disabled Withdrawal from merchant']='禁用提款商户';
 
 
 
@@ -8685,7 +8685,7 @@ $lang['commission per order']='每个订单';
 
 
 
-$lang['Note: If this is ticked, the merchant will be charged commission per order and membership package will be ignored']='注意 : 如果勾选 , 商户会收取每个订单和会员的软件包将会被忽略';
+$lang['Note: If this is ticked, the merchant will be charged commission per order and membership package will be ignored']='注意 : 如果勾选 , 商户会收取每个订单的佣金和会员的费用将会被忽略';
 
 
 
@@ -8733,7 +8733,7 @@ $lang['Shipping Rates']='运输费率';
 
 
 
-$lang['Delivery Charges Rates']='递送费率';
+$lang['Delivery Charges Rates']='送餐费设置';
 
 
 
@@ -8769,7 +8769,7 @@ $lang['Approved No. Of Guests']='批准号的客人';
 
 
 
-$lang['Booking Summary Report']='预订摘要报告';
+$lang['Booking Summary Report']='订位统计';
 
 
 
@@ -8961,7 +8961,7 @@ $lang['Delivery Date is required']='交货日期是必需的';
 
 
 
-$lang['Make Delivery Time Required']='使交货所需时间 ?';
+$lang['Make Delivery Time Required']='送餐所需时间';
 
 
 
@@ -9051,7 +9051,7 @@ $lang['Total Payable to']='总支付';
 
 
 
-$lang['Payment Type']='支付类型';
+$lang['Payment Type']='支付方式';
 
 
 
@@ -9129,7 +9129,7 @@ $lang['leave empty to use standard decimal separators']='保留为空以使用�
 
 
 
-$lang['Close Store']='关闭存储';
+$lang['Close Store']='停业';
 
 
 
@@ -9141,7 +9141,7 @@ $lang['Merchant Open/Close']='商户营业 / 关闭';
 
 
 
-$lang['Packaging Incremental']='包装的增量';
+$lang['Packaging Incremental']='启用包装费';
 
 
 
@@ -9183,7 +9183,7 @@ $lang['Tip']='小费';
 
 
 
-$lang['Default Tip']='默认的提示';
+$lang['Default Tip']='默认';
 
 
 
@@ -9253,7 +9253,7 @@ $lang['Pay using Authorize.net']='支付使用 Authorize.net';
 
 $lang['Call Us']='';
 
-$lang['Commission today']='';
+$lang['Commission today']='本日佣金';
 
 $lang['Hide food price']='';
 
@@ -9295,7 +9295,7 @@ $lang['search']='';
 
 $lang['export']='';
 
-$lang['Gallery Settings']='圖庫設置';
+$lang['Gallery Settings']='图库设置';
 
 $lang['Click here to get coordinates using your address']='';
 
@@ -9307,9 +9307,9 @@ $lang['not available']='';
 
 $lang['Not Available']='';
 
-$lang['Google Map']='谷歌地圖';
+$lang['Google Map']='谷歌地图';
 
-$lang['Maximum purchase amount.']='';
+$lang['Maximum purchase amount.']='最高消费额';
 
 $lang['Minimum Order']='';
 
@@ -9389,7 +9389,7 @@ $lang['Disabled Popup']='';
 
 $lang['disbaled popup instead use a page']='';
 
-$lang['Disabled Ordering']='';
+$lang['Disabled Ordering']='禁止预订';
 
 $lang['Disabled Merchant can edit review or delete']='';
 
@@ -9441,7 +9441,7 @@ $lang['Disabled single food item auto add to cart']='';
 
 $lang['Holiday Close Message']='';
 
-$lang['Restaurant Information']='餐廳信息';
+$lang['Restaurant Information']='餐厅信息';
 
 $lang['Percentage']='百分比';
 
@@ -9899,41 +9899,41 @@ $lang['API password']='';
 
 $lang['Credentials']='凭据';
 
-$lang['Country code']='國家代碼';
+$lang['Country code']='国家代码';
 
-$lang['Pick Up or Delivery?']='接送或交貨？';
+$lang['Pick Up or Delivery?']='送餐或自取';
 
-$lang['Confirm Password']='確認密碼';
+$lang['Confirm Password']='确认密码';
 
-$lang['Group Information']='組信息';
+$lang['Group Information']='组信息';
 
-$lang['Group name']='組名稱';
+$lang['Group name']='组名稱';
 
-$lang['Group List']='組列表';
+$lang['Group List']='组列表';
 
 $lang['Group ID']='組ID';
 
-$lang['Group Name']='組名稱';
+$lang['Group Name']='组名稱';
 
-$lang['Google Recaptcha Settings']='谷歌 Recaptcha 設置';
+$lang['Google Recaptcha Settings']='谷歌 Recaptcha 设置';
 
-$lang['These section is optional']='這些部分是可選的';
+$lang['These section is optional']='這些部分是可选的';
 
-$lang['Site Key']='網站鍵';
+$lang['Site Key']='网站键';
 
-$lang['Secret Key']='秘密鑰匙';
+$lang['Secret Key']='秘密钥匙';
 
-$lang['Enable Customer signup']='啟用 顧客 註冊';
+$lang['Enable Customer signup']='启用顾客注册';
 
-$lang['Enable Merchant signup']='啟用 商人 註冊';
+$lang['Enable Merchant signup']='启用餐厅注册';
 
-$lang['Enable Customer login']='啟用 顧客 登錄';
+$lang['Enable Customer login']='启用顾客登陆';
 
-$lang['Enable Merchant login']='啟用 商人 登錄';
+$lang['Enable Merchant login']='启用餐厅登陆';
 
-$lang['Enable Admin login']='啟用 管理員 登錄';
+$lang['Enable Admin login']='启用管理员登陆';
 
-$lang['Enable Order']='啟用 訂購';
+$lang['Enable Order']='启用订购';
 
 $lang['Banner Image']='橫幅圖片';
 
