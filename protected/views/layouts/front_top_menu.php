@@ -4,12 +4,12 @@
 
 <div class="container border" >
   <div class="col-md-3 col-xs-3 border col-a">
-    <?php if ( $theme_hide_logo<>2):?>
-    <a class="logo-ancher" href="<?php echo Yii::app()->createUrl('/store/home')?>">
-     <img src="<?php echo FunctionsV3::getDesktopLogo();?>" class="logo logo-desktop">
-     <img src="<?php echo FunctionsV3::getMobileLogo();?>" class="logo logo-mobile">
+   <!-- <?php /*if ( $theme_hide_logo<>2):*/?>
+    <a class="logo-ancher" href="<?php /*echo Yii::app()->createUrl('/store/home')*/?>">
+     <img src="<?php /*echo FunctionsV3::getDesktopLogo();*/?>" class="logo logo-desktop">
+     <img src="<?php /*echo FunctionsV3::getMobileLogo();*/?>" class="logo logo-mobile">
     </a>
-    <?php endif;?>
+    --><?php /*endif;*/?>
   </div>
   
   <div class="col-xs-1 menu-nav-mobile border relative">
@@ -43,7 +43,7 @@
 		        ));*/
 				?>
                 <?php 
-			 Widgets::languageBar("store",true);
+//			 Widgets::languageBar("store",true);
            }
         }
         ?>
