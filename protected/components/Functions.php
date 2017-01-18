@@ -10687,7 +10687,9 @@ $menu_html.="</li>";
 
     	if ($as_list){
 
-    		$lang_list['-9999']=Yii::t("default","Default english");
+			//en -9999
+			//zh 1
+    		$lang_list['1']=Yii::t("default","Default chinese");
 
     		//$lang_list='';
 

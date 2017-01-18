@@ -43,7 +43,7 @@
 		        ));*/
 				?>
                 <?php 
-			 Widgets::languageBar("store",true);
+//			 Widgets::languageBar("store",true);
            }
         }
         ?>
