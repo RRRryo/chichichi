@@ -40,7 +40,7 @@ function getcityvalue(id)
          'placeholder'=>$placholder_search,
         'required'=>true
         ))?>  </div>
-            <div class="search-btn"><button type="submit"><i class="ion-ios-search"></i></button> </div>
+            <div class="search-btn" style="float:right;"><button type="submit"><i class="ion-ios-search"></i></button> </div>
         </div>
         
                <ul class="list-link">
