@@ -1,0 +1,7 @@
+{
+    "require": {
+        "mobiledetect/mobiledetectlib": "2.8.24",
+        "mytharcher/alipay-php-sdk": "dev-master"
+    }
+    
+}
