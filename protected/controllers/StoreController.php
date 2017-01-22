@@ -935,6 +935,11 @@ class StoreController extends CController
 	{
 		$this->render('paypal-init');
 	}
+
+	public function actionAlipayInit()
+	{
+		$this->render('alipayapi');
+	}
 	
 	public function actionPaypalVerify()
 	{
