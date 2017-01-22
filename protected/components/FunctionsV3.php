@@ -1095,7 +1095,7 @@ class FunctionsV3
     	  'btr' =>t("Braintree"),
     	  'rzr'=>t("Razorpay"),
 		  'itp'=>("alipay"),
-		  'wcp'=>("wechat pay"),
+//		  'wcp'=>("wechat pay"),
     	  /*'mol'=>t("Mollie"),
     	  'ip8'=>t("Ipay88"),*/
     	);
