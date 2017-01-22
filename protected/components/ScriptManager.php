@@ -244,7 +244,8 @@ class ScriptManager
 	{
 		$baseUrl = Yii::app()->baseUrl; 
 		$cs = Yii::app()->getClientScript();
-		$cs->registerCssFile($baseUrl.'/assets/css/store.css?ver=1.0');		
+		$cs->registerCssFile($baseUrl.'/assets/css/store.css?ver=1.0');
+		$cs->registerCssFile($baseUrl.'/assets/css/patch.css');
 		$cs->registerCssFile('//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css');
 		
 		$cs->registerCssFile("//fonts.googleapis.com/css?family=Open+Sans|Podkova|Rosario|Abel|PT+Sans|Source+Sans+Pro:400,600,300|Roboto|Montserrat:400,700|Lato:400,300,100italic,100,300italic,400italic,700,700italic,900,900italic|Raleway:300,400,600,800");					
