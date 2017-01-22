@@ -3279,7 +3279,7 @@ $lang["Food Item"] = "菜单设置";
 
 
 
-$lang["AddOn Item"] = "附加元件项目";
+$lang["AddOn Item"] = "菜品三级类别";
 
 
 
@@ -5031,7 +5031,7 @@ $lang["delivery"] ="交付";
 
 
 
-$lang['Cooking Preference']='烹饪首选项';
+$lang['Cooking Preference']='口味偏好';
 
 
 
@@ -7175,7 +7175,9 @@ $lang['Gateway']='网关';
 
 $lang['Featured Restaurants']='推荐餐厅';
 
+$lang['Featured Food']='推荐菜品';
 
+$lang['Local Discount']='本地团购';
 
 
 
@@ -9323,7 +9325,7 @@ $lang['Spicy Note']='';
 
 $lang['Addon Item']='';
 
-$lang['Voucher']='';
+$lang['Voucher']='折扣码';
 
 $lang['Fixed Amount']='';
 
@@ -9600,8 +9602,6 @@ $lang['Click here to resend']='';
 $lang['fixed ammount']='';
 
 $lang['percentage']='';
-
-$lang['Commission']='';
 
 $lang['pickup']='';
 
