@@ -21,7 +21,6 @@ die();*/
 
 /* Add your CSS files to this array (THESE ARE ONLY EXAMPLES) */
 $cssFiles = array(
-  $assets_dir."/css/patch.css",
   $assets_dir."/vendor/jquery-ui-1.11.4/jquery-ui-modified.css",
   $assets_dir."/vendor/font-awesome/css/font-awesome.css",
   $assets_dir."/vendor/iCheck/skins/minimal/minimal-modified.css",
@@ -41,8 +40,7 @@ $cssFiles = array(
   $assets_dir."/vendor/animate.min.css",
   $assets_dir."/css/store.css",
   $assets_dir."/css/store-v2.css",
-  $assets_dir."/css/responsive.css",
-  $assets_dir."/css/patch.css"
+  $assets_dir."/css/responsive.css"
 );
  
 /**
