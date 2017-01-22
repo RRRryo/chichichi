@@ -174,7 +174,7 @@ if ( $home_search_mode=="address" || $home_search_mode=="") {
 <!--featured-food S-->
 <div class="container">
 <div class="feature-box">
-		<h2 class="hed-sec">Featured Food</h2>
+		<h2 class="hed-sec"><?php echo t("Featured Food")?></h2>
 	
           <div id="demo">
           <div id="owl-demo2" class="owl-carousel">  
