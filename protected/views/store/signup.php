@@ -139,7 +139,7 @@ echo CHtml::hiddenField('mobile_country_code',Yii::app()->functions->getAdminCou
 	  	    
 	    <div class="box-grey rounded top-line-green">      
 	    
-	    <form id="form-signup" class="form-signup uk-panel uk-panel-box uk-form" method="POST">
+	    <form id="form-signup" class="form-signup uk-panel uk-panel-box" method="POST">
 	     <?php echo CHtml::hiddenField('action','clientRegistrationModal')?>
          <?php echo CHtml::hiddenField('currentController','store')?>
          <?php echo CHtml::hiddenField('single_page',2)?>    
@@ -191,8 +191,8 @@ echo CHtml::hiddenField('mobile_country_code',Yii::app()->functions->getAdminCou
                'required'=>true
                ))?>
 		     </div>
-		  </div> <!--row-->	  
-		  
+		  </div> <!--row-->
+
 		 <div class="row top10">
 		     <div class="col-md-12 ">
 		     <?php echo CHtml::textField('email_address','',
