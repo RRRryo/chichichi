@@ -1,6 +1,6 @@
 <?php
 $patern="cuisine|signup|signin|merchantsignup|contact|searcharea";
-$patern.="|menu|checkout|paymentoption|receipt|logout|paypalinit|paypalverify";
+$patern.="|menu|checkout|paymentoption|receipt|logout|paypalinit|alipayinit|paypalverify";
 $patern.="|OrderHistory|Profile|howItWork|forgotPassword|PageSetlanguage|stripeInit";
 $patern.="|MercadoInit|RenewSuccesful|Browse|PaylineInit|Paylineverify|sisowinit";
 $patern.="|PayuInit|BankDepositverify|AutoResto|AutoStreetName|AutoCategory|PayseraInit";

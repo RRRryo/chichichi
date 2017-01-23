@@ -267,7 +267,7 @@ $lang["Delivery Est"] = "送餐等待时间";
 
 
 
-$lang["Delivery Distance"] = "送餐距离。";
+$lang["Delivery Distance"] = "送餐距离";
 
 
 
@@ -1233,7 +1233,7 @@ $lang["Distance"] = "距离。";
 
 
 
-$lang["Delivery Est"] = "送餐预计时间";
+$lang["Delivery Est"] = "预计送餐时间";
 
 
 
@@ -3057,7 +3057,7 @@ $lang["Minute"] = "分钟";
 
 
 
-$lang["processing."] = "处理。";
+$lang["processing."] = "处理";
 
 
 
@@ -3279,7 +3279,7 @@ $lang["Food Item"] = "菜单设置";
 
 
 
-$lang["AddOn Item"] = "附加元件项目";
+$lang["AddOn Item"] = "菜品三级类别";
 
 
 
@@ -3327,13 +3327,13 @@ $lang["Alert Notification"] = "警报通知";
 
 
 
-$lang["Merchant List"] = "商户列表。";
+$lang["Merchant List"] = "商户列表";
 
 
 
 
 
-$lang["Sponsored Listing"] = "赞助列表";
+$lang["Sponsored Listing"] = "赞助商户列表";
 
 
 
@@ -3813,7 +3813,7 @@ $lang["Activation"] ="激活";
 
 
 
-$lang["Select Package"] ="选择软件包";
+$lang["Select Package"] ="选择注册类型";
 
 
 
@@ -5031,7 +5031,7 @@ $lang["delivery"] ="交付";
 
 
 
-$lang['Cooking Preference']='烹饪首选项';
+$lang['Cooking Preference']='口味偏好';
 
 
 
@@ -7175,7 +7175,9 @@ $lang['Gateway']='网关';
 
 $lang['Featured Restaurants']='推荐餐厅';
 
+$lang['Featured Food']='推荐菜品';
 
+$lang['Local Discount']='本地团购';
 
 
 
@@ -7347,7 +7349,7 @@ $lang['Payment Request']='付款申请';
 
 
 
-$lang['Commission Settings']='佣金设置。';
+$lang['Commission Settings']='佣金设置';
 
 
 
@@ -8667,7 +8669,7 @@ $lang['Website Timezone']='网站的时区';
 
 
 
-$lang['Please Choose A Package Below To Signup']='请选择以下软件包要注册';
+$lang['Please Choose A Package Below To Signup']='两种注册类型供您选择';
 
 
 
@@ -9323,7 +9325,7 @@ $lang['Spicy Note']='';
 
 $lang['Addon Item']='';
 
-$lang['Voucher']='';
+$lang['Voucher']='折扣码';
 
 $lang['Fixed Amount']='';
 
@@ -9600,8 +9602,6 @@ $lang['Click here to resend']='';
 $lang['fixed ammount']='';
 
 $lang['percentage']='';
-
-$lang['Commission']='';
 
 $lang['pickup']='';
 
