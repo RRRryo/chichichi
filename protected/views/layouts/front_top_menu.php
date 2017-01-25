@@ -29,24 +29,10 @@
   <div class="col-md-9 border col-b mobile-lang">
   <div class="lang_top-menu mobile-top-menu">
 
-  <?php 
-		//$list=Yii::app()->functions->getLanguageList();
-		//echo '<pre>';
-		//print_r($list); 
-        if ($show_language<>1){
-        	if ( $theme_lang_pos=="bottom" || $theme_lang_pos==""){
-		       /* echo CHtml::dropDownList('language-options','',
-		         (array)FunctionsV3::getLanguage()
-		         ,array(
-		         'class'=>"language-options selectpicker",
-		         'title'=>"language"
-		        ));*/
-				?>
-                <?php 
-//			 Widgets::languageBar("store",true);
-           }
-        }
-        ?>
+  <?php
+  //			 Widgets::languageBar("store",true);
+
+  ?>
       
     <?php $this->widget('zii.widgets.CMenu', FunctionsV3::getMenu() );?> 
      
