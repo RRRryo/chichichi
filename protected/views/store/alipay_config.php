@@ -24,6 +24,9 @@ $alipay_config = array();
 //合作身份者id，以2088开头的16位纯数字
 $alipay_config['partner']       = '2088421836032966';
 
+//收款支付宝账号，以2088开头由16位纯数字组成的字符串，一般情况下收款账号就是签约账号
+$alipay_config['seller_id']	= '2088421836032966';
+
 //安全检验码，以数字和字母组成的32位字符
 $alipay_config['key']           = 'j1w9du1ybogi0h0r37yhgwyusgd6hbis';
 
@@ -52,4 +55,8 @@ $alipay_config['cacert']    = '../cacert.pem';
 
 //访问模式,根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http
 $alipay_config['transport']    = 'http';
+
+// 产品类型，无需修改
+$alipay_config['service'] = "alipay.wap.create.direct.pay.by.user";
+
 ?>
