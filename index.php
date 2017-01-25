@@ -36,6 +36,7 @@
 define('YII_ENABLE_ERROR_HANDLER', false);
 define('YII_ENABLE_EXCEPTION_HANDLER', false);
 ini_set("display_errors",false);
+ini_set('error_log',"../logs/php_error.log");
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 // include Yii bootstrap file

@@ -15185,7 +15185,7 @@ $menu_html.="</li>";
 
 			is_featured='2'
 
-			ORDER BY restaurant_name ASC
+			ORDER BY date_created ASC
 
 			LIMIT 0,20
 
