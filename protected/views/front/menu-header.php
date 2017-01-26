@@ -1,7 +1,8 @@
 
 <div class="mobile-banner-wrap relative">
  <div class="layer"></div>
- <img class="mobile-banner" src="<?php echo empty($background)?assetsURL()."/images/b-2-mobile.jpg":uploadURL()."/$background"; ?>">
+ <img class="mobile-banner" style="min-height: 450px" src="<?php echo empty($background)?assetsURL()."/images/b-2-mobile.jpg":uploadURL()."/$background"; ?>">
+
 </div>
 
 <div id="parallax-wrap" class="parallax-search parallax-menu" 

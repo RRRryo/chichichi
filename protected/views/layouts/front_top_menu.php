@@ -30,9 +30,8 @@
   <div class="lang_top-menu mobile-top-menu">
 
   <?php
-  //			 Widgets::languageBar("store",true);
-
-  ?>
+//         Widgets::languageBar("store",true);
+    ?>
       
     <?php $this->widget('zii.widgets.CMenu', FunctionsV3::getMenu() );?> 
      
