@@ -1,6 +1,6 @@
 <?php
 $patern="cuisine|signup|signin|merchantsignup|contact|searcharea";
-$patern.="|menu|checkout|paymentoption|receipt|logout|paypalinit|alipayinit|paypalverify";
+$patern.="|menu|checkout|paymentoption|receipt|logout|paypalinit|alipayinit|alipaycheckout|paypalverify";
 $patern.="|OrderHistory|Profile|howItWork|forgotPassword|PageSetlanguage|stripeInit";
 $patern.="|MercadoInit|RenewSuccesful|Browse|PaylineInit|Paylineverify|sisowinit";
 $patern.="|PayuInit|BankDepositverify|AutoResto|AutoStreetName|AutoCategory|PayseraInit";
@@ -13,9 +13,9 @@ $patern=strtolower($patern);
 
 return array(
 	'name'=>'Karinderia Multiple Restaurant',
-	
+
 	'defaultController'=>'store',
-		
+
 	'import'=>array(
 		'application.models.*',
 		'application.models.admin.*',
@@ -26,10 +26,10 @@ return array(
 		'application.modules.merchantapp.components.*',
 		'application.modules.driver.components.*',
 	),
-	
-	'language'=>'default',		
-			
-	'modules'=>array(		
+
+	'language'=>'default',
+
+	'modules'=>array(
 		'exportmanager'=>array(
 		  'require_login'=>true
 		),
@@ -46,8 +46,8 @@ return array(
 		  'require_login'=>true
 		)
 	),
-	
-	'components'=>array(		   
+
+	'components'=>array(
 	    'request'=>array(
 	        //'class' => 'application.components.HttpRequest',
             'enableCsrfValidation'=>false,
@@ -56,25 +56,25 @@ return array(
 	        'timeout' => 86400,
 	    ),
 	    'urlManager'=>array(
-	        'class' => 'UrlManager', 
-		    'urlFormat'=>'path',		    
-		    'showScriptName'=>false,		    
-		    'rules'=>array(		
+	        'class' => 'UrlManager',
+		    'urlFormat'=>'path',
+		    'showScriptName'=>false,
+		    'rules'=>array(
 		        '' => 'store/index',
 		        '<action:('.$patern.')>' => 'store/<action>',
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 		        '<controller:\w+>'=>'<controller>/index',
 		        '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-		        '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',		          
-		    )		    
+		        '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+		    )
 		),
-										
-	    'db'=>array(	        
+
+	    'db'=>array(
 		    'class'            => 'CDbConnection' ,
-			'connectionString' => 'mysql:host=localhost;dbname=ydz23012_aimange',
+			'connectionString' => 'mysql:host=localhost;dbname=gtggiejl_booking',
 			'emulatePrepare'   => true,
-			'username'         => 'ydz23012_aimange',
-			'password'         => 'Xiaocai123',
+			'username'         => 'gtggiejl_booking',
+			'password'         => 'K;!RdpDSm^*8',
 			'charset'          => 'utf8',
 			'tablePrefix'      => 'mt_',
 	    ),
