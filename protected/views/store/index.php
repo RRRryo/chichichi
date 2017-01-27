@@ -308,7 +308,7 @@ $placholder_search = Yii::t("default", $placholder_search);
                 });
             });
         </script>
-        <h2 class="hed-sec"><?php echo t("Local Discount") ?></h2>
+<!--        <h2 class="hed-sec">--><?php //echo t("Local Discount") ?><!--</h2>-->
 
         <!--  <div class=" restourant-slider">-->
         <!--        <div id="demo">-->
