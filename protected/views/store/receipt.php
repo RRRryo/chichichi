@@ -9,7 +9,11 @@ $this->renderPartial('/front/banner-receipt',array(
 
 $data='';
 $ok=false;
-if ( $data=Yii::app()->functions->getOrder2($_GET['id'])){				
+$orderId=$_GET['id'];
+if(!isset($orderId)) {
+	$orderId=$_GET['out_trade_no'];
+}
+if ( $data=Yii::app()->functions->getOrder2($orderId)){
 	$merchant_id=$data['merchant_id'];
 	$json_details=!empty($data['json_details'])?json_decode($data['json_details'],true):false;
 	if ( $json_details !=false){
@@ -120,13 +124,13 @@ $full_merchant_address=$merchant_info['street']." ".$merchant_info['city']. " ".
 	         <td><?php echo Yii::t("default","Payment Type")?></td>
 	         <!--<td class="text-right"><?php echo strtoupper(t($data['payment_type']))?></td>-->
 	         <td class="text-right">
-	         <?php echo FunctionsV3::prettyPaymentType('payment_order',$data['payment_type'],$_GET['id'])?>
+	         <?php echo FunctionsV3::prettyPaymentType('payment_order',$data['payment_type'],$orderId)?>
 	         </td>
 	       </tr>
 	       <?php 	       
 	       $print[]=array(
 	         'label'=>Yii::t("default","Payment Type"),
-	         'value'=>FunctionsV3::prettyPaymentType('payment_order',$data['payment_type'],$_GET['id'])
+	         'value'=>FunctionsV3::prettyPaymentType('payment_order',$data['payment_type'],$orderId)
 	       );	       
 	       ?>
 	       	       
@@ -533,7 +537,7 @@ if (!in_array($data['order_id'],(array)$_SESSION['kr_receipt'])){
     Yii::app()->functions->SMSnotificationMerchant($merchant_id,$data,$data_raw);
         
     // SEND FAX
-    Yii::app()->functions->sendFax($merchant_id,$_GET['id']);
+    Yii::app()->functions->sendFax($merchant_id,$orderId);
     
 }
 $_SESSION['kr_receipt']=array($data['order_id']);

@@ -37,7 +37,8 @@ $alipay_config['notify_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/notify_url.
 //需http://格式的完整路径，不能加?id=123这类自定义参数
 
 //页面跳转同步通知页面路径
-$alipay_config['return_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/return_url.php";
+//$alipay_config['return_url'] = "http://localhost/Aimange/receipt";
+$alipay_config['return_url'] = "http://www.tbs360.com//receipt";
 //需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
 
 //签名方式 不需修改
