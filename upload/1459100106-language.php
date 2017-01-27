@@ -1121,7 +1121,9 @@ $lang["Create Account"] = "创建帐户";
 
 $lang["Contact Us"] = "联系我们";
 
+$lang["Connect with us"] = "联系我们";
 
+$lang["Others"] = "其他";
 
 
 
@@ -1691,7 +1693,9 @@ $lang["Pickup information"] = "自取信息";
 
 $lang["Delivery information"] = "送餐信息";
 
+$lang["Delivery Information"] = "送餐信息";
 
+$lang["not available"] = "无法使用";
 
 
 
@@ -7184,7 +7188,8 @@ $lang['Local Discount']='本地团购';
 $lang['received']='收到';
 
 
-
+$lang['Browse by cuisine']='菜系浏览';
+$lang['choose from your favorite cuisine']='选择您最喜爱的菜';
 
 
 $lang['Pickup Time']='捡拾器的时间';
@@ -9025,6 +9030,8 @@ $lang['Sorry but we are closed on']='抱歉，我们已关闭了';
 
 $lang['Please check merchant opening hours']='请检查商户开放时间';
 
+$lang['Opening Hours']='营业时间';
+
 
 
 
@@ -9926,6 +9933,8 @@ $lang['Secret Key']='秘密钥匙';
 $lang['Enable Customer signup']='启用顾客注册';
 
 $lang['Enable Merchant signup']='启用餐厅注册';
+
+$lang['Sign Out']='登出';
 
 $lang['Enable Customer login']='启用顾客登陆';
 
