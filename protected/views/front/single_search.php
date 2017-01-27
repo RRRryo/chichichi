@@ -36,7 +36,7 @@ function getcityvalue(id)
             	<a href="javascript:void(0)" class="toggel-click">城市</a>
                
             </div>-->
-        	<div class="search-input"><?php echo CHtml::textField('s',$kr_search_adrress,array(
+        	<div class="search-input" style="width: 85%"><?php echo CHtml::textField('s',$kr_search_adrress,array(
          'placeholder'=>$placholder_search,
         'required'=>true
         ))?>  </div>
