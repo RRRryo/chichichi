@@ -49,8 +49,8 @@
 </nav>
 
 
-<div class="menu-top-menu">
-    <?php $this->widget('zii.widgets.CMenu', FunctionsV3::getMenu('mobile-menu') );?> 
+<div class="menu-top-menu" style="background:#fff0cd">
+    <?php $this->widget('zii.widgets.CMenu', FunctionsV3::getMenu('mobile-menu') );?>
     <div class="clear"></div>
 </div> <!--menu-top-menu-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
