@@ -7189,7 +7189,7 @@ $lang['received']='收到';
 
 
 $lang['Browse by cuisine']='菜系浏览';
-$lang['choose from your favorite cuisine']='选择您最喜爱的菜';
+$lang['choose from your favorite cuisine']='选择最喜爱的菜';
 
 
 $lang['Pickup Time']='捡拾器的时间';
