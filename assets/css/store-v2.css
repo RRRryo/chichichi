@@ -4978,15 +4978,19 @@ nav .container a img{
 }
 
 .food-detail {
-    background: #e77817;
+    background: white;
+	/*#e77817*/
     padding: 2px 10px;
     margin: 4px -1px;
+	margin-bottom: -5px;
     line-height: 200%;
 }
 .food-detail p {
-    color: #fff;
-    font-size: 14px; margin:0px;
-   
+    /*color: #fff;*/
+	color: black;
+    font-size: 14px;
+	margin:0px;
+	margin-bottom: -5px;
 }
 
 .food-detail span {
@@ -4998,9 +5002,11 @@ nav .container a img{
 
 
 .food-detail > h3 {
-    color: #fff;
-    font-size: 17px;
-    font-weight: 600; margin:0px;
+    /*color: #fff;*/
+	color: black;
+    /*font-size: 17px;*/
+    /*font-weight: 600; */
+	margin:0px;
 }
 
 ul.food-list li a {
