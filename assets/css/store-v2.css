@@ -5014,7 +5014,7 @@ ul.food-list li a {
     padding: 8px;
     text-align: center;
 }
-#owl-demo .item a{ display:block; width:100%;}
+/*#owl-demo .item a{ display:block; width:100%;}*/
 #owl-demo .item a img{ width:100%; max-height:inherit;}
 
 #owl-demo .owl-controls {
