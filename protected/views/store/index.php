@@ -134,10 +134,15 @@ $placholder_search = Yii::t("default", $placholder_search);
                                     <div class="item">
                                         <a href="<?php echo baseUrl() . "/store/menu/merchant/" . $val['restaurant_slug'] ?>"
                                            class="slider-img">
-                                            <img src="<?php echo FunctionsV3::getMerchantLogo($val['merchant_id']); ?>"
-                                                 alt=""/>
-                                            <?php echo clearString($val['restaurant_name']); ?>
+                                            <div class="iner-li">
+                                                <div class="food-img">
+                                                    <img src="<?php echo FunctionsV3::getMerchantLogo($val['merchant_id']); ?>"
+                                                         alt=""/>
+                                                </div>
+                                            <div class="food-detail"><h3 style="text-align: center"><?php echo $val['restaurant_name']?></h3></div>
+                                            </div>
                                         </a>
+
                                     </div>
                                 <?php endforeach; ?>
 
