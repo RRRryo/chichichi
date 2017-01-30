@@ -139,7 +139,7 @@ $placholder_search = Yii::t("default", $placholder_search);
                                                     <img src="<?php echo FunctionsV3::getMerchantLogo($val['merchant_id']); ?>"
                                                          alt=""/>
                                                 </div>
-                                            <div class="food-detail"><h3 style="text-align: center"><?php echo $val['restaurant_name']?></h3></div>
+                                            <div class="food-detail"><h3><?php echo $val['restaurant_name']?></h3></div>
                                             </div>
                                         </a>
 
