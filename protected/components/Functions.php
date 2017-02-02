@@ -4998,79 +4998,79 @@ class Functions extends CApplicationComponent
 
 	{
 
-		$protocol = isset($_SERVER["https"]) ? 'https' : 'http';
-
-		if ($protocol=="http"){
-
-			$api="http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
-
-		} else $api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
-
-		
-
-		/*check if has provide api key*/
-
-		$key=Yii::app()->functions->getOptionAdmin('google_geo_api_key');		
-
-		if ( !empty($key)){
-
-			$api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&key=".urlencode($key);
-
-		}	
-
-					
-
-		if (!$json=@file_get_contents($api)){
-
-			$json=$this->Curl($api,'');					
-
-		}
-
-		
-
-		if (isset($_GET['debug'])){
-
-			dump($api);
-
-		    dump($json);
-
-		}
-
-			
-
-		if (!empty($json)){
-
-			$json = json_decode($json);	
-
-			if (isset($json->error_message)){
-
-				return false;
-
-			} else {				
-
-				if($json->status=="OK"){					
-
-					$lat = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
-
-		            $long = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
-
-				} else {
-
-					$lat=''; $long='';
-
-				}
-
-	            return array(
-
-	              'lat'=>$lat,
-
-	              'long'=>$long
-
-	            );
-
-			}
-
-		}			
+//		$protocol = isset($_SERVER["https"]) ? 'https' : 'http';
+//
+//		if ($protocol=="http"){
+//
+//			$api="http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
+//
+//		} else $api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
+//
+//
+//
+//		/*check if has provide api key*/
+//
+//		$key=Yii::app()->functions->getOptionAdmin('google_geo_api_key');
+//
+//		if ( !empty($key)){
+//
+//			$api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&key=".urlencode($key);
+//
+//		}
+//
+//
+//
+//		if (!$json=@file_get_contents($api)){
+//
+//			$json=$this->Curl($api,'');
+//
+//		}
+//
+//
+//
+//		if (isset($_GET['debug'])){
+//
+//			dump($api);
+//
+//		    dump($json);
+//
+//		}
+//
+//
+//
+//		if (!empty($json)){
+//
+//			$json = json_decode($json);
+//
+//			if (isset($json->error_message)){
+//
+//				return false;
+//
+//			} else {
+//
+//				if($json->status=="OK"){
+//
+//					$lat = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
+//
+//		            $long = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
+//
+//				} else {
+//
+//					$lat=''; $long='';
+//
+//				}
+//
+//	            return array(
+//
+//	              'lat'=>$lat,
+//
+//	              'long'=>$long
+//
+//	            );
+//
+//			}
+//
+//		}
 
 		return false;
 
