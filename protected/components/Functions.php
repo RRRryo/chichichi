@@ -1,7 +1,7 @@
 <?php
 class Functions extends CApplicationComponent
 
-{	
+{
 
 	public $data;
 
@@ -16,27 +16,27 @@ class Functions extends CApplicationComponent
 	public $db_ext;
 
 	public $has_session=false;
-	
+
 	public $search_result_total=0;
 
 	public function __construct()
 	{
 
-		$this->db_ext=new DbExt; 		
+		$this->db_ext=new DbExt;
 
 	}
 
-	
+
 
 	public function isAdminLogin()
 
-	{						
+	{
 
-		$is_login=FALSE;				
+		$is_login=FALSE;
 
 		/*if (!empty($_COOKIE['kr_user'])){
 
-			$user=json_decode($_COOKIE['kr_user']);									
+			$user=json_decode($_COOKIE['kr_user']);
 
 			if (is_numeric($user[0]->admin_id)){
 
@@ -44,19 +44,19 @@ class Functions extends CApplicationComponent
 
 			}
 
-		}*/				
+		}*/
 
 		if ($this->validateAdminSession()){
 
 			return true;
 
-		}			
+		}
 
 		return false;
 
 	}
 
-	
+
 
 	public function getAdminInfo()
 
@@ -64,7 +64,7 @@ class Functions extends CApplicationComponent
 
 		/*if (!empty($_COOKIE['kr_user'])){
 
-			$user=json_decode($_COOKIE['kr_user']);									
+			$user=json_decode($_COOKIE['kr_user']);
 
 			if (is_numeric($user[0]->admin_id)){
 
@@ -72,11 +72,11 @@ class Functions extends CApplicationComponent
 
 			}
 
-		}*/		
+		}*/
 
 		if (!empty($_SESSION['kr_user'])){
 
-			$user=json_decode($_SESSION['kr_user']);									
+			$user=json_decode($_SESSION['kr_user']);
 
 			if (is_numeric($user[0]->admin_id)){
 
@@ -90,7 +90,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getAdminId()
 
@@ -98,7 +98,7 @@ class Functions extends CApplicationComponent
 
 		if (!empty($_SESSION['kr_user'])){
 
-			$user=json_decode($_SESSION['kr_user']);									
+			$user=json_decode($_SESSION['kr_user']);
 
 			if (is_numeric($user[0]->admin_id)){
 
@@ -110,19 +110,19 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-	}	
+	}
 
-	
+
 
 	public function isMerchantLogin()
 
-	{						
+	{
 
-		$is_login=FALSE;						
+		$is_login=FALSE;
 
 		if (!empty($_SESSION['kr_merchant_user'])){
 
-			$user=json_decode($_SESSION['kr_merchant_user']);									
+			$user=json_decode($_SESSION['kr_merchant_user']);
 
 			if (is_numeric($user[0]->merchant_id)){
 
@@ -142,7 +142,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getMerchantID()
 
@@ -150,7 +150,7 @@ class Functions extends CApplicationComponent
 
 		if (!empty($_SESSION['kr_merchant_user'])){
 
-			$user=json_decode($_SESSION['kr_merchant_user']);			
+			$user=json_decode($_SESSION['kr_merchant_user']);
 
 			if (is_array($user) && count($user)>=1){
 
@@ -162,9 +162,9 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-	}		
+	}
 
-	
+
 
 	public function getMerchantUserName()
 
@@ -172,7 +172,7 @@ class Functions extends CApplicationComponent
 
 		if (!empty($_SESSION['kr_merchant_user'])){
 
-			$user=json_decode($_SESSION['kr_merchant_user'],true);			
+			$user=json_decode($_SESSION['kr_merchant_user'],true);
 
 			//dump($user);
 
@@ -194,7 +194,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getMerchantInfo()
 
@@ -202,7 +202,7 @@ class Functions extends CApplicationComponent
 
 		if (!empty($_SESSION['kr_merchant_user'])){
 
-			$user=json_decode($_SESSION['kr_merchant_user']);			
+			$user=json_decode($_SESSION['kr_merchant_user']);
 
 			if (is_array($user) && count($user)>=1){
 
@@ -216,19 +216,19 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function CountryList()
 
 	{
 
-		$cuntry_list=require 'CountryCode.php';  
+		$cuntry_list=require 'CountryCode.php';
 
 		return $cuntry_list;
 
 	}
 
-	
+
 
 	public function Cuisine($list=true)
 
@@ -252,15 +252,15 @@ class Functions extends CApplicationComponent
 
 			if ($list){
 
-				foreach ($res as $val) {	
+				foreach ($res as $val) {
 
-					
+
 
 					$cuisine_json['cuisine_name_trans']=!empty($val['cuisine_name_trans'])?
 
-	    		    json_decode($val['cuisine_name_trans'],true):'';
+						json_decode($val['cuisine_name_trans'],true):'';
 
-									
+
 
 					//$lists[$val['cuisine_id']]=ucwords($val['cuisine_name']);
 
@@ -280,7 +280,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function GetCuisine($id='')
 
@@ -306,11 +306,11 @@ class Functions extends CApplicationComponent
 
 		}
 
-		return false;	
+		return false;
 
 	}
 
-	
+
 
 	public function GetCuisineByName($name='')
 
@@ -328,7 +328,7 @@ class Functions extends CApplicationComponent
 
 		LIMIT 0,1
 
-		";				
+		";
 
 		if ($res=$DbExt->rst($stmt)){
 
@@ -336,11 +336,11 @@ class Functions extends CApplicationComponent
 
 		}
 
-		return false;	
+		return false;
 
-	}	
+	}
 
-	
+
 
 	public function Services()
 
@@ -348,21 +348,21 @@ class Functions extends CApplicationComponent
 
 		return array(
 
-		  1=>Yii::t("default","Delivery & Pickup"),
+			1=>Yii::t("default","Delivery & Pickup"),
 
-		  2=>Yii::t("default","Delivery Only"),
+			2=>Yii::t("default","Delivery Only"),
 
-		  3=>yii::t("default","Pickup Only")
+			3=>yii::t("default","Pickup Only")
 
 		);
 
 	}
 
-	
+
 
 	public function DeliveryOptions($merchant_id='')
 
-	{		
+	{
 
 		if ( $res=$this->getMerchant($merchant_id)){
 
@@ -372,9 +372,9 @@ class Functions extends CApplicationComponent
 
 					return array(
 
-			           'delivery'=>Yii::t("default","Delivery"),
+						'delivery'=>Yii::t("default","Delivery"),
 
-			        );
+					);
 
 					break;
 
@@ -382,9 +382,9 @@ class Functions extends CApplicationComponent
 
 					return array(
 
-			            'pickup'=>Yii::t("default","Pickup")          
+						'pickup'=>Yii::t("default","Pickup")
 
-			        );
+					);
 
 					break;
 
@@ -392,11 +392,11 @@ class Functions extends CApplicationComponent
 
 					return array(
 
-			           'delivery'=>Yii::t("default","Delivery"),
+						'delivery'=>Yii::t("default","Delivery"),
 
-			           'pickup'=>Yii::t("default","Pickup") 
+						'pickup'=>Yii::t("default","Pickup")
 
-			        );
+					);
 
 					break;
 
@@ -406,9 +406,9 @@ class Functions extends CApplicationComponent
 
 			return array(
 
-			  'delivery'=>Yii::t("default","Delivery"),
+				'delivery'=>Yii::t("default","Delivery"),
 
-			  'pickup'=>Yii::t("default","Pickup") 
+				'pickup'=>Yii::t("default","Pickup")
 
 			);
 
@@ -416,7 +416,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function isMerchantExist($contact_email='')
 
@@ -446,7 +446,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getMerchant($merchant_id='')
 
@@ -490,9 +490,9 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-	}	
+	}
 
-		
+
 
 	public function getMerchantBySlug($slug_id='')
 
@@ -520,9 +520,9 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-	}	
+	}
 
-	
+
 
 	public function getMerchantByToken($token='')
 
@@ -532,7 +532,7 @@ class Functions extends CApplicationComponent
 
 			return false;
 
-		}	
+		}
 
 		$DbExt=new DbExt;
 
@@ -550,7 +550,7 @@ class Functions extends CApplicationComponent
 
 		) as package_name
 
-		
+
 
 		FROM
 
@@ -572,23 +572,23 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-	}		
+	}
 
-		
 
-	
+
+
 
 	public function createSlug($merchant_name='')
 
 	{
 
-		//$slug_id=str_replace(" ","-",$merchant_name);	
+		//$slug_id=str_replace(" ","-",$merchant_name);
 
 		//$slug_id=$this->seo_friendly_url($merchant_name);
 
 		$merchant_name=str_replace("'",'',$merchant_name);
 
-		
+
 
 		$DbExt=new DbExt;
 
@@ -602,9 +602,9 @@ class Functions extends CApplicationComponent
 
 		LIMIT 0,1
 
-		";				
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ($res[0]['total']==0){
 
@@ -614,7 +614,7 @@ class Functions extends CApplicationComponent
 
 				return $this->createSlug($merchant_name.$res[0]['total']);
 
-			}		
+			}
 
 		}
 
@@ -622,333 +622,333 @@ class Functions extends CApplicationComponent
 
 	}
 
-		
 
-    public function jsLanguageAdmin()
 
-    {
+	public function jsLanguageAdmin()
 
-    	
+	{
 
-    	$link="<a href=\"".Yii::app()->request->baseUrl."/merchant/MerchantStatus/"."\">".Yii::t("default","click here to renew membership")."</a>";
 
-    	return array(
 
-    	  "deleteWarning"=>Yii::t("default","You are about to permanently delete the selected items.\n'Cancel' to stop, 'OK' to delete.?"),
+		$link="<a href=\"".Yii::app()->request->baseUrl."/merchant/MerchantStatus/"."\">".Yii::t("default","click here to renew membership")."</a>";
 
-    	  "checkRowDelete"=>Yii::t("default","Please check on of the row to delete."),
+		return array(
 
-    	  "removeFeatureImage"=>Yii::t("default","Remove image"),
+			"deleteWarning"=>Yii::t("default","You are about to permanently delete the selected items.\n'Cancel' to stop, 'OK' to delete.?"),
 
-    	  "removeFiles"=>Yii::t("default","Remove Files"),
+			"checkRowDelete"=>Yii::t("default","Please check on of the row to delete."),
 
-    	  "lastTotalSales"=>Yii::t("default","Last 30 days Total Sales"),
+			"removeFeatureImage"=>Yii::t("default","Remove image"),
 
-    	  "lastItemSales"=>Yii::t("default","Last 30 days Total Sales By Item"),
+			"removeFiles"=>Yii::t("default","Remove Files"),
 
-    	  "NewOrderStatsMsg"=>Yii::t("default","New Order has been placed."),
+			"lastTotalSales"=>Yii::t("default","Last 30 days Total Sales"),
 
-    	  
+			"lastItemSales"=>Yii::t("default","Last 30 days Total Sales By Item"),
 
-    	  'Hour'=>Yii::t("default","Hour"),
+			"NewOrderStatsMsg"=>Yii::t("default","New Order has been placed."),
 
-    	  'Minute'=>Yii::t("default","Minute"),
 
-    	  'processing'=>Yii::t("default","processing."),
 
-    	  'merchantStats'=>Yii::t("default","Your merchant membership is expired. Please renew your membership.").$link,
+			'Hour'=>Yii::t("default","Hour"),
 
-    	  "Status"=>Yii::t("default","Status"),
+			'Minute'=>Yii::t("default","Minute"),
 
-    	  
+			'processing'=>Yii::t("default","processing."),
 
-    	  "tablet_1"=>Yii::t("default","No data available in table"),
+			'merchantStats'=>Yii::t("default","Your merchant membership is expired. Please renew your membership.").$link,
 
-    	  "tablet_2"=>Yii::t("default","Showing _START_ to _END_ of _TOTAL_ entries"),
+			"Status"=>Yii::t("default","Status"),
 
-    	  "tablet_3"=>Yii::t("default","Showing 0 to 0 of 0 entries"),
 
-    	  "tablet_4"=>Yii::t("default","(filtered from _MAX_ total entries)"),
 
-    	  "tablet_5"=>Yii::t("default","Show _MENU_ entries"),
+			"tablet_1"=>Yii::t("default","No data available in table"),
 
-    	  "tablet_6"=>Yii::t("default","Loading..."),
+			"tablet_2"=>Yii::t("default","Showing _START_ to _END_ of _TOTAL_ entries"),
 
-    	  "tablet_7"=>Yii::t("default","Processing..."),
+			"tablet_3"=>Yii::t("default","Showing 0 to 0 of 0 entries"),
 
-    	  "tablet_8"=>Yii::t("default","Search:"),
+			"tablet_4"=>Yii::t("default","(filtered from _MAX_ total entries)"),
 
-    	  "tablet_9"=>Yii::t("default","No matching records found"),
+			"tablet_5"=>Yii::t("default","Show _MENU_ entries"),
 
-    	  "tablet_10"=>Yii::t("default","First"),
+			"tablet_6"=>Yii::t("default","Loading..."),
 
-    	  "tablet_11"=>Yii::t("default","Last"),
+			"tablet_7"=>Yii::t("default","Processing..."),
 
-    	  "tablet_12"=>Yii::t("default","Next"),
+			"tablet_8"=>Yii::t("default","Search:"),
 
-    	  "tablet_13"=>Yii::t("default","Previous"),
+			"tablet_9"=>Yii::t("default","No matching records found"),
 
-    	  "tablet_14"=>Yii::t("default",": activate to sort column ascending"),
+			"tablet_10"=>Yii::t("default","First"),
 
-    	  "tablet_15"=>Yii::t("default",": activate to sort column descending"),
+			"tablet_11"=>Yii::t("default","Last"),
 
-    	      	  
+			"tablet_12"=>Yii::t("default","Next"),
 
-    	  "trans_1"=>Yii::t("default","Please rate the restaurant before submitting your review!"),
+			"tablet_13"=>Yii::t("default","Previous"),
 
-    	  "trans_2"=>Yii::t("default","Sorry but you can select only"),
+			"tablet_14"=>Yii::t("default",": activate to sort column ascending"),
 
-    	  "trans_3"=>Yii::t("default","addon"),
+			"tablet_15"=>Yii::t("default",": activate to sort column descending"),
 
-    	  "trans_4"=>Yii::t("default","Are you sure?"),
 
-    	  "trans_5"=>Yii::t("default","Sorry but Minimum order is"),
 
-    	  "trans_6"=>Yii::t("default","Please select payment method"),
+			"trans_1"=>Yii::t("default","Please rate the restaurant before submitting your review!"),
 
-    	  "trans_7"=>Yii::t("default","Mobile number is required"),
+			"trans_2"=>Yii::t("default","Sorry but you can select only"),
 
-    	  "trans_8"=>Yii::t("default","Please select your credit card"),
+			"trans_3"=>Yii::t("default","addon"),
 
-    	  "trans_9"=>Yii::t("default","Map not available"),
+			"trans_4"=>Yii::t("default","Are you sure?"),
 
-    	  "trans_10"=>Yii::t("default","Are you sure you want to delete this review? This action cannot be undone."),
+			"trans_5"=>Yii::t("default","Sorry but Minimum order is"),
 
-    	  "trans_11"=>Yii::t("default","Add your recent order to cart?"),
+			"trans_6"=>Yii::t("default","Please select payment method"),
 
-    	  "trans_12"=>Yii::t("default","Got a total of _TOTAL_ Merchant to show (_START_ to _END_)"),
+			"trans_7"=>Yii::t("default","Mobile number is required"),
 
-    	  "trans_13"=>Yii::t("default","Got a total of _TOTAL_ Records to show (_START_ to _END_)"),
+			"trans_8"=>Yii::t("default","Please select your credit card"),
 
-    	  "trans_14"=>Yii::t("default","ERROR:"),
+			"trans_9"=>Yii::t("default","Map not available"),
 
-    	  "trans_15"=>Yii::t("default","Sorry but this merchant delivers only with in "),
+			"trans_10"=>Yii::t("default","Are you sure you want to delete this review? This action cannot be undone."),
 
-    	  "trans_16"=>Yii::t("default","miles"),
+			"trans_11"=>Yii::t("default","Add your recent order to cart?"),
 
-    	  "trans_17"=>Yii::t("default","Notice: Your merchant will not show on search result. Click on Publish your merchant."),
+			"trans_12"=>Yii::t("default","Got a total of _TOTAL_ Merchant to show (_START_ to _END_)"),
 
-    	  "trans_18"=>Yii::t("default","Continue?"),
+			"trans_13"=>Yii::t("default","Got a total of _TOTAL_ Records to show (_START_ to _END_)"),
 
-    	  "trans_19"=>Yii::t("default","You are about to send SMS to"),
+			"trans_14"=>Yii::t("default","ERROR:"),
 
-    	  "trans_20"=>Yii::t("default","customer"),
+			"trans_15"=>Yii::t("default","Sorry but this merchant delivers only with in "),
 
-    	  "trans_21"=>Yii::t("default","Browse"),
+			"trans_16"=>Yii::t("default","miles"),
 
-    	  "trans_22"=>Yii::t("default","Invalid Voucher code"),
+			"trans_17"=>Yii::t("default","Notice: Your merchant will not show on search result. Click on Publish your merchant."),
 
-    	  "trans_23"=>Yii::t("default","Remove Voucher"),
+			"trans_18"=>Yii::t("default","Continue?"),
 
-    	  "trans_24"=>Yii::t("default","Use Voucher"),
+			"trans_19"=>Yii::t("default","You are about to send SMS to"),
 
-    	  "trans_25"=>Yii::t("default","Please enter your origin"),
+			"trans_20"=>Yii::t("default","customer"),
 
-    	  "trans_26"=>Yii::t("default","Error: Something went wrong"),
+			"trans_21"=>Yii::t("default","Browse"),
 
-    	  "trans_27"=>Yii::t("default","No results found"),
+			"trans_22"=>Yii::t("default","Invalid Voucher code"),
 
-    	  "trans_28"=>Yii::t("default","Geocoder failed due to:"),
+			"trans_23"=>Yii::t("default","Remove Voucher"),
 
-    	  "trans_29"=>Yii::t("default","Please select price"),
+			"trans_24"=>Yii::t("default","Use Voucher"),
 
-    	  "trans_30"=>Yii::t("default","Sorry this merchant is closed."),
+			"trans_25"=>Yii::t("default","Please enter your origin"),
 
-    	  'Prev'=>Yii::t("default","Prev"),
+			"trans_26"=>Yii::t("default","Error: Something went wrong"),
 
-    	  'Next'=>Yii::t("default","Next"),
+			"trans_27"=>Yii::t("default","No results found"),
 
-    	  'Today'=>Yii::t("default","Today"),
+			"trans_28"=>Yii::t("default","Geocoder failed due to:"),
 
-    	  'January'=>Yii::t("default","January"),
+			"trans_29"=>Yii::t("default","Please select price"),
 
-    	  'February'=>Yii::t("default","February"),
+			"trans_30"=>Yii::t("default","Sorry this merchant is closed."),
 
-    	  'March'=>Yii::t("default","March"),
+			'Prev'=>Yii::t("default","Prev"),
 
-    	  'April'=>Yii::t("default","April"),
+			'Next'=>Yii::t("default","Next"),
 
-    	  'May'=>Yii::t("default","May"),
+			'Today'=>Yii::t("default","Today"),
 
-    	  'June'=>Yii::t("default","June"),
+			'January'=>Yii::t("default","January"),
 
-    	  'July'=>Yii::t("default","July"),
+			'February'=>Yii::t("default","February"),
 
-    	  'August'=>Yii::t("default","August"),
+			'March'=>Yii::t("default","March"),
 
-    	  'September'=>Yii::t("default","September"),
+			'April'=>Yii::t("default","April"),
 
-    	  'October'=>Yii::t("default","October"),
+			'May'=>Yii::t("default","May"),
 
-    	  'November'=>Yii::t("default","November"),
+			'June'=>Yii::t("default","June"),
 
-    	  'December'=>Yii::t("default","December"),
+			'July'=>Yii::t("default","July"),
 
-    	  'Jan'=>Yii::t("default","Jan"),
+			'August'=>Yii::t("default","August"),
 
-    	  'Feb'=>Yii::t("default","Feb"),
+			'September'=>Yii::t("default","September"),
 
-    	  'Mar'=>Yii::t("default","Mar"),
+			'October'=>Yii::t("default","October"),
 
-    	  'Apr'=>Yii::t("default","Apr"),
+			'November'=>Yii::t("default","November"),
 
-    	  'May'=>Yii::t("default","May"),
+			'December'=>Yii::t("default","December"),
 
-    	  'Jun'=>Yii::t("default","Jun"),
+			'Jan'=>Yii::t("default","Jan"),
 
-    	  'Jul'=>Yii::t("default","Jul"),
+			'Feb'=>Yii::t("default","Feb"),
 
-    	  'Aug'=>Yii::t("default","Aug"),
+			'Mar'=>Yii::t("default","Mar"),
 
-    	  'Sep'=>Yii::t("default","Sep"),
+			'Apr'=>Yii::t("default","Apr"),
 
-    	  'Oct'=>Yii::t("default","Oct"),
+			'May'=>Yii::t("default","May"),
 
-    	  'Nov'=>Yii::t("default","Nov"),
+			'Jun'=>Yii::t("default","Jun"),
 
-    	  'Dec'=>Yii::t("default","Dec"),
+			'Jul'=>Yii::t("default","Jul"),
 
-    	  'Sun'=>Yii::t("default","Sun"),
+			'Aug'=>Yii::t("default","Aug"),
 
-    	  'Mon'=>Yii::t("default","Mon"),
+			'Sep'=>Yii::t("default","Sep"),
 
-    	  'Tue'=>Yii::t("default","Tue"),
+			'Oct'=>Yii::t("default","Oct"),
 
-    	  'Wed'=>Yii::t("default","Wed"),
+			'Nov'=>Yii::t("default","Nov"),
 
-    	  'Thu'=>Yii::t("default","Thu"),
+			'Dec'=>Yii::t("default","Dec"),
 
-    	  'Fri'=>Yii::t("default","Fri"),
+			'Sun'=>Yii::t("default","Sun"),
 
-    	  'Sat'=>Yii::t("default","Sat"), 	  
+			'Mon'=>Yii::t("default","Mon"),
 
-    	  'Su'=>Yii::t("default","Su"),
+			'Tue'=>Yii::t("default","Tue"),
 
-    	  'Mo'=>Yii::t("default","Mo"),
+			'Wed'=>Yii::t("default","Wed"),
 
-    	  'Tu'=>Yii::t("default","Tu"),
+			'Thu'=>Yii::t("default","Thu"),
 
-    	  'We'=>Yii::t("default","We"),
+			'Fri'=>Yii::t("default","Fri"),
 
-    	  'Th'=>Yii::t("default","Th"),
+			'Sat'=>Yii::t("default","Sat"),
 
-    	  'Fr'=>Yii::t("default","Fr"),
+			'Su'=>Yii::t("default","Su"),
 
-    	  'Sa'=>Yii::t("default","Sa"),
+			'Mo'=>Yii::t("default","Mo"),
 
-    	  'Hour'=>Yii::t("default","Hour"),
+			'Tu'=>Yii::t("default","Tu"),
 
-    	  'Minute'=>Yii::t("default","Minute"),
+			'We'=>Yii::t("default","We"),
 
-    	  'AM'=>Yii::t("default","AM"),
+			'Th'=>Yii::t("default","Th"),
 
-    	  'PM'=>Yii::t("default","PM"),
+			'Fr'=>Yii::t("default","Fr"),
 
-    	  "trans_31"=>Yii::t("default","Sorry but Maximum order is"),
+			'Sa'=>Yii::t("default","Sa"),
 
-    	  "trans_32"=>Yii::t("default","Select Some Options"),
+			'Hour'=>Yii::t("default","Hour"),
 
-    	  "trans_33"=>Yii::t("default","No results match"),
+			'Minute'=>Yii::t("default","Minute"),
 
-    	  "trans_34"=>Yii::t("default","New Booking Table"),
+			'AM'=>Yii::t("default","AM"),
 
-    	  "trans_35"=>t("Restaurant name"),
+			'PM'=>Yii::t("default","PM"),
 
-    	  "trans_36"=>t("Address"),
+			"trans_31"=>Yii::t("default","Sorry but Maximum order is"),
 
-    	  "trans_37"=>t("Order Now"),
+			"trans_32"=>Yii::t("default","Select Some Options"),
 
-    	  "trans_38"=>t("Pickup Time"),
+			"trans_33"=>Yii::t("default","No results match"),
 
-    	  "trans_39"=>t("Delivery Time"),
+			"trans_34"=>Yii::t("default","New Booking Table"),
 
-    	  "trans_40"=>t("Please select payment provider"),
+			"trans_35"=>t("Restaurant name"),
 
-    	  "trans_41"=>t("Pickup Time is required"),
+			"trans_36"=>t("Address"),
 
-    	  "trans_42"=>t("Pickup Date is required"),
+			"trans_37"=>t("Order Now"),
 
-    	  "trans_43"=>t("Delivery Date is required"),
+			"trans_38"=>t("Pickup Time"),
 
-    	  "trans_44"=>t("Delivery Time is required"),
+			"trans_39"=>t("Delivery Time"),
 
-    	  "trans_45"=>t("Tip"),
+			"trans_40"=>t("Please select payment provider"),
 
-    	  "trans_46"=>t("You must select price for left and right flavor"),
+			"trans_41"=>t("Pickup Time is required"),
 
-    	  'trans_47'=>t("You must select at least one addon"),
+			"trans_42"=>t("Pickup Date is required"),
 
-    	  'trans_48'=>t("Please drag the marker to select your address"),
+			"trans_43"=>t("Delivery Date is required"),
 
-    	  'trans_49'=>t("You can drag the map marker"),
+			"trans_44"=>t("Delivery Time is required"),
 
-    	  'trans_50'=>t("Is this address correct"),
+			"trans_45"=>t("Tip"),
 
-    	  'trans_51'=>t("Sorry but this item is not available"),
+			"trans_46"=>t("You must select price for left and right flavor"),
 
-    	  'trans_52'=>t("Please validate Captcha"),
+			'trans_47'=>t("You must select at least one addon"),
 
-    	  'trans_53'=>t("SMS code is required"),
+			'trans_48'=>t("Please drag the marker to select your address"),
 
-    	      	  
+			'trans_49'=>t("You can drag the map marker"),
 
-    	  'find_restaurant_by_name'=>t("Find restaurant by name"),
+			'trans_50'=>t("Is this address correct"),
 
-    	  'find_restaurant_by_streetname'=>t("Find by street name"),
+			'trans_51'=>t("Sorry but this item is not available"),
 
-    	  'find_restaurant_by_cuisine'=>t("Find restaurant by cuisine"),
+			'trans_52'=>t("Please validate Captcha"),
 
-    	  'find_restaurant_by_food'=>t("Find restaurant by food"),
+			'trans_53'=>t("SMS code is required"),
 
-    	  'read_more'=>t("Read more"),
 
-    	  'close'=>t("Close"),
 
-    	  'close_fullscreen'=>t("Close fullscreen"),
+			'find_restaurant_by_name'=>t("Find restaurant by name"),
 
-    	  'view_fullscreen'=>t("View in fullscreen"),
+			'find_restaurant_by_streetname'=>t("Find by street name"),
 
-    	  'not_authorize'=>t("You are not authorize with this app"),
+			'find_restaurant_by_cuisine'=>t("Find restaurant by cuisine"),
 
-    	  'not_login_fb'=>t("Sorry but you are not login with facebook"),
+			'find_restaurant_by_food'=>t("Find restaurant by food"),
 
-    	  'login_succesful'=>t("Login Successful"),
+			'read_more'=>t("Read more"),
 
-    	  'you_cannot_edit_order'=>t("You cannot edit this order since you have redeem points")
+			'close'=>t("Close"),
 
-    	);
+			'close_fullscreen'=>t("Close fullscreen"),
 
-    }   	
+			'view_fullscreen'=>t("View in fullscreen"),
 
-    
+			'not_authorize'=>t("You are not authorize with this app"),
 
-    public function jsLanguageValidator()
+			'not_login_fb'=>t("Sorry but you are not login with facebook"),
 
-    {
+			'login_succesful'=>t("Login Successful"),
 
-    	$js_lang=array(
+			'you_cannot_edit_order'=>t("You cannot edit this order since you have redeem points")
 
-		  'requiredFields'=>Yii::t("default","You have not answered all required fields"),
+		);
 
-		  'groupCheckedTooFewStart'=>Yii::t("default","Please choose at least"),
+	}
 
-		  'badEmail'=>Yii::t("default","You have not given a correct e-mail address"),
+
+
+	public function jsLanguageValidator()
+
+	{
+
+		$js_lang=array(
+
+			'requiredFields'=>Yii::t("default","You have not answered all required fields"),
+
+			'groupCheckedTooFewStart'=>Yii::t("default","Please choose at least"),
+
+			'badEmail'=>Yii::t("default","You have not given a correct e-mail address"),
 
 		);
 
 		return $js_lang;
 
-    }
+	}
 
-    
 
-    public function getCategory($cat_id='')
 
-    {
+	public function getCategory($cat_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{category}}
 
@@ -956,9 +956,9 @@ class Functions extends CApplicationComponent
 
 			cat_id='".$cat_id."'
 
-			ORDER BY cat_id DESC			
+			ORDER BY cat_id DESC
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -968,19 +968,19 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		
+	}
 
-    
 
-    public function getCategory2($cat_id='')
 
-    {
+	public function getCategory2($cat_id='')
 
-    	$mid=$this->getMerchantID();
+	{
 
-    	$DbExt=new DbExt;
+		$mid=$this->getMerchantID();
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{category}}
 
@@ -992,9 +992,9 @@ class Functions extends CApplicationComponent
 
 			merchant_id='$mid'
 
-			ORDER BY cat_id DESC			
+			ORDER BY cat_id DESC
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -1004,11 +1004,11 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		    
+	}
 
-    
 
-    public function getCategoryList($merchant_id='')
+
+	public function getCategoryList($merchant_id='')
 
 	{
 
@@ -1020,25 +1020,25 @@ class Functions extends CApplicationComponent
 
 		{{category}}
 
-		WHERE 
+		WHERE
 
 		merchant_id='".$merchant_id."'
 
 		ORDER BY sequence ASC
 
-		";					
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   $data_feed[$val['cat_id']]=$val['category_name'];
+					$data_feed[$val['cat_id']]=$val['category_name'];
 
 				}
 
@@ -1050,17 +1050,17 @@ class Functions extends CApplicationComponent
 
 		return FALSE;
 
-	}    
+	}
 
-    
 
-    public function getSize($id='')
 
-    {
+	public function getSize($id='')
 
-    	$DbExt=new DbExt;
+	{
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{size}}
 
@@ -1068,9 +1068,9 @@ class Functions extends CApplicationComponent
 
 			size_id='".$id."'
 
-			LIMIT 0,1			
+			LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -1080,19 +1080,19 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		
+	}
 
-    
 
-    public function getSizeList($merchant_id)
 
-    {    	
+	public function getSizeList($merchant_id)
 
-    	$data_feed[]='';
+	{
 
-    	$DbExt=new DbExt;
+		$data_feed[]='';
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{size}}
 
@@ -1100,17 +1100,17 @@ class Functions extends CApplicationComponent
 
 			merchant_id='".$merchant_id."'
 
-			ORDER BY sequence ASC			
+			ORDER BY sequence ASC
 
-		";			    
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ($this->data=="list"){
 
-				foreach ($res as $val) {									   
+				foreach ($res as $val) {
 
-				   $data_feed[$val['size_id']]=$val['size_name'];
+					$data_feed[$val['size_id']]=$val['size_name'];
 
 				}
 
@@ -1122,33 +1122,33 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		
+	}
 
-    
 
-    public function getSizeListAll()
 
-    {    	
+	public function getSizeListAll()
 
-    	$data_feed[]='';
+	{
 
-    	$DbExt=new DbExt;
+		$data_feed[]='';
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
 
-			{{size}}		
+		$stmt="SELECT * FROM
 
-			ORDER BY sequence ASC			
+			{{size}}
 
-		";			    
+			ORDER BY sequence ASC
 
-		if ( $res=$DbExt->rst($stmt)){			
+		";
+
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ($this->data=="list"){
 
-				foreach ($res as $val) {									   
+				foreach ($res as $val) {
 
-				   $data_feed[$val['size_id']]=$val['size_name'];
+					$data_feed[$val['size_id']]=$val['size_name'];
 
 				}
 
@@ -1160,17 +1160,17 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		    
+	}
 
-    
 
-    public function getCookingRef($id='')
 
-    {
+	public function getCookingRef($id='')
 
-    	$DbExt=new DbExt;
+	{
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{cooking_ref}}
 
@@ -1180,7 +1180,7 @@ class Functions extends CApplicationComponent
 
 			LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -1190,19 +1190,19 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		    
+	}
 
-    
 
-    public function getCookingRefList($merchant_id='')
 
-    {
+	public function getCookingRefList($merchant_id='')
 
-    	$data_feed='';
+	{
 
-    	$DbExt=new DbExt;
+		$data_feed='';
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{cooking_ref}}
 
@@ -1210,17 +1210,17 @@ class Functions extends CApplicationComponent
 
 			merchant_id='".$merchant_id."'
 
-			ORDER BY sequence ASC			
+			ORDER BY sequence ASC
 
-		";		
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ($this->data=="list"){
 
-				foreach ($res as $val) {									   
+				foreach ($res as $val) {
 
-				   $data_feed[$val['cook_id']]=$val['cooking_name'];
+					$data_feed[$val['cook_id']]=$val['cooking_name'];
 
 				}
 
@@ -1232,33 +1232,33 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		    
+	}
 
-    
 
-    public function getCookingRefAll()
 
-    {
+	public function getCookingRefAll()
 
-    	$data_feed='';
+	{
 
-    	$DbExt=new DbExt;
+		$data_feed='';
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
 
-			{{cooking_ref}}			
+		$stmt="SELECT * FROM
 
-			ORDER BY sequence ASC			
+			{{cooking_ref}}
 
-		";		
+			ORDER BY sequence ASC
 
-		if ( $res=$DbExt->rst($stmt)){			
+		";
+
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ($this->data=="list"){
 
-				foreach ($res as $val) {									   
+				foreach ($res as $val) {
 
-				   $data_feed[$val['cook_id']]=$val['cooking_name'];
+					$data_feed[$val['cook_id']]=$val['cooking_name'];
 
 				}
 
@@ -1270,17 +1270,17 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		        
+	}
 
-    
 
-    public function getAddonCategory($subcat_id='')
 
-    {
+	public function getAddonCategory($subcat_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{subcategory}}
 
@@ -1288,9 +1288,9 @@ class Functions extends CApplicationComponent
 
 			subcat_id='".$subcat_id."'
 
-			ORDER BY subcat_id DESC			
+			ORDER BY subcat_id DESC
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -1300,17 +1300,17 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }
+	}
 
-    public function getAddonCategory2($subcat_id='')
+	public function getAddonCategory2($subcat_id='')
 
-    {
+	{
 
-    	$mid=$this->getMerchantID();
+		$mid=$this->getMerchantID();
 
-    	$DbExt=new DbExt;
+		$DbExt=new DbExt;
 
-	    $stmt="SELECT * FROM
+		$stmt="SELECT * FROM
 
 			{{subcategory}}
 
@@ -1322,9 +1322,9 @@ class Functions extends CApplicationComponent
 
 			merchant_id='$mid'
 
-			ORDER BY subcat_id DESC			
+			ORDER BY subcat_id DESC
 
-		";		    
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -1334,11 +1334,11 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }
+	}
 
-    
 
-    public function getSubcategory()
+
+	public function getSubcategory()
 
 	{
 
@@ -1352,23 +1352,23 @@ class Functions extends CApplicationComponent
 
 		WHERE
 
-		merchant_id='".Yii::app()->functions->getMerchantID()."'		
+		merchant_id='".Yii::app()->functions->getMerchantID()."'
 
 		ORDER BY sequence ASC
 
-		";		
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   $data_feed[$val['subcat_id']]=$val['subcategory_name'];
+					$data_feed[$val['subcat_id']]=$val['subcategory_name'];
 
 				}
 
@@ -1382,17 +1382,17 @@ class Functions extends CApplicationComponent
 
 	}
 
-		
 
-    public function getSubcategory2($merchant_id='')
+
+	public function getSubcategory2($merchant_id='')
 
 	{
 
-		if (isset($_SESSION['kr_merchant_id'])){			
+		if (isset($_SESSION['kr_merchant_id'])){
 
 			$merchant_id=$_SESSION['kr_merchant_id'];
 
-		}		
+		}
 
 		$data_feed='';
 
@@ -1404,25 +1404,25 @@ class Functions extends CApplicationComponent
 
 		WHERE
 
-		merchant_id='".$merchant_id."'		
+		merchant_id='".$merchant_id."'
 
 		AND status in ('publish','published')
 
 		ORDER BY sequence ASC
 
-		";		
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   $data_feed[$val['subcat_id']]=$val['subcategory_name'];
+					$data_feed[$val['subcat_id']]=$val['subcategory_name'];
 
 				}
 
@@ -1436,15 +1436,15 @@ class Functions extends CApplicationComponent
 
 	}
 
-		
 
-    public function getAddonItem($sub_item_id='',$sortby='sub_item_id')
 
-    {
+	public function getAddonItem($sub_item_id='',$sortby='sub_item_id')
 
-    	$DbExt=new DbExt;
+	{
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{subcategory_item}}
 
@@ -1454,11 +1454,11 @@ class Functions extends CApplicationComponent
 
 			AND status in ('publish','published')
 
-			ORDER BY $sortby DESC			
+			ORDER BY $sortby DESC
 
-		";			    
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res[0];
 
@@ -1466,17 +1466,17 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }
+	}
 
-    public function getAddonItem2($sub_item_id='',$sortby='sub_item_id')
+	public function getAddonItem2($sub_item_id='',$sortby='sub_item_id')
 
-    {
+	{
 
-    	$mid=$this->getMerchantID();
+		$mid=$this->getMerchantID();
 
-    	$DbExt=new DbExt;
+		$DbExt=new DbExt;
 
-	    $stmt="SELECT * FROM
+		$stmt="SELECT * FROM
 
 			{{subcategory_item}}
 
@@ -1488,11 +1488,11 @@ class Functions extends CApplicationComponent
 
 			merchant_id='$mid'
 
-			ORDER BY $sortby DESC			
+			ORDER BY $sortby DESC
 
-		";			    
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res[0];
 
@@ -1500,17 +1500,17 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }    
+	}
 
-    
 
-    public function getAddonItemListByMerchant($merchant_id='')
 
-    {
+	public function getAddonItemListByMerchant($merchant_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{subcategory_item}}
 
@@ -1520,9 +1520,9 @@ class Functions extends CApplicationComponent
 
 			ORDER BY sequence ASC
 
-		";			    
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res;
 
@@ -1530,21 +1530,21 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }
+	}
 
-    
 
-    public function getAddonItemList($category='')
 
-    {
+	public function getAddonItemList($category='')
 
-    	$data_feed='';
+	{
 
-    	$category='%"'.$category.'"%';
+		$data_feed='';
 
-    	$DbExt=new DbExt;
+		$category='%"'.$category.'"%';
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{subcategory_item}}
 
@@ -1554,11 +1554,11 @@ class Functions extends CApplicationComponent
 
 			ORDER BY sequence ASC
 
-		";			 	     
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
-			foreach ($res as $val) {				
+			foreach ($res as $val) {
 
 				$data_feed[$val['sub_item_id']]=$val['sub_item_name'];
 
@@ -1570,19 +1570,19 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }    
+	}
 
-    
 
-    public function getAddOnList($merchant_id='')
 
-    {
+	public function getAddOnList($merchant_id='')
 
-    	$datafeed='';
+	{
 
-    	$DbExt=new DbExt;
+		$datafeed='';
 
-    	$stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{subcategory}}
 
@@ -1594,33 +1594,33 @@ class Functions extends CApplicationComponent
 
     	";
 
-    	if ( $res=$DbExt->rst($stmt)){
+		if ( $res=$DbExt->rst($stmt)){
 
-    		foreach ($res as $val) {
+			foreach ($res as $val) {
 
-    			$datafeed[]=array(
+				$datafeed[]=array(
 
-    			  'addon_id'=>$val['subcat_id'],
+					'addon_id'=>$val['subcat_id'],
 
-    			  'addon_item_name'=>$val['subcategory_name'],
+					'addon_item_name'=>$val['subcategory_name'],
 
-    			  'item'=>$this->getAddonItemList($val['subcat_id'])
+					'item'=>$this->getAddonItemList($val['subcat_id'])
 
-    			);
+				);
 
-    		}
+			}
 
-    		return $datafeed;
+			return $datafeed;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function getAddOnLists($merchant_id='')
+
+	public function getAddOnLists($merchant_id='')
 
 	{
 
@@ -1632,27 +1632,27 @@ class Functions extends CApplicationComponent
 
 		{{subcategory}}
 
-		WHERE 
+		WHERE
 
 		merchant_id='".$merchant_id."'
 
 		ORDER BY sequence ASC
 
-		";				
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 						
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   //$data_feed[$val['cat_id']]=$val['category_name'];
+					//$data_feed[$val['cat_id']]=$val['category_name'];
 
-				   $data_feed[$val['subcat_id']]=$val['subcategory_name'];
+					$data_feed[$val['subcat_id']]=$val['subcategory_name'];
 
 				}
 
@@ -1664,441 +1664,441 @@ class Functions extends CApplicationComponent
 
 		return FALSE;
 
-	}        
+	}
 
-    	
+
 
 	public function merchantMenu()
 
 	{
 
-							
+
 
 		$payment_list=array('visible'=>$this->hasMerchantAccess("payment-gateway"),'tag'=>'payment-gateway','label'=>'<i class="fa fa-usd"></i>'.Yii::t("default",'Payment Gateway'),
 
-                
 
-                   'itemOptions'=>array('class'=>''), 'items'=>array(
 
-                   array('visible'=>$this->hasMerchantAccess("pyp"),'tag'=>'paypal', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Paypal"),                    
+			'itemOptions'=>array('class'=>''), 'items'=>array(
 
-                   'url'=>array('merchant/paypalSettings')),                
+				array('visible'=>$this->hasMerchantAccess("pyp"),'tag'=>'paypal', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Paypal"),
 
-                   
+					'url'=>array('merchant/paypalSettings')),
 
-                   array('visible'=>$this->hasMerchantAccess("stp"),'tag'=>'stripe', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Stripe"),                    
 
-                   'url'=>array('merchant/stripeSettings')),                
 
-                   
+				array('visible'=>$this->hasMerchantAccess("stp"),'tag'=>'stripe', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Stripe"),
 
-                   array('visible'=>$this->hasMerchantAccess("mcd"),'tag'=>'mercadopago', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Mercadopago"), 
+					'url'=>array('merchant/stripeSettings')),
 
-                   'url'=>array('merchant/mercadopagoSettings')),
 
-                   
 
-                   array('visible'=>$this->hasMerchantAccess("ide"),'tag'=>'ide', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Sisow"), 
+				array('visible'=>$this->hasMerchantAccess("mcd"),'tag'=>'mercadopago', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Mercadopago"),
 
-                   'url'=>array('merchant/sisowsettings')),
+					'url'=>array('merchant/mercadopagoSettings')),
 
-                   
 
-                   array('visible'=>$this->hasMerchantAccess("payu"),'tag'=>'payu', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","PayUMoney"), 
 
-                   'url'=>array('merchant/payumoneysettings')),
+				array('visible'=>$this->hasMerchantAccess("ide"),'tag'=>'ide', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Sisow"),
 
-                   
+					'url'=>array('merchant/sisowsettings')),
 
-                   
 
-                   array('visible'=>$this->hasMerchantAccess("pys"),'tag'=>'pys', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","paysera"), 
 
-                   'url'=>array('merchant/payserasettings')),
+				array('visible'=>$this->hasMerchantAccess("payu"),'tag'=>'payu', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","PayUMoney"),
 
-                   
+					'url'=>array('merchant/payumoneysettings')),
 
-                   array('visible'=>$this->hasMerchantAccess("pyr"),'tag'=>'pyr', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Pay On Delivery"), 
 
-                   'url'=>array('merchant/payondelivery')),
 
-                   
 
-                   array('visible'=>$this->hasMerchantAccess("bcy"),'tag'=>'bcy', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Barclaycard"), 
 
-                   'url'=>array('merchant/barclay')),                   
+				array('visible'=>$this->hasMerchantAccess("pys"),'tag'=>'pys', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","paysera"),
 
-                   
+					'url'=>array('merchant/payserasettings')),
 
-                   array('visible'=>$this->hasMerchantAccess("epy"),'tag'=>'epy', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","EpayBg"), 
 
-                   'url'=>array('merchant/epagbg')),                                       
 
-                   
+				array('visible'=>$this->hasMerchantAccess("pyr"),'tag'=>'pyr', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Pay On Delivery"),
 
-                   array('visible'=>$this->hasMerchantAccess("atz"),'tag'=>'atz', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Authorize.net"), 
+					'url'=>array('merchant/payondelivery')),
 
-                   'url'=>array('merchant/authorize')),                                       
 
-                   
 
-                   array('visible'=>$this->hasMerchantAccess("obd"),'tag'=>'obd', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Offline Bank Deposit"), 
+				array('visible'=>$this->hasMerchantAccess("bcy"),'tag'=>'bcy', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Barclaycard"),
 
-                   'url'=>array('merchant/obd')),                                       
+					'url'=>array('merchant/barclay')),
 
-                   
 
-                   array('visible'=>$this->hasMerchantAccess("obdreceive"),'tag'=>'obdreceive', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Receive Bank Deposit"), 
 
-                   'url'=>array('merchant/obdreceive')),                                                            
+				array('visible'=>$this->hasMerchantAccess("epy"),'tag'=>'epy', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","EpayBg"),
 
-                   
+					'url'=>array('merchant/epagbg')),
 
-                   array('visible'=>$this->hasMerchantAccess("btr"),'tag'=>'btr', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Braintree"), 
 
-                   'url'=>array('merchant/braintreesettings')),                                                            
 
-                   
+				array('visible'=>$this->hasMerchantAccess("atz"),'tag'=>'atz', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Authorize.net"),
 
-                   array('visible'=>$this->hasMerchantAccess("rzr"),'tag'=>'rzr', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Razorpay"), 
+					'url'=>array('merchant/authorize')),
 
-                   'url'=>array('merchant/razor')),                                                            
 
-                   
 
-                   /*array('visible'=>$this->hasMerchantAccess("mol"),'tag'=>'mol', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Mollie"), 
+				array('visible'=>$this->hasMerchantAccess("obd"),'tag'=>'obd', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Offline Bank Deposit"),
 
-                   'url'=>array('merchant/mollie')),                                                            
+					'url'=>array('merchant/obd')),
 
-                   
 
-                   array('visible'=>$this->hasMerchantAccess("ip8"),'tag'=>'ip8', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Ipay88"), 
+
+				array('visible'=>$this->hasMerchantAccess("obdreceive"),'tag'=>'obdreceive', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Receive Bank Deposit"),
+
+					'url'=>array('merchant/obdreceive')),
+
+
+
+				array('visible'=>$this->hasMerchantAccess("btr"),'tag'=>'btr', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Braintree"),
+
+					'url'=>array('merchant/braintreesettings')),
+
+
+
+				array('visible'=>$this->hasMerchantAccess("rzr"),'tag'=>'rzr', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Razorpay"),
+
+					'url'=>array('merchant/razor')),
+
+
+
+				/*array('visible'=>$this->hasMerchantAccess("mol"),'tag'=>'mol', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Mollie"),
+
+                   'url'=>array('merchant/mollie')),
+
+
+
+                   array('visible'=>$this->hasMerchantAccess("ip8"),'tag'=>'ip8', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Ipay88"),
 
                    'url'=>array('merchant/ipay88')),                                                            */
 
-                                                         
 
-                ));              
 
-                              
-
-              $fax_menu=array('visible'=>$this->hasMerchantAccess("fax"),'tag'=>'fax','label'=>'<i class="fa fa-fax"></i>'.Yii::t("default",'Fax'),      
-
-                        
-
-                   'itemOptions'=>array('class'=>''), 'items'=>array(
-
-                   
-
-                   array('visible'=>$this->hasMerchantAccess("faxstats"),'tag'=>'faxstats', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Stats"),                    
-
-                   'url'=>array('merchant/faxstats')),                
-
-                   
-
-                   array('visible'=>$this->hasMerchantAccess("faxsettings"),'tag'=>'faxsettings', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Settings"),                    
-
-                   'url'=>array('merchant/faxsettings')),                
-
-                   
-
-                   array('visible'=>$this->hasMerchantAccess("faxpurchase"),'tag'=>'faxpurchase', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Purchase Fax Credit"),                    
-
-                   'url'=>array('merchant/faxpurchase')),                                 
-
-                   
-
-                   array('visible'=>$this->hasMerchantAccess("faxpurchasetrans"),'tag'=>'faxpurchasetrans', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Purchase Credit Transactions"),                    
-
-                   'url'=>array('merchant/faxpurchasetrans')),                                 
+			));
 
 
 
-              )); 
+		$fax_menu=array('visible'=>$this->hasMerchantAccess("fax"),'tag'=>'fax','label'=>'<i class="fa fa-fax"></i>'.Yii::t("default",'Fax'),
 
-              
 
-              if ( Yii::app()->functions->getOptionAdmin("fax_enabled")!=2){
 
-              	 $fax_menu='';
+			'itemOptions'=>array('class'=>''), 'items'=>array(
 
-              }
 
-                            
 
-						
+				array('visible'=>$this->hasMerchantAccess("faxstats"),'tag'=>'faxstats', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Stats"),
 
-        $mtype=$this->getMerchantMembershipType();
+					'url'=>array('merchant/faxstats')),
 
-        if ( $mtype==2){
 
-        	$payment_list='';
 
-        }	
+				array('visible'=>$this->hasMerchantAccess("faxsettings"),'tag'=>'faxsettings', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Settings"),
 
-        
+					'url'=>array('merchant/faxsettings')),
 
-        $minfo=$this->getMerchantInfo(); 
 
-        $togle_com=false;
 
-        if ($minfo[0]->is_commission==2){
+				array('visible'=>$this->hasMerchantAccess("faxpurchase"),'tag'=>'faxpurchase', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Purchase Fax Credit"),
 
-        	$togle_com=true;
+					'url'=>array('merchant/faxpurchase')),
 
-        }	
 
-         
 
-		return array(  
+				array('visible'=>$this->hasMerchantAccess("faxpurchasetrans"),'tag'=>'faxpurchasetrans', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Purchase Credit Transactions"),
 
-		    'activeCssClass'=>'active', 
+					'url'=>array('merchant/faxpurchasetrans')),
 
-		    'encodeLabel'=>false,
 
-		    'items'=>array(
 
-                array('visible'=>$this->hasMerchantAccess("DashBoard"),'tag'=>"DashBoard",'label'=>'<i class="fa fa-home"></i>'.Yii::t("default","Dashboard"),
+			));
 
-                'url'=>array('/merchant/DashBoard')),
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("Merchant"),'tag'=>"Merchant",'label'=>'<i class="fa fa-cutlery"></i>'.Yii::t("default","Merchant Info"),
+		if ( Yii::app()->functions->getOptionAdmin("fax_enabled")!=2){
 
-                'url'=>array('/merchant/Merchant')),
+			$fax_menu='';
 
-                
+		}
 
-                array('visible'=>$this->hasMerchantAccess("Settings"),'tag'=>"Settings",'label'=>'<i class="fa fa-cog"></i>'.Yii::t("default","Settings"),
 
-                'url'=>array('/merchant/Settings')),
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("tablebook"),'tag'=>"tablebook",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Table Booking"),
 
-                'url'=>array('/merchant/tablebooking')),
+		$mtype=$this->getMerchantMembershipType();
 
-                                                
+		if ( $mtype==2){
+
+			$payment_list='';
+
+		}
+
+
+
+		$minfo=$this->getMerchantInfo();
+
+		$togle_com=false;
+
+		if ($minfo[0]->is_commission==2){
+
+			$togle_com=true;
+
+		}
+
+
+
+		return array(
+
+			'activeCssClass'=>'active',
+
+			'encodeLabel'=>false,
+
+			'items'=>array(
+
+				array('visible'=>$this->hasMerchantAccess("DashBoard"),'tag'=>"DashBoard",'label'=>'<i class="fa fa-home"></i>'.Yii::t("default","Dashboard"),
+
+					'url'=>array('/merchant/DashBoard')),
+
+
+
+				array('visible'=>$this->hasMerchantAccess("Merchant"),'tag'=>"Merchant",'label'=>'<i class="fa fa-cutlery"></i>'.Yii::t("default","Merchant Info"),
+
+					'url'=>array('/merchant/Merchant')),
+
+
+
+				array('visible'=>$this->hasMerchantAccess("Settings"),'tag'=>"Settings",'label'=>'<i class="fa fa-cog"></i>'.Yii::t("default","Settings"),
+
+					'url'=>array('/merchant/Settings')),
+
+
+
+				array('visible'=>$this->hasMerchantAccess("tablebook"),'tag'=>"tablebook",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Table Booking"),
+
+					'url'=>array('/merchant/tablebooking')),
+
+
 
                 /*array('visible'=>$this->hasMerchantAccess("orderStatus"),'tag'=>"orderStatus",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Order Status"),
 
                 'url'=>array('/merchant/orderStatus')),*/
 
-                                                                               
 
-                array('visible'=>$this->hasMerchantAccess("CategoryList"),'tag'=>"CategoryList",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Food Category"),
 
-                'url'=>array('/merchant/CategoryList')),
+				array('visible'=>$this->hasMerchantAccess("CategoryList"),'tag'=>"CategoryList",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Food Category"),
 
-                
+					'url'=>array('/merchant/CategoryList')),
 
-                array('visible'=>$this->hasMerchantAccess("Size"),'tag'=>"Size",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Size"),
 
-                'url'=>array('/merchant/Size')),
 
-                                
+				array('visible'=>$this->hasMerchantAccess("Size"),'tag'=>"Size",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Size"),
 
-                array('visible'=>$this->hasMerchantAccess("AddOnCategory"),'tag'=>"AddOnCategory",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","AddOn Category"),
+					'url'=>array('/merchant/Size')),
 
-                'url'=>array('/merchant/AddOnCategory')),
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("AddOnItem"),'tag'=>"AddOnItem",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","AddOn Item"),
+				array('visible'=>$this->hasMerchantAccess("AddOnCategory"),'tag'=>"AddOnCategory",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","AddOn Category"),
 
-                'url'=>array('/merchant/AddOnItem')),
+					'url'=>array('/merchant/AddOnCategory')),
 
-                                
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("ingredients"),'tag'=>"ingredients",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Ingredients"),
+				array('visible'=>$this->hasMerchantAccess("AddOnItem"),'tag'=>"AddOnItem",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","AddOn Item"),
 
-                'url'=>array('/merchant/ingredients')),
+					'url'=>array('/merchant/AddOnItem')),
 
-                                
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("CookingRef"),'tag'=>"CookingRef",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Cooking Reference"),
 
-                'url'=>array('/merchant/CookingRef')),
 
-                                
+				array('visible'=>$this->hasMerchantAccess("ingredients"),'tag'=>"ingredients",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Ingredients"),
 
-                array('visible'=>$this->hasMerchantAccess("FoodItem"),'tag'=>"FoodItem",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Food Item"),
+					'url'=>array('/merchant/ingredients')),
 
-                'url'=>array('/merchant/FoodItem')),             
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("shippingrate"),'tag'=>"shippingrate",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Delivery Charges Rates"),
 
-                'url'=>array('/merchant/shippingrate')),
 
-                
+				array('visible'=>$this->hasMerchantAccess("CookingRef"),'tag'=>"CookingRef",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Cooking Reference"),
 
-                array('visible'=>$this->hasMerchantAccess("offers"),'tag'=>"offers",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Offers"),
+					'url'=>array('/merchant/CookingRef')),
 
-                'url'=>array('/merchant/offers')),
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("gallerysettings"),'tag'=>"gallerysettings",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Gallery Settings"),
+				array('visible'=>$this->hasMerchantAccess("FoodItem"),'tag'=>"FoodItem",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Food Item"),
 
-                'url'=>array('/merchant/gallerysettings')),
+					'url'=>array('/merchant/FoodItem')),
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("receiptSettings"),'tag'=>"receiptSettings",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Receipt Settings"),
 
-                'url'=>array('/merchant/receiptSettings')),
+				array('visible'=>$this->hasMerchantAccess("shippingrate"),'tag'=>"shippingrate",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Delivery Charges Rates"),
 
-                
+					'url'=>array('/merchant/shippingrate')),
 
-                array('visible'=>$this->hasMerchantAccess("voucher"),'tag'=>"voucher",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Voucher"),
 
-                'url'=>array('/merchant/voucher')),
 
-                
+				array('visible'=>$this->hasMerchantAccess("offers"),'tag'=>"offers",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Offers"),
 
-                
+					'url'=>array('/merchant/offers')),
 
-                // commission
 
-                
 
-                array('visible'=>$togle_com,'tag'=>'commission','label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default",'Commission'),
+				array('visible'=>$this->hasMerchantAccess("gallerysettings"),'tag'=>"gallerysettings",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Gallery Settings"),
 
-                   'itemOptions'=>array('class'=>''), 'items'=>array(
+					'url'=>array('/merchant/gallerysettings')),
 
-                   
 
-                   array('visible'=>$togle_com,'tag'=>'statement', 'label'=>'<i class="fa fa-paypal"></i>'.t("Statement"), 
 
-                   'url'=>array('merchant/statement')),                
+				array('visible'=>$this->hasMerchantAccess("receiptSettings"),'tag'=>"receiptSettings",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Receipt Settings"),
 
-                   
+					'url'=>array('/merchant/receiptSettings')),
 
-                   /*array('visible'=>$togle_com,'tag'=>'cashstatement', 'label'=>'<i class="fa fa-paypal"></i>'.t("Cash Statement"), 
+
+
+				array('visible'=>$this->hasMerchantAccess("voucher"),'tag'=>"voucher",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Voucher"),
+
+					'url'=>array('/merchant/voucher')),
+
+
+
+
+
+				// commission
+
+
+
+				array('visible'=>$togle_com,'tag'=>'commission','label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default",'Commission'),
+
+					'itemOptions'=>array('class'=>''), 'items'=>array(
+
+
+
+					array('visible'=>$togle_com,'tag'=>'statement', 'label'=>'<i class="fa fa-paypal"></i>'.t("Statement"),
+
+						'url'=>array('merchant/statement')),
+
+
+
+					/*array('visible'=>$togle_com,'tag'=>'cashstatement', 'label'=>'<i class="fa fa-paypal"></i>'.t("Cash Statement"),
 
                    'url'=>array('merchant/cashstatement')),                */
 
-                   
 
-                   array('visible'=>$togle_com,'tag'=>'earnings', 'label'=>'<i class="fa fa-paypal"></i>'.t("Earnings"),
 
-                   'url'=>array('merchant/earnings')),     
+					array('visible'=>$togle_com,'tag'=>'earnings', 'label'=>'<i class="fa fa-paypal"></i>'.t("Earnings"),
 
-                   
+						'url'=>array('merchant/earnings')),
+
+
 
                    /*array('visible'=>$togle_com,'tag'=>'withdrawals', 'label'=>'<i class="fa fa-paypal"></i>'.t("Withdrawals"),
 
                    'url'=>array('merchant/withdrawals')),  */
 
-                                      
 
-                )),   
 
-                      
-
-                $payment_list,
-
-                
-
-                array('visible'=>$this->hasMerchantAccess("sms-gateway"),'tag'=>'sms-gateway','label'=>'<i class="fa fa-mobile"></i>'.Yii::t("default",'SMS'),
-
-                   'itemOptions'=>array('class'=>''), 'items'=>array(
-
-                   array('visible'=>$this->hasMerchantAccess("smsSettings"),'tag'=>'smsSettings', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Alert Settings"), 
-
-                   'url'=>array('merchant/smsSettings')),                
-
-                   array('visible'=>$this->hasMerchantAccess("smsBroadcast"),'tag'=>'smsBroadcast', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS BroadCast"), 
-
-                   'url'=>array('merchant/smsBroadcast')),     
-
-                   array('visible'=>$this->hasMerchantAccess("purchaseSMS"),'tag'=>'purchaseSMS', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Purchase SMS Credit"), 
-
-                   'url'=>array('merchant/purchasesms')),                           
-
-                   array('visible'=>$this->hasMerchantAccess("purchasesmstransaction"),'tag'=>'purchasesmstransaction', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Purchase Credit Transactions"), 
-
-                   'url'=>array('merchant/purchasesmstransaction')),                           
-
-                )),
-
-                                
-
-                $fax_menu,
-
-                
-
-                array('visible'=>$this->hasMerchantAccess("reports"),'tag'=>'reports','label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default",'Reports'),
-
-                   'itemOptions'=>array('class'=>''), 'items'=>array(
-
-                   array('visible'=>$this->hasMerchantAccess("salesReport"),'tag'=>'salesReport','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Sales Report"), 
-
-                   'url'=>array('merchant/salesReport')),
-
-                   array('visible'=>$this->hasMerchantAccess("salesSummaryReport"),'tag'=>'salesSummaryReport','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Sales Summary Report"), 
-
-                   'url'=>array('merchant/salesSummaryReport')),                
-
-                   
-
-                   array('visible'=>$this->hasMerchantAccess("bookingreport"),'tag'=>'bookingreport','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Booking Summary Report"), 
-
-                   'url'=>array('merchant/bookingreport')),                
-
-                )),
+				)),
 
 
 
-                /*array('tag'=>"home",'label'=>'<i class="fa fa-cog"></i>'.Yii::t("default","Receipt Settings"),
+				$payment_list,
+
+
+
+				array('visible'=>$this->hasMerchantAccess("sms-gateway"),'tag'=>'sms-gateway','label'=>'<i class="fa fa-mobile"></i>'.Yii::t("default",'SMS'),
+
+					'itemOptions'=>array('class'=>''), 'items'=>array(
+
+					array('visible'=>$this->hasMerchantAccess("smsSettings"),'tag'=>'smsSettings', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Alert Settings"),
+
+						'url'=>array('merchant/smsSettings')),
+
+					array('visible'=>$this->hasMerchantAccess("smsBroadcast"),'tag'=>'smsBroadcast', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS BroadCast"),
+
+						'url'=>array('merchant/smsBroadcast')),
+
+					array('visible'=>$this->hasMerchantAccess("purchaseSMS"),'tag'=>'purchaseSMS', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Purchase SMS Credit"),
+
+						'url'=>array('merchant/purchasesms')),
+
+					array('visible'=>$this->hasMerchantAccess("purchasesmstransaction"),'tag'=>'purchasesmstransaction', 'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Purchase Credit Transactions"),
+
+						'url'=>array('merchant/purchasesmstransaction')),
+
+				)),
+
+
+
+				$fax_menu,
+
+
+
+				array('visible'=>$this->hasMerchantAccess("reports"),'tag'=>'reports','label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default",'Reports'),
+
+					'itemOptions'=>array('class'=>''), 'items'=>array(
+
+					array('visible'=>$this->hasMerchantAccess("salesReport"),'tag'=>'salesReport','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Sales Report"),
+
+						'url'=>array('merchant/salesReport')),
+
+					array('visible'=>$this->hasMerchantAccess("salesSummaryReport"),'tag'=>'salesSummaryReport','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Sales Summary Report"),
+
+						'url'=>array('merchant/salesSummaryReport')),
+
+
+
+					array('visible'=>$this->hasMerchantAccess("bookingreport"),'tag'=>'bookingreport','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Booking Summary Report"),
+
+						'url'=>array('merchant/bookingreport')),
+
+				)),
+
+
+
+				/*array('tag'=>"home",'label'=>'<i class="fa fa-cog"></i>'.Yii::t("default","Receipt Settings"),
 
                 'url'=>array('/merchant/ReceiptSettings')),*/
 
-                
 
-                array('visible'=>$this->hasMerchantAccess("review"),'tag'=>"review",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Customer reviews"),
 
-                'url'=>array('/merchant/review')),               
+				array('visible'=>$this->hasMerchantAccess("review"),'tag'=>"review",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Customer reviews"),
 
-                
+					'url'=>array('/merchant/review')),
 
-                array('visible'=>$this->hasMerchantAccess("SocialSettings"),'tag'=>"SocialSettings",'label'=>'<i class="fa fa-facebook-square"></i>'.Yii::t("default","Social Settings"),
 
-                'url'=>array('/merchant/SocialSettings')),               
 
-                
+				array('visible'=>$this->hasMerchantAccess("SocialSettings"),'tag'=>"SocialSettings",'label'=>'<i class="fa fa-facebook-square"></i>'.Yii::t("default","Social Settings"),
 
-                array('visible'=>$this->hasMerchantAccess("AlertSettings"),'tag'=>"AlertSettings",'label'=>'<i class="fa fa-bell"></i>'.Yii::t("default","Alert Notification"),
+					'url'=>array('/merchant/SocialSettings')),
 
-                'url'=>array('/merchant/AlertSettings')),               
 
-                                
 
-                array('visible'=>$this->hasMerchantAccess("user"),'tag'=>"user",'label'=>'<i class="fa fa-users"></i>'.Yii::t("default","User"),
+				array('visible'=>$this->hasMerchantAccess("AlertSettings"),'tag'=>"AlertSettings",'label'=>'<i class="fa fa-bell"></i>'.Yii::t("default","Alert Notification"),
 
-                'url'=>array('/merchant/user')),
+					'url'=>array('/merchant/AlertSettings')),
 
-                                
 
-                array('tag'=>"logout",'label'=>'<i class="fa fa-sign-out"></i>'.Yii::t("default","Logout"),
 
-                'url'=>array('/merchant/login/logout/true')),
+				array('visible'=>$this->hasMerchantAccess("user"),'tag'=>"user",'label'=>'<i class="fa fa-users"></i>'.Yii::t("default","User"),
 
-            )
+					'url'=>array('/merchant/user')),
+
+
+
+				array('tag'=>"logout",'label'=>'<i class="fa fa-sign-out"></i>'.Yii::t("default","Logout"),
+
+					'url'=>array('/merchant/login/logout/true')),
+
+			)
 
 		);
 
-	}	    
+	}
 
-	
+
 
 	public function hasMerchantAccess($tag='')
 
@@ -2146,51 +2146,51 @@ class Functions extends CApplicationComponent
 
 			return true;
 
-		}	
+		}
 
-		
+
 
 		/*special category*/
 
 		if($tag=="CategoryList"){
 
-		   $merchant_category_disabled=getOptionA('merchant_category_disabled');
+			$merchant_category_disabled=getOptionA('merchant_category_disabled');
 
-		   if($merchant_category_disabled==1){
+			if($merchant_category_disabled==1){
 
-		   	  return false;
+				return false;
 
-		   }		
+			}
 
-		}			
+		}
 
-		
+
 
 		$tag_paymentgateway=array(
 
-		  'paypal','stripe','mercadopago','ide','payu','pys','ccr','bcy','epy','pyr',
+			'paypal','stripe','mercadopago','ide','payu','pys','ccr','bcy','epy','pyr',
 
-		  'atz','obd','pyp','stp','mcd','ocr','btr','rzr'
+			'atz','obd','pyp','stp','mcd','ocr','btr','rzr'
 
-		);				
+		);
 
-				
+
 
 		if ( $tag=="obdreceive"){
 
 			$tag='obd';
 
-		}	
+		}
 
-		
 
-		if (in_array($tag,$tag_paymentgateway)){			
 
-			$list_payment=$this->getMerchantListOfPaymentGateway();		
+		if (in_array($tag,$tag_paymentgateway)){
 
-		/*	dump($list_payment);
+			$list_payment=$this->getMerchantListOfPaymentGateway();
 
-			die();*/				
+			/*	dump($list_payment);
+
+			die();*/
 
 			if (!in_array($tag,(array)$list_payment)){
 
@@ -2200,7 +2200,7 @@ class Functions extends CApplicationComponent
 
 		}
 
-		
+
 
 		if ($tag=='sms-gateway'){
 
@@ -2208,13 +2208,13 @@ class Functions extends CApplicationComponent
 
 			if ($mechant_sms_enabled=="yes"){
 
-			   return false;	
+				return false;
 
 			}
 
-		}	
+		}
 
-		
+
 
 		if ( $tag=="purchaseSMS"){
 
@@ -2226,15 +2226,15 @@ class Functions extends CApplicationComponent
 
 			}
 
-		}	
+		}
 
-		
+
 
 		/*check if table booking is enabled by admin*/
 
-		if ( $tag=="tablebooking"){			
+		if ( $tag=="tablebooking"){
 
-			if (getOptionA('merchant_tbl_book_disabled')==2){				
+			if (getOptionA('merchant_tbl_book_disabled')==2){
 
 				return false;
 
@@ -2242,59 +2242,59 @@ class Functions extends CApplicationComponent
 
 		}
 
-		
+
 
 		switch ($tag) {
 
 			case "tablebooking":
 
-			    $tag="tablebook";	
+				$tag="tablebook";
 
 				break;
 
 			case "paypalSettings":
 
-			    $tag="paypal";	
+				$tag="paypal";
 
-			    break; 
+				break;
 
-			case "stripeSettings":    
+			case "stripeSettings":
 
-			    $tag="stripe";	
+				$tag="stripe";
 
-			    break; 
+				break;
 
-			case "mercadopagoSettings":    
+			case "mercadopagoSettings":
 
-			    $tag="mercadopago";	
+				$tag="mercadopago";
 
-			    break; 
+				break;
 
-			case "sisowsettings":    
+			case "sisowsettings":
 
-			    $tag="ide";	
+				$tag="ide";
 
-			    break;     
+				break;
 
-			case "payumoneysettings":    
+			case "payumoneysettings":
 
-			    $tag="payu";	
+				$tag="payu";
 
-			    break;         
+				break;
 
-			case "payserasettings":    
+			case "payserasettings":
 
-			    $tag="pys";	
+				$tag="pys";
 
-			    break;             
+				break;
 
-			case "payondelivery":    
+			case "payondelivery":
 
-			    //$tag="ccr";	
+				//$tag="ccr";
 
-			    $tag="pyr";
+				$tag="pyr";
 
-			    break;                 
+				break;
 
 			default:
 
@@ -2302,685 +2302,685 @@ class Functions extends CApplicationComponent
 
 		}
 
-		
 
-		$info=$this->getMerchantInfo();		
+
+		$info=$this->getMerchantInfo();
 
 		if ( is_array($info) && count($info)>=1){
 
-			$info=(array)$info[0];			
+			$info=(array)$info[0];
 
 			if (isset($info['merchant_user_id'])){
 
-				$access=json_decode($info['user_access']);		
+				$access=json_decode($info['user_access']);
 
 				$tag=strtolower($tag);
 
-				$access = array_map('strtolower', $access);				
+				$access = array_map('strtolower', $access);
 
 				if (in_array($tag,(array)$access)){
 
 					return true;
 
-				}			
+				}
 
-			} else return true;							    
+			} else return true;
 
 		}
 
-		return false;		
+		return false;
 
 	}
 
 
 
-	
+
 
 	public function adminMenu()
 
 	{
 
-		return array(  
+		return array(
 
-		    'activeCssClass'=>'active', 
+			'activeCssClass'=>'active',
 
-		    'encodeLabel'=>false,
+			'encodeLabel'=>false,
 
-		    'items'=>array(
+			'items'=>array(
 
-                array('visible'=>$this->AA('dashboard'),
+				array('visible'=>$this->AA('dashboard'),
 
-                'tag'=>"dashboard",'label'=>'<i class="fa fa-home"></i>'.Yii::t("default","Dashboard"),
+					'tag'=>"dashboard",'label'=>'<i class="fa fa-home"></i>'.Yii::t("default","Dashboard"),
 
-                'url'=>array('/admin/dashboard')),                              
+					'url'=>array('/admin/dashboard')),
 
-                                                
 
-                array('visible'=>$this->AA('merchant'),
 
-                'tag'=>"merchant",'label'=>'<i class="fa fa-cutlery"></i>'.Yii::t("default","Merchant List"),
+				array('visible'=>$this->AA('merchant'),
 
-                'url'=>array('/admin/merchant')),
+					'tag'=>"merchant",'label'=>'<i class="fa fa-cutlery"></i>'.Yii::t("default","Merchant List"),
 
-                
+					'url'=>array('/admin/merchant')),
 
-                
 
-                array('visible'=>$this->AA('sponsoredMerchantList'),
 
-                'tag'=>"sponsoredMerchantList",
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Sponsored Listing"),                
 
-                'url'=>array('/admin/sponsoredMerchantList')),
+				array('visible'=>$this->AA('sponsoredMerchantList'),
 
-                
+					'tag'=>"sponsoredMerchantList",
 
-                array('visible'=>$this->AA('packages'),
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Sponsored Listing"),
 
-                'tag'=>"packages",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Packages"),
+					'url'=>array('/admin/sponsoredMerchantList')),
 
-                'url'=>array('/admin/packages')),                
 
-                                
 
-                array('visible'=>$this->AA('Cuisine'),
+				array('visible'=>$this->AA('packages'),
 
-                'tag'=>"Cuisine",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Cuisine"),
+					'tag'=>"packages",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Packages"),
 
-                'url'=>array('/admin/Cuisine')),
+					'url'=>array('/admin/packages')),
 
-                               
 
-                array('visible'=>$this->AA('dishes'),
 
-                'tag'=>"dishes",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Dishes"),
+				array('visible'=>$this->AA('Cuisine'),
 
-                'url'=>array('/admin/dishes')),
+					'tag'=>"Cuisine",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Cuisine"),
 
-                
+					'url'=>array('/admin/Cuisine')),
 
-                /*array('visible'=>$this->AA('category'),
+
+
+				array('visible'=>$this->AA('dishes'),
+
+					'tag'=>"dishes",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Dishes"),
+
+					'url'=>array('/admin/dishes')),
+
+
+
+				/*array('visible'=>$this->AA('category'),
 
                 'tag'=>"category",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Category"),
 
                 'url'=>array('/admin/category')),*/
 
-                                               
 
-                array('visible'=>$this->AA('OrderStatus'),
 
-                'tag'=>"OrderStatus",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Order Status"),
+				array('visible'=>$this->AA('OrderStatus'),
 
-                'url'=>array('/admin/OrderStatus')),
+					'tag'=>"OrderStatus",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Order Status"),
 
-                
-                 array(
+					'url'=>array('/admin/OrderStatus')),
 
-               'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","City"),
 
-                'url'=>array('/admin/city')),  
-				
-				  
-                array('visible'=>$this->AA('settings'),
+				array(
 
-                'tag'=>"settings",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Settings"),
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","City"),
 
-                'url'=>array('/admin/settings')),        
+					'url'=>array('/admin/city')),
 
-                
 
-                array('visible'=>$this->AA('themesettings'),
+				array('visible'=>$this->AA('settings'),
 
-                'tag'=>"themesettings",'label'=>'<i class="fa fa-list-alt"></i>'.t("Theme settings"),
+					'tag'=>"settings",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Settings"),
 
-                'url'=>array('/admin/themesettings')),                     
+					'url'=>array('/admin/settings')),
 
-                
 
-                array('visible'=>$this->AA('zipcode'),
 
-                'tag'=>"zipcode",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Post codes"),
+				array('visible'=>$this->AA('themesettings'),
 
-                'url'=>array('/admin/zipcode')),
+					'tag'=>"themesettings",'label'=>'<i class="fa fa-list-alt"></i>'.t("Theme settings"),
 
-                                
+					'url'=>array('/admin/themesettings')),
 
-                array('visible'=>$this->AA('commisionsettings'),
 
-                'tag'=>"commisionsettings",
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Commission Settings"),
+				array('visible'=>$this->AA('zipcode'),
 
-                'url'=>array('/admin/commisionsettings')),                                   
+					'tag'=>"zipcode",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Post codes"),
 
-                
+					'url'=>array('/admin/zipcode')),
 
-                array('visible'=>$this->AA('voucher'),
 
-                'tag'=>"voucher",
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Voucher"),
+				array('visible'=>$this->AA('commisionsettings'),
 
-                'url'=>array('/admin/voucher')),                                   
+					'tag'=>"commisionsettings",
 
-                
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Commission Settings"),
 
-                array('visible'=>$this->AA('merchantcommission'),
+					'url'=>array('/admin/commisionsettings')),
 
-                'tag'=>"merchantcommission",
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Merchant Commission"),
 
-                'url'=>array('/admin/merchantcommission')),                                                   
+				array('visible'=>$this->AA('voucher'),
 
-                                
+					'tag'=>"voucher",
 
-                array('visible'=>$this->AA('withdrawal'),'tag'=>'withdrawal',
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Voucher"),
 
-                   'label'=>'<i class="fa fa-university"></i>'.Yii::t("default",'Withdrawal'),
+					'url'=>array('/admin/voucher')),
 
-                   'itemOptions'=>array('class'=>''), 
 
-                   'items'=>array(        
 
-                     array('visible'=>$this->AA('incomingwithdrawal'),'tag'=>'incomingwithdrawal',
+				array('visible'=>$this->AA('merchantcommission'),
 
-                     'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Withdrawal List"), 
+					'tag'=>"merchantcommission",
 
-                     'url'=>array('admin/incomingwithdrawal')),                                
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Merchant Commission"),
 
-                     
+					'url'=>array('/admin/merchantcommission')),
 
-                      array('visible'=>$this->AA('withdrawalsettings'),'tag'=>'withdrawalsettings',
 
-                      'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Settings"), 
 
-                     'url'=>array('admin/withdrawalsettings')),                                   
+				array('visible'=>$this->AA('withdrawal'),'tag'=>'withdrawal',
 
-                 )),          
+					'label'=>'<i class="fa fa-university"></i>'.Yii::t("default",'Withdrawal'),
 
-                                
+					'itemOptions'=>array('class'=>''),
 
-                array('visible'=>$this->AA('emailsettings'),'tag'=>"emailsettings",
+					'items'=>array(
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Mail & SMTP Settings"),
+						array('visible'=>$this->AA('incomingwithdrawal'),'tag'=>'incomingwithdrawal',
 
-                'url'=>array('/admin/emailsettings')),           
+							'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Withdrawal List"),
 
-                
+							'url'=>array('admin/incomingwithdrawal')),
 
-                array('visible'=>$this->AA('emailtpl'),
 
-                'tag'=>"emailtpl",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Email Template"),
 
-                'url'=>array('/admin/emailtpl')),           
+						array('visible'=>$this->AA('withdrawalsettings'),'tag'=>'withdrawalsettings',
 
-                
+							'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Settings"),
 
-                /*array('visible'=>$this->AA('ordertemplate'),
+							'url'=>array('admin/withdrawalsettings')),
+
+					)),
+
+
+
+				array('visible'=>$this->AA('emailsettings'),'tag'=>"emailsettings",
+
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Mail & SMTP Settings"),
+
+					'url'=>array('/admin/emailsettings')),
+
+
+
+				array('visible'=>$this->AA('emailtpl'),
+
+					'tag'=>"emailtpl",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Email Template"),
+
+					'url'=>array('/admin/emailtpl')),
+
+
+
+				/*array('visible'=>$this->AA('ordertemplate'),
 
                 'tag'=>"ordertemplate",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Order Email Template"),
 
                 'url'=>array('/admin/ordertemplate')),*/
 
-                
 
-                
 
-                array('visible'=>$this->AA('customPage'),
 
-                'tag'=>"customPage",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Custom Page"),
 
-                'url'=>array('/admin/customPage')),                
+				array('visible'=>$this->AA('customPage'),
 
-                               
+					'tag'=>"customPage",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Custom Page"),
 
-                array('visible'=>$this->AA('Ratings'),
+					'url'=>array('/admin/customPage')),
 
-                'tag'=>"Ratings",'label'=>'<i class="fa fa-star-o"></i>'.Yii::t("default","Ratings"),
 
-                'url'=>array('/admin/Ratings')),                
 
-                
+				array('visible'=>$this->AA('Ratings'),
 
-                array('visible'=>$this->AA('ContactSettings'),'tag'=>"ContactSettings",
+					'tag'=>"Ratings",'label'=>'<i class="fa fa-star-o"></i>'.Yii::t("default","Ratings"),
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Contact Settings"),
+					'url'=>array('/admin/Ratings')),
 
-                'url'=>array('/admin/ContactSettings')),                
 
-                
 
-                array('visible'=>$this->AA('SocialSettings'),'tag'=>"SocialSettings",
+				array('visible'=>$this->AA('ContactSettings'),'tag'=>"ContactSettings",
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Social Settings"),
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Contact Settings"),
 
-                'url'=>array('/admin/SocialSettings')),                
+					'url'=>array('/admin/ContactSettings')),
 
-                                
 
-                array('visible'=>$this->AA('ManageCurrency'),'tag'=>"ManageCurrency",
 
-                'label'=>'<i class="fa fa-usd"></i>'.Yii::t("default","Manage Currency"),
+				array('visible'=>$this->AA('SocialSettings'),'tag'=>"SocialSettings",
 
-                'url'=>array('/admin/ManageCurrency')),                
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Social Settings"),
 
-                
+					'url'=>array('/admin/SocialSettings')),
 
-                array('visible'=>$this->AA('ManageLanguage'),'tag'=>"ManageLanguage",
 
-                'label'=>'<i class="fa fa-flag-o"></i>'.Yii::t("default","Manage Language"),
 
-                'url'=>array('/admin/ManageLanguage')),
+				array('visible'=>$this->AA('ManageCurrency'),'tag'=>"ManageCurrency",
 
+					'label'=>'<i class="fa fa-usd"></i>'.Yii::t("default","Manage Currency"),
 
+					'url'=>array('/admin/ManageCurrency')),
 
-                array('visible'=>$this->AA('Seo'),
 
-                'tag'=>"Seo",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","SEO"),
 
-                'url'=>array('/admin/Seo')),   
+				array('visible'=>$this->AA('ManageLanguage'),'tag'=>"ManageLanguage",
 
-                
+					'label'=>'<i class="fa fa-flag-o"></i>'.Yii::t("default","Manage Language"),
 
-                
+					'url'=>array('/admin/ManageLanguage')),
 
-                /**add ons */
 
-                array('visible'=>$this->AA('addons'),'tag'=>'addons',
 
-                'label'=>'<i class="fa fa-plus-circle"></i>'.Yii::t("default",'Add-ons'),
+				array('visible'=>$this->AA('Seo'),
 
-                   'itemOptions'=>array('class'=>''), 'items'=>array(                   
+					'tag'=>"Seo",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","SEO"),
 
-                   
+					'url'=>array('/admin/Seo')),
 
-                   array('visible'=>$this->AA('addonexport'),
 
-                   'tag'=>'addonexport','label'=>'<i class="fa"></i>'.Yii::t("default","Export/Import"), 
 
-                   'url'=>Yii::app()->getBaseUrl(true)."/ExportManager"),                
 
-                   
 
-                   array('visible'=>$this->AA('mobileapp'),
+				/**add ons */
 
-                   'tag'=>'mobileapp','label'=>'<i class="fa"></i>'.Yii::t("default","MobileApp"), 
+				array('visible'=>$this->AA('addons'),'tag'=>'addons',
 
-                   'url'=>Yii::app()->getBaseUrl(true)."/mobileapp"),                
+					'label'=>'<i class="fa fa-plus-circle"></i>'.Yii::t("default",'Add-ons'),
 
-                   
+					'itemOptions'=>array('class'=>''), 'items'=>array(
 
-                   array('visible'=>$this->AA('pointsprogram'),
 
-                   'tag'=>'pointsprogram','label'=>'<i class="fa"></i>'.Yii::t("default","Loyalty Points Program"), 
 
-                   'url'=>Yii::app()->getBaseUrl(true)."/pointsprogram"),                
+					array('visible'=>$this->AA('addonexport'),
 
-                                      
+						'tag'=>'addonexport','label'=>'<i class="fa"></i>'.Yii::t("default","Export/Import"),
 
-                   array('visible'=>$this->AA('merchantapp'),
+						'url'=>Yii::app()->getBaseUrl(true)."/ExportManager"),
 
-                   'tag'=>'merchantapp','label'=>'<i class="fa"></i>'.Yii::t("default","MerchantApp"), 
 
-                   'url'=>Yii::app()->getBaseUrl(true)."/merchantapp"),                
 
-              
+					array('visible'=>$this->AA('mobileapp'),
 
-                 )),  
+						'tag'=>'mobileapp','label'=>'<i class="fa"></i>'.Yii::t("default","MobileApp"),
 
-                /**add ons */     
+						'url'=>Yii::app()->getBaseUrl(true)."/mobileapp"),
 
-                                            
 
-                array('visible'=>$this->AA('analytics'),
 
-                'tag'=>"analytics",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Analytics"),
+					array('visible'=>$this->AA('pointsprogram'),
 
-                'url'=>array('/admin/analytics')),                               
+						'tag'=>'pointsprogram','label'=>'<i class="fa"></i>'.Yii::t("default","Loyalty Points Program"),
 
-                
+						'url'=>Yii::app()->getBaseUrl(true)."/pointsprogram"),
 
-                array('visible'=>$this->AA('customerlist'),'tag'=>"customerlist",
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Customer List"),
 
-                'url'=>array('/admin/customerlist')),                               
+					array('visible'=>$this->AA('merchantapp'),
 
-                
+						'tag'=>'merchantapp','label'=>'<i class="fa"></i>'.Yii::t("default","MerchantApp"),
 
-                array('visible'=>$this->AA('subscriberlist'),'tag'=>"subscriberlist",
+						'url'=>Yii::app()->getBaseUrl(true)."/merchantapp"),
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Subscriber List"),
 
-                'url'=>array('admin/subscriberlist')),                               
 
-                
+				)),
 
-                array('visible'=>$this->AA('reviews'),'tag'=>"reviews",
+				/**add ons */
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Reviews"),
 
-                'url'=>array('admin/reviews')),                               
 
-                
+				array('visible'=>$this->AA('analytics'),
 
-                array('visible'=>$this->AA('bankdeposit'),'tag'=>"bankdeposit",
+					'tag'=>"analytics",'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Analytics"),
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Receive Bank Deposit"),
+					'url'=>array('/admin/analytics')),
 
-                'url'=>array('/admin/bankdeposit')),                               
-                
-				 
-				  array(
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","RMB Rate"),
 
-                'url'=>array('/admin/rmbrate')),   
-                                
+				array('visible'=>$this->AA('customerlist'),'tag'=>"customerlist",
 
-                array('visible'=>$this->AA('paymentgatewaysettings'),'tag'=>"paymentgatewaysettings",
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Customer List"),
 
-                'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Payment Gateway Settings"),
+					'url'=>array('/admin/customerlist')),
 
-                'url'=>array('/admin/paymentgatewaysettings')),                               
 
-                
 
-                array('visible'=>$this->AA('paymentgateway'),'tag'=>'paymentgateway',
+				array('visible'=>$this->AA('subscriberlist'),'tag'=>"subscriberlist",
 
-                'label'=>'<i class="fa fa-usd"></i>'.Yii::t("default",'Payment Gateway'),
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Subscriber List"),
 
-                   'itemOptions'=>array('class'=>''), 'items'=>array(                   
+					'url'=>array('admin/subscriberlist')),
 
-                   
 
-                   array('visible'=>$this->AA('paypalSettings'),
 
-                   'tag'=>'paypalSettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Paypal"), 
+				array('visible'=>$this->AA('reviews'),'tag'=>"reviews",
 
-                   'url'=>array('admin/paypalSettings')),                
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Reviews"),
 
-                   
+					'url'=>array('admin/reviews')),
 
-                   array('visible'=>$this->AA('cardpaymentsettings'),  
 
-                   'tag'=>'cardpaymentsettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Offline Credit Card Payment"), 
 
-                   'url'=>array('admin/cardpaymentsettings')),                                   
+				array('visible'=>$this->AA('bankdeposit'),'tag'=>"bankdeposit",
 
-                   
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Receive Bank Deposit"),
 
-                   array('visible'=>$this->AA('stripeSettings'),
+					'url'=>array('/admin/bankdeposit')),
 
-                   'tag'=>'stripeSettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Stripe"), 
 
-                   'url'=>array('admin/stripeSettings')),                
+				array(
 
-                   
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","RMB Rate"),
 
-                   array('visible'=>$this->AA('mercadopagoSettings'),'tag'=>'mercadopagoSettings',
+					'url'=>array('/admin/rmbrate')),
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Mercadopago"), 
 
-                   'url'=>array('admin/mercadopagoSettings')),                                   
+				array('visible'=>$this->AA('paymentgatewaysettings'),'tag'=>"paymentgatewaysettings",
 
-                   
+					'label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default","Payment Gateway Settings"),
 
-                   array('visible'=>$this->AA('sisowsettings'),
+					'url'=>array('/admin/paymentgatewaysettings')),
 
-                   'tag'=>'sisowsettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Sisow"), 
 
-                   'url'=>array('admin/sisowsettings')),                                   
 
-                   
+				array('visible'=>$this->AA('paymentgateway'),'tag'=>'paymentgateway',
 
-                   array('visible'=>$this->AA('payumonenysettings'),'tag'=>'payumonenysettings',
+					'label'=>'<i class="fa fa-usd"></i>'.Yii::t("default",'Payment Gateway'),
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","PayUMoney"), 
+					'itemOptions'=>array('class'=>''), 'items'=>array(
 
-                   'url'=>array('admin/payumonenysettings')),                                   
 
-                   
 
-                   array('visible'=>$this->AA('obdsettings'),'tag'=>'obdsettings',
+					array('visible'=>$this->AA('paypalSettings'),
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Offline Bank Deposit"), 
+						'tag'=>'paypalSettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Paypal"),
 
-                   'url'=>array('admin/obdsettings')),        
+						'url'=>array('admin/paypalSettings')),
 
-                   
 
-                   array('visible'=>$this->AA('payserasettings'),'tag'=>'payserasettings',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Paysera"), 
+					array('visible'=>$this->AA('cardpaymentsettings'),
 
-                   'url'=>array('admin/payserasettings')),           
+						'tag'=>'cardpaymentsettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Offline Credit Card Payment"),
 
-                   
+						'url'=>array('admin/cardpaymentsettings')),
 
-                   array('visible'=>$this->AA('payondelivery'),'tag'=>'payondelivery',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Pay On Delivery settings"), 
 
-                   'url'=>array('admin/payondelivery')),    
+					array('visible'=>$this->AA('stripeSettings'),
 
-                                            
+						'tag'=>'stripeSettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Stripe"),
 
-                   array('visible'=>$this->AA('barclay'),
+						'url'=>array('admin/stripeSettings')),
 
-                   'tag'=>'barclay','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Barclaycard"), 
 
-                   'url'=>array('admin/barclay')),                             
 
-                   
+					array('visible'=>$this->AA('mercadopagoSettings'),'tag'=>'mercadopagoSettings',
 
-                   array('visible'=>$this->AA('epaybg'),
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Mercadopago"),
 
-                   'tag'=>'epaybg','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","EpayBg"), 
+						'url'=>array('admin/mercadopagoSettings')),
 
-                   'url'=>array('admin/epaybg')),                                                
 
-                   
 
-                   array('visible'=>$this->AA('authorize'),'tag'=>'authorize',
+					array('visible'=>$this->AA('sisowsettings'),
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Authorize.net"), 
+						'tag'=>'sisowsettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Sisow"),
 
-                   'url'=>array('admin/authorize')),                             
+						'url'=>array('admin/sisowsettings')),
 
-                   
 
-                   array('visible'=>$this->AA('braintree'),'tag'=>'braintree',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Braintree"), 
+					array('visible'=>$this->AA('payumonenysettings'),'tag'=>'payumonenysettings',
 
-                   'url'=>array('admin/braintree')),                             
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","PayUMoney"),
 
-                   
+						'url'=>array('admin/payumonenysettings')),
 
-                   array('visible'=>$this->AA('razor'),'tag'=>'razor',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Razorpay"), 
 
-                   'url'=>array('admin/razor')),                             
+					array('visible'=>$this->AA('obdsettings'),'tag'=>'obdsettings',
 
-                   
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Offline Bank Deposit"),
 
-                   /*array('visible'=>$this->AA('mollie'),'tag'=>'mollie',
+						'url'=>array('admin/obdsettings')),
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Mollie"), 
 
-                   'url'=>array('admin/mollie')),                             
 
-                   
+					array('visible'=>$this->AA('payserasettings'),'tag'=>'payserasettings',
+
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Paysera"),
+
+						'url'=>array('admin/payserasettings')),
+
+
+
+					array('visible'=>$this->AA('payondelivery'),'tag'=>'payondelivery',
+
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Pay On Delivery settings"),
+
+						'url'=>array('admin/payondelivery')),
+
+
+
+					array('visible'=>$this->AA('barclay'),
+
+						'tag'=>'barclay','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Barclaycard"),
+
+						'url'=>array('admin/barclay')),
+
+
+
+					array('visible'=>$this->AA('epaybg'),
+
+						'tag'=>'epaybg','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","EpayBg"),
+
+						'url'=>array('admin/epaybg')),
+
+
+
+					array('visible'=>$this->AA('authorize'),'tag'=>'authorize',
+
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Authorize.net"),
+
+						'url'=>array('admin/authorize')),
+
+
+
+					array('visible'=>$this->AA('braintree'),'tag'=>'braintree',
+
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Braintree"),
+
+						'url'=>array('admin/braintree')),
+
+
+
+					array('visible'=>$this->AA('razor'),'tag'=>'razor',
+
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Razorpay"),
+
+						'url'=>array('admin/razor')),
+
+
+
+					/*array('visible'=>$this->AA('mollie'),'tag'=>'mollie',
+
+                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Mollie"),
+
+                   'url'=>array('admin/mollie')),
+
+
 
                    array('visible'=>$this->AA('ipay88'),'tag'=>'ipay88',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Ipay88"), 
+                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Ipay88"),
 
                    'url'=>array('admin/ipay88')),                             */
 
-                   
 
-                 )),                               
 
-                 
+				)),
 
-                 array('visible'=>$this->AA('sms'),
 
-                 'tag'=>'sms','label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default",'SMS'),
 
-                   'itemOptions'=>array('class'=>''), 'items'=>array(
+				array('visible'=>$this->AA('sms'),
 
-                   
+					'tag'=>'sms','label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default",'SMS'),
 
-                   array('visible'=>$this->AA('smsSettings'),'tag'=>'smsSettings',
+					'itemOptions'=>array('class'=>''), 'items'=>array(
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Settings"), 
 
-                   'url'=>array('admin/smsSettings')),                
 
-                   
+					array('visible'=>$this->AA('smsSettings'),'tag'=>'smsSettings',
 
-                   array('visible'=>$this->AA('smsPackage'),'tag'=>'smsPackage',
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Settings"),
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Package"), 
+						'url'=>array('admin/smsSettings')),
 
-                   'url'=>array('admin/smsPackage')),                                                                         
 
-                   array('visible'=>$this->AA('smstransaction'),'tag'=>'smstransaction',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Transaction"), 
+					array('visible'=>$this->AA('smsPackage'),'tag'=>'smsPackage',
 
-                   'url'=>array('admin/smstransaction')),    
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Package"),
 
-                               
+						'url'=>array('admin/smsPackage')),
 
-                   array('visible'=>$this->AA('smslogs'),
+					array('visible'=>$this->AA('smstransaction'),'tag'=>'smstransaction',
 
-                   'tag'=>'smslogs','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Logs"), 
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Transaction"),
 
-                   'url'=>array('admin/smslogs')),                
+						'url'=>array('admin/smstransaction')),
 
-                 )),                        
 
-                 
 
-                 array('visible'=>$this->AA('fax'),
+					array('visible'=>$this->AA('smslogs'),
 
-                 'tag'=>'fax','label'=>'<i class="fa fa-fax"></i>'.Yii::t("default",'Fax service'),
+						'tag'=>'smslogs','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","SMS Logs"),
 
-                   'itemOptions'=>array('class'=>''), 'items'=>array(        
+						'url'=>array('admin/smslogs')),
 
-                   
+				)),
 
-                   array('visible'=>$this->AA('faxtransaction'),'tag'=>'faxtransaction',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Fax Payment Transaction"), 
 
-                   'url'=>array('admin/faxtransaction')),                                
+				array('visible'=>$this->AA('fax'),
 
-                   
+					'tag'=>'fax','label'=>'<i class="fa fa-fax"></i>'.Yii::t("default",'Fax service'),
 
-                   array('visible'=>$this->AA('faxpackage'),'tag'=>'faxpackage',
+					'itemOptions'=>array('class'=>''), 'items'=>array(
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Fax Package"), 
 
-                   'url'=>array('admin/faxpackage')),                                
 
-                   
+					array('visible'=>$this->AA('faxtransaction'),'tag'=>'faxtransaction',
 
-                   array('visible'=>$this->AA('faxlogs'),
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Fax Payment Transaction"),
 
-                   'tag'=>'faxlogs','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Fax Logs"), 
+						'url'=>array('admin/faxtransaction')),
 
-                   'url'=>array('admin/faxlogs')),     
 
-                                              
 
-                   array('visible'=>$this->AA('faxsettings'),
+					array('visible'=>$this->AA('faxpackage'),'tag'=>'faxpackage',
 
-                   'tag'=>'faxsettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Settings"), 
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Fax Package"),
 
-                   'url'=>array('admin/faxsettings')),                                   
+						'url'=>array('admin/faxpackage')),
 
-                 )),          
 
-                       
 
-                
+					array('visible'=>$this->AA('faxlogs'),
 
-                array('visible'=>$this->AA('reports'),
+						'tag'=>'faxlogs','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Fax Logs"),
 
-                'tag'=>'reports','label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default",'Reports'),
+						'url'=>array('admin/faxlogs')),
 
-                   'itemOptions'=>array('class'=>''), 'items'=>array(
 
-                   
 
-                   array('visible'=>$this->AA('rptMerchantReg'),'tag'=>'rptMerchantReg',
+					array('visible'=>$this->AA('faxsettings'),
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Merchant Registration"), 
+						'tag'=>'faxsettings','label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Settings"),
 
-                   'url'=>array('admin/rptMerchantReg')), 
+						'url'=>array('admin/faxsettings')),
 
-                   
+				)),
 
-                   array('visible'=>$this->AA('rptMerchantPayment'),'tag'=>'rptMerchantPayment',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Merchant Payment"), 
 
-                   'url'=>array('admin/rptMerchantPayment')), 
 
-                   
 
-                   array('visible'=>$this->AA('rptMerchanteSales'),'tag'=>'rptMerchanteSales',
+				array('visible'=>$this->AA('reports'),
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Merchant Sales Report"), 
+					'tag'=>'reports','label'=>'<i class="fa fa-list-alt"></i>'.Yii::t("default",'Reports'),
 
-                   'url'=>array('admin/rptMerchanteSales')), 
+					'itemOptions'=>array('class'=>''), 'items'=>array(
 
-                   
 
-                   array('visible'=>$this->AA('rptmerchantsalesummary'),'tag'=>'rptmerchantsalesummary',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Merchant Sales Summary Report"), 
+					array('visible'=>$this->AA('rptMerchantReg'),'tag'=>'rptMerchantReg',
 
-                   'url'=>array('admin/rptmerchantsalesummary')), 
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Merchant Registration"),
 
-                   
+						'url'=>array('admin/rptMerchantReg')),
 
-                   array('visible'=>$this->AA('rptbookingsummary'),'tag'=>'rptbookingsummary',
 
-                   'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Booking Summary Report"), 
 
-                   'url'=>array('admin/rptbookingsummary')), 
+					array('visible'=>$this->AA('rptMerchantPayment'),'tag'=>'rptMerchantPayment',
 
-                 )),
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Merchant Payment"),
 
-                 
+						'url'=>array('admin/rptMerchantPayment')),
 
-                 array('visible'=>$this->AA('userList'),
 
-                 'tag'=>"userList",'label'=>'<i class="fa fa-users"></i>'.Yii::t("default","User List"),
 
-                'url'=>array('/admin/userList')),                
+					array('visible'=>$this->AA('rptMerchanteSales'),'tag'=>'rptMerchanteSales',
 
-                                
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Merchant Sales Report"),
 
-                array('tag'=>"logout",'label'=>'<i class="fa fa-sign-out"></i>'.Yii::t("default","Logout"),
+						'url'=>array('admin/rptMerchanteSales')),
 
-                'url'=>array('/admin/login/logout/true')),
 
-            )
+
+					array('visible'=>$this->AA('rptmerchantsalesummary'),'tag'=>'rptmerchantsalesummary',
+
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Merchant Sales Summary Report"),
+
+						'url'=>array('admin/rptmerchantsalesummary')),
+
+
+
+					array('visible'=>$this->AA('rptbookingsummary'),'tag'=>'rptbookingsummary',
+
+						'label'=>'<i class="fa fa-paypal"></i>'.Yii::t("default","Booking Summary Report"),
+
+						'url'=>array('admin/rptbookingsummary')),
+
+				)),
+
+
+
+				array('visible'=>$this->AA('userList'),
+
+					'tag'=>"userList",'label'=>'<i class="fa fa-users"></i>'.Yii::t("default","User List"),
+
+					'url'=>array('/admin/userList')),
+
+
+
+				array('tag'=>"logout",'label'=>'<i class="fa fa-sign-out"></i>'.Yii::t("default","Logout"),
+
+					'url'=>array('/admin/login/logout/true')),
+
+			)
 
 		);
 
 	}
 
-	
+
 
 	public function topMenu()
 
@@ -2994,25 +2994,25 @@ class Functions extends CApplicationComponent
 
 		}
 
-		
 
-		$merchant_disabled_registration=$this->getOptionAdmin('merchant_disabled_registration');		
+
+		$merchant_disabled_registration=$this->getOptionAdmin('merchant_disabled_registration');
 
 		$enabled_reg=$merchant_disabled_registration=="yes"?false:true;
 
-		
 
-		$enabled_commission=Yii::app()->functions->getOptionAdmin('admin_commission_enabled');		
+
+		$enabled_commission=Yii::app()->functions->getOptionAdmin('admin_commission_enabled');
 
 		$signup_link="/store/merchantsignup";
 
 		if ($enabled_commission=="yes"){
 
-		   $signup_link="/store/merchantsignupselection";	
+			$signup_link="/store/merchantsignupselection";
 
 		}
 
-		
+
 
 		$website_disabled_login_popup=Yii::app()->functions->getOptionAdmin('website_disabled_login_popup');
 
@@ -3026,9 +3026,9 @@ class Functions extends CApplicationComponent
 
 			$link_sigup_class='';
 
-		}	
+		}
 
-		
+
 
 		$view_map=true;
 
@@ -3036,61 +3036,61 @@ class Functions extends CApplicationComponent
 
 			$view_map=false;
 
-		}	
+		}
 
-				
 
-		return array(  
 
-		    'activeCssClass'=>'active', 		    
+		return array(
 
-		    'encodeLabel'=>false,		    
+			'activeCssClass'=>'active',
 
-		    'items'=>array(
+			'encodeLabel'=>false,
 
-                array('visible'=>$hide,'tag'=>"signup",'label'=>'<i class="fa fa-user"></i>'.Yii::t("default","Login & Signup"),
+			'items'=>array(
 
-                'url'=>$link_sigup,'itemOptions'=>array('class'=>$link_sigup_class)),            
+				array('visible'=>$hide,'tag'=>"signup",'label'=>'<i class="fa fa-user"></i>'.Yii::t("default","Login & Signup"),
 
-                array('visible'=>$enabled_reg,'tag'=>"home",'label'=>'<i class="fa fa-cutlery"></i>'.Yii::t("default","Restaurant Signup"),
+					'url'=>$link_sigup,'itemOptions'=>array('class'=>$link_sigup_class)),
 
-                'url'=>array($signup_link)),
+				array('visible'=>$enabled_reg,'tag'=>"home",'label'=>'<i class="fa fa-cutlery"></i>'.Yii::t("default","Restaurant Signup"),
 
-                                
+					'url'=>array($signup_link)),
 
-                array('tag'=>"home",'label'=>'<i class="fa fa-search"></i>'.Yii::t("default","Browse Restaurant"),
 
-                'url'=>array('/store/browse')),                                
 
-                
+				array('tag'=>"home",'label'=>'<i class="fa fa-search"></i>'.Yii::t("default","Browse Restaurant"),
 
-                array('visible'=>$view_map, 'tag'=>"home",'label'=>'<i class="fa fa-map-marker"></i>'.Yii::t("default","View Restaurant by map"),
+					'url'=>array('/store/browse')),
 
-                'url'=>array('/store/map')),                                
 
-             )   
 
-          );
+				array('visible'=>$view_map, 'tag'=>"home",'label'=>'<i class="fa fa-map-marker"></i>'.Yii::t("default","View Restaurant by map"),
+
+					'url'=>array('/store/map')),
+
+			)
+
+		);
 
 	}
 
-	
 
-    public function topLeftMenu()
+
+	public function topLeftMenu()
 
 	{
 
 		$top_menu[]=array('tag'=>"signup",'label'=>'<i class="fa fa-home"></i>'.Yii::t("default","Home"),
 
-                'url'=>array('/store/home'));
+			'url'=>array('/store/home'));
 
 
 
-        $top_menu[]=array('tag'=>"home",'label'=>'<i class="fa fa-envelope-o"></i> '.Yii::t("default","Contact"),
+		$top_menu[]=array('tag'=>"home",'label'=>'<i class="fa fa-envelope-o"></i> '.Yii::t("default","Contact"),
 
-                'url'=>array('/store/contact'));
+			'url'=>array('/store/contact'));
 
-                             
+
 
 		if ($data=Yii::app()->functions->customPagePosition()){
 
@@ -3102,49 +3102,49 @@ class Functions extends CApplicationComponent
 
 						$val['content']="http://".$val['content'];
 
-					} 
+					}
 
 					if ( $val['open_new_tab']==2){
 
 						$top_menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i> '.
 
-						Yii::t("default",$val['page_name']),
+							Yii::t("default",$val['page_name']),
 
-		                'url'=>$val['content'],
+							'url'=>$val['content'],
 
-		                'linkOptions'=>array('target'=>"_blank")
+							'linkOptions'=>array('target'=>"_blank")
 
-		                );
+						);
 
 					} else {
 
 						$top_menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i> '.
 
-					    Yii::t("default",$val['page_name']),
+							Yii::t("default",$val['page_name']),
 
-	                   'url'=>$val['content']);
+							'url'=>$val['content']);
 
-					}		
+					}
 
-				} else {		
+				} else {
 
 					if ( $val['open_new_tab']==2){
 
 						$top_menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i>'.
 
-					    Yii::t("default",$val['page_name']),
+							Yii::t("default",$val['page_name']),
 
-	                   'url'=>array('/store/page/'.$val['slug_name']),
+							'url'=>array('/store/page/'.$val['slug_name']),
 
-	                   'linkOptions'=>array('target'=>"_blank"));
+							'linkOptions'=>array('target'=>"_blank"));
 
 					} else {
 
 						$top_menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i>'.
 
-						Yii::t("default",$val['page_name']),
+							Yii::t("default",$val['page_name']),
 
-		                'url'=>array('/store/page/'.$val['slug_name']));
+							'url'=>array('/store/page/'.$val['slug_name']));
 
 					}
 
@@ -3152,33 +3152,33 @@ class Functions extends CApplicationComponent
 
 			}
 
-		}	
+		}
 
-		return array(  		    
+		return array(
 
-		    'id'=>"top-menu",
+			'id'=>"top-menu",
 
-		    'activeCssClass'=>'active', 
+			'activeCssClass'=>'active',
 
-		    'encodeLabel'=>false,
+			'encodeLabel'=>false,
 
-		    'items'=>$top_menu                      
+			'items'=>$top_menu
 
-          );
+		);
 
 	}
 
-	
+
 
 	public function bottomMenu($position='bottom')
 
 	{
 
-		
 
-	   $menu=array();
 
-       if ($data=Yii::app()->functions->customPagePosition($position)){
+		$menu=array();
+
+		if ($data=Yii::app()->functions->customPagePosition($position)){
 
 			foreach ($data as $val) {
 
@@ -3188,117 +3188,117 @@ class Functions extends CApplicationComponent
 
 						$val['content']="http://".$val['content'];
 
-					} 
+					}
 
 					if ( $val['open_new_tab']==2){
 
 						$menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i> '.
 
-						Yii::t("default",$val['page_name']),
+							Yii::t("default",$val['page_name']),
 
-		                'url'=>$val['content'],
+							'url'=>$val['content'],
 
-		                'linkOptions'=>array('target'=>"_blank")
+							'linkOptions'=>array('target'=>"_blank")
 
-		                );
+						);
 
 					} else {
 
 						$menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i> '.
 
-					    Yii::t("default",$val['page_name']),
+							Yii::t("default",$val['page_name']),
 
-	                   'url'=>$val['content']);
+							'url'=>$val['content']);
 
-					}		
+					}
 
-				} else {								
+				} else {
 
-					if ( $val['open_new_tab']==2){						
-
-						$menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i> '.
-
-						Yii::t("default",$val['page_name']),
-
-		                'url'=>array('/store/page/'.$val['slug_name']),
-
-		                'linkOptions'=>array('target'=>"_blank")
-
-		                );
-
-					} else {												
+					if ( $val['open_new_tab']==2){
 
 						$menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i> '.
 
-					    Yii::t("default",$val['page_name']),
+							Yii::t("default",$val['page_name']),
 
-	                   'url'=>array('/store/page/'.$val['slug_name']));
+							'url'=>array('/store/page/'.$val['slug_name']),
 
-					}		
+							'linkOptions'=>array('target'=>"_blank")
 
-				}	
+						);
+
+					} else {
+
+						$menu[]=array('tag'=>"home",'label'=>'<i class="'.$val['icons'].'"></i> '.
+
+							Yii::t("default",$val['page_name']),
+
+							'url'=>array('/store/page/'.$val['slug_name']));
+
+					}
+
+				}
 
 			}
 
 		}
 
-                  		
 
-		return array(  		    
 
-		    'id'=>"bottom-menu",
+		return array(
 
-		    'activeCssClass'=>'active', 
+			'id'=>"bottom-menu",
 
-		    'encodeLabel'=>false,
+			'activeCssClass'=>'active',
 
-		    'items'=>$menu
+			'encodeLabel'=>false,
 
-          );
+			'items'=>$menu
+
+		);
 
 	}
 
-	
+
 
 	public function navMenu()
 
 	{
 
-		return array(  		    
+		return array(
 
-		    'id'=>"nav-menu",
+			'id'=>"nav-menu",
 
-		    'activeCssClass'=>'active', 
+			'activeCssClass'=>'active',
 
-		    'encodeLabel'=>false,
+			'encodeLabel'=>false,
 
-		    'items'=>array(
+			'items'=>array(
 
-                array('tag'=>"signup",'label'=>Yii::t("default","Home"),
+				array('tag'=>"signup",'label'=>Yii::t("default","Home"),
 
-                'url'=>array('/store')),
+					'url'=>array('/store')),
 
-                
 
-                array('tag'=>"home",'label'=>Yii::t("default","How it works"),
 
-                'url'=>array('/store/about')),
+				array('tag'=>"home",'label'=>Yii::t("default","How it works"),
 
-                
+					'url'=>array('/store/about')),
 
-                array('tag'=>"home",'label'=>Yii::t("default","Contact"),
 
-                'url'=>array('/store/contact')),
 
-                
+				array('tag'=>"home",'label'=>Yii::t("default","Contact"),
 
-             )   
+					'url'=>array('/store/contact')),
 
-          );
+
+
+			)
+
+		);
 
 	}
 
-	
+
 
 	public function socialMenu()
 
@@ -3312,21 +3312,21 @@ class Functions extends CApplicationComponent
 
 		$admin_google_page=yii::app()->functions->getOptionAdmin('admin_google_page');
 
-				
+
 
 		if ( $social_flag==1){
 
-			return array(  		    		    
+			return array(
 
-		    'activeCssClass'=>'active', 
+				'activeCssClass'=>'active',
 
-		    'encodeLabel'=>false
+				'encodeLabel'=>false
 
-		    );
+			);
 
 		}
 
-		
+
 
 		$fb=true;
 
@@ -3348,7 +3348,7 @@ class Functions extends CApplicationComponent
 
 		}
 
-	
+
 
 		if (empty($admin_twitter_page)){
 
@@ -3364,7 +3364,7 @@ class Functions extends CApplicationComponent
 
 		}
 
-			
+
 
 		if (empty($admin_google_page)){
 
@@ -3378,47 +3378,47 @@ class Functions extends CApplicationComponent
 
 			}
 
-		}	
+		}
 
-						
 
-		return array(  		    		    
 
-		    'activeCssClass'=>'active', 
+		return array(
 
-		    'encodeLabel'=>false,
+			'activeCssClass'=>'active',
 
-		    'items'=>array(
+			'encodeLabel'=>false,
 
-                array('visible'=>$fb, 'tag'=>"signup",'label'=>'<i class="fa fa-facebook"></i>&nbsp;',
+			'items'=>array(
 
-                'url'=>$admin_fb_page,'linkOptions'=>array('target'=>"_blank")),
+				array('visible'=>$fb, 'tag'=>"signup",'label'=>'<i class="fa fa-facebook"></i>&nbsp;',
 
-                                
+					'url'=>$admin_fb_page,'linkOptions'=>array('target'=>"_blank")),
 
-                array('visible'=>$twiter,'tag'=>"signup",'label'=>'<i class="fa fa-twitter"></i>&nbsp;',
 
-                'url'=>$admin_twitter_page,'linkOptions'=>array('target'=>"_blank")),
 
-                
+				array('visible'=>$twiter,'tag'=>"signup",'label'=>'<i class="fa fa-twitter"></i>&nbsp;',
 
-                array('visible'=>$google,'tag'=>"signup",'label'=>'<i class="fa fa-google-plus"></i>&nbsp;',
+					'url'=>$admin_twitter_page,'linkOptions'=>array('target'=>"_blank")),
 
-                'url'=>$admin_google_page,'linkOptions'=>array('target'=>"_blank")),
 
-                
 
-             )   
+				array('visible'=>$google,'tag'=>"signup",'label'=>'<i class="fa fa-google-plus"></i>&nbsp;',
 
-         );
+					'url'=>$admin_google_page,'linkOptions'=>array('target'=>"_blank")),
+
+
+
+			)
+
+		);
 
 	}
 
-		
+
 
 	public function getCurrencyCode()
 
-	{								
+	{
 
 		return $this->adminCurrencySymbol();
 
@@ -3432,7 +3432,7 @@ class Functions extends CApplicationComponent
 
 			if ( !empty($currency_symbol)){
 
-				$stmt="SELECT * FROM 
+				$stmt="SELECT * FROM
 
 				{{currency}}
 
@@ -3442,13 +3442,13 @@ class Functions extends CApplicationComponent
 
 				LIMIT 0,1
 
-				";				
+				";
 
 				if ( $res=$DbExt->rst($stmt)){
 
 					return $res[0]['currency_symbol'];
 
-				}			
+				}
 
 			}
 
@@ -3458,7 +3458,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-			
+
 
 	public function getCurrencyDetails($currency_code='')
 
@@ -3484,11 +3484,11 @@ class Functions extends CApplicationComponent
 
 		}
 
-		return false;	
+		return false;
 
 	}
 
-		
+
 
 	public function multiOptions()
 
@@ -3496,41 +3496,41 @@ class Functions extends CApplicationComponent
 
 		return array(
 
-		  'one'=>Yii::t("default","Can Select Only One"),
+			'one'=>Yii::t("default","Can Select Only One"),
 
-		  'multiple'=>Yii::t("default","Can Select Multiple"),
+			'multiple'=>Yii::t("default","Can Select Multiple"),
 
-		  'custom'=>Yii::t("default","Custom")
+			'custom'=>Yii::t("default","Custom")
 
 		);
 
 	}
 
-	
 
-    public function limitText($text='',$limit=100)
 
-    {
+	public function limitText($text='',$limit=100)
 
-    	if ( !empty($text)){
+	{
 
-    		return substr($text,0,$limit)."...";
+		if ( !empty($text)){
 
-    	}    
+			return substr($text,0,$limit)."...";
 
-    	return ;    	
+		}
 
-    }
+		return ;
 
-    
+	}
 
-    public function getFoodItem($item_id='')
 
-    {
 
-    	$DbExt=new DbExt;
+	public function getFoodItem($item_id='')
 
-	    $stmt="SELECT * FROM
+	{
+
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{item}}
 
@@ -3540,7 +3540,7 @@ class Functions extends CApplicationComponent
 
 			LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -3550,19 +3550,19 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		       
+	}
 
-    
 
-    public function getFoodItem2($item_id='')
 
-    {
+	public function getFoodItem2($item_id='')
 
-    	$merchant_id=$this->getMerchantID();
+	{
 
-    	$DbExt=new DbExt;
+		$merchant_id=$this->getMerchantID();
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{item}}
 
@@ -3576,7 +3576,7 @@ class Functions extends CApplicationComponent
 
 			LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -3586,11 +3586,11 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-    }		           
+	}
 
-    
 
-    public function getFoodItemList($merchant_id='')
+
+	public function getFoodItemList($merchant_id='')
 
 	{
 
@@ -3602,25 +3602,25 @@ class Functions extends CApplicationComponent
 
 		{{item}}
 
-		WHERE 
+		WHERE
 
 		merchant_id='".$merchant_id."'
 
 		ORDER BY sequence ASC
 
-		";				
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   $data_feed[$val['item_id']]=$val['item_name'];
+					$data_feed[$val['item_id']]=$val['item_name'];
 
 				}
 
@@ -3632,11 +3632,11 @@ class Functions extends CApplicationComponent
 
 		return FALSE;
 
-	}    
+	}
 
-	
 
-    public function getFoodItemLists($merchant_id='')
+
+	public function getFoodItemLists($merchant_id='')
 
 	{
 
@@ -3646,9 +3646,9 @@ class Functions extends CApplicationComponent
 
 			$where=" WHERE merchant_id=".$this->q($merchant_id)."";
 
-		}			
+		}
 
-		
+
 
 		$data_feed='';
 
@@ -3656,27 +3656,27 @@ class Functions extends CApplicationComponent
 
 		SELECT * FROM
 
-		{{item}}	
+		{{item}}
 
-		$where	
+		$where
 
 		ORDER BY sequence ASC
 
-		";				
+		";
 
-				
+
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   $data_feed[$val['item_id']]=$val['item_name'];
+					$data_feed[$val['item_id']]=$val['item_name'];
 
 				}
 
@@ -3688,11 +3688,11 @@ class Functions extends CApplicationComponent
 
 		return FALSE;
 
-	}    	
+	}
 
-    
 
-    public function updateOption($option_name='',$option_value='',$merchant_id='')
+
+	public function updateOption($option_name='',$option_value='',$merchant_id='')
 
 	{
 
@@ -3710,7 +3710,7 @@ class Functions extends CApplicationComponent
 
 		WHERE
 
-		option_name='".addslashes($option_name)."'		
+		option_name='".addslashes($option_name)."'
 
 		$and
 
@@ -3718,15 +3718,15 @@ class Functions extends CApplicationComponent
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 		
+		$rows=$connection->createCommand($stmt)->queryAll();
 
-		
+
 
 		$params=array(
 
-		'option_name'=> addslashes($option_name),
+			'option_name'=> addslashes($option_name),
 
-		'option_value'=> addslashes($option_value)
+			'option_value'=> addslashes($option_value)
 
 		);
 
@@ -3738,35 +3738,35 @@ class Functions extends CApplicationComponent
 
 		$command = Yii::app()->db->createCommand();
 
-				
+
 
 		if (is_array($rows) && count($rows)>=1){
 
-			/*$res = $command->update('{{option}}' , $params , 
+			/*$res = $command->update('{{option}}' , $params ,
 
 				                     'option_name=:option_name' , array(':option_name'=> addslashes($option_name) ));*/
 
-			$res = $command->update('{{option}}' , $params , 
+			$res = $command->update('{{option}}' , $params ,
 
-				                     'option_name=:option_name and merchant_id=:merchant_id' ,
+				'option_name=:option_name and merchant_id=:merchant_id' ,
 
-				                     array(
+				array(
 
-				                      ':option_name'=> addslashes($option_name),
+					':option_name'=> addslashes($option_name),
 
-				                      ':merchant_id'=>$merchant_id
+					':merchant_id'=>$merchant_id
 
-				                      )
+				)
 
-				                     );
+			);
 
-		    if ($res){
+			if ($res){
 
-		    	return TRUE;
+				return TRUE;
 
-		    } 
+			}
 
-		} else {			
+		} else {
 
 			if ($command->insert('{{option}}',$params)){
 
@@ -3780,7 +3780,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getOption($option_name='',$merchant_id='')
 
@@ -3810,7 +3810,7 @@ class Functions extends CApplicationComponent
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 		
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
@@ -3822,7 +3822,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function updateOptionAdmin($option_name='',$option_value='')
 
@@ -3844,35 +3844,35 @@ class Functions extends CApplicationComponent
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 		
+		$rows=$connection->createCommand($stmt)->queryAll();
 
-		
+
 
 		$params=array(
 
-		'option_name'=> addslashes($option_name),
+			'option_name'=> addslashes($option_name),
 
-		'option_value'=> addslashes($option_value)
+			'option_value'=> addslashes($option_value)
 
 		);
 
 		$command = Yii::app()->db->createCommand();
 
-		
+
 
 		if (is_array($rows) && count($rows)>=1){
 
-			$res = $command->update('{{option}}' , $params , 
+			$res = $command->update('{{option}}' , $params ,
 
-				                     'option_name=:option_name' , array(':option_name'=> addslashes($option_name) ));
+				'option_name=:option_name' , array(':option_name'=> addslashes($option_name) ));
 
-		    if ($res){
+			if ($res){
 
-		    	return TRUE;
+				return TRUE;
 
-		    } 
+			}
 
-		} else {			
+		} else {
 
 			if ($command->insert('{{option}}',$params)){
 
@@ -3886,7 +3886,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getOptionAdmin($option_name='')
 
@@ -3910,7 +3910,7 @@ class Functions extends CApplicationComponent
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 		
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
@@ -3920,9 +3920,9 @@ class Functions extends CApplicationComponent
 
 		return '';
 
-	}	
+	}
 
-	
+
 
 	public function getDays()
 
@@ -3930,107 +3930,107 @@ class Functions extends CApplicationComponent
 
 		return array(
 
-		  'monday'=>Yii::t("default",'monday'),
+			'monday'=>Yii::t("default",'monday'),
 
-		  'tuesday'=>Yii::t("default",'tuesday'),
+			'tuesday'=>Yii::t("default",'tuesday'),
 
-		  'wednesday'=>Yii::t("default",'wednesday'),
+			'wednesday'=>Yii::t("default",'wednesday'),
 
-		  'thursday'=>Yii::t("default",'thursday'),
+			'thursday'=>Yii::t("default",'thursday'),
 
-		  'friday'=>Yii::t("default",'friday'),
+			'friday'=>Yii::t("default",'friday'),
 
-		  'saturday'=>Yii::t("default",'saturday'),
+			'saturday'=>Yii::t("default",'saturday'),
 
-		  'sunday'=>Yii::t("default",'sunday')
+			'sunday'=>Yii::t("default",'sunday')
 
 		);
 
 	}
 
-	
+
 
 	public function decimalPlacesList()
 
-    {
+	{
 
-    	$numbers='';
+		$numbers='';
 
-    	for ($x=0; $x<=10; $x++) {            
+		for ($x=0; $x<=10; $x++) {
 
-    		$numbers[$x]=$x;
+			$numbers[$x]=$x;
 
-    	} 
+		}
 
-    	return $numbers;
+		return $numbers;
 
-    }
+	}
 
-    
 
-    public function defaultDecimal()
 
-    {
+	public function defaultDecimal()
 
-    	return 2;
+	{
 
-    }
+		return 2;
 
-    
+	}
+
+
 
 	public function currencyList()
 
-    {
+	{
 
-        $data_feed='';
+		$data_feed='';
 
 		$stmt="
 
 		SELECT * FROM
 
-		{{currency}}					
+		{{currency}}
 
 		ORDER BY currency_code ASC
 
-		";		
+		";
 
 		$connection=Yii::app()->db;
 
 		$rows=$connection->createCommand($stmt)->queryAll();
 
-		if (is_array($rows) && count($rows)>=1){			
+		if (is_array($rows) && count($rows)>=1){
 
 			$data_feed[]="";
 
-			foreach ($rows as $val) {									   
+			foreach ($rows as $val) {
 
-			   $data_feed[$val['currency_code']]=$val['currency_code'];
+				$data_feed[$val['currency_code']]=$val['currency_code'];
 
 			}
 
-			return $data_feed;			
+			return $data_feed;
 
 		}
 
 		return FALSE;
 
-    }
+	}
 
-    
 
-    public function defaultCurrency()
 
-    {
+	public function defaultCurrency()
 
-    	return 'USD';
+	{
 
-    }
+		return 'USD';
 
-    
+	}
+
+
 
 	public function getCityList()
 
-	{		
+	{
 
 		$lists='';
 
@@ -4044,7 +4044,7 @@ class Functions extends CApplicationComponent
 
 		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res;
 
@@ -4052,7 +4052,7 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-	}   
+	}
 
 
 
@@ -4060,7 +4060,7 @@ class Functions extends CApplicationComponent
 
 	{
 
-				
+
 
 		if (!isset($_GET['iDisplayStart'])){
 
@@ -4068,31 +4068,31 @@ class Functions extends CApplicationComponent
 
 		} else $Start_page=$_GET['iDisplayStart'];
 
-		
 
-		if (!isset($_GET['iDisplayLength'])){			
+
+		if (!isset($_GET['iDisplayLength'])){
 
 			$per_page=10;
 
 		} else $per_page=$_GET['iDisplayLength'];
 
-		
+
 
 		if (isset($_GET['debug'])){
 
-		   dump("START_>".$Start_page);
+			dump("START_>".$Start_page);
 
-		   dump("PERPAGE_>".$per_page);
+			dump("PERPAGE_>".$per_page);
 
 		}
 
-		
+
 
 		$and='';
 
 		$filter_delivery='';$filter_delivery_arr=array();
 
-		if (isset($_GET['filter_delivery_type'])){			
+		if (isset($_GET['filter_delivery_type'])){
 
 			$filter_delivery_type=!empty($_GET['filter_delivery_type'])?explode(",",$_GET['filter_delivery_type']):false;
 
@@ -4118,17 +4118,17 @@ class Functions extends CApplicationComponent
 
 				if (!empty($filter_delivery)){
 
-				   $filter_delivery=substr($filter_delivery,0,-1);
+					$filter_delivery=substr($filter_delivery,0,-1);
 
-				   $and=" AND service IN ($filter_delivery) ";
+					$and=" AND service IN ($filter_delivery) ";
 
 				}
 
 			}
 
-		}	
+		}
 
-		
+
 
 		$filter_cuisine='';
 
@@ -4140,7 +4140,7 @@ class Functions extends CApplicationComponent
 
 				$x=1;
 
-				foreach ($filter_cuisines as $val) {				
+				foreach ($filter_cuisines as $val) {
 
 					if (!empty($val)){
 
@@ -4154,11 +4154,11 @@ class Functions extends CApplicationComponent
 
 					}
 
-				}				
+				}
 
 				if (!empty($filter_cuisine)){
 
-				   $and.=" AND (cuisine $filter_cuisine) ";
+					$and.=" AND (cuisine $filter_cuisine) ";
 
 				}
 
@@ -4166,7 +4166,7 @@ class Functions extends CApplicationComponent
 
 		}
 
-		
+
 
 		$filter_promo='';
 
@@ -4174,29 +4174,29 @@ class Functions extends CApplicationComponent
 
 			$filter_promo=!empty($_GET['filter_promo'])?explode(",",$_GET['filter_promo']):false;
 
-			if (is_array($filter_promo) && count($filter_promo)>=1){				
+			if (is_array($filter_promo) && count($filter_promo)>=1){
 
-				foreach ($filter_promo as $val) {				
+				foreach ($filter_promo as $val) {
 
-					if (!empty($val)){						
+					if (!empty($val)){
 
 						if ( $val=="free-delivery"){
 
-						    //$and.=" AND free_delivery ='2' ";
+							//$and.=" AND free_delivery ='2' ";
 
-						    $and.=" AND coalesce(delivery_charges, '') = '' ";
+							$and.=" AND coalesce(delivery_charges, '') = '' ";
 
 						}
 
 					}
 
-				}								
+				}
 
 			}
 
 		}
 
-		
+
 
 		$filter_minimum='';
 
@@ -4206,11 +4206,11 @@ class Functions extends CApplicationComponent
 
 				$and.=" AND CAST(minimum_order as SIGNED) <='".$_GET['filter_minimum']."' ";
 
-			}		
+			}
 
-		}	
+		}
 
-		
+
 
 		$filter_name='';
 
@@ -4220,13 +4220,13 @@ class Functions extends CApplicationComponent
 
 				$and.=" AND restaurant_name LIKE '".$_GET['filter_name']."%'  ";
 
-			}		
+			}
 
 		}
 
-					
 
-	
+
+
 
 		$sort_by="restaurant_name ASC";
 
@@ -4244,37 +4244,37 @@ class Functions extends CApplicationComponent
 
 						$sort_by="CAST(".$_GET['sort_filter']." AS SIGNED ) DESC";
 
-					} else $sort_by="".$_GET['sort_filter']." ASC";				
+					} else $sort_by="".$_GET['sort_filter']." ASC";
 
-			    } 
+				}
 
-			}		
+			}
 
 		}
 
-		
+
 
 		$DbExt=new DbExt;
 
-				
+
 
 		$this->updateMerchantSponsored();
 
 		$this->updateMerchantExpired();
 
-		
+
 
 		$and.="AND status='active' ";
 
 		$and.="AND is_ready='2' ";
 
-		
+
 
 		$and0='';
 
-		$sort_by0=" ORDER BY is_sponsored DESC";		
+		$sort_by0=" ORDER BY is_sponsored DESC";
 
-		
+
 
 		$sort_combine="$sort_by0,$sort_by";
 
@@ -4284,35 +4284,35 @@ class Functions extends CApplicationComponent
 
 				$sort_combine="ORDER BY ".$sort_by;
 
-			}		
+			}
 
-		}	
+		}
 
-					
+
 
 		$home_search_unit_type=Yii::app()->functions->getOptionAdmin('home_search_unit_type');
 
 		$home_search_radius=Yii::app()->functions->getOptionAdmin('home_search_radius');
 
-				
+
 
 		if (empty($home_search_unit_type)){
 
 			$home_search_unit_type='mi';
 
-		}	
+		}
 
 		if (!is_numeric($home_search_radius)){
 
 			$home_search_radius=10;
 
-		}			
+		}
 
-				
+
 
 		$count_query=false;
 
-		
+
 
 		if (isset($_GET['restaurant-name'])){
 
@@ -4334,7 +4334,7 @@ class Functions extends CApplicationComponent
 
 			";
 
-			
+
 
 			$stmt2="SELECT a.*,count(*) as total_records FROM
 
@@ -4346,7 +4346,7 @@ class Functions extends CApplicationComponent
 
 			       $and0
 
-				   $and				   
+				   $and
 
 				   LIMIT 0,1
 
@@ -4372,7 +4372,7 @@ class Functions extends CApplicationComponent
 
 			";
 
-						
+
 
 			$stmt2="SELECT count(*) as total_records, a.* FROM
 
@@ -4384,25 +4384,25 @@ class Functions extends CApplicationComponent
 
 			       $and0
 
-				   $and				   
+				   $and
 
 				   LIMIT 0,1
 
 			";
 
-			
 
-		} elseif (isset($_GET['category'])){		
+
+		} elseif (isset($_GET['category'])){
 
 			$cuisine_id='';
 
-			if ( $cat_res=$this->GetCuisineByName($_GET['category'])){				
+			if ( $cat_res=$this->GetCuisineByName($_GET['category'])){
 
 				$cuisine_id='"'.$cat_res['cuisine_id'].'"';
 
-			} else $cuisine_id="-1";		
+			} else $cuisine_id="-1";
 
-						
+
 
 			$stmt="SELECT * FROM
 
@@ -4420,9 +4420,9 @@ class Functions extends CApplicationComponent
 
 				   LIMIT $Start_page,$per_page
 
-			";			
+			";
 
-			$stmt2="SELECT 
+			$stmt2="SELECT
 
 			       count(*) as total_records,
 
@@ -4436,17 +4436,17 @@ class Functions extends CApplicationComponent
 
 			       $and0
 
-				   $and				   
+				   $and
 
 				   LIMIT 0,1
 
-			";			
+			";
 
-			
 
-		} elseif (isset($_GET['foodname'])){		
 
-						
+		} elseif (isset($_GET['foodname'])){
+
+
 
 			$foodname_str='';
 
@@ -4456,13 +4456,13 @@ class Functions extends CApplicationComponent
 
 					$foodname_str="%".$_GET['foodname']."%";
 
-				} else $foodname_str='-1';			
+				} else $foodname_str='-1';
 
-			} else $foodname_str='-1';			
+			} else $foodname_str='-1';
 
-			
 
-			       $stmt="SELECT a.* FROM
+
+			$stmt="SELECT a.* FROM
 
 			       {{view_merchant}} a
 
@@ -4496,11 +4496,11 @@ class Functions extends CApplicationComponent
 
 				   LIMIT $Start_page,$per_page
 
-			       ";	
+			       ";
 
-			       
 
-			       $stmt2="SELECT 
+
+			$stmt2="SELECT
 
 			       count(*) as total_records,
 
@@ -4532,41 +4532,41 @@ class Functions extends CApplicationComponent
 
 			       $and0
 
-				   $and				   
+				   $and
 
 				   LIMIT 0,1
 
-			       ";	
+			       ";
 
-						
+
 
 		} elseif (isset($_GET['stype'])){
 
-			
 
-			 /*this is the search if admin set the search to postcode*/
 
-			 switch ($_GET['stype'])
+			/*this is the search if admin set the search to postcode*/
 
-			 {
+			switch ($_GET['stype'])
 
-			 	case "1":	
+			{
 
-				 	$zipcode=!empty($_GET['zipcode'])?explode(" ",$_GET['zipcode']):false;			 	
+				case "1":
 
-				 	if($zipcode==false){
+					$zipcode=!empty($_GET['zipcode'])?explode(" ",$_GET['zipcode']):false;
 
-				 		$zipcode[0]='-1';
+					if($zipcode==false){
 
-				 	}			 
+						$zipcode[0]='-1';
 
-				 	$stmt="SELECT SQL_CALC_FOUND_ROWS a.*
+					}
+
+					$stmt="SELECT SQL_CALC_FOUND_ROWS a.*
 
 				     FROM
 
-				     {{view_merchant}} a 
+				     {{view_merchant}} a
 
-				     WHERE 
+				     WHERE
 
 				     post_code LIKE ".q($zipcode[0])."
 
@@ -4580,27 +4580,27 @@ class Functions extends CApplicationComponent
 
 				    ";
 
-			 	break;
+					break;
 
-			 	
 
-			 	case "2":
 
-			 		 $city=isset($_GET['city'])?$_GET['city']:'';
+				case "2":
 
-			 		 $area=isset($_GET['area'])?$_GET['area']:'';
+					$city=isset($_GET['city'])?$_GET['city']:'';
 
-			 		 $stmt="SELECT SQL_CALC_FOUND_ROWS a.*
+					$area=isset($_GET['area'])?$_GET['area']:'';
+
+					$stmt="SELECT SQL_CALC_FOUND_ROWS a.*
 
 				     FROM
 
-				     {{view_merchant}} a 
+				     {{view_merchant}} a
 
-				     WHERE 
+				     WHERE
 
 				     city LIKE ".q($city."%")."
 
-				     AND 
+				     AND
 
 				     state LIKE ".q($area."%")."
 
@@ -4614,31 +4614,31 @@ class Functions extends CApplicationComponent
 
 				    ";
 
-			 		break;
+					break;
 
-			 		
 
-			 	case "3":		
 
-			 	   $address=isset($_GET['address'])?explode(",",$_GET['address']):false;			 	   
+				case "3":
 
-			 	   if ($address==false){
+					$address=isset($_GET['address'])?explode(",",$_GET['address']):false;
 
-			 	   	   $address[0]='-1';
+					if ($address==false){
 
-			 	   	   $address[1]='-1';
+						$address[0]='-1';
 
-			 	   	   $address[2]='-1';
+						$address[1]='-1';
 
-			 	   	   $address[3]='-1';
+						$address[2]='-1';
 
-			 	   }
+						$address[3]='-1';
 
-			 	   $stmt="SELECT SQL_CALC_FOUND_ROWS *
+					}
+
+					$stmt="SELECT SQL_CALC_FOUND_ROWS *
 
 				     FROM
 
-				     {{view_merchant}} 
+				     {{view_merchant}}
 
 				     WHERE
 
@@ -4660,25 +4660,25 @@ class Functions extends CApplicationComponent
 
 				    ";
 
-			 	   break;
+					break;
 
-			 }			     
+			}
 
-		     $stmt2="SELECT FOUND_ROWS()";
+			$stmt2="SELECT FOUND_ROWS()";
 
-			 $count_query=true;
+			$count_query=true;
 
-		} else {			
+		} else {
 
-			if ($lat_res=$this->geodecodeAddress($_GET['s'])){			
+			if ($lat_res=$this->geodecodeAddress($_GET['s'])){
 
 				$lat=$lat_res['lat'];
 
 				$long=$lat_res['long'];
 
-				//HAVING distance < 25 		
+				//HAVING distance < 25
 
-				
+
 
 				$distance_exp=3959;
 
@@ -4686,35 +4686,35 @@ class Functions extends CApplicationComponent
 
 					$distance_exp=6371;
 
-				}		
+				}
 
-				
+
 
 				if (empty($lat)){
 
 					$lat=0;
 
-				}		
+				}
 
 				if (empty($long)){
 
 					$long=0;
 
-				}					
+				}
 
 				$stmt="
 
-				SELECT SQL_CALC_FOUND_ROWS a.*, ( $distance_exp * acos( cos( radians($lat) ) * cos( radians( latitude ) ) 
+				SELECT SQL_CALC_FOUND_ROWS a.*, ( $distance_exp * acos( cos( radians($lat) ) * cos( radians( latitude ) )
 
-				* cos( radians( lontitude ) - radians($long) ) 
+				* cos( radians( lontitude ) - radians($long) )
 
-				+ sin( radians($lat) ) * sin( radians( latitude ) ) ) ) 
+				+ sin( radians($lat) ) * sin( radians( latitude ) ) ) )
 
-				AS distance								
+				AS distance
 
-				
 
-				FROM {{view_merchant}} a 
+
+				FROM {{view_merchant}} a
 
 				HAVING distance < $home_search_radius
 
@@ -4728,21 +4728,21 @@ class Functions extends CApplicationComponent
 
 				";
 
-								
+
 
 				/*$stmt2="
 
-				SELECT a.*, ( $distance_exp * acos( cos( radians($lat) ) * cos( radians( latitude ) ) 
+				SELECT a.*, ( $distance_exp * acos( cos( radians($lat) ) * cos( radians( latitude ) )
 
-				* cos( radians( lontitude ) - radians($long) ) 
+				* cos( radians( lontitude ) - radians($long) )
 
-				+ sin( radians($lat) ) * sin( radians( latitude ) ) ) ) 
+				+ sin( radians($lat) ) * sin( radians( latitude ) ) ) )
 
-				AS distance								
+				AS distance
 
-				
 
-				FROM {{view_merchant}} a 
+
+				FROM {{view_merchant}} a
 
 				HAVING distance < $home_search_radius
 
@@ -4750,7 +4750,7 @@ class Functions extends CApplicationComponent
 
 				$and
 
-				$sort_combine				
+				$sort_combine
 
 				";*/
 
@@ -4760,13 +4760,13 @@ class Functions extends CApplicationComponent
 
 				";
 
-				$count_query=true;			
+				$count_query=true;
 
-				
+
 
 			} else {
 
-				$stmt="SELECT a.*				
+				$stmt="SELECT a.*
 
 				 FROM
 
@@ -4774,7 +4774,7 @@ class Functions extends CApplicationComponent
 
 				WHERE
 
-				city like '%$city%'						
+				city like '%$city%'
 
 				$and0
 
@@ -4786,13 +4786,13 @@ class Functions extends CApplicationComponent
 
 				";
 
-				
 
-				$stmt2="SELECT 
+
+				$stmt2="SELECT
 
 				count(*) as total_records,
 
-				a.*				
+				a.*
 
 				 FROM
 
@@ -4800,7 +4800,7 @@ class Functions extends CApplicationComponent
 
 				WHERE
 
-				city like '%$city%'						
+				city like '%$city%'
 
 				$and0
 
@@ -4812,21 +4812,21 @@ class Functions extends CApplicationComponent
 
 				";
 
-			}	
+			}
 
 		}
 
-				
+
 
 		/*$home_search_mode=Yii::app()->functions->getOptionAdmin('home_search_mode');
 
-		if ( $home_search_mode=="postcode"){			
+		if ( $home_search_mode=="postcode"){
 
 			$postcode=substr($city,0,2);
 
-			
 
-			$stmt="SELECT a.*				
+
+			$stmt="SELECT a.*
 
 			 FROM
 
@@ -4834,13 +4834,13 @@ class Functions extends CApplicationComponent
 
 			WHERE
 
-			post_code like '$postcode%'									
+			post_code like '$postcode%'
 
 			$and
 
 			$sort_combine
 
-		    ";								
+		    ";
 
 			$stmt2="
 
@@ -4848,19 +4848,19 @@ class Functions extends CApplicationComponent
 
 			";
 
-			$count_query=true;			
+			$count_query=true;
 
-			
 
-		}*/		
 
-			
+		}*/
+
+
 
 		/*if (preg_match("/city like/i", $stmt)) {
 
 			if ( !$res=$DbExt->rst($stmt)){
 
-			    $stmt="SELECT a.*				
+			    $stmt="SELECT a.*
 
 				 FROM
 
@@ -4868,7 +4868,7 @@ class Functions extends CApplicationComponent
 
 				WHERE
 
-				post_code like '%$city%'						
+				post_code like '%$city%'
 
 				$and0
 
@@ -4878,9 +4878,9 @@ class Functions extends CApplicationComponent
 
 				";
 
-			    
 
-			    $stmt2="SELECT count(*) as total_records,a.*				
+
+			    $stmt2="SELECT count(*) as total_records,a.*
 
 				 FROM
 
@@ -4888,11 +4888,11 @@ class Functions extends CApplicationComponent
 
 				WHERE
 
-				post_code like '%$city%'						
+				post_code like '%$city%'
 
 				$and0
 
-				$and				
+				$and
 
 				";
 
@@ -4900,7 +4900,7 @@ class Functions extends CApplicationComponent
 
 		}*/
 
-		
+
 
 		if (isset($_GET['debug'])){
 
@@ -4910,13 +4910,13 @@ class Functions extends CApplicationComponent
 
 			dump($stmt2);
 
-		}			
+		}
 
-			
 
-		/*$this->search_result_total=0;	
 
-		if ( $res_total=$DbExt->rst($stmt2)){	
+		/*$this->search_result_total=0;
+
+		if ( $res_total=$DbExt->rst($stmt2)){
 
 			if (isset($_GET['debug'])){
 
@@ -4930,35 +4930,35 @@ class Functions extends CApplicationComponent
 
 				$this->search_result_total=count($res_total);
 
-			} else $this->search_result_total=$res_total[0]['total_records'];			
+			} else $this->search_result_total=$res_total[0]['total_records'];
 
 			if (isset($_GET['debug'])){
 
 				echo "total->".$this->search_result_total;
 
-			}		
+			}
 
 		}*/
 
-		
+
 
 		$DbExt->qry("SET SQL_BIG_SELECTS=1");
 
-		
 
-		if ( $res=$DbExt->rst($stmt)){			
+
+		if ( $res=$DbExt->rst($stmt)){
 
 			if (isset($_GET['debug'])){
 
-			    dump($res);
+				dump($res);
 
 			}
 
-						
 
-			$this->search_result_total=0;	
 
-			if ( $res_total=$DbExt->rst($stmt2)){	
+			$this->search_result_total=0;
+
+			if ( $res_total=$DbExt->rst($stmt2)){
 
 				if (isset($_GET['debug'])){
 
@@ -4972,17 +4972,17 @@ class Functions extends CApplicationComponent
 
 					$this->search_result_total=$res_total[0]['FOUND_ROWS()'];
 
-				} else $this->search_result_total=$res_total[0]['total_records'];			
+				} else $this->search_result_total=$res_total[0]['total_records'];
 
 				if (isset($_GET['debug'])){
 
 					echo "total->".$this->search_result_total;
 
-				}		
+				}
 
 			}
 
-			
+
 
 			return $res;
 
@@ -4992,7 +4992,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function geodecodeAddress($address='')
 
@@ -5032,7 +5032,7 @@ class Functions extends CApplicationComponent
 //
 //			dump($api);
 //
-//		    dump($json);
+//			dump($json);
 //
 //		}
 //
@@ -5052,7 +5052,7 @@ class Functions extends CApplicationComponent
 //
 //					$lat = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
 //
-//		            $long = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
+//					$long = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
 //
 //				} else {
 //
@@ -5060,13 +5060,13 @@ class Functions extends CApplicationComponent
 //
 //				}
 //
-//	            return array(
+//				return array(
 //
-//	              'lat'=>$lat,
+//					'lat'=>$lat,
 //
-//	              'long'=>$long
+//					'long'=>$long
 //
-//	            );
+//				);
 //
 //			}
 //
@@ -5076,7 +5076,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function updateMerchantSponsored()
 
@@ -5102,11 +5102,11 @@ class Functions extends CApplicationComponent
 
 		";
 
-		$DbExt->qry($stmt);		
+		$DbExt->qry($stmt);
 
-	}	
+	}
 
-	
+
 
 	public function updateMerchantExpired()
 
@@ -5134,13 +5134,13 @@ class Functions extends CApplicationComponent
 
 		is_commission='1'
 
-		";		
+		";
 
-		$DbExt->qry($stmt);		
+		$DbExt->qry($stmt);
 
 	}
 
-	
+
 
 	public function getRatings($merchant_id='')
 
@@ -5158,17 +5158,17 @@ class Functions extends CApplicationComponent
 
 		merchant_id='".$merchant_id."'
 
-		 ";		
+		 ";
 
-		if ( $res=$DbExt->rst($stmt)){								
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ( $res[0]['ratings']>=1){
 
 				$ret=array(
 
-				  'ratings'=>number_format($res[0]['ratings']/$res[0]['count'],1),
+					'ratings'=>number_format($res[0]['ratings']/$res[0]['count'],1),
 
-				  'votes'=>$res[0]['count']
+					'votes'=>$res[0]['count']
 
 				);
 
@@ -5176,11 +5176,11 @@ class Functions extends CApplicationComponent
 
 				$ret=array(
 
-			     'ratings'=>0,
+					'ratings'=>0,
 
-			      'votes'=>0
+					'votes'=>0
 
-			   );
+				);
 
 			}
 
@@ -5188,19 +5188,19 @@ class Functions extends CApplicationComponent
 
 			$ret=array(
 
-			  'ratings'=>0,
+				'ratings'=>0,
 
-			  'votes'=>0
+				'votes'=>0
 
 			);
 
-		}		
+		}
 
 		return $ret;
 
 	}
 
-	
+
 
 	public function getRatingsMeaning($rating='')
 
@@ -5216,9 +5216,9 @@ class Functions extends CApplicationComponent
 
 		rating_start<='".$rating."' AND rating_end>='".$rating."'
 
-		ORDER BY rating_start ASC		
+		ORDER BY rating_start ASC
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -5230,7 +5230,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getRatingInfo($id='')
 
@@ -5248,7 +5248,7 @@ class Functions extends CApplicationComponent
 
 		LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -5260,21 +5260,21 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function isClientRatingExist($merchant_id='',$client_id='')
 
 	{
 
-	    $DbExt=new DbExt;
+		$DbExt=new DbExt;
 
 		$stmt="SELECT * FROM
 
 		{{rating}}
 
-		WHERE		
+		WHERE
 
-		merchant_id='$merchant_id'		
+		merchant_id='$merchant_id'
 
 		AND
 
@@ -5282,7 +5282,7 @@ class Functions extends CApplicationComponent
 
 		LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -5294,7 +5294,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function removeRatings($merchant_id='',$client_id='')
 
@@ -5330,35 +5330,35 @@ class Functions extends CApplicationComponent
 
 	public function sizePriceToArray($json_data='')
 
-	{		
+	{
 
 		$this->data='list';
 
 		$data='';
 
-		$size=$this->getSizeListAll();				
+		$size=$this->getSizeListAll();
 
 		$json_data=!empty($json_data)?json_decode($json_data):false;
 
-		if ( $json_data!=false){			
+		if ( $json_data!=false){
 
-			foreach ($json_data as $size_id=>$price) {				
+			foreach ($json_data as $size_id=>$price) {
 
-				if (array_key_exists($size_id,(array)$size)){					
+				if (array_key_exists($size_id,(array)$size)){
 
-					
 
-					$size_info=$this->getSize($size_id);					
 
-					
+					$size_info=$this->getSize($size_id);
+
+
 
 					$data[]=array(
 
-					  'price'=>$price,
+						'price'=>$price,
 
-					  'size'=>$size[$size_id],
+						'size'=>$size[$size_id],
 
-					  'size_trans'=>!empty($size_info['size_name_trans'])?json_decode($size_info['size_name_trans'],true):''
+						'size_trans'=>!empty($size_info['size_name_trans'])?json_decode($size_info['size_name_trans'],true):''
 
 					);
 
@@ -5366,7 +5366,7 @@ class Functions extends CApplicationComponent
 
 					$data[]=array(
 
-					  'price'=>$price,
+						'price'=>$price,
 
 					);
 
@@ -5382,7 +5382,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function cookingRefToArray($json_data='')
 
@@ -5390,9 +5390,9 @@ class Functions extends CApplicationComponent
 
 		$data='';
 
-		$json_data=!empty($json_data)?json_decode($json_data):false;		
+		$json_data=!empty($json_data)?json_decode($json_data):false;
 
-		$cooking_ref=$this->getCookingRefAll();		
+		$cooking_ref=$this->getCookingRefAll();
 
 		if ( $json_data!=false){
 
@@ -5414,129 +5414,129 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function addOnItemToArray($json_data='',
 
-	$multi_option='',$multi_option_val,$two_flavors_position='',$require_addon='',$merhant_id='')
+									 $multi_option='',$multi_option_val,$two_flavors_position='',$require_addon='',$merhant_id='')
 
-	{		
+	{
 
-						
+
 
 		$data='';
 
 		$data_sub='';
 
-		$json_data=!empty($json_data)?json_decode($json_data):false;		
+		$json_data=!empty($json_data)?json_decode($json_data):false;
 
 		$this->data="list";
 
-		$sub_category=$this->getSubcategory2($merhant_id);		
+		$sub_category=$this->getSubcategory2($merhant_id);
 
 		//dump($sub_category);
 
-				
+
 
 		if ( $json_data!=FALSE ){
 
-			foreach ($json_data as $sub_id=>$val) {								
+			foreach ($json_data as $sub_id=>$val) {
 
 				if (array_key_exists($sub_id,(array)$sub_category)){
 
-					foreach ($val as $subitem_id) {						
+					foreach ($val as $subitem_id) {
 
-						if ($subitem_details=$this->getAddonItem($subitem_id,'sequence')){	
+						if ($subitem_details=$this->getAddonItem($subitem_id,'sequence')){
 
-							
+
 
 							$data_sub[]=array(
 
-							  'sub_item_id'=>$subitem_details['sub_item_id'],
+								'sub_item_id'=>$subitem_details['sub_item_id'],
 
-							  'sub_item_name'=>$subitem_details['sub_item_name'],
+								'sub_item_name'=>$subitem_details['sub_item_name'],
 
-							  'item_description'=>$subitem_details['item_description'],
+								'item_description'=>$subitem_details['item_description'],
 
-							  'price'=>$subitem_details['price'],
+								'price'=>$subitem_details['price'],
 
-							  'photo'=>$subitem_details['photo'],
+								'photo'=>$subitem_details['photo'],
 
-							  'sub_item_name_trans'=>!empty($subitem_details['sub_item_name_trans'])?json_decode($subitem_details['sub_item_name_trans'],true):'',
+								'sub_item_name_trans'=>!empty($subitem_details['sub_item_name_trans'])?json_decode($subitem_details['sub_item_name_trans'],true):'',
 
-							  'item_description_trans'=>!empty($subitem_details['item_description_trans'])?json_decode($subitem_details['item_description_trans'],true):'',
+								'item_description_trans'=>!empty($subitem_details['item_description_trans'])?json_decode($subitem_details['item_description_trans'],true):'',
 
 							);
 
-						}						
+						}
 
 					}
 
-					
 
-					$multi_options='';					
 
-					if (array_key_exists($sub_id,(array)$multi_option)){						
+					$multi_options='';
+
+					if (array_key_exists($sub_id,(array)$multi_option)){
 
 						$multi_options=$multi_option[$sub_id];
 
 					}
 
-					
+
 
 					$multi_option_vals='';
 
-					if (array_key_exists($sub_id,(array)$multi_option_val)){						
+					if (array_key_exists($sub_id,(array)$multi_option_val)){
 
 						$multi_option_vals=$multi_option_val[$sub_id];
 
 					}
 
-					
+
 
 					$two_flavor='';
 
-					if (array_key_exists($sub_id,(array)$two_flavors_position)){						
+					if (array_key_exists($sub_id,(array)$two_flavors_position)){
 
 						$two_flavor=$two_flavors_position[$sub_id];
 
 					}
 
-										
+
 
 					$require_addons='';
 
-					if (array_key_exists($sub_id,(array)$require_addon)){												
+					if (array_key_exists($sub_id,(array)$require_addon)){
 
 						$require_addons=$require_addon[$sub_id];
 
 					}
 
-												
+
 
 					$data[]=array(
 
-					  'subcat_id'=>$sub_id,
+						'subcat_id'=>$sub_id,
 
-					  'subcat_name'=>$sub_category[$sub_id],
+						'subcat_name'=>$sub_category[$sub_id],
 
-					  'subcat_name_trans'=>$this->getSubcategoryTranslation($sub_id),
+						'subcat_name_trans'=>$this->getSubcategoryTranslation($sub_id),
 
-					  'multi_option'=>$multi_options,
+						'multi_option'=>$multi_options,
 
-					  'multi_option_val'=>$multi_option_vals,
+						'multi_option_val'=>$multi_option_vals,
 
-					  'two_flavor_position'=>$two_flavor,
+						'two_flavor_position'=>$two_flavor,
 
-					  'require_addons'=>$require_addons,
+						'require_addons'=>$require_addons,
 
-					  'sub_item'=>$data_sub					  
+						'sub_item'=>$data_sub
 
 					);
 
 					$data_sub='';
 
-				}			
+				}
 
 			}
 
@@ -5550,7 +5550,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function multiOptionToArray($json_data='')
 
@@ -5558,11 +5558,11 @@ class Functions extends CApplicationComponent
 
 		$data='';
 
-		$json_data=!empty($json_data)?(array)json_decode($json_data):false;		
+		$json_data=!empty($json_data)?(array)json_decode($json_data):false;
 
 		if (is_array($json_data) && count($json_data)>=1){
 
-			foreach ($json_data as $key=>$val) {				
+			foreach ($json_data as $key=>$val) {
 
 				$data[$key]=$val[0];
 
@@ -5576,7 +5576,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getItemByCategory($category_id='',$addon=false,$merchant_id='')
 
@@ -5588,7 +5588,7 @@ class Functions extends CApplicationComponent
 
 		$category='%"'.$category_id.'"%';
 
-					
+
 
 		$and="";
 
@@ -5598,9 +5598,9 @@ class Functions extends CApplicationComponent
 
 		}
 
-		
 
-        $food_option_not_available=getOption($merchant_id,'food_option_not_available');		
+
+		$food_option_not_available=getOption($merchant_id,'food_option_not_available');
 
 		if (!empty($food_option_not_available)){
 
@@ -5610,9 +5610,9 @@ class Functions extends CApplicationComponent
 
 			}
 
-		}		
+		}
 
-		
+
 
 		$stmt="SELECT * FROM
 
@@ -5630,19 +5630,19 @@ class Functions extends CApplicationComponent
 
 		ORDER BY sequence ASC
 
-		";		
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
-			foreach ($res as $val) {				
+			foreach ($res as $val) {
 
-												
+
 
 				$multi_option=$this->multiOptionToArray($val['multi_option']);
 
 				$multi_option_val=$this->multiOptionToArray($val['multi_option_value']);
 
-				
+
 
 				$price=$this->sizePriceToArray($val['price']);
 
@@ -5650,33 +5650,33 @@ class Functions extends CApplicationComponent
 
 				$addon_item=$this->addOnItemToArray($val['addon_item'],$multi_option,$multi_option_val);
 
-				
+
 
 				$single_item=1;
 
 				$single_details='';
 
-				if (!is_array($addon_item) && count($addon_item)<=1){					
+				if (!is_array($addon_item) && count($addon_item)<=1){
 
 					if ( count($price)<=1){
 
-					   $single_item=2;					   
+						$single_item=2;
 
-					   $single_details['price']=$price[0]['price']-$val['discount'];
+						$single_details['price']=$price[0]['price']-$val['discount'];
 
-					   $single_details['size']=$price[0]['size'];
+						$single_details['size']=$price[0]['size'];
 
 					}
 
 				}
 
-								
+
 
 				if (is_array($cooking_ref) && count($cooking_ref)>=1){
 
 					$single_item=1;
 
-				}				
+				}
 
 				if (strlen($val['ingredients'])>4){
 
@@ -5684,75 +5684,75 @@ class Functions extends CApplicationComponent
 
 				}
 
-								
+
 
 				if ($addon==TRUE){
 
 					$data[]=array(
 
-					  'item_id'=>$val['item_id'],
+						'item_id'=>$val['item_id'],
 
-					  'item_name'=>$val['item_name'],
+						'item_name'=>$val['item_name'],
 
-					  'item_description'=>$val['item_description'],
+						'item_description'=>$val['item_description'],
 
-					  'discount'=>$val['discount'],
+						'discount'=>$val['discount'],
 
-					  'photo'=>$val['photo'],
+						'photo'=>$val['photo'],
 
-					  'prices'=>$price,
+						'prices'=>$price,
 
-					  'spicydish'=>$val['spicydish'],
+						'spicydish'=>$val['spicydish'],
 
-					  'dish'=>$val['dish'],
+						'dish'=>$val['dish'],
 
-                      'item_name_trans'=>!empty($val['item_name_trans'])?json_decode($val['item_name_trans'],true):'',
+						'item_name_trans'=>!empty($val['item_name_trans'])?json_decode($val['item_name_trans'],true):'',
 
-                      'item_description_trans'=>!empty($val['item_description_trans'])?json_decode($val['item_description_trans'],true):'',
+						'item_description_trans'=>!empty($val['item_description_trans'])?json_decode($val['item_description_trans'],true):'',
 
-					  'single_item'=>$single_item,
+						'single_item'=>$single_item,
 
-					  'single_details'=>$single_details,
+						'single_details'=>$single_details,
 
-					  'not_available'=>$val['not_available']
+						'not_available'=>$val['not_available']
 
-					  /*'cooking_ref'=>$cooking_ref,				  
+						/*'cooking_ref'=>$cooking_ref,
 
 					  'addon_item'=>$addon_item*/
 
-					);				
+					);
 
 				} else {
 
 					$data[]=array(
 
-				      'item_id'=>$val['item_id'],
+						'item_id'=>$val['item_id'],
 
-				      'item_name'=>$val['item_name'],
+						'item_name'=>$val['item_name'],
 
-				      'item_description'=>$val['item_description'],
+						'item_description'=>$val['item_description'],
 
-				      'discount'=>$val['discount'],
+						'discount'=>$val['discount'],
 
-				      'photo'=>$val['photo'],
+						'photo'=>$val['photo'],
 
-				      'spicydish'=>$val['spicydish'],
+						'spicydish'=>$val['spicydish'],
 
-				      'dish'=>$val['dish'],
+						'dish'=>$val['dish'],
 
-				      'item_name_trans'=>!empty($val['item_name_trans'])?json_decode($val['item_name_trans'],true):'',
+						'item_name_trans'=>!empty($val['item_name_trans'])?json_decode($val['item_name_trans'],true):'',
 
-				      'item_description_trans'=>!empty($val['item_description_trans'])?json_decode($val['item_description_trans'],true):'',
+						'item_description_trans'=>!empty($val['item_description_trans'])?json_decode($val['item_description_trans'],true):'',
 
-				      'prices'=>$price,				
+						'prices'=>$price,
 
-				      'single_item'=>$single_item,
+						'single_item'=>$single_item,
 
-				      'single_details'=>$single_details,
+						'single_details'=>$single_details,
 
-				      'not_available'=>$val['not_available']
+						'not_available'=>$val['not_available']
 
-				    );				
+					);
 
 				}
 
@@ -5766,7 +5766,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function getItemById($item_id='',$addon=true)
 
@@ -5774,7 +5774,7 @@ class Functions extends CApplicationComponent
 
 		$DbExt=new DbExt;
 
-		$data='';		
+		$data='';
 
 		$stmt="SELECT * FROM
 
@@ -5784,15 +5784,15 @@ class Functions extends CApplicationComponent
 
 		item_id ='".$item_id."'
 
-		LIMIT 0,1		
+		LIMIT 0,1
 
-		";				
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
-			foreach ($res as $val) {				
+			foreach ($res as $val) {
 
-												
+
 
 				$multi_option=$this->multiOptionToArray($val['multi_option']);
 
@@ -5800,117 +5800,117 @@ class Functions extends CApplicationComponent
 
 				$two_flavors_position=$this->multiOptionToArray($val['two_flavors_position']);
 
-				
 
-				$require_addon=$this->multiOptionToArray($val['require_addon']);							
 
-															
+				$require_addon=$this->multiOptionToArray($val['require_addon']);
+
+
 
 				$price=$this->sizePriceToArray($val['price']);
 
 				$cooking_ref=$this->cookingRefToArray($val['cooking_ref']);
 
-				
 
-                $addon_item=$this->addOnItemToArray(
 
-                  $val['addon_item'],
+				$addon_item=$this->addOnItemToArray(
 
-                  $multi_option,$multi_option_val,
+					$val['addon_item'],
 
-                  $two_flavors_position,
+					$multi_option,$multi_option_val,
 
-                  $require_addon,
+					$two_flavors_position,
 
-                  $val['merchant_id']
+					$require_addon,
 
-                );
+					$val['merchant_id']
+
+				);
 
 				$ingredients=$this->ingredientsToArray($val['ingredients']);
 
-				
 
-				$cooking_ref2=$this->cookingRefToArray2($val['cooking_ref']);				
 
-				
+				$cooking_ref2=$this->cookingRefToArray2($val['cooking_ref']);
+
+
 
 				if ($addon==TRUE){
 
 					$data[]=array(
 
-					  'merchant_id'=>$val['merchant_id'],
+						'merchant_id'=>$val['merchant_id'],
 
-					  'item_id'=>$val['item_id'],
+						'item_id'=>$val['item_id'],
 
-					  'item_name'=>$val['item_name'],
+						'item_name'=>$val['item_name'],
 
-					  'item_description'=>$val['item_description'],
+						'item_description'=>$val['item_description'],
 
-					  'item_name_trans'=>!empty($val['item_name_trans'])?json_decode($val['item_name_trans'],true):'',
+						'item_name_trans'=>!empty($val['item_name_trans'])?json_decode($val['item_name_trans'],true):'',
 
-					  'item_description_trans'=>!empty($val['item_description_trans'])?json_decode($val['item_description_trans'],true):'',
+						'item_description_trans'=>!empty($val['item_description_trans'])?json_decode($val['item_description_trans'],true):'',
 
-					  'discount'=>$val['discount'],
+						'discount'=>$val['discount'],
 
-					  'photo'=>$val['photo'],
+						'photo'=>$val['photo'],
 
-					  'prices'=>$price,
+						'prices'=>$price,
 
-					  'cooking_ref'=>$cooking_ref,				  
+						'cooking_ref'=>$cooking_ref,
 
-					  'cooking_ref_trans'=>isset($cooking_ref2['cooking_name_trans'])?$cooking_ref2['cooking_name_trans']:'',
+						'cooking_ref_trans'=>isset($cooking_ref2['cooking_name_trans'])?$cooking_ref2['cooking_name_trans']:'',
 
-					  'addon_item'=>$addon_item,
+						'addon_item'=>$addon_item,
 
-					  'ingredients'=>$ingredients,
+						'ingredients'=>$ingredients,
 
-					  'spicydish'=>$val['spicydish'],
+						'spicydish'=>$val['spicydish'],
 
-					  'dish'=>$val['dish'],
+						'dish'=>$val['dish'],
 
-					  'two_flavors'=>$val['two_flavors'],
+						'two_flavors'=>$val['two_flavors'],
 
-					  'gallery_photo'=>$val['gallery_photo']
+						'gallery_photo'=>$val['gallery_photo']
 
-					);	
+					);
 
 				} else {
 
 					$data[]=array(
 
-					  'merchant_id'=>$val['merchant_id'],
+						'merchant_id'=>$val['merchant_id'],
 
-				      'item_id'=>$val['item_id'],
+						'item_id'=>$val['item_id'],
 
-				      'item_name'=>$val['item_name'],
+						'item_name'=>$val['item_name'],
 
-				      'item_description'=>$val['item_description'],
+						'item_description'=>$val['item_description'],
 
-				      'item_name_trans'=>!empty($val['item_name_trans'])?json_decode($val['item_name_trans'],true):'',
+						'item_name_trans'=>!empty($val['item_name_trans'])?json_decode($val['item_name_trans'],true):'',
 
-					  'item_description_trans'=>!empty($val['item_description_trans'])?json_decode($val['item_description_trans'],true):'',
+						'item_description_trans'=>!empty($val['item_description_trans'])?json_decode($val['item_description_trans'],true):'',
 
-				      'discount'=>$val['discount'],
+						'discount'=>$val['discount'],
 
-				      'photo'=>$val['photo'],
+						'photo'=>$val['photo'],
 
-				      'prices'=>$price,				  
+						'prices'=>$price,
 
-				      'ingredients'=>$ingredients,
+						'ingredients'=>$ingredients,
 
-				      'spicydish'=>$val['spicydish'],
+						'spicydish'=>$val['spicydish'],
 
-				      'dish'=>$val['dish'],
+						'dish'=>$val['dish'],
 
-				      'two_flavors'=>$val['two_flavors'],
+						'two_flavors'=>$val['two_flavors'],
 
-				      'gallery_photo'=>$val['gallery_photo']			      
+						'gallery_photo'=>$val['gallery_photo']
 
-				    );				
+					);
 
 				}
 
-			}			
+			}
 
 			return $data;
 
@@ -5918,9 +5918,9 @@ class Functions extends CApplicationComponent
 
 		return false;
 
-	}	
+	}
 
-		
+
 
 	public function getMerchantMenu($merchant_id='')
 
@@ -5930,27 +5930,27 @@ class Functions extends CApplicationComponent
 
 		$this->data='list';
 
-		if ( $res=$this->getCategoryList2($merchant_id)){						
+		if ( $res=$this->getCategoryList2($merchant_id)){
 
-			foreach ($res as $cat_i=>$cat_name) {				
+			foreach ($res as $cat_i=>$cat_name) {
 
 				$data[]=array(
 
-				  'category_id'=>$cat_i,
+					'category_id'=>$cat_i,
 
-				  'category_name'=>$cat_name['category_name'],
+					'category_name'=>$cat_name['category_name'],
 
-				  'category_description'=>$cat_name['category_description'],
+					'category_description'=>$cat_name['category_description'],
 
-				  'category_name_trans'=>!empty($cat_name['category_name_trans'])?json_decode($cat_name['category_name_trans'],true):'',
+					'category_name_trans'=>!empty($cat_name['category_name_trans'])?json_decode($cat_name['category_name_trans'],true):'',
 
-				  'photo'=>$cat_name['photo'],
+					'photo'=>$cat_name['photo'],
 
-				  'category_description_trans'=>!empty($cat_name['category_description_trans'])?json_decode($cat_name['category_description_trans'],true):'',
+					'category_description_trans'=>!empty($cat_name['category_description_trans'])?json_decode($cat_name['category_description_trans'],true):'',
 
-				  'dish'=>$cat_name['dish'],
+					'dish'=>$cat_name['dish'],
 
-				  'item'=>$this->getItemByCategory($cat_i,false,$merchant_id)
+					'item'=>$this->getItemByCategory($cat_i,false,$merchant_id)
 
 				);
 
@@ -5964,7 +5964,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function unPrettyPrice($price='')
 
@@ -5982,11 +5982,11 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	/*prettyFormat is control on admin area not merchant*/
 
-	
+
 
 	public function prettyFormat($price='',$merchant_id='')
 
@@ -5994,35 +5994,35 @@ class Functions extends CApplicationComponent
 
 		/*$decimal=yii::app()->functions->getOption('merchant_decimal',$merchant_id);
 
-		$decimal_separators=yii::app()->functions->getOption('merchant_use_separators',$merchant_id);*/		
+		$decimal_separators=yii::app()->functions->getOption('merchant_use_separators',$merchant_id);*/
 
-		
+
 
 		$decimal=Yii::app()->functions->getOptionAdmin('admin_decimal_place');
 
-		$decimal_separators=Yii::app()->functions->getOptionAdmin('admin_use_separators');		
+		$decimal_separators=Yii::app()->functions->getOptionAdmin('admin_use_separators');
 
-		
+
 
 		$thousand_separator=Yii::app()->functions->getOptionAdmin('admin_thousand_separator');
 
-        $decimal_separator=Yii::app()->functions->getOptionAdmin('admin_decimal_separator');
+		$decimal_separator=Yii::app()->functions->getOptionAdmin('admin_decimal_separator');
 
-        
 
-        if (empty($thousand_separator)){
 
-        	$thousand_separator=',';
+		if (empty($thousand_separator)){
 
-        }
+			$thousand_separator=',';
 
-        if (empty($decimal_separator)){
+		}
 
-        	$decimal_separator='.';
+		if (empty($decimal_separator)){
 
-        }
+			$decimal_separator='.';
 
-		
+		}
+
+
 
 		$thou_separator='';
 
@@ -6040,29 +6040,29 @@ class Functions extends CApplicationComponent
 
 				$thou_separator=$thousand_separator;
 
-			}		
+			}
 
 			//return number_format((float)$price,$decimal,".",$thou_separator);
 
 			return number_format((float)$price,$decimal,$decimal_separator,$thou_separator);
 
-		}	
+		}
 
 		if ($decimal==""){
 
 			$decimal=2;
 
-		}	
+		}
 
-		//return number_format(0,$decimal,".",$thou_separator);	
+		//return number_format(0,$decimal,".",$thou_separator);
 
 		$thou_separator=$thousand_separator;
 
-		return number_format(0,$decimal,$decimal_separator,$thou_separator);	
+		return number_format(0,$decimal,$decimal_separator,$thou_separator);
 
 	}
 
-	
+
 
 	public function explodeData($data='')
 
@@ -6084,7 +6084,7 @@ class Functions extends CApplicationComponent
 
 	}
 
-	
+
 
 	public function displayOrderHTML($data='',$cart_item='',$receipt=false,$new_order_id='')
 
@@ -6094,119 +6094,119 @@ class Functions extends CApplicationComponent
 
 		$this->code=2;
 
-		$htm='';	
+		$htm='';
 
-    	$subtotal=0;
+		$subtotal=0;
 
-    	$mid=isset($data['merchant_id'])?$data['merchant_id']:'';
+		$mid=isset($data['merchant_id'])?$data['merchant_id']:'';
 
-    	if (empty($mid)){
+		if (empty($mid)){
 
-    		$this->msg=Yii::t("default","Merchant ID is empty");
+			$this->msg=Yii::t("default","Merchant ID is empty");
 
-    		return ;
+			return ;
 
-    	}	
+		}
 
-    	    	        	
 
-    	Yii::app()->functions->data="list";
 
-    	$food_item=Yii::app()->functions->getFoodItemLists($mid);
+		Yii::app()->functions->data="list";
 
-    	$subcat_list=Yii::app()->functions->getAddOnLists($mid);	    	
+		$food_item=Yii::app()->functions->getFoodItemLists($mid);
 
-    	    	    	
+		$subcat_list=Yii::app()->functions->getAddOnLists($mid);
 
-    	//dump($cart_item);    	
 
-    	//dump($food_item);
 
-            	    		   
+		//dump($cart_item);
 
-    	if (isset($cart_item)){
+		//dump($food_item);
 
-    		if (is_array($cart_item) && count($cart_item)>=1){
 
-    			$x=0;
 
-    			foreach ($cart_item as $key=>$val) {	    				
+		if (isset($cart_item)){
 
-    				
+			if (is_array($cart_item) && count($cart_item)>=1){
 
-    				$val['notes']=isset($val['notes'])?$val['notes']:"";
+				$x=0;
 
-    				
+				foreach ($cart_item as $key=>$val) {
 
-    				$size_words='';
 
-    				$t=!empty($val['price'])?explode("|",$val['price']):'';
 
-    				if (is_array($t) && count($t)>=1){
+					$val['notes']=isset($val['notes'])?$val['notes']:"";
 
-    					$val['price']=$t[0];
 
-    					if (isset($t[1])){
 
-    					    $size_words=$t[1];
+					$size_words='';
 
-    					} else $size_words='';					
+					$t=!empty($val['price'])?explode("|",$val['price']):'';
 
-    				}
+					if (is_array($t) && count($t)>=1){
 
-    				
+						$val['price']=$t[0];
 
-    				$price=cleanNumber(unPrettyPrice($val['price']));
+						if (isset($t[1])){
 
-    				if (!empty($val['discount'])){
+							$size_words=$t[1];
 
-    					$val['discount']=unPrettyPrice($val['discount']);
+						} else $size_words='';
 
-    					$price=$price-$val['discount'];
+					}
 
-    				}    			
 
-    				
 
-    				$qty=$val['qty'];  /** fixed addon qty */
+					$price=cleanNumber(unPrettyPrice($val['price']));
 
-    				$total_price=$val['qty']*$price;
+					if (!empty($val['discount'])){
 
-    				    		
+						$val['discount']=unPrettyPrice($val['discount']);
 
-    				/** check if item is taxable*/
+						$price=$price-$val['discount'];
 
-    				//dump($val);
+					}
 
-    				$food_taxable=true;    				    				
 
-    				if (isset($val['non_taxable'])){
 
-    					if ( $val['non_taxable']==2){
+					$qty=$val['qty'];  /** fixed addon qty */
 
-    						$food_taxable=false;
+					$total_price=$val['qty']*$price;
 
-    					}	
 
-    				}    		
 
-    				    				    			    				
+					/** check if item is taxable*/
 
-    				$subtotal=$subtotal+$total_price; 
+					//dump($val);
 
-    				
+					$food_taxable=true;
 
-    				if ($food_taxable==false){
+					if (isset($val['non_taxable'])){
 
-    					$subtotal_non=$subtotal_non+$total_price;
+						if ( $val['non_taxable']==2){
 
-    				}  			
+							$food_taxable=false;
 
-    				
+						}
 
-    				/*$size_words='';
+					}
 
-    				if ( $price_size=explodeData($val['price'])){	    					
+
+
+					$subtotal=$subtotal+$total_price;
+
+
+
+					if ($food_taxable==false){
+
+						$subtotal_non=$subtotal_non+$total_price;
+
+					}
+
+
+
+					/*$size_words='';
+
+    				if ( $price_size=explodeData($val['price'])){
 
     					if (isset($price_size[1])){
 
@@ -6214,811 +6214,811 @@ class Functions extends CApplicationComponent
 
     					}
 
-    				}	*/    				    				
+    				}	*/
 
-    				
 
-    				/** Translation */
 
-    				$food_infos='';
+					/** Translation */
 
-    				$size_info_trans='';
+					$food_infos='';
 
-    				$cooking_ref_trans='';
+					$size_info_trans='';
 
-    				if ($this->getOptionAdmin("enabled_multiple_translation")==2){
+					$cooking_ref_trans='';
 
-	    				$food_info=$this->getFoodItem($val['item_id']);
+					if ($this->getOptionAdmin("enabled_multiple_translation")==2){
 
-	    				$food_infos['item_name_trans']=!empty($food_info['item_name_trans'])?json_decode($food_info['item_name_trans'],true):'';		
+						$food_info=$this->getFoodItem($val['item_id']);
 
-	    					    				
+						$food_infos['item_name_trans']=!empty($food_info['item_name_trans'])?json_decode($food_info['item_name_trans'],true):'';
 
-	    				if (!empty($size_words)){
 
-	    				    $size_info_trans=$this->getSizeTranslation($size_words,$mid);
 
-	    				}	    		
+						if (!empty($size_words)){
 
+							$size_info_trans=$this->getSizeTranslation($size_words,$mid);
 
+						}
 
-	    				if(!empty($val['cooking_ref'])){	    					
 
-	    					$cooking_ref_trans=$this->getCookingTranslation($val['cooking_ref'],$mid);
 
-	    				}	
+						if(!empty($val['cooking_ref'])){
 
-    				}
+							$cooking_ref_trans=$this->getCookingTranslation($val['cooking_ref'],$mid);
 
-    				
+						}
 
-    				$htm.='<div class="item-order-list item-row">';
+					}
 
-			          $htm.='<div class="a">'.$val['qty'].'</div>';
 
-			          $htm.='<div class="b">'.qTranslate($food_item[$val['item_id']],'item_name',$food_infos);
 
-			          if (!empty($size_words)){
+					$htm.='<div class="item-order-list item-row">';
 
-			          	 $htm.="(".ucwords(qTranslate($size_words,'size_name',$size_info_trans)).")";
+					$htm.='<div class="a">'.$val['qty'].'</div>';
 
-			          }
+					$htm.='<div class="b">'.qTranslate($food_item[$val['item_id']],'item_name',$food_infos);
 
-			          
+					if (!empty($size_words)){
 
-			          // array value
+						$htm.="(".ucwords(qTranslate($size_words,'size_name',$size_info_trans)).")";
 
-			          $item_array[$key]=array(
+					}
 
-			            'item_id'=>$val['item_id'],
 
-			            'item_name'=>$food_item[$val['item_id']],
 
-			            'size_words'=>$size_words,
+					// array value
 
-			            'qty'=>$val['qty'],
+					$item_array[$key]=array(
 
-			            'normal_price'=>prettyFormat($val['price']),
+						'item_id'=>$val['item_id'],
 
-			            'discounted_price'=>$price,
+						'item_name'=>$food_item[$val['item_id']],
 
-			            'order_notes'=>isset($val['notes'])?$val['notes']:'',
+						'size_words'=>$size_words,
 
-			            'cooking_ref'=>isset($val['cooking_ref'])?$val['cooking_ref']:'',
+						'qty'=>$val['qty'],
 
-			            'ingredients'=>isset($val['ingredients'])?$val['ingredients']:'',
+						'normal_price'=>prettyFormat($val['price']),
 
-			            'non_taxable'=>isset($val['non_taxable'])?$val['non_taxable']:1
+						'discounted_price'=>$price,
 
-			          );			          			         
+						'order_notes'=>isset($val['notes'])?$val['notes']:'',
 
-			          
+						'cooking_ref'=>isset($val['cooking_ref'])?$val['cooking_ref']:'',
 
-			          $htm.=Widgets::displaySpicyIconByID($val['item_id']);
+						'ingredients'=>isset($val['ingredients'])?$val['ingredients']:'',
 
-			          
+						'non_taxable'=>isset($val['non_taxable'])?$val['non_taxable']:1
 
-			          if (!empty($val['discount'])){
+					);
 
-			          	  $htm.="<p class=\"uk-text-small\">".
 
-			          	  "<span class=\"normal-price\">".displayPrice(baseCurrency(),prettyFormat($val['price']))." </span>".
 
-			          	  "<span class=\"sale-price\">".displayPrice(baseCurrency(),prettyFormat($price))."</span>"
+					$htm.=Widgets::displaySpicyIconByID($val['item_id']);
 
-			          	  ."</p>";			          	  
 
-			          } else {
 
-			          	$htm.="<p class=\"uk-text-small\">".			          	  
+					if (!empty($val['discount'])){
 
-			          	  "<span class=\"base-price\">".displayPrice(baseCurrency(),prettyFormat($val['price']))."</span>"
+						$htm.="<p class=\"uk-text-small\">".
 
-			          	  ."</p>";			          	  
+							"<span class=\"normal-price\">".displayPrice(baseCurrency(),prettyFormat($val['price']))." </span>".
 
-			          }
+							"<span class=\"sale-price\">".displayPrice(baseCurrency(),prettyFormat($price))."</span>"
 
-			          if (!empty($val['cooking_ref'])){
+							."</p>";
 
-			              $htm.="<p class=\"small\">".
+					} else {
 
-			              qTranslate($val['cooking_ref'],'cooking_name',$cooking_ref_trans)."</p>";
+						$htm.="<p class=\"uk-text-small\">".
 
-			          }	    			
+							"<span class=\"base-price\">".displayPrice(baseCurrency(),prettyFormat($val['price']))."</span>"
 
-			          if (!empty($val['notes'])){
+							."</p>";
 
-			              $htm.="<p class=\"small text-info\">".$val['notes']."</p>";
+					}
 
-			          }				          
+					if (!empty($val['cooking_ref'])){
 
-			          
+						$htm.="<p class=\"small\">".
 
-			          /*ingredients*/			         
+							qTranslate($val['cooking_ref'],'cooking_name',$cooking_ref_trans)."</p>";
 
-			          if (isset($val['ingredients'])){
+					}
 
-			          	if (!empty($val['ingredients'])){
+					if (!empty($val['notes'])){
 
-			          		if (is_array($val['ingredients']) && count($val['ingredients'])>=1){
+						$htm.="<p class=\"small text-info\">".$val['notes']."</p>";
 
-			          			$htm.="<p class=\"small ingredients-label\">".t("Ingredients").":</p>";
+					}
 
-			          		    foreach ($val['ingredients'] as $val_ingred) {
 
-			          		       $htm.="<p class=\"small\">".$val_ingred."</p>";
 
-			          		    }	
+					/*ingredients*/
 
-			          		}
+					if (isset($val['ingredients'])){
 
-			          	}	
+						if (!empty($val['ingredients'])){
 
-			          }
+							if (is_array($val['ingredients']) && count($val['ingredients'])>=1){
 
-			          
+								$htm.="<p class=\"small ingredients-label\">".t("Ingredients").":</p>";
 
-			          $htm.='</div>';
+								foreach ($val['ingredients'] as $val_ingred) {
 
-			          
+									$htm.="<p class=\"small\">".$val_ingred."</p>";
 
-			          $htm.='<div class="manage">';
+								}
 
-			            $htm.='<div class="c">';
+							}
 
-			             if ( $receipt==false):
+						}
 
-			             $htm.='<a href="javascript:;" class="edit_item" data-row="'.$key.'" rel="'.$val['item_id'].'" >
+					}
+
+
+
+					$htm.='</div>';
+
+
+
+					$htm.='<div class="manage">';
+
+					$htm.='<div class="c">';
+
+					if ( $receipt==false):
+
+						$htm.='<a href="javascript:;" class="edit_item" data-row="'.$key.'" rel="'.$val['item_id'].'" >
 
 			                        <i class="ion-compose"></i>
 
 			                     </a>';
 
-			              $htm.='<a href="javascript:;" class="delete_item" data-row="'.$key.'" rel="'.$val['item_id'].'" >
+						$htm.='<a href="javascript:;" class="delete_item" data-row="'.$key.'" rel="'.$val['item_id'].'" >
 
 			                       <i class="ion-trash-a"></i>
 
 			                    </a>';
 
-			              endif;
+					endif;
 
-			            $htm.='</div>';
+					$htm.='</div>';
 
-			             $htm.='<div class="d">'.displayPrice(baseCurrency(),prettyFormat($total_price,$mid)).'</div>';
+					$htm.='<div class="d">'.displayPrice(baseCurrency(),prettyFormat($total_price,$mid)).'</div>';
 
-			          $htm.='</div>';
+					$htm.='</div>';
 
-			          $htm.='<div class="clear"></div>';
+					$htm.='<div class="clear"></div>';
 
-			          
 
-			          /*SUB ITEM*/
 
-			          //dump($val);			          
+					/*SUB ITEM*/
 
-			          //$item_array[$key]['sub_item']=$val['sub_item'];
+					//dump($val);
 
-			          $val['sub_item']=isset($val['sub_item'])?$val['sub_item']:'';
+					//$item_array[$key]['sub_item']=$val['sub_item'];
 
-			          
+					$val['sub_item']=isset($val['sub_item'])?$val['sub_item']:'';
 
-			          if (is_array($val['sub_item']) && count($val['sub_item'])>=1){
 
-			          	 foreach ($val['sub_item'] as $cat_id=>$val_sub) {				          	 	
 
-			          	 	
+					if (is_array($val['sub_item']) && count($val['sub_item'])>=1){
 
-			          	 	if (array_key_exists($cat_id,(array)$subcat_list)){		
+						foreach ($val['sub_item'] as $cat_id=>$val_sub) {
 
-			          	 		
 
-			          	 		//** Translation */
 
-			          	 		$subcategory_trans='';
+							if (array_key_exists($cat_id,(array)$subcat_list)){
 
-			          	 		if ($this->getOptionAdmin("enabled_multiple_translation")==2){
 
-			          	 			if($subcategory_tran=$this->getAddonCategory($cat_id)){
 
-			          	 				$subcategory_trans['subcategory_name_trans']=!empty($subcategory_tran['subcategory_name_trans'])?json_decode($subcategory_tran['subcategory_name_trans'],true):'';
+								//** Translation */
 
-			          	 			}			          	 					          	 			
+								$subcategory_trans='';
 
-			          	 		}
+								if ($this->getOptionAdmin("enabled_multiple_translation")==2){
 
-			          	 				          	 		
+									if($subcategory_tran=$this->getAddonCategory($cat_id)){
 
-			          	 		$htm.='<div class="a"></div>';
+										$subcategory_trans['subcategory_name_trans']=!empty($subcategory_tran['subcategory_name_trans'])?json_decode($subcategory_tran['subcategory_name_trans'],true):'';
 
-						        $htm.='<div class="b uk-text-success">'.
+									}
 
-						        ucwords(qTranslate($subcat_list[$cat_id],'subcategory_name',
+								}
 
-						        $subcategory_trans)).'</div>';  
 
-						        $htm.='<div class="clear"></div>';				          	 		
 
-			          	 	}
+								$htm.='<div class="a"></div>';
 
-			          	 				          	 				          	 				          	 	
+								$htm.='<div class="b uk-text-success">'.
 
-			          	 	$addon_qty=1;				          	 	
+									ucwords(qTranslate($subcat_list[$cat_id],'subcategory_name',
 
-			          	 	foreach ($val_sub as $addon_row=> $val_subs) {
+										$subcategory_trans)).'</div>';
 
-			          	 					          	 		
+								$htm.='<div class="clear"></div>';
 
-			          	 		if (isset( $val['addon_qty'][$cat_id] )){				          	 		    
+							}
 
-			          	 		    $addon_qty=$val['addon_qty'][$cat_id][$addon_row];
 
-			          	 	    } else {
 
-			          	 	    	 $addon_qty=$qty; /** fixed addon qty */
+							$addon_qty=1;
 
-			          	 	    	 /*if ( in_array($val['item_id'],(array)$added_item)){
+							foreach ($val_sub as $addon_row=> $val_subs) {
+
+
+
+								if (isset( $val['addon_qty'][$cat_id] )){
+
+									$addon_qty=$val['addon_qty'][$cat_id][$addon_row];
+
+								} else {
+
+									$addon_qty=$qty; /** fixed addon qty */
+
+									/*if ( in_array($val['item_id'],(array)$added_item)){
 
 			          	 	    	    $addon_qty=0;
 
 			          	 	    	 }*/
 
-			          	 	    }			          	 	
+								}
 
-			          	 	    			          	 		
 
-			          	 		$val_subs=explodeData($val_subs);
 
-			          	 		
+								$val_subs=explodeData($val_subs);
 
-			          	 		//dump($val_subs);
 
-			          	 		$addon_raw_price=prettyFormat($val_subs[1]);
 
-			          	 		$addon_item_price= unPrettyPrice($val_subs[1]);
+								//dump($val_subs);
 
-			          	 		$addon_item_price=$addon_qty*$addon_item_price;
+								$addon_raw_price=prettyFormat($val_subs[1]);
 
-			          	 		
+								$addon_item_price= unPrettyPrice($val_subs[1]);
 
-			          	 		/** two flavor */
+								$addon_item_price=$addon_qty*$addon_item_price;
 
-			          	 		if (!isset($val['two_flavors'])){
 
-			          	 			$val['two_flavors']='';
 
-			          	 		}
+								/** two flavor */
 
-			          	 		if ( $val['two_flavors']==2){
+								if (!isset($val['two_flavors'])){
 
-			          	 			if ( $val_subs[3]==""){
+									$val['two_flavors']='';
 
-			          	 			   $subtotal+=$addon_item_price; 	
+								}
 
-			          	 			   if ($food_taxable==false){
+								if ( $val['two_flavors']==2){
 
-			          	 			   	   $subtotal_non+=$addon_item_price;
+									if ( $val_subs[3]==""){
 
-			          	 			   }
+										$subtotal+=$addon_item_price;
 
-			          	 			}
+										if ($food_taxable==false){
 
-			          	 		} else {		
+											$subtotal_non+=$addon_item_price;
 
-			          	 			 /** check if item is taxable*/
+										}
 
-			          	 			 $subtotal+=$addon_item_price;
+									}
 
-			          	 			 if ($food_taxable==false){
+								} else {
 
-			          	 			 	 $subtotal_non+=$addon_item_price;
+									/** check if item is taxable*/
 
-			          	 			 }
+									$subtotal+=$addon_item_price;
 
-			          	 		}
+									if ($food_taxable==false){
 
-			          	 		
+										$subtotal_non+=$addon_item_price;
 
-			          	 		$item_array[$key]['sub_item'][]=array(
+									}
 
-			          	 		  'addon_name'=>$val_subs[2],
+								}
 
-			          	 		  'addon_category'=>$subcat_list[$cat_id],
 
-			          	 		  'addon_qty'=>$addon_qty,
 
-			          	 		  //'addon_price'=>$addon_item_price
+								$item_array[$key]['sub_item'][]=array(
 
-			          	 		  'addon_price'=>unPrettyPrice($val_subs[1])
+									'addon_name'=>$val_subs[2],
 
-			          	 		);
+									'addon_category'=>$subcat_list[$cat_id],
 
-			          	 		
+									'addon_qty'=>$addon_qty,
 
-			          	 		/*changes for driver app*/
+									//'addon_price'=>$addon_item_price
 
-			          	 		$item_array[$key]['new_sub_item'][$subcat_list[$cat_id]][]=array(
+									'addon_price'=>unPrettyPrice($val_subs[1])
 
-			          	 		  'addon_name'=>$val_subs[2],
+								);
 
-			          	 		  'addon_category'=>$subcat_list[$cat_id],
 
-			          	 		  'addon_qty'=>$addon_qty,			          	 		  
 
-			          	 		  'addon_price'=>unPrettyPrice($val_subs[1])
+								/*changes for driver app*/
 
-			          	 		);
+								$item_array[$key]['new_sub_item'][$subcat_list[$cat_id]][]=array(
 
-			          	 		
+									'addon_name'=>$val_subs[2],
 
-			          	 		/**translation */
+									'addon_category'=>$subcat_list[$cat_id],
 
-			          	 		$addon_name_trans='';
+									'addon_qty'=>$addon_qty,
 
-			          	 		if ($this->getOptionAdmin("enabled_multiple_translation")==2){
+									'addon_price'=>unPrettyPrice($val_subs[1])
 
-			          	 			$addon_name_trans=$this->getAddonTranslation($val_subs[2],$mid);
+								);
 
-			          	 		}
 
-			          	 					          	 					          	 		
 
-			          	 		$htm.='<div class="a">'.$addon_qty.'x</div>';
+								/**translation */
 
-$htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($val_subs[2],
+								$addon_name_trans='';
 
-'sub_item_name',$addon_name_trans)).'</div>';
+								if ($this->getOptionAdmin("enabled_multiple_translation")==2){
 
-						          $htm.='<div class="manage">';							             
+									$addon_name_trans=$this->getAddonTranslation($val_subs[2],$mid);
 
-						             if ( $addon_item_price!=0){
+								}
 
-						             $htm.='<div class="d">'.displayPrice(baseCurrency(),prettyFormat($addon_item_price)).'</div>';
 
-						             } else $htm.='<div class="d">-</div>';
 
-						          $htm.='</div>';
+								$htm.='<div class="a">'.$addon_qty.'x</div>';
 
-						        $htm.='<div class="clear"></div>';
+								$htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($val_subs[2],
 
-			          	 	}
+										'sub_item_name',$addon_name_trans)).'</div>';
 
-			          	 }
+								$htm.='<div class="manage">';
 
-			          }	    			
+								if ( $addon_item_price!=0){
 
-			          
+									$htm.='<div class="d">'.displayPrice(baseCurrency(),prettyFormat($addon_item_price)).'</div>';
 
-			          $htm.='</div>';
+								} else $htm.='<div class="d">-</div>';
 
-			          				          
+								$htm.='</div>';
 
-			          $x++;
+								$htm.='<div class="clear"></div>';
 
-			          $added_item[]=$val['item_id'];  /** fixed addon qty */
+							}
 
-    			}	  
+						}
 
-    			
+					}
 
-    			$taxable_subtotal=0;	    			
 
-    			$tax_amt=0;
 
-    			
+					$htm.='</div>';
 
-    			$tax=Yii::app()->functions->getOption('merchant_tax',$mid);
 
-    			//dump($tax);
 
-    			
+					$x++;
 
-    			/*if transaction is pickup*/
+					$added_item[]=$val['item_id'];  /** fixed addon qty */
 
-    			/*if ($data['delivery_type']=="pickup"){
+				}
+
+
+
+				$taxable_subtotal=0;
+
+				$tax_amt=0;
+
+
+
+				$tax=Yii::app()->functions->getOption('merchant_tax',$mid);
+
+				//dump($tax);
+
+
+
+				/*if transaction is pickup*/
+
+				/*if ($data['delivery_type']=="pickup"){
 
     				$tax=0;
 
     			}*/
 
-    			
 
-    			$tax_amt=$tax;
 
-    			$delivery_charges=Yii::app()->functions->getOption('merchant_delivery_charges',$mid);
+				$tax_amt=$tax;
 
-    			
+				$delivery_charges=Yii::app()->functions->getOption('merchant_delivery_charges',$mid);
 
-    			
 
-    			//shipping rates
 
-    			if (isset($_SESSION['shipping_fee'])){
 
-    				if (is_numeric($_SESSION['shipping_fee'])){
 
-    					$delivery_charges=$_SESSION['shipping_fee'];
+				//shipping rates
 
-    				}
+				if (isset($_SESSION['shipping_fee'])){
 
-    			}
+					if (is_numeric($_SESSION['shipping_fee'])){
 
-    			//if (isset($data['delivery_charge']) && $data['delivery_charge']>=1){
+						$delivery_charges=$_SESSION['shipping_fee'];
 
-    			if (isset($data['delivery_charge'])){
+					}
 
-    				$delivery_charges=$data['delivery_charge'];
+				}
 
-    			}    		    			
+				//if (isset($data['delivery_charge']) && $data['delivery_charge']>=1){
 
-    			//end shipping rates
+				if (isset($data['delivery_charge'])){
 
-    			
+					$delivery_charges=$data['delivery_charge'];
 
-    			$merchant_packaging_charge=Yii::app()->functions->getOption('merchant_packaging_charge',$mid);    		
+				}
 
-    			//fixed packaging charge
+				//end shipping rates
 
-    			if (isset($data['packaging'])){
 
-    				if ($data['packaging']>0){
 
-    					$merchant_packaging_charge=$data['packaging'];
+				$merchant_packaging_charge=Yii::app()->functions->getOption('merchant_packaging_charge',$mid);
 
-    				}
+				//fixed packaging charge
 
-    			}    		
+				if (isset($data['packaging'])){
 
-    			
+					if ($data['packaging']>0){
 
-                if (!empty($delivery_charges)){
+						$merchant_packaging_charge=$data['packaging'];
 
-                	$delivery_charges=unPrettyPrice($delivery_charges);
+					}
 
-                } else $delivery_charges=0;        
+				}
 
-                
 
-                /*if transaction is pickup*/
 
-                //dump($data);
+				if (!empty($delivery_charges)){
 
-    			if ($data['delivery_type']=="pickup"){
+					$delivery_charges=unPrettyPrice($delivery_charges);
 
-    				$delivery_charges=0;
+				} else $delivery_charges=0;
 
-    			}           
 
-                    			
 
-                /*VOUCHER*/
+				/*if transaction is pickup*/
 
-    			$has_voucher=false;
+				//dump($data);
 
-    			$less_voucher=0; 
+				if ($data['delivery_type']=="pickup"){
 
-    			$voucher_type="";   			    			
+					$delivery_charges=0;
 
-		         if (isset($_SESSION['voucher_code'])){		         	
+				}
 
-		         	if (is_array($_SESSION['voucher_code'])){		         		
 
-		         		$has_voucher=true;		         
 
-		         		//dump($_SESSION['voucher_code']);		
+				/*VOUCHER*/
 
-		         		$_SESSION['voucher_code']['amount']=unPrettyPrice($_SESSION['voucher_code']['amount']);
+				$has_voucher=false;
 
-		         		if ( $_SESSION['voucher_code']['voucher_type']=="fixed amount" ){
+				$less_voucher=0;
 
-		         			$less_voucher=$_SESSION['voucher_code']['amount'];
+				$voucher_type="";
 
-		         		} else {
+				if (isset($_SESSION['voucher_code'])){
 
-		         			$less_voucher=$subtotal*($_SESSION['voucher_code']['amount']/100);
+					if (is_array($_SESSION['voucher_code'])){
 
-		         			$voucher_type=normalPrettyPrice($_SESSION['voucher_code']['amount'])."%";
+						$has_voucher=true;
 
-		         		}		     
+						//dump($_SESSION['voucher_code']);
 
-		         		$_SESSION['less_voucher']=$less_voucher;
+						$_SESSION['voucher_code']['amount']=unPrettyPrice($_SESSION['voucher_code']['amount']);
 
-		         	}		         
+						if ( $_SESSION['voucher_code']['voucher_type']=="fixed amount" ){
 
-		        }    		        
+							$less_voucher=$_SESSION['voucher_code']['amount'];
 
-		        if ( $receipt==TRUE){		        	
+						} else {
 
-		        	$order_ids=isset($data['order_id'])?$data['order_id']:'';
+							$less_voucher=$subtotal*($_SESSION['voucher_code']['amount']/100);
 
-		        	if (isset($_GET['id'])){
+							$voucher_type=normalPrettyPrice($_SESSION['voucher_code']['amount'])."%";
 
-		        		$order_ids=$_GET['id'];
+						}
 
-		        	}		        		        	
+						$_SESSION['less_voucher']=$less_voucher;
 
-		        	$order_infos=$this->getOrderInfo($order_ids);
+					}
 
-		        	//dump($order_infos);
+				}
 
-		        	if (!empty($order_infos['voucher_code'])){
+				if ( $receipt==TRUE){
 
-		        		$has_voucher=true;
+					$order_ids=isset($data['order_id'])?$data['order_id']:'';
 
-		        		if ($order_infos['voucher_type']=="fixed amount"){
+					if (isset($_GET['id'])){
 
-		        			$less_voucher=$order_infos['voucher_amount'];
+						$order_ids=$_GET['id'];
 
-		        		} else {
+					}
 
-		        			$voucher_type=normalPrettyPrice((integer)$order_infos['voucher_amount'])."%";
+					$order_infos=$this->getOrderInfo($order_ids);
 
-		        			$less_voucher=$subtotal*($order_infos['voucher_amount']/100);
+					//dump($order_infos);
 
-		        		}		        	
+					if (!empty($order_infos['voucher_code'])){
 
-		        	} else $has_voucher=false;	        
+						$has_voucher=true;
 
-		        }    		
+						if ($order_infos['voucher_type']=="fixed amount"){
 
+							$less_voucher=$order_infos['voucher_amount'];
 
+						} else {
 
-		        if ($less_voucher==TRUE){
+							$voucher_type=normalPrettyPrice((integer)$order_infos['voucher_amount'])."%";
 
-		        	$subtotal=$subtotal-$less_voucher;
+							$less_voucher=$subtotal*($order_infos['voucher_amount']/100);
 
-		        	
+						}
 
-		        	/** check if item is taxable*/
+					} else $has_voucher=false;
 
-		        	if ($food_taxable==false){
+				}
 
-		        	    $subtotal_non=$subtotal_non-$less_voucher;
 
-		        	}
 
-		        }    	
+				if ($less_voucher==TRUE){
 
-		        		        
+					$subtotal=$subtotal-$less_voucher;
 
-		        /*PROMO STARTS HERE*/
 
-		        $show_discount=false;
 
-		        $discounted_amount=0;
+					/** check if item is taxable*/
 
-		        $merchant_discount_amount=0;
+					if ($food_taxable==false){
 
-		        
+						$subtotal_non=$subtotal_non-$less_voucher;
 
-		        if ($receipt==TRUE){
+					}
 
-		        	$_GET['id']=isset($_GET['id'])?$_GET['id']:$new_order_id;
+				}
 
-		        	if ( $promo_res=$this->getOrderDiscount($_GET['id'])){		        		
 
-		        		if ( $promo_res['discounted_amount']>=0.1){
 
-			        		$show_discount=true;
+				/*PROMO STARTS HERE*/
 
-			        		$merchant_discount_amount=number_format($promo_res['discount_percentage'],0);
+				$show_discount=false;
 
-			        		$discounted_amount=$promo_res['discounted_amount'];
+				$discounted_amount=0;
 
-			        		$subtotal=$subtotal-$discounted_amount;
+				$merchant_discount_amount=0;
 
-			        		
 
-			        		/** check if item is taxable*/
 
-			        		if ($food_taxable==false){
+				if ($receipt==TRUE){
 
-			        		    $subtotal_non=$subtotal_non-$discounted_amount;
+					$_GET['id']=isset($_GET['id'])?$_GET['id']:$new_order_id;
 
-			        		}
+					if ( $promo_res=$this->getOrderDiscount($_GET['id'])){
 
-		        		}
+						if ( $promo_res['discounted_amount']>=0.1){
 
-		        	}		        	
+							$show_discount=true;
 
-		        } else {
+							$merchant_discount_amount=number_format($promo_res['discount_percentage'],0);
 
-			        if ( $promo_res=Yii::app()->functions->getMerchantOffersActive($mid)){		        	
+							$discounted_amount=$promo_res['discounted_amount'];
 
-			        	$merchant_spend_amount=$promo_res['offer_price'];
+							$subtotal=$subtotal-$discounted_amount;
 
-			        	$merchant_discount_amount=number_format($promo_res['offer_percentage'],0);
 
-			        	if ( $subtotal>=$merchant_spend_amount){
 
-			        	   $show_discount=true;
+							/** check if item is taxable*/
 
-			        	   $merchant_discount_amount1=$merchant_discount_amount/100;
+							if ($food_taxable==false){
 
-			        	   $discounted_amount=$subtotal*$merchant_discount_amount1;		        	
+								$subtotal_non=$subtotal_non-$discounted_amount;
 
-			        	   $subtotal=$subtotal-$discounted_amount;
+							}
 
-			        	   
+						}
 
-			        	   /** check if item is taxable*/
+					}
 
-			        	   if ($food_taxable==false){
+				} else {
 
-			        		   $subtotal_non=$subtotal_non-$discounted_amount;
+					if ( $promo_res=Yii::app()->functions->getMerchantOffersActive($mid)){
 
-			        	   }
+						$merchant_spend_amount=$promo_res['offer_price'];
 
-			        	}		        	
+						$merchant_discount_amount=number_format($promo_res['offer_percentage'],0);
 
-			        }    	
+						if ( $subtotal>=$merchant_spend_amount){
 
-		        }	
+							$show_discount=true;
 
-		        
+							$merchant_discount_amount1=$merchant_discount_amount/100;
 
-		        /**above sub total free delivery*/		
+							$discounted_amount=$subtotal*$merchant_discount_amount1;
 
-		        $free_delivery=false;        
+							$subtotal=$subtotal-$discounted_amount;
 
-		        if ( $data['delivery_type']=="delivery"){
 
-		        	
 
-		        	if(!isset($_GET['backend'])){
+							/** check if item is taxable*/
 
-			        	$free_delivery_above_price=Yii::app()->functions->getOption("free_delivery_above_price",$mid);
+							if ($food_taxable==false){
 
-			        	if (!empty($free_delivery_above_price)){
+								$subtotal_non=$subtotal_non-$discounted_amount;
 
-				        	if ($subtotal>=$free_delivery_above_price){
+							}
 
-				        	   	$delivery_charges=0;
+						}
 
-				        	   	$free_delivery=true;
+					}
 
-				        	}
+				}
 
-			        	}
 
-		        	}		        	
 
-		        }
+				/**above sub total free delivery*/
 
-		        /**above sub total free delivery*/
+				$free_delivery=false;
 
-		        
+				if ( $data['delivery_type']=="delivery"){
 
-		        /** packaging incremental*/
 
-		        if ( Yii::app()->functions->getOption("merchant_packaging_increment",$mid)==2){		        	
 
-		        	if (!isset($data['packaging'])){
+					if(!isset($_GET['backend'])){
 
-		        		$total_cart_item=0;
+						$free_delivery_above_price=Yii::app()->functions->getOption("free_delivery_above_price",$mid);
 
-		        		foreach ($cart_item as $cart_item_x) {		        			
+						if (!empty($free_delivery_above_price)){
 
-		        			$total_cart_item+=$cart_item_x['qty'];
+							if ($subtotal>=$free_delivery_above_price){
 
-		        		}		                
+								$delivery_charges=0;
 
-		                $merchant_packaging_charge=$total_cart_item*$merchant_packaging_charge;
+								$free_delivery=true;
 
-		        	}
+							}
 
-		        }
+						}
 
-		        
+					}
 
-		        /*POINTS PROGRAM*/
+				}
 
-		        if (FunctionsV3::hasModuleAddon("pointsprogram")){
+				/**above sub total free delivery*/
 
-				    if (isset($_SESSION['pts_redeem_amt']) && $_SESSION['pts_redeem_amt']>0.01){
 
-				    	$pts_redeem_amt=unPrettyPrice($_SESSION['pts_redeem_amt']);
 
-				    	$subtotal=unPrettyPrice($subtotal)-$pts_redeem_amt;
+				/** packaging incremental*/
 
-				    } else {
+				if ( Yii::app()->functions->getOption("merchant_packaging_increment",$mid)==2){
 
-					    if ($receipt==TRUE){			    	
+					if (!isset($data['packaging'])){
 
-					    	if (isset($data['points_discount']) && $data['points_discount']>0.01){
+						$total_cart_item=0;
 
-					    	   $pts_redeem_amt=unPrettyPrice($data['points_discount']);
+						foreach ($cart_item as $cart_item_x) {
 
-					    	   $subtotal=unPrettyPrice($subtotal)-$pts_redeem_amt;
+							$total_cart_item+=$cart_item_x['qty'];
 
-					        }	    	
+						}
 
-					    }    	
+						$merchant_packaging_charge=$total_cart_item*$merchant_packaging_charge;
 
-				    }
+					}
 
-		        }
+				}
 
-		        		        
 
-    		    if ( !empty($tax)){
 
-    				$tax=$tax/100;
+				/*POINTS PROGRAM*/
 
-    				
+				if (FunctionsV3::hasModuleAddon("pointsprogram")){
 
-    				/** check if item is taxable*/    
+					if (isset($_SESSION['pts_redeem_amt']) && $_SESSION['pts_redeem_amt']>0.01){
 
-    				$temp_delivery_charges=$delivery_charges;   	    				
+						$pts_redeem_amt=unPrettyPrice($_SESSION['pts_redeem_amt']);
 
-    				if (Yii::app()->functions->getOption("merchant_tax_charges",$mid)==2){
+						$subtotal=unPrettyPrice($subtotal)-$pts_redeem_amt;
 
-    					$temp_delivery_charges=0;
+					} else {
 
-    				}  
+						if ($receipt==TRUE){
 
-    				  				
+							if (isset($data['points_discount']) && $data['points_discount']>0.01){
 
-    				if ($receipt==true){    					
+								$pts_redeem_amt=unPrettyPrice($data['points_discount']);
 
-    					if (isset($data['donot_apply_tax_delivery'])){
+								$subtotal=unPrettyPrice($subtotal)-$pts_redeem_amt;
 
-    						if ($data['donot_apply_tax_delivery']==2){
+							}
 
-    						   	$temp_delivery_charges=0;    						   	
+						}
 
-    						}
+					}
 
-    					}    					
+				}
 
-    				}
 
 
+				if ( !empty($tax)){
 
-    				if (!isset($subtotal_non)){
+					$tax=$tax/100;
 
-    					$subtotal_non=0;
 
-    				}  		   
 
-    				
+					/** check if item is taxable*/
 
-    				if ($subtotal_non>=1){
+					$temp_delivery_charges=$delivery_charges;
 
-    					$temp_subtotal=$subtotal-$subtotal_non;
+					if (Yii::app()->functions->getOption("merchant_tax_charges",$mid)==2){
 
-    					$taxable_subtotal=($temp_subtotal+$temp_delivery_charges+$merchant_packaging_charge)*$tax;
+						$temp_delivery_charges=0;
 
-    				} else $taxable_subtotal=($subtotal+$temp_delivery_charges+$merchant_packaging_charge)*$tax;    
+					}
 
-    				
 
-    				/*dump($subtotal);
+
+					if ($receipt==true){
+
+						if (isset($data['donot_apply_tax_delivery'])){
+
+							if ($data['donot_apply_tax_delivery']==2){
+
+								$temp_delivery_charges=0;
+
+							}
+
+						}
+
+					}
+
+
+
+					if (!isset($subtotal_non)){
+
+						$subtotal_non=0;
+
+					}
+
+
+
+					if ($subtotal_non>=1){
+
+						$temp_subtotal=$subtotal-$subtotal_non;
+
+						$taxable_subtotal=($temp_subtotal+$temp_delivery_charges+$merchant_packaging_charge)*$tax;
+
+					} else $taxable_subtotal=($subtotal+$temp_delivery_charges+$merchant_packaging_charge)*$tax;
+
+
+
+					/*dump($subtotal);
 
     				dump($subtotal_non);
 
     				dump("taxable_subtotal=>".$taxable_subtotal);*/
 
-    			}	    	
-
-    			
-
-    				            			
-
-		        $total=$subtotal+$taxable_subtotal+$delivery_charges+$merchant_packaging_charge;
-
-    			    			
-
-		        $htm.='<div class="summary-wrap">';
-
-		        
-
-		         if ( $has_voucher==TRUE){		 
+				}
 
 
 
-		         	 if ( $show_discount==true):
 
-			         /*$htm.='<div class="a">'.t("Discount")." $merchant_discount_amount%".  ':</div>';
+
+				$total=$subtotal+$taxable_subtotal+$delivery_charges+$merchant_packaging_charge;
+
+
+
+				$htm.='<div class="summary-wrap">';
+
+
+
+				if ( $has_voucher==TRUE){
+
+
+
+					if ( $show_discount==true):
+
+						/*$htm.='<div class="a">'.t("Discount")." $merchant_discount_amount%".  ':</div>';
 
 			         $htm.='<div class="manage manage-ux">';
 
@@ -7026,21 +7026,21 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 			         $htm.='</div>';*/
 
-			           $htm.=FunctionsV3::receiptRowTotal( t("Discount")." $merchant_discount_amount%" ,
+						$htm.=FunctionsV3::receiptRowTotal( t("Discount")." $merchant_discount_amount%" ,
 
-			           displayPrice(baseCurrency(),prettyFormat($discounted_amount,$mid)));
+							displayPrice(baseCurrency(),prettyFormat($discounted_amount,$mid)));
 
-			         endif;
+					endif;
 
 
 
-			         /*$cart_subtotal_raw=$subtotal+$less_voucher;
+					/*$cart_subtotal_raw=$subtotal+$less_voucher;
 
 			         $htm.="<span class=\"cart_subtotal_raw\" data-value=\"$cart_subtotal_raw\" ></span>";*/
 
-			         
 
-			         /*$htm.='<div class="a">'.Yii::t("default","Sub Total").':</div>';
+
+					/*$htm.='<div class="a">'.Yii::t("default","Sub Total").':</div>';
 
 			         $htm.='<div class="manage">';
 
@@ -7048,25 +7048,25 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 			         $htm.='</div>';*/
 
-			         
 
-			         $htm.=FunctionsV3::receiptRowTotal("Sub Total",
 
-			         displayPrice(baseCurrency(),prettyFormat($subtotal+$less_voucher,$mid)),'','cart_subtotal'
+					$htm.=FunctionsV3::receiptRowTotal("Sub Total",
 
-			         );
+						displayPrice(baseCurrency(),prettyFormat($subtotal+$less_voucher,$mid)),'','cart_subtotal'
 
-		          				         
+					);
 
-			         if ($receipt==TRUE){
 
-			         	$voucher_code=" - ".$order_infos['voucher_code']."";
 
-			         } else $voucher_code='';
+					if ($receipt==TRUE){
 
-			         
+						$voucher_code=" - ".$order_infos['voucher_code']."";
 
-			         /*$htm.='<div class="a">'.Yii::t("default","Less Voucher")." ".$voucher_type.':</div>';
+					} else $voucher_code='';
+
+
+
+					/*$htm.='<div class="a">'.Yii::t("default","Less Voucher")." ".$voucher_type.':</div>';
 
 			         $htm.='<div class="manage">';
 
@@ -7076,37 +7076,37 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 
 
-			         $htm.=FunctionsV3::receiptRowTotal( Yii::t("default","Less Voucher")." ".$voucher_type ,
+					$htm.=FunctionsV3::receiptRowTotal( Yii::t("default","Less Voucher")." ".$voucher_type ,
 
-			         "(".displayPrice(baseCurrency(),prettyFormat($less_voucher,$mid).")" )
+						"(".displayPrice(baseCurrency(),prettyFormat($less_voucher,$mid).")" )
 
-			         );	         
+					);
 
-			         
 
-			         /*$htm.='<div class="a">'.Yii::t("default","Sub Total").':</div>';
+
+					/*$htm.='<div class="a">'.Yii::t("default","Sub Total").':</div>';
 
 			         $htm.='<div class="manage">';
 
 			           $htm.='<div class="b">'.displayPrice(baseCurrency(),prettyFormat($subtotal,$mid)).'</div>';
 
-			         $htm.='</div>';*/	
+			         $htm.='</div>';*/
 
-			         $htm.=FunctionsV3::receiptRowTotal("Sub Total",
+					$htm.=FunctionsV3::receiptRowTotal("Sub Total",
 
-			         displayPrice(baseCurrency(),prettyFormat($subtotal,$mid))
+						displayPrice(baseCurrency(),prettyFormat($subtotal,$mid))
 
-			         );
+					);
 
-			         		        
 
-		         } else {			         
 
-		         	
+				} else {
 
-			         if ( $show_discount==true):
 
-			         /*$htm.='<div class="a">'.t("Discount")." $merchant_discount_amount%".  ':</div>';
+
+					if ( $show_discount==true):
+
+						/*$htm.='<div class="a">'.t("Discount")." $merchant_discount_amount%".  ':</div>';
 
 			         $htm.='<div class="manage manage-ux">';
 
@@ -7114,59 +7114,59 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 			         $htm.='</div>';*/
 
-			         $htm.=FunctionsV3::receiptRowTotal( t("Discount")." $merchant_discount_amount%",
+						$htm.=FunctionsV3::receiptRowTotal( t("Discount")." $merchant_discount_amount%",
 
-			           displayPrice(baseCurrency(),prettyFormat($discounted_amount,$mid))
+							displayPrice(baseCurrency(),prettyFormat($discounted_amount,$mid))
 
-			          );
+						);
 
-			         endif;
+					endif;
 
-		         
 
-			         /*$cart_subtotal_raw=$subtotal;
+
+					/*$cart_subtotal_raw=$subtotal;
 
 			         $htm.="<span class=\"cart_subtotal_raw\" data-value=\"$cart_subtotal_raw\" ></span>";*/
 
-			         
 
-			         /*POINTS PROGRAM*/			
 
-			         if (FunctionsV3::hasModuleAddon("pointsprogram")){      
+					/*POINTS PROGRAM*/
 
-				         $pts_redeem_amt=0;
+					if (FunctionsV3::hasModuleAddon("pointsprogram")){
 
-				         if (isset($_SESSION['pts_redeem_amt']) && $_SESSION['pts_redeem_amt']>0.01){			         
+						$pts_redeem_amt=0;
 
-				         	$pts_redeem_amt=$_SESSION['pts_redeem_amt'];
+						if (isset($_SESSION['pts_redeem_amt']) && $_SESSION['pts_redeem_amt']>0.01){
 
-				         } else {
+							$pts_redeem_amt=$_SESSION['pts_redeem_amt'];
 
-				         	if ($receipt==TRUE){
+						} else {
 
-				         		if (isset($data['points_discount']) && $data['points_discount']>0.01){
+							if ($receipt==TRUE){
 
-				         		   	$pts_redeem_amt=$data['points_discount'];
+								if (isset($data['points_discount']) && $data['points_discount']>0.01){
 
-				         		}
+									$pts_redeem_amt=$data['points_discount'];
 
-				         	}
+								}
 
-				         }			         
+							}
 
-				         if($pts_redeem_amt>0){
+						}
 
-					         $htm.=FunctionsV3::receiptRowTotal('Points Discount',
+						if($pts_redeem_amt>0){
 
-					         "(".PointsProgram::price($pts_redeem_amt).")" );	
+							$htm.=FunctionsV3::receiptRowTotal('Points Discount',
 
-				         } 	
+								"(".PointsProgram::price($pts_redeem_amt).")" );
 
-			         }
+						}
 
-			         
+					}
 
-			         /*$htm.='<div class="a">'.Yii::t("default","Sub Total").':</div>';
+
+
+					/*$htm.='<div class="a">'.Yii::t("default","Sub Total").':</div>';
 
 			         $htm.='<div class="manage">';
 
@@ -7174,51 +7174,51 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 			         $htm.='</div>';*/
 
-			         
 
-			        $htm.=FunctionsV3::receiptRowTotal('Sub Total',
 
-			        displayPrice(baseCurrency(),prettyFormat($subtotal,$mid)),'','cart_subtotal'
+					$htm.=FunctionsV3::receiptRowTotal('Sub Total',
 
-			        );
+						displayPrice(baseCurrency(),prettyFormat($subtotal,$mid)),'','cart_subtotal'
 
-			        
+					);
 
-		         }   		
 
-		         
 
-		         		         
+				}
 
-		         if (!empty($delivery_charges)){
 
-		            $htm.=FunctionsV3::receiptRowTotal('Delivery Fee',
 
-		            displayPrice(baseCurrency(),prettyFormat($delivery_charges,$mid)));
 
-		         }		         
 
-		         
+				if (!empty($delivery_charges)){
 
-		         if ( $free_delivery==true){
+					$htm.=FunctionsV3::receiptRowTotal('Delivery Fee',
 
-			         /*$htm.='<div class="a">'.Yii::t("default","Delivery Fee").':</div>';
+						displayPrice(baseCurrency(),prettyFormat($delivery_charges,$mid)));
+
+				}
+
+
+
+				if ( $free_delivery==true){
+
+					/*$htm.='<div class="a">'.Yii::t("default","Delivery Fee").':</div>';
 
 			         $htm.='<div class="manage">';
 
 			           $htm.='<div class="b">'.t("Free").'</div>';
 
-			         $htm.='</div>';*/	
+			         $htm.='</div>';*/
 
-		             $htm.=FunctionsV3::receiptRowTotal("Delivery Fee", t("Free") );
+					$htm.=FunctionsV3::receiptRowTotal("Delivery Fee", t("Free") );
 
-		         }
+				}
 
-		         
 
-		         if (!empty($merchant_packaging_charge)){
 
-		         /*$htm.='<div class="a">'.Yii::t("default","Packaging").':</div>';
+				if (!empty($merchant_packaging_charge)){
+
+					/*$htm.='<div class="a">'.Yii::t("default","Packaging").':</div>';
 
 		         $htm.='<div class="manage">';
 
@@ -7226,19 +7226,19 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		         $htm.='</div>';*/
 
-		           $htm.=FunctionsV3::receiptRowTotal("Packaging",
+					$htm.=FunctionsV3::receiptRowTotal("Packaging",
 
-		             displayPrice(baseCurrency(),prettyFormat($merchant_packaging_charge,$mid))
+						displayPrice(baseCurrency(),prettyFormat($merchant_packaging_charge,$mid))
 
-		           );
+					);
 
-		         }
+				}
 
-		         			         			         
 
-		         if ( !empty($tax)){
 
-				     /*$htm.='<div class="a">'.Yii::t("default","Tax").' '.$tax_amt.'% :</div>';
+				if ( !empty($tax)){
+
+					/*$htm.='<div class="a">'.Yii::t("default","Tax").' '.$tax_amt.'% :</div>';
 
 			         $htm.='<div class="manage">';
 
@@ -7246,23 +7246,23 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 			         $htm.='</div>';*/
 
-			         $htm.=FunctionsV3::receiptRowTotal( t("Tax")." $tax_amt%" ,
+					$htm.=FunctionsV3::receiptRowTotal( t("Tax")." $tax_amt%" ,
 
-			         displayPrice(baseCurrency(),prettyFormat($taxable_subtotal,$mid))
+						displayPrice(baseCurrency(),prettyFormat($taxable_subtotal,$mid))
 
-			         );
+					);
 
-		         }
+				}
 
-		         		         
 
-		         if (isset($data['cart_tip_value'])){
 
-		         	if ( $data['cart_tip_value'] >=0.1) {
+				if (isset($data['cart_tip_value'])){
 
-		         		
+					if ( $data['cart_tip_value'] >=0.1) {
 
-		         		/*$htm.='<div class="a">'.Yii::t("default","Tips").' '.
+
+
+						/*$htm.='<div class="a">'.Yii::t("default","Tips").' '.
 
 		         		number_format($data['cart_tip_percentage'],0).'% :</div>';
 
@@ -7274,31 +7274,31 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 			            $htm.='</div>';*/
 
-			            
 
-			            $htm.=FunctionsV3::receiptRowTotal( t("Tips")." ".number_format($data['cart_tip_percentage'],0)."%" ,
 
-			            displayPrice(baseCurrency(),prettyFormat($data['cart_tip_value'],$mid))
+						$htm.=FunctionsV3::receiptRowTotal( t("Tips")." ".number_format($data['cart_tip_percentage'],0)."%" ,
 
-			            );
+							displayPrice(baseCurrency(),prettyFormat($data['cart_tip_value'],$mid))
 
-			            
+						);
 
-			            $total+=$data['cart_tip_value'];
 
-		         	}
 
-		         }    		
+						$total+=$data['cart_tip_value'];
 
-		         		        		         
+					}
 
-		         if (isset($data['card_fee'])){
+				}
 
-		         	if ( $data['card_fee'] >=0.1) {
 
-		         		
 
-			         	/*$htm.='<div class="a">'.Yii::t("default","Card Fee").':</div>';
+				if (isset($data['card_fee'])){
+
+					if ( $data['card_fee'] >=0.1) {
+
+
+
+						/*$htm.='<div class="a">'.Yii::t("default","Card Fee").':</div>';
 
 			            $htm.='<div class="manage">';
 
@@ -7306,24 +7306,24 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 			            $htm.='</div>';*/
 
-			            
 
-			            $htm.=FunctionsV3::receiptRowTotal("Card Fee",
 
-			            displayPrice(baseCurrency(),prettyFormat($data['card_fee'],$mid))
+						$htm.=FunctionsV3::receiptRowTotal("Card Fee",
 
-			            );
+							displayPrice(baseCurrency(),prettyFormat($data['card_fee'],$mid))
 
-			            
+						);
 
-			            $total+=$data['card_fee'];
 
-		         	}
 
-		         }    		
-              	       
+						$total+=$data['card_fee'];
 
-		       /*$htm.='<div class="a bold cart_total_wrap">'.Yii::t("default","Total").':</div>';
+					}
+
+				}
+
+
+				/*$htm.='<div class="a bold cart_total_wrap">'.Yii::t("default","Total").':</div>';
 
 		         $htm.='<div class="manage">';
 
@@ -7335,135 +7335,135 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		       $htm.='</div>';*/
 
-		       $htm.="<div class=\"row cart_total_wrap bold\">";
+				$htm.="<div class=\"row cart_total_wrap bold\">";
 
-	    	   $htm.="<div class=\"col-md-6 col-xs-6  text-right\">".t("Total")."</div>";
+				$htm.="<div class=\"col-md-6 col-xs-6  text-right\">".t("Total")."</div>";
 
-	    	   $htm.="<div class=\"col-md-6 col-xs-6  text-right cart_total\">".
+				$htm.="<div class=\"col-md-6 col-xs-6  text-right cart_total\">".
 
-	    	   displayPrice(baseCurrency(),prettyFormat($total,$mid))."</div>";
+					displayPrice(baseCurrency(),prettyFormat($total,$mid))."</div>";
 
-	    	   $htm.="</div>";
+				$htm.="</div>";
 
 
 
-		          
-				 $rmb_amount= Yii::app()->functions->getOptionAdmin('rmb_amount');
-				 $rmb = $total * $rmb_amount;
-				 
-		         $htm.="<div class=\"row rmb_total\" style=display:none>";
-				 $htm.="<div class=\"col-md-6 col-xs-6  text-right\">".t("RMB Total")."</div>";
-				 $htm.="<div class=\"col-md-6 col-xs-6  text-right\"><i class=\"fa fa-cny\"></i>".
-				 displayPrice(prettyFormat($rmb,$mid))."</div>";
-				 $htm.="</div>";
 
-		       
+				$rmb_amount= Yii::app()->functions->getOptionAdmin('rmb_amount');
+				$rmb = $total * $rmb_amount;
 
-		       /*POINTS PROGRAM*/
+				$htm.="<div class=\"row rmb_total\" style=display:none >";
+				$htm.="<div class=\"col-md-6 col-xs-6  text-right\">".t("RMB Total")."</div>";
+				$htm.="<div class=\"col-md-6 col-xs-6  text-right\"><i class=\"fa fa-cny\"></i>".
+					displayPrice(prettyFormat($rmb,$mid))."</div>";
+				$htm.="</div>";
 
-		       if (FunctionsV3::hasModuleAddon("pointsprogram")){
 
-		         $htm.=PointsProgram::cartTotalEarnPoints($cart_item,$receipt);
 
-		       }
+				/*POINTS PROGRAM*/
 
-		       
+				if (FunctionsV3::hasModuleAddon("pointsprogram")){
 
-		       if(!isset($pts_redeem_amt)){
+					$htm.=PointsProgram::cartTotalEarnPoints($cart_item,$receipt);
 
-		       	  $pts_redeem_amt=0;
+				}
 
-		       }
 
-		       $htm.=CHtml::hiddenField("subtotal_order",unPrettyPrice($subtotal+$less_voucher+$pts_redeem_amt));
 
-		       
+				if(!isset($pts_redeem_amt)){
 
-		       $htm.=CHtml::hiddenField("subtotal_order2",unPrettyPrice($subtotal));
+					$pts_redeem_amt=0;
 
-		       $htm.=CHtml::hiddenField("subtotal_extra_charge",
+				}
 
-		       unPrettyPrice($delivery_charges+$merchant_packaging_charge+$taxable_subtotal));
+				$htm.=CHtml::hiddenField("subtotal_order",unPrettyPrice($subtotal+$less_voucher+$pts_redeem_amt));
 
-		       
 
-		       
 
-		       if(!isset($data['cart_tip_percentage'])){
+				$htm.=CHtml::hiddenField("subtotal_order2",unPrettyPrice($subtotal));
 
-		       	   $data['cart_tip_percentage']='';
+				$htm.=CHtml::hiddenField("subtotal_extra_charge",
 
-		       }
+					unPrettyPrice($delivery_charges+$merchant_packaging_charge+$taxable_subtotal));
 
-		       
 
-		       // array value
 
-		       $item_array_total=array(
 
-		         'subtotal'=>$subtotal,
 
-		         'taxable_total'=>$taxable_subtotal,
+				if(!isset($data['cart_tip_percentage'])){
 
-		         'delivery_charges'=>$delivery_charges,
+					$data['cart_tip_percentage']='';
 
-		         'total'=>$total,		         
+				}
 
-		         'tax'=>$tax,
 
-		         'tax_amt'=>$tax_amt,
 
-		         'curr'=>baseCurrency(),
+				// array value
 
-		         'mid'=>$mid,
+				$item_array_total=array(
 
-		         'discounted_amount'=>$discounted_amount,
+					'subtotal'=>$subtotal,
 
-		         'merchant_discount_amount'=>$merchant_discount_amount,
+					'taxable_total'=>$taxable_subtotal,
 
-		         'merchant_packaging_charge'=>$merchant_packaging_charge,
+					'delivery_charges'=>$delivery_charges,
 
-		         'less_voucher'=>$less_voucher,
+					'total'=>$total,
 
-		         'voucher_type'=>$voucher_type,
+					'tax'=>$tax,
 
-		         'tips'=>isset($data['cart_tip_value'])?$data['cart_tip_value']:'',
+					'tax_amt'=>$tax_amt,
 
-		         'tips_percent'=>$data['cart_tip_percentage']>0.1?number_format($data['cart_tip_percentage'],0)."%":'',
+					'curr'=>baseCurrency(),
 
-		         'pts_redeem_amt'=>isset($pts_redeem_amt)?$pts_redeem_amt:''
+					'mid'=>$mid,
 
-		       );		    
+					'discounted_amount'=>$discounted_amount,
 
-		       
+					'merchant_discount_amount'=>$merchant_discount_amount,
 
-		       /*dump($data);
+					'merchant_packaging_charge'=>$merchant_packaging_charge,
+
+					'less_voucher'=>$less_voucher,
+
+					'voucher_type'=>$voucher_type,
+
+					'tips'=>isset($data['cart_tip_value'])?$data['cart_tip_value']:'',
+
+					'tips_percent'=>$data['cart_tip_percentage']>0.1?number_format($data['cart_tip_percentage'],0)."%":'',
+
+					'pts_redeem_amt'=>isset($pts_redeem_amt)?$pts_redeem_amt:''
+
+				);
+
+
+
+				/*dump($data);
 
 		       dump($htm);*/
 
-    			  			
 
-    			$this->code=1;
 
-    			$this->msg="OK";
+				$this->code=1;
 
-    			$this->details=array(
+				$this->msg="OK";
 
-    			  'item-count'=>$x,
+				$this->details=array(
 
-    			  'html'=>$htm,
+					'item-count'=>$x,
 
-    			  'raw'=>array('item'=>$item_array,'total'=>$item_array_total)
+					'html'=>$htm,
 
-    			);
+					'raw'=>array('item'=>$item_array,'total'=>$item_array_total)
 
-    		} else $this->msg=Yii::t("default","No Item added yet!");
+				);
 
-	    } else $this->msg=Yii::t("default","No Item added yet!");
+			} else $this->msg=Yii::t("default","No Item added yet!");
+
+		} else $this->msg=Yii::t("default","No Item added yet!");
 
 	}
 
-	
+
 
 	public function isClientExist($email_address='')
 
@@ -7493,17 +7493,17 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	}
 
-	
+
 
 	public function clientAutoLogin($user='',$pass='',$md5_pass='')
 
-    {    	
+	{
 
-    	$DbExt=new DbExt;
+		$DbExt=new DbExt;
 
-    	if (!empty($md5_pass)){
+		if (!empty($md5_pass)){
 
-    		$stmt="SELECT * FROM
+			$stmt="SELECT * FROM
 
 	    	{{client}}
 
@@ -7523,9 +7523,9 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	    	";
 
-    	} else {       	
+		} else {
 
-	    	$stmt="SELECT * FROM
+			$stmt="SELECT * FROM
 
 	    	{{client}}
 
@@ -7545,169 +7545,169 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	    	";
 
-    	}    	
+		}
 
-    	//dump($stmt);
+		//dump($stmt);
 
-    	if ( $res=$DbExt->rst($stmt)) {	    		
+		if ( $res=$DbExt->rst($stmt)) {
 
-    		//dump($res);
+			//dump($res);
 
-    		unset($res[0]['password']);
+			unset($res[0]['password']);
 
-    		$client_id=$res[0]['client_id'];
+			$client_id=$res[0]['client_id'];
 
-    		$update=array('last_login'=>date('c'),'ip_address'=>$_SERVER['REMOTE_ADDR']);
+			$update=array('last_login'=>date('c'),'ip_address'=>$_SERVER['REMOTE_ADDR']);
 
-    		$DbExt->updateData("{{client}}",$update,'client_id',$client_id);
+			$DbExt->updateData("{{client}}",$update,'client_id',$client_id);
 
-    		$_SESSION['kr_client']=$res[0];
+			$_SESSION['kr_client']=$res[0];
 
-    		return true;
+			return true;
 
-    	}	    
+		}
 
-    	return false;
+		return false;
 
-    }	
+	}
 
-    
 
-    public function isClientLogin()
 
-    {
+	public function isClientLogin()
 
-    	if (isset($_SESSION['kr_client'])){
+	{
 
-    		if (array_key_exists('client_id',$_SESSION['kr_client'])){    			
+		if (isset($_SESSION['kr_client'])){
 
-    			if (is_numeric($_SESSION['kr_client']['client_id'])){
+			if (array_key_exists('client_id',$_SESSION['kr_client'])){
 
-    				return true;
+				if (is_numeric($_SESSION['kr_client']['client_id'])){
 
-    			}
+					return true;
 
-    		}    	
+				}
 
-    	}
+			}
 
-    	return false;
+		}
 
-    }
+		return false;
 
-    
+	}
 
-    public function getClientId()
 
-    {
 
-    	if (isset($_SESSION['kr_client'])){
+	public function getClientId()
 
-    		if (array_key_exists('client_id',$_SESSION['kr_client'])){    			
+	{
 
-    			if (is_numeric($_SESSION['kr_client']['client_id'])){
+		if (isset($_SESSION['kr_client'])){
 
-    				return $_SESSION['kr_client']['client_id'];
+			if (array_key_exists('client_id',$_SESSION['kr_client'])){
 
-    			}
+				if (is_numeric($_SESSION['kr_client']['client_id'])){
 
-    		}    	
+					return $_SESSION['kr_client']['client_id'];
 
-    	}
+				}
 
-    	return false;
+			}
 
-    }
+		}
 
-    
+		return false;
 
-    public function getClientName()
+	}
 
-    {
 
-    	if (isset($_SESSION['kr_client'])){
 
-    		if (array_key_exists('client_id',$_SESSION['kr_client'])){    			
+	public function getClientName()
 
-    			if (is_numeric($_SESSION['kr_client']['client_id'])){    				
+	{
 
-    				return $_SESSION['kr_client']['first_name'];
+		if (isset($_SESSION['kr_client'])){
 
-    			}
+			if (array_key_exists('client_id',$_SESSION['kr_client'])){
 
-    		}    	
+				if (is_numeric($_SESSION['kr_client']['client_id'])){
 
-    	}
+					return $_SESSION['kr_client']['first_name'];
 
-    	return false;
+				}
 
-    }
+			}
 
-    
+		}
 
-    public function ccExpirationMonth()
+		return false;
 
-    {
+	}
 
-    	$data='';
 
-    	for ($i = 1; $i <= 12; $i++) {    		    		
 
-    		$temp=$i;
+	public function ccExpirationMonth()
 
-    		if (strlen($i)==1){
+	{
 
-    			$temp="0".$i;
+		$data='';
 
-    		}    		
+		for ($i = 1; $i <= 12; $i++) {
 
-    		$data[$temp]=$temp;
+			$temp=$i;
 
-    	}
+			if (strlen($i)==1){
 
-    	return $data;
+				$temp="0".$i;
 
-    }
+			}
 
-    
+			$data[$temp]=$temp;
 
-    public function ccExpirationYear()
+		}
 
-    {
+		return $data;
 
-    	$data='';
+	}
 
-    	$yr_now=date("Y");
 
-    	for ($i = 0; $i <= 12; $i++) {    		    		    		
 
-    		$yr=$yr_now+$i;
+	public function ccExpirationYear()
 
-    		$data[$yr]=$yr;
+	{
 
-    	}
+		$data='';
 
-    	return $data;
+		$yr_now=date("Y");
 
-    }
+		for ($i = 0; $i <= 12; $i++) {
 
-    
+			$yr=$yr_now+$i;
 
-    public function maskCardnumber($cardnumber='')
+			$data[$yr]=$yr;
 
-    {
+		}
 
-    	if ( !empty($cardnumber)){
+		return $data;
 
-    		return substr($cardnumber,0,4)."XXXXXXXX".substr($cardnumber,-4,4);
+	}
 
-    	}
 
-    	return '';
 
-    }
+	public function maskCardnumber($cardnumber='')
 
-    
+	{
+
+		if ( !empty($cardnumber)){
+
+			return substr($cardnumber,0,4)."XXXXXXXX".substr($cardnumber,-4,4);
+
+		}
+
+		return '';
+
+	}
+
+
 
 	public function getCreditCardInfo($cc_id)
 
@@ -7725,11 +7725,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		LIMIT 0,1
 
-		";		
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 		
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
@@ -7739,9 +7739,9 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return FALSE;
 
-	}	        
+	}
 
-	
+
 
 	public function getOrder($order_id='')
 
@@ -7765,7 +7765,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as full_name,
 
-		
+
 
 		(
 
@@ -7781,11 +7781,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as email_address,
 
-		
+
 
 		(
 
-		select restaurant_name 	
+		select restaurant_name
 
 		from
 
@@ -7793,15 +7793,15 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		merchant_id=a.merchant_id 	
+		merchant_id=a.merchant_id
 
 		) as merchant_name,
 
-		
+
 
 		(
 
-		select restaurant_slug 	
+		select restaurant_slug
 
 		from
 
@@ -7809,11 +7809,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		merchant_id=a.merchant_id 	
+		merchant_id=a.merchant_id
 
 		) as restaurant_slug,
 
-		
+
 
 		(
 
@@ -7829,7 +7829,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as full_address,
 
-		
+
 
 		(
 
@@ -7845,7 +7845,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as location_name,
 
-		
+
 
 		(
 
@@ -7861,7 +7861,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as contact_phone,
 
-		
+
 
 		(
 
@@ -7873,11 +7873,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		cc_id=a.cc_id 
+		cc_id=a.cc_id
 
-		) as credit_card_number		
+		) as credit_card_number
 
-		
+
 
 		 FROM
 
@@ -7889,11 +7889,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		LIMIT 0,1
 
-		";		
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 		
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
@@ -7903,9 +7903,9 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return FALSE;
 
-	}	        	
+	}
 
-	
+
 
 	public function getOrder2($order_id='')
 
@@ -7941,7 +7941,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as full_name,
 
-		
+
 
 		(
 
@@ -7959,11 +7959,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as email_address,
 
-		
+
 
 		(
 
-		select restaurant_name 	
+		select restaurant_name
 
 		from
 
@@ -7971,17 +7971,17 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		merchant_id=a.merchant_id 	
+		merchant_id=a.merchant_id
 
 		limit 0,1
 
 		) as merchant_name,
 
-				
+
 
 		(
 
-		select restaurant_slug 	
+		select restaurant_slug
 
 		from
 
@@ -7989,13 +7989,13 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		merchant_id=a.merchant_id 
+		merchant_id=a.merchant_id
 
-		limit 0,1	
+		limit 0,1
 
 		) as restaurant_slug,
 
-		
+
 
 		(
 
@@ -8013,7 +8013,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as full_address,
 
-		
+
 
 		(
 
@@ -8031,7 +8031,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as location_name,
 
-		
+
 
 		(
 
@@ -8049,7 +8049,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as contact_phone,
 
-		
+
 
 		(
 
@@ -8061,7 +8061,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		cc_id=a.cc_id 
+		cc_id=a.cc_id
 
 		limit 0,1
 
@@ -8087,11 +8087,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as payment_reference,
 
-		
+
 
 		(
 
-		select restaurant_phone 	
+		select restaurant_phone
 
 		from
 
@@ -8099,17 +8099,17 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		merchant_id=a.merchant_id 
+		merchant_id=a.merchant_id
 
-		limit 0,1	
+		limit 0,1
 
 		) as merchant_contact_phone	,
 
-		
+
 
 		(
 
-		select abn 	 	
+		select abn
 
 		from
 
@@ -8117,13 +8117,13 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		merchant_id=a.merchant_id 
+		merchant_id=a.merchant_id
 
-		limit 0,1	
+		limit 0,1
 
 		) as abn,
 
-				
+
 
 		(
 
@@ -8141,7 +8141,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as client_full_address,
 
-		
+
 
 		(
 
@@ -8159,7 +8159,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as location_name1,
 
-		
+
 
 		(
 
@@ -8177,11 +8177,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		) as contact_phone1,
 
-		
+
 
 		(
 
-		select concat(street,' ',city,' ',state,' ',post_code ) 	
+		select concat(street,' ',city,' ',state,' ',post_code )
 
 		from
 
@@ -8189,13 +8189,13 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		where
 
-		merchant_id=a.merchant_id 
+		merchant_id=a.merchant_id
 
-		limit 0,1	
+		limit 0,1
 
-		) as merchant_address		
+		) as merchant_address
 
-		
+
 
 		 FROM
 
@@ -8209,11 +8209,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		LIMIT 0,1
 
-		";				
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
@@ -8223,9 +8223,9 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return FALSE;
 
-	}	        	
+	}
 
-	
+
 
 	public function getOrderInfo($order_id='')
 
@@ -8245,7 +8245,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 		
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
@@ -8257,39 +8257,39 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	}
 
-	
+
 
 	public function updateClient($data='')
 
 	{
 
-		if ( $this->isClientLogin() ){		    		   
+		if ( $this->isClientLogin() ){
 
-		    $params=array(
+			$params=array(
 
-		      'street'=>isset($data['street'])?$data['street']:'',
+				'street'=>isset($data['street'])?$data['street']:'',
 
-		      'city'=>isset($data['city'])?$data['city']:'',
+				'city'=>isset($data['city'])?$data['city']:'',
 
-		      'state'=>isset($data['state'])?$data['state']:'',
+				'state'=>isset($data['state'])?$data['state']:'',
 
-		      'zipcode'=>isset($data['zipcode'])?$data['zipcode']:'',
+				'zipcode'=>isset($data['zipcode'])?$data['zipcode']:'',
 
-		      'country_code'=>isset($data['country_code'])?$data['country_code']:'',
+				'country_code'=>isset($data['country_code'])?$data['country_code']:'',
 
-		      'location_name'=>isset($data['location_name'])?$data['location_name']:'',
+				'location_name'=>isset($data['location_name'])?$data['location_name']:'',
 
-		      'contact_phone'=>isset($data['contact_phone'])?$data['contact_phone']:''		      
+				'contact_phone'=>isset($data['contact_phone'])?$data['contact_phone']:''
 
-		    );		    
+			);
 
-		    $DbExt=new DbExt;
+			$DbExt=new DbExt;
 
-		    if ( $DbExt->updateData("{{client}}",$params,'client_id',$this->getClientId()) ){
+			if ( $DbExt->updateData("{{client}}",$params,'client_id',$this->getClientId()) ){
 
-		    	return true;
+				return true;
 
-		    }
+			}
 
 		}
 
@@ -8297,7 +8297,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	}
 
-	
+
 
 	public function getClientInfo($client_id='')
 
@@ -8327,7 +8327,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	}
 
-	
+
 
 	public function formatOrderNumber($order_id='')
 
@@ -8339,11 +8339,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	}
 
-	
+
 
 	public function getCCbyCard($card_number='',$client_id='')
 
-	{		
+	{
 
 		$DbExt=new DbExt;
 
@@ -8361,9 +8361,9 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		LIMIT 0,1
 
-		";		
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res[0];
 
@@ -8373,111 +8373,111 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	}
 
-	
+
 
 	public function Curl($uri="",$post="")
 
-	{		
+	{
 
-		 $error_no='';
+		$error_no='';
 
-		 $ch = curl_init($uri);
+		$ch = curl_init($uri);
 
-		 curl_setopt($ch, CURLOPT_POST, 1);		 
+		curl_setopt($ch, CURLOPT_POST, 1);
 
-		 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);		 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
-		 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-		 curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
 
-         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-		 $resutl=curl_exec ($ch);		
+		$resutl=curl_exec ($ch);
 
-		 		 			 				 
 
-		 if ($error_no==0) {
 
-		 	 return $resutl;
+		if ($error_no==0) {
 
-		 } else return false;			 
+			return $resutl;
 
-		 curl_close ($ch);		 				 		 		 		 		 		
+		} else return false;
 
-	}	
+		curl_close ($ch);
 
-		
+	}
+
+
 
 	public function getDistance($from='',$to='',$country_code='',$debug=false)
 
-	{			
+	{
 
 		$country_list=require "CountryCode.php";
 
-		//$country_code=yii::app()->functions->getOption('country_code');		
+		//$country_code=yii::app()->functions->getOption('country_code');
 
-		$country_name='';							
+		$country_name='';
 
 		if (array_key_exists((string)$country_code,(array)$country_list)){
 
 			$country_name=$country_list[$country_code];
 
-		} 
+		}
 
-		if (!preg_match("/$country_name/i", $from)) {		
+		if (!preg_match("/$country_name/i", $from)) {
 
 			$from.=" ".$country_name;
 
 		}
 
-		if (!preg_match("/$country_name/i", $to)) {		
+		if (!preg_match("/$country_name/i", $to)) {
 
 			$to.=" ".$country_name;
 
-		}		
+		}
 
 		if ($debug){
 
-		   dump($from);
+			dump($from);
 
-		   dump($to);
+			dump($to);
 
 		}
 
-		
+
 
 
 
 		$protocol = isset($_SERVER["https"]) ? 'https' : 'http';
 
-		
 
-		if ($protocol=="http"){			
 
-		$url="http://maps.googleapis.com/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial";			
+		if ($protocol=="http"){
+
+			$url="http://maps.googleapis.com/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial";
 
 		} else {
 
-		$url="https://maps.googleapis.com/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial";		
+			$url="https://maps.googleapis.com/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial";
 
 		}
 
-		
+
 
 		/*check if has provide api key*/
 
-		$key=Yii::app()->functions->getOptionAdmin('google_geo_api_key');		
+		$key=Yii::app()->functions->getOptionAdmin('google_geo_api_key');
 
 		if ( !empty($key)){
 
 			$url="https://maps.googleapis.com/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial&key=".urlencode($key);
 
-		}	
+		}
 
-							
 
-		$data = @file_get_contents($url);		
+
+		$data = @file_get_contents($url);
 
 		if (empty($data)){
 
@@ -8485,61 +8485,61 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		}
 
-	    $data = json_decode($data);              
+		$data = json_decode($data);
 
-	    
 
-	    if ($debug){
 
-		   dump($data);	   
+		if ($debug){
+
+			dump($data);
 
 		}
 
-	    
 
-	    if (is_object($data)){
 
-	    	if ($data->status=="OK"){    		    		
+		if (is_object($data)){
 
-	    		if ($data->rows[0]->elements[0]->status=="OK" ) {    			
+			if ($data->status=="OK"){
 
-	    			return $data;
+				if ($data->rows[0]->elements[0]->status=="OK" ) {
 
-	    		}    	    		
+					return $data;
 
-	    	}
+				}
 
-	    }
+			}
 
-	    return FALSE;
+		}
 
-	}	
+		return FALSE;
 
-	
+	}
+
+
 
 	public function arraySortByColumn(&$array,$column,$dir = 'asc') {
 
-		
 
-	    foreach($array as $a) $sortcol[$a[$column]][] = $a;
 
-	    ksort($sortcol);
+		foreach($array as $a) $sortcol[$a[$column]][] = $a;
 
-	    foreach($sortcol as $col) {
+		ksort($sortcol);
 
-	        foreach($col as $row) $newarr[] = $row;
+		foreach($sortcol as $col) {
 
-	    }	    
+			foreach($col as $row) $newarr[] = $row;
 
-	    if($dir=='desc') $array = array_reverse($newarr);
+		}
 
-	    else $array = $newarr;
+		if($dir=='desc') $array = array_reverse($newarr);
 
-    }
+		else $array = $newarr;
 
-    
+	}
 
-    public function getReviews($client_id='',$merchant_id='')
+
+
+	public function getReviews($client_id='',$merchant_id='')
 
 	{
 
@@ -8575,9 +8575,9 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	}
 
-	
 
-    public function getReviewsList($merchant_id='')
+
+	public function getReviewsList($merchant_id='')
 
 	{
 
@@ -8591,7 +8591,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		select first_name
 
-		from 
+		from
 
 		{{client}}
 
@@ -8605,7 +8605,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		{{review}} a
 
-		WHERE		
+		WHERE
 
 		merchant_id='$merchant_id'
 
@@ -8627,11 +8627,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return false;
 
-	}	
+	}
 
-	
 
-    public function getReviewsById($id='')
+
+	public function getReviewsById($id='')
 
 	{
 
@@ -8641,7 +8641,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		(
 
-		select restaurant_name 
+		select restaurant_name
 
 		from
 
@@ -8659,7 +8659,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		WHERE
 
-		id='$id'		
+		id='$id'
 
 		LIMIT 0,1
 
@@ -8673,11 +8673,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return false;
 
-	}	
+	}
 
-	
 
-    public function getReviewsById2($id='',$merchant_id='')
+
+	public function getReviewsById2($id='',$merchant_id='')
 
 	{
 
@@ -8689,11 +8689,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		WHERE
 
-		id='$id'	
+		id='$id'
 
 		AND
 
-		merchant_id='$merchant_id'	
+		merchant_id='$merchant_id'
 
 		LIMIT 0,1
 
@@ -8707,9 +8707,9 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return false;
 
-	}		
+	}
 
-	
+
 
 	public function updateRatings($merchant_id='',$ratings='',$client_id='')
 
@@ -8717,187 +8717,187 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		$DbExt=new DbExt;
 
-		
+
 
 		$params=array(
 
-	      'merchant_id'=>$merchant_id,
+			'merchant_id'=>$merchant_id,
 
-	      'ratings'=>$ratings,
+			'ratings'=>$ratings,
 
-	      'client_id'=>$client_id,
+			'client_id'=>$client_id,
 
-	      'date_created'=>date('c'),
+			'date_created'=>date('c'),
 
-	      'ip_address'=>$_SERVER['REMOTE_ADDR']
+			'ip_address'=>$_SERVER['REMOTE_ADDR']
 
-	    );	    	    
+		);
 
-	    	    	    
 
-	    if ( !$res=$this->isClientRatingExist($merchant_id,$client_id) ){	    
 
-	    	$DbExt->insertData("{{rating}}",$params);	    	
+		if ( !$res=$this->isClientRatingExist($merchant_id,$client_id) ){
 
-	    	return true;
+			$DbExt->insertData("{{rating}}",$params);
 
-	    } else {	    	    	
+			return true;
 
-	    	$rating_id=$res['id'];	    	    	
+		} else {
 
-	    	$update=array(
+			$rating_id=$res['id'];
 
-	    	  'ratings'=>$ratings,
+			$update=array(
 
-	    	   'date_created'=>date('c'),
+				'ratings'=>$ratings,
 
-	           'ip_address'=>$_SERVER['REMOTE_ADDR']
+				'date_created'=>date('c'),
 
-	        );
+				'ip_address'=>$_SERVER['REMOTE_ADDR']
 
-	    	if ( $DbExt->updateData("{{rating}}",$update,'id',$rating_id) ){	    		
+			);
 
-	    		return true;
+			if ( $DbExt->updateData("{{rating}}",$update,'id',$rating_id) ){
 
-	    	} 	    	    
+				return true;
 
-	    }	  
+			}
 
-	    return false;  	
+		}
+
+		return false;
 
 	}
 
-	
-
-    public function getPaypalConnection($merchant_id='')
-
-    {
-
-    	 $paypal_mode=yii::app()->functions->getOption('paypal_mode',$merchant_id);    	 
-
-		 $paypal_con=array();		 
-
-		 if ($paypal_mode=="sandbox"){
-
-		  	  $paypal_con['mode']="sandbox";
-
-		  	  $paypal_con['sandbox']['paypal_nvp']='https://api-3t.sandbox.paypal.com/nvp';
-
-		  	  $paypal_con['sandbox']['paypal_web']='https://www.sandbox.paypal.com/cgi-bin/webscr';
-
-		  	  $paypal_con['sandbox']['user']=yii::app()->functions->getOption('sanbox_paypal_user',$merchant_id);
-
-		  	  $paypal_con['sandbox']['psw']=yii::app()->functions->getOption('sanbox_paypal_pass',$merchant_id);
-
-		  	  $paypal_con['sandbox']['signature']=yii::app()->functions->getOption('sanbox_paypal_signature',$merchant_id);
-
-		  	  $paypal_con['sandbox']['version']='61.0';
-
-		  	  $paypal_con['sandbox']['action']='Sale';
-
-		  } else {
-
-		  	  $paypal_con['mode']="live";
-
-		  	  $paypal_con['live']['paypal_nvp']='https://api-3t.paypal.com/nvp';
-
-		  	  $paypal_con['live']['paypal_web']='https://www.paypal.com/cgi-bin/webscr';
-
-		  	  $paypal_con['live']['user']=yii::app()->functions->getOption('live_paypal_user',$merchant_id);
-
-		  	  $paypal_con['live']['psw']=yii::app()->functions->getOption('live_paypal_pass',$merchant_id);
-
-		  	  $paypal_con['live']['signature']=yii::app()->functions->getOption('live_paypal_signature',$merchant_id);
-
-		  	  $paypal_con['live']['version']='61.0';
-
-		  	  $paypal_con['live']['action']='Sale';
-
-		  }
-
-		  return $paypal_con;
-
-    }	
 
 
+	public function getPaypalConnection($merchant_id='')
 
-    public function getPaypalConnectionAdmin()
+	{
 
-    {
+		$paypal_mode=yii::app()->functions->getOption('paypal_mode',$merchant_id);
 
-    	 $paypal_mode=yii::app()->functions->getOptionAdmin('admin_paypal_mode');    	     	 
+		$paypal_con=array();
 
-		 $paypal_con=array();		 
+		if ($paypal_mode=="sandbox"){
 
-		 if ($paypal_mode=="sandbox"){
+			$paypal_con['mode']="sandbox";
 
-		  	  $paypal_con['mode']="sandbox";
+			$paypal_con['sandbox']['paypal_nvp']='https://api-3t.sandbox.paypal.com/nvp';
 
-		  	  $paypal_con['sandbox']['paypal_nvp']='https://api-3t.sandbox.paypal.com/nvp';
+			$paypal_con['sandbox']['paypal_web']='https://www.sandbox.paypal.com/cgi-bin/webscr';
 
-		  	  $paypal_con['sandbox']['paypal_web']='https://www.sandbox.paypal.com/cgi-bin/webscr';
+			$paypal_con['sandbox']['user']=yii::app()->functions->getOption('sanbox_paypal_user',$merchant_id);
 
-		  	  $paypal_con['sandbox']['user']=yii::app()->functions->getOptionAdmin('admin_sanbox_paypal_user');
+			$paypal_con['sandbox']['psw']=yii::app()->functions->getOption('sanbox_paypal_pass',$merchant_id);
 
-		  	  $paypal_con['sandbox']['psw']=yii::app()->functions->getOptionAdmin('admin_sanbox_paypal_pass');
+			$paypal_con['sandbox']['signature']=yii::app()->functions->getOption('sanbox_paypal_signature',$merchant_id);
 
-		  	  $paypal_con['sandbox']['signature']=yii::app()->functions->getOptionAdmin('admin_sanbox_paypal_signature');
+			$paypal_con['sandbox']['version']='61.0';
 
-		  	  $paypal_con['sandbox']['version']='61.0';
+			$paypal_con['sandbox']['action']='Sale';
 
-		  	  $paypal_con['sandbox']['action']='Sale';
+		} else {
 
-		  } else {
+			$paypal_con['mode']="live";
 
-		  	  $paypal_con['mode']="live";
+			$paypal_con['live']['paypal_nvp']='https://api-3t.paypal.com/nvp';
 
-		  	  $paypal_con['live']['paypal_nvp']='https://api-3t.paypal.com/nvp';
+			$paypal_con['live']['paypal_web']='https://www.paypal.com/cgi-bin/webscr';
 
-		  	  $paypal_con['live']['paypal_web']='https://www.paypal.com/cgi-bin/webscr';
+			$paypal_con['live']['user']=yii::app()->functions->getOption('live_paypal_user',$merchant_id);
 
-		  	  $paypal_con['live']['user']=yii::app()->functions->getOptionAdmin('admin_live_paypal_user');
+			$paypal_con['live']['psw']=yii::app()->functions->getOption('live_paypal_pass',$merchant_id);
 
-		  	  $paypal_con['live']['psw']=yii::app()->functions->getOptionAdmin('admin_live_paypal_pass');
+			$paypal_con['live']['signature']=yii::app()->functions->getOption('live_paypal_signature',$merchant_id);
 
-		  	  $paypal_con['live']['signature']=yii::app()->functions->getOptionAdmin('admin_live_paypal_signature');
+			$paypal_con['live']['version']='61.0';
 
-		  	  $paypal_con['live']['version']='61.0';
+			$paypal_con['live']['action']='Sale';
 
-		  	  $paypal_con['live']['action']='Sale';
+		}
 
-		  }
+		return $paypal_con;
 
-		  return $paypal_con;
+	}
 
-    }	        
 
-	
+
+	public function getPaypalConnectionAdmin()
+
+	{
+
+		$paypal_mode=yii::app()->functions->getOptionAdmin('admin_paypal_mode');
+
+		$paypal_con=array();
+
+		if ($paypal_mode=="sandbox"){
+
+			$paypal_con['mode']="sandbox";
+
+			$paypal_con['sandbox']['paypal_nvp']='https://api-3t.sandbox.paypal.com/nvp';
+
+			$paypal_con['sandbox']['paypal_web']='https://www.sandbox.paypal.com/cgi-bin/webscr';
+
+			$paypal_con['sandbox']['user']=yii::app()->functions->getOptionAdmin('admin_sanbox_paypal_user');
+
+			$paypal_con['sandbox']['psw']=yii::app()->functions->getOptionAdmin('admin_sanbox_paypal_pass');
+
+			$paypal_con['sandbox']['signature']=yii::app()->functions->getOptionAdmin('admin_sanbox_paypal_signature');
+
+			$paypal_con['sandbox']['version']='61.0';
+
+			$paypal_con['sandbox']['action']='Sale';
+
+		} else {
+
+			$paypal_con['mode']="live";
+
+			$paypal_con['live']['paypal_nvp']='https://api-3t.paypal.com/nvp';
+
+			$paypal_con['live']['paypal_web']='https://www.paypal.com/cgi-bin/webscr';
+
+			$paypal_con['live']['user']=yii::app()->functions->getOptionAdmin('admin_live_paypal_user');
+
+			$paypal_con['live']['psw']=yii::app()->functions->getOptionAdmin('admin_live_paypal_pass');
+
+			$paypal_con['live']['signature']=yii::app()->functions->getOptionAdmin('admin_live_paypal_signature');
+
+			$paypal_con['live']['version']='61.0';
+
+			$paypal_con['live']['action']='Sale';
+
+		}
+
+		return $paypal_con;
+
+	}
+
+
 
 	public function paypalSavedToken($params='')
 
-    {    	    	
+	{
 
 		$command = Yii::app()->db->createCommand();
 
 		if ($command->insert('{{paypal_checkout}}',$params)){
 
-		   return TRUE;
+			return TRUE;
 
-		} 
+		}
 
 		return FALSE;
 
-    }
+	}
 
-    
 
-    public function getOrderByPayPalToken($token='')
 
-    {
+	public function getOrderByPayPalToken($token='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="
+		$DbExt=new DbExt;
+
+		$stmt="
 
     	SELECT a.*,
 
@@ -8927,7 +8927,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ( $res=$DbExt->rst($stmt)){
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res[0];
 
@@ -8935,17 +8935,17 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return false;
 
-    }
+	}
 
-    
 
-    public function getPaypalOrderPayment($order_id='')
 
-    {
+	public function getPaypalOrderPayment($order_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="
+		$DbExt=new DbExt;
+
+		$stmt="
 
     	SELECT * FROM
 
@@ -8959,7 +8959,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ( $res=$DbExt->rst($stmt)){
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res[0];
 
@@ -8967,49 +8967,49 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return false;
 
-    }
+	}
 
-    
 
-    public function prettyDate($date='',$full=false)
 
-    {
+	public function prettyDate($date='',$full=false)
 
-    	if ($date=="0000-00-00"){
+	{
 
-    		return ;
+		if ($date=="0000-00-00"){
 
-    	}    
+			return ;
 
-    	if ($date=="0000-00-00 00:00:00"){
+		}
 
-    		return ;
+		if ($date=="0000-00-00 00:00:00"){
 
-    	}
+			return ;
 
-    	if ( !empty($date)){
+		}
 
-    		if  ($full==TRUE){
+		if ( !empty($date)){
 
-    	         return date('M d,Y G:i:s',strtotime($date));
+			if  ($full==TRUE){
 
-    		} else return date('M d,Y',strtotime($date));
+				return date('M d,Y G:i:s',strtotime($date));
 
-    	}
+			} else return date('M d,Y',strtotime($date));
 
-    	return false;
+		}
 
-    }
+		return false;
 
-    
+	}
 
-    public function clientHistyOrder($client_id='')
 
-    {
 
-    	$DbExt=new DbExt;
+	public function clientHistyOrder($client_id='')
 
-    	$stmt="
+	{
+
+		$DbExt=new DbExt;
+
+		$stmt="
 
     	SELECT a.*,
 
@@ -9031,7 +9031,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	{{order}} a
 
-    	WHERE 
+    	WHERE
 
     	client_id='$client_id'
 
@@ -9043,7 +9043,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ( $res=$DbExt->rst($stmt)){
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res;
 
@@ -9051,17 +9051,17 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return false;
 
-    }
+	}
 
-    
 
-    public function clientHistyOrderDetails($order_id='')
 
-    {
+	public function clientHistyOrderDetails($order_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="
+		$DbExt=new DbExt;
+
+		$stmt="
 
     	SELECT * FROM
 
@@ -9071,11 +9071,11 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	order_id='$order_id'
 
-    	ORDER BY id ASC    	
+    	ORDER BY id ASC
 
     	";
 
-    	if ( $res=$DbExt->rst($stmt)){
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res;
 
@@ -9083,89 +9083,89 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return false;
 
-    }    
+	}
 
-    
 
-    public function orderStatusList($aslist=true)
 
-    {
+	public function orderStatusList($aslist=true)
 
-    	$mid=$this->getMerchantID();
+	{
 
-    	$list='';
+		$mid=$this->getMerchantID();
 
-    	if ($aslist){
+		$list='';
 
-    	    $list[]=Yii::t("default","Please select");    	
+		if ($aslist){
 
-    	}
+			$list[]=Yii::t("default","Please select");
 
-    	$db_ext=new DbExt;
+		}
 
-    	$stmt="SELECT * FROM 
+		$db_ext=new DbExt;
 
-    	  {{order_status}} 
+		$stmt="SELECT * FROM
+
+    	  {{order_status}}
 
     	  WHERE
 
     	  merchant_id IN ('0','$mid')
 
-    	  ORDER BY stats_id";	    	
+    	  ORDER BY stats_id";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		foreach ($res as $val) {    			
+			foreach ($res as $val) {
 
-    			//$list[$val['stats_id']]=ucwords($val['description']);
+				//$list[$val['stats_id']]=ucwords($val['description']);
 
-    			$list[$val['description']]=t($val['description']);
+				$list[$val['description']]=t($val['description']);
 
-    		}    		
+			}
 
-    		return $list;
+			return $list;
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }    
+	}
 
-    
 
-    public function getOrderStatus($stats_id='')
 
-    {
+	public function getOrderStatus($stats_id='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM 
+		$db_ext=new DbExt;
 
-    	  {{order_status}} 
+		$stmt="SELECT * FROM
+
+    	  {{order_status}}
 
     	  WHERE
 
-    	  stats_id='$stats_id'";	    	
+    	  stats_id='$stats_id'";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }
+	}
 
-    
 
-    public function verifyOrderIdByOwner($order_id='',$merchant_id='')
 
-    {
+	public function verifyOrderIdByOwner($order_id='',$merchant_id='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{order}}
 
@@ -9179,69 +9179,69 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function formatAsChart($data='')
 
-    {
+	public function formatAsChart($data='')
 
-    	$chart_data='';
+	{
 
-    	if (is_array($data) && count($data)>=1){
+		$chart_data='';
 
-	    	foreach ($data as $key => $val) {
+		if (is_array($data) && count($data)>=1){
 
-	    		$key=addslashes($key);
+			foreach ($data as $key => $val) {
 
-	    		$chart_data.="[\"$key\",$val],";
+				$key=addslashes($key);
 
-	    	}
+				$chart_data.="[\"$key\",$val],";
 
-	    	$chart_data=substr($chart_data,0,-1);
+			}
 
-	    	return "[[$chart_data]]";
+			$chart_data=substr($chart_data,0,-1);
 
-    	} 
+			return "[[$chart_data]]";
 
-    	return "[[0]]";
+		}
 
-    }    
+		return "[[0]]";
 
-    
+	}
 
-    public function newOrderList($viewed='')
 
-    {
 
-    	$merchant_id=Yii::app()->functions->getMerchantID();	   
+	public function newOrderList($viewed='')
 
-    	$and='';
+	{
 
-    	/*if (is_numeric($viewed)){
+		$merchant_id=Yii::app()->functions->getMerchantID();
+
+		$and='';
+
+		/*if (is_numeric($viewed)){
 
     		$and.=" AND viewed='0'";
 
     	}*/
 
-    	$db_ext=new DbExt;    	
+		$db_ext=new DbExt;
 
-    	$stmt="
+		$stmt="
 
     	      SELECT * FROM
 
     	      {{order}}
 
-    	      WHERE    	          	      
+    	      WHERE
 
     	      date_created like '".date('Y-m-d')."%'
 
@@ -9257,27 +9257,27 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	      ORDER BY date_created DESC
 
-    	";    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }       
+	}
 
-    
 
-    public function getPackagesById($package_id='')
 
-    {
+	public function getPackagesById($package_id='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{packages}}
 
@@ -9289,25 +9289,25 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }
+	}
 
-    
 
-    public function standardPrettyFormat($price='')
 
-    {        
+	public function standardPrettyFormat($price='')
 
-        $decimal=Yii::app()->functions->getOptionAdmin('admin_decimal_place');
+	{
 
-		$decimal_separators=Yii::app()->functions->getOptionAdmin('admin_use_separators');		
+		$decimal=Yii::app()->functions->getOptionAdmin('admin_decimal_place');
+
+		$decimal_separators=Yii::app()->functions->getOptionAdmin('admin_use_separators');
 
 		$thou_separator='';
 
@@ -9323,75 +9323,75 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 				$thou_separator=",";
 
-			}		
+			}
 
 			return number_format((float)$price,$decimal,".",$thou_separator);
 
-		}	
+		}
 
 		if ($decimal==""){
 
 			$decimal=2;
 
-		}	
+		}
 
-		return number_format(0,$decimal,".",$thou_separator);	
+		return number_format(0,$decimal,".",$thou_separator);
 
-        
 
-    }
 
-        
+	}
 
-    public function normalPrettyPrice($price='')
 
-    {
 
-    	if (is_numeric($price)){
+	public function normalPrettyPrice($price='')
 
-		    return number_format($price,2,'.','');
+	{
 
-	    }
+		if (is_numeric($price)){
 
-	    return false;        
+			return number_format($price,2,'.','');
 
-    }
+		}
 
-    
+		return false;
 
-    public function normalPrettyPrice2($price='')
+	}
 
-    {
 
-    	if (is_numeric($price)){
 
-		    return number_format($price,0,'.','');
+	public function normalPrettyPrice2($price='')
 
-	    }
+	{
 
-	    return false;        
+		if (is_numeric($price)){
 
-    }
+			return number_format($price,0,'.','');
 
-    
+		}
 
-    public function limitDescription($text='',$limit=300)
+		return false;
 
-    {
+	}
 
-    	if ( !empty($text)){
 
-    		return substr($text,0,$limit)."...";
 
-    	}
+	public function limitDescription($text='',$limit=300)
 
-    	return false;   
+	{
 
-    }
+		if ( !empty($text)){
 
-    
+			return substr($text,0,$limit)."...";
 
-    public function getPackagesList($price=false)
+		}
+
+		return false;
+
+	}
+
+
+
+	public function getPackagesList($price=false)
 
 	{
 
@@ -9401,7 +9401,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 			$and=" AND price >0 ";
 
-		}	
+		}
 
 		$data_feed='';
 
@@ -9409,7 +9409,7 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		SELECT * FROM
 
-		{{packages}}		
+		{{packages}}
 
 		WHERE
 
@@ -9419,19 +9419,19 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		ORDER BY sequence ASC
 
-		";						
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   $data_feed[$val['package_id']]=ucwords($val['title']);
+					$data_feed[$val['package_id']]=ucwords($val['title']);
 
 				}
 
@@ -9443,65 +9443,65 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 		return FALSE;
 
-	}        	
+	}
 
-	
+
 
 	public function randomColor()
 
-    {
+	{
 
-	   $color[1]='#55A2E8';
+		$color[1]='#55A2E8';
 
-	   $color[2]='#42C9BA';
+		$color[2]='#42C9BA';
 
-	   $color[3]='#E57567';
+		$color[3]='#E57567';
 
-	   $color[4]='#FEB034';
+		$color[4]='#FEB034';
 
-	   $color[5]='#00D9A3';
+		$color[5]='#00D9A3';
 
-	   $rnd_number=rand(1, 5);
+		$rnd_number=rand(1, 5);
 
-	   return $color[$rnd_number];
+		return $color[$rnd_number];
 
-    }
+	}
 
-    
 
-    public function adminCurrencyCode()
 
-    {
+	public function adminCurrencyCode()
 
-    	$curr_code=$this->getOptionAdmin("admin_currency_set");
+	{
 
-    	if (empty($curr_code)){
+		$curr_code=$this->getOptionAdmin("admin_currency_set");
 
-    		return "USD";
+		if (empty($curr_code)){
 
-    	}        	
+			return "USD";
 
-    	return $curr_code;
+		}
 
-    }
+		return $curr_code;
 
-    
+	}
 
-    public function adminCurrencySymbol()
 
-    {
 
-    	$curr_code=$this->getOptionAdmin("admin_currency_set");
+	public function adminCurrencySymbol()
 
-    	if (empty($curr_code)){
+	{
 
-    		$curr_code="USD";
+		$curr_code=$this->getOptionAdmin("admin_currency_set");
 
-    	}    
+		if (empty($curr_code)){
 
-    	$db_ext=new DbExt;
+			$curr_code="USD";
 
-    	$stmt="SELECT  * FROM
+		}
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT  * FROM
 
     	{{currency}}
 
@@ -9513,97 +9513,97 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res[0]['currency_symbol'];
+			return $res[0]['currency_symbol'];
 
-    	} 
+		}
 
-    	return "$";
+		return "$";
 
-    }
+	}
 
-    
 
-    public function adminSetCounryCode()
 
-    {
+	public function adminSetCounryCode()
 
-    	$country_code=$this->getOptionAdmin("admin_country_set");
+	{
 
-    	if (empty($country_code)){
+		$country_code=$this->getOptionAdmin("admin_country_set");
 
-    		return "PH";
+		if (empty($country_code)){
 
-    	}        	
+			return "PH";
 
-    	return $country_code;    	
+		}
 
-    }
+		return $country_code;
 
-        
+	}
 
-    public function generateRandomKey($range=10) 
 
-    {
 
-	    $chars = "0123456789";	
+	public function generateRandomKey($range=10)
 
-	    srand((double)microtime()*1000000);	
+	{
 
-	    $i = 0;	
+		$chars = "0123456789";
 
-	    $pass = '' ;	
+		srand((double)microtime()*1000000);
 
-	    while ($i <= $range) {
+		$i = 0;
 
-	        $num = rand() % $range;	
+		$pass = '' ;
 
-	        $tmp = substr($chars, $num, 1);	
+		while ($i <= $range) {
 
-	        $pass = $pass . $tmp;	
+			$num = rand() % $range;
 
-	        $i++;	
+			$tmp = substr($chars, $num, 1);
 
-	    }
+			$pass = $pass . $tmp;
 
-	    return $pass;
+			$i++;
 
-    }
+		}
 
-    
+		return $pass;
 
-    public function validateUsername($username='',$merchant_id='')
+	}
 
-    {
 
-    	$db_ext=new DbExt;
 
-    	if (is_numeric($merchant_id)){
+	public function validateUsername($username='',$merchant_id='')
 
-    		$stmt="SELECT * FROM
+	{
+
+		$db_ext=new DbExt;
+
+		if (is_numeric($merchant_id)){
+
+			$stmt="SELECT * FROM
 
 	    	{{merchant}}
 
-	    	WHERE 
+	    	WHERE
 
 	    	username='$username'
 
 	    	AND
 
-	    	merchant_id <>'$merchant_id' 	
+	    	merchant_id <>'$merchant_id'
 
 	    	LIMIT 0,1
 
 	    	";
 
-    	} else {    
+		} else {
 
-	    	$stmt="SELECT * FROM
+			$stmt="SELECT * FROM
 
 	    	{{merchant}}
 
-	    	WHERE 
+	    	WHERE
 
 	    	username='$username'
 
@@ -9611,47 +9611,47 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
 	    	";
 
-    	}    	
+		}
 
-    	//dump($stmt);
+		//dump($stmt);
 
-    	if ( $res=$db_ext->rst($stmt)){    		
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	} 
+		}
 
-    	return false;    
+		return false;
 
-    }
+	}
 
-    
 
-    public function insertMerchantCC($params='')
 
-    {
+	public function insertMerchantCC($params='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	if ($db_ext->insertData("{{merchant_cc}}",$params)){
+		$db_ext=new DbExt;
 
-    		return Yii::app()->db->getLastInsertID();
+		if ($db_ext->insertData("{{merchant_cc}}",$params)){
 
-    	}
+			return Yii::app()->db->getLastInsertID();
 
-    	return false;   
+		}
 
-    }  
+		return false;
 
-    
+	}
 
-    public function getMerchantPaymentByID($id='')
 
-    {
 
-    	$DbExt=new DbExt;
+	public function getMerchantPaymentByID($id='')
 
-    	$stmt="SELECT * FROM
+	{
+
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{package_trans}}
 
@@ -9663,25 +9663,25 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }
+	}
 
-    
 
-    public function getMerchantPaymentTransaction($merchant_id='')
 
-    {
+	public function getMerchantPaymentTransaction($merchant_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="SELECT a.*,
+		$DbExt=new DbExt;
+
+		$stmt="SELECT a.*,
 
     	(
 
@@ -9703,33 +9703,33 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	WHERE
 
-    	merchant_id='$merchant_id'    
+    	merchant_id='$merchant_id'
 
-    	ORDER BY id DESC 	
+    	ORDER BY id DESC
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function merchantList($as_list=true,$with_select=false)
 
-    {
+	public function merchantList($as_list=true,$with_select=false)
 
-    	$data='';
+	{
 
-    	$DbExt=new DbExt;
+		$data='';
 
-    	$stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{merchant}}
 
@@ -9739,73 +9739,73 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ( $with_select){
+		if ( $with_select){
 
-    		$data[]=t("Please select");
+			$data[]=t("Please select");
 
-    	}
+		}
 
-    	if ($res=$DbExt->rst($stmt)){    		
+		if ($res=$DbExt->rst($stmt)){
 
-    		if ( $as_list==TRUE){
+			if ( $as_list==TRUE){
 
-    			foreach ($res as $val) {    				
+				foreach ($res as $val) {
 
-    			    $data[$val['merchant_id']]=ucwords(stripslashes($val['restaurant_name']));
+					$data[$val['merchant_id']]=ucwords(stripslashes($val['restaurant_name']));
 
-    			}
+				}
 
-    			return $data;
+				return $data;
 
-    		} else return $res;    	
+			} else return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
 
 
-    public function ExpirationType()
+	public function ExpirationType()
 
-    {
+	{
 
-    	return array(
+		return array(
 
-    	 'days'=>"Days",
+			'days'=>"Days",
 
-    	 'year'=>"Year"
+			'year'=>"Year"
 
-    	);
+		);
 
-    }
+	}
 
-    
 
-    public function ListlimitedPost()
 
-    {
+	public function ListlimitedPost()
 
-    	return array(
+	{
 
-    	  2=>t("Unlimited"),
+		return array(
 
-    	  1=>t("Limited")
+			2=>t("Unlimited"),
 
-    	);
+			1=>t("Limited")
 
-    }
+		);
 
-    
+	}
 
-    public function validateMerchantCanPost($merchant_id='')
 
-    {    	
 
-    	$DbExt=new DbExt;
+	public function validateMerchantCanPost($merchant_id='')
 
-    	$stmt="SELECT a.merchant_id,
+	{
+
+		$DbExt=new DbExt;
+
+		$stmt="SELECT a.merchant_id,
 
     	a.package_id,
 
@@ -9847,187 +9847,187 @@ $htm.='<div class="b uk-text-muted">'."$addon_raw_price ".ucwords(qTranslate($va
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		$data=$res[0];    		    		    		
+			$data=$res[0];
 
-    		
 
-    		if ( $data['is_commission']==2){
 
-    			return true;
+			if ( $data['is_commission']==2){
 
-    		}
+				return true;
 
-    		
+			}
 
-    		if ( $data['unlimited_post']==1){
 
-    			if ( $data['total_post']>=$data['post_limit']){    				
 
-    				return false;
+			if ( $data['unlimited_post']==1){
 
-    			}    		
+				if ( $data['total_post']>=$data['post_limit']){
 
-    		}    	
+					return false;
 
-    	}
+				}
 
-    	return true;    
+			}
 
-    }
+		}
 
-    
+		return true;
 
-    public function sendEmail($to='',$from='',$subject='',$body='')
+	}
 
-    {    			 
 
-    	$from1=Yii::app()->functions->getOptionAdmin('global_admin_sender_email');
 
-    	if (!empty($from1)){
+	public function sendEmail($to='',$from='',$subject='',$body='')
 
-    		$from=$from1;
+	{
 
-    	}    	
+		$from1=Yii::app()->functions->getOptionAdmin('global_admin_sender_email');
 
-    	   	    	
+		if (!empty($from1)){
 
-    	$email_provider=Yii::app()->functions->getOptionAdmin('email_provider');
+			$from=$from1;
 
-    	
+		}
 
-    	if ( $email_provider=="smtp"){
 
-    		$smtp_host=Yii::app()->functions->getOptionAdmin('smtp_host');
 
-    		$smtp_port=Yii::app()->functions->getOptionAdmin('smtp_port');
+		$email_provider=Yii::app()->functions->getOptionAdmin('email_provider');
 
-    		$smtp_username=Yii::app()->functions->getOptionAdmin('smtp_username');
 
-    		$smtp_password=Yii::app()->functions->getOptionAdmin('smtp_password');
 
-    		    		    		
+		if ( $email_provider=="smtp"){
 
-    		$mail=Yii::app()->Smtpmail;
+			$smtp_host=Yii::app()->functions->getOptionAdmin('smtp_host');
 
-    		
+			$smtp_port=Yii::app()->functions->getOptionAdmin('smtp_port');
 
-    		Yii::app()->Smtpmail->Host=$smtp_host;
+			$smtp_username=Yii::app()->functions->getOptionAdmin('smtp_username');
 
-    		Yii::app()->Smtpmail->Username=$smtp_username;
+			$smtp_password=Yii::app()->functions->getOptionAdmin('smtp_password');
 
-    		Yii::app()->Smtpmail->Password=$smtp_password;
 
-    		Yii::app()->Smtpmail->Port=$smtp_port;
 
-    		
+			$mail=Yii::app()->Smtpmail;
 
-		    $mail->SetFrom($from, '');
 
-		    $mail->Subject = $subject;
 
-		    $mail->MsgHTML($body);
+			Yii::app()->Smtpmail->Host=$smtp_host;
 
-		    $mail->AddAddress($to, "");
+			Yii::app()->Smtpmail->Username=$smtp_username;
 
-		    if(!$mail->Send()) {
+			Yii::app()->Smtpmail->Password=$smtp_password;
 
-		        //echo "Mailer Error: " . $mail->ErrorInfo;
+			Yii::app()->Smtpmail->Port=$smtp_port;
 
-		        $mail->ClearAddresses();
 
-		        return false;
 
-		    }else {
+			$mail->SetFrom($from, '');
 
-		        //echo "Message sent!";
+			$mail->Subject = $subject;
 
-		        $mail->ClearAddresses();
+			$mail->MsgHTML($body);
 
-		        return true;
+			$mail->AddAddress($to, "");
 
-		    }    		    		
+			if(!$mail->Send()) {
 
-    	} elseif ( $email_provider=="mandrill"){
+				//echo "Mailer Error: " . $mail->ErrorInfo;
 
-    		$api_key=Yii::app()->functions->getOptionAdmin('mandrill_api_key');    		
+				$mail->ClearAddresses();
 
-    		try {
+				return false;
 
-    			 require_once 'mandrillapp/Mandrill.php';
+			}else {
 
-    			 $mandrill = new Mandrill($api_key);
+				//echo "Message sent!";
 
-    			 $message = array(
+				$mail->ClearAddresses();
 
-			        'html' => $body,
+				return true;
 
-			        'text' => '',
+			}
 
-			        'subject' => $subject,
+		} elseif ( $email_provider=="mandrill"){
 
-			        'from_email' => $from,
+			$api_key=Yii::app()->functions->getOptionAdmin('mandrill_api_key');
 
-			        //'from_name' => 'Example Name',
+			try {
 
-			        'to' => array(
+				require_once 'mandrillapp/Mandrill.php';
 
-			            array(
+				$mandrill = new Mandrill($api_key);
 
-			                'email' => $to,
+				$message = array(
 
-			                //'name' => 'Recipient Name',
+					'html' => $body,
 
-			                'type' => 'to'
+					'text' => '',
 
-			            )
+					'subject' => $subject,
 
-			        )
+					'from_email' => $from,
 
-                );                
+					//'from_name' => 'Example Name',
 
-                $async = false;
+					'to' => array(
 
-			    $ip_pool = '';
+						array(
 
-			    $send_at = '';
+							'email' => $to,
 
-			    $result = $mandrill->messages->send($message, $async, $ip_pool, $send_at);
+							//'name' => 'Recipient Name',
 
-			    //dump($result);
+							'type' => 'to'
 
-			    if (is_array($result) && count($result)>=1){
+						)
 
-			    	if ($result[0]['status']=="sent"){
+					)
 
-			    		return true;
+				);
 
-			    	}				    	
+				$async = false;
 
-			    } 
+				$ip_pool = '';
 
-    		} catch(Mandrill_Error $e) {
+				$send_at = '';
 
-    			//echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+				$result = $mandrill->messages->send($message, $async, $ip_pool, $send_at);
 
+				//dump($result);
 
+				if (is_array($result) && count($result)>=1){
 
-    		}	
+					if ($result[0]['status']=="sent"){
 
-    		return false;
+						return true;
 
-    	}
+					}
 
-    	
+				}
 
-		$headers  = "From: $from\r\n";		
+			} catch(Mandrill_Error $e) {
+
+				//echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+
+
+
+			}
+
+			return false;
+
+		}
+
+
+
+		$headers  = "From: $from\r\n";
 
 		$headers .= "Content-type: text/html; charset=UTF-8\r\n";
 
-		
 
-$message =<<<EOF
+
+		$message =<<<EOF
 
 $body
 
@@ -10039,7 +10039,7 @@ EOF;
 
 		$headers .= "Content-type: text/html; charset=UTF-8\r\n";
 
-				
+
 
 		if (!empty($to)) {
 
@@ -10051,19 +10051,19 @@ EOF;
 
 		}
 
-    	return false;
+		return false;
 
-    }    		      
+	}
 
-	
 
-    public function adminCountry()
 
-    {
+	public function adminCountry()
 
-    	$admin_country_set=Yii::app()->functions->getOptionAdmin('admin_country_set');
+	{
 
-    	$country_list=require Yii::getPathOfAlias('webroot')."/protected/components/CountryCode.php";
+		$admin_country_set=Yii::app()->functions->getOptionAdmin('admin_country_set');
+
+		$country_list=require Yii::getPathOfAlias('webroot')."/protected/components/CountryCode.php";
 
 		$country='';
 
@@ -10075,13 +10075,13 @@ EOF;
 
 		return $country;
 
-    }
+	}
 
-    
+
 
 	public function accountExistSocial($email='',$social='fb')
 
-    {    	
+	{
 
 		/*$stmt="
 
@@ -10099,7 +10099,7 @@ EOF;
 
 		LIMIT 0,1
 
-		";*/	
+		";*/
 
 		$stmt="
 
@@ -10109,37 +10109,37 @@ EOF;
 
 		WHERE
 
-		email_address='".addslashes($email)."'		
+		email_address='".addslashes($email)."'
 
 		LIMIT 0,1
 
-		";		
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll();	
+		$rows=$connection->createCommand($stmt)->queryAll();
 
-		if (is_array($rows) && count($rows)>=1){	
+		if (is_array($rows) && count($rows)>=1){
 
 			return $rows;
 
-		} else return FALSE;	
+		} else return FALSE;
 
-    }    
+	}
 
-    
 
-    public function paypalSetCancelOrder($token='')
 
-    {    	
+	public function paypalSetCancelOrder($token='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="UPDATE
+		$DbExt=new DbExt;
+
+		$stmt="UPDATE
 
     	{{order}}
 
-    	SET 
+    	SET
 
     	status='cancelled'
 
@@ -10149,19 +10149,19 @@ EOF;
 
     	";
 
-    	$DbExt->qry($stmt);
+		$DbExt->qry($stmt);
 
-    }
+	}
 
-    
 
-    public function getLostPassToken($token='')
 
-    {
+	public function getLostPassToken($token='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{client}}
 
@@ -10173,25 +10173,25 @@ EOF;
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;  
+		return false;
 
-    }
+	}
 
-    
 
-    public function getAdminUserInfo($admin_id='')
 
-    {
+	public function getAdminUserInfo($admin_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{admin_user}}
 
@@ -10203,25 +10203,25 @@ EOF;
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;  
+		return false;
 
-    }    
+	}
 
-    
 
-    public function getCustomPage($id='')
 
-    {
+	public function getCustomPage($id='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{custom_page}}
 
@@ -10233,25 +10233,25 @@ EOF;
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;  
+		return false;
 
-    }        
+	}
 
-    
 
-    public function getCustomPageBySlug($slug='')
 
-    {
+	public function getCustomPageBySlug($slug='')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{custom_page}}
 
@@ -10263,27 +10263,27 @@ EOF;
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;  
+		return false;
 
-    }            
+	}
 
-    
 
-    public function getCustomPageList()
 
-    {
+	public function getCustomPageList()
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$DbExt=new DbExt;
 
-    	{{custom_page}}    	
+		$stmt="SELECT * FROM
+
+    	{{custom_page}}
 
     	WHERE
 
@@ -10293,35 +10293,35 @@ EOF;
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;  
+		return false;
 
-    }            
+	}
 
-    
 
-    public function customPageCreateSlug($page_name='')
 
-    {
+	public function customPageCreateSlug($page_name='')
 
-    	/*$slug_name=str_replace(" ","-",$page_name);
+	{
+
+		/*$slug_name=str_replace(" ","-",$page_name);
 
     	$slug_name=strtolower($slug_name);*/
 
-    	
 
-    	$slug_name=$this->seo_friendly_url($page_name);    	
 
-    	
+		$slug_name=$this->seo_friendly_url($page_name);
 
-    	$DbExt=new DbExt;
 
-    	$stmt="SELECT count(*) as total
+
+		$DbExt=new DbExt;
+
+		$stmt="SELECT count(*) as total
 
     	FROM
 
@@ -10331,31 +10331,31 @@ EOF;
 
     	slug_name='$slug_name'
 
-    	";    	
+    	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		if ($res[0]['total']>=1){
+			if ($res[0]['total']>=1){
 
-    			return $slug_name.$res[0]['total'];
+				return $slug_name.$res[0]['total'];
 
-    		} else  return $slug_name;        	
+			} else  return $slug_name;
 
-    	} else return $slug_name;    
+		} else return $slug_name;
 
-    }
+	}
 
-    
 
-    public function customPagePosition($position='top')
 
-    {
+	public function customPagePosition($position='top')
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$DbExt=new DbExt;
 
-    	{{custom_page}}    	
+		$stmt="SELECT * FROM
+
+    	{{custom_page}}
 
     	WHERE
 
@@ -10369,91 +10369,91 @@ EOF;
 
     	";
 
-    	if ($res=$DbExt->rst($stmt)){
+		if ($res=$DbExt->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;  
+		return false;
 
-    }
-
-    
-
-    public function generateCode($length = 8) {
-
-	   $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-
-	   $ret = '';
-
-	   for($i = 0; $i < $length; ++$i) {
-
-	     $random = str_shuffle($chars);
-
-	     $ret .= $random[0];
-
-	   }
-
-	   return $ret;
-
-    }
-
-    
-
-    public function mobileMenu()
-
-    {
-
-    	$menu_html='';
-
-    	$arg1=$this->topLeftMenu();    
-
-    	if (isset($arg1['items'])){
-
-	    	if (is_array($arg1['items']) && count($arg1['items'])>=1){
-
-	    		foreach ($arg1['items'] as $val) {	    				    			
-
-	    			if (is_array($val['url']) && count($val['url'])>=1)	{
-
-	    			    $url=Yii::app()->request->baseUrl.$val['url'][0];
-
-	    			} else $url=Yii::app()->request->baseUrl.$val['url'];
-
-	    			$menu_html.="<li><a href=\"$url\">".$val['label']."</a></li>";
-
-	    		}
-
-	    	}    
-
-    	}
-
-    	
-
-    	if ( Yii::app()->functions->isClientLogin()){
-
-$menu_html.="<li class=\"uk-parent\">";
-
-$menu_html.="<a href=\"#\"><i class=\"uk-icon-user\"></i> ".ucwords(Yii::app()->functions->getClientName())."</a>";
-
-$menu_html.="<ul class=\"uk-nav-sub\">";
-
-$menu_html.="<li><a href=\"".Yii::app()->request->baseUrl."/store/Profile\"\"><i class=\"uk-icon-user\"></i> ".Yii::t("default","Profile")."</a></li>";
-
-$menu_html.="<li><a href=\"".Yii::app()->request->baseUrl."/store/orderHistory\"\"><i class=\"fa fa-file-text-o\"></i> ".Yii::t("default","Order History")."</a></li>";    		
+	}
 
 
 
-if (Yii::app()->functions->getOptionAdmin('disabled_cc_management')==""):
+	public function generateCode($length = 8) {
 
-$menu_html.="<li><a href=\"".Yii::app()->request->baseUrl."/store/Cards\"\"><i class=\"uk-icon-gear\"></i> ".Yii::t("default","Credit Cards")."</a></li>";    	
+		$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 
-endif;
+		$ret = '';
+
+		for($i = 0; $i < $length; ++$i) {
+
+			$random = str_shuffle($chars);
+
+			$ret .= $random[0];
+
+		}
+
+		return $ret;
+
+	}
 
 
 
-/*POINTS PROGRAM*/
+	public function mobileMenu()
+
+	{
+
+		$menu_html='';
+
+		$arg1=$this->topLeftMenu();
+
+		if (isset($arg1['items'])){
+
+			if (is_array($arg1['items']) && count($arg1['items'])>=1){
+
+				foreach ($arg1['items'] as $val) {
+
+					if (is_array($val['url']) && count($val['url'])>=1)	{
+
+						$url=Yii::app()->request->baseUrl.$val['url'][0];
+
+					} else $url=Yii::app()->request->baseUrl.$val['url'];
+
+					$menu_html.="<li><a href=\"$url\">".$val['label']."</a></li>";
+
+				}
+
+			}
+
+		}
+
+
+
+		if ( Yii::app()->functions->isClientLogin()){
+
+			$menu_html.="<li class=\"uk-parent\">";
+
+			$menu_html.="<a href=\"#\"><i class=\"uk-icon-user\"></i> ".ucwords(Yii::app()->functions->getClientName())."</a>";
+
+			$menu_html.="<ul class=\"uk-nav-sub\">";
+
+			$menu_html.="<li><a href=\"".Yii::app()->request->baseUrl."/store/Profile\"\"><i class=\"uk-icon-user\"></i> ".Yii::t("default","Profile")."</a></li>";
+
+			$menu_html.="<li><a href=\"".Yii::app()->request->baseUrl."/store/orderHistory\"\"><i class=\"fa fa-file-text-o\"></i> ".Yii::t("default","Order History")."</a></li>";
+
+
+
+			if (Yii::app()->functions->getOptionAdmin('disabled_cc_management')==""):
+
+				$menu_html.="<li><a href=\"".Yii::app()->request->baseUrl."/store/Cards\"\"><i class=\"uk-icon-gear\"></i> ".Yii::t("default","Credit Cards")."</a></li>";
+
+			endif;
+
+
+
+			/*POINTS PROGRAM*/
 
 //$menu_html.=PointsProgram::frontMenu(false);
 
@@ -10461,133 +10461,133 @@ endif;
 
 
 
-$menu_html.="<li><a href=\"".Yii::app()->request->baseUrl."/store/logout\"\"><i class=\"uk-icon-sign-out\"></i> ".Yii::t("default","Logout")."</a></li>";    		    		    		    		    	
+			$menu_html.="<li><a href=\"".Yii::app()->request->baseUrl."/store/logout\"\"><i class=\"uk-icon-sign-out\"></i> ".Yii::t("default","Logout")."</a></li>";
 
-$menu_html.="</ul>";
+			$menu_html.="</ul>";
 
-$menu_html.="</li>";
+			$menu_html.="</li>";
 
-    	}
+		}
 
-    	
 
-    	$arg1=$this->topMenu();    
 
-    	if (isset($arg1['items'])){
+		$arg1=$this->topMenu();
 
-	    	if (is_array($arg1['items']) && count($arg1['items'])>=1){
+		if (isset($arg1['items'])){
 
-	    		foreach ($arg1['items'] as $val) {	    				    			
+			if (is_array($arg1['items']) && count($arg1['items'])>=1){
 
-	    			$class='';	    			
+				foreach ($arg1['items'] as $val) {
 
-	    			if (is_array($val['url']) && count($val['url'])>=1){
+					$class='';
 
-	    				$url=Yii::app()->request->baseUrl.$val['url'][0];
+					if (is_array($val['url']) && count($val['url'])>=1){
 
-	    			} else {
+						$url=Yii::app()->request->baseUrl.$val['url'][0];
 
-	    				$class=isset($val['itemOptions']['class'])?$val['itemOptions']['class']:'';
+					} else {
 
-	    				$url=$val['url'];
+						$class=isset($val['itemOptions']['class'])?$val['itemOptions']['class']:'';
 
-	    			}	    
+						$url=$val['url'];
 
-	    			if (isset($val['visible'])){
+					}
 
-	    				if ($val['visible']){
+					if (isset($val['visible'])){
 
-	    					$menu_html.="<li class=\"$class\"><a href=\"$url\">".$val['label']."</a></li>";
+						if ($val['visible']){
 
-	    				} 	    		
+							$menu_html.="<li class=\"$class\"><a href=\"$url\">".$val['label']."</a></li>";
 
-	    			} else {
+						}
 
-	    				$menu_html.="<li class=\"$class\"><a href=\"$url\">".$val['label']."</a></li>";
+					} else {
 
-	    			}	    			
+						$menu_html.="<li class=\"$class\"><a href=\"$url\">".$val['label']."</a></li>";
 
-	    		}
+					}
 
-	    	}    
+				}
 
-    	}
+			}
 
-    	$arg1=$this->bottomMenu();    
+		}
 
-    	if (isset($arg1['items'])){
+		$arg1=$this->bottomMenu();
 
-	    	if (is_array($arg1['items']) && count($arg1['items'])>=1){
+		if (isset($arg1['items'])){
 
-	    		foreach ($arg1['items'] as $val) {	    			
+			if (is_array($arg1['items']) && count($arg1['items'])>=1){
 
-	    			if (is_array($val['url']) && count($val['url'])>=1)	{
+				foreach ($arg1['items'] as $val) {
 
-	    				$url=Yii::app()->request->baseUrl.$val['url'][0];
+					if (is_array($val['url']) && count($val['url'])>=1)	{
 
-	    			} else $url=Yii::app()->request->baseUrl.$val['url'];		
+						$url=Yii::app()->request->baseUrl.$val['url'][0];
 
-	    			$menu_html.="<li><a href=\"$url\">".$val['label']."</a></li>";
+					} else $url=Yii::app()->request->baseUrl.$val['url'];
 
-	    		}
+					$menu_html.="<li><a href=\"$url\">".$val['label']."</a></li>";
 
-	    	}    
+				}
 
-    	}
+			}
 
-    	return $menu_html;
+		}
 
-    }
+		return $menu_html;
 
-    
+	}
 
-    public function isTableExist($table_name='')
 
-    {
 
-    	$db_ext=new DbExt;
+	public function isTableExist($table_name='')
 
-    	$stmt="SHOW TABLE STATUS LIKE '{{{$table_name}}}'";	
+	{
 
-    	if ($res=$db_ext->rst($stmt)){
+		$db_ext=new DbExt;
 
-    		return true;
+		$stmt="SHOW TABLE STATUS LIKE '{{{$table_name}}}'";
 
-    	}
+		if ($res=$db_ext->rst($stmt)){
 
-    	return false;    
+			return true;
 
-    }            
+		}
 
-    
+		return false;
 
-    public function checkTableStructure($table_name='')
+	}
 
-    {
 
-    	$db_ext=new DbExt;
 
-    	$stmt=" SHOW COLUMNS FROM {{{$table_name}}}";	    	
+	public function checkTableStructure($table_name='')
 
-    	if ($res=$db_ext->rst($stmt)){    		
+	{
 
-    		return $res;
+		$db_ext=new DbExt;
 
-    	}
+		$stmt=" SHOW COLUMNS FROM {{{$table_name}}}";
 
-    	return false;    
+		if ($res=$db_ext->rst($stmt)){
 
-    }      
+			return $res;
 
-    
+		}
 
-    public function getSourceTranslation($lang_id='')
+		return false;
 
-    {
+	}
 
-    	$db_ext=new DbExt;
 
-    	$stmt="SELECT * FROM
+
+	public function getSourceTranslation($lang_id='')
+
+	{
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{languages}}
 
@@ -10597,33 +10597,33 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		$translated_text=!empty($res[0]['source_text'])?(array)json_decode($res[0]['source_text']):array();
+			$translated_text=!empty($res[0]['source_text'])?(array)json_decode($res[0]['source_text']):array();
 
-    	    return $translated_text;
+			return $translated_text;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }       
+	}
 
-    
 
-    public function getSourceTranslationFile($lang_id='')
 
-    {
+	public function getSourceTranslationFile($lang_id='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	
+		$db_ext=new DbExt;
 
-    	$path_to_upload=Yii::getPathOfAlias('webroot')."/upload";    	
 
-    	$stmt="SELECT * FROM
+
+		$path_to_upload=Yii::getPathOfAlias('webroot')."/upload";
+
+		$stmt="SELECT * FROM
 
     	{{languages}}
 
@@ -10633,182 +10633,180 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		$filename=$res[0]['source_text'];    		
+			$filename=$res[0]['source_text'];
 
-    		if (file_exists($path_to_upload."/$filename")){
+			if (file_exists($path_to_upload."/$filename")){
 
-    			require_once $path_to_upload."/$filename";
+				require_once $path_to_upload."/$filename";
 
-    		    return $lang;
+				return $lang;
 
-    		}
+			}
 
-    	}    	
+		}
 
-    	return false;    	
+		return false;
 
-    }
+	}
 
-    
 
-    public function languageInfo($lang_id='')
 
-    {
+	public function languageInfo($lang_id='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM {{languages}} 
+		$db_ext=new DbExt;
 
-    	  WHERE lang_id='".addslashes($lang_id)."' 
+		$stmt="SELECT * FROM {{languages}}
+
+    	  WHERE lang_id='".addslashes($lang_id)."'
 
     	  LIMIT 0,1
 
-    	  ";	
+    	  ";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }
+	}
 
 
 
-    public function availableLanguage($as_list=true)
+	public function availableLanguage($as_list=true)
 
-    {
+	{
 
-    	if ($as_list){
+		if ($as_list){
 
-			//en -9999
-			//zh 1
-    		$lang_list['1']=Yii::t("default","Default chinese");
+			$lang_list['-9999']=Yii::t("default","Default english");
 
-    		//$lang_list='';
+			//$lang_list='';
 
-    	}        	
+		}
 
-    	$db_ext=new DbExt;
+		$db_ext=new DbExt;
 
-    	$stmt="SELECT lang_id,country_code,language_code
+		$stmt="SELECT lang_id,country_code,language_code
 
-    	 FROM {{languages}} 
+    	 FROM {{languages}}
 
     	 WHERE
 
     	 status in ('publish','published')
 
-    	 ";	
+    	 ";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		foreach ($res as $val) {    			
+			foreach ($res as $val) {
 
-    			$lang_list[$val['lang_id']]=$val['country_code']." ".$val['language_code'];
+				$lang_list[$val['lang_id']]=$val['country_code']." ".$val['language_code'];
 
-    		}    		
+			}
 
-    	}
+		}
 
-    	return $lang_list;    
+		return $lang_list;
 
-    }   
-
-   
-    public function getFlagByCode_languale($country_code='')
-    {    	
-           	
-
-    	$country_code_ups=$country_code;
-
-    	$country_code_list=require 'CountryCode.php';    	
-
-    	$country_code=strtolower($country_code);    
-
-    	$path_flag=Yii::getPathOfAlias('webroot')."/assets/images";
-
-    	$base_url=Yii::app()->request->baseUrl."/assets/images";
-
-    	if (!empty($country_code)){    		
-
-    		$file=$country_code.".png";    		    		    		    		
-
-    		if (array_key_exists($country_code_ups,(array)$country_code_list)){
-
-    			$alt=$country_code_list[$country_code_ups];
-
-    		} else $alt=$country_code_ups;
-
-    		if (file_exists($path_flag."/flags/$file")){    			
-
-    			return  "$base_url/flags/$file";
-
-    		}
-
-    	}
-
-    	return false;    
-
-    
 	}
-    
 
-    public function getFlagByCode($country_code='')
 
-    {    	
+	public function getFlagByCode_languale($country_code='')
+	{
 
-    	$country_code_ups=$country_code;
 
-    	$country_code_list=require 'CountryCode.php';    	
+		$country_code_ups=$country_code;
 
-    	$country_code=strtolower($country_code);    
+		$country_code_list=require 'CountryCode.php';
 
-    	$path_flag=Yii::getPathOfAlias('webroot')."/assets/images";
+		$country_code=strtolower($country_code);
 
-    	$base_url=Yii::app()->request->baseUrl."/assets/images";
+		$path_flag=Yii::getPathOfAlias('webroot')."/assets/images";
 
-    	if (!empty($country_code)){    		
+		$base_url=Yii::app()->request->baseUrl."/assets/images";
 
-    		$file=$country_code.".png";    		    		    		    		
+		if (!empty($country_code)){
 
-    		if (array_key_exists($country_code_ups,(array)$country_code_list)){
+			$file=$country_code.".png";
 
-    			$alt=$country_code_list[$country_code_ups];
+			if (array_key_exists($country_code_ups,(array)$country_code_list)){
 
-    		} else $alt=$country_code_ups;
+				$alt=$country_code_list[$country_code_ups];
 
-    		if (file_exists($path_flag."/flags/$file")){    			
+			} else $alt=$country_code_ups;
 
-    			return  "<img class=\"flags\" src=\"$base_url/flags/$file\" alt=\"$alt\" title=\"$alt\" />";
+			if (file_exists($path_flag."/flags/$file")){
 
-    		}
+				return  "$base_url/flags/$file";
 
-    	}
+			}
 
-    	return false;    
+		}
 
-    }
+		return false;
 
-    
 
-    public function getAssignLanguage()
+	}
 
-    {
 
-    	$lang='';
+	public function getFlagByCode($country_code='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT lang_id,country_code,language_code
+		$country_code_ups=$country_code;
 
-    	 FROM {{languages}} 
+		$country_code_list=require 'CountryCode.php';
+
+		$country_code=strtolower($country_code);
+
+		$path_flag=Yii::getPathOfAlias('webroot')."/assets/images";
+
+		$base_url=Yii::app()->request->baseUrl."/assets/images";
+
+		if (!empty($country_code)){
+
+			$file=$country_code.".png";
+
+			if (array_key_exists($country_code_ups,(array)$country_code_list)){
+
+				$alt=$country_code_list[$country_code_ups];
+
+			} else $alt=$country_code_ups;
+
+			if (file_exists($path_flag."/flags/$file")){
+
+				return  "<img class=\"flags\" src=\"$base_url/flags/$file\" alt=\"$alt\" title=\"$alt\" />";
+
+			}
+
+		}
+
+		return false;
+
+	}
+
+
+
+	public function getAssignLanguage()
+
+	{
+
+		$lang='';
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT lang_id,country_code,language_code
+
+    	 FROM {{languages}}
 
     	 WHERE
 
@@ -10818,55 +10816,55 @@ $menu_html.="</li>";
 
     	 is_assign='1'
 
-    	 ";	    	
+    	 ";
 
-    	 if ($res=$db_ext->rst($stmt)){    	 	
+		if ($res=$db_ext->rst($stmt)){
 
-    	 	 foreach ($res as $val) {
+			foreach ($res as $val) {
 
-    	 	 	$lang[$val['lang_id']]=$val['country_code'];
+				$lang[$val['lang_id']]=$val['country_code'];
 
-    	 	 }    	 	 
+			}
 
-    	 	 return $lang;
+			return $lang;
 
-    	 }    
+		}
 
-    	 return false;
+		return false;
 
-    }       
+	}
 
-    
 
-    public function inArray($val='',$source='')
 
-    {
+	public function inArray($val='',$source='')
 
-    	if (is_array($source) && count($source)>=1){
+	{
 
-    		if (array_key_exists($val,$source)){
+		if (is_array($source) && count($source)>=1){
 
-    			return $source[$val];
+			if (array_key_exists($val,$source)){
 
-    		}    	
+				return $source[$val];
 
-    	}
+			}
 
-    	return '';    
+		}
 
-    }    
+		return '';
 
-    
+	}
 
-    public function getAdminLanguage()
 
-    {
 
-    	$id=$this->getAdminId();
+	public function getAdminLanguage()
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$id=$this->getAdminId();
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{admin_user}}
 
@@ -10878,27 +10876,27 @@ $menu_html.="</li>";
 
     	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0]['user_lang'];
+			return $res[0]['user_lang'];
 
-    	} 
+		}
 
-    	return false;
+		return false;
 
-    }    
+	}
 
-    
 
-    public function getMerchantLanguage()
 
-    {
+	public function getMerchantLanguage()
 
-    	$id=$this->getMerchantID();
+	{
 
-    	$db_ext=new DbExt;
+		$id=$this->getMerchantID();
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{merchant}}
 
@@ -10910,29 +10908,29 @@ $menu_html.="</li>";
 
     	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0]['user_lang'];
+			return $res[0]['user_lang'];
 
-    	} 
+		}
 
-    	return false;
+		return false;
 
-    }        
+	}
 
-        
 
-    public function getLanguageList()
 
-    {    	
+	public function getLanguageList()
 
-    	$set_lang_id=Yii::app()->functions->getOptionAdmin('set_lang_id');
+	{
+
+		$set_lang_id=Yii::app()->functions->getOptionAdmin('set_lang_id');
 
 		if ( !empty($set_lang_id)){
 
 			$set_lang_id=json_decode($set_lang_id);
 
-		}		
+		}
 
 		$and="";
 
@@ -10940,13 +10938,13 @@ $menu_html.="</li>";
 
 		if (is_array($set_lang_id) && count($set_lang_id)>=1){
 
-			foreach ($set_lang_id as $lang_id) {				
+			foreach ($set_lang_id as $lang_id) {
 
 				if (is_numeric($lang_id)){
 
 					$lang_ids.="'$lang_id',";
 
-				}				
+				}
 
 			}
 
@@ -10954,19 +10952,19 @@ $menu_html.="</li>";
 
 		} else $lang_ids="''";
 
-    	if (!empty($lang_ids)){
+		if (!empty($lang_ids)){
 
-    		$and=" AND lang_id IN ($lang_ids) ";
+			$and=" AND lang_id IN ($lang_ids) ";
 
-    	}    
+		}
 
-		
 
-    	$db_ext=new DbExt;
 
-    	$stmt="SELECT lang_id,country_code,language_code,source_text
+		$db_ext=new DbExt;
 
-    	 FROM {{languages}} 
+		$stmt="SELECT lang_id,country_code,language_code,source_text
+
+    	 FROM {{languages}}
 
     	 WHERE
 
@@ -10974,27 +10972,27 @@ $menu_html.="</li>";
 
     	 $and
 
-    	 ";	    	
+    	 ";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res;   		
+			return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }       
+	}
 
-    
 
-    public function getCustomPages()
 
-    {    	
+	public function getCustomPages()
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{custom_page}}
 
@@ -11002,143 +11000,143 @@ $menu_html.="</li>";
 
     	status='publish'
 
-    	 ";	
+    	 ";
 
-    	$list='';
+		$list='';
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		foreach ($res as $val) {
+			foreach ($res as $val) {
 
-    			$list[]=$val['page_name'];
+				$list[]=$val['page_name'];
 
-    		}
+			}
 
-    		return $list;
+			return $list;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }       
+	}
 
-    
 
-    public function deliveryChargesType()
 
-    {
+	public function deliveryChargesType()
 
-    	return array(
+	{
 
-    	  ""=>Yii::t("default","Fixed Amount"),
+		return array(
 
-    	  "1"=>Yii::t("defaul","Percentage")
+			""=>Yii::t("default","Fixed Amount"),
 
-    	);
+			"1"=>Yii::t("defaul","Percentage")
 
-    }
+		);
 
-    
+	}
 
-    public function setSEO($title='',$meta='',$keywords='')
 
-    {
 
-    	if (!empty($title)){
+	public function setSEO($title='',$meta='',$keywords='')
 
-    	   Yii::app()->clientScript->registerMetaTag($title, 'title');     	   
+	{
 
-    	   //Yii::app()->clientScript->registerMetaTag($title, 'og:title');     	   
+		if (!empty($title)){
 
-    	}    	
+			Yii::app()->clientScript->registerMetaTag($title, 'title');
 
-    	if ($meta){
+			//Yii::app()->clientScript->registerMetaTag($title, 'og:title');
 
-    	   Yii::app()->clientScript->registerMetaTag($meta, 'description'); 
+		}
 
-    	   Yii::app()->clientScript->registerMetaTag($meta, 'og:description'); 
+		if ($meta){
 
-    	}
+			Yii::app()->clientScript->registerMetaTag($meta, 'description');
 
-    	if ($keywords){
+			Yii::app()->clientScript->registerMetaTag($meta, 'og:description');
 
-    	   Yii::app()->clientScript->registerMetaTag($keywords, 'keywords'); 
+		}
 
-    	}
+		if ($keywords){
 
-    }
+			Yii::app()->clientScript->registerMetaTag($keywords, 'keywords');
 
-        
+		}
 
-    public function smarty($search='',$value='',$subject='')
+	}
 
-    {	
 
-	   return str_replace("{".$search."}",$value,$subject);
 
-    }
+	public function smarty($search='',$value='',$subject='')
 
-     
+	{
 
-    public function paymentCode($type='',$is_reverse=false)
+		return str_replace("{".$search."}",$value,$subject);
 
-    {    	
+	}
 
-    	$code= array(
 
-    	  'paypal'=>"pyp",
 
-    	  'creditcard'=>"ccr",
+	public function paymentCode($type='',$is_reverse=false)
 
-    	  'stripe'=>"stp",
+	{
 
-    	  'mercadopago'=>"mcd",
+		$code= array(
 
-    	  "payline"=>"pyl",
+			'paypal'=>"pyp",
 
-    	  'sisow'=>"ide",
+			'creditcard'=>"ccr",
 
-    	  'payumoney'=>"payu",
+			'stripe'=>"stp",
 
-    	  'paysera'=>'pys',
+			'mercadopago'=>"mcd",
 
-    	  'bankdeposit'=>'obd',
+			"payline"=>"pyl",
 
-    	  'payondeliver'=>"pyr",
+			'sisow'=>"ide",
 
-    	  'barclay'=>"bcy",
+			'payumoney'=>"payu",
 
-    	  "epaybg"=>"epy",
+			'paysera'=>'pys',
 
-    	  "authorize"=>"atz"
+			'bankdeposit'=>'obd',
 
-    	);
+			'payondeliver'=>"pyr",
 
-    	if ($is_reverse){
+			'barclay'=>"bcy",
 
-    		$code=array_flip($code);
+			"epaybg"=>"epy",
 
-    	}        	
+			"authorize"=>"atz"
 
-    	if (array_key_exists($type,$code)){
+		);
 
-    		return $code[$type];
+		if ($is_reverse){
 
-    	}
+			$code=array_flip($code);
 
-    	return '';
+		}
 
-    }   
+		if (array_key_exists($type,$code)){
 
-    
+			return $code[$type];
 
-    public function getSMSPackagesById($package_id='')
+		}
 
-    {
+		return '';
 
-    	$db_ext=new DbExt;
+	}
 
-    	$stmt="SELECT * FROM
+
+
+	public function getSMSPackagesById($package_id='')
+
+	{
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{sms_package}}
 
@@ -11150,79 +11148,79 @@ $menu_html.="</li>";
 
     	";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }    
+	}
 
-    
 
-    public function updateAdminLanguage($user_id='',$lang_id='')
 
-    {
+	public function updateAdminLanguage($user_id='',$lang_id='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$params=array(
+		$db_ext=new DbExt;
 
-    	  'user_lang'=>$lang_id,
+		$params=array(
 
-    	  'date_modified'=>date('c')
+			'user_lang'=>$lang_id,
 
-    	);
+			'date_modified'=>date('c')
 
-    	$db_ext->updateData("{{admin_user}}",$params,'admin_id',$user_id);
+		);
 
-    }
+		$db_ext->updateData("{{admin_user}}",$params,'admin_id',$user_id);
 
-    
+	}
 
-    public function updateMerchantLanguage($user_id='',$lang_id='')
 
-    {
 
-    	$db_ext=new DbExt;
+	public function updateMerchantLanguage($user_id='',$lang_id='')
 
-    	$params=array(
+	{
 
-    	  'user_lang'=>$lang_id,
+		$db_ext=new DbExt;
 
-    	  'date_modified'=>date('c')
+		$params=array(
 
-    	);
+			'user_lang'=>$lang_id,
 
-    	$db_ext->updateData("{{merchant}}",$params,'merchant_id',$user_id);
+			'date_modified'=>date('c')
 
-    }    
+		);
 
-    
+		$db_ext->updateData("{{merchant}}",$params,'merchant_id',$user_id);
 
-    public function hasSMSCredits()
+	}
 
-    {    	
 
-    	$stats=Yii::app()->functions->getOptionAdmin('mechant_sms_purchase_disabled'); 
 
-    	if ($stats=="yes"){
+	public function hasSMSCredits()
 
-    		return true;
+	{
 
-    	}
+		$stats=Yii::app()->functions->getOptionAdmin('mechant_sms_purchase_disabled');
 
-    	
+		if ($stats=="yes"){
 
-    	$merchant_id=Yii::app()->functions->getMerchantID();
+			return true;
 
-    	
+		}
 
-    	$db_ext=new DbExt;
 
-    	$stmt="
+
+		$merchant_id=Yii::app()->functions->getMerchantID();
+
+
+
+		$db_ext=new DbExt;
+
+		$stmt="
 
     	SELECT * FROM
 
@@ -11240,25 +11238,25 @@ $menu_html.="</li>";
 
     	";
 
-    	if ( $res=$db_ext->rst($stmt) ){
+		if ( $res=$db_ext->rst($stmt) ){
 
-    		return $res;
+			return $res;
 
-    	}    
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function getSMSPackage()
 
-    {
+	public function getSMSPackage()
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{sms_package}}
 
@@ -11266,237 +11264,237 @@ $menu_html.="</li>";
 
     	status in ('publish')
 
-    	ORDER BY 
+    	ORDER BY
 
     	sequence ASC
 
     	";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }
+	}
 
-    
 
-    public function adminPaymentList()
 
-    {
+	public function adminPaymentList()
 
-    	$enabled_stripe=Yii::app()->functions->getOptionAdmin('admin_stripe_enabled');
+	{
 
-    	$admin_enabled_paypal=Yii::app()->functions->getOptionAdmin('admin_enabled_paypal');    	
+		$enabled_stripe=Yii::app()->functions->getOptionAdmin('admin_stripe_enabled');
 
-    	$admin_enabled_card=Yii::app()->functions->getOptionAdmin('admin_enabled_card'); 
+		$admin_enabled_paypal=Yii::app()->functions->getOptionAdmin('admin_enabled_paypal');
 
-    	$admin_mercado_enabled=Yii::app()->functions->getOptionAdmin('admin_mercado_enabled'); 
+		$admin_enabled_card=Yii::app()->functions->getOptionAdmin('admin_enabled_card');
 
-    	$merchant_payline_enabled=Yii::app()->functions->getOptionAdmin('admin_payline_enabled'); 
+		$admin_mercado_enabled=Yii::app()->functions->getOptionAdmin('admin_mercado_enabled');
 
-    	$admin_sisow_enabled=Yii::app()->functions->getOptionAdmin('admin_sisow_enabled');     	
+		$merchant_payline_enabled=Yii::app()->functions->getOptionAdmin('admin_payline_enabled');
 
-    	$admin_payu_enabled=Yii::app()->functions->getOptionAdmin('admin_payu_enabled');     	    	
+		$admin_sisow_enabled=Yii::app()->functions->getOptionAdmin('admin_sisow_enabled');
 
-    	
+		$admin_payu_enabled=Yii::app()->functions->getOptionAdmin('admin_payu_enabled');
 
-    	$admin_bankdeposit_enabled=Yii::app()->functions->getOptionAdmin('admin_bankdeposit_enabled');
 
-    	$admin_paysera_enabled=Yii::app()->functions->getOptionAdmin('admin_paysera_enabled');
 
-    	
+		$admin_bankdeposit_enabled=Yii::app()->functions->getOptionAdmin('admin_bankdeposit_enabled');
 
-    	$admin_enabled_barclay=Yii::app()->functions->getOptionAdmin('admin_enabled_barclay');    	
+		$admin_paysera_enabled=Yii::app()->functions->getOptionAdmin('admin_paysera_enabled');
 
-    	$admin_enabled_epaybg=Yii::app()->functions->getOptionAdmin('admin_enabled_epaybg');
 
-    	
 
-    	$admin_enabled_autho=Yii::app()->functions->getOptionAdmin('admin_enabled_autho');
+		$admin_enabled_barclay=Yii::app()->functions->getOptionAdmin('admin_enabled_barclay');
 
-    	?>
+		$admin_enabled_epaybg=Yii::app()->functions->getOptionAdmin('admin_enabled_epaybg');
 
-    	<h4><?php echo Yii::t("default","Choose Payment option")?></h4>
 
-    	<div class="uk-panel uk-panel-box">
 
-    	
+		$admin_enabled_autho=Yii::app()->functions->getOptionAdmin('admin_enabled_autho');
 
-    	<?php if ( $admin_enabled_paypal==""):?>
+		?>
 
-    	 <div class="uk-form-row">
+		<h4><?php echo Yii::t("default","Choose Payment option")?></h4>
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+		<div class="uk-panel uk-panel-box">
 
-         array('class'=>"icheck payment_option",'value'=>"pyp"))?> <?php echo Yii::t("default","Paypal")?>
 
-         </div>   
 
-         <?php endif;?>
+			<?php if ( $admin_enabled_paypal==""):?>
 
-         
+				<div class="uk-form-row">
 
-         <?php if ( $admin_enabled_card==""):?>
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         <div class="uk-form-row">
+						array('class'=>"icheck payment_option",'value'=>"pyp"))?> <?php echo Yii::t("default","Paypal")?>
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+				</div>
 
-         array('class'=>"icheck payment_opt payment_option",'value'=>"ccr"))?> <?php echo Yii::t("default","Offline Credit Card")?>
+			<?php endif;?>
 
-         </div>     
 
-         <?php endif;?>
 
-         
+			<?php if ( $admin_enabled_card==""):?>
 
-         <?php if ( $enabled_stripe=="yes"):?>
+				<div class="uk-form-row">
 
-         <div class="uk-form-row">
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+						array('class'=>"icheck payment_opt payment_option",'value'=>"ccr"))?> <?php echo Yii::t("default","Offline Credit Card")?>
 
-         array('class'=>"icheck payment_option",'value'=>"stp"))?> <?php echo Yii::t("default","Stripe")?>
+				</div>
 
-         </div>     
+			<?php endif;?>
 
-         <?php endif;?>
 
-         
 
-         <?php if ( $admin_mercado_enabled=="yes"):?>
+			<?php if ( $enabled_stripe=="yes"):?>
 
-         <div class="uk-form-row">
+				<div class="uk-form-row">
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         array('class'=>"icheck payment_option",'value'=>"mcd"))?> <?php echo Yii::t("default","Mercadopago")?>
+						array('class'=>"icheck payment_option",'value'=>"stp"))?> <?php echo Yii::t("default","Stripe")?>
 
-         </div>     
+				</div>
 
-         <?php endif;?>
+			<?php endif;?>
 
-                  
 
-         
 
-         <?php if ( $admin_sisow_enabled=="yes"):?>
+			<?php if ( $admin_mercado_enabled=="yes"):?>
 
-         <div class="uk-form-row">
+				<div class="uk-form-row">
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         array('class'=>"icheck payment_option",'value'=>"ide"))?> <?php echo Yii::t("default","Sisow")?>
+						array('class'=>"icheck payment_option",'value'=>"mcd"))?> <?php echo Yii::t("default","Mercadopago")?>
 
-         </div>     
+				</div>
 
-         <?php endif;?>         
+			<?php endif;?>
 
-         
 
-         <?php if ( $admin_payu_enabled=="yes"):?>
 
-         <div class="uk-form-row">
 
-         <?php echo CHtml::radioButton('payment_opt',false,
 
-         array('class'=>"icheck payment_option",'value'=>"payu"))?> <?php echo Yii::t("default","PayUMoney")?>
+			<?php if ( $admin_sisow_enabled=="yes"):?>
 
-         </div>     
+				<div class="uk-form-row">
 
-         <?php endif;?>         
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         
+						array('class'=>"icheck payment_option",'value'=>"ide"))?> <?php echo Yii::t("default","Sisow")?>
 
-         <?php if ( $admin_bankdeposit_enabled=="yes"):?>
+				</div>
 
-         <div class="uk-form-row">
+			<?php endif;?>
 
-         <?php echo CHtml::radioButton('payment_opt',false,
 
-         array('class'=>"icheck payment_option",'value'=>"obd"))?> <?php echo Yii::t("default","Bank Deposit")?>
 
-         </div>     
+			<?php if ( $admin_payu_enabled=="yes"):?>
 
-         <?php endif;?>     
+				<div class="uk-form-row">
 
-         
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         <?php if ( $admin_paysera_enabled=="yes"):?>
+						array('class'=>"icheck payment_option",'value'=>"payu"))?> <?php echo Yii::t("default","PayUMoney")?>
 
-         <div class="uk-form-row">
+				</div>
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+			<?php endif;?>
 
-         array('class'=>"icheck payment_option",'value'=>"pys"))?> <?php echo Yii::t("default","Paysera")?>
 
-         </div>     
 
-         <?php endif;?>             
+			<?php if ( $admin_bankdeposit_enabled=="yes"):?>
 
-         
+				<div class="uk-form-row">
 
-         <?php if ( $admin_enabled_barclay=="yes"):?>
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         <div class="uk-form-row">
+						array('class'=>"icheck payment_option",'value'=>"obd"))?> <?php echo Yii::t("default","Bank Deposit")?>
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+				</div>
 
-         array('class'=>"icheck payment_option",'value'=>"bcy"))?> <?php echo Yii::t("default","Barclay")?>
+			<?php endif;?>
 
-         </div>     
 
-         <?php endif;?>             
 
-         
+			<?php if ( $admin_paysera_enabled=="yes"):?>
 
-         <?php if ( $admin_enabled_epaybg=="yes"):?>
+				<div class="uk-form-row">
 
-         <div class="uk-form-row">
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+						array('class'=>"icheck payment_option",'value'=>"pys"))?> <?php echo Yii::t("default","Paysera")?>
 
-         array('class'=>"icheck payment_option",'value'=>"epy"))?> <?php echo Yii::t("default","EpayBg")?>
+				</div>
 
-         </div>     
+			<?php endif;?>
 
-         <?php endif;?>             
 
-         
 
-         <?php if ( $admin_enabled_autho=="yes"):?>
+			<?php if ( $admin_enabled_barclay=="yes"):?>
 
-         <div class="uk-form-row">
+				<div class="uk-form-row">
 
-         <?php echo CHtml::radioButton('payment_opt',false,
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-         array('class'=>"icheck payment_option",'value'=>"atz"))?> <?php echo Yii::t("default","Authorize.net")?>
+						array('class'=>"icheck payment_option",'value'=>"bcy"))?> <?php echo Yii::t("default","Barclay")?>
 
-         </div>     
+				</div>
 
-         <?php endif;?>             
+			<?php endif;?>
 
-         
 
-    	</div> <!--uk-panel-->
 
-    	<?php
+			<?php if ( $admin_enabled_epaybg=="yes"):?>
 
-    }
+				<div class="uk-form-row">
 
-    
+					<?php echo CHtml::radioButton('payment_opt',false,
 
-    public function getPackageSMSTrans($package_id='')
+						array('class'=>"icheck payment_option",'value'=>"epy"))?> <?php echo Yii::t("default","EpayBg")?>
 
-    {
+				</div>
 
-    	$db_ext=new DbExt;
+			<?php endif;?>
 
-    	$stmt="SELECT a.*,
+
+
+			<?php if ( $admin_enabled_autho=="yes"):?>
+
+				<div class="uk-form-row">
+
+					<?php echo CHtml::radioButton('payment_opt',false,
+
+						array('class'=>"icheck payment_option",'value'=>"atz"))?> <?php echo Yii::t("default","Authorize.net")?>
+
+				</div>
+
+			<?php endif;?>
+
+
+
+		</div> <!--uk-panel-->
+
+		<?php
+
+	}
+
+
+
+	public function getPackageSMSTrans($package_id='')
+
+	{
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT a.*,
 
     	(
 
@@ -11508,7 +11506,7 @@ $menu_html.="</li>";
 
     	where
 
-    	sms_package_id = a.sms_package_id 	
+    	sms_package_id = a.sms_package_id
 
     	) as title
 
@@ -11520,29 +11518,29 @@ $menu_html.="</li>";
 
     	id='$package_id'
 
-    	LIMIT 0,1    	
+    	LIMIT 0,1
 
     	";
 
-    	if ( $res=$db_ext->rst($stmt)){    		
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }    
+	}
 
-    
 
-    public function getPackageSMSTransByMerchant($package_id='',$merchant_id='')
 
-    {
+	public function getPackageSMSTransByMerchant($package_id='',$merchant_id='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT a.*,
+		$db_ext=new DbExt;
+
+		$stmt="SELECT a.*,
 
     	(
 
@@ -11554,7 +11552,7 @@ $menu_html.="</li>";
 
     	where
 
-    	sms_package_id = a.sms_package_id 	
+    	sms_package_id = a.sms_package_id
 
     	) as title
 
@@ -11570,29 +11568,29 @@ $menu_html.="</li>";
 
     	merchant_id=".Yii::app()->db->quoteValue($merchant_id)."
 
-    	LIMIT 0,1    	
+    	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	if ( $res=$db_ext->rst($stmt)){    		
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    
+		return false;
 
-    }        
+	}
 
-    
 
-    public function getAllCustomerCount()
 
-    {
+	public function getAllCustomerCount()
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT COUNT(*) as total
+		$db_ext=new DbExt;
+
+		$stmt="SELECT COUNT(*) as total
 
     	FROM
 
@@ -11604,25 +11602,25 @@ $menu_html.="</li>";
 
     	";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res[0]['total'];
+			return $res[0]['total'];
 
-    	}
+		}
 
-    	return 0;
+		return 0;
 
-    } 
+	}
 
 
 
-    public function getAllClientsByMerchant($merchant_id='')
+	public function getAllClientsByMerchant($merchant_id='')
 
-    {
+	{
 
-    	$db_ext=new DbExt;
+		$db_ext=new DbExt;
 
-    	$stmt="SELECT a.client_id, COUNT(*) as total
+		$stmt="SELECT a.client_id, COUNT(*) as total
 
     	FROM
 
@@ -11636,39 +11634,39 @@ $menu_html.="</li>";
 
     	contact_phone!=''
 
-    	";    	
+    	";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res[0]['total'];
+			return $res[0]['total'];
 
-    	}
+		}
 
-    	return 0;
+		return 0;
 
-    }   
+	}
 
-    
 
-    public function getMerchantSMSCredit($merchant_id='')
 
-    {
+	public function getMerchantSMSCredit($merchant_id='')
 
-    	
+	{
 
-        $stats=Yii::app()->functions->getOptionAdmin('mechant_sms_purchase_disabled');    	
 
-    	if ($stats=="yes"){
 
-    		return 1;
+		$stats=Yii::app()->functions->getOptionAdmin('mechant_sms_purchase_disabled');
 
-    	}
+		if ($stats=="yes"){
 
-    	
+			return 1;
 
-    	$db_ext=new DbExt;
+		}
 
-    	$stmt="
+
+
+		$db_ext=new DbExt;
+
+		$stmt="
 
     	SELECT SUM(sms_limit) as total_credits,
 
@@ -11682,7 +11680,7 @@ $menu_html.="</li>";
 
     	   where
 
-    	   merchant_id=".Yii::app()->db->quoteValue($merchant_id)."    	
+    	   merchant_id=".Yii::app()->db->quoteValue($merchant_id)."
 
     	   and
 
@@ -11690,7 +11688,7 @@ $menu_html.="</li>";
 
     	) as total_send
 
-    	
+
 
     	FROM {{sms_package_trans}}
 
@@ -11704,43 +11702,43 @@ $menu_html.="</li>";
 
     	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0]['total_credits']-$res[0]['total_send'];
+			return $res[0]['total_credits']-$res[0]['total_send'];
 
-    	}
+		}
 
-    	return 0;
+		return 0;
 
-    }
+	}
 
-    
 
-    public function SMSsendStatus()
 
-    {
+	public function SMSsendStatus()
 
-    	return array(
+	{
 
-    	   1=>Yii::t("default","Send to All Customer"),
+		return array(
 
-    	   2=>Yii::t("default","Send to Customer Who already buy your products"),
+			1=>Yii::t("default","Send to All Customer"),
 
-    	   3=>Yii::t("default","Send to specific mobile numbers")
+			2=>Yii::t("default","Send to Customer Who already buy your products"),
 
-    	);
+			3=>Yii::t("default","Send to specific mobile numbers")
 
-    }
+		);
 
-    
+	}
 
-    public function mercadoGetPayment($payment_ref='')
 
-    {
 
-    	$db_ext=new DbExt;
+	public function mercadoGetPayment($payment_ref='')
 
-    	$stmt="SELECT * FROM
+	{
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{sms_package_trans}}
 
@@ -11750,65 +11748,65 @@ $menu_html.="</li>";
 
     	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function validateSellLimit($merchant_id='')
 
-    {    	    	
+	public function validateSellLimit($merchant_id='')
 
-    	$m1=date('Y-m-01 00:00:00');
+	{
 
-    	$m2=date('Y-m-t H:i:s');
+		$m1=date('Y-m-01 00:00:00');
 
-    	$expiration=1;
+		$m2=date('Y-m-t H:i:s');
 
-    	
+		$expiration=1;
 
-    	if ($merchant_info=$this->getMerchant($merchant_id)){  	    		
 
-    		if ( $merchant_info['is_commission']==2){
 
-    			return true;
+		if ($merchant_info=$this->getMerchant($merchant_id)){
 
-    		}
+			if ( $merchant_info['is_commission']==2){
 
-    	    $membership_purchase_date=$merchant_info['membership_purchase_date'];    	    
+				return true;
 
-    	    $membership_purchase_date1=date("Ymd",strtotime($membership_purchase_date));
+			}
 
-    	    /*dump($membership_purchase_date); 
+			$membership_purchase_date=$merchant_info['membership_purchase_date'];
+
+			$membership_purchase_date1=date("Ymd",strtotime($membership_purchase_date));
+
+			/*dump($membership_purchase_date);
 
     	    dump($membership_purchase_date1);*/
 
-    	    $m3=date("Ymd");
+			$m3=date("Ymd");
 
-    	    //dump($m3);
+			//dump($m3);
 
-    	    if ($membership_purchase_date1>=$m3 ){
+			if ($membership_purchase_date1>=$m3 ){
 
-    	    	//echo "change start date";
+				//echo "change start date";
 
-    	    	$m1=$membership_purchase_date;
+				$m1=$membership_purchase_date;
 
-    	    }
+			}
 
-    	}
+		}
 
-    	
 
-    	$db_ext=new DbExt;
 
-    	$stmt="
+		$db_ext=new DbExt;
+
+		$stmt="
 
     	SELECT a.merchant_id,a.package_id,
 
@@ -11826,7 +11824,7 @@ $menu_html.="</li>";
 
     	) as sell_limit,
 
-    	
+
 
     	(
 
@@ -11846,7 +11844,7 @@ $menu_html.="</li>";
 
     	) as total_sell
 
-    	
+
 
     	FROM
 
@@ -11858,189 +11856,189 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	//dump($stmt);
+		//dump($stmt);
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		$res=$res[0];    
+			$res=$res[0];
 
-    		//dump($res);
+			//dump($res);
 
-    		if ($res['sell_limit']>=1){
+			if ($res['sell_limit']>=1){
 
-    			if ($res['total_sell']>=$res['sell_limit']){    				
+				if ($res['total_sell']>=$res['sell_limit']){
 
-    				return false;			
+					return false;
 
-    			}
+				}
 
-    		}
+			}
 
-    	}
+		}
 
-    	return true;
+		return true;
 
-    }
+	}
 
-    
 
-    public function upgradeMembership($merchant_id='',$package_id='')
 
-    {
+	public function upgradeMembership($merchant_id='',$package_id='')
 
-    	$membership_expired='';
+	{
 
-    	$package_price='';
+		$membership_expired='';
 
-    	if ( $package=$this->getPackagesById($package_id)){    		    		
+		$package_price='';
 
-    		$package_price=$package['price'];
+		if ( $package=$this->getPackagesById($package_id)){
 
-    		if ($package['promo_price']>0){
+			$package_price=$package['price'];
 
-    			$package_price=$package['promo_price'];
+			if ($package['promo_price']>0){
 
-    		}    	
+				$package_price=$package['promo_price'];
 
-    		$expiration=$package['expiration'];
+			}
 
-            $membership_expired = date('Y-m-d', strtotime ("+$expiration days"));            
+			$expiration=$package['expiration'];
 
-    	}
+			$membership_expired = date('Y-m-d', strtotime ("+$expiration days"));
 
-    	
+		}
 
-    	//dump("expire on : ".$membership_expired);
 
-    	
 
-    	if ($info=$this->getMerchant($merchant_id)){
+		//dump("expire on : ".$membership_expired);
 
-    		$t1=date('Ymd');    		
 
-    		$membership_expired_1=$info['membership_expired'];    		
 
-    		if ($membership_expired_1!="0000-00-00"){    			
+		if ($info=$this->getMerchant($merchant_id)){
 
-    			$t2=date("Ymd",strtotime($membership_expired_1));    			
+			$t1=date('Ymd');
 
-    			if ($t2>$t1){      				
+			$membership_expired_1=$info['membership_expired'];
 
-    		        $membership_expired = date('Y-m-d', strtotime ("$membership_expired_1 +$expiration days"));  
+			if ($membership_expired_1!="0000-00-00"){
 
-    			}  
+				$t2=date("Ymd",strtotime($membership_expired_1));
 
-    		}	  	    		
+				if ($t2>$t1){
 
-    	}
+					$membership_expired = date('Y-m-d', strtotime ("$membership_expired_1 +$expiration days"));
 
-    	
+				}
 
-    	//dump("expire on : ".$membership_expired);
+			}
 
-    	
+		}
 
-    	return array(
 
-    	 'membership_expired'=>$membership_expired,
 
-    	 'package_price'=>$package_price
+		//dump("expire on : ".$membership_expired);
 
-    	);
 
-    }
 
-    
+		return array(
 
-    public function membershipStatusClass($status="")
+			'membership_expired'=>$membership_expired,
 
-    {
+			'package_price'=>$package_price
 
-    	if ($status=="expired"){
+		);
 
-    		return "uk-badge uk-badge-danger";
+	}
 
-    	}
 
-    	return "uk-badge";    	
 
-    }
+	public function membershipStatusClass($status="")
 
-    
+	{
 
-    public function SMSnotificationMerchant($merchant_id='',$order_info='',$data='')
+		if ($status=="expired"){
 
-    {
+			return "uk-badge uk-badge-danger";
 
-        $db_ext=new DbExt;
+		}
 
-    	$sms_enabled_alert=Yii::app()->functions->getOption("sms_enabled_alert",$merchant_id);
+		return "uk-badge";
 
-        $sms_notify_number=Yii::app()->functions->getOption("sms_notify_number",$merchant_id);
+	}
 
-        $sms_alert_message=Yii::app()->functions->getOption("sms_alert_message",$merchant_id);
 
-        
 
-        $sms_alert_message=$this->smarty("customer-name",$order_info['full_name'],$sms_alert_message);        
+	public function SMSnotificationMerchant($merchant_id='',$order_info='',$data='')
 
-                        
+	{
 
-        $item_order='';        
+		$db_ext=new DbExt;
 
-        if (is_array($data) && count($data)>=1){
+		$sms_enabled_alert=Yii::app()->functions->getOption("sms_enabled_alert",$merchant_id);
 
-        	
+		$sms_notify_number=Yii::app()->functions->getOption("sms_notify_number",$merchant_id);
 
-        	$in_msg=t("OrderNo:").$order_info['order_id']." ";
+		$sms_alert_message=Yii::app()->functions->getOption("sms_alert_message",$merchant_id);
 
-            $in_msg.=t("ClientName:").$order_info['full_name']." "; 
 
-        	
 
-        	foreach ($data['item'] as $val) {        		
+		$sms_alert_message=$this->smarty("customer-name",$order_info['full_name'],$sms_alert_message);
 
-        		$item_order.="(".$val['qty']."x)".$val['item_name']." ".$val['order_notes'].",";
 
-        		if (isset($val['sub_item'])){
 
-	        		if (is_array($val['sub_item']) && count($val['sub_item'])>=1){        			
+		$item_order='';
 
-	        			foreach ($val['sub_item'] as $sub_val) {        			
+		if (is_array($data) && count($data)>=1){
 
-	        				$item_order.=$sub_val['addon_category'].":";
 
-	        				$item_order.="(".$sub_val['addon_qty']."x)".$sub_val['addon_name'];
 
-	        				$item_order.=", ";
+			$in_msg=t("OrderNo:").$order_info['order_id']." ";
 
-	        			}
+			$in_msg.=t("ClientName:").$order_info['full_name']." ";
 
-	        		}
 
-        		}
 
-        	}          	
+			foreach ($data['item'] as $val) {
 
-        	$item_order=substr($item_order,0,-1);         	   	        
+				$item_order.="(".$val['qty']."x)".$val['item_name']." ".$val['order_notes'].",";
 
-            $sms_alert_message=$this->smarty("receipt",$in_msg.$item_order,$sms_alert_message);                                
+				if (isset($val['sub_item'])){
 
-        }                         
+					if (is_array($val['sub_item']) && count($val['sub_item'])>=1){
 
+						foreach ($val['sub_item'] as $sub_val) {
 
+							$item_order.=$sub_val['addon_category'].":";
 
-        
+							$item_order.="(".$sub_val['addon_qty']."x)".$sub_val['addon_name'];
 
-        $sms_alert_message=$this->smarty("orderno",$order_info['order_id'],$sms_alert_message);
+							$item_order.=", ";
 
-        $sms_alert_message=$this->smarty("customername",$order_info['full_name'],$sms_alert_message);
+						}
 
-        //$sms_alert_message=$this->smarty("customermobile",$order_info['merchant_contact_phone'],$sms_alert_message);
+					}
 
-        if ( $order_info['trans_type']=="pickup"){
+				}
+
+			}
+
+			$item_order=substr($item_order,0,-1);
+
+			$sms_alert_message=$this->smarty("receipt",$in_msg.$item_order,$sms_alert_message);
+
+		}
+
+
+
+
+
+		$sms_alert_message=$this->smarty("orderno",$order_info['order_id'],$sms_alert_message);
+
+		$sms_alert_message=$this->smarty("customername",$order_info['full_name'],$sms_alert_message);
+
+		//$sms_alert_message=$this->smarty("customermobile",$order_info['merchant_contact_phone'],$sms_alert_message);
+
+		if ( $order_info['trans_type']=="pickup"){
 
 			$sms_alert_message=$this->smarty("customermobile",$order_info['contact_phone'],$sms_alert_message);
 
@@ -12048,21 +12046,21 @@ $menu_html.="</li>";
 
 			$sms_alert_message=$this->smarty("customermobile",$order_info['contact_phone1'],$sms_alert_message);
 
-		}	    
+		}
 
-		
 
-        $sms_alert_message=$this->smarty("customeraddress",$order_info['client_full_address'],$sms_alert_message);
 
-        $sms_alert_message=$this->smarty("amount",displayPrice(baseCurrency(),normalPrettyPrice($order_info['total_w_tax'])),
+		$sms_alert_message=$this->smarty("customeraddress",$order_info['client_full_address'],$sms_alert_message);
 
-        $sms_alert_message);
+		$sms_alert_message=$this->smarty("amount",displayPrice(baseCurrency(),normalPrettyPrice($order_info['total_w_tax'])),
 
-        $sms_alert_message=$this->smarty("website-ddress",websiteUrl(),$sms_alert_message);
+			$sms_alert_message);
+
+		$sms_alert_message=$this->smarty("website-ddress",websiteUrl(),$sms_alert_message);
 
 		$sms_alert_message=$this->smarty("website-address",websiteUrl(),$sms_alert_message);
 
-		
+
 
 		$sms_alert_message=$this->smarty("payment-type",$order_info['payment_type'],$sms_alert_message);
 
@@ -12072,57 +12070,57 @@ $menu_html.="</li>";
 
 		$sms_alert_message=$this->smarty("delivery-date",
 
-		  $this->translateDate($this->FormatDateTime($order_info['delivery_date'],false)),
+			$this->translateDate($this->FormatDateTime($order_info['delivery_date'],false)),
 
-		 $sms_alert_message);		
+			$sms_alert_message);
 
-		$sms_alert_message=$this->smarty("delivery-time",$order_info['delivery_time'],$sms_alert_message);	
+		$sms_alert_message=$this->smarty("delivery-time",$order_info['delivery_time'],$sms_alert_message);
 
-		
+
 
 		$sms_alert_message=$this->smarty("order-change",
 
-		displayPrice(adminCurrencySymbol(),$this->standardPrettyFormat($order_info['order_change']))
+			displayPrice(adminCurrencySymbol(),$this->standardPrettyFormat($order_info['order_change']))
 
-		,$sms_alert_message);			
+			,$sms_alert_message);
 
-									
+
 
 		$sms_alert_message=$this->smarty("delivery-fee",
 
-		displayPrice(adminCurrencySymbol(),$this->standardPrettyFormat($order_info['delivery_charge']))
+			displayPrice(adminCurrencySymbol(),$this->standardPrettyFormat($order_info['delivery_charge']))
 
-		,$sms_alert_message);			
+			,$sms_alert_message);
 
 
 
 		//dump($order_info);
 
-		//dump($sms_alert_message);		
+		//dump($sms_alert_message);
 
-			
 
-        //send sms to customer        
 
-        $client_sms=Yii::app()->functions->getOption("sms_alert_customer",$merchant_id);
+		//send sms to customer
 
-        $client_contact_phone=$order_info['contact_phone'];
+		$client_sms=Yii::app()->functions->getOption("sms_alert_customer",$merchant_id);
 
-        if (!empty($client_sms) && !empty($client_contact_phone)){        	
+		$client_contact_phone=$order_info['contact_phone'];
 
-        	$client_sms=$this->smarty("customer-name",$order_info['full_name'],$client_sms);
+		if (!empty($client_sms) && !empty($client_contact_phone)){
 
-        	$client_sms=$this->smarty("orderno",$order_info['order_id'],$client_sms);
+			$client_sms=$this->smarty("customer-name",$order_info['full_name'],$client_sms);
 
-        	$client_sms=$this->smarty("merchantname",$order_info['merchant_name'],$client_sms);
+			$client_sms=$this->smarty("orderno",$order_info['order_id'],$client_sms);
 
-        	$client_sms=$this->smarty("merchantphone",$order_info['merchant_contact_phone'],$client_sms);
+			$client_sms=$this->smarty("merchantname",$order_info['merchant_name'],$client_sms);
 
-        	$client_sms=$this->smarty("website-ddress",websiteUrl(),$client_sms);   
+			$client_sms=$this->smarty("merchantphone",$order_info['merchant_contact_phone'],$client_sms);
 
-			$client_sms=$this->smarty("website-address",websiteUrl(),$client_sms); 
+			$client_sms=$this->smarty("website-ddress",websiteUrl(),$client_sms);
 
-			
+			$client_sms=$this->smarty("website-address",websiteUrl(),$client_sms);
+
+
 
 			$client_sms=$this->smarty("payment-type",$order_info['payment_type'],$client_sms);
 
@@ -12132,141 +12130,141 @@ $menu_html.="</li>";
 
 			$client_sms=$this->smarty("delivery-date",
 
-			  $this->translateDate($this->FormatDateTime($order_info['delivery_date'],false)),
+				$this->translateDate($this->FormatDateTime($order_info['delivery_date'],false)),
 
-			 $client_sms);		
+				$client_sms);
 
-			$client_sms=$this->smarty("delivery-time",$order_info['delivery_time'],$client_sms);	
+			$client_sms=$this->smarty("delivery-time",$order_info['delivery_time'],$client_sms);
 
 			$client_sms=$this->smarty("order-change",
 
-			displayPrice(adminCurrencySymbol(),$this->standardPrettyFormat($order_info['order_change']))
+				displayPrice(adminCurrencySymbol(),$this->standardPrettyFormat($order_info['order_change']))
 
-			,$client_sms);			
+				,$client_sms);
 
 			$client_sms=$this->smarty("merchant-address",$order_info['merchant_address'],$client_sms);
 
-						
+
 
 			$client_sms=$this->smarty("delivery-fee",
 
-		    displayPrice(adminCurrencySymbol(),$this->standardPrettyFormat($order_info['delivery_charge']))
+				displayPrice(adminCurrencySymbol(),$this->standardPrettyFormat($order_info['delivery_charge']))
 
-		    ,$client_sms);			
+				,$client_sms);
 
-		    
 
-        }                  
 
-                       
+		}
 
-        $sms_provider=Yii::app()->functions->getOptionAdmin('sms_provider');    	    	    	    	
 
-        $sms_provider=strtolower($sms_provider);
 
-                
+		$sms_provider=Yii::app()->functions->getOptionAdmin('sms_provider');
 
-        /*send SMS to client */
+		$sms_provider=strtolower($sms_provider);
 
-        if ( $sms_enabled_alert==1 && !empty($client_sms) && !empty($client_contact_phone) ){
 
-        	$balance=$this->getMerchantSMSCredit($merchant_id);	
 
-        	if (is_numeric($balance) && $balance>=1){
+		/*send SMS to client */
 
-        		$resp2=$this->sendSMS($client_contact_phone,$client_sms);
+		if ( $sms_enabled_alert==1 && !empty($client_sms) && !empty($client_contact_phone) ){
 
-        		$params=array(
+			$balance=$this->getMerchantSMSCredit($merchant_id);
 
-	        	  'merchant_id'=>$merchant_id,
+			if (is_numeric($balance) && $balance>=1){
 
-	        	  'broadcast_id'=>"999999999",
+				$resp2=$this->sendSMS($client_contact_phone,$client_sms);
 
-	        	  'client_id'=>$order_info['client_id'],
+				$params=array(
 
-	        	  'client_name'=>$order_info['full_name'],
+					'merchant_id'=>$merchant_id,
 
-	        	  'contact_phone'=>$client_contact_phone,
+					'broadcast_id'=>"999999999",
 
-	        	  'sms_message'=>$client_sms,
+					'client_id'=>$order_info['client_id'],
 
-	        	  'status'=>$resp2['msg'],
+					'client_name'=>$order_info['full_name'],
 
-	        	  'gateway_response'=>$resp2['raw'],
+					'contact_phone'=>$client_contact_phone,
 
-	        	  'date_created'=>date('c'),
+					'sms_message'=>$client_sms,
 
-	        	  'date_executed'=>date('c'),
+					'status'=>$resp2['msg'],
 
-	        	  'ip_address'=>$_SERVER['REMOTE_ADDR'],
+					'gateway_response'=>$resp2['raw'],
 
-	        	  'gateway'=>$sms_provider
+					'date_created'=>date('c'),
 
-	        	);	  		        	  
+					'date_executed'=>date('c'),
 
-	        	$db_ext->insertData("{{sms_broadcast_details}}",$params);	        	
+					'ip_address'=>$_SERVER['REMOTE_ADDR'],
 
-        	}
+					'gateway'=>$sms_provider
 
-        }        
+				);
 
-        /*end send sms to client*/
+				$db_ext->insertData("{{sms_broadcast_details}}",$params);
 
-                                  
+			}
 
-        if ( $sms_enabled_alert==1 && !empty($sms_notify_number) && !empty($sms_alert_message)) {        	
+		}
 
-        	$sms_notify_number_s=explode(",",$sms_notify_number);        	        	
+		/*end send sms to client*/
 
-        	if (is_array($sms_notify_number_s) && count($sms_notify_number_s)>=1){
 
-        		$x_counter=1;
 
-        		foreach ($sms_notify_number_s as $sms_notify_number) {        			        		
+		if ( $sms_enabled_alert==1 && !empty($sms_notify_number) && !empty($sms_alert_message)) {
 
-			        $balance=$this->getMerchantSMSCredit($merchant_id);	        
+			$sms_notify_number_s=explode(",",$sms_notify_number);
 
-			        if (is_numeric($balance) && $balance>=1){	        	
+			if (is_array($sms_notify_number_s) && count($sms_notify_number_s)>=1){
 
-			        	//dump($sms_notify_number);
+				$x_counter=1;
 
-			        	$resp=$this->sendSMS($sms_notify_number,$sms_alert_message);
+				foreach ($sms_notify_number_s as $sms_notify_number) {
 
-			        	$params=array(
+					$balance=$this->getMerchantSMSCredit($merchant_id);
 
-			        	  'merchant_id'=>$merchant_id,
+					if (is_numeric($balance) && $balance>=1){
 
-			        	  'broadcast_id'=>"999999999",
+						//dump($sms_notify_number);
 
-			        	  'client_id'=>$order_info['client_id'],
+						$resp=$this->sendSMS($sms_notify_number,$sms_alert_message);
 
-			        	  'client_name'=>$order_info['full_name'],
+						$params=array(
 
-			        	  'contact_phone'=>$sms_notify_number,
+							'merchant_id'=>$merchant_id,
 
-			        	  'sms_message'=>$sms_alert_message,
+							'broadcast_id'=>"999999999",
 
-			        	  'status'=>$resp['msg'],
+							'client_id'=>$order_info['client_id'],
 
-			        	  'gateway_response'=>$resp['raw'],
+							'client_name'=>$order_info['full_name'],
 
-			        	  'date_created'=>date('c'),
+							'contact_phone'=>$sms_notify_number,
 
-			        	  'date_executed'=>date('c'),
+							'sms_message'=>$sms_alert_message,
 
-			        	  'ip_address'=>$_SERVER['REMOTE_ADDR'],
+							'status'=>$resp['msg'],
 
-			        	  'gateway'=>$sms_provider
+							'gateway_response'=>$resp['raw'],
 
-			        	);	    	        	
+							'date_created'=>date('c'),
 
-			        	$db_ext->insertData("{{sms_broadcast_details}}",$params);	        	
+							'date_executed'=>date('c'),
 
-			        	
+							'ip_address'=>$_SERVER['REMOTE_ADDR'],
 
-			        	/*if ( $x_counter==1):
+							'gateway'=>$sms_provider
 
-			        	if (!empty($client_sms) && !empty($client_contact_phone)){ 
+						);
+
+						$db_ext->insertData("{{sms_broadcast_details}}",$params);
+
+
+
+						/*if ( $x_counter==1):
+
+			        	if (!empty($client_sms) && !empty($client_contact_phone)){
 
 			        		$resp2=$this->sendSMS($client_contact_phone,$client_sms);
 
@@ -12296,61 +12294,61 @@ $menu_html.="</li>";
 
 				        	  'gateway'=>$sms_provider
 
-				        	);	  		        	  
+				        	);
 
-				        	$db_ext->insertData("{{sms_broadcast_details}}",$params);	        	
+				        	$db_ext->insertData("{{sms_broadcast_details}}",$params);
 
-			        	} 
+			        	}
 
 			        	endif;*/
 
-			        }
+					}
 
-			        $x_counter++;
+					$x_counter++;
 
-        		}
+				}
 
-        	}	        
+			}
 
-        }
+		}
 
-    }
+	}
 
-    
 
-    public function sendSMS($to='',$message='')
 
-    {
+	public function sendSMS($to='',$message='')
 
-    	$to=trim($to);
+	{
 
-    	$message=trim($message);
+		$to=trim($to);
 
-    	
+		$message=trim($message);
 
-    	$msg='';$raw='';
 
-    	$sms_provider=Yii::app()->functions->getOptionAdmin('sms_provider');    	
 
-    	    	    	
+		$msg='';$raw='';
 
-    	//if ($sms_provider=="nexmo"){    
+		$sms_provider=Yii::app()->functions->getOptionAdmin('sms_provider');
 
-    	$sms_provider=strtolower($sms_provider);
 
-    	
 
-    	//dump($sms_provider);
+		//if ($sms_provider=="nexmo"){
 
-    	        
+		$sms_provider=strtolower($sms_provider);
 
-    	switch ($sms_provider) {
 
-    		
 
-    		case "smsglobal":
+		//dump($sms_provider);
 
-    			$abs_smsglobal=new SMSGlobal;
+
+
+		switch ($sms_provider) {
+
+
+
+			case "smsglobal":
+
+				$abs_smsglobal=new SMSGlobal;
 
 				$abs_smsglobal->_debug=false;
 
@@ -12362,349 +12360,349 @@ $menu_html.="</li>";
 
 				$abs_smsglobal->_smssender= getOptionA('smsglobal_senderid');
 
-				if ($resp=$abs_smsglobal->sendSMS_HTTPOST($to,$message)){				
+				if ($resp=$abs_smsglobal->sendSMS_HTTPOST($to,$message)){
 
 					$msg="process";
 
-				} else $msg=$abs_smsglobal->get_error();			
+				} else $msg=$abs_smsglobal->get_error();
 
-    			break;
+				break;
 
-    			
 
-    		case "clickatell":
 
-    			$Clickatell=new Clickatell;
+			case "clickatell":
 
-    			$Clickatell->user=Yii::app()->functions->getOptionAdmin('clickatel_user');
+				$Clickatell=new Clickatell;
 
-    			$Clickatell->password=Yii::app()->functions->getOptionAdmin('clickatel_password');
+				$Clickatell->user=Yii::app()->functions->getOptionAdmin('clickatel_user');
 
-    			$Clickatell->api_id=Yii::app()->functions->getOptionAdmin('clickatel_api_id');
+				$Clickatell->password=Yii::app()->functions->getOptionAdmin('clickatel_password');
 
-    			$Clickatell->is_curl=Yii::app()->functions->getOptionAdmin('clickatel_use_curl');
+				$Clickatell->api_id=Yii::app()->functions->getOptionAdmin('clickatel_api_id');
 
-    			$Clickatell->to=$to;
+				$Clickatell->is_curl=Yii::app()->functions->getOptionAdmin('clickatel_use_curl');
 
-	    		$Clickatell->message=$message;
+				$Clickatell->to=$to;
 
-	    		$clickatel_use_unicode=Yii::app()->functions->getOptionAdmin('clickatel_use_unicode');
+				$Clickatell->message=$message;
 
-	    		if ( $clickatel_use_unicode==1){
+				$clickatel_use_unicode=Yii::app()->functions->getOptionAdmin('clickatel_use_unicode');
 
-	    			$Clickatell->unicode=true;
+				if ( $clickatel_use_unicode==1){
 
-	    		}
+					$Clickatell->unicode=true;
 
-	    		
+				}
 
-	    		$clickatel_sender=Yii::app()->functions->getOptionAdmin('clickatel_sender');
 
-	    		$Clickatell->sender=$clickatel_sender;
 
-	    			    		
+				$clickatel_sender=Yii::app()->functions->getOptionAdmin('clickatel_sender');
 
-	    		try {    			
+				$Clickatell->sender=$clickatel_sender;
 
-	    			$raw=$Clickatell->sendSMS();
 
-	    			$msg="process";
 
-	    		} catch (Exception $e){
+				try {
 
-	    			$msg=$e->getMessage();
+					$raw=$Clickatell->sendSMS();
 
-	    			$raw=$e->getMessage();
+					$msg="process";
 
-	    		}       		 			    	
+				} catch (Exception $e){
 
-	    		    		    	
+					$msg=$e->getMessage();
 
-    			break;
+					$raw=$e->getMessage();
 
-    			
+				}
 
-    		case "nexmo":
 
-	    		$nexmo_sender_id=Yii::app()->functions->getOptionAdmin('nexmo_sender_id');
 
-	    		$nexmo_key=Yii::app()->functions->getOptionAdmin('nexmo_key');
+				break;
 
-	    		$nexmo_secret=Yii::app()->functions->getOptionAdmin('nexmo_secret');    		
 
-	    		$nexmo_use_curl=Yii::app()->functions->getOptionAdmin('nexmo_use_curl');  
 
-	    		    		
+			case "nexmo":
 
-	    		$Nexmo=new Nexmo;
+				$nexmo_sender_id=Yii::app()->functions->getOptionAdmin('nexmo_sender_id');
 
-	    		$Nexmo->key=$nexmo_key;
+				$nexmo_key=Yii::app()->functions->getOptionAdmin('nexmo_key');
 
-	    		$Nexmo->secret=$nexmo_secret;
+				$nexmo_secret=Yii::app()->functions->getOptionAdmin('nexmo_secret');
 
-	    		$Nexmo->sender=$nexmo_sender_id;    		
+				$nexmo_use_curl=Yii::app()->functions->getOptionAdmin('nexmo_use_curl');
 
-	    		$Nexmo->to=$to;
 
-	    		$Nexmo->message=$message;
 
-	    		$Nexmo->is_curl=$nexmo_use_curl;	    		
+				$Nexmo=new Nexmo;
 
-	    		$nexmo_use_unicode=Yii::app()->functions->getOptionAdmin('nexmo_use_unicode');
+				$Nexmo->key=$nexmo_key;
 
-	    		if ( $nexmo_use_unicode==1){
+				$Nexmo->secret=$nexmo_secret;
 
-	    			$Nexmo->unicode=true;
+				$Nexmo->sender=$nexmo_sender_id;
 
-	    		}	    		
+				$Nexmo->to=$to;
 
-	    		
+				$Nexmo->message=$message;
 
-	    		try {    			
+				$Nexmo->is_curl=$nexmo_use_curl;
 
-	    			$raw=$Nexmo->sendSMS();
+				$nexmo_use_unicode=Yii::app()->functions->getOptionAdmin('nexmo_use_unicode');
 
-	    			$msg="process";
+				if ( $nexmo_use_unicode==1){
 
-	    		} catch (Exception $e){
+					$Nexmo->unicode=true;
 
-	    			$msg=$e->getMessage();
+				}
 
-	    		}       		 			    	
 
-    	
 
-    		    break;
+				try {
 
-    		
+					$raw=$Nexmo->sendSMS();
 
-    		case "private":    			 
+					$msg="process";
 
-    			 $privatesms_username=Yii::app()->functions->getOptionAdmin('privatesms_username');
+				} catch (Exception $e){
 
-    			 $privatesms_password=Yii::app()->functions->getOptionAdmin('privatesms_password');
+					$msg=$e->getMessage();
 
-    			 $privatesms_sender=Yii::app()->functions->getOptionAdmin('privatesms_sender');
+				}
 
-    			     			 
 
-                 $obj = new Sender("103.16.101.52", "80",$privatesms_username,$privatesms_password,$privatesms_sender,
 
-                 $message, $to, "0", "1");
+				break;
 
-                 $resp=$obj->Submit();                                     
 
-                                                                    
 
-                   if (preg_match("/1701/i", $resp)) {
+			case "private":
 
-			        	$raw=$resp;
+				$privatesms_username=Yii::app()->functions->getOptionAdmin('privatesms_username');
 
-			        	$msg="process";
+				$privatesms_password=Yii::app()->functions->getOptionAdmin('privatesms_password');
 
-			        } else {
+				$privatesms_sender=Yii::app()->functions->getOptionAdmin('privatesms_sender');
 
-			        	$errors['1702']="Invalid URL Error, This means that one of the parameters was not
+
+
+				$obj = new Sender("103.16.101.52", "80",$privatesms_username,$privatesms_password,$privatesms_sender,
+
+					$message, $to, "0", "1");
+
+				$resp=$obj->Submit();
+
+
+
+				if (preg_match("/1701/i", $resp)) {
+
+					$raw=$resp;
+
+					$msg="process";
+
+				} else {
+
+					$errors['1702']="Invalid URL Error, This means that one of the parameters was not
 
 			provided or left blank";
 
-			        	$errors['1703']="Invalid value in username or password field";
+					$errors['1703']="Invalid value in username or password field";
 
-			        	$errors['1704']='Invalid value in "type" field';
+					$errors['1704']='Invalid value in "type" field';
 
-			        	$errors['1705']="Invalid Message";
+					$errors['1705']="Invalid Message";
 
-			        	$errors['1706']="Invalid Destination";
+					$errors['1706']="Invalid Destination";
 
-			        	$errors['1707']="Invalid Source (Sender)";
+					$errors['1707']="Invalid Source (Sender)";
 
-			        	$errors['1708']='Invalid value for "dlr" field';
+					$errors['1708']='Invalid value for "dlr" field';
 
-			        	$errors['1709']="User validation failed";
+					$errors['1709']="User validation failed";
 
-			        	$errors['1710']="Internal Error";
+					$errors['1710']="Internal Error";
 
-			        	$errors['1025']="Insufficient Credit";
+					$errors['1025']="Insufficient Credit";
 
-			        	$resp_temp=explode("|",$resp);	
+					$resp_temp=explode("|",$resp);
 
-			        	if (is_array($resp_temp) && count($resp_temp)>=1){
+					if (is_array($resp_temp) && count($resp_temp)>=1){
 
-			        		$code_error=$resp_temp[0];
+						$code_error=$resp_temp[0];
 
-			        	} else $code_error=$resp;			        	
+					} else $code_error=$resp;
 
-			        	if (array_key_exists($code_error,$errors)){
+					if (array_key_exists($code_error,$errors)){
 
-			        		$msg=$errors[$code_error];
+						$msg=$errors[$code_error];
 
-			        	} else $msg="Undefined response from api.";	
+					} else $msg="Undefined response from api.";
 
-			        					        	
 
-			        }        
 
-			                         
+				}
 
-    			 break; 
 
-    			 
 
-    		case "bhashsms":	 
+				break;
 
-    		    $bhashsms_user=Yii::app()->functions->getOptionAdmin('bhashsms_user');
 
-    		    $bhashsms_pass=Yii::app()->functions->getOptionAdmin('bhashsms_pass');
 
-    		    $bhashsms_senderid=Yii::app()->functions->getOptionAdmin('bhashsms_senderid');
+			case "bhashsms":
 
-    		    $bhashsms_smstype=Yii::app()->functions->getOptionAdmin('bhashsms_smstype');
+				$bhashsms_user=Yii::app()->functions->getOptionAdmin('bhashsms_user');
 
-    		    $bhashsms_priority=Yii::app()->functions->getOptionAdmin('bhashsms_priority');
+				$bhashsms_pass=Yii::app()->functions->getOptionAdmin('bhashsms_pass');
 
-    		    $bhashsms_use_curl=Yii::app()->functions->getOptionAdmin('bhashsms_use_curl');
+				$bhashsms_senderid=Yii::app()->functions->getOptionAdmin('bhashsms_senderid');
 
-    		        		        		    
+				$bhashsms_smstype=Yii::app()->functions->getOptionAdmin('bhashsms_smstype');
 
-    		    $Bhashsms=new Bhashsms;
+				$bhashsms_priority=Yii::app()->functions->getOptionAdmin('bhashsms_priority');
 
-    		    $Bhashsms->user=$bhashsms_user;
+				$bhashsms_use_curl=Yii::app()->functions->getOptionAdmin('bhashsms_use_curl');
 
-    		    $Bhashsms->password=$bhashsms_pass;
 
-    		    $Bhashsms->sender=$bhashsms_senderid;
 
-    		    $Bhashsms->sms_type=$bhashsms_smstype;
+				$Bhashsms=new Bhashsms;
 
-    		    $Bhashsms->priority=$bhashsms_priority;    		    
+				$Bhashsms->user=$bhashsms_user;
 
-    		    $Bhashsms->to=$to;
+				$Bhashsms->password=$bhashsms_pass;
 
-	    		$Bhashsms->message=$message;	    		
+				$Bhashsms->sender=$bhashsms_senderid;
 
-	    		$Bhashsms->is_curl=$bhashsms_use_curl==1?true:false;
+				$Bhashsms->sms_type=$bhashsms_smstype;
 
-    		    
+				$Bhashsms->priority=$bhashsms_priority;
 
-	    		try {    			
+				$Bhashsms->to=$to;
 
-	    			$raw=$Bhashsms->sendSMS();
+				$Bhashsms->message=$message;
 
-	    			$msg="process";
+				$Bhashsms->is_curl=$bhashsms_use_curl==1?true:false;
 
-	    		} catch (Exception $e){
 
-	    			$msg=$e->getMessage();
 
-	    		}       
+				try {
 
-    		    
+					$raw=$Bhashsms->sendSMS();
 
-    		    break;
+					$msg="process";
 
-    		    
+				} catch (Exception $e){
 
-    		    
+					$msg=$e->getMessage();
 
-    		case "swift":    
+				}
 
-    		    $SwiftSMS=new SwiftSMS();
 
-    		    $SwiftSMS->message=$message;
 
-    		    $SwiftSMS->to=$to;
+				break;
 
-    		    $SwiftSMS->account_key=getOptionA('swift_accountkey');
 
-    		    $SwiftSMS->is_curl=getOptionA('swift_usecurl')==2?true:false;
 
-    		    try {    			
 
-	    			$raw=$SwiftSMS->sendSMS();
 
-	    			$msg="process";
+			case "swift":
 
-	    		} catch (Exception $e){
+				$SwiftSMS=new SwiftSMS();
 
-	    			$msg=$e->getMessage();
+				$SwiftSMS->message=$message;
 
-	    		}     
+				$SwiftSMS->to=$to;
 
-    		    break;
+				$SwiftSMS->account_key=getOptionA('swift_accountkey');
 
-    		
+				$SwiftSMS->is_curl=getOptionA('swift_usecurl')==2?true:false;
 
-    		case "solutionsinfini":
+				try {
 
-    			$SMSinf=new SolutionsinfiniSMS;
+					$raw=$SwiftSMS->sendSMS();
 
-    			$SMSinf->message=$message;
+					$msg="process";
 
-    			$SMSinf->to=$to;
+				} catch (Exception $e){
 
-    			$SMSinf->api_key=getOptionA('solutionsinfini_apikey');
+					$msg=$e->getMessage();
 
-    			$SMSinf->sender=getOptionA('solutionsinfini_sender');
+				}
 
-    			$SMSinf->is_curl=getOptionA('solutionsinfini_usecurl')==2?true:false;
+				break;
 
-    			$SMSinf->unicode=getOptionA('solutionsinfini_useunicode')==2?true:false;
 
-    			try {    			
 
-	    			$raw=$SMSinf->sendSMS();
+			case "solutionsinfini":
 
-	    			$msg="process";
+				$SMSinf=new SolutionsinfiniSMS;
 
-	    		} catch (Exception $e){
+				$SMSinf->message=$message;
 
-	    			$msg=$e->getMessage();
+				$SMSinf->to=$to;
 
-	    		}     
+				$SMSinf->api_key=getOptionA('solutionsinfini_apikey');
 
-    		    break;
+				$SMSinf->sender=getOptionA('solutionsinfini_sender');
 
-    		    
+				$SMSinf->is_curl=getOptionA('solutionsinfini_usecurl')==2?true:false;
 
-    		    
+				$SMSinf->unicode=getOptionA('solutionsinfini_useunicode')==2?true:false;
 
-    		case "plivo":   
+				try {
 
-    		    		    
+					$raw=$SMSinf->sendSMS();
 
-    		   $Plivo=new Plivo;
+					$msg="process";
 
-    		   $Plivo->auth_id=getOptionA('plivo_auth_id');
+				} catch (Exception $e){
 
-    		   $Plivo->auth_token=getOptionA('plivo_auth_token');
+					$msg=$e->getMessage();
 
-    		   $Plivo->sender=getOptionA('plivo_sender_number');
+				}
 
-    		   $Plivo->message=$message;
+				break;
 
-    		   $Plivo->to=$to;
 
-    		   try {    		   	 
 
-    		   	  $raw=$Plivo->sendSMS();    		   	  
 
-    		   	  $msg="process";
 
-    		   } catch (Exception $e){
+			case "plivo":
 
-    		   	  $msg=$e->getMessage();
 
-    		   }    		   
 
-    		
+				$Plivo=new Plivo;
 
-    		   break;
+				$Plivo->auth_id=getOptionA('plivo_auth_id');
 
-    		   
+				$Plivo->auth_token=getOptionA('plivo_auth_token');
 
-    		case "msg91":    	    		   
+				$Plivo->sender=getOptionA('plivo_sender_number');
 
-    		  /* $msg_resp=Msg91::sendSMS(
+				$Plivo->message=$message;
+
+				$Plivo->to=$to;
+
+				try {
+
+					$raw=$Plivo->sendSMS();
+
+					$msg="process";
+
+				} catch (Exception $e){
+
+					$msg=$e->getMessage();
+
+				}
+
+
+
+				break;
+
+
+
+			case "msg91":
+
+				/* $msg_resp=Msg91::sendSMS(
 
     		      getOptionA('msg91_authkey'),
 
@@ -12720,47 +12718,47 @@ $menu_html.="</li>";
 
     		   );*/
 
-    		   $msg91_route=getOptionA('msg91_route');
+				$msg91_route=getOptionA('msg91_route');
 
-    		   if(empty($msg91_route)){
+				if(empty($msg91_route)){
 
-    		   	  $msg91_route='default';
+					$msg91_route='default';
 
-    		   }
+				}
 
-    		   $msg_resp=Msg91::sendSMS(
+				$msg_resp=Msg91::sendSMS(
 
-    		      getOptionA('msg91_authkey'),
+					getOptionA('msg91_authkey'),
 
-    		      $to,
+					$to,
 
-    		      getOptionA('msg91_senderid'),
+					getOptionA('msg91_senderid'),
 
-    		      $message,
+					$message,
 
-    		      getOptionA('msg91_unicode'),
+					getOptionA('msg91_unicode'),
 
-    		      $msg91_route
+					$msg91_route
 
-    		   );
+				);
 
-    		   if($msg_resp){
+				if($msg_resp){
 
-    		   	  $msg="process";
+					$msg="process";
 
-    		   	  $raw=$msg_resp;
+					$raw=$msg_resp;
 
-    		   } else $msg=Msg91::$msg;
+				} else $msg=Msg91::$msg;
 
-    		   break;
+				break;
 
-    			    
 
-    		case "twilio":
 
-    		
+			case "twilio":
 
-		    	require_once "Twilio.php";		
+
+
+				require_once "Twilio.php";
 
 				$sms_sender_id=Yii::app()->functions->getOptionAdmin('sms_sender_id');
 
@@ -12768,7 +12766,7 @@ $menu_html.="</li>";
 
 				$sms_token=Yii::app()->functions->getOptionAdmin('sms_token');
 
-				
+
 
 				$twilio=new Twilio;
 
@@ -12786,73 +12784,73 @@ $menu_html.="</li>";
 
 				if ($resp=$twilio->sendSMS()){
 
-					$raw=$twilio->getSuccessXML();				
+					$raw=$twilio->getSuccessXML();
 
 					$msg="process";
 
-				} else $msg=$twilio->getError();			
+				} else $msg=$twilio->getError();
 
-			
 
-			    break;		
 
-			    
+				break;
 
-		    default:
 
-		       $msg="No sms gateway selected";
 
-			   break;		
+			default:
 
-			    	
+				$msg="No sms gateway selected";
 
-    	}
+				break;
 
-		
+
+
+		}
+
+
 
 		return array(
 
-		  'msg'=>$msg,
+			'msg'=>$msg,
 
-		  'raw'=>$raw,
+			'raw'=>$raw,
 
-		  'sms_provider'=>$sms_provider
-
-		);
-
-    }
-
-    
-
-    public function UserStatus()
-
-    {
-
-    	return array(
-
-    	  'active'=>Yii::t("default",'active'),	 
-
-		  'pending'=>Yii::t("default",'pending for approval'),		 
-
-		  'suspended'=>Yii::t("default",'suspended'),
-
-		  'blocked'=>Yii::t("default",'blocked')		 
+			'sms_provider'=>$sms_provider
 
 		);
 
-    }
+	}
 
-    
 
-    public function getMerchantUserInfo($merchant_user_id='')
 
-    {
+	public function UserStatus()
 
-    	$mid=$this->getMerchantID();
+	{
 
-    	$db_ext=new DbExt;
+		return array(
 
-    	$stmt="SELECT * FROM
+			'active'=>Yii::t("default",'active'),
+
+			'pending'=>Yii::t("default",'pending for approval'),
+
+			'suspended'=>Yii::t("default",'suspended'),
+
+			'blocked'=>Yii::t("default",'blocked')
+
+		);
+
+	}
+
+
+
+	public function getMerchantUserInfo($merchant_user_id='')
+
+	{
+
+		$mid=$this->getMerchantID();
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{merchant_user}}
 
@@ -12866,27 +12864,27 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-        
 
-    public function validateMerchantUSername($username='')
 
-    {
+	public function validateMerchantUSername($username='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{merchant_user}}
 
@@ -12898,43 +12896,43 @@ $menu_html.="</li>";
 
     	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function voucherType()
 
-    {
+	public function voucherType()
 
-    	return array(
+	{
 
-    	  'fixed amount'=>Yii::t("default","fixed amount"),
+		return array(
 
-    	  'percentage'=>Yii::t("default","percentage")
+			'fixed amount'=>Yii::t("default","fixed amount"),
 
-    	);
+			'percentage'=>Yii::t("default","percentage")
 
-    }
+		);
 
-    
+	}
 
-    public function voucherDetailsByIdWithClient($voucher_id='')
 
-    {
 
-    	$mtid=Yii::app()->functions->getMerchantID();
+	public function voucherDetailsByIdWithClient($voucher_id='')
 
-    	$db_ext=new DbExt;    	
+	{
 
-    	$stmt="SELECT a.*,b.merchant_id,
+		$mtid=Yii::app()->functions->getMerchantID();
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT a.*,b.merchant_id,
 
                (
 
@@ -12948,27 +12946,27 @@ $menu_html.="</li>";
 
 				client_id=a.client_id
 
-			   ) as fullname			   			   
+			   ) as fullname
 
-			   
+
 
     	       FROM
 
     	       {{voucher_list}} a
 
-    	       
+
 
     	       left join {{voucher}} b
 
-               ON 
+               ON
 
                a.voucher_id=b.voucher_id
 
-    	       
+
 
     	       WHERE
 
-    	       a.voucher_id='$voucher_id'    	
+    	       a.voucher_id='$voucher_id'
 
     	       AND
 
@@ -12976,59 +12974,59 @@ $menu_html.="</li>";
 
     	       ORDER BY voucher_code ASC
 
-    	";    	    	
+    	";
 
-    	$_SESSION['export_stmt']=$stmt;
+		$_SESSION['export_stmt']=$stmt;
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }            
+	}
 
-    
 
-    public function getVoucherCodeById($voucher_id='')
 
-    {
+	public function getVoucherCodeById($voucher_id='')
 
-    	$db_ext=new DbExt;    	
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	       {{voucher}}
 
     	       WHERE
 
-    	       voucher_id='$voucher_id'    	       
+    	       voucher_id='$voucher_id'
 
     	       LIMIT 0,1
 
-    	";    	    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    } 
+	}
 
-        
 
-    public function getVoucherCode($voucher_code='',$merchant_id='')
 
-    {
+	public function getVoucherCode($voucher_code='',$merchant_id='')
 
-    	$db_ext=new DbExt;    	
+	{
 
-    	$stmt="SELECT a.*,
+		$db_ext=new DbExt;
+
+		$stmt="SELECT a.*,
 
     	       b.merchant_id,
 
@@ -13040,15 +13038,15 @@ $menu_html.="</li>";
 
     	       left join {{voucher}} b
 
-               ON 
+               ON
 
                a.voucher_id=b.voucher_id
 
-               
+
 
     	       WHERE
 
-    	       a.voucher_code='$voucher_code'    	       
+    	       a.voucher_code='$voucher_code'
 
     	       AND
 
@@ -13060,91 +13058,91 @@ $menu_html.="</li>";
 
     	       LIMIT 0,1
 
-    	";    	    	    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    } 
+	}
 
-    
 
-    public function updateVoucher($voucher_code='',$client_id='',$order_id='')
 
-    {
+	public function updateVoucher($voucher_code='',$client_id='',$order_id='')
 
-    	$params=array(
+	{
 
-    	  'voucher_code'=>$voucher_code,
+		$params=array(
 
-    	  'status'=>"used",
+			'voucher_code'=>$voucher_code,
 
-    	  'client_id'=>$client_id,
+			'status'=>"used",
 
-    	  'date_used'=>date('c'),
+			'client_id'=>$client_id,
 
-    	  'order_id'=>$order_id
+			'date_used'=>date('c'),
 
-    	);
+			'order_id'=>$order_id
 
-    	$db_ext=new DbExt;    	
+		);
 
-    	$db_ext->updateData("{{voucher_list}}",$params,'voucher_code',$voucher_code);
+		$db_ext=new DbExt;
 
-    }    
+		$db_ext->updateData("{{voucher_list}}",$params,'voucher_code',$voucher_code);
 
-    
+	}
 
-    public function travelMmode()
 
-    {
 
-    	return array(
+	public function travelMmode()
 
-    	  'DRIVING'=>Yii::t("default","Driving"),
+	{
 
-    	  'WALKING'=>Yii::t("default","Walking"),
+		return array(
 
-    	  'BICYCLING'=>Yii::t("default","Bicycling"),
+			'DRIVING'=>Yii::t("default","Driving"),
 
-    	  'TRANSIT'=>Yii::t("default","Transit")
+			'WALKING'=>Yii::t("default","Walking"),
 
-    	);
+			'BICYCLING'=>Yii::t("default","Bicycling"),
 
-    }
+			'TRANSIT'=>Yii::t("default","Transit")
 
-    
+		);
 
-    public function getFeaturedMerchant()
+	}
 
-    {
 
-    	$page = isset($_GET['page']) ? ((int) $_GET['page']) : 1;    	 
 
-    	$page=$page-1;
+	public function getFeaturedMerchant()
 
-    	$limit=FunctionsV3::getPerPage();
+	{
 
-    	$start=$page*$limit;
+		$page = isset($_GET['page']) ? ((int) $_GET['page']) : 1;
 
-    	
+		$page=$page-1;
 
-    	$db_ext=new DbExt;    	
+		$limit=FunctionsV3::getPerPage();
 
-    	$db_ext->qry("SET SQL_BIG_SELECTS=1");
+		$start=$page*$limit;
 
-    	
 
-    	$stmt=" 
+
+		$db_ext=new DbExt;
+
+		$db_ext->qry("SET SQL_BIG_SELECTS=1");
+
+
+
+		$stmt="
 
     	SELECT SQL_CALC_FOUND_ROWS a.*,
 
-    	concat(street,' ',city,' ',state,' ',post_code) as merchant_address  
+    	concat(street,' ',city,' ',state,' ',post_code) as merchant_address
 
     	FROM
 
@@ -13158,13 +13156,13 @@ $menu_html.="</li>";
 
     	ORDER BY sort_featured ASC
 
-    	LIMIT $start,$limit    	
+    	LIMIT $start,$limit
 
-    	";    	      	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		$stmt_rows="SELECT FOUND_ROWS()";
+			$stmt_rows="SELECT FOUND_ROWS()";
 
 			$total_found=0;
 
@@ -13172,57 +13170,57 @@ $menu_html.="</li>";
 
 				$total_found=$rows[0]['FOUND_ROWS()'];
 
-			}    					
+			}
 
-    		return array(
+			return array(
 
-    		  'total'=>$total_found,
+				'total'=>$total_found,
 
-    		  'list'=>$res
+				'list'=>$res
 
-    		);
+			);
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }     
+	}
 
-    
 
-    public function getAllMerchant($is_all=false)
 
-    {
+	public function getAllMerchant($is_all=false)
 
-    	$page = isset($_GET['page']) ? ((int) $_GET['page']) : 1;    	 
+	{
 
-    	$page=$page-1;
+		$page = isset($_GET['page']) ? ((int) $_GET['page']) : 1;
 
-    	if ($is_all){
+		$page=$page-1;
 
-    		$limit=1500;
+		if ($is_all){
 
-    	} else $limit=FunctionsV3::getPerPage();
+			$limit=1500;
 
-    	
+		} else $limit=FunctionsV3::getPerPage();
 
-    	$start=$page*$limit;
 
-    	
 
-    	$db_ext=new DbExt;    	
+		$start=$page*$limit;
 
-    	$db_ext->qry("SET SQL_BIG_SELECTS=1");
 
-    	
 
-    	$stmt="SELECT SQL_CALC_FOUND_ROWS a.*,
+		$db_ext=new DbExt;
 
-    	concat(street,' ',city,' ',state,' ',post_code) as merchant_address  
+		$db_ext->qry("SET SQL_BIG_SELECTS=1");
+
+
+
+		$stmt="SELECT SQL_CALC_FOUND_ROWS a.*,
+
+    	concat(street,' ',city,' ',state,' ',post_code) as merchant_address
 
     	 FROM
 
-    	{{view_merchant}} a    	
+    	{{view_merchant}} a
 
     	WHERE is_ready ='2'
 
@@ -13230,15 +13228,15 @@ $menu_html.="</li>";
 
     	ORDER BY membership_expired DESC
 
-    	LIMIT $start,$limit    	
+    	LIMIT $start,$limit
 
-    	";     	    	
+    	";
 
-    	//dump($stmt);
+		//dump($stmt);
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		$stmt_rows="SELECT FOUND_ROWS()";
+			$stmt_rows="SELECT FOUND_ROWS()";
 
 			$total_found=0;
 
@@ -13246,59 +13244,59 @@ $menu_html.="</li>";
 
 				$total_found=$rows[0]['FOUND_ROWS()'];
 
-			}    		
+			}
 
-    		return array(
+			return array(
 
-    		  'total'=>$total_found,
+				'total'=>$total_found,
 
-    		  'list'=>$res
+				'list'=>$res
 
-    		);
+			);
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }         
+	}
 
-    
 
-    public function getAllMerchantNewest()
 
-    {    	
+	public function getAllMerchantNewest()
 
-    	$date_now=date('Y-m-d 23:00:59');
+	{
 
-	    $start_date=date('Y-m-d 00:00:00',strtotime($date_now . "-30 days"));
+		$date_now=date('Y-m-d 23:00:59');
 
-	    //$start_date=date('Y-m-d 00:00:00',strtotime($date_now . "-1000 days"));
+		$start_date=date('Y-m-d 00:00:00',strtotime($date_now . "-30 days"));
 
-    	    	
+		//$start_date=date('Y-m-d 00:00:00',strtotime($date_now . "-1000 days"));
 
-    	$db_ext=new DbExt;    
 
-    	$db_ext->qry("SET SQL_BIG_SELECTS=1");
 
-    	
+		$db_ext=new DbExt;
 
-    	$page = isset($_GET['page']) ? ((int) $_GET['page']) : 1;    	 
+		$db_ext->qry("SET SQL_BIG_SELECTS=1");
 
-    	$page=$page-1;
 
-    	$limit=FunctionsV3::getPerPage();
 
-    	$start=$page*$limit;
+		$page = isset($_GET['page']) ? ((int) $_GET['page']) : 1;
 
-    		    	
+		$page=$page-1;
 
-    	$stmt="SELECT SQL_CALC_FOUND_ROWS a.*,
+		$limit=FunctionsV3::getPerPage();
 
-    	concat(street,' ',city,' ',state,' ',post_code) as merchant_address  	
+		$start=$page*$limit;
+
+
+
+		$stmt="SELECT SQL_CALC_FOUND_ROWS a.*,
+
+    	concat(street,' ',city,' ',state,' ',post_code) as merchant_address
 
     	 FROM
 
-    	{{view_merchant}} a    	
+    	{{view_merchant}} a
 
     	WHERE is_ready ='2'
 
@@ -13308,13 +13306,13 @@ $menu_html.="</li>";
 
     	ORDER BY membership_expired DESC
 
-    	LIMIT $start,$limit    	
+    	LIMIT $start,$limit
 
-    	";    	    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		$stmt_rows="SELECT FOUND_ROWS()";
+			$stmt_rows="SELECT FOUND_ROWS()";
 
 			$total_found=0;
 
@@ -13322,65 +13320,65 @@ $menu_html.="</li>";
 
 				$total_found=$rows[0]['FOUND_ROWS()'];
 
-			}    		
+			}
 
-    		return array(
+			return array(
 
-    		  'total'=>$total_found,
+				'total'=>$total_found,
 
-    		  'list'=>$res
+				'list'=>$res
 
-    		);
+			);
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }             
+	}
 
-    
 
-    public function getAdminCountrySet($code=false)
 
-    {    	
+	public function getAdminCountrySet($code=false)
 
-    	$admin_country_set=Yii::app()->functions->getOptionAdmin('admin_country_set');
+	{
 
-    	if ( $code==true){
+		$admin_country_set=Yii::app()->functions->getOptionAdmin('admin_country_set');
 
-    		return $admin_country_set;
+		if ( $code==true){
 
-    	}
+			return $admin_country_set;
 
-		return $this->countryCodeToFull($admin_country_set);    	
+		}
 
-    }
+		return $this->countryCodeToFull($admin_country_set);
 
-    
+	}
 
-    public function countryCodeToFull($code='')
 
-    {    	
 
-    	$country_list=$this->CountryList();
+	public function countryCodeToFull($code='')
 
-    	if (array_key_exists($code,(array)$country_list)){
+	{
 
-    		return $country_list[$code];
+		$country_list=$this->CountryList();
 
-    	}
+		if (array_key_exists($code,(array)$country_list)){
 
-    	return '';
+			return $country_list[$code];
 
-    }
+		}
 
-    
+		return '';
 
-    public function getSMSTransaction($id='')
+	}
 
-    {
 
-    	$db_ext=new DbExt;    	
+
+	public function getSMSTransaction($id='')
+
+	{
+
+		$db_ext=new DbExt;
 
 		$stmt="SELECT a.*,
 
@@ -13390,7 +13388,7 @@ $menu_html.="</li>";
 
 		from
 
-		{{merchant}} 
+		{{merchant}}
 
 		where
 
@@ -13398,7 +13396,7 @@ $menu_html.="</li>";
 
 		) merchant_name,
 
-		
+
 
 		(
 
@@ -13414,7 +13412,7 @@ $menu_html.="</li>";
 
 		) sms_package_name
 
-		
+
 
 		 FROM
 
@@ -13426,43 +13424,43 @@ $menu_html.="</li>";
 
 		LIMIT 0,1
 
-		";	    	
+		";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function distanceOption()
 
-    {
+	public function distanceOption()
 
-    	return array(
+	{
 
-    	   'mi'=>Yii::t("default","Miles"),
+		return array(
 
-    	   'km'=>Yii::t("default","Kilometers")
+			'mi'=>Yii::t("default","Miles"),
 
-    	);
+			'km'=>Yii::t("default","Kilometers")
 
-    }    
+		);
 
-    
+	}
 
-    public function validateMerchantUser($username='',$merchant_id='')
 
-    {
 
-    	$db_ext=new DbExt;
+	public function validateMerchantUser($username='',$merchant_id='')
 
-    	$stmt="SELECT * FROM
+	{
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{merchant_user}}
 
@@ -13476,27 +13474,27 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }    
+	}
 
-    
 
-    public function validateMerchantEmail($email='',$merchant_id='')
 
-    {
+	public function validateMerchantEmail($email='',$merchant_id='')
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{merchant}}
 
@@ -13510,41 +13508,41 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }        
+	}
 
-    
 
-    public function getLastIncrement($table_name='')
 
-    {
+	public function getLastIncrement($table_name='')
 
-    	$stmt="show table status like '$table_name' ";    	   
+	{
 
-    	$db_ext=new DbExt;
+		$stmt="show table status like '$table_name' ";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		$db_ext=new DbExt;
 
-    		return $res[0]['Auto_increment'];
+		if ($res=$db_ext->rst($stmt)){
 
-    	}    	    	
+			return $res[0]['Auto_increment'];
 
-    	return false;
+		}
 
-    }
+		return false;
 
-    
+	}
 
-    public function getSMSPackagesList($price=false)
+
+
+	public function getSMSPackagesList($price=false)
 
 	{
 
@@ -13554,7 +13552,7 @@ $menu_html.="</li>";
 
 			$and=" AND price >0 ";
 
-		}	
+		}
 
 		$data_feed='';
 
@@ -13562,7 +13560,7 @@ $menu_html.="</li>";
 
 		SELECT * FROM
 
-		{{sms_package}}		
+		{{sms_package}}
 
 		WHERE
 
@@ -13572,19 +13570,19 @@ $menu_html.="</li>";
 
 		ORDER BY sequence ASC
 
-		";						
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   $data_feed[$val['sms_package_id']]=ucwords($val['title']);
+					$data_feed[$val['sms_package_id']]=ucwords($val['title']);
 
 				}
 
@@ -13596,21 +13594,21 @@ $menu_html.="</li>";
 
 		return FALSE;
 
-	}        	    
+	}
 
-	
+
 
 	public function timezoneList()
 
-	{		
+	{
 
-		$version=phpversion();				
+		$version=phpversion();
 
 		if ($version<=5.2){
 
 			return Widgets::timezoneList();
 
-		}		
+		}
 
 		$list['']=Yii::t("default",'Please Select');
 
@@ -13624,331 +13622,331 @@ $menu_html.="</li>";
 
 			}
 
-		}			
+		}
 
-		return $list;		
+		return $list;
 
 	}
 
-	
+
 
 	public function isMerchantOpen($mtid='')
 
 	{
 
-	   //http://stackoverflow.com/questions/14904864/determine-if-business-is-open-closed-based-on-business-hours
+		//http://stackoverflow.com/questions/14904864/determine-if-business-is-open-closed-based-on-business-hours
 
-	   //http://php.net/manual/en/class.datetime.php
+		//http://php.net/manual/en/class.datetime.php
 
-	   
 
-	   if (!empty($mtid)){
 
-	   	   $timezone=Yii::app()->functions->getOption("merchant_timezone",$mtid);	   	   
+		if (!empty($mtid)){
 
-	   	   if (!empty($timezone)){	   	   
+			$timezone=Yii::app()->functions->getOption("merchant_timezone",$mtid);
 
-	   	       date_default_timezone_set($timezone);	   	   
+			if (!empty($timezone)){
 
-	   	   }	   	   
+				date_default_timezone_set($timezone);
 
-	   	   
+			}
 
-	   	   $times=$this->getBusinnesHours($mtid);
 
-	   	   if (empty($times)){
 
-	   	   	  return true;
+			$times=$this->getBusinnesHours($mtid);
 
-	   	   	  
+			if (empty($times)){
 
-	   	   }
+				return true;
 
-	   	   /*dump(Yii::app()->timeZone);
+
+
+			}
+
+			/*dump(Yii::app()->timeZone);
 
 	   	   echo date('c');*/
 
-	   	   //dump($times);
+			//dump($times);
 
-							   	   
+
 
 			$now = strtotime(date("h:ia"));
 
 			$open = $this->isOpen($now, $times);
 
-	
+
 
 			if ($open == 0) {
 
 				//echo "is close";
 
-			    return false;
+				return false;
 
 			} else {
 
-			    //echo "Is open. Will close in ".ceil($open/60)." minutes";
+				//echo "Is open. Will close in ".ceil($open/60)." minutes";
 
-			    return true;
+				return true;
 
-			}	   	   
+			}
 
-	   }
+		}
 
-	   return false;	   	
+		return false;
 
-	} 
+	}
 
-		
+
 
 	function compileHours($times, $timestamp) {
 
-	    //$times = $times[strtolower(date('D',$timestamp))];
+		//$times = $times[strtolower(date('D',$timestamp))];
 
-	    $times = isset($times[strtolower(date('D',$timestamp))])?$times[strtolower(date('D',$timestamp))]:'';	
+		$times = isset($times[strtolower(date('D',$timestamp))])?$times[strtolower(date('D',$timestamp))]:'';
 
-	    if(!strpos($times, '-')) return array();
+		if(!strpos($times, '-')) return array();
 
-	    $hours = explode(",", $times);
+		$hours = explode(",", $times);
 
-	    $hours = array_map('explode', array_pad(array(),count($hours),'-'), $hours);
+		$hours = array_map('explode', array_pad(array(),count($hours),'-'), $hours);
 
-	    $hours = array_map('array_map', array_pad(array(),count($hours),'strtotime'), $hours, array_pad(array(),count($hours),array_pad(array(),2,$timestamp)));
+		$hours = array_map('array_map', array_pad(array(),count($hours),'strtotime'), $hours, array_pad(array(),count($hours),array_pad(array(),2,$timestamp)));
 
-	    end($hours);
+		end($hours);
 
-	    if ($hours[key($hours)][0] > $hours[key($hours)][1]) $hours[key($hours)][1] = strtotime('+1 day', $hours[key($hours)][1]);
+		if ($hours[key($hours)][0] > $hours[key($hours)][1]) $hours[key($hours)][1] = strtotime('+1 day', $hours[key($hours)][1]);
 
-	    return $hours;
+		return $hours;
 
 	}
-    
-    
-	
-	function getRecentMaxOrders($merchant_id='',$date='',$timee='',$delivery_asap='') 
-	{
-		   $time = $date.' '.$timee; 
-		   $DbExt=new DbExt;  
-		   $timezone=Yii::app()->functions->getOption("merchant_timezone",$merchant_id);	   	   
 
-	   	   if (!empty($timezone)){	   	   
-	   	       date_default_timezone_set($timezone);	   	   
-	   	   }	
-		   
-		   if($delivery_asap==1)
+
+
+	function getRecentMaxOrders($merchant_id='',$date='',$timee='',$delivery_asap='')
+	{
+		$time = $date.' '.$timee;
+		$DbExt=new DbExt;
+		$timezone=Yii::app()->functions->getOption("merchant_timezone",$merchant_id);
+
+		if (!empty($timezone)){
+			date_default_timezone_set($timezone);
+		}
+
+		if($delivery_asap==1)
+		{
+			$current_time =  date("h:i");
+			$day_of_week = date("l");
+			$today  = lcfirst($day_of_week);
+		}
+		else
+		{
+			$current_time =strtotime($date);
+			$day_of_week = date('l', $current_time);
+			$today  = lcfirst($day_of_week);
+		}
+
+		$stores_open_day=Yii::app()->functions->getOption("stores_open_day",$merchant_id);
+
+		$stores_open_time=Yii::app()->functions->getOption("stores_open_time",$merchant_id);
+		$stores_ends_time=Yii::app()->functions->getOption("stores_ends_time",$merchant_id);
+		$stores_open_time_pm=Yii::app()->functions->getOption("stores_open_time_pm",$merchant_id);
+		$stores_ends_time_pm=Yii::app()->functions->getOption("stores_ends_time_pm",$merchant_id);
+		$stores_open_pm_start=Yii::app()->functions->getOption("stores_open_pm_start",$merchant_id);
+
+
+		$max_orders=Yii::app()->functions->getOption("max_orders",$merchant_id);
+		$max_orders_pm=Yii::app()->functions->getOption("max_orders_pm",$merchant_id);
+
+		$stores_open_day=!empty($stores_open_day)?(array)json_decode($stores_open_day):false;
+
+		$stores_open_time=!empty($stores_open_time)?(array)json_decode($stores_open_time):false;
+		$stores_ends_time=!empty($stores_ends_time)?(array)json_decode($stores_ends_time):false;
+		$stores_open_time_pm=!empty($stores_open_time_pm)?(array)json_decode($stores_open_time_pm):false;
+		$stores_ends_time_pm=!empty($stores_ends_time_pm)?(array)json_decode($stores_ends_time_pm):false;
+		$stores_open_pm_start=!empty($stores_open_pm_start)?(array)json_decode($stores_open_pm_start):false;
+
+		$max_orders=!empty($max_orders)?(array)json_decode($max_orders):false;
+		$max_orders_pm=!empty($max_orders_pm)?(array)json_decode($max_orders_pm):false;
+
+		foreach ($stores_open_day as $days)
+		{
+
+			if($days == $today)
 			{
-		      $current_time =  date("h:i");
-		      $day_of_week = date("l");
-              $today  = lcfirst($day_of_week);
+				$start = $stores_open_time[$today];
+				$end = $stores_ends_time[$today];
+				$orders = $max_orders[$today];
+
+				$start_pm = $stores_open_time_pm[$today];
+				$end_pm = $stores_ends_time_pm[$today];
+				$order_pm = $max_orders_pm[$today];
+
+				$stores_open_pm_start_time = $stores_open_pm_start[$today];
 			}
-			else
+		}
+
+		if($delivery_asap==1)
+		{
+			$startdate = date('Y-m-d').' '.$start;
+			$enddate = date('Y-m-d').' '.$end;
+
+			$startdate_pm = date('Y-m-d').' '.$start_pm;
+			$enddate_pm = date('Y-m-d').' '.$end_pm;
+			$time_asap = date('Y-m-d h:m');
+
+			if((strtotime($startdate) <= strtotime($time_asap)) && (strtotime($enddate) >= strtotime($time_asap)))
 			{
-		      $current_time =strtotime($date);
-              $day_of_week = date('l', $current_time);
-              $today  = lcfirst($day_of_week);
-			}
-		   
-		  $stores_open_day=Yii::app()->functions->getOption("stores_open_day",$merchant_id);
-		  
-		  $stores_open_time=Yii::app()->functions->getOption("stores_open_time",$merchant_id);
-          $stores_ends_time=Yii::app()->functions->getOption("stores_ends_time",$merchant_id);
-		  $stores_open_time_pm=Yii::app()->functions->getOption("stores_open_time_pm",$merchant_id);
-          $stores_ends_time_pm=Yii::app()->functions->getOption("stores_ends_time_pm",$merchant_id); 
-		  $stores_open_pm_start=Yii::app()->functions->getOption("stores_open_pm_start",$merchant_id); 
-		  
-		 
-		  $max_orders=Yii::app()->functions->getOption("max_orders",$merchant_id);
-          $max_orders_pm=Yii::app()->functions->getOption("max_orders_pm",$merchant_id);
-		  
-		  $stores_open_day=!empty($stores_open_day)?(array)json_decode($stores_open_day):false;
-		  
-		  $stores_open_time=!empty($stores_open_time)?(array)json_decode($stores_open_time):false;
-          $stores_ends_time=!empty($stores_ends_time)?(array)json_decode($stores_ends_time):false;
-		  $stores_open_time_pm=!empty($stores_open_time_pm)?(array)json_decode($stores_open_time_pm):false;
-          $stores_ends_time_pm=!empty($stores_ends_time_pm)?(array)json_decode($stores_ends_time_pm):false;
-		  $stores_open_pm_start=!empty($stores_open_pm_start)?(array)json_decode($stores_open_pm_start):false;
-		  
-		  $max_orders=!empty($max_orders)?(array)json_decode($max_orders):false;
-		  $max_orders_pm=!empty($max_orders_pm)?(array)json_decode($max_orders_pm):false;
-		   
-		     foreach ($stores_open_day as $days)
-			 {	
-				 
-				   if($days == $today)
-				   {
-				      $start = $stores_open_time[$today];
-					  $end = $stores_ends_time[$today];
-					  $orders = $max_orders[$today];
-					  
-					  $start_pm = $stores_open_time_pm[$today];
-					  $end_pm = $stores_ends_time_pm[$today];
-					  $order_pm = $max_orders_pm[$today];
-					  
-					  $stores_open_pm_start_time = $stores_open_pm_start[$today];
-				   }
-			 }
-            
-			if($delivery_asap==1)
-			{
-			   $startdate = date('Y-m-d').' '.$start;
-			   $enddate = date('Y-m-d').' '.$end;
-			   
-			   $startdate_pm = date('Y-m-d').' '.$start_pm;
-			   $enddate_pm = date('Y-m-d').' '.$end_pm;
-			   $time_asap = date('Y-m-d h:m');
-			   
-			   if((strtotime($startdate) <= strtotime($time_asap)) && (strtotime($enddate) >= strtotime($time_asap))) 
-			   {
-			   $stmt="SELECT count(order_id) as max_order from
+				$stmt="SELECT count(order_id) as max_order from
 					  {{order}}
-				      WHERE merchant_id='$merchant_id' AND 
+				      WHERE merchant_id='$merchant_id' AND
 				      date_created BETWEEN '".$startdate."%' AND '".$enddate."%'";
-					  $order = $orders;
-			   }
-			   elseif((strtotime($startdate_pm) <= strtotime($time_asap)) && (strtotime($enddate_pm) >= strtotime($time_asap))) 
-			   {
-				   $stmt="SELECT count(order_id) as max_order from
-					  {{order}}
-				      WHERE merchant_id='$merchant_id' AND 
-				      date_created BETWEEN '".$startdate_pm."%' AND '".$enddate_pm."%'";
-					  $order = $order_pm;
-			   } 
-					  
+				$order = $orders;
 			}
-			else
+			elseif((strtotime($startdate_pm) <= strtotime($time_asap)) && (strtotime($enddate_pm) >= strtotime($time_asap)))
 			{
-				$startdate = $date.' '.$start;
-			    $enddate = $date.' '.$end;
-				$startdate_pm = $date.' '.$start_pm;
-			    $enddate_pm = $date.' '.$end_pm;
-				
-				$tdate = date('Y-m-d');
-				/*if($date == $tdate)
+				$stmt="SELECT count(order_id) as max_order from
+					  {{order}}
+				      WHERE merchant_id='$merchant_id' AND
+				      date_created BETWEEN '".$startdate_pm."%' AND '".$enddate_pm."%'";
+				$order = $order_pm;
+			}
+
+		}
+		else
+		{
+			$startdate = $date.' '.$start;
+			$enddate = $date.' '.$end;
+			$startdate_pm = $date.' '.$start_pm;
+			$enddate_pm = $date.' '.$end_pm;
+
+			$tdate = date('Y-m-d');
+			/*if($date == $tdate)
 				{
-				      if((strtotime($startdate) < strtotime($time)) && (strtotime($enddate) > strtotime($time))) 
+				      if((strtotime($startdate) < strtotime($time)) && (strtotime($enddate) > strtotime($time)))
 					      {
 							  $stmt="SELECT count(order_id) as max_order from
 							   {{order}}
-							   WHERE merchant_id='$merchant_id' AND 
+							   WHERE merchant_id='$merchant_id' AND
 							   delivery_date = '".$date."' AND
 							   delivery_time BETWEEN '".$start."' AND '".$end."'
-							   "; 
+							   ";
 							    $order = $orders;
 						  }
-					 elseif((strtotime($startdate_pm) < strtotime($time)) && (strtotime($enddate_pm) > strtotime($time))) 
+					 elseif((strtotime($startdate_pm) < strtotime($time)) && (strtotime($enddate_pm) > strtotime($time)))
 					     {
 					         $stmt="SELECT count(order_id) as max_order from
 							   {{order}}
-							   WHERE merchant_id='$merchant_id' AND 
+							   WHERE merchant_id='$merchant_id' AND
 							   delivery_date = '".$date."' AND
 							   delivery_time BETWEEN '".$start_pm."' AND '".$end_pm."'
 							   ";
 							 $order = $order_pm;
 						 }
-				
+
 				}
 				else
 				{*/
-					if((strtotime($startdate) <= strtotime($time)) && (strtotime($enddate) >= strtotime($time))) 
-			         {
-					 $stmt="SELECT count(order_id) as max_order from
+			if((strtotime($startdate) <= strtotime($time)) && (strtotime($enddate) >= strtotime($time)))
+			{
+				$stmt="SELECT count(order_id) as max_order from
 						   {{order}}
-						   WHERE merchant_id='$merchant_id' AND 
+						   WHERE merchant_id='$merchant_id' AND
 						   delivery_date = '".$date."' AND
 						   delivery_time BETWEEN '".$start."' AND '".$end."'
 						   ";
-						   
-						 
-						   $order = $orders;  
-					 }
-					  elseif((strtotime($startdate_pm) <= strtotime($time)) && (strtotime($enddate_pm) >= strtotime($time))) 
-			           {
-						 	 $stmt="SELECT count(order_id) as max_order from
+
+
+				$order = $orders;
+			}
+			elseif((strtotime($startdate_pm) <= strtotime($time)) && (strtotime($enddate_pm) >= strtotime($time)))
+			{
+				$stmt="SELECT count(order_id) as max_order from
 						   {{order}}
-						   WHERE merchant_id='$merchant_id' AND 
+						   WHERE merchant_id='$merchant_id' AND
 						   delivery_date = '".$date."' AND
 						   delivery_time BETWEEN '".$start_pm."' AND '".$end_pm."'
-						   ";  
-					    $order = $order_pm;
-					   }
-				//}
+						   ";
+				$order = $order_pm;
 			}
-			
-			
-				/*$stmt="SELECT count(order_id) as max_order from
+			//}
+		}
+
+
+		/*$stmt="SELECT count(order_id) as max_order from
 					  {{order}}
-				      WHERE merchant_id='$merchant_id' AND 
+				      WHERE merchant_id='$merchant_id' AND
 				      date_created BETWEEN '".$startdate."%' AND '".$enddate."%'";*/
 
-			
-			
-			if ( $res=$DbExt->rst($stmt)){			
-             $max_order =  $res[0]['max_order'];
-		    }
-		   
-			if(!empty($timee))
-			{
-			  // if((strtotime($time) > strtotime($startdate)) || (strtotime($enddate) > strtotime($time)))
-			 /* if((strtotime($startdate) > strtotime($time) && strtotime($enddate) > strtotime($time)) || 
+
+
+		if ( $res=$DbExt->rst($stmt)){
+			$max_order =  $res[0]['max_order'];
+		}
+
+		if(!empty($timee))
+		{
+			// if((strtotime($time) > strtotime($startdate)) || (strtotime($enddate) > strtotime($time)))
+			/* if((strtotime($startdate) > strtotime($time) && strtotime($enddate) > strtotime($time)) ||
 			  (strtotime($startdate) < strtotime($time) && strtotime($enddate) < strtotime($time)))
 			  {
 				$dilivery_time = '2';
-			  } 
+			  }
 			  elseif(strtotime($time) > strtotime($stores_open_pm_start_time))
 			  {
-					  if((strtotime($startdate_pm) > strtotime($time) && strtotime($enddate_pm) > strtotime($time)) || 
+					  if((strtotime($startdate_pm) > strtotime($time) && strtotime($enddate_pm) > strtotime($time)) ||
 					  (strtotime($startdate_pm) < strtotime($time) && strtotime($enddate_pm) < strtotime($time)))
 					  {
 						$dilivery_time = '2';
-					  } 
+					  }
 			  }*/
-			   $dilivery_time = '2';
-			 if((strtotime($startdate) <= strtotime($time)) && (strtotime($enddate) >= strtotime($time))) 
-			  {
-				   $dilivery_time = '';
-			  }
-			   elseif((strtotime($startdate_pm) <= strtotime($time)) && (strtotime($enddate_pm) >= strtotime($time))) 
-			   {
-			      $dilivery_time = '';  
-			   } 
-			  
+			$dilivery_time = '2';
+			if((strtotime($startdate) <= strtotime($time)) && (strtotime($enddate) >= strtotime($time)))
+			{
+				$dilivery_time = '';
 			}
-			
-			
-			$data[]=array(
+			elseif((strtotime($startdate_pm) <= strtotime($time)) && (strtotime($enddate_pm) >= strtotime($time)))
+			{
+				$dilivery_time = '';
+			}
+
+		}
+
+
+		$data[]=array(
 			'max_order'=>$order,
 			'count_max_order'=>$max_order,
 			'dilivery_time'=>$dilivery_time
 			//'stmt'=>$stmt
-			);
-			
-             return $data;
-    }
+		);
+
+		return $data;
+	}
 
 	function isOpen($now, $times) {
 
-	    $open = 0;
+		$open = 0;
 
-	    $hours = array_merge($this->compileHours($times, strtotime('yesterday',$now)),$this->compileHours($times, $now)); 		
+		$hours = array_merge($this->compileHours($times, strtotime('yesterday',$now)),$this->compileHours($times, $now));
 
-	    foreach ($hours as $h) {
+		foreach ($hours as $h) {
 
-	        if ($now >= $h[0] and $now < $h[1]) {
+			if ($now >= $h[0] and $now < $h[1]) {
 
-	            $open = $h[1] - $now;
+				$open = $h[1] - $now;
 
-	            return $open;
+				return $open;
 
-	        } 
+			}
 
-	    }
+		}
 
-	    return $open;
+		return $open;
 
-	}	
-     
+	}
 
 
-      
+
+
 	public function getBusinnesHours($merchant_id='')
 
 	{
@@ -13963,7 +13961,7 @@ $menu_html.="</li>";
 
 		$stores_open_custom_text=Yii::app()->functions->getOption("stores_open_custom_text",$merchant_id);
 
-		
+
 
 		$stores_open_day=!empty($stores_open_day)?(array)json_decode($stores_open_day):false;
 
@@ -13971,95 +13969,95 @@ $menu_html.="</li>";
 
 		$stores_open_ends=!empty($stores_open_ends)?(array)json_decode($stores_open_ends):false;
 
-				
 
-		
+
+
 
 		$stores_open_pm_start=Yii::app()->functions->getOption("stores_open_pm_start",$merchant_id);
 
 		$stores_open_pm_start=!empty($stores_open_pm_start)?(array)json_decode($stores_open_pm_start):false;
 
-		
+
 
 		$stores_open_pm_ends=Yii::app()->functions->getOption("stores_open_pm_ends",$merchant_id);
 
-		$stores_open_pm_ends=!empty($stores_open_pm_ends)?(array)json_decode($stores_open_pm_ends):false;		
+		$stores_open_pm_ends=!empty($stores_open_pm_ends)?(array)json_decode($stores_open_pm_ends):false;
 
-		
+
 
 		$business_hours='';
 
 		if (is_array($stores_open_day) && count($stores_open_day)>=1){
 
-		   foreach ($stores_open_day as $days) {		   	  
+			foreach ($stores_open_day as $days) {
 
-		   	  $days1=substr($days,0,3);
+				$days1=substr($days,0,3);
 
-		   	  $start=''; $end='';
+				$start=''; $end='';
 
-		   	  if (array_key_exists($days,$stores_open_starts)){		   	 
+				if (array_key_exists($days,$stores_open_starts)){
 
-		   	  	 if (!empty($stores_open_starts[$days])){
+					if (!empty($stores_open_starts[$days])){
 
-		   	  	     $start=date("h:i A",strtotime($stores_open_starts[$days]));
+						$start=date("h:i A",strtotime($stores_open_starts[$days]));
 
-		   	  	 }
+					}
 
-		   	  }
+				}
 
-		   	  if (array_key_exists($days,(array)$stores_open_ends)){		 
+				if (array_key_exists($days,(array)$stores_open_ends)){
 
-		   	  	 if (!empty($stores_open_ends[$days]))  	  {
+					if (!empty($stores_open_ends[$days]))  	  {
 
-		   	  	     $end=date("h:i A",strtotime($stores_open_ends[$days]));
+						$end=date("h:i A",strtotime($stores_open_ends[$days]));
 
-		   	  	 }
+					}
 
-		   	  }
+				}
 
-		   	  
 
-		   	  $pm_starts=''; $pm_ends='';
 
-		   	  if (array_key_exists($days,(array)$stores_open_pm_start)){		   	  
+				$pm_starts=''; $pm_ends='';
 
-		   	  	if (!empty($stores_open_pm_start[$days])){
+				if (array_key_exists($days,(array)$stores_open_pm_start)){
 
-		   	  	    $pm_starts=date("h:i A",strtotime($stores_open_pm_start[$days]));
+					if (!empty($stores_open_pm_start[$days])){
 
-		   	  	}
+						$pm_starts=date("h:i A",strtotime($stores_open_pm_start[$days]));
 
-		   	  }
+					}
 
-		   	  if (array_key_exists($days,(array)$stores_open_pm_ends)){		   	  
+				}
 
-		   	  	 if (!empty($stores_open_pm_ends[$days])){
+				if (array_key_exists($days,(array)$stores_open_pm_ends)){
 
-		   	  	    $pm_ends=date("h:i A",strtotime($stores_open_pm_ends[$days]));
+					if (!empty($stores_open_pm_ends[$days])){
 
-		   	  	 }
+						$pm_ends=date("h:i A",strtotime($stores_open_pm_ends[$days]));
 
-		   	  }
+					}
 
-		   	  			   	  	   	 
+				}
 
-		   	  if (!empty($start) && !empty($end)){		   	  	
 
-		   	  	  $business_hours[$days1]="$start - $end";
 
-		   	  }
+				if (!empty($start) && !empty($end)){
 
-		   	  if (!empty($pm_starts) && !empty($pm_ends)){
+					$business_hours[$days1]="$start - $end";
 
-		   	  	  $business_hours[$days1].=",$pm_starts - $pm_ends";
+				}
 
-		   	  }
+				if (!empty($pm_starts) && !empty($pm_ends)){
 
-		   }
+					$business_hours[$days1].=",$pm_starts - $pm_ends";
 
-		}							
+				}
 
-				
+			}
+
+		}
+
+
 
 		if (is_array($business_hours) && count($business_hours)>=1){
 
@@ -14069,15 +14067,15 @@ $menu_html.="</li>";
 
 	}
 
-	
+
 
 	public function getBooking($booking_id='')
 
-    {
+	{
 
-    	$mtid=$this->getMerchantID();
+		$mtid=$this->getMerchantID();
 
-    	$stmt="
+		$stmt="
 
     	SELECT * FROM
 
@@ -14093,183 +14091,183 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";       	
+    	";
 
-    	$db_ext=new DbExt;
+		$db_ext=new DbExt;
 
-    	//dump($stmt);
+		//dump($stmt);
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}    	    	
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function dateTranslation()
 
-    {
+	public function dateTranslation()
 
-    	return array(
+	{
 
-    	  'January'=>Yii::t("default","January"),
+		return array(
 
-    	  'February'=>Yii::t("default","February"),
+			'January'=>Yii::t("default","January"),
 
-    	  'March'=>Yii::t("default","March"),
+			'February'=>Yii::t("default","February"),
 
-    	  'April'=>Yii::t("default","April"),
+			'March'=>Yii::t("default","March"),
 
-    	  'May'=>Yii::t("default","May"),
+			'April'=>Yii::t("default","April"),
 
-    	  'June'=>Yii::t("default","June"),
+			'May'=>Yii::t("default","May"),
 
-    	  'July'=>Yii::t("default","July"),
+			'June'=>Yii::t("default","June"),
 
-    	  'August'=>Yii::t("default","August"),
+			'July'=>Yii::t("default","July"),
 
-    	  'September'=>Yii::t("default","September"),
+			'August'=>Yii::t("default","August"),
 
-    	  'October'=>Yii::t("default","October"),
+			'September'=>Yii::t("default","September"),
 
-    	  'November'=>Yii::t("default","November"),
+			'October'=>Yii::t("default","October"),
 
-    	  'December'=>Yii::t("default","December"),
+			'November'=>Yii::t("default","November"),
 
-    	  'Jan'=>Yii::t("default","Jan"),
+			'December'=>Yii::t("default","December"),
 
-    	  'Feb'=>Yii::t("default","Feb"),
+			'Jan'=>Yii::t("default","Jan"),
 
-    	  'Mar'=>Yii::t("default","Mar"),
+			'Feb'=>Yii::t("default","Feb"),
 
-    	  'Apr'=>Yii::t("default","Apr"),
+			'Mar'=>Yii::t("default","Mar"),
 
-    	  'May'=>Yii::t("default","May"),
+			'Apr'=>Yii::t("default","Apr"),
 
-    	  'Jun'=>Yii::t("default","Jun"),
+			'May'=>Yii::t("default","May"),
 
-    	  'Jul'=>Yii::t("default","Jul"),
+			'Jun'=>Yii::t("default","Jun"),
 
-    	  'Aug'=>Yii::t("default","Aug"),
+			'Jul'=>Yii::t("default","Jul"),
 
-    	  'Sep'=>Yii::t("default","Sep"),
+			'Aug'=>Yii::t("default","Aug"),
 
-    	  'Oct'=>Yii::t("default","Oct"),
+			'Sep'=>Yii::t("default","Sep"),
 
-    	  'Nov'=>Yii::t("default","Nov"),
+			'Oct'=>Yii::t("default","Oct"),
 
-    	  'Dec'=>Yii::t("default","Dec"),
+			'Nov'=>Yii::t("default","Nov"),
 
-    	  'Sunday'=>t("Sunday"),
+			'Dec'=>Yii::t("default","Dec"),
 
-    	  'Monday'=>t("Monday"),
+			'Sunday'=>t("Sunday"),
 
-    	  'Tuesday'=>t("Tuesday"),
+			'Monday'=>t("Monday"),
 
-    	  'Wednesday'=>t("Wednesday"),
+			'Tuesday'=>t("Tuesday"),
 
-    	  'Thursday'=>t("Thursday"),
+			'Wednesday'=>t("Wednesday"),
 
-    	  'Friday'=>t("Friday"),
+			'Thursday'=>t("Thursday"),
 
-    	  'Saturday'=>t("Saturday"),
+			'Friday'=>t("Friday"),
 
-    	  'Sun'=>Yii::t("default","Sun"),
+			'Saturday'=>t("Saturday"),
 
-    	  'Mon'=>Yii::t("default","Mon"),
+			'Sun'=>Yii::t("default","Sun"),
 
-    	  'Tue'=>Yii::t("default","Tue"),
+			'Mon'=>Yii::t("default","Mon"),
 
-    	  'Wed'=>Yii::t("default","Wed"),
+			'Tue'=>Yii::t("default","Tue"),
 
-    	  'Thu'=>Yii::t("default","Thu"),
+			'Wed'=>Yii::t("default","Wed"),
 
-    	  'Fri'=>Yii::t("default","Fri"),
+			'Thu'=>Yii::t("default","Thu"),
 
-    	  'Sat'=>Yii::t("default","Sat"),
+			'Fri'=>Yii::t("default","Fri"),
 
-    	  'Su'=>Yii::t("default","Su"),
+			'Sat'=>Yii::t("default","Sat"),
 
-    	  'Mo'=>Yii::t("default","Mo"),
+			'Su'=>Yii::t("default","Su"),
 
-    	  'Tu'=>Yii::t("default","Tu"),
+			'Mo'=>Yii::t("default","Mo"),
 
-    	  'We'=>Yii::t("default","We"),
+			'Tu'=>Yii::t("default","Tu"),
 
-    	  'Th'=>Yii::t("default","Th"),
+			'We'=>Yii::t("default","We"),
 
-    	  'Fr'=>Yii::t("default","Fr"),
+			'Th'=>Yii::t("default","Th"),
 
-    	  'Sa'=>Yii::t("default","Sa"),
+			'Fr'=>Yii::t("default","Fr"),
 
-    	  
+			'Sa'=>Yii::t("default","Sa"),
 
-    	  'day'=>Yii::t("default","day"),
 
-    	  'days'=>Yii::t("default","days"),
 
-    	  'week'=>Yii::t("default","week"),
+			'day'=>Yii::t("default","day"),
 
-    	  'weeks'=>Yii::t("default","weeks"),
+			'days'=>Yii::t("default","days"),
 
-    	  'month'=>Yii::t("default","month"),
+			'week'=>Yii::t("default","week"),
 
-    	  'months'=>Yii::t("default","months"),
+			'weeks'=>Yii::t("default","weeks"),
 
-    	  'ago'=>Yii::t("default","ago"),
+			'month'=>Yii::t("default","month"),
 
-    	  'In'=>Yii::t("default","In"),
+			'months'=>Yii::t("default","months"),
 
-    	  'minute'=>Yii::t("default","minute"),
+			'ago'=>Yii::t("default","ago"),
 
-    	  'hour'=>Yii::t("default","hour"),
+			'In'=>Yii::t("default","In"),
 
-    	);
+			'minute'=>Yii::t("default","minute"),
 
-    }
+			'hour'=>Yii::t("default","hour"),
 
-    
+		);
 
-    public function translateDate($date='')
+	}
 
-    {    	    	
 
-    	$translate=$this->dateTranslation();    	
 
-    	foreach ($translate as $key=>$val) {    		
+	public function translateDate($date='')
 
-    		$date=str_replace($key,$val,$date);
+	{
 
-    	}
+		$translate=$this->dateTranslation();
 
-    	return $date;
+		foreach ($translate as $key=>$val) {
 
-    }
+			$date=str_replace($key,$val,$date);
 
-    
+		}
 
-    public function newTableBooking($viewed='')
+		return $date;
 
-    {
+	}
 
-    	$merchant_id=Yii::app()->functions->getMerchantID();	   
 
-    	$and='';    	
 
-    	$db_ext=new DbExt;    	
+	public function newTableBooking($viewed='')
 
-    	$stmt="
+	{
+
+		$merchant_id=Yii::app()->functions->getMerchantID();
+
+		$and='';
+
+		$db_ext=new DbExt;
+
+		$stmt="
 
     	      SELECT * FROM
 
     	      {{bookingtable}}
 
-    	      WHERE    	          	      
+    	      WHERE
 
     	      date_created like '".date('Y-m-d')."%'
 
@@ -14283,193 +14281,193 @@ $menu_html.="</li>";
 
     	      ORDER BY date_created DESC
 
-    	";    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }           
+	}
 
-    
 
-    public function orderStatusList2($aslist=true)
 
-    {
+	public function orderStatusList2($aslist=true)
 
-    	$mid=$this->getMerchantID();
+	{
 
-    	$list='';
+		$mid=$this->getMerchantID();
 
-    	if ($aslist){
+		$list='';
 
-    	    $list[]=Yii::t("default","Please select");    	
+		if ($aslist){
 
-    	}
+			$list[]=Yii::t("default","Please select");
 
-    	$db_ext=new DbExt;
+		}
 
-    	$stmt="SELECT * FROM 
+		$db_ext=new DbExt;
 
-    	  {{order_status}}     	      	 
+		$stmt="SELECT * FROM
 
-    	  ORDER BY stats_id";	    	
+    	  {{order_status}}
 
-    	if ($res=$db_ext->rst($stmt)){
+    	  ORDER BY stats_id";
 
-    		foreach ($res as $val) {    			    			
+		if ($res=$db_ext->rst($stmt)){
 
-    			$list[$val['description']]=ucwords($val['description']);
+			foreach ($res as $val) {
 
-    		}
+				$list[$val['description']]=ucwords($val['description']);
 
-    		return $list;
+			}
 
-    	}
+			return $list;
 
-    	return false;    
+		}
 
-    }        
+		return false;
 
-    
+	}
 
-    public function offlineBankDeposit($merchant='',$data='')
 
-    {    
 
-    	    	
+	public function offlineBankDeposit($merchant='',$data='')
 
-    	if (isset($_REQUEST['renew'])){ 
+	{
 
-	    	$package_price=0;
 
-	    	$membership_expired='';
 
-	    	$membership_info=Yii::app()->functions->upgradeMembership($merchant['merchant_id'],$data['package_id']);
+		if (isset($_REQUEST['renew'])){
 
-	    	$merchant_email=$merchant['contact_email'];
+			$package_price=0;
 
-	    	$package_id=$data['package_id'];
+			$membership_expired='';
 
-	    	
+			$membership_info=Yii::app()->functions->upgradeMembership($merchant['merchant_id'],$data['package_id']);
 
-	    	if (is_array($membership_info) && count($membership_info)>=1){
+			$merchant_email=$merchant['contact_email'];
 
-    		   $package_price=$membership_info['package_price'];
+			$package_id=$data['package_id'];
 
-    		   $membership_expired=$membership_info['membership_expired'];
 
-    	    }    	
 
-	    	
+			if (is_array($membership_info) && count($membership_info)>=1){
 
-    	} else {
+				$package_price=$membership_info['package_price'];
 
-    		$merchant_email=$merchant['contact_email'];
+				$membership_expired=$membership_info['membership_expired'];
 
-    		$package_id=$merchant['package_id'];
+			}
 
-    		$package_price=$merchant['package_price'];
 
-    		$membership_expired=$merchant['membership_expired'];
 
-    	}
+		} else {
 
+			$merchant_email=$merchant['contact_email'];
 
+			$package_id=$merchant['package_id'];
 
-    	   	
+			$package_price=$merchant['package_price'];
 
-    	$subject=Yii::app()->functions->getOptionAdmin('admin_deposit_subject');
+			$membership_expired=$merchant['membership_expired'];
 
-    	$from=Yii::app()->functions->getOptionAdmin('admin_deposit_sender');
+		}
 
-    	
 
-    	if (empty($from)){
 
-    	    $from='no-reply@'.$_SERVER['HTTP_HOST'];
 
-    	}
 
-    	if (empty($subject)){
+		$subject=Yii::app()->functions->getOptionAdmin('admin_deposit_subject');
 
-    	    $subject=Yii::t("default","Bank Deposit instructions");
+		$from=Yii::app()->functions->getOptionAdmin('admin_deposit_sender');
 
-    	}
 
-    	    	
 
-    	$to=$merchant_email; 
+		if (empty($from)){
 
-    	
+			$from='no-reply@'.$_SERVER['HTTP_HOST'];
 
-    	$link=Yii::app()->getBaseUrl(true)."/store/bankdepositverify/?ref=".$merchant['activation_token'];
+		}
 
-    	$links="<a href=\"$link\" target=\"_blank\" >".Yii::t("default","Click on this link")."</a>";
+		if (empty($subject)){
 
-    	$tpl=Yii::app()->functions->getOptionAdmin('admin_deposit_instructions');
+			$subject=Yii::t("default","Bank Deposit instructions");
 
-    	if (!empty($tpl)){    	   
+		}
 
-    	   $tpl=$this->smarty('amount',
 
-    	   $this->adminCurrencySymbol().$this->standardPrettyFormat($package_price),$tpl);
 
-    	   $tpl=$this->smarty('verify-payment-link',$links,$tpl);
+		$to=$merchant_email;
 
-    	   if ($this->sendEmail($to,$from,$subject,$tpl)){
 
-    	   	   $params=array('payment_steps'=>3);
 
-    	   	   $db_ext=new DbExt;
+		$link=Yii::app()->getBaseUrl(true)."/store/bankdepositverify/?ref=".$merchant['activation_token'];
 
-    	   	   $db_ext->updateData("{{merchant}}",$params,'merchant_id',$merchant['merchant_id']);
+		$links="<a href=\"$link\" target=\"_blank\" >".Yii::t("default","Click on this link")."</a>";
 
-    	   	   
+		$tpl=Yii::app()->functions->getOptionAdmin('admin_deposit_instructions');
 
-    	   	   $params2=array(
+		if (!empty($tpl)){
 
-    	   	     'package_id'=>$package_id,
+			$tpl=$this->smarty('amount',
 
-    	   	     'merchant_id'=>$merchant['merchant_id'],
+				$this->adminCurrencySymbol().$this->standardPrettyFormat($package_price),$tpl);
 
-    	   	     'price'=>$package_price,
+			$tpl=$this->smarty('verify-payment-link',$links,$tpl);
 
-    	   	     'payment_type'=>'obd',
+			if ($this->sendEmail($to,$from,$subject,$tpl)){
 
-    	   	     'membership_expired'=>$membership_expired,
+				$params=array('payment_steps'=>3);
 
-    	   	     'date_created'=>date('c'),
+				$db_ext=new DbExt;
 
-    	   	     'ip_address'=>$_SERVER['REMOTE_ADDR']
+				$db_ext->updateData("{{merchant}}",$params,'merchant_id',$merchant['merchant_id']);
 
-    	   	   );
 
-    	   	   $db_ext->insertData("{{package_trans}}",$params2);
 
-    	   	   return true;
+				$params2=array(
 
-    	   }	    	   	
+					'package_id'=>$package_id,
 
-    	}
+					'merchant_id'=>$merchant['merchant_id'],
 
-    	return false;
+					'price'=>$package_price,
 
-    }
+					'payment_type'=>'obd',
 
-    
+					'membership_expired'=>$membership_expired,
 
-    public function getMerchantListOfPaymentGateway()
+					'date_created'=>date('c'),
 
-    {
+					'ip_address'=>$_SERVER['REMOTE_ADDR']
 
-    	$db_ext=new DbExt;
+				);
 
-    	$paymentgateway=$this->getOptionAdmin('paymentgateway');
+				$db_ext->insertData("{{package_trans}}",$params2);
+
+				return true;
+
+			}
+
+		}
+
+		return false;
+
+	}
+
+
+
+	public function getMerchantListOfPaymentGateway()
+
+	{
+
+		$db_ext=new DbExt;
+
+		$paymentgateway=$this->getOptionAdmin('paymentgateway');
 
 		if (!empty($paymentgateway)){
 
@@ -14493,7 +14491,7 @@ $menu_html.="</li>";
 
 			} else {
 
-			   $paymentgateway=array('pyp','stp','mcd','ide','payu','pys');
+				$paymentgateway=array('pyp','stp','mcd','ide','payu','pys');
 
 			}
 
@@ -14501,93 +14499,93 @@ $menu_html.="</li>";
 
 		return $paymentgateway;
 
-    }
+	}
 
 
 
-    public function currencyPosition()
+	public function currencyPosition()
 
-    {
+	{
 
-    	return array(
+		return array(
 
-    	   'left'=>t("Left"),
+			'left'=>t("Left"),
 
-    	   'right'=>t("Right"),
+			'right'=>t("Right"),
 
-    	);
+		);
 
-    }  
+	}
 
-    
 
-    public function displayPrice($currency='',$amount='')
 
-    {    	
+	public function displayPrice($currency='',$amount='')
 
-    	$pos=Yii::app()->functions->getOptionAdmin('admin_currency_position');    	
+	{
 
-    	if ( $pos=="right"){
+		$pos=Yii::app()->functions->getOptionAdmin('admin_currency_position');
 
-    		return $amount." ".$currency;
+		if ( $pos=="right"){
 
-    	} else {    		
+			return $amount." ".$currency;
 
-    		return $currency." ".$amount;
+		} else {
 
-    	}
+			return $currency." ".$amount;
 
-    }
+		}
 
-    
+	}
 
-    public function bookedAvailable($merchant_id='')
 
-    {    	
 
-    	//dump($_POST);
+	public function bookedAvailable($merchant_id='')
 
-    	//$day_now=strtolower(date('l'));		
+	{
 
-    	if (isset($_POST['date_booking'])){
+		//dump($_POST);
 
-    		$day_now=strtolower(date("l",strtotime($_POST['date_booking'])));
+		//$day_now=strtolower(date('l'));
 
-    		$datenow=date("Y-m-d",strtotime($_POST['date_booking']));
+		if (isset($_POST['date_booking'])){
 
-    	} else {
+			$day_now=strtolower(date("l",strtotime($_POST['date_booking'])));
 
-    		$datenow=date('Y-m-d');
+			$datenow=date("Y-m-d",strtotime($_POST['date_booking']));
 
-    		$day_now=strtolower(date('l'));   
+		} else {
 
-    	}    	
+			$datenow=date('Y-m-d');
 
-    	
+			$day_now=strtolower(date('l'));
 
-    	$max_booking=0;    	
+		}
 
-		
 
-		$max_booked=Yii::app()->functions->getOption("max_booked",$merchant_id);		
+
+		$max_booking=0;
+
+
+
+		$max_booked=Yii::app()->functions->getOption("max_booked",$merchant_id);
 
 		if (!empty($max_booked)){
 
-			$max_booked=json_decode($max_booked,true);			
+			$max_booked=json_decode($max_booked,true);
 
 			if (isset($max_booked[$day_now])){
 
 				$max_booking=$max_booked[$day_now];
 
-			}				
+			}
 
 		}
 
-								
+
 
 		$total_book_today=0;
 
-		
+
 
 		$db_ext=new DbExt;
 
@@ -14605,73 +14603,73 @@ $menu_html.="</li>";
 
 		";
 
-		
 
-		if ( $res=$db_ext->rst($stmt)){			
+
+		if ( $res=$db_ext->rst($stmt)){
 
 			$total_book_today=$res[0]['total'];
 
-		}	
+		}
 
-							
+
 
 		if ($max_booking>=1){
 
-			if ($total_book_today>=$max_booking){				
+			if ($total_book_today>=$max_booking){
 
 				return false;
 
-			}	
+			}
 
-		}		
+		}
 
 		return true;
 
-    }
+	}
 
-    
 
-    
+
+
 
 	public function CountryListMerchant()
 
 	{
 
-		  $country_list=$this->CountryList();
+		$country_list=$this->CountryList();
 
-		  $merchant_default_country=Yii::app()->functions->getOptionAdmin('merchant_default_country');  
+		$merchant_default_country=Yii::app()->functions->getOptionAdmin('merchant_default_country');
 
-		  $merchant_specific_country=Yii::app()->functions->getOptionAdmin('merchant_specific_country');
+		$merchant_specific_country=Yii::app()->functions->getOptionAdmin('merchant_specific_country');
 
-		  if (!empty($merchant_specific_country)){
+		if (!empty($merchant_specific_country)){
 
 			$merchant_specific_country=json_decode($merchant_specific_country);
 
-		  }    
+		}
 
-		  if (is_array($merchant_specific_country) && count($merchant_specific_country)>=1){  	  
+		if (is_array($merchant_specific_country) && count($merchant_specific_country)>=1){
 
-		  	 $country_list_tem=$country_list;
+			$country_list_tem=$country_list;
 
-		  	  $country_list='';  	
+			$country_list='';
 
-		  	  foreach ($country_list_tem as $c_key=>$c_value) {  	  	   	  	 
+			foreach ($country_list_tem as $c_key=>$c_value) {
 
-		  	  	 if ( in_array($c_key,$merchant_specific_country)){
+				if ( in_array($c_key,$merchant_specific_country)){
 
-		  	  	 	$country_list[$c_key]=$c_value;
+					$country_list[$c_key]=$c_value;
 
-		  	  	 }
+				}
 
-		  	  }
+			}
 
-		  }  
+		}
 
-		  return $country_list;
+		return $country_list;
 
 	}
 
-	
+
 
 	public function getWebsiteName()
 
@@ -14681,7 +14679,7 @@ $menu_html.="</li>";
 
 	}
 
-	
+
 
 	public function getMerchantHoliday($merchant_id='')
 
@@ -14695,17 +14693,17 @@ $menu_html.="</li>";
 
 			if (is_array($merchant_holiday) && count($merchant_holiday)>=1){
 
-			   return $merchant_holiday;	
+				return $merchant_holiday;
 
-			}			
+			}
 
-		}		
+		}
 
 		return false;
 
 	}
 
-	
+
 
 	public function isAdminExist($contact_email='')
 
@@ -14733,9 +14731,9 @@ $menu_html.="</li>";
 
 		return false;
 
-	}	
+	}
 
-	
+
 
 	public function updateMerchantToken($merchant_id='')
 
@@ -14757,11 +14755,11 @@ $menu_html.="</li>";
 
 		return false;
 
-			
+
 
 	}
 
-	
+
 
 	public function getPaymentProvider($id='')
 
@@ -14779,19 +14777,19 @@ $menu_html.="</li>";
 
 		LIMIT 0,1
 
-		";		
+		";
 
-		if ($res=$DbExt->rst($stmt)){			
+		if ($res=$DbExt->rst($stmt)){
 
 			return $res[0];
 
 		}
 
-		return false;	
+		return false;
 
-	}	
+	}
 
-	
+
 
 	public function getPaymentProviderList()
 
@@ -14803,21 +14801,21 @@ $menu_html.="</li>";
 
 		{{payment_provider}}
 
-		ORDER BY sequence ASC	
+		ORDER BY sequence ASC
 
-		";		
+		";
 
-		if ($res=$DbExt->rst($stmt)){			
+		if ($res=$DbExt->rst($stmt)){
 
 			return $res;
 
 		}
 
-		return false;	
+		return false;
 
-	}		
+	}
 
-	
+
 
 	public function getPaymentProviderListActive()
 
@@ -14833,19 +14831,19 @@ $menu_html.="</li>";
 
 		status IN ('publish','published')
 
-		ORDER BY sequence ASC	
+		ORDER BY sequence ASC
 
-		";		
+		";
 
-		if ($res=$DbExt->rst($stmt)){			
+		if ($res=$DbExt->rst($stmt)){
 
 			return $res;
 
 		}
 
-		return false;	
+		return false;
 
-	}	
+	}
 
 
 
@@ -14857,55 +14855,55 @@ $menu_html.="</li>";
 
 		$payondeliver_list=Yii::app()->functions->getOption('payment_provider',$merchant_id);
 
-        if (!empty($payondeliver_list)){
+		if (!empty($payondeliver_list)){
 
-        	$payondeliver_list=json_decode($payondeliver_list);
+			$payondeliver_list=json_decode($payondeliver_list);
 
-        	if (is_array($payondeliver_list) && count($payondeliver_list)>=1){
+			if (is_array($payondeliver_list) && count($payondeliver_list)>=1){
 
-        		foreach ($payondeliver_list as $val) {
+				foreach ($payondeliver_list as $val) {
 
-        			if ( $res=$this->getPaymentProvider($val)){        			    
+					if ( $res=$this->getPaymentProvider($val)){
 
-        			    $provider[]=array(
+						$provider[]=array(
 
-        			      'id'=>$res['id'],
+							'id'=>$res['id'],
 
-        			      'payment_name'=>$res['payment_name'],        			      
+							'payment_name'=>$res['payment_name'],
 
-        			      'payment_logo'=>$res['payment_logo'],
+							'payment_logo'=>$res['payment_logo'],
 
-        			    );
+						);
 
-        			}
+					}
 
-        		}
+				}
 
-        	}	   
+			}
 
-        	
 
-        	if (is_array($provider) && count($provider)>=1) {
 
-        		return $provider;
+			if (is_array($provider) && count($provider)>=1) {
 
-        	}        		
+				return $provider;
 
-        }	
+			}
 
-        return false;        
+		}
+
+		return false;
 
 	}
 
-	
+
 
 	public function getOffers($offers_id='')
 
-    {
+	{
 
-    	$DbExt=new DbExt;
+		$DbExt=new DbExt;
 
-	    $stmt="SELECT * FROM
+		$stmt="SELECT * FROM
 
 			{{offers}}
 
@@ -14913,9 +14911,9 @@ $menu_html.="</li>";
 
 			offers_id='".$offers_id."'
 
-			LIMIT 0,1			
+			LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -14925,27 +14923,27 @@ $menu_html.="</li>";
 
 		return false;
 
-    }		
+	}
 
-    
 
-    public function getMerchantOffers($merchant_id='',$start='',$end='',$id='')
 
-    {
+	public function getMerchantOffers($merchant_id='',$start='',$end='',$id='')
 
-    	$and='';
+	{
 
-        if (!empty($id)){ 
+		$and='';
 
-      	   $and="AND offers_id !=".$this->q($id)."  ";
+		if (!empty($id)){
 
-        }
+			$and="AND offers_id !=".$this->q($id)."  ";
 
-        
+		}
 
-        $DbExt=new DbExt;
 
-	    $stmt="SELECT * FROM
+
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{offers}}
 
@@ -14963,7 +14961,7 @@ $menu_html.="</li>";
 
 			LIMIT 0,1
 
-		";	  	    
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -14973,19 +14971,19 @@ $menu_html.="</li>";
 
 		return false;
 
-    }
+	}
 
-    
 
-    public function getMerchantOffersActive($merchant_id='')
 
-    {
+	public function getMerchantOffersActive($merchant_id='')
 
-    	$date_now=date('Y-m-d');
+	{
 
-    	$DbExt=new DbExt;
+		$date_now=date('Y-m-d');
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{offers}}
 
@@ -15001,9 +14999,9 @@ $menu_html.="</li>";
 
 			LIMIT 0,1
 
-		";	    
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res[0];
 
@@ -15011,9 +15009,9 @@ $menu_html.="</li>";
 
 		return false;
 
-    }
+	}
 
-    
+
 
 	public function q($data='')
 
@@ -15021,9 +15019,9 @@ $menu_html.="</li>";
 
 		return Yii::app()->db->quoteValue($data);
 
-	}	
+	}
 
-	
+
 
 	public function getOrderDiscount($order_id='')
 
@@ -15043,9 +15041,9 @@ $menu_html.="</li>";
 
 		LIMIT 0,1
 
-		";			    
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			return $res[0];
 
@@ -15055,7 +15053,7 @@ $menu_html.="</li>";
 
 	}
 
-	
+
 
 	public function getMerchantReceiptTemplate($merchant_id='')
 
@@ -15063,7 +15061,7 @@ $menu_html.="</li>";
 
 		$tpl2=Yii::app()->functions->getOption("merchant_receipt_content",$merchant_id);
 
-		if (empty($tpl2)){	
+		if (empty($tpl2)){
 
 			$tpl2=EmailTPL::receiptMerchantTPL();
 
@@ -15073,7 +15071,7 @@ $menu_html.="</li>";
 
 	}
 
-    
+
 
 	public function getMerchantActivationToken($merchant_id='')
 
@@ -15093,7 +15091,7 @@ $menu_html.="</li>";
 
 		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ( empty($res[0]['activation_token'])){
 
@@ -15105,19 +15103,19 @@ $menu_html.="</li>";
 
 		}
 
-		return false;			
+		return false;
 
 	}
 
-	
 
-   public function getSubsriberEmail($email_address='')
 
-    {
+	public function getSubsriberEmail($email_address='')
 
-    	$db_ext=new DbExt; 
+	{
 
-    	$stmt="
+		$db_ext=new DbExt;
+
+		$stmt="
 
     	SELECT * FROM
 
@@ -15129,33 +15127,33 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	if ( $res=$db_ext->rst($stmt)){    		
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    	
+		return false;
 
-    }
+	}
 
-    
 
-    public function getFeatureMerchant2()
 
-    {
+	public function getFeatureMerchant2()
 
-    	$db_ext=new DbExt; 
+	{
 
-    	$stmt="SELECT a.*,  
+		$db_ext=new DbExt;
+
+		$stmt="SELECT a.*,
 
     	    (
 
 	    	select option_value
 
-	    	from 
+	    	from
 
 	    	{{option}}
 
@@ -15171,7 +15169,7 @@ $menu_html.="</li>";
 
 	    	) as merchant_logo
 
-	    	    	
+
 
     	    FROM
 
@@ -15189,29 +15187,29 @@ $menu_html.="</li>";
 
 			LIMIT 0,20
 
-		";    	
+		";
 
-    	//is_sponsored='2'
+		//is_sponsored='2'
 
-    	if ( $res=$db_ext->rst($stmt)){    		
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;    	
+		return false;
 
-    }
+	}
 
-    
 
-    public function barclayGetTransaction($orderid='')
 
-    {
+	public function barclayGetTransaction($orderid='')
 
-    	$db_ext=new DbExt; 
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{barclay_trans}}
 
@@ -15221,27 +15219,27 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	
+    	";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    	    return $res[0];	
+			return $res[0];
 
-    	}	
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function barclayGetTransaction2($orderid='',$trans_type='')
 
-    {
+	public function barclayGetTransaction2($orderid='',$trans_type='')
 
-    	$db_ext=new DbExt; 
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{barclay_trans}}
 
@@ -15257,153 +15255,153 @@ $menu_html.="</li>";
 
     	";
 
-    	if ( $db_ext->rst($stmt)){
+		if ( $db_ext->rst($stmt)){
 
-    	    return true;	
+			return true;
 
-    	}	
+		}
 
-    	return false;
+		return false;
 
-    }    
+	}
 
-    
 
-    public function barclayGetTokenTransaction($token='')
 
-    {
+	public function barclayGetTokenTransaction($token='')
 
-    	$db_ext=new DbExt; 
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{barclay_trans}}
 
     	WHERE
 
-    	token=".$this->q($token)."    	
+    	token=".$this->q($token)."
 
     	LIMIT 0,1
 
     	";
 
-    	/*AND
+		/*AND
 
     	transaction_type=".$this->q($trans_type)."*/
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    	    return $res[0];	
+			return $res[0];
 
-    	}	
+		}
 
-    	return false;
+		return false;
 
-    }        
+	}
 
-    
 
-    public function barclaySaveTransaction($orderid='',$token='',$trans='signup',$param1='',$param2='',$param3='')
 
-    {
+	public function barclaySaveTransaction($orderid='',$token='',$trans='signup',$param1='',$param2='',$param3='')
 
-    	if ( !$this->barclayGetTransaction2($orderid,$trans)){    		
+	{
 
-    		$db_ext=new DbExt; 
+		if ( !$this->barclayGetTransaction2($orderid,$trans)){
 
-    		$params=array(
+			$db_ext=new DbExt;
 
-    		  'orderid'=>$orderid,
+			$params=array(
 
-    		  'token'=>$token,
+				'orderid'=>$orderid,
 
-    		  'transaction_type'=>$trans,
+				'token'=>$token,
 
-    		  'date_created'=>date('c'),
+				'transaction_type'=>$trans,
 
-    		  'ip_address'=>$_SERVER['REMOTE_ADDR'],
+				'date_created'=>date('c'),
 
-    		  'param1'=>isset($param1)?$param1:'',
+				'ip_address'=>$_SERVER['REMOTE_ADDR'],
 
-    		  'param2'=>isset($param2)?$param2:'',
+				'param1'=>isset($param1)?$param1:'',
 
-    		  'param3'=>isset($param3)?$param3:'',
+				'param2'=>isset($param2)?$param2:'',
 
-    		);
+				'param3'=>isset($param3)?$param3:'',
 
-    		$db_ext->insertData("{{barclay_trans}}",$params);
+			);
 
-    	}
+			$db_ext->insertData("{{barclay_trans}}",$params);
 
-    }
+		}
 
-    
+	}
 
-    public function barclayTransactionByOrderId($orderid='')
 
-    {
 
-    	$db_ext=new DbExt; 
+	public function barclayTransactionByOrderId($orderid='')
 
-    	$stmt="SELECT * FROM
+	{
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	{{barclay_trans}}
 
     	WHERE
 
-    	orderid=".$this->q($orderid)."    	    
+    	orderid=".$this->q($orderid)."
 
     	LIMIT 0,1
 
     	";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    	    return $res[0];	
+			return $res[0];
 
-    	}	
+		}
 
-    	return false;
+		return false;
 
-    }        
+	}
 
-    
 
-    public function epayBgUpdateTransaction($orderid='',$status='')
 
-    {
+	public function epayBgUpdateTransaction($orderid='',$status='')
 
-    	$db_ext=new DbExt; 
+	{
 
-    	/*dump($orderid);
+		$db_ext=new DbExt;
+
+		/*dump($orderid);
 
     	dump($status);*/
 
-    	if ( $info=$this->barclayTransactionByOrderId($orderid)){
+		if ( $info=$this->barclayTransactionByOrderId($orderid)){
 
-    		//dump($info);    		    		
+			//dump($info);
 
-    		$res=Yii::app()->functions->getMerchantByToken($info['token']);    	    		    		
+			$res=Yii::app()->functions->getMerchantByToken($info['token']);
 
-    		$package_id=$res['package_id'];
+			$package_id=$res['package_id'];
 
-    		
 
-    		switch ($info['transaction_type']) {
 
-    			case "renew":
+			switch ($info['transaction_type']) {
 
-    			case "signup":	
+				case "renew":
 
-    			
+				case "signup":
 
-    			    if ($info['transaction_type']=="renew"){  
 
-    			    	
 
-    			    	$package_id=$info['param1'];    			    	 			    
+					if ($info['transaction_type']=="renew"){
 
-    			    	if ($new_info=Yii::app()->functions->getPackagesById($package_id)){	      			    		
+
+
+						$package_id=$info['param1'];
+
+						if ($new_info=Yii::app()->functions->getPackagesById($package_id)){
 
 							$res['package_name']=$new_info['title'];
 
@@ -15413,119 +15411,119 @@ $menu_html.="</li>";
 
 								$res['package_price']=$new_info['promo_price'];
 
-							}			
+							}
 
 						}
 
-																		
 
-						$membership_info=Yii::app()->functions->upgradeMembership($res['merchant_id'],$package_id);																	
 
-	    				$params=array(
+						$membership_info=Yii::app()->functions->upgradeMembership($res['merchant_id'],$package_id);
 
-				          'package_id'=>$package_id,	          
+						$params=array(
 
-				          'merchant_id'=>$res['merchant_id'],
+							'package_id'=>$package_id,
 
-				          'price'=>$res['package_price'],
+							'merchant_id'=>$res['merchant_id'],
 
-				          'payment_type'=>Yii::app()->functions->paymentCode('paysera'),
+							'price'=>$res['package_price'],
 
-				          'membership_expired'=>$membership_info['membership_expired'],
+							'payment_type'=>Yii::app()->functions->paymentCode('paysera'),
 
-				          'date_created'=>date('c'),
+							'membership_expired'=>$membership_info['membership_expired'],
 
-				          'ip_address'=>$_SERVER['REMOTE_ADDR'],
+							'date_created'=>date('c'),
 
-				          'PAYPALFULLRESPONSE'=>json_encode($_POST),
+							'ip_address'=>$_SERVER['REMOTE_ADDR'],
 
-				          'TRANSACTIONID'=>$orderid,
+							'PAYPALFULLRESPONSE'=>json_encode($_POST),
 
-				          'TOKEN'=>$orderid
+							'TRANSACTIONID'=>$orderid,
 
-				        );		    			    	
+							'TOKEN'=>$orderid
 
-    			    } else {	
+						);
 
-	    				$params=array(
+					} else {
 
-				           'package_id'=>$res['package_id'],	          
+						$params=array(
 
-				           'merchant_id'=>$res['merchant_id'],
+							'package_id'=>$res['package_id'],
 
-				           'price'=>$res['package_price'],
+							'merchant_id'=>$res['merchant_id'],
 
-				           'payment_type'=>Yii::app()->functions->paymentCode('epaybg'),
+							'price'=>$res['package_price'],
 
-				           'membership_expired'=>$res['membership_expired'],
+							'payment_type'=>Yii::app()->functions->paymentCode('epaybg'),
 
-				           'date_created'=>date('c'),
+							'membership_expired'=>$res['membership_expired'],
 
-				           'ip_address'=>$_SERVER['REMOTE_ADDR'],
+							'date_created'=>date('c'),
 
-				           'PAYPALFULLRESPONSE'=>json_encode($_POST),
+							'ip_address'=>$_SERVER['REMOTE_ADDR'],
 
-				           'TRANSACTIONID'=>$orderid,
+							'PAYPALFULLRESPONSE'=>json_encode($_POST),
 
-				           'TOKEN'=>$orderid
+							'TRANSACTIONID'=>$orderid,
 
-					     );			
+							'TOKEN'=>$orderid
 
-    			    }
+						);
 
-				     $params['status']=strtolower($status);
+					}
 
-		    		 /*dump($params);*/
+					$params['status']=strtolower($status);
 
-		    		 if (!$this->epayBGIsPaymentExist($orderid)){		    		 	
+					/*dump($params);*/
 
-		    		     $db_ext->insertData("{{package_trans}}",$params);	    		 
+					if (!$this->epayBGIsPaymentExist($orderid)){
 
-		    		 }
+						$db_ext->insertData("{{package_trans}}",$params);
 
-    				break;
+					}
 
-    		
+					break;
 
-    			case "order":	    			    			   
 
-    			     $params_logs=array(
 
-			          'order_id'=>$info['token'],
+				case "order":
 
-			          'payment_reference'=>$orderid,
+					$params_logs=array(
 
-			          'payment_type'=>Yii::app()->functions->paymentCode('epaybg'),
+						'order_id'=>$info['token'],
 
-			          'raw_response'=>json_encode($_POST),
+						'payment_reference'=>$orderid,
 
-			          'date_created'=>date('c'),
+						'payment_type'=>Yii::app()->functions->paymentCode('epaybg'),
 
-			          'ip_address'=>$_SERVER['REMOTE_ADDR']
+						'raw_response'=>json_encode($_POST),
 
-			        );				        			       
+						'date_created'=>date('c'),
 
-			        if(!$this->epayBgValidatePaymentOrder($info['token'],$orderid)){			           
+						'ip_address'=>$_SERVER['REMOTE_ADDR']
 
-			           $db_ext->insertData("{{payment_order}}",$params_logs);			           
+					);
 
-			           $params_update=array('status'=>$status);	        
+					if(!$this->epayBgValidatePaymentOrder($info['token'],$orderid)){
 
-                       $db_ext->updateData("{{order}}",$params_update,'order_id',$info['token']);  
+						$db_ext->insertData("{{payment_order}}",$params_logs);
 
-			        }			       				        				        			        
+						$params_update=array('status'=>$status);
 
-    			    break;
+						$db_ext->updateData("{{order}}",$params_update,'order_id',$info['token']);
 
-    			    
+					}
 
-    			    
+					break;
 
-    			case "sms_purchase":    
 
-    			    $payment_reference=$info['orderid'];
 
-    			    $stmt_update="
+
+
+				case "sms_purchase":
+
+					$payment_reference=$info['orderid'];
+
+					$stmt_update="
 
     			    UPDATE {{sms_package_trans}}
 
@@ -15539,37 +15537,37 @@ $menu_html.="</li>";
 
     			    sms_package_id=".$this->q($info['param1'])."
 
-    			    ";    			    
+    			    ";
 
-    			    $db_ext->qry($stmt_update);
+					$db_ext->qry($stmt_update);
 
-    			    break;
+					break;
 
-    			    
 
-    			default:
 
-    				//echo 'not found';
+				default:
 
-    				break;
+					//echo 'not found';
 
-    		}    		
+					break;
 
-    	}	    	
+			}
 
-    }
+		}
 
-    
+	}
 
-    public function epayBGIsPaymentExist($orderid='',$type="admin")
 
-    {
 
-    	$db_ext=new DbExt; 
+	public function epayBGIsPaymentExist($orderid='',$type="admin")
 
-    	if ( $type=="admin"){
+	{
 
-	    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		if ( $type=="admin"){
+
+			$stmt="SELECT * FROM
 
 	    	{{package_trans}}
 
@@ -15577,33 +15575,33 @@ $menu_html.="</li>";
 
 	    	TRANSACTIONID=".$this->q($orderid)."
 
-	    	LIMIT 0,1    	
+	    	LIMIT 0,1
 
 	    	";
 
-    	} else {
+		} else {
 
-    	}	    	
+		}
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return true;
+			return true;
 
-    	} 
+		}
 
-    	return false;    		    
+		return false;
 
-    }
+	}
 
-    
 
-    public function epayBgValidatePaymentOrder($orderid='',$payment_reference='')
 
-    {
+	public function epayBgValidatePaymentOrder($orderid='',$payment_reference='')
 
-    	$db_ext=new DbExt; 
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
 	    	{{payment_order}}
 
@@ -15615,95 +15613,95 @@ $menu_html.="</li>";
 
 	    	payment_reference=".$this->q($payment_reference)."
 
-	    	LIMIT 0,1    	
+	    	LIMIT 0,1
 
 	    ";
 
-    	if ( $res=$db_ext->rst($stmt)){
+		if ( $res=$db_ext->rst($stmt)){
 
-    		return true;
+			return true;
 
-    	} 
+		}
 
-    	return false; 
-
-    }
-
-    
-
-    public function epayBgPaymentRequestType()
-
-    {
-
-    	return array(
-
-    	  'paylogin'=>"paylogin",
-
-    	  'credit_paydirect'=>"credit_paydirect",
-
-    	);
-
-    }
-
-    
-
-    public function epayBgPaymentLanguahe()
-
-    {
-
-    	return array(
-
-    	  'bg'=>"bg",
-
-    	  'en'=>"en",
-
-    	);
-
-    }    
-
-    	    
-
-	function createLogs($response='',$filename=''){    
-
-		$path_to_upload=Yii::getPathOfAlias('webroot')."/upload/logs";
-
-	    if(!file_exists($path_to_upload)) {	
-
-           if (!@mkdir($path_to_upload,0777)){           	    
-
-           	    return ;
-
-           }		    
-
-	    }	   
-
-	    $myFile=$path_to_upload;
-
-	    $myFile.= "/$filename-". date("Y-m-d") . '.txt';            
-
-	    $fh = @fopen($myFile, 'a');
-
-	    $stringData .= 'URL=>'.$_SERVER['REQUEST_URI'] . "\n";    
-
-	    $stringData .= 'IP ADDRESS=>'.$_SERVER['REMOTE_ADDR'] . "\n";     
-
-	    $stringData .= 'DATE =>'.date("Y-m-d g:h i") . "\n";     
-
-	    $stringData .= 'POST VAR=>'. json_encode($_POST) . "\n";  
-
-	    $stringData .= 'GET VAR=>'. json_encode($_GET) . "\n";  
-
-	    $stringData .= 'RESPONSE =>'. json_encode($response) . "\n";  
-
-	    $stringData .=  "\n"; 
-
-	    fwrite($fh, $stringData);                         
-
-	    fclose($fh); 
+		return false;
 
 	}
 
-	
+
+
+	public function epayBgPaymentRequestType()
+
+	{
+
+		return array(
+
+			'paylogin'=>"paylogin",
+
+			'credit_paydirect'=>"credit_paydirect",
+
+		);
+
+	}
+
+
+
+	public function epayBgPaymentLanguahe()
+
+	{
+
+		return array(
+
+			'bg'=>"bg",
+
+			'en'=>"en",
+
+		);
+
+	}
+
+
+
+	function createLogs($response='',$filename=''){
+
+		$path_to_upload=Yii::getPathOfAlias('webroot')."/upload/logs";
+
+		if(!file_exists($path_to_upload)) {
+
+			if (!@mkdir($path_to_upload,0777)){
+
+				return ;
+
+			}
+
+		}
+
+		$myFile=$path_to_upload;
+
+		$myFile.= "/$filename-". date("Y-m-d") . '.txt';
+
+		$fh = @fopen($myFile, 'a');
+
+		$stringData .= 'URL=>'.$_SERVER['REQUEST_URI'] . "\n";
+
+		$stringData .= 'IP ADDRESS=>'.$_SERVER['REMOTE_ADDR'] . "\n";
+
+		$stringData .= 'DATE =>'.date("Y-m-d g:h i") . "\n";
+
+		$stringData .= 'POST VAR=>'. json_encode($_POST) . "\n";
+
+		$stringData .= 'GET VAR=>'. json_encode($_GET) . "\n";
+
+		$stringData .= 'RESPONSE =>'. json_encode($response) . "\n";
+
+		$stringData .=  "\n";
+
+		fwrite($fh, $stringData);
+
+		fclose($fh);
+
+	}
+
+
 
 	public function getMerchantMembershipType()
 
@@ -15711,9 +15709,9 @@ $menu_html.="</li>";
 
 		if (!empty($_SESSION['kr_merchant_user'])){
 
-			$user=json_decode($_SESSION['kr_merchant_user']);			
+			$user=json_decode($_SESSION['kr_merchant_user']);
 
-			if (is_array($user) && count($user)>=1){				
+			if (is_array($user) && count($user)>=1){
 
 				return $user[0]->is_commission;
 
@@ -15725,13 +15723,13 @@ $menu_html.="</li>";
 
 	}
 
-	
+
 
 	public function isMerchantCommission($merchant_id='')
 
 	{
 
-		
+
 
 		$stmt="
 
@@ -15745,15 +15743,15 @@ $menu_html.="</li>";
 
 		LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$this->db_ext->rst($stmt)){
 
 			if ($res[0]['is_commission']==2){
 
-				return true;				
+				return true;
 
-			}				
+			}
 
 		}
 
@@ -15761,11 +15759,11 @@ $menu_html.="</li>";
 
 	}
 
-	
+
 
 	public function getMerchantCommission($merchant_id='')
 
-	{				
+	{
 
 		$stmt="
 
@@ -15779,7 +15777,7 @@ $menu_html.="</li>";
 
 		LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$this->db_ext->rst($stmt)){
 
@@ -15791,15 +15789,15 @@ $menu_html.="</li>";
 
 	}
 
-		
 
-   public function merchantList2($as_list=true)
 
-    {
+	public function merchantList2($as_list=true)
 
-    	$data='';    	
+	{
 
-    	$stmt="SELECT * FROM
+		$data='';
+
+		$stmt="SELECT * FROM
 
     	{{merchant}}
 
@@ -15813,35 +15811,35 @@ $menu_html.="</li>";
 
     	";
 
-    	$data[]=t("All Merchant");
+		$data[]=t("All Merchant");
 
-    	if ($res=$this->db_ext->rst($stmt)){    		
+		if ($res=$this->db_ext->rst($stmt)){
 
-    		if ( $as_list==TRUE){
+			if ( $as_list==TRUE){
 
-    			foreach ($res as $val) {    				
+				foreach ($res as $val) {
 
-    			    $data[$val['merchant_id']]=ucwords($val['restaurant_name']);
+					$data[$val['merchant_id']]=ucwords($val['restaurant_name']);
 
-    			}
+				}
 
-    			return $data;
+				return $data;
 
-    		} else return $res;    	
+			} else return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }	
+	}
 
-    
 
-    public function getTotalCommission()
 
-    {
+	public function getTotalCommission()
 
-    	$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
+	{
+
+		$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
 
 		if (!empty($total_commission_status)){
 
@@ -15851,35 +15849,35 @@ $menu_html.="</li>";
 
 			$total_commission_status=array('paid');
 
-		}    	
+		}
 
-    	$status='';
+		$status='';
 
-    	if (is_array($total_commission_status) && count($total_commission_status)>=1){
+		if (is_array($total_commission_status) && count($total_commission_status)>=1){
 
-    		foreach ($total_commission_status as $val) {    			
+			foreach ($total_commission_status as $val) {
 
-    			$status.="'$val',";
+				$status.="'$val',";
 
-    		}
+			}
 
-    		$status=substr($status,0,-1);
+			$status=substr($status,0,-1);
 
-    	} else $status="'paid'";
+		} else $status="'paid'";
 
 
 
-    	$and='';
+		$and='';
 
-    	if ( Yii::app()->functions->getOptionAdmin('admin_exclude_cod_balance')==2){
+		if ( Yii::app()->functions->getOptionAdmin('admin_exclude_cod_balance')==2){
 
-    		$and=" AND payment_type NOT IN ('cod','pyr','ccr')";    
+			$and=" AND payment_type NOT IN ('cod','pyr','ccr')";
 
-    	}
+		}
 
-    	
 
-    	$stmt="SELECT sum(total_commission) as total_commission
+
+		$stmt="SELECT sum(total_commission) as total_commission
 
     	FROM
 
@@ -15889,121 +15887,33 @@ $menu_html.="</li>";
 
     	$and
 
-    	";    	
+    	";
 
-    	//dump($stmt);
+		//dump($stmt);
 
-    	if ( $res=$this->db_ext->rst($stmt)){
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		if ( $res[0]['total_commission']==""){
+			if ( $res[0]['total_commission']==""){
 
-    			return 0;
+				return 0;
 
-    		} 
+			}
 
-    		return $res[0]['total_commission'];    			
+			return $res[0]['total_commission'];
 
-    	}	
+		}
 
-    	return false;    	
+		return false;
 
-    }
-
-    
-
-   public function getTotalCommissionToday()
-
-    {
-
-    	$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
-
-		if (!empty($total_commission_status)){
-
-			$total_commission_status=json_decode($total_commission_status);
-
-		} else {
-
-			$total_commission_status=array('paid');
-
-		}    	
-
-    	$status='';
-
-    	if (is_array($total_commission_status) && count($total_commission_status)>=1){
-
-    		foreach ($total_commission_status as $val) {    			
-
-    			$status.="'$val',";
-
-    		}
-
-    		$status=substr($status,0,-1);
-
-    	} else $status="'paid'";
-
-    	    	        
-
-    	$start_date=date("Y-m-d");
-
-    	$end_date=date("Y-m-d");
-
-    	$and=" AND date_created BETWEEN  '".$start_date." 00:00:00' AND 
-
-	    		        '".$end_date." 23:59:00'
-
-	    		 ";	    		
-
-    	    	
-
-    	
-
-    	
-
-    	if ( Yii::app()->functions->getOptionAdmin('admin_exclude_cod_balance')==2){
-
-    		$and.=" AND payment_type NOT IN ('cod','pyr','ccr')";
-
-    	}
-
-    	
-
-    	$stmt="SELECT sum(total_commission) as total_commission
-
-    	FROM
-
-    	{{order}}
-
-    	WHERE status IN ($status)    	
-
-    	$and
-
-    	";    	        	
-
-    	if ( $res=$this->db_ext->rst($stmt)){    		
-
-    		if ( $res[0]['total_commission']==""){
-
-    			return 0;
-
-    		} 
-
-    		return $res[0]['total_commission'];    			
-
-    	}	
-
-    	return false;    	
-
-    }    
-
-    
+	}
 
 
 
-   public function getTotalCommissionLast()
+	public function getTotalCommissionToday()
 
-    {
+	{
 
-    	$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
+		$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
 
 		if (!empty($total_commission_status)){
 
@@ -16013,101 +15923,189 @@ $menu_html.="</li>";
 
 			$total_commission_status=array('paid');
 
-		}    	
+		}
 
-    	$status='';
+		$status='';
 
-    	if (is_array($total_commission_status) && count($total_commission_status)>=1){
+		if (is_array($total_commission_status) && count($total_commission_status)>=1){
 
-    		foreach ($total_commission_status as $val) {    			
+			foreach ($total_commission_status as $val) {
 
-    			$status.="'$val',";
+				$status.="'$val',";
 
-    		}
+			}
 
-    		$status=substr($status,0,-1);
+			$status=substr($status,0,-1);
 
-    	} else $status="'paid'";
+		} else $status="'paid'";
 
-    	    	        
 
-    	$end_date=date("Y-m-d");
 
-    	$start_date=date('Y-m-d', strtotime ('-30 days'));				
+		$start_date=date("Y-m-d");
 
-    	$and=" AND date_created BETWEEN  '".$start_date." 00:00:00' AND 
+		$end_date=date("Y-m-d");
+
+		$and=" AND date_created BETWEEN  '".$start_date." 00:00:00' AND
 
 	    		        '".$end_date." 23:59:00'
 
-	    		 ";	    		
+	    		 ";
 
-    	    	
 
-    	if ( Yii::app()->functions->getOptionAdmin('admin_exclude_cod_balance')==2){
 
-    		$and.=" AND payment_type NOT IN ('cod','pyr','ccr')";
 
-    	}
 
-    	
 
-    	$stmt="SELECT sum(total_commission) as total_commission
+
+		if ( Yii::app()->functions->getOptionAdmin('admin_exclude_cod_balance')==2){
+
+			$and.=" AND payment_type NOT IN ('cod','pyr','ccr')";
+
+		}
+
+
+
+		$stmt="SELECT sum(total_commission) as total_commission
 
     	FROM
 
     	{{order}}
 
-    	WHERE status IN ($status)    	
+    	WHERE status IN ($status)
 
     	$and
 
-    	";    	    	
+    	";
 
-    	if ( $res=$this->db_ext->rst($stmt)){    		
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		if ( $res[0]['total_commission']==""){
+			if ( $res[0]['total_commission']==""){
 
-    			return 0;
+				return 0;
 
-    		} 
+			}
 
-    		return $res[0]['total_commission'];    			
+			return $res[0]['total_commission'];
 
-    	}	
+		}
 
-    	return false;    	
+		return false;
 
-    }        
+	}
 
-	    
+
+
+
+
+	public function getTotalCommissionLast()
+
+	{
+
+		$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
+
+		if (!empty($total_commission_status)){
+
+			$total_commission_status=json_decode($total_commission_status);
+
+		} else {
+
+			$total_commission_status=array('paid');
+
+		}
+
+		$status='';
+
+		if (is_array($total_commission_status) && count($total_commission_status)>=1){
+
+			foreach ($total_commission_status as $val) {
+
+				$status.="'$val',";
+
+			}
+
+			$status=substr($status,0,-1);
+
+		} else $status="'paid'";
+
+
+
+		$end_date=date("Y-m-d");
+
+		$start_date=date('Y-m-d', strtotime ('-30 days'));
+
+		$and=" AND date_created BETWEEN  '".$start_date." 00:00:00' AND
+
+	    		        '".$end_date." 23:59:00'
+
+	    		 ";
+
+
+
+		if ( Yii::app()->functions->getOptionAdmin('admin_exclude_cod_balance')==2){
+
+			$and.=" AND payment_type NOT IN ('cod','pyr','ccr')";
+
+		}
+
+
+
+		$stmt="SELECT sum(total_commission) as total_commission
+
+    	FROM
+
+    	{{order}}
+
+    	WHERE status IN ($status)
+
+    	$and
+
+    	";
+
+		if ( $res=$this->db_ext->rst($stmt)){
+
+			if ( $res[0]['total_commission']==""){
+
+				return 0;
+
+			}
+
+			return $res[0]['total_commission'];
+
+		}
+
+		return false;
+
+	}
+
+
 
 	public function seo_friendly_url($string){
 
-	    $string = str_replace(array('[\', \']'), '', $string);
+		$string = str_replace(array('[\', \']'), '', $string);
 
-	    $string = preg_replace('/\[.*\]/U', '', $string);
+		$string = preg_replace('/\[.*\]/U', '', $string);
 
-	    $string = preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '-', $string);
+		$string = preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '-', $string);
 
-	    $string = htmlentities($string, ENT_COMPAT, 'utf-8');
+		$string = htmlentities($string, ENT_COMPAT, 'utf-8');
 
-	    $string = preg_replace('/&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);/i', '\\1', $string );
+		$string = preg_replace('/&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);/i', '\\1', $string );
 
-	    $string = preg_replace(array('/[^a-z0-9]/i', '/[-]+/') , '-', $string);
+		$string = preg_replace(array('/[^a-z0-9]/i', '/[-]+/') , '-', $string);
 
-	    return strtolower(trim($string, '-'));
+		return strtolower(trim($string, '-'));
 
-	}   
-
-
+	}
 
 
 
-    public function getMerchantBalance($merchant_id='')
 
-    {
 
-    	$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
+	public function getMerchantBalance($merchant_id='')
+
+	{
+
+		$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
 
 		if (!empty($total_commission_status)){
 
@@ -16117,41 +16115,41 @@ $menu_html.="</li>";
 
 			$total_commission_status=array('paid');
 
-		}    	
+		}
 
-    	$status='';
+		$status='';
 
-    	if (is_array($total_commission_status) && count($total_commission_status)>=1){
+		if (is_array($total_commission_status) && count($total_commission_status)>=1){
 
-    		foreach ($total_commission_status as $val) {    			
+			foreach ($total_commission_status as $val) {
 
-    			$status.="'$val',";
+				$status.="'$val',";
 
-    		}
+			}
 
-    		$status=substr($status,0,-1);
+			$status=substr($status,0,-1);
 
-    	} else $status="'paid'";
+		} else $status="'paid'";
 
-    	    	        
 
-    	$include_merchant_cod=Yii::app()->functions->getOptionAdmin('admin_include_merchant_cod');
 
-    	//dump($include_merchant_cod);
+		$include_merchant_cod=Yii::app()->functions->getOptionAdmin('admin_include_merchant_cod');
 
-    	
+		//dump($include_merchant_cod);
 
-    	$and_cash='';
 
-    	if ( $include_merchant_cod !="yes"){
 
-    	    $and_cash=" AND payment_type NOT IN ('cod','pyr','ccr') ";
+		$and_cash='';
 
-    	}
+		if ( $include_merchant_cod !="yes"){
 
-    	
+			$and_cash=" AND payment_type NOT IN ('cod','pyr','ccr') ";
 
-    	$stmt="SELECT
+		}
+
+
+
+		$stmt="SELECT
 
     	sum(a.merchant_earnings) as merchant_earnings,
 
@@ -16181,51 +16179,51 @@ $menu_html.="</li>";
 
     	";
 
-    	//dump($stmt);    	
+		//dump($stmt);
 
-    	if ( $res=$this->db_ext->rst($stmt)){    		
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		if ( $res[0]['merchant_earnings']==""){
+			if ( $res[0]['merchant_earnings']==""){
 
-    			return 0;
+				return 0;
 
-    		}    		    		
+			}
 
-    		return $res[0]['merchant_earnings']-$res[0]['total_payout'];
+			return $res[0]['merchant_earnings']-$res[0]['total_payout'];
 
-    	}	
+		}
 
-    	return false;    	
+		return false;
 
-    }	
+	}
 
-    
 
-   public function getMerchantBalanceThisMonth($merchant_id='')
 
-   {
+	public function getMerchantBalanceThisMonth($merchant_id='')
 
-    	
+	{
 
-    	$status=$this->getCommissionOrderStats();
 
-    	
 
-    	$query_date = date("Y-m-d");
+		$status=$this->getCommissionOrderStats();
+
+
+
+		$query_date = date("Y-m-d");
 
 		$start_date=date('Y-m-01', strtotime($query_date));
 
 		$end_date=date('Y-m-t', strtotime($query_date));
 
-		$and =" AND date_created BETWEEN  '".$start_date." 00:00:00' AND 
+		$and =" AND date_created BETWEEN  '".$start_date." 00:00:00' AND
 
     		        '".$end_date." 23:59:00'
 
-    		 ";	    		
+    		 ";
 
-    	
 
-    	$stmt="SELECT sum(total_commission) as total_commission,
+
+		$stmt="SELECT sum(total_commission) as total_commission,
 
     	sum(total_w_tax) as total_w_tax,
 
@@ -16241,27 +16239,27 @@ $menu_html.="</li>";
 
     	$and
 
-    	";    	       	
+    	";
 
-    	if ( $res=$this->db_ext->rst($stmt)){    		    		
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}	
+		}
 
-    	return false;    	
+		return false;
 
-    }	
+	}
 
-    
 
-   public function getMerchantTotalSales($merchant_id='')
 
-   {    	
+	public function getMerchantTotalSales($merchant_id='')
 
-   	    $status=$this->getCommissionOrderStats();
+	{
 
-    	$stmt="SELECT 
+		$status=$this->getCommissionOrderStats();
+
+		$stmt="SELECT
 
     	sum(total_w_tax) as total_w_tax,
 
@@ -16273,65 +16271,27 @@ $menu_html.="</li>";
 
     	WHERE status IN ($status)
 
-    	AND merchant_id=".Yii::app()->functions->q($merchant_id)."    	
+    	AND merchant_id=".Yii::app()->functions->q($merchant_id)."
 
-    	";       	
+    	";
 
-    	if ( $res=$this->db_ext->rst($stmt)){    		    		
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}	
+		}
 
-    	return false;    	
+		return false;
 
-    }	    
+	}
 
-        
 
-    public function getCommissionOrderStats()
 
-    {
+	public function getCommissionOrderStats()
 
-    	$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
+	{
 
-		if (!empty($total_commission_status)){
-
-			$total_commission_status=json_decode($total_commission_status);
-
-		} else {
-
-			$total_commission_status=array('paid');
-
-		}    	
-
-    	$status='';
-
-    	if (is_array($total_commission_status) && count($total_commission_status)>=1){
-
-    		foreach ($total_commission_status as $val) {    			
-
-    			$status.="'$val',";
-
-    		}
-
-    		$status=substr($status,0,-1);
-
-    	} else $status="'paid'";
-
-    	
-
-    	return $status;
-
-    }
-
-    
-
-    public function getCommissionOrderStatsArray()
-
-    {
-
-    	$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
+		$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
 
 		if (!empty($total_commission_status)){
 
@@ -16341,13 +16301,51 @@ $menu_html.="</li>";
 
 			$total_commission_status=array('paid');
 
-		}    	
+		}
 
-    	/*$status='';
+		$status='';
+
+		if (is_array($total_commission_status) && count($total_commission_status)>=1){
+
+			foreach ($total_commission_status as $val) {
+
+				$status.="'$val',";
+
+			}
+
+			$status=substr($status,0,-1);
+
+		} else $status="'paid'";
+
+
+
+		return $status;
+
+	}
+
+
+
+	public function getCommissionOrderStatsArray()
+
+	{
+
+		$total_commission_status=Yii::app()->functions->getOptionAdmin('total_commission_status');
+
+		if (!empty($total_commission_status)){
+
+			$total_commission_status=json_decode($total_commission_status);
+
+		} else {
+
+			$total_commission_status=array('paid');
+
+		}
+
+		/*$status='';
 
     	if (is_array($total_commission_status) && count($total_commission_status)>=1){
 
-    		foreach ($total_commission_status as $val) {    			
+    		foreach ($total_commission_status as $val) {
 
     			$status.="'$val',";
 
@@ -16357,45 +16355,45 @@ $menu_html.="</li>";
 
     	} else $status="'paid'";*/
 
-    	
 
-    	return $total_commission_status;
 
-    }
+		return $total_commission_status;
 
-        
+	}
 
-    public function getLastTwoMonths()
 
-    {
 
-    	$a=date("F Y"); 
+	public function getLastTwoMonths()
 
-    	$b=date("F Y",strtotime("-1 Months")); 
+	{
 
-    	$c=date("F Y",strtotime("-2 Months")); 
+		$a=date("F Y");
 
-    	return array(
+		$b=date("F Y",strtotime("-1 Months"));
 
-    	  date("Y-m-d")=>$a,
+		$c=date("F Y",strtotime("-2 Months"));
 
-    	  date("Y-m-d",strtotime("-1 Months"))=>$b,
+		return array(
 
-    	  date("Y-m-d",strtotime("-2 Months"))=>$c
+			date("Y-m-d")=>$a,
 
-    	);
+			date("Y-m-d",strtotime("-1 Months"))=>$b,
 
-    }
+			date("Y-m-d",strtotime("-2 Months"))=>$c
 
-    
+		);
 
-    public function getIngredients($id='')
+	}
 
-    {
 
-    	$DbExt=new DbExt;
 
-	    $stmt="SELECT * FROM
+	public function getIngredients($id='')
+
+	{
+
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{ingredients}}
 
@@ -16405,7 +16403,7 @@ $menu_html.="</li>";
 
 			LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -16415,19 +16413,19 @@ $menu_html.="</li>";
 
 		return false;
 
-    }		       
+	}
 
-    
 
-    public function getIngredientsList($merchant_id='')
 
-    {
+	public function getIngredientsList($merchant_id='')
 
-    	$data_feed='';
+	{
 
-    	$DbExt=new DbExt;
+		$data_feed='';
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{ingredients}}
 
@@ -16437,17 +16435,17 @@ $menu_html.="</li>";
 
 			AND status IN ('publish')
 
-			ORDER BY sequence ASC			
+			ORDER BY sequence ASC
 
-		";			    
+		";
 
-		if ( $res=$DbExt->rst($stmt)){			
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ($this->data=="list"){
 
-				foreach ($res as $val) {									   
+				foreach ($res as $val) {
 
-				   $data_feed[$val['ingredients_id']]=$val['ingredients_name'];
+					$data_feed[$val['ingredients_id']]=$val['ingredients_name'];
 
 				}
 
@@ -16459,9 +16457,9 @@ $menu_html.="</li>";
 
 		return false;
 
-    }		         
+	}
 
-	    
+
 
 	public function ingredientsToArray($json_data='')
 
@@ -16469,9 +16467,9 @@ $menu_html.="</li>";
 
 		$data='';
 
-		$json_data=!empty($json_data)?json_decode($json_data):false;		
+		$json_data=!empty($json_data)?json_decode($json_data):false;
 
-		$cooking_ref=$this->getIngredientsAll();		
+		$cooking_ref=$this->getIngredientsAll();
 
 		if ( $json_data!=false){
 
@@ -16493,33 +16491,33 @@ $menu_html.="</li>";
 
 	}
 
-	    
 
-    public function getIngredientsAll()
 
-    {    	
+	public function getIngredientsAll()
 
-    	$data_feed='';
+	{
 
-    	$DbExt=new DbExt;
+		$data_feed='';
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
 
-			{{ingredients}}		
+		$stmt="SELECT * FROM
 
-			WHERE status IN ('publish')	
+			{{ingredients}}
 
-			ORDER BY sequence ASC			
+			WHERE status IN ('publish')
 
-		";		
+			ORDER BY sequence ASC
 
-		if ( $res=$DbExt->rst($stmt)){			
+		";
+
+		if ( $res=$DbExt->rst($stmt)){
 
 			if ($this->data=="list"){
 
-				foreach ($res as $val) {									   
+				foreach ($res as $val) {
 
-				   $data_feed[$val['ingredients_id']]=$val['ingredients_name'];
+					$data_feed[$val['ingredients_id']]=$val['ingredients_name'];
 
 				}
 
@@ -16531,187 +16529,187 @@ $menu_html.="</li>";
 
 		return false;
 
-    }		        
+	}
 
 
 
-    public function payoutRequest($payment_method='',$data='')
+	public function payoutRequest($payment_method='',$data='')
 
-    {
+	{
 
-    	$token=md5($this->generateRandomKey());
+		$token=md5($this->generateRandomKey());
 
-    	$wd_days_process=Yii::app()->functions->getOptionAdmin("wd_days_process");
+		$wd_days_process=Yii::app()->functions->getOptionAdmin("wd_days_process");
 
-    	//if (empty($wd_days_process)){
+		//if (empty($wd_days_process)){
 
-    	if (!is_numeric($wd_days_process)){
+		if (!is_numeric($wd_days_process)){
 
-    		$wd_days_process=5;
+			$wd_days_process=5;
 
-    	}
+		}
 
-        $process_date=date("Y-m-d", strtotime (" +$wd_days_process days"));
+		$process_date=date("Y-m-d", strtotime (" +$wd_days_process days"));
 
-    	switch ($payment_method) {
+		switch ($payment_method) {
 
-    		case "paypal":
+			case "paypal":
 
-    			
 
-    			$params=array(
 
-    			  'merchant_id'=>$this->getMerchantID(),
+				$params=array(
 
-    			  'payment_type'=>$data['payment_type'],
+					'merchant_id'=>$this->getMerchantID(),
 
-    			  'payment_method'=>$data['payment_method'],
+					'payment_type'=>$data['payment_type'],
 
-    			  'amount'=>$data['amount'],
+					'payment_method'=>$data['payment_method'],
 
-    			  'currency_code'=>adminCurrencyCode(),
+					'amount'=>$data['amount'],
 
-    			  'date_created'=>date('c'),
+					'currency_code'=>adminCurrencyCode(),
 
-    			  'ip_address'=>$_SERVER['REMOTE_ADDR'],
+					'date_created'=>date('c'),
 
-    			  'account'=>$data['account'],
+					'ip_address'=>$_SERVER['REMOTE_ADDR'],
 
-    			  'date_to_process'=>$process_date,
+					'account'=>$data['account'],
 
-    			  'current_balance'=>$data['current_balance'],
+					'date_to_process'=>$process_date,
 
-    			  'balance'=>$data['current_balance']-$data['amount'],
+					'current_balance'=>$data['current_balance'],
 
-    			  'date_to_process'=>$process_date,
+					'balance'=>$data['current_balance']-$data['amount'],
 
-    			  'withdrawal_token'=>$token
+					'date_to_process'=>$process_date,
 
-    			);
+					'withdrawal_token'=>$token
 
-    			if ( $this->db_ext->insertData("{{withdrawal}}",$params)){
+				);
 
-    				//return Yii::app()->db->getLastInsertID();
+				if ( $this->db_ext->insertData("{{withdrawal}}",$params)){
 
-    				return array(
+					//return Yii::app()->db->getLastInsertID();
 
-    				  'id'=>Yii::app()->db->getLastInsertID(),
+					return array(
 
-    				  'token'=>$token
+						'id'=>Yii::app()->db->getLastInsertID(),
 
-    				);
+						'token'=>$token
 
-    			}
+					);
 
-    			break;
+				}
 
-    	
+				break;
 
-    		case "bank":    
 
-    		    $wd_bank_fields=yii::app()->functions->getOptionAdmin('wd_bank_fields');	    		    
 
-    		    $mtid=Yii::app()->functions->getMerchantID();			        
+			case "bank":
 
-    			$params=array(
+				$wd_bank_fields=yii::app()->functions->getOptionAdmin('wd_bank_fields');
 
-    			  'merchant_id'=>$this->getMerchantID(),
+				$mtid=Yii::app()->functions->getMerchantID();
 
-    			  'payment_type'=>$data['payment_type'],
+				$params=array(
 
-    			  'payment_method'=>$data['payment_method'],
+					'merchant_id'=>$this->getMerchantID(),
 
-    			  'amount'=>$data['amount'],
+					'payment_type'=>$data['payment_type'],
 
-    			  'currency_code'=>adminCurrencyCode(),
+					'payment_method'=>$data['payment_method'],
 
-    			  'date_created'=>date('c'),
+					'amount'=>$data['amount'],
 
-    			  'ip_address'=>$_SERVER['REMOTE_ADDR'],
+					'currency_code'=>adminCurrencyCode(),
 
-    			  'account_name'=>$data['account_name'],
+					'date_created'=>date('c'),
 
-    			  'bank_account_number'=>$data['bank_account_number'],
+					'ip_address'=>$_SERVER['REMOTE_ADDR'],
 
-    			  'swift_code'=>$data['swift_code'],
+					'account_name'=>$data['account_name'],
 
-    			  'bank_name'=>isset($data['bank_name'])?$data['bank_name']:'',
+					'bank_account_number'=>$data['bank_account_number'],
 
-    			  'bank_branch'=>isset($data['bank_branch'])?$data['bank_branch']:'',
+					'swift_code'=>$data['swift_code'],
 
-    			  'bank_country'=>isset($data['bank_country'])?$data['bank_country']:'',
+					'bank_name'=>isset($data['bank_name'])?$data['bank_name']:'',
 
-    			  'date_to_process'=>$process_date,
+					'bank_branch'=>isset($data['bank_branch'])?$data['bank_branch']:'',
 
-    			  'current_balance'=>$data['current_balance'],
+					'bank_country'=>isset($data['bank_country'])?$data['bank_country']:'',
 
-    			  'balance'=>$data['current_balance']-$data['amount'],
+					'date_to_process'=>$process_date,
 
-    			  'date_to_process'=>$process_date,
+					'current_balance'=>$data['current_balance'],
 
-    			  'withdrawal_token'=>$token
+					'balance'=>$data['current_balance']-$data['amount'],
 
-    			);    	    			
+					'date_to_process'=>$process_date,
 
-    			if (!empty($wd_bank_fields)){
+					'withdrawal_token'=>$token
 
-    				$params['bank_type']=$wd_bank_fields;
+				);
 
-    			}    		
+				if (!empty($wd_bank_fields)){
 
-    			    		    			
+					$params['bank_type']=$wd_bank_fields;
 
-    			if (isset($data['default_account_bank'])){
+				}
 
-	    			if ( $data['default_account_bank']==2){
 
-	    				Yii::app()->functions->updateOption("merchant_payout_bank_account",
 
-    	                json_encode($params),$this->getMerchantID());
+				if (isset($data['default_account_bank'])){
 
-	    			}
+					if ( $data['default_account_bank']==2){
 
-    			}
+						Yii::app()->functions->updateOption("merchant_payout_bank_account",
 
-    				
+							json_encode($params),$this->getMerchantID());
 
-    			if ( $this->db_ext->insertData("{{withdrawal}}",$params)){
+					}
 
-    				//return Yii::app()->db->getLastInsertID();
+				}
 
-    				return array(
 
-    				  'id'=>Yii::app()->db->getLastInsertID(),
 
-    				  'token'=>$token
+				if ( $this->db_ext->insertData("{{withdrawal}}",$params)){
 
-    				);
+					//return Yii::app()->db->getLastInsertID();
 
-    			}    			
+					return array(
 
-    			break;
+						'id'=>Yii::app()->db->getLastInsertID(),
 
-    			    			
+						'token'=>$token
 
-    		default:
+					);
 
-    			break;
+				}
 
-    	}
+				break;
 
-    	
 
-    	return true;
 
-    }   
+			default:
 
-    
+				break;
 
-    public function getWithdrawalInformation($id='')
+		}
 
-    {
 
-    	$stmt="SELECT * FROM
+
+		return true;
+
+	}
+
+
+
+	public function getWithdrawalInformation($id='')
+
+	{
+
+		$stmt="SELECT * FROM
 
     	{{withdrawal}}
 
@@ -16723,23 +16721,23 @@ $menu_html.="</li>";
 
     	";
 
-    	if ( $res=$this->db_ext->rst($stmt)){
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    		
+		return false;
 
-    }
+	}
 
-    
 
-    public function getWithdrawalInformationByToken($token='')
 
-    {
+	public function getWithdrawalInformationByToken($token='')
 
-    	$stmt="SELECT * FROM
+	{
+
+		$stmt="SELECT * FROM
 
     	{{withdrawal}}
 
@@ -16751,75 +16749,41 @@ $menu_html.="</li>";
 
     	";
 
-    	if ( $res=$this->db_ext->rst($stmt)){
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;    		
+		return false;
 
-    }    
-
-    
-
-    public function getMerchantWithdrawal($merchant_id='',$status='')
-
-    {    	
-
-    	$and="";
-
-    	$temp_status='';
-
-    	if ( is_array($status) && count($status)>=1){
-
-    		foreach ($status as $val) {
-
-    			$temp_status.="'$val',";
-
-    		}    		
-
-    		$temp_status=substr($temp_status,0,-1);
-
-    		$and=" AND status IN ($temp_status) ";
-
-    	}
-
-    	$stmt="SELECT * FROM
-
-    	{{withdrawal}}
-
-    	WHERE
-
-    	merchant_id=".$this->q($merchant_id)."
-
-    	$and
-
-    	ORDER BY withdrawal_id DESC    	
-
-    	";    	
-
-    	if ( $res=$this->db_ext->rst($stmt)){
-
-    		return $res;
-
-    	}
-
-    	return false;    		
-
-    }    
+	}
 
 
 
+	public function getMerchantWithdrawal($merchant_id='',$status='')
 
+	{
 
-    public function getMerchantFailedWithdrawal($merchant_id='')
+		$and="";
 
-    {    	
+		$temp_status='';
 
-    	$and="AND status NOT IN ('paid','pending','approved')";    	
+		if ( is_array($status) && count($status)>=1){
 
-    	$stmt="SELECT * FROM
+			foreach ($status as $val) {
+
+				$temp_status.="'$val',";
+
+			}
+
+			$temp_status=substr($temp_status,0,-1);
+
+			$and=" AND status IN ($temp_status) ";
+
+		}
+
+		$stmt="SELECT * FROM
 
     	{{withdrawal}}
 
@@ -16829,127 +16793,161 @@ $menu_html.="</li>";
 
     	$and
 
-    	ORDER BY withdrawal_id DESC    	
+    	ORDER BY withdrawal_id DESC
 
-    	";    	
+    	";
 
-    	if ( $res=$this->db_ext->rst($stmt)){
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;    		
+		return false;
 
-    }    
-
-        
-
-    public function withdrawalStatus()
-
-    {
-
-    	return array(
-
-    	   'pending'=>t("pending"),
-
-    	   'paid'=>t("paid"),
-
-    	   'cancel'=>t("cancel"),
-
-    	   'reversal'=>t("reversal"),
-
-    	   'denied'=>t("denied"),
-
-    	   'processing'=>t("processing")
-
-    	);
-
-    }
+	}
 
 
 
-    public function displayDate($date_to_format='')
 
-    {
 
-    	if ( $date_to_format==""){
+	public function getMerchantFailedWithdrawal($merchant_id='')
 
-    		return '';
+	{
 
-    	} else {
+		$and="AND status NOT IN ('paid','pending','approved')";
 
-	    	$date=date('M d,Y G:i:s',strtotime($date_to_format));  
+		$stmt="SELECT * FROM
 
-	        $date=Yii::app()->functions->translateDate($date);
+    	{{withdrawal}}
 
-	        return $date;
+    	WHERE
 
-    	}
+    	merchant_id=".$this->q($merchant_id)."
 
-    }
+    	$and
 
-    
+    	ORDER BY withdrawal_id DESC
 
-    public function getPaypalConnectionWithdrawal()
+    	";
 
-    {
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    	 $paypal_mode=yii::app()->functions->getOptionAdmin('wd_paypal_mode'); 
+			return $res;
 
-    	 $paypal_mode=strtolower($paypal_mode);
+		}
 
-		 $paypal_con=array();		 
+		return false;
 
-		 if ($paypal_mode=="sandbox"){
+	}
 
-		  	  $paypal_con['mode']="sandbox";
 
-		  	  $paypal_con['sandbox']['paypal_nvp']='https://api-3t.sandbox.paypal.com/nvp';
 
-		  	  $paypal_con['sandbox']['paypal_web']='https://www.sandbox.paypal.com/cgi-bin/webscr';
+	public function withdrawalStatus()
 
-		  	  $paypal_con['sandbox']['user']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_user');
+	{
 
-		  	  $paypal_con['sandbox']['psw']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_pass');
+		return array(
 
-		  	  $paypal_con['sandbox']['signature']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_signature');
+			'pending'=>t("pending"),
 
-		  	  $paypal_con['sandbox']['version']='61.0';
+			'paid'=>t("paid"),
 
-		  	  $paypal_con['sandbox']['action']='Sale';
+			'cancel'=>t("cancel"),
 
-		  } else {
+			'reversal'=>t("reversal"),
 
-		  	  $paypal_con['mode']="live";
+			'denied'=>t("denied"),
 
-		  	  $paypal_con['live']['paypal_nvp']='https://api-3t.paypal.com/nvp';
+			'processing'=>t("processing")
 
-		  	  $paypal_con['live']['paypal_web']='https://www.paypal.com/cgi-bin/webscr';
+		);
 
-		  	  $paypal_con['live']['user']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_user');
+	}
 
-		  	  $paypal_con['live']['psw']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_pass');
 
-		  	  $paypal_con['live']['signature']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_signature');
 
-		  	  $paypal_con['live']['version']='61.0';
+	public function displayDate($date_to_format='')
 
-		  	  $paypal_con['live']['action']='Sale';
+	{
 
-		  }
+		if ( $date_to_format==""){
 
-		  return $paypal_con;
+			return '';
 
-    }	          
+		} else {
 
-                
+			$date=date('M d,Y G:i:s',strtotime($date_to_format));
 
-    function dateDifference($start, $end )
+			$date=Yii::app()->functions->translateDate($date);
 
-    {
+			return $date;
 
-        $uts['start']=strtotime( $start );
+		}
+
+	}
+
+
+
+	public function getPaypalConnectionWithdrawal()
+
+	{
+
+		$paypal_mode=yii::app()->functions->getOptionAdmin('wd_paypal_mode');
+
+		$paypal_mode=strtolower($paypal_mode);
+
+		$paypal_con=array();
+
+		if ($paypal_mode=="sandbox"){
+
+			$paypal_con['mode']="sandbox";
+
+			$paypal_con['sandbox']['paypal_nvp']='https://api-3t.sandbox.paypal.com/nvp';
+
+			$paypal_con['sandbox']['paypal_web']='https://www.sandbox.paypal.com/cgi-bin/webscr';
+
+			$paypal_con['sandbox']['user']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_user');
+
+			$paypal_con['sandbox']['psw']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_pass');
+
+			$paypal_con['sandbox']['signature']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_signature');
+
+			$paypal_con['sandbox']['version']='61.0';
+
+			$paypal_con['sandbox']['action']='Sale';
+
+		} else {
+
+			$paypal_con['mode']="live";
+
+			$paypal_con['live']['paypal_nvp']='https://api-3t.paypal.com/nvp';
+
+			$paypal_con['live']['paypal_web']='https://www.paypal.com/cgi-bin/webscr';
+
+			$paypal_con['live']['user']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_user');
+
+			$paypal_con['live']['psw']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_pass');
+
+			$paypal_con['live']['signature']=yii::app()->functions->getOptionAdmin('wd_paypal_mode_signature');
+
+			$paypal_con['live']['version']='61.0';
+
+			$paypal_con['live']['action']='Sale';
+
+		}
+
+		return $paypal_con;
+
+	}
+
+
+
+	function dateDifference($start, $end )
+
+	{
+
+		$uts['start']=strtotime( $start );
 
 		$uts['end']=strtotime( $end );
 
@@ -16957,65 +16955,65 @@ $menu_html.="</li>";
 
 		{
 
-		if( $uts['end'] >= $uts['start'] )
+			if( $uts['end'] >= $uts['start'] )
+
+			{
+
+				$diff    =    $uts['end'] - $uts['start'];
+
+				if( $days=intval((floor($diff/86400))) )
+
+					$diff = $diff % 86400;
+
+				if( $hours=intval((floor($diff/3600))) )
+
+					$diff = $diff % 3600;
+
+				if( $minutes=intval((floor($diff/60))) )
+
+					$diff = $diff % 60;
+
+				$diff    =    intval( $diff );
+
+				return( array('days'=>$days, 'hours'=>$hours, 'minutes'=>$minutes, 'seconds'=>$diff) );
+
+			}
+
+			else
+
+			{
+
+				return false;
+
+			}
+
+		}
+
+		else
 
 		{
 
-		$diff    =    $uts['end'] - $uts['start'];
-
-		if( $days=intval((floor($diff/86400))) )
-
-		    $diff = $diff % 86400;
-
-		if( $hours=intval((floor($diff/3600))) )
-
-		    $diff = $diff % 3600;
-
-		if( $minutes=intval((floor($diff/60))) )
-
-		    $diff = $diff % 60;
-
-		$diff    =    intval( $diff );            
-
-		return( array('days'=>$days, 'hours'=>$hours, 'minutes'=>$minutes, 'seconds'=>$diff) );
-
-		}
-
-		else
-
-		{			
-
-		return false;
-
-		}
-
-		}
-
-		else
-
-		{			
-
-		return false;
+			return false;
 
 		}
 
 		return( false );
 
-     }    
+	}
 
-     
 
-     public function validateMerchantUserFromMerchantUser($username='',$email='',$id='')
 
-     {
+	public function validateMerchantUserFromMerchantUser($username='',$email='',$id='')
 
-     	$and="";    	        	    	
+	{
 
-    	$msg='';
+		$and="";
 
-    	
+		$msg='';
 
-     	$stmt1="SELECT * FROM
+
+
+		$stmt1="SELECT * FROM
 
      	{{merchant_user}}
 
@@ -17027,17 +17025,17 @@ $menu_html.="</li>";
 
      	LIMIT 0,1
 
-     	";     	
+     	";
 
-     	if ($res1=$this->db_ext->rst($stmt1)){
+		if ($res1=$this->db_ext->rst($stmt1)){
 
-     		$msg=t("Username already exist");
+			$msg=t("Username already exist");
 
-     	}
+		}
 
-     	
 
-     	$stmt1="SELECT * FROM
+
+		$stmt1="SELECT * FROM
 
      	{{merchant_user}}
 
@@ -17049,115 +17047,115 @@ $menu_html.="</li>";
 
      	LIMIT 0,1
 
-     	";     	
+     	";
 
-     	if ($res1=$this->db_ext->rst($stmt1)){
+		if ($res1=$this->db_ext->rst($stmt1)){
 
-     		$msg=t("Email address already exist");
+			$msg=t("Email address already exist");
 
-     	}
+		}
 
-     	     	
 
-     	if (empty($msg)){
 
-     		return false;
+		if (empty($msg)){
 
-     	}     	
+			return false;
 
-     	return $msg;
+		}
 
-     }  
+		return $msg;
 
-     
+	}
 
-    public function merchantList3($as_list=true,$with_select=false)
 
-    {
 
-    	$data='';
+	public function merchantList3($as_list=true,$with_select=false)
 
-    	$DbExt=new DbExt;
+	{
 
-    	$stmt="SELECT * FROM
+		$data='';
 
-    	{{merchant}}    	
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
+
+    	{{merchant}}
 
     	ORDER BY restaurant_name ASC
 
     	";
 
-    	if ( $with_select){
+		if ( $with_select){
 
-    		//$data[]=t("Please select");
+			//$data[]=t("Please select");
 
-    		$data[]=t("All Merchant");
+			$data[]=t("All Merchant");
 
-    	}
+		}
 
-    	if ($res=$DbExt->rst($stmt)){    		
+		if ($res=$DbExt->rst($stmt)){
 
-    		if ( $as_list==TRUE){
+			if ( $as_list==TRUE){
 
-    			foreach ($res as $val) {    				
+				foreach ($res as $val) {
 
-    			    $data[$val['merchant_id']]=ucwords($val['restaurant_name']);
+					$data[$val['merchant_id']]=ucwords($val['restaurant_name']);
 
-    			}
+				}
 
-    			return $data;
+				return $data;
 
-    		} else return $res;    	
+			} else return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }     
+	}
 
-        
 
-    public function getBankDepositInstruction()
 
-    {
+	public function getBankDepositInstruction()
 
-    	$sender=$this->getOptionAdmin("admin_deposit_sender");
+	{
 
-    	$subject=$this->getOptionAdmin("admin_deposit_subject");
+		$sender=$this->getOptionAdmin("admin_deposit_sender");
 
-    	$content=$this->getOptionAdmin("admin_deposit_instructions");
+		$subject=$this->getOptionAdmin("admin_deposit_subject");
 
-    	return array(
+		$content=$this->getOptionAdmin("admin_deposit_instructions");
 
-    	  'sender'=>$sender,
+		return array(
 
-    	  'subject'=>$subject,
+			'sender'=>$sender,
 
-    	  'content'=>$content
+			'subject'=>$subject,
 
-    	);
+			'content'=>$content
 
-    }
+		);
 
-    
+	}
 
-    public function getMerchantFaxCredit($merchant_id='')
 
-    {
 
-    	
+	public function getMerchantFaxCredit($merchant_id='')
 
-        $stats=Yii::app()->functions->getOptionAdmin('fax_user_admin_credit');    	
+	{
 
-    	if ($stats=="2"){
 
-    		return 1;
 
-    	}
+		$stats=Yii::app()->functions->getOptionAdmin('fax_user_admin_credit');
 
-    	    	
+		if ($stats=="2"){
 
-    	$stmt="
+			return 1;
+
+		}
+
+
+
+		$stmt="
 
     	SELECT SUM(fax_limit) as total_credits,
 
@@ -17171,15 +17169,15 @@ $menu_html.="</li>";
 
     	   where
 
-    	   merchant_id=".Yii::app()->db->quoteValue($merchant_id)."    	
+    	   merchant_id=".Yii::app()->db->quoteValue($merchant_id)."
 
-    	   and    	   
+    	   and
 
     	   status in ('success')
 
     	) as total_send
 
-    	
+
 
     	FROM {{fax_package_trans}}
 
@@ -17193,55 +17191,55 @@ $menu_html.="</li>";
 
     	";
 
-    	if ($res=$this->db_ext->rst($stmt)){
+		if ($res=$this->db_ext->rst($stmt)){
 
-    		return $res[0]['total_credits']-$res[0]['total_send'];
+			return $res[0]['total_credits']-$res[0]['total_send'];
 
-    	}
+		}
 
-    	return 0;
+		return 0;
 
-    }    
+	}
 
-    
 
-    public function sendFax($merchant_id='',$order_id='')
 
-    {    	    	
+	public function sendFax($merchant_id='',$order_id='')
 
-    	$enabled=$this->getOption('fax_merchant_enabled',$merchant_id);
+	{
 
-    	if ( $enabled==2){
+		$enabled=$this->getOption('fax_merchant_enabled',$merchant_id);
 
-    		$params=array(
+		if ( $enabled==2){
 
-    		  'merchant_id'=>$merchant_id,
+			$params=array(
 
-    		  'faxno'=>$this->getOption('fax_merchant_number',$merchant_id),
+				'merchant_id'=>$merchant_id,
 
-    		  'recipname'=>$this->getOption('fax_merchant_recipient',$merchant_id),
+				'faxno'=>$this->getOption('fax_merchant_number',$merchant_id),
 
-    		  'faxurl'=>websiteUrl()."/store/fax/?id=$order_id",  
+				'recipname'=>$this->getOption('fax_merchant_recipient',$merchant_id),
 
-    		  'date_created'=>date('c'),
+				'faxurl'=>websiteUrl()."/store/fax/?id=$order_id",
 
-    		  'ip_address'=>$_SERVER['REMOTE_ADDR']
+				'date_created'=>date('c'),
 
-    		);
+				'ip_address'=>$_SERVER['REMOTE_ADDR']
 
-    		$this->db_ext->insertData("{{fax_broadcast}}",$params);
+			);
 
-    	}
+			$this->db_ext->insertData("{{fax_broadcast}}",$params);
 
-    }	
+		}
 
-        
+	}
 
-    public function getFaxJobId($jobid='')
 
-    {
 
-    	$stmt="SELECT * FROM
+	public function getFaxJobId($jobid='')
+
+	{
+
+		$stmt="SELECT * FROM
 
     	{{fax_broadcast}}
 
@@ -17253,49 +17251,49 @@ $menu_html.="</li>";
 
     	";
 
-    	if ($res=$this->db_ext->rst($stmt)){
+		if ($res=$this->db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	} 
+		}
 
-    	return false;    		
+		return false;
 
-    }
+	}
 
-    
 
-    public function validateAdminSession()
 
-    {
+	public function validateAdminSession()
 
-    	$this->has_session=false;
+	{
 
-    	if(isset($_SESSION['kr_user_session'])){
+		$this->has_session=false;
 
-    		
+		if(isset($_SESSION['kr_user_session'])){
 
-    		$allowed=$this->getOptionAdmin('website_admin_mutiple_login');    		
 
-    		if ( $allowed==""){    			
 
-    			if (empty($_SESSION['kr_user_session'])){
+			$allowed=$this->getOptionAdmin('website_admin_mutiple_login');
 
-    				return false;
+			if ( $allowed==""){
 
-    			}
+				if (empty($_SESSION['kr_user_session'])){
 
-    			return true;
+					return false;
 
-    		}
+				}
 
-    		
+				return true;
 
-    		$admin_id=$this->getAdminId();
+			}
 
-    		$kr_user_session=$_SESSION['kr_user_session'];
 
-    		$stmt="SELECT session_token
+
+			$admin_id=$this->getAdminId();
+
+			$kr_user_session=$_SESSION['kr_user_session'];
+
+			$stmt="SELECT session_token
 
     		FROM {{admin_user}}
 
@@ -17305,63 +17303,63 @@ $menu_html.="</li>";
 
     		LIMIT 0,1
 
-    		";    		
+    		";
 
-    		if ($res=$this->db_ext->rst($stmt)){    			
+			if ($res=$this->db_ext->rst($stmt)){
 
-    			if ( $kr_user_session==$res[0]['session_token']){
+				if ( $kr_user_session==$res[0]['session_token']){
 
-    				return true;
+					return true;
 
-    			}
+				}
 
-    			$this->has_session=true;
+				$this->has_session=true;
 
-    		}
+			}
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function validateMerchantSession()
 
-    {
+	public function validateMerchantSession()
 
-    	$this->has_session=false;
+	{
 
-    	if(isset($_SESSION['kr_merchant_user_session'])){
+		$this->has_session=false;
 
-    		
+		if(isset($_SESSION['kr_merchant_user_session'])){
 
-    		$merchant_id=$this->getMerchantID();
 
-    		$session=$_SESSION['kr_merchant_user_session'];
 
-    		
+			$merchant_id=$this->getMerchantID();
 
-    		$allowed=$this->getOptionAdmin('website_merchant_mutiple_login');      			
+			$session=$_SESSION['kr_merchant_user_session'];
 
-    		if ( $allowed==""){
 
-    			if (empty($_SESSION['kr_merchant_user_session'])){
 
-    				return false;
+			$allowed=$this->getOptionAdmin('website_merchant_mutiple_login');
 
-    			}
+			if ( $allowed==""){
 
-    			return true;
+				if (empty($_SESSION['kr_merchant_user_session'])){
 
-    		}
+					return false;
 
-    		    		    		    		
+				}
 
-    		if ( $_SESSION['kr_merchant_user_type']=="admin"){
+				return true;
 
-    			$stmt="SELECT session_token
+			}
+
+
+
+			if ( $_SESSION['kr_merchant_user_type']=="admin"){
+
+				$stmt="SELECT session_token
 
 	    		FROM {{merchant}}
 
@@ -17371,23 +17369,23 @@ $menu_html.="</li>";
 
 	    		LIMIT 0,1
 
-	    		";    	
+	    		";
 
-    		} else {
+			} else {
 
-    			$merchant_user_id='';
+				$merchant_user_id='';
 
-    		    $user_info=json_decode($_SESSION['kr_merchant_user'],true);
+				$user_info=json_decode($_SESSION['kr_merchant_user'],true);
 
-    		    if (is_array($user_info) && count($user_info)>=1){
+				if (is_array($user_info) && count($user_info)>=1){
 
-    			    $merchant_user_id=$user_info[0]['merchant_user_id'];
+					$merchant_user_id=$user_info[0]['merchant_user_id'];
 
-    		    }
+				}
 
-    		
 
-	    		$stmt="SELECT session_token
+
+				$stmt="SELECT session_token
 
 	    		FROM {{merchant_user}}
 
@@ -17397,35 +17395,35 @@ $menu_html.="</li>";
 
 	    		LIMIT 0,1
 
-	    		";    	
+	    		";
 
-    		}    		
+			}
 
-    		if ($res=$this->db_ext->rst($stmt)){    			    			
+			if ($res=$this->db_ext->rst($stmt)){
 
-    			if ( $session==$res[0]['session_token']){
+				if ( $session==$res[0]['session_token']){
 
-    				return true;
+					return true;
 
-    			}
+				}
 
-    			$this->has_session=true;
+				$this->has_session=true;
 
-    		}
+			}
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }    
+	}
 
-    
 
-    public function getShippingRates($mtid='')
 
-    {
+	public function getShippingRates($mtid='')
 
-    	$stmt="SELECT * FROM
+	{
+
+		$stmt="SELECT * FROM
 
     	{{shipping_rate}}
 
@@ -17437,27 +17435,27 @@ $menu_html.="</li>";
 
     	";
 
-    	if ( $res=$this->db_ext->rst($stmt)){
+		if ( $res=$this->db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }     
+	}
 
-    
 
-    public function isMerchantOpenTimes($merchant_id='',$full_booking_day='',$booking_time='')
 
-    {
+	public function isMerchantOpenTimes($merchant_id='',$full_booking_day='',$booking_time='')
 
-	   $business_hours=Yii::app()->functions->getBusinnesHours($merchant_id);
+	{
 
-	   //dump($business_hours);	   
+		$business_hours=Yii::app()->functions->getBusinnesHours($merchant_id);
 
-	   /*dump($merchant_id);
+		//dump($business_hours);
+
+		/*dump($merchant_id);
 
 	   dump($full_booking_day);
 
@@ -17473,33 +17471,33 @@ $menu_html.="</li>";
 
 				if (!empty($booking_time)){
 
-					if (array_key_exists($full_booking_day,$business_hours)){						
+					if (array_key_exists($full_booking_day,$business_hours)){
 
-						$selected_date=$business_hours[$full_booking_day];										
+						$selected_date=$business_hours[$full_booking_day];
 
 						//dump($selected_date);
 
-						$temp_selected=explode(",",$selected_date);	
+						$temp_selected=explode(",",$selected_date);
 
-						//dump($temp_selected);	
+						//dump($temp_selected);
 
-												
 
-						if(is_array($temp_selected) && count($temp_selected)>=1){							
+
+						if(is_array($temp_selected) && count($temp_selected)>=1){
 
 							if ( empty($temp_selected[0])){
 
-							    if (!empty($temp_selected[1])){
+								if (!empty($temp_selected[1])){
 
-							    	$temp_selected[0]=$temp_selected[1];
+									$temp_selected[0]=$temp_selected[1];
 
-							    }
+								}
 
 							}
 
 						}
 
-						
+
 
 						$selected_date=explode("-",$temp_selected[0]);
 
@@ -17509,11 +17507,11 @@ $menu_html.="</li>";
 
 						$t2=trim($selected_date[1]);
 
-																		
 
-						if ( !Yii::app()->functions->checkBetweenTime($booking_time,$t1,$t2)){	
 
-							if (isset($selected_date[1])){												
+						if ( !Yii::app()->functions->checkBetweenTime($booking_time,$t1,$t2)){
+
+							if (isset($selected_date[1])){
 
 								if(!isset($temp_selected[1])){
 
@@ -17531,15 +17529,15 @@ $menu_html.="</li>";
 
 								$t1=trim($selected_date[0]);
 
-						        $t2=trim($selected_date[1]);						        
+								$t2=trim($selected_date[1]);
 
-						        if ( Yii::app()->functions->checkBetweenTime($booking_time,$t1,$t2)){
+								if ( Yii::app()->functions->checkBetweenTime($booking_time,$t1,$t2)){
 
-						        	return true;
+									return true;
 
-						        } 
+								}
 
-							}										
+							}
 
 							return false;
 
@@ -17551,71 +17549,71 @@ $menu_html.="</li>";
 
 			}
 
-		}							
+		}
 
-		return true;							
+		return true;
 
-    }
+	}
 
-    
 
-    public function checkBetweenTime($current_time='',$sunrise='',$sunset='')
 
-    {    	
+	public function checkBetweenTime($current_time='',$sunrise='',$sunset='')
 
-    	/*refference http://stackoverflow.com/questions/15911312/how-to-check-if-time-is-between-two-times-in-php*/    	
+	{
 
-      	/*$current_time = "09:55 AM";
+		/*refference http://stackoverflow.com/questions/15911312/how-to-check-if-time-is-between-two-times-in-php*/
+
+		/*$current_time = "09:55 AM";
 
         $sunrise = "09:00 AM";
 
-        $sunset = "07:30 PM";*/    
+        $sunset = "07:30 PM";*/
 
-      	/*dump($current_time);   
+		/*dump($current_time);
 
       	dump($sunrise);
 
       	dump($sunset);*/
 
-		$date1 = DateTime::createFromFormat('H:i a', $current_time);		
+		$date1 = DateTime::createFromFormat('H:i a', $current_time);
 
-		$date2 = DateTime::createFromFormat('H:i a', $sunrise);		
+		$date2 = DateTime::createFromFormat('H:i a', $sunrise);
 
-		$date3 = DateTime::createFromFormat('H:i a', $sunset);		
+		$date3 = DateTime::createFromFormat('H:i a', $sunset);
 
-		if ($date1 > $date2 && $date1 < $date3) {			
+		if ($date1 > $date2 && $date1 < $date3) {
 
-		    return true;
+			return true;
 
-		} 
+		}
 
 		return false;
 
-    }  
+	}
 
 
 
-    public function prettyLink($link='')
+	public function prettyLink($link='')
 
-    {
+	{
 
-    	if (!preg_match("/http/i", $link)) {
+		if (!preg_match("/http/i", $link)) {
 
-		   $link="http://".$link;
+			$link="http://".$link;
 
-        } 
+		}
 
-        return $link;
+		return $link;
 
-    }
+	}
 
-    
+
 
 	public function getMerchantCommissionDetails($merchant_id='')
 
 	{
 
-		
+
 
 		$stmt="
 
@@ -17629,17 +17627,17 @@ $menu_html.="</li>";
 
 		LIMIT 0,1
 
-		";		
+		";
 
 		if ( $res=$this->db_ext->rst($stmt)){
 
 			return array(
 
-			  'is_commission'=>$res[0]['is_commission'],
+				'is_commission'=>$res[0]['is_commission'],
 
-			  'commision_type'=>$res[0]['commision_type'],
+				'commision_type'=>$res[0]['commision_type'],
 
-			  'percent_commision'=>$res[0]['percent_commision']
+				'percent_commision'=>$res[0]['percent_commision']
 
 			);
 
@@ -17647,7 +17645,7 @@ $menu_html.="</li>";
 
 		return false;
 
-	}        	
+	}
 
 
 
@@ -17657,51 +17655,51 @@ $menu_html.="</li>";
 
 		if ($date=="0000-00-00"){
 
-    		return ;
+			return ;
 
-    	}    
+		}
 
-    	if ($date=="0000-00-00 00:00:00"){
+		if ($date=="0000-00-00 00:00:00"){
 
-    		return ;
+			return ;
 
-    	}
+		}
 
-    	if ( !empty($date)){    		
+		if ( !empty($date)){
 
-    		$date_f=Yii::app()->functions->getOptionAdmin("website_date_format");
+			$date_f=Yii::app()->functions->getOptionAdmin("website_date_format");
 
-    		$time_f=Yii::app()->functions->getOptionAdmin("website_time_format");       		
+			$time_f=Yii::app()->functions->getOptionAdmin("website_time_format");
 
-    		if (!empty($date_f)){
+			if (!empty($date_f)){
 
-    			if ( $time==TRUE){
+				if ( $time==TRUE){
 
-    			    $date_ouput = date("$date_f $time_f",strtotime($date));	
+					$date_ouput = date("$date_f $time_f",strtotime($date));
 
-    			} else $date_ouput = date("$date_f",strtotime($date));	    			
+				} else $date_ouput = date("$date_f",strtotime($date));
 
-    			return $this->translateDate($date_ouput);
+				return $this->translateDate($date_ouput);
 
-    		} else {
+			} else {
 
-    			if ( $time==TRUE){
+				if ( $time==TRUE){
 
-    		        $date_ouput= date('M d,Y G:i:s',strtotime($date));	
+					$date_ouput= date('M d,Y G:i:s',strtotime($date));
 
-    			} else $date_ouput= date('M d,Y',strtotime($date));	
+				} else $date_ouput= date('M d,Y',strtotime($date));
 
-    		    return $this->translateDate($date_ouput);
+				return $this->translateDate($date_ouput);
 
-    		}
+			}
 
-    	}
+		}
 
-    	return false;
+		return false;
 
 	}
 
-	
+
 
 	public function timeFormat($time='',$is_display=false)
 
@@ -17713,11 +17711,11 @@ $menu_html.="</li>";
 
 		}
 
-		
+
 
 		$time_format=Yii::app()->functions->getOptionAdmin("website_time_picker_format");
 
-		//dump($time_format);	
+		//dump($time_format);
 
 		switch ($time_format){
 
@@ -17739,7 +17737,7 @@ $menu_html.="</li>";
 
 				} else return date("H:i", strtotime($time));
 
-				break;	
+				break;
 
 		}
 
@@ -17747,31 +17745,31 @@ $menu_html.="</li>";
 
 	}
 
-	
+
 
 	public function sendVerificationCode($mobile='',$code='')
 
-	{		
+	{
 
-		$msg=t("Your verification code is")." ".$code;;		
+		$msg=t("Your verification code is")." ".$code;;
 
-		if ( $res = $this->sendSMS($mobile,$msg)){			
+		if ( $res = $this->sendSMS($mobile,$msg)){
 
 			$params=array(
 
-			  'contact_phone'=>$mobile,
+				'contact_phone'=>$mobile,
 
-			  'sms_message'=>$msg,
+				'sms_message'=>$msg,
 
-			  'status'=>isset($res['msg'])?$res['msg']:'',
+				'status'=>isset($res['msg'])?$res['msg']:'',
 
-			  'gateway_response'=>isset($res['raw'])?$res['raw']:'',
+				'gateway_response'=>isset($res['raw'])?$res['raw']:'',
 
-			  'gateway'=>$res['sms_provider'],
+				'gateway'=>$res['sms_provider'],
 
-			  'date_created'=>date('c'),
+				'date_created'=>date('c'),
 
-			  'ip_address'=>$_SERVER['REMOTE_ADDR']
+				'ip_address'=>$_SERVER['REMOTE_ADDR']
 
 			);
 
@@ -17787,9 +17785,9 @@ $menu_html.="</li>";
 
 	}
 
-	
 
-    public function getCategoryList2($merchant_id='')
+
+	public function getCategoryList2($merchant_id='')
 
 	{
 
@@ -17801,7 +17799,7 @@ $menu_html.="</li>";
 
 		{{category}}
 
-		WHERE 
+		WHERE
 
 		merchant_id='".$merchant_id."'
 
@@ -17809,33 +17807,33 @@ $menu_html.="</li>";
 
 		ORDER BY sequence ASC
 
-		";				
+		";
 
 		$connection=Yii::app()->db;
 
-		$rows=$connection->createCommand($stmt)->queryAll(); 				
+		$rows=$connection->createCommand($stmt)->queryAll();
 
 		if (is_array($rows) && count($rows)>=1){
 
 			if ($this->data=="list"){
 
-				foreach ($rows as $val) {									   
+				foreach ($rows as $val) {
 
-				   $data_feed[$val['cat_id']]=array(
+					$data_feed[$val['cat_id']]=array(
 
-				     'category_name'=>$val['category_name'],
+						'category_name'=>$val['category_name'],
 
-				     'category_description'=>$val['category_description'],
+						'category_description'=>$val['category_description'],
 
-				     'dish'=>$val['dish'],
+						'dish'=>$val['dish'],
 
-				     'category_name_trans'=>$val['category_name_trans'],
+						'category_name_trans'=>$val['category_name_trans'],
 
-				     'category_description_trans'=>$val['category_description_trans'],
+						'category_description_trans'=>$val['category_description_trans'],
 
-				     'photo'=>$val['photo'],
+						'photo'=>$val['photo'],
 
-				   );
+					);
 
 				}
 
@@ -17847,23 +17845,23 @@ $menu_html.="</li>";
 
 		return FALSE;
 
-	}  
+	}
 
 
 
 	/** NEW CODE ADDED FOR VERSION 2.1.1*/
 
-	
+
 
 	public function AA($tag='')
 
-	{		
+	{
 
-		if ( $access=$this->AAccess()){			
+		if ( $access=$this->AAccess()){
 
 			$tag=strtolower($tag);
 
-            $access = array_map('strtolower', $access);            
+			$access = array_map('strtolower', $access);
 
 			if (in_array($tag,(array)$access)){
 
@@ -17877,13 +17875,13 @@ $menu_html.="</li>";
 
 	}
 
-	
+
 
 	public function AAccess()
 
 	{
 
-		$info=$this->getAdminInfo();		
+		$info=$this->getAdminInfo();
 
 		if (is_object($info)){
 
@@ -17901,7 +17899,7 @@ $menu_html.="</li>";
 
 	}
 
-	
+
 
 	public function AAmenuList()
 
@@ -17909,7 +17907,7 @@ $menu_html.="</li>";
 
 		$menu_list='';
 
-		$menu=$this->adminMenu();		
+		$menu=$this->adminMenu();
 
 		foreach ($menu['items'] as $val) {
 
@@ -17929,13 +17927,13 @@ $menu_html.="</li>";
 
 			}
 
-		}		
+		}
 
 		return $menu_list;
 
 	}
 
-	
+
 
 	public function GetDish($id='')
 
@@ -17961,11 +17959,11 @@ $menu_html.="</li>";
 
 		}
 
-		return false;	
+		return false;
 
-	}	
+	}
 
-	
+
 
 	public function GetDishList()
 
@@ -17981,7 +17979,7 @@ $menu_html.="</li>";
 
 		status IN ('publish','published')
 
-		ORDER BY dish_name ASC		
+		ORDER BY dish_name ASC
 
 		";
 
@@ -17991,39 +17989,39 @@ $menu_html.="</li>";
 
 		}
 
-		return false;	
+		return false;
 
-	}		
-
-
-    public function getCity($id='')
-
-    {
-		$db_ext=new DbExt;   
-		if($id!='')
-		 $stmt="SELECT * from {{city}} where id=$id ORDER BY id ASC";
-		else
-		 $stmt="SELECT * from {{city}} ORDER BY id ASC";
-		
-		 if ($res=$db_ext->rst($stmt)){    		
-			if($id!='')
-    		return $res[0];
-			else
-			return $res;
-
-    	}
-
-    	return false;
 	}
-	
 
-    public function getVoucherCodeByIdNew($voucher_id='')
 
-    {
+	public function getCity($id='')
 
-    	$db_ext=new DbExt;    	
+	{
+		$db_ext=new DbExt;
+		if($id!='')
+			$stmt="SELECT * from {{city}} where id=$id ORDER BY id ASC";
+		else
+			$stmt="SELECT * from {{city}} ORDER BY id ASC";
 
-    	$stmt="SELECT a.*,
+		if ($res=$db_ext->rst($stmt)){
+			if($id!='')
+				return $res[0];
+			else
+				return $res;
+
+		}
+
+		return false;
+	}
+
+
+	public function getVoucherCodeByIdNew($voucher_id='')
+
+	{
+
+		$db_ext=new DbExt;
+
+		$stmt="SELECT a.*,
 
     	        (
 
@@ -18045,31 +18043,31 @@ $menu_html.="</li>";
 
     	       WHERE
 
-    	       voucher_id='$voucher_id'    	       
+    	       voucher_id='$voucher_id'
 
     	       LIMIT 0,1
 
-    	";    	    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    } 	
+	}
 
-    
 
-    public function getVoucherCodeNew($voucher_code='',$merchant_id='')
 
-    {
+	public function getVoucherCodeNew($voucher_code='',$merchant_id='')
 
-    	$db_ext=new DbExt;    	
+	{
 
-    	$stmt="
+		$db_ext=new DbExt;
+
+		$stmt="
 
     	SELECT a.*,
 
@@ -18085,13 +18083,13 @@ $menu_html.="</li>";
 
     	and
 
-    	client_id=".$this->getClientId()."  	
+    	client_id=".$this->getClientId()."
 
     	LIMIT 0,1
 
     	) as found,
 
-    	
+
 
     	(
 
@@ -18101,13 +18099,13 @@ $menu_html.="</li>";
 
     	where
 
-    	voucher_code=".$this->q($voucher_code)."    	
+    	voucher_code=".$this->q($voucher_code)."
 
     	LIMIT 0,1
 
-    	) as number_used    
+    	) as number_used
 
-    	
+
 
     	FROM
 
@@ -18125,27 +18123,27 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    } 
+	}
 
-    
 
-    public function getVoucherCodeAdmin($voucher_code='')
 
-    {
+	public function getVoucherCodeAdmin($voucher_code='')
 
-    	$db_ext=new DbExt;    	
+	{
 
-    	$stmt="
+		$db_ext=new DbExt;
+
+		$stmt="
 
     	SELECT a.*,
 
@@ -18161,13 +18159,13 @@ $menu_html.="</li>";
 
     	and
 
-    	client_id=".$this->getClientId()."  	
+    	client_id=".$this->getClientId()."
 
     	LIMIT 0,1
 
     	) as found,
 
-    	
+
 
     	(
 
@@ -18177,13 +18175,13 @@ $menu_html.="</li>";
 
     	where
 
-    	voucher_code=".$this->q($voucher_code)."    	
+    	voucher_code=".$this->q($voucher_code)."
 
     	LIMIT 0,1
 
-    	) as number_used    	
+    	) as number_used
 
-    	
+
 
     	FROM
 
@@ -18201,57 +18199,57 @@ $menu_html.="</li>";
 
     	LIMIT 0,1
 
-    	";    	     	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }     
+	}
 
-    
 
-    public function getAddressBookByID($id='')
 
-    {
+	public function getAddressBookByID($id='')
 
-    	$db_ext=new DbExt;    	
+	{
 
-    	$stmt="SELECT * FROM
+		$db_ext=new DbExt;
+
+		$stmt="SELECT * FROM
 
     	       {{address_book}}
 
     	       WHERE
 
-    	       id='$id'    	       
+    	       id='$id'
 
     	       LIMIT 0,1
 
-    	";    	    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    } 	    
+	}
 
-    
 
-    public function hasAddressDefault($client_id='')
 
-    {
+	public function hasAddressDefault($client_id='')
 
-    	$db_ext=new DbExt;    	
+	{
 
-    	$stmt="SELECT 
+		$db_ext=new DbExt;
+
+		$stmt="SELECT
 
     	       concat(street,' ',city,' ',state,' ',zipcode) as address,
 
@@ -18263,7 +18261,7 @@ $menu_html.="</li>";
 
     	       WHERE
 
-    	       client_id='$client_id'    	       
+    	       client_id='$client_id'
 
     	       AND
 
@@ -18271,49 +18269,49 @@ $menu_html.="</li>";
 
     	       LIMIT 0,1
 
-    	";    	    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res[0];
+			return $res[0];
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
 
 
-    public function showAddressBook()   
+	public function showAddressBook()
 
-    {
+	{
 
-    	if ( Yii::app()->functions->isClientLogin()){
+		if ( Yii::app()->functions->isClientLogin()){
 
-    		$client_id=Yii::app()->functions->getClientId();
+			$client_id=Yii::app()->functions->getClientId();
 
-    		if ( $res=$this->hasAddressDefault($client_id)){    			
+			if ( $res=$this->hasAddressDefault($client_id)){
 
-    			return $res;
+				return $res;
 
-    		}
+			}
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    }
+	}
 
-    
 
-    public function getAddressBookByClient($client_id='')
 
-    {
+	public function getAddressBookByClient($client_id='')
 
-    	$db_ext=new DbExt;    	
+	{
 
-    	$stmt="SELECT  
+		$db_ext=new DbExt;
+
+		$stmt="SELECT
 
     	       concat(street,' ',city,' ',state,' ',zipcode) as address,
 
@@ -18327,93 +18325,93 @@ $menu_html.="</li>";
 
     	       client_id =".$this->q($client_id)."
 
-    	       ORDER BY street ASC    	       
+    	       ORDER BY street ASC
 
-    	";    	    	
+    	";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		return $res;
+			return $res;
 
-    	}
+		}
 
-    	return false;
+		return false;
 
-    } 	        
+	}
 
-    
 
-    public function addressBook($client_id='')
 
-    {
+	public function addressBook($client_id='')
 
-    	$list='';
+	{
 
-    	if ( $res=$this->getAddressBookByClient($client_id)){
+		$list='';
 
-    		foreach ($res as $val) {    			
+		if ( $res=$this->getAddressBookByClient($client_id)){
 
-    			$list[$val['id']]=$val['address']." ".$this->countryCodeToFull($val['country_code']);
+			foreach ($res as $val) {
 
-    		}
+				$list[$val['id']]=$val['address']." ".$this->countryCodeToFull($val['country_code']);
 
-    	}
+			}
 
-    	return $list;
+		}
 
-    }
+		return $list;
 
-    
+	}
 
-    public function getLanguageField()
 
-    {
 
-    	$lang_list='';
+	public function getLanguageField()
 
-    	$db_ext=new DbExt;
+	{
 
-    	$stmt="SELECT lang_id,country_code,language_code
+		$lang_list='';
 
-    	 FROM {{languages}} 
+		$db_ext=new DbExt;
+
+		$stmt="SELECT lang_id,country_code,language_code
+
+    	 FROM {{languages}}
 
     	 WHERE
 
     	 status in ('publish','published')
 
-    	 ";	
+    	 ";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		foreach ($res as $val) {    			
+			foreach ($res as $val) {
 
-    			$lang_list[$val['lang_id']]=$val['language_code'];
+				$lang_list[$val['lang_id']]=$val['language_code'];
 
-    		}    		
+			}
 
-    	}
+		}
 
-    	return $lang_list;    
+		return $lang_list;
 
-    }       
+	}
 
-    
 
-    public function multipleField()
 
-    {
+	public function multipleField()
 
-    	if ( Yii::app()->functions->getOptionAdmin('enabled_multiple_translation')==2){
+	{
 
-    		return true;
+		if ( Yii::app()->functions->getOptionAdmin('enabled_multiple_translation')==2){
 
-    	}
+			return true;
 
-    	return false;
+		}
 
-    }
+		return false;
 
-    
+	}
+
+
 
 	public function cookingRefToArray2($json_data='')
 
@@ -18421,11 +18419,11 @@ $menu_html.="</li>";
 
 		$data='';
 
-		$json_data=!empty($json_data)?json_decode($json_data):false;				
+		$json_data=!empty($json_data)?json_decode($json_data):false;
 
 		if ( $json_data!=false){
 
-			foreach ($json_data as $cooking_id) {				
+			foreach ($json_data as $cooking_id) {
 
 				$info=$this->getCookingRef($cooking_id);
 
@@ -18439,9 +18437,9 @@ $menu_html.="</li>";
 
 		return false;
 
-	}    
+	}
 
-	
+
 
 	public function getSubcategoryTranslation($subcat_id='')
 
@@ -18449,43 +18447,43 @@ $menu_html.="</li>";
 
 		$db_ext=new DbExt;
 
-    	$stmt="SELECT subcategory_name_trans,subcategory_description_trans
+		$stmt="SELECT subcategory_name_trans,subcategory_description_trans
 
-    	 FROM {{subcategory}} 
+    	 FROM {{subcategory}}
 
     	 WHERE
 
-    	 subcat_id =".$this->q($subcat_id)."    	 
+    	 subcat_id =".$this->q($subcat_id)."
 
     	 LIMIT 0,1
 
-    	 ";	
+    	 ";
 
-    	if ($res=$db_ext->rst($stmt)){    		
+		if ($res=$db_ext->rst($stmt)){
 
-    		$res=$res[0];    		
+			$res=$res[0];
 
-    		if (!empty($res['subcategory_name_trans'])){
+			if (!empty($res['subcategory_name_trans'])){
 
-    			return json_decode($res['subcategory_name_trans'],true);
+				return json_decode($res['subcategory_name_trans'],true);
 
-    		}	    		
+			}
 
-    	}
+		}
 
-    	return '';
+		return '';
 
 	}
 
-	
 
-    public function getSizeTranslation($size_name='',$mt_id='')
 
-    {
+	public function getSizeTranslation($size_name='',$mt_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{size}}
 
@@ -18493,13 +18491,13 @@ $menu_html.="</li>";
 
 			size_name=".$this->q($size_name)."
 
-			AND 
+			AND
 
 			merchant_id=".$this->q($mt_id)."
 
-			LIMIT 0,1			
+			LIMIT 0,1
 
-		";			    
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
@@ -18513,17 +18511,17 @@ $menu_html.="</li>";
 
 		return false;
 
-    }			
+	}
 
-    
 
-    public function getCookingTranslation($name='',$mt_id='')
 
-    {
+	public function getCookingTranslation($name='',$mt_id='')
 
-    	$DbExt=new DbExt;
+	{
 
-	    $stmt="SELECT * FROM
+		$DbExt=new DbExt;
+
+		$stmt="SELECT * FROM
 
 			{{cooking_ref}}
 
@@ -18531,19 +18529,19 @@ $menu_html.="</li>";
 
 			cooking_name=".$this->q($name)."
 
-			AND 
+			AND
 
 			merchant_id=".$this->q($mt_id)."
 
-			LIMIT 0,1			
+			LIMIT 0,1
 
-		";			    
+		";
 
 		if ( $res=$DbExt->rst($stmt)){
 
 			$res=$res[0];
 
-			$t['cooking_name_trans']=!empty($res['cooking_name_trans'])?json_decode($res['cooking_name_trans'],true):'';			
+			$t['cooking_name_trans']=!empty($res['cooking_name_trans'])?json_decode($res['cooking_name_trans'],true):'';
 
 			return $t;
 
@@ -18551,15 +18549,15 @@ $menu_html.="</li>";
 
 		return false;
 
-    }
+	}
 
-    
 
-    public function getAddonTranslation($name='',$mt_id='')
 
-    {    	
+	public function getAddonTranslation($name='',$mt_id='')
 
-	    $stmt="SELECT * FROM
+	{
+
+		$stmt="SELECT * FROM
 
 			{{subcategory_item}}
 
@@ -18567,19 +18565,19 @@ $menu_html.="</li>";
 
 			sub_item_name=".$this->q($name)."
 
-			AND 
+			AND
 
 			merchant_id=".$this->q($mt_id)."
 
-			LIMIT 0,1			
+			LIMIT 0,1
 
-		";			      
+		";
 
 		if ( $res=$this->db_ext->rst($stmt)){
 
-			$res=$res[0];			
+			$res=$res[0];
 
-			$t['sub_item_name_trans']=!empty($res['sub_item_name_trans'])?json_decode($res['sub_item_name_trans'],true):'';			
+			$t['sub_item_name_trans']=!empty($res['sub_item_name_trans'])?json_decode($res['sub_item_name_trans'],true):'';
 
 			return $t;
 
@@ -18587,15 +18585,15 @@ $menu_html.="</li>";
 
 		return false;
 
-    }
+	}
 
-    
 
-    public function geoCoding($lat='',$lng='')
 
-    {    	    	    	
+	public function geoCoding($lat='',$lng='')
 
-    	$protocol = isset($_SERVER["https"]) ? 'https' : 'http';
+	{
+
+		$protocol = isset($_SERVER["https"]) ? 'https' : 'http';
 
 		if ($protocol=="http"){
 
@@ -18603,7 +18601,7 @@ $menu_html.="</li>";
 
 		} else $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$lat.",".$lng."&sensor=true";
 
-		
+
 
 		$google_geo_api_key=getOptionA('google_geo_api_key');
 
@@ -18613,105 +18611,105 @@ $menu_html.="</li>";
 
 		}
 
-		
 
-    	$data = @file_get_contents($url);
 
-    	if (!empty($data)){
+		$data = @file_get_contents($url);
 
-    	    $result = json_decode($data,true);    	    	   
+		if (!empty($data)){
 
-    	    //dump($result);
+			$result = json_decode($data,true);
 
-    	    if (!isset($result['results'])){
+			//dump($result);
 
-    	    	return false;
+			if (!isset($result['results'])){
 
-    	    }
+				return false;
 
-    	    if (is_array($result['results']) && count($result['results'])>=2){
+			}
 
-    	        $location = array();
+			if (is_array($result['results']) && count($result['results'])>=2){
 
-    	         foreach ($result['results'][0]['address_components'] as $component) {
+				$location = array();
 
-	               switch ($component['types']) {
+				foreach ($result['results'][0]['address_components'] as $component) {
 
-				      case in_array('street_number', $component['types']):
+					switch ($component['types']) {
 
-				        $location['street_number'] = $component['long_name'];
+						case in_array('street_number', $component['types']):
 
-				        break;
+							$location['street_number'] = $component['long_name'];
 
-				      case in_array('route', $component['types']):
+							break;
 
-				        $location['street'] = $component['long_name'];
+						case in_array('route', $component['types']):
 
-				        break;
+							$location['street'] = $component['long_name'];
 
-				      case in_array('neighborhood', $component['types']):
+							break;
 
-				        $location['street2'] = $component['long_name'];
+						case in_array('neighborhood', $component['types']):
 
-				        break;  
+							$location['street2'] = $component['long_name'];
 
-				      case in_array('sublocality', $component['types']):
+							break;
 
-				        $location['sublocality'] = $component['long_name'];
+						case in_array('sublocality', $component['types']):
 
-				        break;
+							$location['sublocality'] = $component['long_name'];
 
-				      case in_array('locality', $component['types']):
+							break;
 
-				        $location['locality'] = $component['long_name'];
+						case in_array('locality', $component['types']):
 
-				        break;
+							$location['locality'] = $component['long_name'];
 
-				      case in_array('administrative_area_level_2', $component['types']):
+							break;
 
-				        $location['admin_2'] = $component['long_name'];
+						case in_array('administrative_area_level_2', $component['types']):
 
-				        break;
+							$location['admin_2'] = $component['long_name'];
 
-				      case in_array('administrative_area_level_1', $component['types']):
+							break;
 
-				        $location['admin_1'] = $component['long_name'];
+						case in_array('administrative_area_level_1', $component['types']):
 
-				        break;
+							$location['admin_1'] = $component['long_name'];
 
-				      case in_array('postal_code', $component['types']):
+							break;
 
-				        $location['postal_code'] = $component['long_name'];
+						case in_array('postal_code', $component['types']):
 
-				        break;
+							$location['postal_code'] = $component['long_name'];
 
-				      case in_array('country', $component['types']):
+							break;
 
-				        $location['country'] = $component['long_name'];
+						case in_array('country', $component['types']):
 
-				        $location['country_code'] = $component['short_name'];
+							$location['country'] = $component['long_name'];
 
-				        break;
+							$location['country_code'] = $component['short_name'];
 
-				   }
+							break;
 
-    	         } 	    	             	         
+					}
 
-    	         return $location;
+				}
 
-    	    }
+				return $location;
 
-    	} 
+			}
 
-    	return false;
+		}
 
-    }
+		return false;
 
-        
+	}
+
+
 
 	/** END CODE ADDED FOR VERSION 2.1.1*/
 
-       
+
 
 }/* END CLASS*/
 
@@ -18723,13 +18721,13 @@ $menu_html.="</li>";
 
 FUNCTIONS
 
-**********************************************************************/
+ **********************************************************************/
 
 function getOption($mtid='',$key='')
 
 {
 
-	return Yii::app()->functions->getOption($key,$mtid);  
+	return Yii::app()->functions->getOption($key,$mtid);
 
 }
 
@@ -18739,7 +18737,7 @@ function getOptionA($key='')
 
 {
 
-	return Yii::app()->functions->getOptionAdmin($key);  
+	return Yii::app()->functions->getOptionAdmin($key);
 
 }
 
@@ -18787,7 +18785,7 @@ function explodeData($data)
 
 function prettyFormat($price='',$merchant_id='')
 
-{	
+{
 
 	return Yii::app()->functions->prettyFormat($price,$merchant_id);
 
@@ -18799,7 +18797,7 @@ function standardPrettyFormat($price='')
 
 {
 
-    return Yii::app()->functions->standardPrettyFormat($price);
+	return Yii::app()->functions->standardPrettyFormat($price);
 
 }
 
@@ -18819,7 +18817,7 @@ function unPrettyPrice($price)
 
 {
 
-	return Yii::app()->functions->unPrettyPrice($price);	
+	return Yii::app()->functions->unPrettyPrice($price);
 
 }
 
@@ -18829,23 +18827,23 @@ function arrayKeyExists($needle, $haystack)
 
 {
 
-    $result = array_key_exists($needle, $haystack);
+	$result = array_key_exists($needle, $haystack);
 
-    if ($result) return $result;
+	if ($result) return $result;
 
-    foreach ($haystack as $v) {
+	foreach ($haystack as $v) {
 
-        if (is_array($v)) {
+		if (is_array($v)) {
 
-            $result = arrayKeyExists($needle, $v);
+			$result = arrayKeyExists($needle, $v);
 
-        }
+		}
 
-        if ($result) return $result;
+		if ($result) return $result;
 
-    }
+	}
 
-    return $result;
+	return $result;
 
 }
 
@@ -18853,7 +18851,7 @@ function arrayKeyExists($needle, $haystack)
 
 function getSelectedItemArray($key='',$array='')
 
-{		
+{
 
 	if (is_array($array) && count($array)>=1){
 
@@ -18955,25 +18953,25 @@ function prettyDate($date='',$full=false)
 
 function getDeliveryDistance($from_address='',$merchant_address='',$country_code='')
 
-{	
+{
 
 	$miles=0;
 
 	$miles_raw=0;
 
-	if($distance=getDistance($from_address,$merchant_address,$country_code,true)){	    				
+	if($distance=getDistance($from_address,$merchant_address,$country_code,true)){
 
-        $miles=$distance->rows[0]->elements[0]->distance->text;
+		$miles=$distance->rows[0]->elements[0]->distance->text;
 
-		$miles_raw=str_replace(array(" ","mi"),"",$miles); 		
+		$miles_raw=str_replace(array(" ","mi"),"",$miles);
 
 		$km=$distance->rows[0]->elements[0]->distance->value;
 
 		$kms=($km * 0.621371 / 1000);
 
-	}	    		
+	}
 
-	return $miles_raw;		    					    					    		
+	return $miles_raw;
 
 }
 
@@ -18981,7 +18979,7 @@ function getDeliveryDistance($from_address='',$merchant_address='',$country_code
 
 function getDeliveryDistance2($from_address='',$merchant_address='',$country_code='')
 
-{	
+{
 
 	$miles=0;
 
@@ -18989,11 +18987,11 @@ function getDeliveryDistance2($from_address='',$merchant_address='',$country_cod
 
 	$kms=0;
 
-	if($distance=getDistance($from_address,$merchant_address,$country_code,true)){	    						
+	if($distance=getDistance($from_address,$merchant_address,$country_code,true)){
 
-        $miles=$distance->rows[0]->elements[0]->distance->text;
+		$miles=$distance->rows[0]->elements[0]->distance->text;
 
-		$miles_raw=str_replace(array(" ","mi"),"",$miles); 		
+		$miles_raw=str_replace(array(" ","mi"),"",$miles);
 
 		$km=$distance->rows[0]->elements[0]->distance->value;
 
@@ -19003,17 +19001,17 @@ function getDeliveryDistance2($from_address='',$merchant_address='',$country_cod
 
 		$kms=standardPrettyFormat($kms);
 
-	}	    		
+	}
 
-	
+
 
 	return array(
 
-	   'mi'=>$miles_raw,
+		'mi'=>$miles_raw,
 
-	   'km'=>$kms
+		'km'=>$kms
 
-	);		    					    					    		
+	);
 
 }
 
@@ -19027,7 +19025,7 @@ function miles2kms($miles) {
 
 	return $kms;
 
-} 
+}
 
 
 
@@ -19039,7 +19037,7 @@ function ft2kms($ft='') {
 
 	return $ft;
 
-} 
+}
 
 
 
@@ -19075,19 +19073,19 @@ function sendEmail($to='',$from='',$subject='',$body='')
 
 function generateCouponCode($length = 8) {
 
-  $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-  $ret = '';
+	$ret = '';
 
-  for($i = 0; $i < $length; ++$i) {
+	for($i = 0; $i < $length; ++$i) {
 
-    $random = str_shuffle($chars);
+		$random = str_shuffle($chars);
 
-    $ret .= $random[0];
+		$ret .= $random[0];
 
-  }
+	}
 
-  return $ret;
+	return $ret;
 
 }
 
@@ -19095,75 +19093,75 @@ function generateCouponCode($length = 8) {
 
 function customNumberFormat($n, $precision = 3) {
 
-    if ($n < 1000000) {
+	if ($n < 1000000) {
 
-        // Anything less than a million
+		// Anything less than a million
 
-        $n_format = number_format($n);
+		$n_format = number_format($n);
 
-    } else if ($n < 1000000000) {
+	} else if ($n < 1000000000) {
 
-        // Anything less than a billion
+		// Anything less than a billion
 
-        $n_format = number_format($n / 1000000, $precision) . 'M';
+		$n_format = number_format($n / 1000000, $precision) . 'M';
 
-    } else {
+	} else {
 
-        // At least a billion
+		// At least a billion
 
-        $n_format = number_format($n / 1000000000, $precision) . 'B';
+		$n_format = number_format($n / 1000000000, $precision) . 'B';
 
-    }
+	}
 
 
 
-    return $n_format;
+	return $n_format;
 
 }
 
 
 
-function send($url,$api,$amount,$redirect){ 
+function send($url,$api,$amount,$redirect){
 
-    $ch = curl_init(); 
+	$ch = curl_init();
 
-    curl_setopt($ch,CURLOPT_URL,$url); 
+	curl_setopt($ch,CURLOPT_URL,$url);
 
-     
 
-    curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&amount=$amount&redirect=$redirect"); 
 
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+	curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&amount=$amount&redirect=$redirect");
 
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
-    $res = curl_exec($ch); 
+	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 
-    curl_close($ch); 
+	$res = curl_exec($ch);
 
-    return $res; 
+	curl_close($ch);
 
-} 
+	return $res;
 
- 
+}
 
-function get($url,$api,$trans_id,$id_get){ 
 
-    $ch = curl_init(); 
 
-    curl_setopt($ch,CURLOPT_URL,$url);  curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&id_get=$id_get&trans_id=$trans_id"); 
+function get($url,$api,$trans_id,$id_get){
 
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+	$ch = curl_init();
 
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
+	curl_setopt($ch,CURLOPT_URL,$url);  curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&id_get=$id_get&trans_id=$trans_id");
 
-    $res = curl_exec($ch); 
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
-    curl_close($ch); 
+	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 
-    return $res; 
+	$res = curl_exec($ch);
 
-} 
+	curl_close($ch);
+
+	return $res;
+
+}
 
 
 
@@ -19173,11 +19171,11 @@ function bookingStatus()
 
 	return array(
 
-	  'pending'=>Yii::t("default",'pending'),
+		'pending'=>Yii::t("default",'pending'),
 
-	  'approved'=>Yii::t('default','approved'),
+		'approved'=>Yii::t('default','approved'),
 
-	  'denied'=>Yii::t('default','denied')
+		'denied'=>Yii::t('default','denied')
 
 	);
 
@@ -19247,9 +19245,9 @@ function getWebsiteName()
 
 function smarty($search='',$value='',$subject='')
 
-{	
+{
 
-   return Yii::app()->functions->smarty($search,$value,$subject);
+	return Yii::app()->functions->smarty($search,$value,$subject);
 
 }
 
@@ -19259,7 +19257,7 @@ function getAdminGlobalSender()
 
 {
 
-	$from=Yii::app()->functions->getOptionAdmin("global_admin_sender_email");	    				
+	$from=Yii::app()->functions->getOptionAdmin("global_admin_sender_email");
 
 	if (empty($from)){
 
@@ -19339,7 +19337,7 @@ function createUrl($url='')
 
 function qTranslate($text='',$key='',$data='',$cookie_lang_id='kr_lang_id')
 
-{		
+{
 
 	if (Yii::app()->functions->getOptionAdmin("enabled_multiple_translation")!=2){
 
@@ -19347,9 +19345,9 @@ function qTranslate($text='',$key='',$data='',$cookie_lang_id='kr_lang_id')
 
 	}
 
-	$key=$key."_trans";			
+	$key=$key."_trans";
 
-	$id=isset($_COOKIE[$cookie_lang_id])?$_COOKIE[$cookie_lang_id]:'';		
+	$id=isset($_COOKIE[$cookie_lang_id])?$_COOKIE[$cookie_lang_id]:'';
 
 	if(empty($id)){
 
@@ -19357,7 +19355,7 @@ function qTranslate($text='',$key='',$data='',$cookie_lang_id='kr_lang_id')
 
 			$id=$_GET['lang_id'];
 
-		}	
+		}
 
 	}
 
@@ -19371,7 +19369,7 @@ function qTranslate($text='',$key='',$data='',$cookie_lang_id='kr_lang_id')
 
 					if (!empty($data[$key][$id])){
 
-					    return stripslashes($data[$key][$id]);
+						return stripslashes($data[$key][$id]);
 
 					}
 
@@ -19381,7 +19379,7 @@ function qTranslate($text='',$key='',$data='',$cookie_lang_id='kr_lang_id')
 
 		}
 
-	}	
+	}
 
 	return stripslashes($text);
 
@@ -19393,7 +19391,7 @@ function okToDecode()
 
 {
 
-	$version=phpversion();		
+	$version=phpversion();
 
 	if ( $version>5.3){
 
@@ -19423,7 +19421,7 @@ function q($data='')
 
 	return Yii::app()->db->quoteValue($data);
 
-}	
+}
 
 
 
@@ -19431,13 +19429,13 @@ function getNextClientID()
 
 {
 
-	$DbExt=new DbExt; 
+	$DbExt=new DbExt;
 
 	$stmt="
 
 	SHOW TABLE STATUS WHERE name='{{client}}'
 
-	";		
+	";
 
 	if ($res=$DbExt->rst($stmt)){
 
@@ -19457,7 +19455,7 @@ function clearString($text='')
 
 	if(!empty($text)){
 
-	   return stripslashes($text);
+		return stripslashes($text);
 
 	}
 
