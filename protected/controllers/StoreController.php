@@ -976,7 +976,7 @@ class StoreController extends CController
 
 			//交易状态
 			$trade_status = $_POST['trade_status'];
-
+			error_log($out_trade_no . "结果记录");
 
 			if($_POST['trade_status'] == 'TRADE_FINISHED') {
 				//判断该笔订单是否在商户网站中已经做过处理
@@ -989,7 +989,7 @@ class StoreController extends CController
 				//2、开通了高级即时到账，从该笔交易成功时间算起，过了签约时的可退款时限（如：三个月以内可退款、一年以内可退款等）后。
 
 				//调试用，写文本函数记录程序运行情况是否正常
-				//logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
+				error_log("这里写入想要调试的代码变量值，或其他运行的结果记录");
 			}
 			else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
 				//判断该笔订单是否在商户网站中已经做过处理
@@ -1000,7 +1000,7 @@ class StoreController extends CController
 				//该种交易状态只在一种情况下出现——开通了高级即时到账，买家付款成功后。
 
 				//调试用，写文本函数记录程序运行情况是否正常
-				//logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
+				error_log("这里写入想要调试的代码变量值，或其他运行的结果记录");
 			}
 
 			//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
