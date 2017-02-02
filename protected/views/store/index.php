@@ -187,12 +187,12 @@ $placholder_search = Yii::t("default", $placholder_search);
             <div id="demo">
                 <div id="owl-demo2" class="owl-carousel">
                     <div class="item">
-                        <a href="<?php echo baseUrl() . "/menu-11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
 
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="upload/1481148194-3.png" alt=""/>
+                                    <img src="<?php echo baseUrl()."/upload/1481148194-3.png" ?>" alt=""/>
 
                                 </div>
                                 <div class="food-detail">
@@ -206,11 +206,11 @@ $placholder_search = Yii::t("default", $placholder_search);
                     </div>
                     <div class="item">
 
-                        <a href="<?php echo baseUrl() . "/menu-11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="upload/1481324697-5.png" alt=""/></div>
+                                    <img src="<?php echo baseUrl()."/upload/1481324697-5.png" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>四川火锅</h3>
                                     <p>8€</p>
@@ -222,11 +222,11 @@ $placholder_search = Yii::t("default", $placholder_search);
                     </div>
                     <div class="item">
 
-                        <a href="<?php echo baseUrl() . "/menu-11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="upload/1481580406-2.png" alt=""/></div>
+                                    <img src="<?php echo baseUrl()."/upload/1481580406-2.png" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>鱼香肉丝</h3>
                                     <p>6€</p>
@@ -237,11 +237,11 @@ $placholder_search = Yii::t("default", $placholder_search);
 
                     </div>
                     <div class="item">
-                        <a href="<?php echo baseUrl() . "/menu-11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="upload/1481604155-edadd4eagw1evr1s0z0lgj20kg0kp0xl.jpg" alt=""/></div>
+                                    <img src="<?php echo baseUrl()."/upload/1481604155-edadd4eagw1evr1s0z0lgj20kg0kp0xl.jpg" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>test</h3>
                                     <p>4.1€</p>
@@ -252,11 +252,11 @@ $placholder_search = Yii::t("default", $placholder_search);
 
                     </div>
                     <div class="item">
-                        <a href="<?php echo baseUrl() . "/menu-11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="upload/1481580959-6.png" alt=""/></div>
+                                    <img src="<?php echo baseUrl()."/upload/1481580959-6.png" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>西红柿</h3>
                                     <p>4€</p>
@@ -268,11 +268,11 @@ $placholder_search = Yii::t("default", $placholder_search);
                     </div>
 
                     <div class="item">
-                        <a href="<?php echo baseUrl() . "/menu-11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="upload/1481580959-6.png" alt=""/></div>
+                                    <img src="<?php echo baseUrl()."/upload/1481580959-6.png" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>冰淇淋</h3>
                                     <p>0.1€</p>
@@ -320,7 +320,7 @@ $placholder_search = Yii::t("default", $placholder_search);
         <!--        <div id="owl-demo1" class="owl-carousel">-->
         <!---->
         <!--          <div class="item">-->
-        <!--        --><?php ////echo baseUrl()."/menu-11"?>
+        <!--        --><?php ////echo baseUrl()."/store/menu/merchant/11"?>
         <!--          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481148194-3.png" alt="" /></a>-->
         <!--          </div>-->
         <!--           <div class="item">-->
