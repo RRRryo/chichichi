@@ -33,12 +33,13 @@ $alipay_config['seller_email']  = 'moudaowenhua888@163.com';
 $alipay_config['payment_type']  = "1";
 //必填，不能修改
 //服务器异步通知页面路径
-$alipay_config['notify_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/notify_url.php";
+//$alipay_config['notify_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/notify_url.php";
+$alipay_config['notify_url'] = "http://localhost/Aimange/alipaycheckout";
 //需http://格式的完整路径，不能加?id=123这类自定义参数
 
 //页面跳转同步通知页面路径
-//$alipay_config['return_url'] = "http://localhost/Aimange/receipt";
-$alipay_config['return_url'] = "http://www.tbs360.com//receipt";
+$alipay_config['return_url'] = "http://localhost/Aimange/receipt";
+//$alipay_config['return_url'] = "http://www.tbs360.com//receipt";
 //需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
 
 //签名方式 不需修改
