@@ -7,7 +7,7 @@
   <div class="row top10">
     <div class="col-md-9">
        <?php echo CHtml::radioButton('payment_opt',false,
-         array('class'=>"icheck payment_option",'value'=>$key))?> <span style="font-weight:normal"><?php echo $val?></span>
+         array('class'=>"icheck payment_option",'value'=>$key))?> <span style="font-weight:normal"><?php echo t($val)?></span>
      </div> 
   </div>
   
