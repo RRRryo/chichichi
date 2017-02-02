@@ -1744,19 +1744,10 @@ $lang["Mobile Number"] = "手机号码";
 $lang["Delivery instructions"] = "送餐说明";
 
 
-
-
-
-$lang["Payment Information"] = "付款信息";
-
-
-
-
-
 $lang["Cash On delivery"] = "现金";
 
 
-
+$lang["Cash on delivery available"] = "";
 
 
 $lang["Place Order"] = "下单";
@@ -4852,14 +4843,15 @@ $lang["Browse Restaurant"] ="浏览餐厅";
 $lang["View Map"] ="查看地图";
 
 
+$lang["View menu"] ="查看菜单";
 
-
+$lang["choose from your favorite restaurant"] ="";
 
 $lang["Enter your address below"] ="请输入您的以下地址";
 
+$lang["alipay"] ="支付宝";
 
-
-
+$lang["Save to my address book"] ="保存到我的地址簿";
 
 $lang["Address is required"] ="必须有地址";
 
@@ -9320,7 +9312,9 @@ $lang['Google Map']='谷歌地图';
 
 $lang['Maximum purchase amount.']='最高消费额';
 
-$lang['Minimum Order']='';
+$lang['Minimum Order']='最低消费';
+
+$lang['Restaurant List']='餐厅列表';
 
 $lang['Email Subject']='';
 
@@ -9468,9 +9462,7 @@ $lang["Sorry but you don't have access to dashboard"]='';
 
 $lang['0 restaurant found']='';
 
-$lang['Search']='';
-
-$lang['View Restaurant by map']='';
+$lang['View Restaurant by map']='地图';
 
 $lang['Reset Map']='';
 
@@ -9557,8 +9549,6 @@ $lang['Google API Key']='';
 $lang['These section is optional']='';
 
 $lang['Geocoding API Key']='';
-
-$lang['Save to my address book']='';
 
 $lang['Address Book']='';
 
