@@ -250,7 +250,7 @@ class CMenu extends CWidget
 			return CHtml::link($label,$item['url'],isset($item['linkOptions']) ? $item['linkOptions'] : array());
 		}
 		else
-			return CHtml::tag('span',isset($item['linkOptions']) ? $item['linkOptions'] : array(), $item['label']);
+			return CHtml::tag('span',isset($item['linkOptions']) ? $item['linkOptions'] : array(), isset($item['label'])?$item['label']:'');
 	}
 
 	/**

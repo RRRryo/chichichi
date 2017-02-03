@@ -21,8 +21,12 @@
 <?php if (is_array($val['item']) && count($val['item'])>=1):?>
 <?php foreach ($val['item'] as $val_item):?>
 
-<?php 
-$atts='';
+<?php
+        $disabled_addcart='';
+        $beforediscount='';
+        $del='';
+        $delend='';
+        $atts='';
 if ( $val_item['single_item']==2){
 	  $atts.='data-price="'.$val_item['single_details']['price'].'"';
 	  $atts.=" ";

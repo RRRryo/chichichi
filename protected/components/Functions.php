@@ -14049,7 +14049,9 @@ EOF;
 
 				if (!empty($pm_starts) && !empty($pm_ends)){
 
-					$business_hours[$days1].=",$pm_starts - $pm_ends";
+					if(isset($business_hours[$days1])){
+						$business_hours[$days1].=",$pm_starts - $pm_ends";
+					}
 
 				}
 
@@ -17911,7 +17913,7 @@ EOF;
 
 		foreach ($menu['items'] as $val) {
 
-			$menu_list[]=$val['tag'];
+			$menu_list[]=isset($val['tag']) ? $val['tag']:'';
 
 			if (isset($val['items'])){
 

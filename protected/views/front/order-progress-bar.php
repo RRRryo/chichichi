@@ -1,6 +1,7 @@
 <?php
 $kr_merchant_slug=isset($_SESSION['kr_merchant_slug'])?$_SESSION['kr_merchant_slug']:'';
-
+$search_str='';
+$search_key='';
 if (isset($_SESSION['search_type'])){
 	switch ($_SESSION['search_type']) {
 		case "kr_search_foodname":			

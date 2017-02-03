@@ -707,6 +707,7 @@ class StoreController extends CController
 		    	
 		    	
 		    	$distance_type='';
+				$distance_type_orig='';
 		    	$distance='';
 		    	$merchant_delivery_distance='';
 		    	$delivery_fee=0;
@@ -719,7 +720,7 @@ class StoreController extends CController
 		    		/*get the distance from client address to merchant Address*/             
 	                 $distance_type=FunctionsV3::getMerchantDistanceType($merchant_id); 
 	                 $distance_type_orig=$distance_type;
-	                 
+
 		             $distance=FunctionsV3::getDistanceBetweenPlot(
 		                $_SESSION['client_location']['lat'],
 		                $_SESSION['client_location']['long'],
