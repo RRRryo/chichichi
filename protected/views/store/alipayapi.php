@@ -23,7 +23,7 @@
 
 	require __DIR__ . '/../../../vendor/autoload.php';
 
-	require_once("/../../../config/alipay_config.php");
+	require_once(ROOTPATH . "/protected/config/alipay_config.php");
 
 
 	/**************************请求参数**************************/
