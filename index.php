@@ -36,6 +36,7 @@
 define('YII_ENABLE_ERROR_HANDLER', false);
 define('YII_ENABLE_EXCEPTION_HANDLER', false);
 ini_set("display_errors",false);
+define('ROOTPATH', __DIR__);
 ini_set('error_log',"../wwwlogs/php_error.log");
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
