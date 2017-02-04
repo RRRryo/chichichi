@@ -73,7 +73,7 @@ if ( empty($val['latitude'])){
 		        <?php 
 		        if($val['service']!=3){
 			        if (!empty($merchant_delivery_distance)){
-			        	echo t("Delivery Distance").": ".$merchant_delivery_distance." $distance_type";
+			        	echo t("Delivery Distance").": ".$merchant_delivery_distance." $distance_type"." km";
 			        } else echo  t("Delivery Distance").": ".t("not available");
 		        }
 		        ?>
