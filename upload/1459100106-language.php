@@ -2836,7 +2836,7 @@ $lang["Home Search Area"] = "主页搜索区域";
 
 
 
-$lang["Find restaurants near you"] = "寻找附近的美味把！";
+$lang["Find restaurants near you"] = "寻找附近的美味吧！";
 
 
 
