@@ -1,4 +1,1 @@
-<Files *>
-SetHandler default-handler
-
-</Files>
+deny from all
