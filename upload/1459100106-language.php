@@ -1834,7 +1834,7 @@ $lang["Paypal Transaction ID"] = "Paypal的交易ID";
 
 
 
-$lang["Reference #"] = "参考#";
+$lang["Reference #"] = "编号#";
 
 
 
@@ -1846,7 +1846,7 @@ $lang["Card #"] = "卡#";
 
 
 
-$lang["TRN Date"] = "";
+$lang["TRN Date"] = "交易时间";
 
 
 
@@ -2836,7 +2836,7 @@ $lang["Home Search Area"] = "主页搜索区域";
 
 
 
-$lang["Find restaurants near you"] = "查找你附近的餐厅";
+$lang["Find restaurants near you"] = "寻找附近的美味吧！";
 
 
 
@@ -4985,11 +4985,11 @@ $lang["Payline Payment"] ="";
 
 
 
-$lang["cod"] ="";
+$lang['cod']='现金';
 
+$lang['pyp']='paypal';
 
-
-
+$lang['itp']='支付宝';
 
 $lang["ccr"] ="";
 
@@ -9304,15 +9304,13 @@ $lang['You can drag the map marker']='';
 
 $lang['Is this address correct']='';
 
-$lang['not available']='';
-
 $lang['Not Available']='';
 
 $lang['Google Map']='谷歌地图';
 
 $lang['Maximum purchase amount.']='最高消费额';
 
-$lang['Minimum Order']='最低消费';
+$lang['Minimum Order']='起送额';
 
 $lang['Restaurant List']='餐厅列表';
 
@@ -9528,7 +9526,7 @@ $lang['Voucher code has expired']='';
 
 $lang['Used']='';
 
-$lang['Customer Name']='';
+$lang['Customer Name']='客户名称';
 
 $lang['Order No.']='';
 

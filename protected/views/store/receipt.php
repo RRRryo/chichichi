@@ -108,10 +108,10 @@ $full_merchant_address=$merchant_info['street']." ".$merchant_info['city']. " ".
 	       );
 	       ?>
 	       	       
-	       <tr>
-	         <td><?php echo Yii::t("default","TRN Type")?></td>
-	         <td class="text-right"><?php echo Yii::t("default",$data['trans_type'])?></td>
-	       </tr>
+<!--	       <tr>-->
+<!--	         <td>--><?php //echo Yii::t("default","TRN Type")?><!--</td>-->
+<!--	         <td class="text-right">--><?php //echo Yii::t("default",$data['trans_type'])?><!--</td>-->
+<!--	       </tr>-->
 	       
 	       <?php 	       
 	       $print[]=array(
@@ -124,7 +124,7 @@ $full_merchant_address=$merchant_info['street']." ".$merchant_info['city']. " ".
 	         <td><?php echo Yii::t("default","Payment Type")?></td>
 	         <!--<td class="text-right"><?php echo strtoupper(t($data['payment_type']))?></td>-->
 	         <td class="text-right">
-	         <?php echo FunctionsV3::prettyPaymentType('payment_order',$data['payment_type'],$orderId)?>
+	         <?php echo t($data['payment_type'])?>
 	         </td>
 	       </tr>
 	       <?php 	       

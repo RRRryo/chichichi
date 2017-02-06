@@ -2,7 +2,7 @@
 <div class="search-wraps single-search">
 
   <h1><?php echo $home_search_text;?></h1>
-  <p><?php echo $home_search_subtext;?></p>
+<!--  <p>--><?php //echo $home_search_subtext;?><!--</p>-->
 
   <form method="GET" class="forms-search" id="forms-search" action="<?php echo Yii::app()->createUrl('store/searcharea')?>">
   
