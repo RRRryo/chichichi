@@ -1711,13 +1711,13 @@ $lang["ASAP"] = "ASAP";
 
 
 
-$lang["Street"] = "街";
+$lang["Street"] = "街道";
 
 
 
 
 
-$lang["State"] = "州";
+$lang["State"] = "国家";
 
 
 
@@ -3605,13 +3605,6 @@ $lang["add to cart"] ="添加到购物车";
 
 
 $lang["update cart"] ="更新购物车";
-
-
-
-
-
-$lang["Close"] ="关闭";
-
 
 
 
@@ -9404,8 +9397,6 @@ $lang['24 hour format']='';
 
 $lang['12 hour format']='';
 
-$lang['Default']='';
-
 $lang['Required']='';
 
 $lang['You must select at least one addon']='';
@@ -9548,9 +9539,9 @@ $lang['These section is optional']='';
 
 $lang['Geocoding API Key']='';
 
-$lang['Address Book']='';
+$lang['Address Book']='地址簿';
 
-$lang['Default']='';
+$lang['Default']='默认';
 
 $lang['Enabled Multiple Field Translation']='';
 
@@ -9750,7 +9741,7 @@ $lang['Sorry but your email address is blocked by website admin']='';
 
 $lang['Sorry but your mobile number is blocked by website admin']='';
 
-$lang['Sorry but you have selected time that already past']='';
+$lang['Sorry but you have selected time that already past']='对不起，您先择的时间已经过去';
 
 $lang['at']='';
 
