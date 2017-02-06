@@ -9732,7 +9732,7 @@ $lang['Email sent']='';
 
 $lang['Subject is required']='';
 
-$lang['Close']='';
+$lang['Close']='关闭';
 
 $lang['Sorry but your mobile number is already exist in our records']='';
 
