@@ -29,7 +29,7 @@ isset($this->data['web_session_id'])?$this->data['web_session_id']:''
 <div class="row food-item-actions top10">
   <div class="col-md-5 "></div>
   <div class="col-md-3 ">
-  <a href="javascript:$.fancybox.close();" class="orange-button inline center">Close</a>
+  <a href="javascript:$.fancybox.close();" class="orange-button inline center"><?php echo t("Close")?></a>
   </div>
   <div class="col-md-3 ">
      <input type="submit" class="green-button inline" value="<?php echo t("Submit")?>">
