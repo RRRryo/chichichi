@@ -4998,79 +4998,78 @@ class Functions extends CApplicationComponent
 
 	{
 
-//		$protocol = isset($_SERVER["https"]) ? 'https' : 'http';
-//
-//		if ($protocol=="http"){
-//
-//			$api="http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
-//
-//		} else $api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
-//
-//
-//
-//		/*check if has provide api key*/
-//
-//		$key=Yii::app()->functions->getOptionAdmin('google_geo_api_key');
-//
-//		if ( !empty($key)){
-//
-//			$api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&key=".urlencode($key);
-//
-//		}
-//
-//
-//
+		$protocol = isset($_SERVER["https"]) ? 'https' : 'http';
+
+		if ($protocol=="http"){
+
+			$api="http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
+
+		} else $api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
+
+
+
+		/*check if has provide api key*/
+
+		$key=Yii::app()->functions->getOptionAdmin('google_geo_api_key');
+
+		if ( !empty($key)){
+
+			$api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&key=".urlencode($key);
+
+		}
+
+
+
 //		if (!$json=@file_get_contents($api)){
-//
-//			$json=$this->Curl($api,'');
-//
+
+			$json=$this->Curl($api,'');
+
 //		}
-//
-//
-//
-//		if (isset($_GET['debug'])){
-//
-//			dump($api);
-//
-//			dump($json);
-//
-//		}
-//
-//
-//
-//		if (!empty($json)){
-//
-//			$json = json_decode($json);
-//
-//			if (isset($json->error_message)){
-//
-//				return false;
-//
-//			} else {
-//
-//				if($json->status=="OK"){
-//
-//					$lat = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
-//
-//					$long = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
-//
-//				} else {
-//
-//					$lat=''; $long='';
-//
-//				}
-//
-//				return array(
-//
-//					'lat'=>$lat,
-//
-//					'long'=>$long
-//
-//				);
-//
-//			}
-//
-//		}
+
+
+		if (isset($_GET['debug'])){
+
+			dump($api);
+
+			dump($json);
+
+		}
+
+
+
+		if (!empty($json)){
+
+			$json = json_decode($json);
+
+			if (isset($json->error_message)){
+
+				return false;
+
+			} else {
+
+				if($json->status=="OK"){
+
+					$lat = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
+
+					$long = $json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
+
+				} else {
+
+					$lat=''; $long='';
+
+				}
+
+				return array(
+
+					'lat'=>$lat,
+
+					'long'=>$long
+
+				);
+
+			}
+
+		}
 
 		return false;
 
@@ -8385,6 +8384,8 @@ class Functions extends CApplicationComponent
 
 //		$proxy = 'proxy.priv.atos.fr:3128';
 
+//		$proxy = '36.66.213.167:1080';
+
 //		curl_setopt($ch, CURLOPT_PROXY, $proxy);
 
 		curl_setopt($ch, CURLOPT_POST, 1);
@@ -8397,13 +8398,13 @@ class Functions extends CApplicationComponent
 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-		$resutl=curl_exec ($ch);
+		$result=curl_exec ($ch);
 
 
 
 		if ($error_no==0) {
 
-			return $resutl;
+			return $result;
 
 		} else return false;
 
@@ -8481,13 +8482,13 @@ class Functions extends CApplicationComponent
 
 
 
-		$data = @file_get_contents($url);
+//		$data = @file_get_contents($url);
 
-		if (empty($data)){
+//		if (empty($data)){
 
 			$data=$this->Curl($url);
 
-		}
+//		}
 
 		$data = json_decode($data);
 
@@ -18619,7 +18620,8 @@ EOF;
 
 
 
-		$data = @file_get_contents($url);
+//		$data = @file_get_contents($url);
+		$data=$this->Curl($url,'');
 
 		if (!empty($data)){
 
