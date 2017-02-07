@@ -8383,6 +8383,10 @@ class Functions extends CApplicationComponent
 
 		$ch = curl_init($uri);
 
+//		$proxy = 'proxy.priv.atos.fr:3128';
+
+//		curl_setopt($ch, CURLOPT_PROXY, $proxy);
+
 		curl_setopt($ch, CURLOPT_POST, 1);
 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
