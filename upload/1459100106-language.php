@@ -1688,11 +1688,6 @@ $lang["You need to login first."] = "您需要登录";
 $lang["Pickup information"] = "自取信息";
 
 
-
-
-
-$lang["Delivery information"] = "送餐信息";
-
 $lang["Delivery Information"] = "送餐信息";
 
 $lang["not available"] = "无法使用";
