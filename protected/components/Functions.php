@@ -8377,8 +8377,9 @@ class Functions extends CApplicationComponent
 	public function Curl($uri="",$post="")
 
 	{
+		return false;
 
-		$error_no='';
+		/*$error_no='';
 
 		$ch = curl_init($uri);
 
@@ -8408,7 +8409,7 @@ class Functions extends CApplicationComponent
 
 		} else return false;
 
-		curl_close ($ch);
+		curl_close ($ch);*/
 
 	}
 
