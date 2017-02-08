@@ -35,9 +35,13 @@
 
 define('YII_ENABLE_ERROR_HANDLER', false);
 define('YII_ENABLE_EXCEPTION_HANDLER', false);
-ini_set("display_errors",false);
 define('ROOTPATH', __DIR__);
-ini_set('error_log',"../wwwlogs/php_error.log");
+define('GOOGLE_MAP_URL', 'maps.googleapis.com');
+
+ini_set("display_errors",false);
+ini_set('error_log', ROOTPATH . "/php_error.log");
+
+//echo ini_get('error_log');
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 // include Yii bootstrap file
