@@ -673,7 +673,7 @@ class FunctionsV3
     	  $key=Yii::app()->functions->getOptionAdmin('google_geo_api_key');
     	  
     	  if ($method=="driving" || $method=="transit"){
-    	  	 $url="https://maps.googleapis.com/maps/api/distancematrix/json";
+    	  	 $url="https://".GOOGLE_MAP_URL."/maps/api/distancematrix/json";
     	  	 $url.="?origins=".urlencode("$lat1,$lon1");
     	  	 $url.="&destinations=".urlencode("$lat2,$lon2");
     	  	 $url.="&mode=".urlencode($method);    	  
@@ -1821,13 +1821,13 @@ class FunctionsV3
 		$lat_lng="$lat,$lng";
 		$protocol = isset($_SERVER["https"]) ? 'https' : 'http';
 		if ($protocol=="http"){
-			$api="http://maps.googleapis.com/maps/api/geocode/json?latlng=".urlencode($lat_lng);
-		} else $api="https://maps.googleapis.com/maps/api/geocode/json?latlng=".urlencode($lat_lng);
+			$api="http://".GOOGLE_MAP_URL."/maps/api/geocode/json?latlng=".urlencode($lat_lng);
+		} else $api="https://".GOOGLE_MAP_URL."/maps/api/geocode/json?latlng=".urlencode($lat_lng);
 		
 		/*check if has provide api key*/
 		$key=Yii::app()->functions->getOptionAdmin('google_geo_api_key');		
 		if ( !empty($key)){
-			$api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($lat_lng)."&key=".urlencode($key);
+			$api="https://".GOOGLE_MAP_URL."/maps/api/geocode/json?address=".urlencode($lat_lng)."&key=".urlencode($key);
 		}	
 						
 		if (!$json=@file_get_contents($api)){
