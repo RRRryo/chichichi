@@ -396,6 +396,20 @@ class Functions extends CApplicationComponent
 
 					break;
 
+				case 7:
+
+					return array(
+
+						'delivery'=>Yii::t("default","Delivery"),
+
+						'pickup'=>Yii::t("default","Pickup"),
+
+						'metro'=>Yii::t("default","Metro Pickup"),
+
+					);
+
+					break;
+
 				default:
 
 					return array(
