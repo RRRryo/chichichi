@@ -352,7 +352,15 @@ class Functions extends CApplicationComponent
 
 			2=>Yii::t("default","Delivery Only"),
 
-			3=>yii::t("default","Pickup Only")
+			3=>yii::t("default","Pickup Only"),
+
+			4=>yii::t("default","Metro Only"),
+
+			5=>yii::t("default","Metro & Delivery"),
+
+			6=>yii::t("default","Metro & Pickup"),
+
+			7=>yii::t("default","Metro & Pickup & Delivery"),
 
 		);
 
@@ -17453,7 +17461,31 @@ EOF;
 
 	}
 
+	public function getMetroShippingRates($mtid='')
 
+	{
+
+		$stmt="SELECT * FROM
+
+    	{{metro_shipping_rate}}
+
+    	WHERE
+
+    	merchant_id=".Yii::app()->functions->q($mtid)."
+
+    	ORDER BY id ASC
+
+    	";
+
+		if ( $res=$this->db_ext->rst($stmt)){
+
+			return $res;
+
+		}
+
+		return false;
+
+	}
 
 	public function isMerchantOpenTimes($merchant_id='',$full_booking_day='',$booking_time='')
 
