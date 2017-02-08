@@ -16113,7 +16113,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 		{			
 
-			$url="http://maps.googleapis.com/maps/api/geocode/json?latlng=".$this->data['lat'].",".$this->data['lng']."&&sensor=false";			
+			$url="http://".GOOGLE_MAP_URL."/maps/api/geocode/json?latlng=".$this->data['lat'].",".$this->data['lng']."&&sensor=false";
 
 			$resp=@file_get_contents($url);
 
