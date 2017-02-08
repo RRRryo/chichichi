@@ -1738,7 +1738,8 @@ $this->msg=t("We have sent bank information instruction to your email")." :$merc
     	
     	Yii::app()->functions->updateOption("free_delivery_above_price",
     	isset($this->data['free_delivery_above_price'])?$this->data['free_delivery_above_price']:'',$mtid);
-    	
+
+		//domicile delivery
     	if (is_array($this->data['distance_from']) && count($this->data['distance_from'])>=1){    		
     		$x=0;
     		$stmt="
@@ -1759,7 +1760,31 @@ $this->msg=t("We have sent bank information instruction to your email")." :$merc
     			$this->insertData("{{shipping_rate}}",$params);
     			$x++;
     		}
-    	}	
+    	}
+
+		//metro delivery
+		if (is_array($this->data['metro_distance_from']) && count($this->data['metro_distance_from'])>=1){
+			$x=0;
+			$stmt="
+    		DELETE FROM
+    		{{metro_shipping_rate}}
+    		WHERE
+    		merchant_id=".Yii::app()->functions->q($mtid)."
+    		";
+			$this->qry($stmt);
+			foreach ($this->data['metro_distance_from'] as $val) {
+				$params=array(
+					'merchant_id'=>$mtid,
+					'distance_from'=>$val,
+					'distance_to'=>$this->data['metro_distance_to'][$x],
+					'shipping_units'=>$this->data['metro_shipping_units'][$x],
+					'distance_price'=>$this->data['metro_distance_price'][$x],
+				);
+				$this->insertData("{{metro_shipping_rate}}",$params);
+				$x++;
+			}
+		}
+
     	
     	$this->code=1;
     	$this->msg=Yii::t("default","Setting saved");

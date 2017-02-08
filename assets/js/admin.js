@@ -1656,10 +1656,33 @@ jQuery(document).ready(function() {
     	  
     	html+="</tr>";
     	$('.table-shipping-rates tr:last').after(html);
-    });	
-    
-    
-    $( document ).on( "click", ".shipping-remove", function() {    	      	
+    });
+
+	$( document ).on( "click", ".add-table-rate-metro", function() {
+		var count=$(".metro_distance_from").length+1;
+		dump(count);
+		var html='';
+		html+="<tr class=\"shipping-row-"+count+"\">";
+		html+="<td>";
+		html+=$(".metro-shipping-col-1").html();
+		html+="</td>";
+		html+="<td>";
+		html+=$(".metro-shipping-col-2").html();
+		html+="</td>";
+		html+="<td>";
+		html+=$(".metro-shipping-col-3").html();
+		html+="</td>";
+
+		html+="<td>";
+		html+="<a href=\"javascript:;\" class=\"shipping-remove\" data-id=\""+count+"\"><i class=\"fa fa-times\"></i></a>";
+		html+="</td>";
+
+		html+="</tr>";
+		$('.table-shipping-rates-metro tr:last').after(html);
+	});
+
+
+	$( document ).on( "click", ".shipping-remove", function() {
     	var id=$(this).data("id");    	
     	$(".shipping-row-"+id).remove();
     });	
