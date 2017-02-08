@@ -5010,9 +5010,9 @@ class Functions extends CApplicationComponent
 
 		if ($protocol=="http"){
 
-			$api="http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
+			$api="http://".GOOGLE_MAP_URL."/maps/api/geocode/json?address=".urlencode($address);
 
-		} else $api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address);
+		} else $api="https://".GOOGLE_MAP_URL."/maps/api/geocode/json?address=".urlencode($address);
 
 
 
@@ -5022,7 +5022,7 @@ class Functions extends CApplicationComponent
 
 		if ( !empty($key)){
 
-			$api="https://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&key=".urlencode($key);
+			$api="https://".GOOGLE_MAP_URL."/maps/api/geocode/json?address=".urlencode($address)."&key=".urlencode($key);
 
 		}
 
@@ -8385,17 +8385,13 @@ class Functions extends CApplicationComponent
 	public function Curl($uri="",$post="")
 
 	{
-		return false;
-
-		/*$error_no='';
+		$error_no='';
 
 		$ch = curl_init($uri);
 
-//		$proxy = 'proxy.priv.atos.fr:3128';
-
-//		$proxy = '36.66.213.167:1080';
-
-//		curl_setopt($ch, CURLOPT_PROXY, $proxy);
+		$other_config = require_once (ROOTPATH . "/protected/config/other_config.php");
+		$proxy=$other_config['proxy'];
+		curl_setopt($ch, CURLOPT_PROXY, $proxy);
 
 		curl_setopt($ch, CURLOPT_POST, 1);
 
@@ -8409,7 +8405,7 @@ class Functions extends CApplicationComponent
 
 		$result=curl_exec ($ch);
 
-
+		curl_close ($ch);
 
 		if ($error_no==0) {
 
@@ -8417,7 +8413,7 @@ class Functions extends CApplicationComponent
 
 		} else return false;
 
-		curl_close ($ch);*/
+
 
 	}
 
@@ -8469,11 +8465,11 @@ class Functions extends CApplicationComponent
 
 		if ($protocol=="http"){
 
-			$url="http://maps.googleapis.com/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial";
+			$url="http://".GOOGLE_MAP_URL."/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial";
 
 		} else {
 
-			$url="https://maps.googleapis.com/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial";
+			$url="https://".GOOGLE_MAP_URL."/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial";
 
 		}
 
@@ -8485,7 +8481,7 @@ class Functions extends CApplicationComponent
 
 		if ( !empty($key)){
 
-			$url="https://maps.googleapis.com/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial&key=".urlencode($key);
+			$url="https://".GOOGLE_MAP_URL."/maps/api/distancematrix/json?origins=".urlencode($from)."&destinations=".urlencode($to)."&language=en-EN&sensor=false&units=imperial&key=".urlencode($key);
 
 		}
 
@@ -18637,9 +18633,9 @@ EOF;
 
 		if ($protocol=="http"){
 
-			$url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$lat.",".$lng."&sensor=true";
+			$url = "https://".GOOGLE_MAP_URL."/maps/api/geocode/json?latlng=".$lat.",".$lng."&sensor=true";
 
-		} else $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$lat.",".$lng."&sensor=true";
+		} else $url = "https://".GOOGLE_MAP_URL."/maps/api/geocode/json?latlng=".$lat.",".$lng."&sensor=true";
 
 
 
