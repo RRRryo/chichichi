@@ -1886,7 +1886,7 @@ margin-bottom:10px;
 font-size:12px;
 }
 
-.change-address{
+.change-address {
 /*font-weight:normal;
 font-size:11px;
 margin-left:20px;
@@ -1894,6 +1894,16 @@ color:#8CC14C;*/
 color: #8CC14C;
 font-size: 11px;
 font-weight: normal;
+}
+
+.change-metro {
+    /*font-weight:normal;
+    font-size:11px;
+    margin-left:20px;
+    color:#8CC14C;*/
+    color: #8CC14C;
+    font-size: 11px;
+    font-weight: normal;
 }
 
 .hr_op{
