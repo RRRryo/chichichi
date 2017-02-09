@@ -125,7 +125,52 @@
 	       	   	  FunctionsV3::receiptTableRow('Change', FunctionsV3::prettyPrice($data['order_change']) );
 	       	   }
 	       	   
-	       } else {
+	       } else if ($data['trans_type']=="metro"){
+			   /*DELIVERY*/
+			   if (isset($data['delivery_date'])){
+				   $date = prettyDate($data['delivery_date']);
+				   $date=Yii::app()->functions->translateDate($date);
+				   FunctionsV3::receiptTableRow('Delivery Date', $date );
+			   }
+			   if (isset($data['delivery_time'])){
+				   if ( !empty($data['delivery_time'])){
+					   FunctionsV3::receiptTableRow('Delivery Time',
+						   Yii::app()->functions->timeFormat($data['delivery_time'],true) );
+				   }
+			   }
+			   if (isset($data['delivery_asap'])){
+				   if ( !empty($data['delivery_asap'])){
+					   FunctionsV3::receiptTableRow('Deliver ASAP',
+						   $data['delivery_asap']==1?t("Yes"):''
+					   );
+				   }
+			   }
+			   if (!empty($data['client_full_address'])){
+				   $delivery_address=$data['client_full_address'];
+			   } else $delivery_address=$data['full_address'];
+			   //TODO
+			   FunctionsV3::receiptTableRow('Deliver to', $delivery_address );
+
+			   if (!empty($data['delivery_instruction'])){
+				   FunctionsV3::receiptTableRow('Delivery Instruction',$data['delivery_instruction']);
+			   }
+
+			   if (!empty($data['location_name1'])){
+				   $data['location_name']=$data['location_name1'];
+			   }
+			   FunctionsV3::receiptTableRow('Location Name',$data['location_name']);
+
+			   if ( !empty($data['contact_phone1'])){
+				   $data['contact_phone']=$data['contact_phone1'];
+			   }
+			   FunctionsV3::receiptTableRow('Contact Number',$data['contact_phone']);
+
+			   if ($data['order_change']>=0.1){
+				   FunctionsV3::receiptTableRow('Change', FunctionsV3::prettyPrice($data['order_change']) );
+			   }
+
+		   }
+		   else {
 	       	  /*PICKUP*/
 	       	  FunctionsV3::receiptTableRow('Contact Number',$data['contact_phone']);
 	       	  if (isset($data['delivery_date'])){
