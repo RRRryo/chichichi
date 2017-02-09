@@ -1253,11 +1253,6 @@ $lang["miles"] = "英里";
 
 
 
-$lang["Delivery Fee"] = "送餐费";
-
-
-
-
 
 $lang["Free Delivery"] = "免费送餐";
 
@@ -1693,10 +1688,10 @@ $lang["Delivery Information"] = "送餐信息";
 $lang["not available"] = "无法使用";
 
 
-
 $lang["Restaurant"] = "餐厅";
 
-
+$lang["metro"] = "地铁";
+$lang["Metro"] = "地铁";
 
 
 
@@ -1811,7 +1806,7 @@ $lang["Merchant Name"] = "商户名称";
 
 
 
-$lang["TRN Type"] = "";
+$lang["TRN Type"] = "送取方式";
 
 
 
@@ -4696,7 +4691,7 @@ $lang["Less Voucher"] ="更少的折扣码";
 
 
 
-$lang["Sub Total"] ="子级总数";
+$lang["Sub Total"] ="小计";
 
 
 
@@ -5009,7 +5004,7 @@ $lang["sow"] ="";
 
 
 
-$lang["delivery"] ="交付";
+$lang["delivery"] ="送餐";
 
 
 
@@ -7170,10 +7165,6 @@ $lang['received']='收到';
 
 $lang['Browse by cuisine']='菜系浏览';
 $lang['choose from your favorite cuisine']='选择最喜爱的菜';
-
-
-$lang['Pickup Time']='捡拾器的时间';
-
 
 
 
