@@ -2638,13 +2638,20 @@ jQuery(document).ready(function() {
 		
 	$( document ).on( "change", "#delivery_type", function() {    	
 		var delivery_type=$(this).val();
-		if ( delivery_type=="pickup" || delivery_type=="metro"){
+		if ( delivery_type=="pickup"){
 			$(".delivery-asap").hide();			
 			$("#delivery_time").attr("placeholder",js_lang.trans_38);
 			$(".delivery-fee-wrap").hide();	
 			$(".delivery-min").hide();
 			$(".pickup-min").show();
-		} else {
+		} else if (delivery_type=="metro") {
+			$(".delivery-asap").hide();
+			$("#delivery_time").attr("placeholder",js_lang.trans_39);
+			$(".delivery-fee-wrap").show();
+			$(".delivery-min").show();
+			$(".pickup-min").hide();
+		}
+		else {
 			$(".delivery-asap").show();			
 			$("#delivery_time").attr("placeholder",js_lang.trans_39);
 			$(".delivery-fee-wrap").show();	
@@ -3071,12 +3078,19 @@ jQuery(document).ready(function() {
 	if ( $("#delivery_type").exists()){
 		var delivery_type=$("#delivery_type").val();		
 		if ( delivery_type=="pickup"){
-			$(".delivery-asap").hide();			
+			$(".delivery-asap").show();
 			$("#delivery_time").attr("placeholder",js_lang.trans_38);
-			$(".delivery-fee-wrap").hide();	
-			$(".delivery-min").hide();	
+			$(".delivery-fee-wrap").show();
+			$(".delivery-min").show();
 			$(".pickup-min").show();	
-		} else {
+		} else if (delivery_type=="metro") {
+			$(".delivery-asap").hide();
+			$("#delivery_time").attr("placeholder",js_lang.trans_39);
+			$(".delivery-fee-wrap").show();
+			$(".delivery-min").show();
+			$(".pickup-min").hide();
+		}
+		else {
 			$(".delivery-asap").show();			
 			$("#delivery_time").attr("placeholder",js_lang.trans_39);
 			$(".delivery-fee-wrap").show();	
