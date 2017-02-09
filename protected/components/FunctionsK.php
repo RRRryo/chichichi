@@ -307,7 +307,25 @@ class FunctionsK extends DbExt
     		return $res;
     	}
     	return false;
-    }   
+    }
+
+	public function getMetroShippingRates($mtid='',$units='')
+	{
+		$stmt="SELECT * FROM
+    	{{metro_shipping_rate}}
+    	WHERE
+    	merchant_id=".Yii::app()->functions->q($mtid)."
+    	AND
+    	shipping_units=".Yii::app()->functions->q($units)."
+    	ORDER BY id ASC
+    	";
+		//dump($stmt);
+		if ( $res=$this->rst($stmt)){
+			//dump($res);
+			return $res;
+		}
+		return false;
+	}
     
     public function getDeliveryChargesByDistance($mtid='',$distance='',$unit='',$delivery_fee='')
     {    	
@@ -340,6 +358,38 @@ class FunctionsK extends DbExt
     	}
     	return $charge;
     }
+
+	public function getMetroDeliveryChargesByDistance($mtid='',$distance='',$unit='',$delivery_fee='')
+	{
+		//$distance=round($distance);
+		switch (strtolower($unit)){
+			case "miles":
+			case "mi":
+				$unit='mi';
+				break;
+			case "kilometers":
+			case "km":
+				$unit='km';
+				break;
+			case "ft":
+				$unit='mi';
+				$distance=1;
+				break;
+		}
+		//dump($mtid);
+		//dump($distance);
+		//dump($unit);
+		$charge=$delivery_fee;
+		if ( $res=$this->getMetroShippingRates($mtid,$unit)){
+			foreach ($res as $val) {
+				if ( $val['distance_from']<=$distance && $val['distance_to']>=$distance){
+					//dump($val);
+					$charge=$val['distance_price'];
+				}
+			}
+		}
+		return $charge;
+	}
     
     public function ajaxDataTables($aColumns='')
     {
