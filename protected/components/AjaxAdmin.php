@@ -4054,7 +4054,7 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    	
 
-	    	if (isset($this->data['merchant_id'])){	    		
+	    	if (isset($this->data['merchant_id'])){
 
 	    		$current_merchant_id=$this->data['merchant_id'];	    
 
@@ -16269,6 +16269,14 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 		}
 
+		public function enterMetro()
+
+		{
+
+			require_once "enter-metro.php";
+
+		}
+
 		
 
 		public function setAddress()
@@ -16295,9 +16303,34 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 			} else $this->msg=Yii::t("default","Address is required");		
 
-		}	
+		}
 
-		
+		public function setMetro()
+
+		{
+
+			if (isset($this->data['client_metro'])){
+
+				$_SESSION['kr_search_address']=$this->data['client_metro'];
+				$_SESSION['metro_address']=$this->data['client_metro'];
+
+				if ($lat_res=Yii::app()->functions->geodecodeAddress($this->data['client_metro'])){
+
+					$_SESSION['client_metro_location']=array(
+
+						'lat'=>$lat_res['lat'],
+
+						'long'=>$lat_res['long']
+
+					);
+
+				}
+
+				$this->code=1;$this->msg=Yii::t("default","Successful");
+
+			} else $this->msg=Yii::t("default","Address is required");
+
+		}
 
 		public function smsTransactionList()
 
