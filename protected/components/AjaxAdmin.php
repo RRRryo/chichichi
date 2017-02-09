@@ -4854,7 +4854,7 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    		Yii::app()->timeZone=$mt_timezone;
 
-	    	}    	
+	    	}
 
 	    		    	
 
@@ -4882,7 +4882,7 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    	/** re-check delivery address */	    	
 
-	    	if ( $this->data['delivery_type']=="delivery"){
+	    	if ( $this->data['delivery_type']=="delivery" || $this->data['delivery_type']=="metro" ){
 
 		    	/*$functionsk=new FunctionsK();
 
@@ -5518,7 +5518,7 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 		    				/** add delivery address */
 
-		    				if ( $this->data['delivery_type']=="delivery"){
+		    				if ( $this->data['delivery_type']=="delivery" || $this->data['delivery_type']=="metro"){
 
 			    				$params_address=array(
 
