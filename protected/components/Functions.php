@@ -8422,9 +8422,9 @@ class Functions extends CApplicationComponent
 		$ch = curl_init($uri);
 
 		$other_config = require_once (ROOTPATH . "/protected/config/other_config.php");
-		$proxy=$other_config['proxy'];
-		if(isset($proxy)){
-			curl_setopt($ch, CURLOPT_PROXY, $proxy);
+
+		if(isset($other_config['proxy'])){
+			curl_setopt($ch, CURLOPT_PROXY, $other_config['proxy']);
 		}
 
 
