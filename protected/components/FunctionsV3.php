@@ -791,6 +791,35 @@ class FunctionsV3
     	}
     	return false;
     }
+
+	public static function getMerchantMetroDeliveryFee($merchant_id='',$fee='',$distance='',$unit='')
+	{
+		//$distance=!empty($distance)?number_format($distance,3):0;
+		$distance=is_numeric($distance)?number_format($distance,3):0;
+		$shipping_enabled=getOption($merchant_id,'shipping_enabled');
+		$charge=$fee;
+		if ( $shipping_enabled==2){
+			$FunctionsK=new FunctionsK();
+			$charge=$FunctionsK->getMetroDeliveryChargesByDistance(
+				$merchant_id,
+				$distance,
+				$unit,
+				$fee
+			);
+		}
+
+		if ($unit=="ft" || $unit=="mm" || $unit=="mt"){
+			if ($fee>0){
+				return $fee;
+			}
+			return false;
+		}
+
+		if ($charge>0){
+			return $charge;
+		}
+		return false;
+	}
     
     public static function clearSearchParams($field_to_clear='',$extra_params='')
     {    	
