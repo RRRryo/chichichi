@@ -6649,29 +6649,47 @@ class Functions extends CApplicationComponent
 
 
 
+				if ($data['delivery_type']=="delivery") {
 
+					//shipping rates
+					if (isset($_SESSION['shipping_fee'])){
+						if (is_numeric($_SESSION['shipping_fee'])){
 
-				//shipping rates
+							$delivery_charges=$_SESSION['shipping_fee'];
 
-				if (isset($_SESSION['shipping_fee'])){
+						}
 
-					if (is_numeric($_SESSION['shipping_fee'])){
+					}
 
-						$delivery_charges=$_SESSION['shipping_fee'];
+					//if (isset($data['delivery_charge']) && $data['delivery_charge']>=1){
+
+					if (isset($data['delivery_charge'])){
+
+						$delivery_charges=$data['delivery_charge'];
+
+					}
+				} else if ($data['delivery_type']=="metro") {
+					//metro shipping rates
+
+					if (isset($_SESSION['metro_shipping_fee'])){
+
+						if (is_numeric($_SESSION['metro_shipping_fee'])){
+
+							$delivery_charges=$_SESSION['metro_shipping_fee'];
+
+						}
+
+					}
+
+					//if (isset($data['delivery_charge']) && $data['delivery_charge']>=1){
+
+					if (isset($data['delivery_charge'])){
+
+						$delivery_charges=$data['delivery_charge'];
 
 					}
 
 				}
-
-				//if (isset($data['delivery_charge']) && $data['delivery_charge']>=1){
-
-				if (isset($data['delivery_charge'])){
-
-					$delivery_charges=$data['delivery_charge'];
-
-				}
-
-				//end shipping rates
 
 
 
@@ -6881,7 +6899,7 @@ class Functions extends CApplicationComponent
 
 				$free_delivery=false;
 
-				if ( $data['delivery_type']=="delivery"){
+				if ( $data['delivery_type']=="delivery" || $data['delivery_type']=="metro"){
 
 
 
@@ -8405,7 +8423,10 @@ class Functions extends CApplicationComponent
 
 		$other_config = require_once (ROOTPATH . "/protected/config/other_config.php");
 		$proxy=$other_config['proxy'];
-		curl_setopt($ch, CURLOPT_PROXY, $proxy);
+		if(isset($proxy)){
+			curl_setopt($ch, CURLOPT_PROXY, $proxy);
+		}
+
 
 		curl_setopt($ch, CURLOPT_POST, 1);
 
