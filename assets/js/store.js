@@ -679,6 +679,12 @@ window.location.replace(sites_url+"/merchantSignup/Do/thankyou2/token/"+$("#toke
         			window.location.reload();
         			return;
         		}
+
+				if (action=="setMetro"){
+					//console.debug("setAddress");
+					window.location.reload();
+					return;
+				}
         			
         	} else if ( data.code==3 ) {
         		 if ( action=="clientLogin"){
@@ -1046,7 +1052,7 @@ jQuery(document).ready(function() {
 	   	  }  
    	 }
    	 
-   	 if ( $("#delivery_type").val()=="pickup"){   	     
+   	 else if ( $("#delivery_type").val()=="pickup"){
    	 	   	 	 
    	     if ( $("#merchant_minimum_order_pickup").exists()){
    	     	  var minimum= parseFloat($("#merchant_minimum_order_pickup").val());	   	  	  
@@ -2586,10 +2592,14 @@ jQuery(document).ready(function() {
     $( document ).on( "click", ".change-address", function() {    	
     	var params="action=enterAddress&currentController=store&tbl=enterAddress";
     	open_fancy_box(params);    		
-    });	    
-    
-           
-    if ( $("#sisowbank").exists() ){
+    });
+
+	$( document ).on( "click", ".change-metro", function() {
+		var params="action=enterMetro&currentController=store&tbl=enterMetro";
+		open_fancy_box(params);
+	});
+
+	if ( $("#sisowbank").exists() ){
     	$("#sisowbank").addClass("grey-fields full-width");
     }
     
@@ -2627,8 +2637,8 @@ jQuery(document).ready(function() {
 	});
 		
 	$( document ).on( "change", "#delivery_type", function() {    	
-		var delivery_type=$(this).val();				
-		if ( delivery_type=="pickup"){
+		var delivery_type=$(this).val();
+		if ( delivery_type=="pickup" || delivery_type=="metro"){
 			$(".delivery-asap").hide();			
 			$("#delivery_time").attr("placeholder",js_lang.trans_38);
 			$(".delivery-fee-wrap").hide();	
