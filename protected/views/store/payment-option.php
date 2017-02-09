@@ -125,6 +125,7 @@ echo CHtml::hiddenField('admin_currency_position',
                             <?php endif; ?>  <!--PICKUP GUEST-->
 
                         <!-- END PICKUP-->
+                        <!-- BEGIN METRO-->
                         <?php elseif ($s['kr_delivery_options']['delivery_type'] == "metro") : ?>
                             <?php FunctionsV3::sectionHeader('Delivery Information') ?>
                             <p>
@@ -174,24 +175,24 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 <?php endif; ?>
 
-                                <?php if ($address_book): ?>
-                                    <div class="address_book_wrap">
-                                        <div class="row top10">
-                                            <div class="col-md-10">
-                                                <?php
-                                                $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
-                                                echo CHtml::dropDownList('address_book_id', $address_book['id'],
-                                                    (array)$address_list, array(
-                                                        'class' => "grey-fields full-width"
-                                                    ));
-                                                ?>
-                                                <a href="javascript:;" class="edit_address_book block top10">
-                                                    <i class="ion-compose"></i> <?php echo t("Edit") ?>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div> <!--address_book_wrap-->
-                                <?php endif; ?>
+<!--                                --><?php //if ($address_book): ?>
+<!--                                    <div class="address_book_wrap">-->
+<!--                                        <div class="row top10">-->
+<!--                                            <div class="col-md-10">-->
+<!--                                                --><?php
+//                                                $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
+//                                                echo CHtml::dropDownList('address_book_id', $address_book['id'],
+//                                                    (array)$address_list, array(
+//                                                        'class' => "grey-fields full-width"
+//                                                    ));
+//                                                ?>
+<!--                                                <a href="javascript:;" class="edit_address_book block top10">-->
+<!--                                                    <i class="ion-compose"></i> --><?php //echo t("Edit") ?>
+<!--                                                </a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div> <!--address_book_wrap-->
+<!--                                --><?php //endif; ?>
 
                                 <div class="address-block">
                                     <div class="row top10">
@@ -199,7 +200,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                             <?php echo CHtml::textField('street', isset($_SESSION['metro_address']) ? $_SESSION['metro_address'] : '', array(
                                                 'class' => 'grey-fields full-width',
                                                 'placeholder' => Yii::t("default", "Street"),
-                                                'disabled' => "true",
+//                                                'disabled' => "true",
                                                 'data-validation' => "required"
                                             )) ?>
                                         </div>
@@ -274,14 +275,14 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 </div>
 
-                                <div class="row top10">
-                                    <div class="col-md-10">
-                                        <?php
-                                        echo CHtml::checkBox('saved_address', false, array('class' => "icheck", 'value' => 2));
-                                        echo " " . t("Save to my address book");
-                                        ?>
-                                    </div>
-                                </div>
+<!--                                <div class="row top10">-->
+<!--                                    <div class="col-md-10">-->
+<!--                                        --><?php
+//                                        echo CHtml::checkBox('saved_address', false, array('class' => "icheck", 'value' => 2));
+//                                        echo " " . t("Save to my address book");
+//                                        ?>
+<!--                                    </div>-->
+<!--                                </div>-->
 
                                 <?php if (isset($is_guest_checkout)): ?>
                                     <div class="row top10">
@@ -309,7 +310,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                 <?php endif; ?>
 
                             </div> <!--top10-->
-
+                        <!-- END METRO-->
                         <?php else : ?> <!-- DELIVERY-->
 
                             <?php FunctionsV3::sectionHeader('Delivery Information') ?>
