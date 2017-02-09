@@ -1690,8 +1690,8 @@ $lang["not available"] = "无法使用";
 
 $lang["Restaurant"] = "餐厅";
 
-$lang["metro"] = "地铁";
-$lang["Metro"] = "地铁";
+$lang["metro"] = "地铁站取";
+$lang["Metro"] = "地铁站取";
 
 
 
@@ -7364,6 +7364,7 @@ $lang['VAT']='';
 $lang['Sorry but you cannot disabled membership if commision is disabled']='抱歉但您无法禁用的会员如果佣金是禁用的';
 
 
+$lang['You cannot make order at this time']='您无法在这个时间下单';
 
 
 
