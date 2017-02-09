@@ -392,6 +392,52 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 	        
         </div>
         <!--END DELIVERY INFO-->
+
+		  <!--METRO PICKUP INFO-->
+		  <div class="inner center">
+			  <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+			  </button>
+
+			  <?php if ($data['service']==1 || $data['service']==2 || $data['service']==3 || $data['service']==4):?>
+				  <p class="bold"><?php echo t("Distance Information")?></p>
+			  <?php else :?>
+				  <p class="bold"><?php echo t("Metro Pickup Information")?></p>
+			  <?php endif;?>
+
+			  <p>
+				  <?php
+				  if ($metro_distance){
+					  echo t("Distance").": ".number_format($metro_distance,1)." $metro_distance_type";
+				  } else echo  t("Distance").": ".t("not available");
+				  ?>
+			  </p>
+
+			  <p class="delivery-fee-wrap">
+				  <?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id)?></p>
+
+			  <p class="delivery-fee-wrap">
+				  <?php
+				  if (!empty($merchant_delivery_distance)){
+					  echo t("Delivery Distance Covered").": ".$merchant_delivery_distance." $metro_distance_type_orig";
+				  } else echo  t("Delivery Distance Covered").": ".t("not available");
+				  ?>
+			  </p>
+
+			  <p class="delivery-fee-wrap">
+				  <?php
+				  if ($metro_delivery_fee){
+					  echo t("Delivery Fee").": ".FunctionsV3::prettyPrice($metro_delivery_fee);
+				  } else echo  t("Delivery Fee").": ".t("Free Delivery");
+				  ?>
+			  </p>
+
+			  <a href="javascript:;" class="top10 green-color change-metro block text-center">
+				  [<?php echo t("Change metro station  here")?>]
+			  </a>
+
+		  </div>
+		  <!--END METRO PICKUP INFO-->
         
         <!--CART-->
         <div class="inner line-top relative">
