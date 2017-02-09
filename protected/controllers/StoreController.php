@@ -703,16 +703,22 @@ class StoreController extends CController
 				$mt_timezone=Yii::app()->functions->getOption("merchant_timezone",$merchant_id);				
 		    	if (!empty($mt_timezone)){       	 	
 		    		Yii::app()->timeZone=$mt_timezone;
-		    	}		   		
-		    	
-		    	
-		    	$distance_type='';
+		    	}
+
+				$merchant_delivery_distance='';
+
+				$distance_type='';
 				$distance_type_orig='';
 		    	$distance='';
-		    	$merchant_delivery_distance='';
 		    	$delivery_fee=0;
-		    			    			    	
-		    	/*double check if session has value else use cookie*/		    	
+
+				$metro_distance_type='';
+				$metro_distance_type_orig='';
+				$metro_distance='';
+				$metro_delivery_fee=0;
+
+
+				/*double check if session has value else use cookie*/
 		    	FunctionsV3::cookieLocation();
 					    		    	
 		    	if (isset($_SESSION['client_location'])){
@@ -744,15 +750,48 @@ class StoreController extends CController
 		                          $distance,
 		                          $distance_type_raw);
 		    		
-		    	}			
-		    			    		
+		    	}
+
+
+				if (isset($_SESSION['client_metro_location'])){
+
+					/*get the distance from client address to merchant Address*/
+					$metro_distance_type=FunctionsV3::getMerchantDistanceType($merchant_id);
+					$metro_distance_type_orig=$metro_distance_type;
+
+					$metro_distance=FunctionsV3::getDistanceBetweenPlot(
+						$_SESSION['client_metro_location']['lat'],
+						$_SESSION['client_metro_location']['long'],
+						$res['latitude'],$res['lontitude'],$metro_distance_type
+					);
+
+					$metro_distance_type_raw = $metro_distance_type=="M"?"miles":"kilometers";
+					$metro_distance_type=$metro_distance_type=="M"?t("miles"):t("kilometers");
+					$metro_distance_type_orig = $metro_distance_type;
+
+					if(!empty(FunctionsV3::$distance_type_result)){
+						$metro_distance_type_raw=FunctionsV3::$distance_type_result;
+						$metro_distance_type=t(FunctionsV3::$distance_type_result);
+					}
+
+					$metro_merchant_delivery_distance=getOption($merchant_id,'merchant_delivery_miles');
+
+					$metro_delivery_fee=FunctionsV3::getMerchantMetroDeliveryFee(
+						$merchant_id,
+						$res['delivery_charges'],
+						$metro_distance,
+						$metro_distance_type_raw);
+
+				}
+
 		    	
 		    	/*SESSION REF*/
 		    	$_SESSION['kr_merchant_id']=$merchant_id;
                 $_SESSION['kr_merchant_slug']=$data['merchant'];
-		    	$_SESSION['shipping_fee']=$delivery_fee;		
-		    			    	
-		    	/*CHECK IF BOOKING IS ENABLED*/
+		    	$_SESSION['shipping_fee']=$delivery_fee;
+				$_SESSION['metro_shipping_fee']=$metro_delivery_fee;
+
+				/*CHECK IF BOOKING IS ENABLED*/
 		    	$booking_enabled=true;		    		
 		    	if (getOption($merchant_id,'merchant_table_booking')=="yes"){
 		    		$booking_enabled=false;
@@ -783,13 +822,20 @@ class StoreController extends CController
 		    	}
 						    
 				$this->render('menu' ,array(
-				   'data'=>$res,
-				   'merchant_id'=>$merchant_id,
-				   'distance_type'=>$distance_type,
-				   'distance_type_orig'=>$distance_type_orig,
-				   'distance'=>$distance,
-				   'merchant_delivery_distance'=>$merchant_delivery_distance,
-				   'delivery_fee'=>$delivery_fee,
+				   	'data'=>$res,
+				   	'merchant_id'=>$merchant_id,
+					'merchant_delivery_distance'=>$merchant_delivery_distance,
+
+					'distance_type'=>$distance_type,
+				   	'distance_type_orig'=>$distance_type_orig,
+				   	'distance'=>$distance,
+				   	'delivery_fee'=>$delivery_fee,
+
+					'metro_distance_type'=>$metro_distance_type,
+					'metro_distance_type_orig'=>$metro_distance_type_orig,
+					'metro_distance'=>$metro_distance,
+					'metro_delivery_fee'=>$metro_delivery_fee,
+
 				   'disabled_addcart'=>getOption($merchant_id,'merchant_disabled_ordering'),
 				   'merchant_website'=>getOption($merchant_id,'merchant_extenal'),
 				   'photo_enabled'=>$photo_enabled,
