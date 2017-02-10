@@ -1602,7 +1602,9 @@ class FunctionsV3
     		/*$lat=isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'';
     		$lng=isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'';*/
     		
-    		$complete_address=$data['street']." ".$data['city']." ".$data['state']." ".$data['zipcode'];
+//    		$complete_address=$data['street']." ".$data['city']." ".$data['state']." ".$data['zipcode'];
+			$complete_address=$data['client_address'];
+
     		$lat=0;
 			$lng=0;
 			
