@@ -16283,23 +16283,45 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 		{
 
-			if (isset($this->data['client_address'])){				
+			if (isset($this->data['client_address'])){
 
 				$_SESSION['kr_search_address']=$this->data['client_address'];
 
 				if ($lat_res=Yii::app()->functions->geodecodeAddress($this->data['client_address'])){
 
-					$_SESSION['client_location']=array(
-
-					  'lat'=>$lat_res['lat'],
-
-					  'long'=>$lat_res['long']
-
+					$merchant_id=$_SESSION['kr_merchant_id'];
+					$mt_delivery_miles=Yii::app()->functions->getOption("merchant_delivery_miles",$merchant_id);
+					$merchant_info=FunctionsV3::getMerchantById($merchant_id);
+					$distance_type=FunctionsV3::getMerchantDistanceType($merchant_id);
+					$distance_type_raw = $distance_type=="M"?"miles":"kilometers";
+					$distance=FunctionsV3::getDistanceBetweenPlot(
+						$lat_res['lat'],
+						$lat_res['long'],
+						$merchant_info['latitude'],$merchant_info['lontitude'],$distance_type
 					);
 
-		    	}
+					$merchant_delivery_distance=getOption($merchant_id,'merchant_delivery_miles');
+					if ( $distance>$merchant_delivery_distance) {
+						if ($distance_type_raw == "ft" || $distance_type_raw == "meter" || $distance_type_raw == "mt") {
+							;
+						}
+						$this->msg=Yii::t("default","Sorry but this merchant delivers only with in");
+						$this->msg=t("Sorry but this merchant delivers only with in ").$mt_delivery_miles." $distance_type_raw";
+					} else {
+						$_SESSION['client_location']=array(
 
-				$this->code=1;$this->msg=Yii::t("default","Successful");
+							'lat'=>$lat_res['lat'],
+
+							'long'=>$lat_res['long']
+
+						);
+
+						$this->code=1;$this->msg=Yii::t("default","Successful");
+					}
+
+
+		    	} else $this->msg=Yii::t("default","Invalid adress");
+
 
 			} else $this->msg=Yii::t("default","Address is required");		
 
@@ -16323,10 +16345,10 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 						'long'=>$lat_res['long']
 
 					);
+					$this->code=1;$this->msg=Yii::t("default","Successful");
+				}  else $this->msg=Yii::t("default","Invalid metro station");
 
-				}
 
-				$this->code=1;$this->msg=Yii::t("default","Successful");
 
 			} else $this->msg=Yii::t("default","Address is required");
 
