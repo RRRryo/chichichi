@@ -1701,7 +1701,7 @@ $lang["ASAP"] = "ASAP";
 
 
 
-$lang["Street"] = "街道";
+$lang["Street"] = "地址";
 
 
 
@@ -3120,7 +3120,7 @@ $lang["Last"] = "最后";
 
 
 
-$lang["Previous"] = "以前的";
+$lang["Previous"] = "上一步";
 
 
 
@@ -3222,7 +3222,7 @@ $lang["ERROR:"] = "错误 :";
 
 
 
-$lang["Sorry but this merchant delivers only with in "] = "抱歉但此商户只提供与在";
+$lang["Sorry but this merchant delivers only with in "] = "抱歉但此商户只提供小于";
 
 
 
@@ -3815,7 +3815,7 @@ $lang["View Receipt"] ="查看收据";
 
 
 
-$lang["You have not answered all required fields"] ="您没有应答的所有必填字段";
+$lang["You have not answered all required fields"] ="您没有填写所有必填的字段";
 
 
 
@@ -9931,6 +9931,12 @@ $lang['Merchant change order options']='啟用 訂購';
 $lang['Minimum order price']='最低訂購價格';
 
 $lang['Clear Order']='清除訂單';
+
+$lang['to']='至';
+
+$lang['Connected as']='登录为';
+
+$lang['Update your profile picture']='上传您的头像';
 
 
 /*  Translate for multilanguge site*/
