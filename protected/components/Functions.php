@@ -5077,8 +5077,8 @@ class Functions extends CApplicationComponent
 
 				} else {
 
-					$lat=''; $long='';
-
+//					$lat=''; $long='';
+					return false;
 				}
 
 				return array(
@@ -7224,8 +7224,6 @@ class Functions extends CApplicationComponent
 
 
 				}
-
-
 
 
 
