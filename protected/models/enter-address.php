@@ -43,8 +43,7 @@ isset($this->data['web_session_id'])?$this->data['web_session_id']:''
 <script type="text/javascript">
 $.validate({ 	
 	language : jsLanguageValidator,
-	language : jsLanguageValidator,
-    form : '#frm-modal-enter-address',    
+    form : '#frm-modal-enter-address',
     onError : function() {      
     },
     onSuccess : function() {     
