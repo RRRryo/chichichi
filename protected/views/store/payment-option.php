@@ -409,7 +409,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                 <div class="address-block">
                                     <div class="row top10">
                                         <div class="col-md-10">
-                                            <?php echo CHtml::hiddenField('client_address', isset($client_info['street']) ? $client_info['street'] : '', array(
+                                            <?php echo CHtml::hiddenField('client_address', $_SESSION['kr_search_address'], array(
                                                 'class' => 'grey-fields full-width',
                                                 'placeholder' => Yii::t("default", "Street"),
                                                 'data-validation' => "required"
