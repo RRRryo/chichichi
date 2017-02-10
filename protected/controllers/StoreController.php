@@ -940,6 +940,33 @@ class StoreController extends CController
 		   $this->pageTitle=$seo_title;		   
 		   Yii::app()->functions->setSEO($seo_title,$seo_meta,$seo_key);
 		}
+
+		//update $_SESSION['shipping_fee']
+		$distance_type=FunctionsV3::getMerchantDistanceType($current_merchant);
+		$distance_type_raw = $distance_type=="M"?"miles":"kilometers";
+
+		if(!empty(FunctionsV3::$distance_type_result)){
+			$distance_type_raw=FunctionsV3::$distance_type_result;
+			$distance_type=t(FunctionsV3::$distance_type_result);
+		}
+
+		$res=FunctionsV3::getMerchantBySlug($_SESSION['kr_merchant_slug']);
+		$distance=FunctionsV3::getDistanceBetweenPlot(
+			$_SESSION['client_location']['lat'],
+			$_SESSION['client_location']['long'],
+			$res['latitude'],$res['lontitude'],$distance_type
+		);
+
+
+		$delivery_fee=FunctionsV3::getMerchantDeliveryFee(
+			$current_merchant,
+			$res['delivery_charges'],
+			$distance,
+			$distance_type_raw);
+
+		//update DeliveryFee
+		$_SESSION['shipping_fee']=$delivery_fee;
+
 		$this->render('payment-option',array(
 		  'website_enabled_map_address'=>getOptionA('website_enabled_map_address'),
 		  'address_book'=>Yii::app()->functions->showAddressBook()
