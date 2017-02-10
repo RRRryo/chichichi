@@ -681,7 +681,7 @@ window.location.replace(sites_url+"/merchantSignup/Do/thankyou2/token/"+$("#toke
         		}
 
 				if (action=="setMetro"){
-					//console.debug("setAddress");
+
 					window.location.reload();
 					return;
 				}
@@ -3861,3 +3861,14 @@ function post(path, params, method) {
 	document.body.appendChild(form);
 	form.submit();
 }
+
+$.validate({
+	language : jsLanguageValidator,
+	form : '#frm-modal-enter-address',
+	onError : function() {
+	},
+	onSuccess : function() {
+		form_submit('frm-modal-enter-address');
+		return false;
+	}
+})
