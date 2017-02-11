@@ -6138,13 +6138,6 @@ class Functions extends CApplicationComponent
 		$subcat_list=Yii::app()->functions->getAddOnLists($mid);
 
 
-
-		//dump($cart_item);
-
-		//dump($food_item);
-
-
-
 		if (isset($cart_item)){
 
 			if (is_array($cart_item) && count($cart_item)>=1){
@@ -6223,19 +6216,6 @@ class Functions extends CApplicationComponent
 
 					}
 
-
-
-					/*$size_words='';
-
-    				if ( $price_size=explodeData($val['price'])){
-
-    					if (isset($price_size[1])){
-
-    					    $size_words=$price_size[1];
-
-    					}
-
-    				}	*/
 
 
 
@@ -6619,79 +6599,29 @@ class Functions extends CApplicationComponent
 
 				}
 
-
-
 				$taxable_subtotal=0;
-
-				$tax_amt=0;
-
-
 
 				$tax=Yii::app()->functions->getOption('merchant_tax',$mid);
 
-				//dump($tax);
-
-
-
-				/*if transaction is pickup*/
-
-				/*if ($data['delivery_type']=="pickup"){
-
-    				$tax=0;
-
-    			}*/
-
-
-
 				$tax_amt=$tax;
 
-				$delivery_charges=Yii::app()->functions->getOption('merchant_delivery_charges',$mid);
 
+				$delivery_charges=isset($_SESSION['shipping_fee']) ? $_SESSION['shipping_fee']:'';
+				if (isset($_SESSION['kr_delivery_options']['delivery_type'])
+					&& $_SESSION['kr_delivery_options']['delivery_type']=="pickup"){
+					$delivery_charges=0;
+				}
 
+				if (isset($data['delivery_charge'])){
 
-				if ($data['delivery_type']=="delivery") {
-
-					//shipping rates
-					if (isset($_SESSION['shipping_fee'])){
-						if (is_numeric($_SESSION['shipping_fee'])){
-
-							$delivery_charges=$_SESSION['shipping_fee'];
-
-						}
-
-					}
-
-					//if (isset($data['delivery_charge']) && $data['delivery_charge']>=1){
-
-					if (isset($data['delivery_charge'])){
-
-						$delivery_charges=$data['delivery_charge'];
-
-					}
-				} else if ($data['delivery_type']=="metro") {
-					//metro shipping rates
-
-					if (isset($_SESSION['metro_shipping_fee'])){
-
-						if (is_numeric($_SESSION['metro_shipping_fee'])){
-
-							$delivery_charges=$_SESSION['metro_shipping_fee'];
-
-						}
-
-					}
-
-					//if (isset($data['delivery_charge']) && $data['delivery_charge']>=1){
-
-					if (isset($data['delivery_charge'])){
-
-						$delivery_charges=$data['delivery_charge'];
-
-					}
+					$delivery_charges=$data['delivery_charge'];
 
 				}
 
-
+				if (isset($data['no_delivery_fee']) || $data['delivery_type']=="pickup") {
+//					error_log("no_delivery_fee");
+					$delivery_charges=0;
+				}
 
 				$merchant_packaging_charge=Yii::app()->functions->getOption('merchant_packaging_charge',$mid);
 
@@ -6706,28 +6636,6 @@ class Functions extends CApplicationComponent
 					}
 
 				}
-
-
-
-				if (!empty($delivery_charges)){
-
-					$delivery_charges=unPrettyPrice($delivery_charges);
-
-				} else $delivery_charges=0;
-
-
-
-				/*if transaction is pickup*/
-
-				//dump($data);
-
-				if ($data['delivery_type']=="pickup"){
-
-					$delivery_charges=0;
-
-				}
-
-
 
 				/*VOUCHER*/
 
@@ -13767,6 +13675,10 @@ EOF;
 
 	function getRecentMaxOrders($merchant_id='',$date='',$timee='',$delivery_asap='')
 	{
+		$stmt='';
+		$max_order='';
+		$order='';
+		$dilivery_time='';
 		$time = $date.' '.$timee;
 		$DbExt=new DbExt;
 		$timezone=Yii::app()->functions->getOption("merchant_timezone",$merchant_id);
