@@ -1293,7 +1293,7 @@ $lang["This restaurant has not published their menu yet."] = "这家餐厅还没
 $lang["Your Order"] = "您的订单";
 
 
-
+$lang["Metro Pickup"] = "地铁站取";
 
 
 $lang["Subtotal must exceed"] = "小计必须超过";
@@ -1681,6 +1681,7 @@ $lang["You need to login first."] = "您需要登录";
 
 
 $lang["Pickup information"] = "自取信息";
+$lang["Pickup nformation"] = "自取信息";
 
 
 $lang["Delivery Information"] = "送餐信息";
@@ -2996,9 +2997,11 @@ $lang["Delivery"] = "送餐";
 
 $lang["Pickup"] = "自取";
 
+$lang["Pickup free"] = "自取免费";
 
+$lang["delivery to domicile"] = "送餐上门";
 
-
+$lang["delivery to metro"] = "地铁站取";
 
 $lang["You are about to permanently delete the selected items.\n'Cancel' to stop, 'OK' to delete.?"] = "你将永久删除选中的项目。 \ n “取消”以停止 , “确定”删除。";
 
@@ -7598,8 +7601,7 @@ $lang['Total number of items sold this month']='项目总数出售此月';
 
 $lang['From']='来自';
 
-
-
+$lang['from']='从';
 
 
 $lang['orders']='命令';
@@ -9732,7 +9734,6 @@ $lang['Sorry but you have selected time that already past']='对不起，您先�
 
 $lang['at']='';
 
-$lang['to']='';
 
 $lang['Yes']='';
 
