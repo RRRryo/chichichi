@@ -14,7 +14,7 @@ $s = $_SESSION;
 $continue = false;
 
 $merchant_address = '';
-if ($merchant_info = Yii::app()->functions->getMerchant($s['kr_merchant_id'])) {
+if (isset($s['kr_merchant_id']) && $merchant_info = Yii::app()->functions->getMerchant($s['kr_merchant_id'])) {
     $merchant_address = $merchant_info['street'] . " " . $merchant_info['city'] . " " . $merchant_info['state'];
     $merchant_address .= " " . $merchant_info['post_code'];
 }
@@ -73,66 +73,27 @@ echo CHtml::hiddenField('admin_currency_position',
             <div class="col-md-7 border">
 
                 <div class="box-grey rounded">
-                    <?php FunctionsV3::sectionHeader('Delivery Information') ?>
-                    <p>
-                        <?php echo clearString(ucwords($merchant_info['restaurant_name'])) ?><?php echo Yii::t("default", "Restaurant") ?>
-                        <?php echo "<span class='bold'>" . Yii::t("default", ucwords($s['kr_delivery_options']['delivery_type'])) . "</span> ";
-                        if ($s['kr_delivery_options']['delivery_asap'] == 1) {
-                            echo $s['kr_delivery_options']['delivery_date'] . " " . Yii::t("default", "ASAP");
-                        } else {
-                            /*echo '<span class="bold">'.date("M d Y",strtotime($s['kr_delivery_options']['delivery_date'])).
-                            " ".t("at"). " ". $s['kr_delivery_options']['delivery_time']."</span> ".t("to");*/
 
-                            echo '<span class="bold">' . Yii::app()->functions->translateDate(date("M d Y", strtotime($s['kr_delivery_options']['delivery_date']))) .
-                                " " . t("at") . " " . $s['kr_delivery_options']['delivery_time'] . "</span> " . t("to");
-                        }
-                        ?>
-                    </p>
-                    <?php FunctionsV3::sectionHeader('Address') ?>
-                    <form id="frm-modal-enter-address" class="frm-modal-enter-address" method="POST" onsubmit="return false;" >
-                        <?php echo CHtml::hiddenField('action','setAddress');?>
-                        <?php /*echo CHtml::hiddenField('web_session_id', isset($this->data['web_session_id'])?$this->data['web_session_id']:'');*/?>
-
-                        <div class="row top10">
-                            <div class="col-md-10">
-                                <?php echo CHtml::textField('client_address', $_SESSION['kr_search_address'] /*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
-                                    'class' => 'grey-fields full-width',
-                                    'placeholder' => Yii::t("default", "Street"),
-                                    'data-validation' => "required"
-                                )) ?>
-                            </div>
-                        </div>
-                        <div class="row top10">
-                            <div class="col-md-5">
-                                <input type="submit" class="calculate_shipment_fee  green-button medium block" value=" <?php echo t("use this address") ?>">
-                            </div>
-                            <div class="col-md-5">
-                                <h3 class="center " style="margin: ">
-                                    <?php echo t("delivery fee: "). baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) ?>
-                                </h3>
-                            </div>
-                        </div>
-                    </form>
-
-                    <form id="frm-delivery" class="frm-delivery" method="POST" onsubmit="return false;">
-                        <?php
-                        echo CHtml::hiddenField('action', 'placeOrder');
-                        echo CHtml::hiddenField('country_code', $merchant_info['country_code']);
-                        echo CHtml::hiddenField('currentController', 'store');
-                        echo CHtml::hiddenField('delivery_type', $s['kr_delivery_options']['delivery_type']);
-                        echo CHtml::hiddenField('cart_tip_percentage', '');
-                        echo CHtml::hiddenField('cart_tip_value', '');
-                        echo CHtml::hiddenField('client_order_sms_code');
-                        echo CHtml::hiddenField('client_order_session');
-                        if (isset($is_guest_checkout)) {
-                            echo CHtml::hiddenField('is_guest_checkout', 2);
-                        }
-                        ?>
-
-                        <!-- BEGIN PICKUP-->
+                    <!-- BEGIN PICKUP-->
                         <?php if ($s['kr_delivery_options']['delivery_type'] == "pickup"): ?>
 
-                            <h3><?php echo Yii::t("default", "Pickup information") ?></h3>
+                        <form id="frm-delivery" class="frm-delivery" method="POST" onsubmit="return false;">
+                            <?php
+                            echo CHtml::hiddenField('action', 'placeOrder');
+                            echo CHtml::hiddenField('country_code', $merchant_info['country_code']);
+                            echo CHtml::hiddenField('currentController', 'store');
+                            echo CHtml::hiddenField('delivery_type', $s['kr_delivery_options']['delivery_type']);
+                            echo CHtml::hiddenField('cart_tip_percentage', '');
+                            echo CHtml::hiddenField('cart_tip_value', '');
+                            echo CHtml::hiddenField('client_order_sms_code');
+                            echo CHtml::hiddenField('client_order_session');
+                            if (isset($is_guest_checkout)) {
+                                echo CHtml::hiddenField('is_guest_checkout', 2);
+                            }
+                            ?>
+
+
+                        <?php  FunctionsV3::sectionHeader('Pickup Information')?>
                             <p class="uk-text-bold"><?php echo $merchant_address; ?></p>
 
                             <?php if (!isset($is_guest_checkout)): ?>
@@ -168,12 +129,13 @@ echo CHtml::hiddenField('admin_currency_position',
                         <!-- END PICKUP-->
                         <!-- BEGIN METRO-->
                         <?php elseif ($s['kr_delivery_options']['delivery_type'] == "metro") : ?>
+
                             <?php FunctionsV3::sectionHeader('Delivery Information') ?>
                             <p>
                                 <?php echo clearString(ucwords($merchant_info['restaurant_name'])) ?><?php echo Yii::t("default", "Restaurant") ?>
                                 <?php echo "<span class='bold'>" . Yii::t("default", ucwords($s['kr_delivery_options']['delivery_type'])) . "</span> ";
                                 if ($s['kr_delivery_options']['delivery_asap'] == 1) {
-                                    $s['kr_delivery_options']['delivery_date'] . " " . Yii::t("default", "ASAP");
+                                    echo $s['kr_delivery_options']['delivery_date'] . " " . Yii::t("default", "ASAP");
                                 } else {
                                     /*echo '<span class="bold">'.date("M d Y",strtotime($s['kr_delivery_options']['delivery_date'])).
                                     " ".t("at"). " ". $s['kr_delivery_options']['delivery_time']."</span> ".t("to");*/
@@ -183,10 +145,54 @@ echo CHtml::hiddenField('admin_currency_position',
                                 }
                                 ?>
                             </p>
+                            <?php FunctionsV3::sectionHeader('Metro station') ?>
 
-                            <div class="top10">
+                            <form id="frm-modal-enter-address" class="frm-modal-enter-address" method="POST" onsubmit="return false;" >
+                                <?php echo CHtml::hiddenField('action','setMetro');?>
 
-                                <?php FunctionsV3::sectionHeader('Address') ?>
+                                <div class="row top10">
+                                    <div class="col-md-5">
+                                        <?php echo CHtml::textField('client_metro', $_SESSION['kr_search_address'] /*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
+                                            'class' => 'grey-fields full-width',
+                                            'placeholder' => Yii::t("default", "Metro station name"),
+                                            'data-validation' => "required"
+                                        )) ?>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="right"><?php foreach($_SESSION['client_location']['lines'] as $line) {
+                                                echo $line.' ';
+                                            } ?>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row top10">
+                                    <div class="col-md-5 col-xs-5">
+                                        <input type="submit" class="calculate_shipment_fee  green-button   " value=" <?php echo t("delivery to this station") ?>">
+                                    </div>
+                                    <div class="col-md-5 col-xs-5">
+                                        <p class="right" >
+                                            <?php echo t("delivery fee: "). baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+                            <form id="frm-delivery" class="frm-delivery" method="POST" onsubmit="return false;">
+                                <?php
+                                echo CHtml::hiddenField('action', 'placeOrder');
+                                echo CHtml::hiddenField('country_code', $merchant_info['country_code']);
+                                echo CHtml::hiddenField('currentController', 'store');
+                                echo CHtml::hiddenField('delivery_type', $s['kr_delivery_options']['delivery_type']);
+                                echo CHtml::hiddenField('cart_tip_percentage', '');
+                                echo CHtml::hiddenField('cart_tip_value', '');
+                                echo CHtml::hiddenField('client_order_sms_code');
+                                echo CHtml::hiddenField('client_order_session');
+                                if (isset($is_guest_checkout)) {
+                                    echo CHtml::hiddenField('is_guest_checkout', 2);
+                                }
+                                ?>
+
+
+                                <div class="top10">
 
                                 <?php if (isset($is_guest_checkout)): ?>
                                     <div class="row top10">
@@ -238,12 +244,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                 <div class="address-block">
                                     <div class="row top10">
                                         <div class="col-md-10">
-                                            <?php echo CHtml::textField('client_address', isset($_SESSION['metro_address']) ? $_SESSION['metro_address'] : '', array(
-                                                'class' => 'grey-fields full-width',
-                                                'placeholder' => Yii::t("default", "Street"),
-//                                                'disabled' => "true",
-                                                'data-validation' => "required"
-                                            )) ?>
+                                            <?php echo CHtml::hiddenField('client_address', isset($_SESSION['metro_address'])?$_SESSION['metro_address']:'') ?>
                                         </div>
                                     </div>
 
@@ -316,14 +317,14 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 </div>
 
-                                <div class="row top10">
+                                <!--<div class="row top10">
                                     <div class="col-md-10">
                                         <?php
-                                        echo CHtml::checkBox('saved_address', false, array('class' => "icheck", 'value' => 2));
+/*                                        echo CHtml::checkBox('saved_address', false, array('class' => "icheck", 'value' => 2));
                                         echo " " . t("Save to my address book");
-                                        ?>
+                                        */?>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <?php if (isset($is_guest_checkout)): ?>
                                     <div class="row top10">
@@ -354,6 +355,61 @@ echo CHtml::hiddenField('admin_currency_position',
                         <!-- END METRO-->
                         <?php else : ?> <!-- DELIVERY-->
 
+                            <?php FunctionsV3::sectionHeader('Delivery Information') ?>
+                                <p>
+                                    <?php echo clearString(ucwords($merchant_info['restaurant_name'])) ?><?php echo Yii::t("default", "Restaurant") ?>
+                                    <?php echo "<span class='bold'>" . Yii::t("default", ucwords($s['kr_delivery_options']['delivery_type'])) . "</span> ";
+                                    if ($s['kr_delivery_options']['delivery_asap'] == 1) {
+                                        echo $s['kr_delivery_options']['delivery_date'] . " " . Yii::t("default", "ASAP");
+                                    } else {
+                                        /*echo '<span class="bold">'.date("M d Y",strtotime($s['kr_delivery_options']['delivery_date'])).
+                                        " ".t("at"). " ". $s['kr_delivery_options']['delivery_time']."</span> ".t("to");*/
+
+                                        echo '<span class="bold">' . Yii::app()->functions->translateDate(date("M d Y", strtotime($s['kr_delivery_options']['delivery_date']))) .
+                                            " " . t("at") . " " . $s['kr_delivery_options']['delivery_time'] . "</span> " . t("to");
+                                    }
+                                    ?>
+                                </p>
+                            <?php FunctionsV3::sectionHeader('Address') ?>
+                                <form id="frm-modal-enter-address" class="frm-modal-enter-address" method="POST" onsubmit="return false;" >
+                                    <?php echo CHtml::hiddenField('action','setAddress');?>
+
+                                    <?php /*echo CHtml::hiddenField('web_session_id', isset($this->data['web_session_id'])?$this->data['web_session_id']:'');*/?>
+
+                                    <div class="row top10">
+                                        <div class="col-md-10">
+                                            <?php echo CHtml::textField('client_address', isset($_SESSION['kr_search_address'])? $_SESSION['kr_search_address']:''/*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
+                                                'class' => 'grey-fields full-width',
+                                                'placeholder' => Yii::t("default", "Street"),
+                                                'data-validation' => "required"
+                                            )) ?>
+                                        </div>
+                                    </div>
+                                    <div class="row top10">
+                                        <div class="col-md-5 col-xs-5">
+                                            <input type="submit" class="calculate_shipment_fee  green-button   " value=" <?php echo t("use this address") ?>">
+                                        </div>
+                                        <div class="col-md-5 col-xs-5">
+                                            <p class="right" >
+                                                <?php echo t("delivery fee: "). baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            <form id="frm-delivery" class="frm-delivery" method="POST" onsubmit="return false;">
+                                <?php
+                                echo CHtml::hiddenField('action', 'placeOrder');
+                                echo CHtml::hiddenField('country_code', $merchant_info['country_code']);
+                                echo CHtml::hiddenField('currentController', 'store');
+                                echo CHtml::hiddenField('delivery_type', $s['kr_delivery_options']['delivery_type']);
+                                echo CHtml::hiddenField('cart_tip_percentage', '');
+                                echo CHtml::hiddenField('cart_tip_value', '');
+                                echo CHtml::hiddenField('client_order_sms_code');
+                                echo CHtml::hiddenField('client_order_session');
+                                if (isset($is_guest_checkout)) {
+                                    echo CHtml::hiddenField('is_guest_checkout', 2);
+                                }
+                                ?>
 
                             <div class="top10">
 
@@ -409,11 +465,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                 <div class="address-block">
                                     <div class="row top10">
                                         <div class="col-md-10">
-                                            <?php echo CHtml::hiddenField('client_address', $_SESSION['kr_search_address'], array(
-                                                'class' => 'grey-fields full-width',
-                                                'placeholder' => Yii::t("default", "Street"),
-                                                'data-validation' => "required"
-                                            )) ?>
+                                            <?php echo CHtml::hiddenField('client_address', isset($_SESSION['kr_search_address']) ? $_SESSION['kr_search_address']:''); ?>
                                         </div>
                                     </div>
 
@@ -612,7 +664,7 @@ echo CHtml::hiddenField('admin_currency_position',
                     <div class="order-list-wrap">
 
                         <p class="bold center"><?php echo t("Your Order") ?></p>
-                        <div class="item-order-wrap"></div>
+                        <div class="item-order-wrap-with-delivery-fee"></div>
 
                         <!--VOUCHER STARTS HERE-->
                         <?php Widgets::applyVoucher($merchant_id); ?>
