@@ -351,93 +351,43 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
         <div class="inner center">
          <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
-         </button> 
-                   
-            <?php if ($data['service']==3):?>
-            <p class="bold"><?php echo t("Distance Information")?></p>
-            <?php else :?>
+         </button>
+
 	        <p class="bold"><?php echo t("Delivery Information")?></p>
-	        <?php endif;?>
-	        
-	        <p>
-	        <?php 
-	        if ($distance){
-	        	echo t("Distance").": ".number_format($distance,1)." $distance_type";
-	        } else echo  t("Distance").": ".t("not available");
-	        ?>
-	        </p>
-	        
-	        <p class="delivery-fee-wrap">
-	        <?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id)?></p>
-	        
-	        <p class="delivery-fee-wrap">
-	        <?php 
-	        if (!empty($merchant_delivery_distance)){
-	        	echo t("Delivery Distance Covered").": ".$merchant_delivery_distance." $distance_type_orig";
-	        } else echo  t("Delivery Distance Covered").": ".t("not available");
-	        ?>
-	        </p>
-	        
-	        <p class="delivery-fee-wrap">
-	        <?php 
-	        if ($delivery_fee){
-	             echo t("Delivery Fee").": ".FunctionsV3::prettyPrice($delivery_fee);
-	        } else echo  t("Delivery Fee").": ".t("Free Delivery");
-	        ?>
-	        </p>
-	        
-	        <a href="javascript:;" class="top10 green-color change-address block text-center">
-	        [<?php echo t("Change Your Address here")?>]
-	        </a>
-	        
+			<p><?php echo t("Pickup free")?></p>
+			<p>
+				<?php
+				if (!empty($merchant_delivery_distance)){
+					echo t("Delivery Distance Covered").": ".$merchant_delivery_distance." $distance_type_orig";
+				} else echo  t("Delivery Distance Covered").": ".t("not available");
+				?>
+			</p>
+			<p>
+				<?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id)?>
+			</p>
+			<div class="top10">
+			<?php if ( $resp=Yii::app()->functions->getShippingRates($merchant_id)):?>
+				<?php foreach ($resp as $val): ?>
+						<p><?php echo t('delivery to domicile').' '.$val['distance_from'].$val['shipping_units']?>
+						<?php echo t('to').$val['distance_to'].$val['shipping_units']?>
+						<?php echo '€ '.standardPrettyFormat($val['distance_price'])?></p>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			</div>
+			<div class="top10">
+			<?php if ( $resp=Yii::app()->functions->getMetroShippingRates($merchant_id)):?>
+				<?php foreach ($resp as $val): ?>
+					<p><?php echo t('delivery to metro').' '.$val['distance_from'].$val['shipping_units']?>
+						<?php echo t('to').$val['distance_to'].$val['shipping_units']?>
+						<?php echo '€ '.standardPrettyFormat($val['distance_price'])?></p>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			</div>
+
+
         </div>
         <!--END DELIVERY INFO-->
 
-		  <!--METRO PICKUP INFO-->
-		  <div class="inner center">
-			  <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-			  </button>
-
-			  <?php if ($data['service']==1 || $data['service']==2 || $data['service']==3 || $data['service']==4):?>
-				  <p class="bold"><?php echo t("Distance Information")?></p>
-			  <?php else :?>
-				  <p class="bold"><?php echo t("Metro Pickup Information")?></p>
-			  <?php endif;?>
-
-			  <p>
-				  <?php
-				  if ($metro_distance){
-					  echo t("Distance").": ".number_format($metro_distance,1)." $metro_distance_type";
-				  } else echo  t("Distance").": ".t("not available");
-				  ?>
-			  </p>
-
-			  <p class="delivery-fee-wrap">
-				  <?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id)?></p>
-
-			  <p class="delivery-fee-wrap">
-				  <?php
-				  if (!empty($merchant_delivery_distance)){
-					  echo t("Delivery Distance Covered").": ".$merchant_delivery_distance." $metro_distance_type_orig";
-				  } else echo  t("Delivery Distance Covered").": ".t("not available");
-				  ?>
-			  </p>
-
-			  <p class="delivery-fee-wrap">
-				  <?php
-				  if ($metro_delivery_fee){
-					  echo t("Delivery Fee").": ".FunctionsV3::prettyPrice($metro_delivery_fee);
-				  } else echo  t("Delivery Fee").": ".t("Free Delivery");
-				  ?>
-			  </p>
-
-			  <a href="javascript:;" class="top10 green-color change-metro block text-center">
-				  [<?php echo t("Change metro station  here")?>]
-			  </a>
-
-		  </div>
-		  <!--END METRO PICKUP INFO-->
         
         <!--CART-->
         <div class="inner line-top relative">
