@@ -720,12 +720,16 @@ class StoreController extends CController
 
 				/*double check if session has value else use cookie*/
 		    	FunctionsV3::cookieLocation();
-					    		    	
-		    	if (isset($_SESSION['client_location'])){
+
+				$distance_type=FunctionsV3::getMerchantDistanceType($merchant_id);
+				$merchant_delivery_distance=getOption($merchant_id,'merchant_delivery_miles');
+				$distance_type_raw = $distance_type=="M"?"miles":"kilometers";
+				$distance_type=$distance_type=="M"?t("miles"):t("kilometers");
+				$distance_type_orig = $distance_type;
+				if (isset($_SESSION['client_location'])){
 		    		
 		    		/*get the distance from client address to merchant Address*/             
-	                 $distance_type=FunctionsV3::getMerchantDistanceType($merchant_id); 
-	                 $distance_type_orig=$distance_type;
+
 
 		             $distance=FunctionsV3::getDistanceBetweenPlot(
 		                $_SESSION['client_location']['lat'],
@@ -733,16 +737,13 @@ class StoreController extends CController
 		                $res['latitude'],$res['lontitude'],$distance_type
 		             );           
 		             		            		 
-		             $distance_type_raw = $distance_type=="M"?"miles":"kilometers";            		            
-		             $distance_type=$distance_type=="M"?t("miles"):t("kilometers");
-		             $distance_type_orig = $distance_type;
+
 		             
 		              if(!empty(FunctionsV3::$distance_type_result)){
 		             	$distance_type_raw=FunctionsV3::$distance_type_result;
 		             	$distance_type=t(FunctionsV3::$distance_type_result);
 		             }
-		             
-		             $merchant_delivery_distance=getOption($merchant_id,'merchant_delivery_miles');             
+
 		             		             
 		             $delivery_fee=FunctionsV3::getMerchantDeliveryFee(
 		                          $merchant_id,
@@ -914,7 +915,10 @@ class StoreController extends CController
 		   'captcha_customer_signup'=>getOptionA('captcha_customer_signup')
 		));
 	}
-	
+
+	/**
+	 * update delivery fee into $_SESSION['shipping_fee']
+	 */
 	public function actionPaymentOption()
 	{	
 		
@@ -941,7 +945,8 @@ class StoreController extends CController
 		   Yii::app()->functions->setSEO($seo_title,$seo_meta,$seo_key);
 		}
 
-		//update $_SESSION['shipping_fee']
+
+		// BEGIN update $_SESSION['shipping_fee']
 		$distance_type=FunctionsV3::getMerchantDistanceType($current_merchant);
 		$distance_type_raw = $distance_type=="M"?"miles":"kilometers";
 
@@ -952,20 +957,30 @@ class StoreController extends CController
 
 		$res=FunctionsV3::getMerchantBySlug($_SESSION['kr_merchant_slug']);
 		$distance=FunctionsV3::getDistanceBetweenPlot(
-			$_SESSION['client_location']['lat'],
-			$_SESSION['client_location']['long'],
+			isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'',
+			isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'',
 			$res['latitude'],$res['lontitude'],$distance_type
 		);
 
+		$delivery_type = $_SESSION['kr_delivery_options']['delivery_type'];
+		$delivery_fee = 0;
+		if ($delivery_type == 'delivery') {
+			$delivery_fee = FunctionsV3::getMerchantDeliveryFee(
+				$current_merchant,
+				$res['delivery_charges'],
+				$distance,
+				$distance_type_raw);
+		} else if ($delivery_type == 'metro') {
+			$delivery_fee = FunctionsV3::getMerchantMetroDeliveryFee(
+				$current_merchant,
+				$res['delivery_charges'],
+				$distance,
+				$distance_type_raw);
+		}
 
-		$delivery_fee=FunctionsV3::getMerchantDeliveryFee(
-			$current_merchant,
-			$res['delivery_charges'],
-			$distance,
-			$distance_type_raw);
-
-		//update DeliveryFee
 		$_SESSION['shipping_fee']=$delivery_fee;
+		// END update $_SESSION['shipping_fee']
+
 
 		$this->render('payment-option',array(
 		  'website_enabled_map_address'=>getOptionA('website_enabled_map_address'),
