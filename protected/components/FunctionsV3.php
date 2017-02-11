@@ -1603,10 +1603,11 @@ class FunctionsV3
     		$lng=isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'';*/
     		
 //    		$complete_address=$data['street']." ".$data['city']." ".$data['state']." ".$data['zipcode'];
-			$complete_address=$data['client_address'];
+//			$complete_address=$data['client_address'];
+//			$complete_address=$_SESSION['client_location'];
 
-    		$lat=0;
-			$lng=0;
+    		$lat=isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'';
+			$lng=isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'';
 			
     		/*if address book was used*/
     		if ( isset($data['address_book_id'])){
@@ -1617,29 +1618,7 @@ class FunctionsV3
 	    	        $complete_address.=" ".$address_book['zipcode'];
 	        	}	    		        
 	    	}
-	    		    	
-	    	/*if ($lat_res=Yii::app()->functions->geodecodeAddress($complete_address)){
-		        $lat=$lat_res['lat'];
-				$lng=$lat_res['long'];
-	    	}*/
-	    	
-	    	/*if map address was used*/
-    		if (isset($data['map_address_toogle'])){    			
-    			if ($data['map_address_toogle']==2){
-    				$lat=$data['map_address_lat'];
-    				$lng=$data['map_address_lng'];
-    			} else {
-    				if ($lat_res=Yii::app()->functions->geodecodeAddress($complete_address)){
-			           $lat=$lat_res['lat'];
-					   $lng=$lat_res['long'];
-		    	    }
-    			}
-    		} else {    			
-    			if ($lat_res=Yii::app()->functions->geodecodeAddress($complete_address)){
-		           $lat=$lat_res['lat'];
-				   $lng=$lat_res['long'];
-	    	    }
-    		}
+
     		    		
     		$distance=FunctionsV3::getDistanceBetweenPlot(
 				$lat,
