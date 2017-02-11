@@ -3180,7 +3180,7 @@ $lang["Please select payment method"] = "请选择付款方式";
 $lang["Mobile number is required"] = "必须有手机号码";
 
 
-
+$lang["address invalid"] = "地址不正确";
 
 
 $lang["Please select your credit card"] = "请选择信用卡";
