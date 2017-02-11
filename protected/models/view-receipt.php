@@ -191,7 +191,7 @@ $full_merchant_address=$merchant_info['street']." ".$merchant_info['city']. " ".
 	         <div class="clear"></div>
 	       </div>
 	       
-	       <?php if ($data['trans_type']=="delivery"):?>
+	       <?php if ($data['trans_type']=="delivery" || $data['trans_type']=="metro"):?>
 		       	       
 		       <?php if (isset($data['delivery_date'])):?>
 		       <div class="input-block">
@@ -313,7 +313,7 @@ $full_merchant_address=$merchant_info['street']." ".$merchant_info['city']. " ".
 		  </div>
 		  
 		  <div class="print_wrap">
-          <a class="print_element left" href="javascript:;"><i class="fa fa-print"></i> <?php echo Yii::t("default","Click here to print")?></a>       
+          <a class="print_element left" href="javascript:;"><i class="fa fa-print"></i> <?php echo Yii::t("default","Click here to print")?></a>
           <div class="clear"></div>
           </div>	    
 		  
