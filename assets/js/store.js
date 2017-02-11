@@ -467,7 +467,7 @@ function form_submit(formid)
         			}
         			
         			close_fb();
-        			load_item_cart();
+        			load_item_cart_without_delivery_fee();
         		}        		        	
         		
         		if ( action=="addCreditCard"){
@@ -997,9 +997,12 @@ jQuery(document).ready(function() {
    });
    
    if( $('.item-order-wrap').is(':visible') ) {	
-      load_item_cart();
+      load_item_cart_without_delivery_fee();
    }
-      
+	if( $('.item-order-wrap-with-delivery-fee').is(':visible') ) {
+		load_item_cart_with_delivery_fee();
+	}
+
    $( document ).on( "click", ".delete_item", function() {    	
    	
         if ( $(".pts_amount").is(':visible') ){
@@ -1841,7 +1844,54 @@ function uk_msg_sucess(msg)
 	});	  
 }
 
-function load_item_cart()
+function load_item_cart_without_delivery_fee()
+{
+	var params="action=loadItemCart&currentController=store&merchant_id="+$("#merchant_id").val();
+	params+="&delivery_type="+$("#delivery_type").val();
+	params+="&no_delivery_fee=true";
+	busy(true);
+	$.ajax({
+		type: "POST",
+		url: ajax_url,
+		data: params,
+		dataType: 'json',
+		success: function(data){
+			busy(false);
+
+			if( $('.cart-mobile-handle').is(':visible') ) {
+				showMobileCartNos();
+			}
+
+			if (data.code==1){
+				$(".item-order-wrap").html(data.details.html);
+				$(".checkout").attr("disabled",false);
+				$(".checkout").css({ 'pointer-events' : 'auto' });
+				//$(".checkout").addClass("uk-button-success");
+				$(".checkout").removeClass("disabled-button");
+				$(".voucher_wrap").show();
+				clearCartButton(1);
+
+				$(function () {
+					$('[data-toggle="tooltip"]').tooltip()
+				});
+
+			} else {
+				$(".item-order-wrap").html('<div class="center">'+data.msg+'</div>');
+				$(".checkout").attr("disabled",true);
+				$(".checkout").css({ 'pointer-events' : 'none' });
+				//$(".checkout").removeClass("uk-button-success");
+				$(".checkout").addClass("disabled-button");
+				$(".voucher_wrap").hide();
+				clearCartButton(2);
+			}
+		},
+		error: function(){
+			busy(false);
+		}
+	});
+}
+
+function load_item_cart_with_delivery_fee()
 {	
 	var params="action=loadItemCart&currentController=store&merchant_id="+$("#merchant_id").val();
 	params+="&delivery_type="+$("#delivery_type").val();
@@ -1859,7 +1909,7 @@ function load_item_cart()
 	    }
     	
     	if (data.code==1){
-    		$(".item-order-wrap").html(data.details.html);
+    		$(".item-order-wrap-with-delivery-fee").html(data.details.html);
     		$(".checkout").attr("disabled",false);    		
     		$(".checkout").css({ 'pointer-events' : 'auto' });
     		//$(".checkout").addClass("uk-button-success");
@@ -1899,7 +1949,7 @@ function delete_item(row)
     success: function(data){ 
     	busy(false);      	
     	if (data.code==1){    		
-    		load_item_cart();
+    		load_item_cart_without_delivery_fee();
     	}
     }, 
     error: function(){	        	    	
@@ -2436,7 +2486,7 @@ function apply_voucher()
     	busy(false);      	
     	if (data.code==1){    	
     		//console.debug(action);
-    		load_item_cart();
+    		load_item_cart_without_delivery_fee();
     		if ( action=="removeVoucher"){
     			$(".apply_voucher").text(js_lang.trans_24);    		
     			$("#voucher_code").show();
@@ -2496,7 +2546,7 @@ jQuery(document).ready(function() {
 		country: $("#admin_country_set").val()
 	});
 	
-	function success_geo(position) {	
+	function success_geo(position) {
 		if ( $("#s").val()!=""){
 		 	 return;
 		 }	
@@ -2658,7 +2708,7 @@ jQuery(document).ready(function() {
 			$(".delivery-min").show();
 			$(".pickup-min").hide();
 		}
-    	load_item_cart();
+    	load_item_cart_without_delivery_fee();
     });	    
     
     if( jQuery('#photo').is(':visible') ) {    	
@@ -2968,7 +3018,7 @@ function geocode_address2(locations)
 
 function dump(data)
 {
-	console.debug(data);
+	//console.debug(data);
 }
 
 function photo(data)
@@ -3097,7 +3147,7 @@ jQuery(document).ready(function() {
 			$(".delivery-min").show();	
 			$(".pickup-min").hide();	
 		}
-    	//load_item_cart();
+    	//load_item_cart_with_delivery_fee();
 	}
 	
 	/*if ( $("#merchant_close_store").exists() ){				
@@ -3151,7 +3201,7 @@ function single_food_item_add(item_id,price,size)
     	busy(false);      		
     	if (data.code==1) {    	   
     		uk_msg_sucess(data.msg);
-    		load_item_cart();
+    		load_item_cart_without_delivery_fee();
     	} else {
     		uk_msg(data.msg);
     	}	    
@@ -3725,7 +3775,7 @@ function clearCart()
     dataType: 'json',       
     success: function(data){ 
     	busy(false);
-    	load_item_cart();    	
+    	load_item_cart_without_delivery_fee();
     }, 
     error: function(){	        	    	
     	busy(false); 
@@ -3862,6 +3912,9 @@ function post(path, params, method) {
 	form.submit();
 }
 
+/*
+validate address form
+ */
 $.validate({
 	language : jsLanguageValidator,
 	form : '#frm-modal-enter-address',
@@ -3872,3 +3925,61 @@ $.validate({
 		return false;
 	}
 })
+
+
+/*
+replace accent
+ */
+ /*function replaceSpecialCharacter(q) {
+
+	q = q.replace(/e/i,'[eéèêëEÉÈÊË]');
+	q = q.replace(/a/i,'[aàâäAÀÁÂÃÄÅÆ]');
+	q = q.replace(/c/i,'[cçC]');
+	q = q.replace(/i/i,'[iïîIÌÍÎÏ]');
+	q = q.replace(/o/i,'[oôöÒÓÔÕÖ]');
+	q = q.replace(/u/i,'[uüûUÜÛÙÚ]');
+	q = q.replace(/y/i,'[yYÿ^yÝ]');
+	return q;
+}*/
+
+
+
+/*AUTOCOMPLETE for the station name*/
+var options = {
+	url: "assets/resources/metro-stops.json",
+
+	getValue: "name",
+
+	list: {
+		match: {
+			enabled: true
+		}
+	}
+};
+
+$("#client_metro").easyAutocomplete(options);
+
+/*var options = {
+
+	url: "assets/resources/metro-stops.json",
+
+	getValue: function(element) {
+		return element.name;
+	},
+
+	list: {
+		match: {
+			enabled: true
+		},
+		onSelectItemEvent: function() {
+			var selectedItemValue = $("#client_metro").getSelectedItemData().description;
+
+			$("#inputTwo").val(selectedItemValue).trigger("change");
+		},
+		onHideListEvent: function() {
+			$("#inputTwo").val("").trigger("change");
+		}
+	}
+};
+
+$("#client_metro").easyAutocomplete(options);*/
