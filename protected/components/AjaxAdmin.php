@@ -4048,12 +4048,6 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    {	    		    		  
 
-	    	/*dump($this->data);
-
-	    	dump($_SESSION['kr_item']);*/
-
-	    	
-
 	    	if (isset($this->data['merchant_id'])){
 
 	    		$current_merchant_id=$this->data['merchant_id'];	    
@@ -4840,13 +4834,14 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    public function placeOrder()
 
-	    {	
+	    {
+            //check address
+			if(!isset($this->data['client_address'])) {
+				$this->msg=Yii::t("default","address invalid");
+				return;
+			}
 
-	    		    		    		    	
-
-	    	// set merchant timezone 
-
-	    	$mtid=$_SESSION['kr_merchant_id'];	    	
+	    	$mtid=$_SESSION['kr_merchant_id'];
 
 	    	$mt_timezone=Yii::app()->functions->getOption("merchant_timezone",$mtid);	   	   	    	
 
@@ -4856,7 +4851,6 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    	}
 
-	    		    	
 
 	    	/*check if merchant has enabled Order sms verification*/
 
@@ -4878,27 +4872,10 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    	}	    	
 
-	    	
 
 	    	/** re-check delivery address */	    	
 
 	    	if ( $this->data['delivery_type']=="delivery" || $this->data['delivery_type']=="metro" ){
-
-		    	/*$functionsk=new FunctionsK();
-
-		    	if (!$functionsk->reCheckDelivery($this->data,$mtid)){
-
-		    		$mt_delivery_miles=Yii::app()->functions->getOption("merchant_delivery_miles",$mtid); 
-
-		    		$unit=Yii::app()->functions->getOption("merchant_distance_type",$mtid);
-
-		    		$this->msg=t("Sorry but this merchant delivers only with in ").$mt_delivery_miles."$unit";
-
-		    		return ;
-
-		    	}*/		    	
-
-		    	
 
 		    	/*Version 3 change getting of delivery fee*/
 
@@ -5016,23 +4993,21 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 		    		  'password'=>md5($this->data['password']),
 
-		    		  'street'=>$this->data['street'],
+		    		  'street'=>$this->data['client_address'],
 
-		    		  'city'=>$this->data['city'],
-
-		    		  'state'=>$this->data['state'],
-
-		    		  'zipcode'=>$this->data['zipcode'],
+//		    		  'city'=>$this->data['city'],
+//
+//		    		  'state'=>$this->data['state'],
+//
+//		    		  'zipcode'=>$this->data['zipcode'],
 
 		    		  'contact_phone'=>$this->data['contact_phone'],
 
-		    		  'location_name'=>$this->data['location_name'],
+		    		  'location_name'=>isset($this->data['location_name'])?$this->data['location_name']:'',
 
 		    		  'date_created'=>date('c'),
 
 		    		  'ip_address'=>$_SERVER['REMOTE_ADDR'],
-
-		    		  'contact_phone'=>$this->data['contact_phone'],
 
 		    		  'is_guest'=>1
 
@@ -5100,7 +5075,7 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    					$this->data['merchant_id']);
 
-	    				}	    		    					    				
+	    				}
 
 	    			    break;
 
@@ -5364,11 +5339,11 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    		        		$this->data['street']=$address_book['street'];
 
-	    		        		$this->data['city']=$address_book['city'];
+//	    		        		$this->data['city']=$address_book['city'];
 
-	    		        		$this->data['state']=$address_book['state'];
+//	    		        		$this->data['state']=$address_book['state'];
 
-	    		        		$this->data['zipcode']=$address_book['zipcode'];
+//	    		        		$this->data['zipcode']=$address_book['zipcode'];
 
 	    		        		$this->data['location_name']=$address_book['location_name'];
 
@@ -5378,7 +5353,6 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    		        
 
-	    		        $country_code='';
 
 	    		        $country_name='';
 
@@ -5402,13 +5376,13 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 		    		        	    if ($geo_res){		    		        			
 
-		    		        			$this->data['street']=isset($geo_res['address'])?$geo_res['address']." ":'';
+		    		        			$this->data['client_address']=isset($geo_res['address'])?$geo_res['address']." ":'';
 
-		    		        			$this->data['city']=isset($geo_res['city'])?$geo_res['city']:'';
+//		    		        			$this->data['city']=isset($geo_res['city'])?$geo_res['city']:'';
 
-		    		        			$this->data['state']=isset($geo_res['state'])?$geo_res['state']:'';
+//		    		        			$this->data['state']=isset($geo_res['state'])?$geo_res['state']:'';
 
-		    		        			$this->data['zipcode']=isset($geo_res['zip'])?$geo_res['zip']:'';
+//		    		        			$this->data['zipcode']=isset($geo_res['zip'])?$geo_res['zip']:'';
 
 		    		        			
 
@@ -5526,13 +5500,13 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 			    				  'client_id'=>Yii::app()->functions->getClientId(),
 
-			    				  'street'=>isset($this->data['street'])?$this->data['street']:'',
+			    				  'street'=>isset($this->data['client_address'])?$this->data['client_address']:'',
 
-			    				  'city'=>isset($this->data['city'])?$this->data['city']:'',
+//			    				  'city'=>isset($this->data['city'])?$this->data['city']:'',
 
-			    				  'state'=>isset($this->data['state'])?$this->data['state']:'',
+//			    				  'state'=>isset($this->data['state'])?$this->data['state']:'',
 
-			    				  'zipcode'=>isset($this->data['zipcode'])?$this->data['zipcode']:'',
+//			    				  'zipcode'=>isset($this->data['zipcode'])?$this->data['zipcode']:'',
 
 			    				  'location_name'=>isset($this->data['location_name'])?$this->data['location_name']:'',
 
@@ -5622,13 +5596,13 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 				            	  'client_id'=>Yii::app()->functions->getClientId(),
 
-				            	  'street'=>$this->data['street'],
+				            	  'street'=>$this->data['client_address'],
 
-				            	  'city'=>$this->data['city'],
+//				            	  'city'=>$this->data['city'],
 
-				            	  'state'=>$this->data['state'],
+//				            	  'state'=>$this->data['state'],
 
-				            	  'zipcode'=>$this->data['zipcode'],
+//				            	  'zipcode'=>$this->data['zipcode'],
 
 				            	  'location_name'=>$this->data['location_name'],
 
@@ -9228,7 +9202,7 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    	Yii::app()->functions->updateOptionAdmin("google_auto_address",
 
-	    	isset($this->data['google_auto_address'])?$this->data['google_auto_address']:'' );	    	  	
+	    	isset($this->data['google_auto_address'])?$this->data['google_auto_address']:'' );
 
 	    	
 
@@ -16277,8 +16251,10 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 		}
 
-		
 
+		/**
+		 * update kr_search_address,client_location
+		 */
 		public function setAddress()
 
 		{
@@ -16327,6 +16303,10 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 		}
 
+
+		/**
+		 * update client_location,kr_search_address
+		 */
 		public function setMetro()
 
 		{
@@ -16334,20 +16314,68 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 			if (isset($this->data['client_metro'])){
 
 				$_SESSION['kr_search_address']=$this->data['client_metro'];
-				$_SESSION['metro_address']=$this->data['client_metro'];
 
-				if ($lat_res=Yii::app()->functions->geodecodeAddress($this->data['client_metro'])){
+				//get metro station location
+				$json = file_get_contents(ROOTPATH."/assets/resources/metro-stops.json");
+				$stations = json_decode($json);
+				$lat_res['lat']='';
+				$lat_res['long']='';
+				$lat_res['lines']= array();;
 
-					$_SESSION['client_metro_location']=array(
+				foreach ($stations as $station) {
+					if ($station->name == $this->data['client_metro']) {
+						$lat_res['lat']=$station->latitude;
+						$lat_res['long']=$station->longitude;
 
-						'lat'=>$lat_res['lat'],
+						foreach ($station->lines as $lineInfo) {
+							array_push($lat_res['lines'], $lineInfo->line);
+						}
+						/*error_log("station name:".$station->name);
+						error_log("station lat:".$lat_res['lat']);
+						error_log("station long:".$lat_res['long']);*/
 
-						'long'=>$lat_res['long']
+						break;
+					}
+				}
 
+				if (isset($lat_res['lat'],$lat_res['long'])){
+
+					$merchant_id=$_SESSION['kr_merchant_id'];
+					$mt_delivery_miles=Yii::app()->functions->getOption("merchant_delivery_miles",$merchant_id);
+					$merchant_info=FunctionsV3::getMerchantById($merchant_id);
+					$distance_type=FunctionsV3::getMerchantDistanceType($merchant_id);
+					$distance_type_raw = $distance_type=="M"?"miles":"kilometers";
+					$distance=FunctionsV3::getDistanceBetweenPlot(
+						$lat_res['lat'],
+						$lat_res['long'],
+						$merchant_info['latitude'],$merchant_info['lontitude'],$distance_type
 					);
-					$this->code=1;$this->msg=Yii::t("default","Successful");
-				}  else $this->msg=Yii::t("default","Invalid metro station");
 
+					$merchant_delivery_distance=getOption($merchant_id,'merchant_delivery_miles');
+					if ( $distance>$merchant_delivery_distance) {
+						if ($distance_type_raw == "ft" || $distance_type_raw == "meter" || $distance_type_raw == "mt") {
+							;
+						}
+						$this->msg=Yii::t("default","Sorry but this merchant delivers only with in");
+						$this->msg=t("Sorry but this merchant delivers only with in ").$mt_delivery_miles." $distance_type_raw";
+					} else {
+
+						//update session info
+
+						$_SESSION['client_location']=array(
+
+							'lat'=>$lat_res['lat'],
+
+							'long'=>$lat_res['long'],
+
+							'lines'=>$lat_res['lines']
+						);
+
+
+						$this->code=1;$this->msg=Yii::t("default","Successful");
+					}
+
+				} else $this->msg=Yii::t("default","Invalid adress");
 
 
 			} else $this->msg=Yii::t("default","Address is required");
