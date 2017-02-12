@@ -3930,7 +3930,7 @@ $.validate({
 /*
 replace accent
  */
- /*function replaceSpecialCharacter(q) {
+ function replaceSpecialCharacter(q) {
 
 	q = q.replace(/e/i,'[eéèêëEÉÈÊË]');
 	q = q.replace(/a/i,'[aàâäAÀÁÂÃÄÅÆ]');
@@ -3940,25 +3940,11 @@ replace accent
 	q = q.replace(/u/i,'[uüûUÜÛÙÚ]');
 	q = q.replace(/y/i,'[yYÿ^yÝ]');
 	return q;
-}*/
+}
 
 
 
 /*AUTOCOMPLETE for the station name*/
-var options = {
-	url: "assets/resources/metro-stops.json",
-
-	getValue: "name",
-
-	list: {
-		match: {
-			enabled: true
-		}
-	}
-};
-
-$("#client_metro").easyAutocomplete(options);
-
 /*var options = {
 
 	url: "assets/resources/metro-stops.json",
@@ -3970,16 +3956,73 @@ $("#client_metro").easyAutocomplete(options);
 	list: {
 		match: {
 			enabled: true
-		},
-		onSelectItemEvent: function() {
-			var selectedItemValue = $("#client_metro").getSelectedItemData().description;
-
-			$("#inputTwo").val(selectedItemValue).trigger("change");
-		},
-		onHideListEvent: function() {
-			$("#inputTwo").val("").trigger("change");
 		}
 	}
 };
 
 $("#client_metro").easyAutocomplete(options);*/
+
+
+$(function() {
+	var accentMap = {
+		"á": "a",
+		"à": "a",
+		"â": "a",
+		"ä": "a",
+		"ç": "c",
+		"é": "e",
+		"è": "e",
+		"ê": "e",
+		"ë": "e",
+		"î": "i",
+		"ï": "i",
+		"ô": "o",
+		"ö": "o",
+		"ù": "u",
+		"û": "u",
+		"ü": "u",
+		"Â": "A",
+		"Ä": "A",
+		"À": "A",
+		"Ç": "C",
+		"Ê": "E",
+		"Ë": "E",
+		"É": "E",
+		"È": "E",
+		"Î": "I",
+		"Ï": "I",
+		"Ô": "O",
+		"Ö": "O",
+		"Û": "U",
+		"Ü": "U",
+		"Ù": "U"
+	};
+	var normalize = function( term ) {
+		var ret = "";
+		for ( var i = 0; i < term.length; i++ ) {
+			ret += accentMap[ term.charAt(i) ] || term.charAt(i);
+		}
+		return ret;
+	};
+	$.ajax({
+		url: "assets/resources/metro-stops.json",
+		dataType: "json",
+		data: "name",
+		success: function(data) {
+			var cat_data = $.map(data, function(item) {
+				return {
+					label: item.name
+				};
+			});
+			$("#client_metro").autocomplete({
+				source: function( request, response ) {
+				var matcher = new RegExp( $.ui.autocomplete.escapeRegex( request.term ), "i" );
+				response( $.grep( cat_data, function( value ) {
+					value = value.label || value.value || value;
+					return matcher.test( value ) || matcher.test( normalize( value ) );
+				}) );
+			}
+		});
+		}
+	});
+});
