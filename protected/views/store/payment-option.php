@@ -325,10 +325,10 @@ echo CHtml::hiddenField('admin_currency_position',
                                     <?php endif; ?>
 
                                     <div class="row top10">
-                                        <div class="col-md-3 col-xs-3">
+                                        <div class="col-md-3  col-xs-6 ">
                                             <input type="submit" class="calculate_shipment_fee  green-button  inline " value=" <?php echo t("deliver to this address") ?>">
                                         </div>
-                                        <div class="col-md-7 col-xs-7 top8">
+                                        <div class="col-md-7  col-xs-6 top8">
                                             <p class="right" >
                                                 <?php echo $s['kr_search_address']?>
                                                 <?php echo t("delivery fee").':'. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) ?>
@@ -640,6 +640,9 @@ echo CHtml::hiddenField('admin_currency_position',
             });
         }
     });
+
+
+
 
 
 </script>
