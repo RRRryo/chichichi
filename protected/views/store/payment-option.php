@@ -14,7 +14,9 @@ $s = $_SESSION;
 $continue = false;
 
 $merchant_address = '';
-if (isset($s['kr_merchant_id']) && $merchant_info = Yii::app()->functions->getMerchant($s['kr_merchant_id'])) {
+$merchant_id = isset($s['kr_merchant_id'])? $s['kr_merchant_id']:NULL;
+
+if (isset($merchant_id) && $merchant_info = Yii::app()->functions->getMerchant($merchant_id)) {
     $merchant_address = $merchant_info['street'] . " " . $merchant_info['city'] . " " . $merchant_info['state'];
     $merchant_address .= " " . $merchant_info['post_code'];
 }
@@ -26,30 +28,10 @@ if (isset($is_guest_checkout)) {
 } else {
     $client_info = Yii::app()->functions->getClientInfo(Yii::app()->functions->getClientId());
     if (isset($s['kr_search_address'])) {
-        $temp = explode(",", $s['kr_search_address']);
-        if (is_array($temp) && count($temp) >= 2) {
-            $street = isset($temp[0]) ? $temp[0] : '';
-            $city = isset($temp[1]) ? $temp[1] : '';
-            $state = isset($temp[2]) ? $temp[2] : '';
-        }
-        if (isset($client_info['street'])) {
-            if (empty($client_info['street'])) {
-                $client_info['street'] = $street;
-            }
-        }
-        if (isset($client_info['city'])) {
-            if (empty($client_info['city'])) {
-                $client_info['city'] = $city;
-            }
-        }
-        if (isset($client_info['state'])) {
-            if (empty($client_info['state'])) {
-                $client_info['state'] = $state;
-            }
-        }
+        $client_info['street']=$s['kr_search_address'];
     }
 
-    if (isset($s['kr_merchant_id']) && Yii::app()->functions->isClientLogin() && is_array($merchant_info)) {
+    if (isset($merchant_id) && Yii::app()->functions->isClientLogin() && is_array($merchant_info)) {
         $continue = true;
     }
 }
@@ -67,7 +49,6 @@ echo CHtml::hiddenField('admin_currency_position',
 
         <?php if ($continue == TRUE): ?>
             <?php
-            $merchant_id = $s['kr_merchant_id'];
             echo CHtml::hiddenField('merchant_id', $merchant_id);
             ?>
             <div class="col-md-7 border">
@@ -134,15 +115,8 @@ echo CHtml::hiddenField('admin_currency_position',
                             <p>
                                 <?php echo clearString(ucwords($merchant_info['restaurant_name'])) ?><?php echo Yii::t("default", "Restaurant") ?>
                                 <?php echo "<span class='bold'>" . Yii::t("default", ucwords($s['kr_delivery_options']['delivery_type'])) . "</span> ";
-                                if ($s['kr_delivery_options']['delivery_asap'] == 1) {
-                                    echo $s['kr_delivery_options']['delivery_date'] . " " . Yii::t("default", "ASAP");
-                                } else {
-                                    /*echo '<span class="bold">'.date("M d Y",strtotime($s['kr_delivery_options']['delivery_date'])).
-                                    " ".t("at"). " ". $s['kr_delivery_options']['delivery_time']."</span> ".t("to");*/
-
-                                    echo '<span class="bold">' . Yii::app()->functions->translateDate(date("M d Y", strtotime($s['kr_delivery_options']['delivery_date']))) .
-                                        " " . t("at") . " " . $s['kr_delivery_options']['delivery_time'] . "</span> " . t("to");
-                                }
+                                echo '<span class="bold">' . Yii::app()->functions->translateDate(date("M d Y", strtotime($s['kr_delivery_options']['delivery_date']))) .
+                                    " " . t("at") . " " . $s['kr_delivery_options']['delivery_time'] . "</span> " . t("to");
                                 ?>
                             </p>
                             <?php FunctionsV3::sectionHeader('Metro station') ?>
@@ -152,26 +126,33 @@ echo CHtml::hiddenField('admin_currency_position',
 
                                 <div class="row top10">
                                     <div class="col-md-5">
-                                        <?php echo CHtml::textField('client_metro', $_SESSION['kr_search_address'] /*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
+                                        <?php echo CHtml::textField('client_metro', isset($s['kr_search_address'])?$s['kr_search_address']:''  /*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
                                             'class' => 'grey-fields full-width',
                                             'placeholder' => Yii::t("default", "Metro station name"),
                                             'data-validation' => "required"
                                         )) ?>
                                     </div>
-                                    <div class="col-md-5">
-                                        <p class="right"><?php foreach($_SESSION['client_location']['lines'] as $line) {
-                                                echo $line.' ';
-                                            } ?>
+                                    <div class="col-md-5 top8">
+                                        <p class="right">
+                                            <?php
+                                            $lines='';
+                                            if(isset($_SESSION['client_location']['lines'])) {
+                                                foreach($_SESSION['client_location']['lines'] as $line) {
+                                                    echo $line.' ';
+                                                    $lines.=$line.' ';
+                                                }
+                                            }
+                                             ?>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row top10">
                                     <div class="col-md-5 col-xs-5">
-                                        <input type="submit" class="calculate_shipment_fee  green-button   " value=" <?php echo t("delivery to this station") ?>">
+                                        <input type="submit" class="calculate_shipment_fee  green-button block medium full-width " value=" <?php echo t("delivery to this station") ?>">
                                     </div>
-                                    <div class="col-md-5 col-xs-5">
+                                    <div class="col-md-5 col-xs-5 top8">
                                         <p class="right" >
-                                            <?php echo t("delivery fee: "). baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) ?>
+                                            <?php echo t("delivery fee").': '. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) ?>
                                         </p>
                                     </div>
                                 </div>
@@ -222,77 +203,13 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 <?php endif; ?>
 
-<!--                                --><?php //if ($address_book): ?>
-<!--                                    <div class="address_book_wrap">-->
-<!--                                        <div class="row top10">-->
-<!--                                            <div class="col-md-10">-->
-<!--                                                --><?php
-//                                                $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
-//                                                echo CHtml::dropDownList('address_book_id', $address_book['id'],
-//                                                    (array)$address_list, array(
-//                                                        'class' => "grey-fields full-width"
-//                                                    ));
-//                                                ?>
-<!--                                                <a href="javascript:;" class="edit_address_book block top10">-->
-<!--                                                    <i class="ion-compose"></i> --><?php //echo t("Edit") ?>
-<!--                                                </a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div> <!--address_book_wrap-->
-<!--                                --><?php //endif; ?>
-
                                 <div class="address-block">
                                     <div class="row top10">
                                         <div class="col-md-10">
-                                            <?php echo CHtml::hiddenField('client_address', isset($_SESSION['metro_address'])?$_SESSION['metro_address']:'') ?>
+<!--                                            //TODO-->
+                                            <?php echo CHtml::hiddenField('client_address', isset($_SESSION['metro_address'])?$_SESSION['metro_address'].';'.$lines:'') ?>
                                         </div>
                                     </div>
-
-                                    <!--<div class="row top10">
-                                        <div class="col-md-10">
-                                            <?php /*echo CHtml::textField('city',
-                                                isset($client_info['city']) ? $client_info['city'] : ''
-                                                , array(
-                                                    'class' => 'grey-fields full-width',
-                                                    'placeholder' => Yii::t("default", "City"),
-                                                    'data-validation' => "required"
-                                                )) */?>
-                                        </div>
-                                    </div>
-
-                                    <div class="row top10">
-                                        <div class="col-md-10">
-                                            <?php /*echo CHtml::textField('state',
-                                                isset($client_info['state']) ? $client_info['state'] : ''
-                                                , array(
-                                                    'class' => 'grey-fields full-width',
-                                                    'placeholder' => Yii::t("default", "State"),
-                                                    'data-validation' => "required"
-                                                )) */?>
-                                        </div>
-                                    </div>
-
-                                    <div class="row top10">
-                                        <div class="col-md-10">
-                                            <?php /*echo CHtml::textField('zipcode',
-                                                isset($client_info['zipcode']) ? $client_info['zipcode'] : ''
-                                                , array(
-                                                    'class' => 'grey-fields full-width',
-                                                    'placeholder' => Yii::t("default", "Zip code")
-                                                )) */?>
-                                        </div>
-                                    </div>
-
-                                    <div class="row top10">
-                                        <div class="col-md-10">
-                                            <?php /*echo CHtml::textField('location_name',
-                                                isset($client_info['location_name']) ? $client_info['location_name'] : ''
-                                                , array(
-                                                    'class' => 'grey-fields full-width',
-                                                    'placeholder' => Yii::t("default", "Apartment suite, unit number, or company name")
-                                                )) */?>
-                                        </div>
-                                    </div>-->
 
                                 </div> <!--address-block-->
 
@@ -358,9 +275,9 @@ echo CHtml::hiddenField('admin_currency_position',
                             <?php FunctionsV3::sectionHeader('Delivery Information') ?>
                                 <p>
                                     <?php echo clearString(ucwords($merchant_info['restaurant_name'])) ?><?php echo Yii::t("default", "Restaurant") ?>
-                                    <?php echo "<span class='bold'>" . Yii::t("default", ucwords($s['kr_delivery_options']['delivery_type'])) . "</span> ";
+                                    <?php echo "<span>" . Yii::t("default", "will at") . "</span> ";
                                     if ($s['kr_delivery_options']['delivery_asap'] == 1) {
-                                        echo $s['kr_delivery_options']['delivery_date'] . " " . Yii::t("default", "ASAP");
+                                        echo $s['kr_delivery_options']['delivery_date'] . " " . Yii::t("default", "ASAP") .' '. t("to");
                                     } else {
                                         /*echo '<span class="bold">'.date("M d Y",strtotime($s['kr_delivery_options']['delivery_date'])).
                                         " ".t("at"). " ". $s['kr_delivery_options']['delivery_time']."</span> ".t("to");*/
@@ -370,28 +287,51 @@ echo CHtml::hiddenField('admin_currency_position',
                                     }
                                     ?>
                                 </p>
-                            <?php FunctionsV3::sectionHeader('Address') ?>
                                 <form id="frm-modal-enter-address" class="frm-modal-enter-address" method="POST" onsubmit="return false;" >
                                     <?php echo CHtml::hiddenField('action','setAddress');?>
 
                                     <?php /*echo CHtml::hiddenField('web_session_id', isset($this->data['web_session_id'])?$this->data['web_session_id']:'');*/?>
 
-                                    <div class="row top10">
+                                    <div class="row top10 address-block">
                                         <div class="col-md-10">
-                                            <?php echo CHtml::textField('client_address', isset($_SESSION['kr_search_address'])? $_SESSION['kr_search_address']:''/*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
+                                            <?php echo CHtml::textField('client_address', isset($s['kr_search_address'])? $s['kr_search_address']:''/*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
                                                 'class' => 'grey-fields full-width',
-                                                'placeholder' => Yii::t("default", "Street"),
+                                                'placeholder' => Yii::t("default", "please enter your address"),
                                                 'data-validation' => "required"
                                             )) ?>
+                                            <a href="javascript:;" class="show_address_book block top10">
+                                                <i class="ion-compose"></i> <?php echo t("Show address book") ?>
+                                            </a>
                                         </div>
                                     </div>
+
+                                    <?php if ($address_book && $show_address_book): ?>
+                                        <div class="address_book_wrap">
+                                            <div class="row top10">
+                                                <div class="col-md-10">
+                                                    <?php
+                                                    $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
+                                                    echo CHtml::dropDownList('address_book_id', $address_book['id'],
+                                                        (array)$address_list, array(
+                                                            'class' => "grey-fields full-width"
+                                                        ));
+                                                    ?>
+                                                    <a href="javascript:;" class="edit_address_book block top10">
+                                                        <i class="ion-compose"></i> <?php echo t("Edit") ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div> <!--address_book_wrap-->
+                                    <?php endif; ?>
+
                                     <div class="row top10">
-                                        <div class="col-md-5 col-xs-5">
-                                            <input type="submit" class="calculate_shipment_fee  green-button   " value=" <?php echo t("use this address") ?>">
+                                        <div class="col-md-3 col-xs-3">
+                                            <input type="submit" class="calculate_shipment_fee  green-button  inline " value=" <?php echo t("deliver to this address") ?>">
                                         </div>
-                                        <div class="col-md-5 col-xs-5">
+                                        <div class="col-md-7 col-xs-7 top8">
                                             <p class="right" >
-                                                <?php echo t("delivery fee: "). baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) ?>
+                                                <?php echo $s['kr_search_address']?>
+                                                <?php echo t("delivery fee").':'. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) ?>
                                             </p>
                                         </div>
                                     </div>
@@ -406,6 +346,8 @@ echo CHtml::hiddenField('admin_currency_position',
                                 echo CHtml::hiddenField('cart_tip_value', '');
                                 echo CHtml::hiddenField('client_order_sms_code');
                                 echo CHtml::hiddenField('client_order_session');
+                                echo CHtml::hiddenField('client_address', isset($s['kr_search_address']) ? $s['kr_search_address']:'');
+
                                 if (isset($is_guest_checkout)) {
                                     echo CHtml::hiddenField('is_guest_checkout', 2);
                                 }
@@ -443,91 +385,20 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 <?php endif; ?>
 
-<!--                                --><?php //if ($address_book): ?>
-<!--                                    <div class="address_book_wrap">-->
-<!--                                        <div class="row top10">-->
-<!--                                            <div class="col-md-10">-->
-<!--                                                --><?php
-//                                                $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
-//                                                echo CHtml::dropDownList('address_book_id', $address_book['id'],
-//                                                    (array)$address_list, array(
-//                                                        'class' => "grey-fields full-width"
-//                                                    ));
-//                                                ?>
-<!--                                                <a href="javascript:;" class="edit_address_book block top10">-->
-<!--                                                    <i class="ion-compose"></i> --><?php //echo t("Edit") ?>
-<!--                                                </a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div> <!--address_book_wrap-->
-<!--                                --><?php //endif; ?>
+
 
                                 <div class="address-block">
+
                                     <div class="row top10">
                                         <div class="col-md-10">
-                                            <?php echo CHtml::hiddenField('client_address', isset($_SESSION['kr_search_address']) ? $_SESSION['kr_search_address']:''); ?>
+                                            <?php echo CHtml::textField('location_name',
+                                                isset($client_info['location_name']) ? $client_info['location_name'] : ''
+                                                , array(
+                                                    'class' => 'grey-fields full-width',
+                                                    'placeholder' => Yii::t("default", "Apartment suite, unit number, or company name")
+                                                )) ?>
                                         </div>
                                     </div>
-
-                                    <!--<div class="row top10">
-                                        <div class="col-md-5">
-                                            <a href="#" class="calculate_shipment_fee green-button medium block">
-                                                <?php /*echo t("calculate shipment fee") */?>
-                                            </a>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <p class="center orange-button medium block center">
-                                                <?php /*echo baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id) */?>
-                                            </p>
-                                        </div>
-                                    </div>-->
-
-
-<!--                                    <div class="row top10">-->
-<!--                                        <div class="col-md-10">-->
-<!--                                            --><?php //echo CHtml::textField('city',
-//                                                isset($client_info['city']) ? $client_info['city'] : ''
-//                                                , array(
-//                                                    'class' => 'grey-fields full-width',
-//                                                    'placeholder' => Yii::t("default", "City"),
-//                                                    'data-validation' => "required"
-//                                                )) ?>
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!---->
-<!--                                    <div class="row top10">-->
-<!--                                        <div class="col-md-10">-->
-<!--                                            --><?php //echo CHtml::textField('state',
-//                                                isset($client_info['state']) ? $client_info['state'] : ''
-//                                                , array(
-//                                                    'class' => 'grey-fields full-width',
-//                                                    'placeholder' => Yii::t("default", "State"),
-//                                                    'data-validation' => "required"
-//                                                )) ?>
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!---->
-<!--                                    <div class="row top10">-->
-<!--                                        <div class="col-md-10">-->
-<!--                                            --><?php //echo CHtml::textField('zipcode',
-//                                                isset($client_info['zipcode']) ? $client_info['zipcode'] : ''
-//                                                , array(
-//                                                    'class' => 'grey-fields full-width',
-//                                                    'placeholder' => Yii::t("default", "Zip code")
-//                                                )) ?>
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!---->
-<!--                                    <div class="row top10">-->
-<!--                                        <div class="col-md-10">-->
-<!--                                            --><?php //echo CHtml::textField('location_name',
-//                                                isset($client_info['location_name']) ? $client_info['location_name'] : ''
-//                                                , array(
-//                                                    'class' => 'grey-fields full-width',
-//                                                    'placeholder' => Yii::t("default", "Apartment suite, unit number, or company name")
-//                                                )) ?>
-<!--                                        </div>-->
-<!--                                    </div>-->
 
                                 </div> <!--address-block-->
 
