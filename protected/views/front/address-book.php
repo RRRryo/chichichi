@@ -127,9 +127,9 @@ $do=isset($_GET['do'])?$_GET['do']:'';
 <table id="table_list" class="table table-striped">
   <thead>
   <tr>
-   <th width="40%" ><?php echo Yii::t("default","Address")?></th>
-   <th ><?php echo Yii::t("default","Location Name")?></th>
-   <th ><?php echo Yii::t("default","Default")?></th>   
+   <th width="50%" ><?php echo Yii::t("default","Address")?></th>
+   <th width="40%"><?php echo Yii::t("default","Location Name")?></th>
+   <th width="10%"><?php echo Yii::t("default","Default")?></th>
   </tr>
   </thead>
 </table>  
