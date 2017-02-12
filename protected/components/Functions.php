@@ -6105,6 +6105,52 @@ class Functions extends CApplicationComponent
 
 	}
 
+	/**
+	 * 	 $_SESSION['shipping_fee']
+
+	 */
+	public function calculateShippingFeeForAllType() {
+		$current_merchant='';
+		if (isset($_SESSION['kr_merchant_id'])){
+			$current_merchant=$_SESSION['kr_merchant_id'];
+		}
+		$distance_type=FunctionsV3::getMerchantDistanceType($current_merchant);
+		$distance_type_raw = $distance_type=="M"?"miles":"kilometers";
+
+		if(!empty(FunctionsV3::$distance_type_result)){
+			$distance_type_raw=FunctionsV3::$distance_type_result;
+			$distance_type=t(FunctionsV3::$distance_type_result);
+		}
+
+		$res=NULL;
+		if (isset($_SESSION['kr_merchant_slug'])) {
+			$res=FunctionsV3::getMerchantBySlug($_SESSION['kr_merchant_slug']);
+		}
+		$distance=FunctionsV3::getDistanceBetweenPlot(
+			isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'',
+			isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'',
+			$res['latitude'],$res['lontitude'],$distance_type
+		);
+
+		$delivery_type = isset($_SESSION['kr_delivery_options']['delivery_type'])? $_SESSION['kr_delivery_options']['delivery_type']:NULL;
+		$delivery_fee = 0;
+		if ($delivery_type == 'delivery') {
+			$delivery_fee = FunctionsV3::getMerchantDeliveryFee(
+				$current_merchant,
+				$res['delivery_charges'],
+				$distance,
+				$distance_type_raw);
+		} else if ($delivery_type == 'metro') {
+			$delivery_fee = FunctionsV3::getMerchantMetroDeliveryFee(
+				$current_merchant,
+				$res['delivery_charges'],
+				$distance,
+				$distance_type_raw);
+		}
+
+		$_SESSION['shipping_fee']=$delivery_fee;
+	}
+
 
 
 	public function displayOrderHTML($data='',$cart_item='',$receipt=false,$new_order_id='')
