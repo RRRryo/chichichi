@@ -3662,6 +3662,10 @@ jQuery(document).ready(function($){
   	    $("#city").attr("data-validation",'required');
   	    $("#state").attr("data-validation",'required');
 	});
+
+	$( document ).on( "click", ".show_address_book", function() {
+		window.location.reload();
+	});
 	
 	$( document ).on( "click", ".map-address", function() {
 		$(this).hide();
@@ -3927,25 +3931,10 @@ $.validate({
 })
 
 
-/*
-replace accent
- */
- function replaceSpecialCharacter(q) {
-
-	q = q.replace(/e/i,'[eéèêëEÉÈÊË]');
-	q = q.replace(/a/i,'[aàâäAÀÁÂÃÄÅÆ]');
-	q = q.replace(/c/i,'[cçC]');
-	q = q.replace(/i/i,'[iïîIÌÍÎÏ]');
-	q = q.replace(/o/i,'[oôöÒÓÔÕÖ]');
-	q = q.replace(/u/i,'[uüûUÜÛÙÚ]');
-	q = q.replace(/y/i,'[yYÿ^yÝ]');
-	return q;
-}
-
 
 
 /*AUTOCOMPLETE for the station name*/
-/*var options = {
+var options = {
 
 	url: "assets/resources/metro-stops.json",
 
@@ -3960,42 +3949,14 @@ replace accent
 	}
 };
 
-$("#client_metro").easyAutocomplete(options);*/
-
+$("#client_metro").easyAutocomplete(options);
+/*
 
 $(function() {
 	var accentMap = {
 		"á": "a",
 		"à": "a",
-		"â": "a",
-		"ä": "a",
-		"ç": "c",
-		"é": "e",
-		"è": "e",
-		"ê": "e",
-		"ë": "e",
-		"î": "i",
-		"ï": "i",
-		"ô": "o",
-		"ö": "o",
-		"ù": "u",
-		"û": "u",
-		"ü": "u",
-		"Â": "A",
-		"Ä": "A",
-		"À": "A",
-		"Ç": "C",
-		"Ê": "E",
-		"Ë": "E",
-		"É": "E",
-		"È": "E",
-		"Î": "I",
-		"Ï": "I",
-		"Ô": "O",
-		"Ö": "O",
-		"Û": "U",
-		"Ü": "U",
-		"Ù": "U"
+
 	};
 	var normalize = function( term ) {
 		var ret = "";
@@ -4016,13 +3977,40 @@ $(function() {
 			});
 			$("#client_metro").autocomplete({
 				source: function( request, response ) {
-				var matcher = new RegExp( $.ui.autocomplete.escapeRegex( request.term ), "i" );
-				response( $.grep( cat_data, function( value ) {
-					value = value.label || value.value || value;
-					return matcher.test( value ) || matcher.test( normalize( value ) );
-				}) );
-			}
-		});
+					var matcher = new RegExp( $.ui.autocomplete.escapeRegex( request.term ), "i" );
+					response( $.grep( cat_data, function( value ) {
+						value = value.label;
+						return matcher.test( normalize( value ) );
+					}) );
+				}
+			});
 		}
 	});
-});
+});*/
+/*
+
+$( function() {
+	var names = [ "Jörn Zaefferer", "Scott González", "John Resig" ];
+
+	var accentMap = {
+		"á": "a",
+		"ö": "o"
+	};
+	var normalize = function( term ) {
+		var ret = "";
+		for ( var i = 0; i < term.length; i++ ) {
+			ret += accentMap[ term.charAt(i) ] || term.charAt(i);
+		}
+		return ret;
+	};
+
+	$( "#client_metro" ).autocomplete({
+		source: function( request, response ) {
+			var matcher = new RegExp( $.ui.autocomplete.escapeRegex( request.term ), "i" );
+			response( $.grep( names, function( value ) {
+				value = value.label || value.value || value;
+				return matcher.test( value ) || matcher.test( normalize( value ) );
+			}) );
+		}
+	});
+} );*/
