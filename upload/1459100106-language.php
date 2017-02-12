@@ -1,6 +1,6 @@
 <?php
 
-$lang["Signup"]              ="会员注册";
+
 
 
 $lang["Sign In"]             ="登录";
@@ -1647,7 +1647,9 @@ $lang["Usage:"] = "用法 :";
 $lang["Sign up"] = "会员注册";
 
 
+$lang["Continue as guest"] = "游客身份继续";
 
+$lang["Show address book"] = "显示我的地址簿";
 
 
 $lang["No packages found."] = "未找到软件包。";
