@@ -367,8 +367,9 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 			</p>
 			<div class="top10">
 			<?php if ( $resp=Yii::app()->functions->getShippingRates($merchant_id)):?>
+				<p><?php echo t('delivery to domicile')?></p>
 				<?php foreach ($resp as $val): ?>
-						<p><?php echo t('delivery to domicile').' '.$val['distance_from'].$val['shipping_units']?>
+						<p><?php echo $val['distance_from'].$val['shipping_units']?>
 						<?php echo t('to').$val['distance_to'].$val['shipping_units']?>
 						<?php echo '€ '.standardPrettyFormat($val['distance_price'])?></p>
 				<?php endforeach; ?>
@@ -376,8 +377,9 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 			</div>
 			<div class="top10">
 			<?php if ( $resp=Yii::app()->functions->getMetroShippingRates($merchant_id)):?>
+				<p><?php echo t('delivery to metro')?></p>
 				<?php foreach ($resp as $val): ?>
-					<p><?php echo t('delivery to metro').' '.$val['distance_from'].$val['shipping_units']?>
+					<p><?php echo $val['distance_from'].$val['shipping_units']?>
 						<?php echo t('to').$val['distance_to'].$val['shipping_units']?>
 						<?php echo '€ '.standardPrettyFormat($val['distance_price'])?></p>
 				<?php endforeach; ?>
