@@ -1,13 +1,13 @@
 [
   {
-    "description": "Jean Jaurès (23 boulevard) - 92012",
+    "description": "Jean Jaures (23 boulevard) - 92012",
     "latitude": 48.84228,
     "lines": [{"line": "ligne-10", "position": 2}],
     "longitude": 2.238863,
-    "name": "Boulogne-Jean-Jaurès"
+    "name": "Boulogne-Jean-Jaures"
   },
   {
-    "description": "Sèvres (88 rue de) - 75107",
+    "description": "Sevres (88 rue de) - 75107",
     "latitude": 48.846849,
     "lines": [
       {"line": "ligne-13", "position": 9},
@@ -84,7 +84,7 @@
     "latitude": 48.870015,
     "lines": [{"line": "ligne-11", "position": 6}],
     "longitude": 2.370769,
-    "name": "Goncourt (Hôpital Saint-Louis)"
+    "name": "Goncourt (Hopital Saint-Louis)"
   },
   {
     "description": "Belleville (rue de) - 75120",
@@ -108,7 +108,7 @@
     "name": "Pyrenees"
   },
   {
-    "description": "Liberté (2 boulevard de la) - 93045",
+    "description": "Liberte (2 boulevard de la) - 93045",
     "latitude": 48.880051,
     "lines": [{"line": "ligne-11", "position": 13}],
     "longitude": 2.41566,
@@ -119,10 +119,10 @@
     "latitude": 48.858533,
     "lines": [{"line": "ligne-12", "position": 16}],
     "longitude": 2.323089,
-    "name": "Solférino"
+    "name": "Solferino"
   },
   {
-    "description": "Général Leclerc (rue du) - 92040",
+    "description": "General Leclerc (rue du) - 92040",
     "latitude": 48.824347,
     "lines": [{"line": "ligne-12", "position": 29}],
     "longitude": 2.273566,
@@ -133,7 +133,7 @@
     "latitude": 48.839439,
     "lines": [{"line": "ligne-12", "position": 25}],
     "longitude": 2.301078,
-    "name": "Vaugirard (Adolphe Chérioux)"
+    "name": "Vaugirard (Adolphe Cherioux)"
   },
   {
     "description": "Lamarck (53/53 bis rue) - 75118",
@@ -150,18 +150,18 @@
     "name": "Notre-Dame des Champs"
   },
   {
-    "description": "Saint-Germain (233 boulevard, angle avec la rue de l'Université) - 75107",
+    "description": "Saint-Germain (233 boulevard, angle avec la rue de l'Universite) - 75107",
     "latitude": 48.861454,
     "lines": [{"line": "ligne-12", "position": 15}],
     "longitude": 2.32031,
-    "name": "Assemblée Nationale"
+    "name": "Assemblee Nationale"
   },
   {
     "description": "Cherche-Midi (138 rue du) - 75115",
     "latitude": 48.844323,
     "lines": [{"line": "ligne-12", "position": 22}],
     "longitude": 2.317565,
-    "name": "Falguière"
+    "name": "Falguiere"
   },
   {
     "description": "Volontaires (25 rue des) - 75115",
@@ -171,7 +171,7 @@
     "name": "Volontaires"
   },
   {
-    "description": "Saint-Georges (place, côté pair) - 75109",
+    "description": "Saint-Georges (place, cote pair) - 75109",
     "latitude": 48.878594,
     "lines": [{"line": "ligne-12", "position": 9}],
     "longitude": 2.337827,
@@ -185,14 +185,14 @@
     "name": "Abbesses"
   },
   {
-    "description": "Bourdaloué (1 rue, en face) - 75109",
+    "description": "Bourdaloue (1 rue, en face) - 75109",
     "latitude": 48.876796,
     "lines": [{"line": "ligne-12", "position": 10}],
     "longitude": 2.339026,
     "name": "Notre-Dame de Lorette"
   },
   {
-    "description": "Place du Front Populaire, côté rue Waldeck Rochet face à la rue des Gardinoux - 93001",
+    "description": "Place du Front Populaire, cote rue Waldeck Rochet face a la rue des Gardinoux - 93001",
     "latitude": 48.906667,
     "lines": [{"line": "ligne-12", "position": 1}],
     "longitude": 2.36523,
@@ -214,7 +214,7 @@
     "latitude": 48.876329,
     "lines": [{"line": "ligne-12", "position": 11}],
     "longitude": 2.331805,
-    "name": "Trinité-d'Estienne d'Orves"
+    "name": "Trinite-d'Estienne d'Orves"
   },
   {
     "description": "Raspail (terre-plein face au 2 boulevard) - 75107",
@@ -276,14 +276,14 @@
     "name": "Pernety"
   },
   {
-    "description": "République (220 avenue de la) - 92020",
+    "description": "Republique (220 avenue de la) - 92020",
     "latitude": 48.810283,
     "lines": [{"line": "ligne-13", "position": 1}],
     "longitude": 2.301289,
-    "name": "Châtillon Montrouge"
+    "name": "Chatillon Montrouge"
   },
   {
-    "description": "Alésia (211 rue d', 136 rue Raymond Losserand) - 75114",
+    "description": "Alesia (211 rue d', 136 rue Raymond Losserand) - 75114",
     "latitude": 48.831758,
     "lines": [{"line": "ligne-13", "position": 5}],
     "longitude": 2.313867,
@@ -304,11 +304,11 @@
     "name": "Brochant"
   },
   {
-    "description": "Gare routière - 92004",
+    "description": "Gare routiere - 92004",
     "latitude": 48.916575,
     "lines": [{"line": "ligne-13", "position": 22}],
     "longitude": 2.294329,
-    "name": "Gabriel-Péri"
+    "name": "Gabriel-Peri"
   },
   {
     "description": "Clichy (66 avenue de, 6 avenue de Saint-Ouen) - 75117",
@@ -318,11 +318,11 @@
     "name": "La Fourche"
   },
   {
-    "description": "Maine (avenue du, côté pair vers l'hôpital Léopol Bellan) - 75114",
+    "description": "Maine (avenue du, cote pair vers l'hopital Leopol Bellan) - 75114",
     "latitude": 48.838752,
     "lines": [{"line": "ligne-13", "position": 7}],
     "longitude": 2.322509,
-    "name": "Gaité"
+    "name": "Gaite"
   },
   {
     "description": "Gare Routiere - 93066",
@@ -332,7 +332,7 @@
     "name": "Saint-Denis-Universite"
   },
   {
-    "description": "Invalides (13 boulevard des, È côté du ministère du Travail) - 75107",
+    "description": "Invalides (13 boulevard des, e cote du ministere du Travail) - 75107",
     "latitude": 48.856393,
     "lines": [{"line": "ligne-13", "position": 11}],
     "longitude": 2.314754,
@@ -353,7 +353,7 @@
     "name": "Mairie de Clichy"
   },
   {
-    "description": "République (place de la, mairie) - 93070",
+    "description": "Republique (place de la, mairie) - 93070",
     "latitude": 48.911622,
     "lines": [{"line": "ligne-13", "position": 22}],
     "longitude": 2.333737,
@@ -377,14 +377,14 @@
     "name": "Porte de Vanves"
   },
   {
-    "description": "Gabriel Péri (avenue, rue Garibaldi) - 93070",
+    "description": "Gabriel Peri (avenue, rue Garibaldi) - 93070",
     "latitude": 48.906382,
     "lines": [{"line": "ligne-13", "position": 21}],
     "longitude": 2.33191,
     "name": "Garibaldi"
   },
   {
-    "description": "Légion d'Honneur (rue de la) - 93066",
+    "description": "Legion d'Honneur (rue de la) - 93066",
     "latitude": 48.929927,
     "lines": [{"line": "ligne-13", "position": 24}],
     "longitude": 2.356186,
@@ -412,7 +412,7 @@
     "name": "Porte de Clichy"
   },
   {
-    "description": "Guy Môquet (87 rue) - 92020",
+    "description": "Guy Moquet (87 rue) - 92020",
     "latitude": 48.814704,
     "lines": [{"line": "ligne-13", "position": 2}],
     "longitude": 2.297285,
@@ -437,14 +437,14 @@
     "latitude": 48.893009,
     "lines": [{"line": "ligne-13", "position": 19}],
     "longitude": 2.327496,
-    "name": "Guy-Môquet"
+    "name": "Guy-Moquet"
   },
   {
-    "description": "Liège (terre-plein face au 21 rue de) - 75108",
+    "description": "Liege (terre-plein face au 21 rue de) - 75108",
     "latitude": 48.879537,
     "lines": [{"line": "ligne-13", "position": 16}],
     "longitude": 2.326858,
-    "name": "Liège"
+    "name": "Liege"
   },
   {
     "description": "Cour Chamonard - 75112",
@@ -486,7 +486,7 @@
     "latitude": 48.752989,
     "lines": [{"line": "rer-a", "position": 24}],
     "longitude": 2.505223,
-    "name": "Boissy-Saint-Léger"
+    "name": "Boissy-Saint-Leger"
   },
   {
     "description": "Clemenceau (Place) - 78172",
@@ -500,7 +500,7 @@
     "latitude": 49.014337,
     "lines": [{"line": "rer-a", "position": 4}],
     "longitude": 2.078434,
-    "name": "Neuville-Université"
+    "name": "Neuville-Universite"
   },
   {
     "description": "Velpeau (11 rue) - 92002",
@@ -531,11 +531,11 @@
     "name": "Sevran Livry"
   },
   {
-    "description": "Hacquinière (25 rue de la) - 91122",
+    "description": "Hacquiniere (25 rue de la) - 91122",
     "latitude": 48.695061,
     "lines": [{"line": "rer-b", "position": 4}],
     "longitude": 2.152664,
-    "name": "La Hacquinière"
+    "name": "La Hacquiniere"
   },
   {
     "description": "Dumon d'urville (rue) - 93071",
@@ -545,11 +545,11 @@
     "name": "Sevran-Beaudottes"
   },
   {
-    "description": "Gare de Lozère (place de la) - 91477",
+    "description": "Gare de Lozere (place de la) - 91477",
     "latitude": 48.70605,
     "lines": [{"line": "rer-b", "position": 8}],
     "longitude": 2.211565,
-    "name": "Lozère"
+    "name": "Lozere"
   },
   {
     "description": "Saint-Michel (69 boulevard) - 75105",
@@ -587,7 +587,7 @@
     "name": "Le Bourget"
   },
   {
-    "description": "Général Leclerc (7 bis rue du) - 91122",
+    "description": "General Leclerc (7 bis rue du) - 91122",
     "latitude": 48.695733,
     "lines": [{"line": "rer-b", "position": 5}],
     "longitude": 2.16309,
@@ -608,7 +608,7 @@
     "name": "Blanc-Mesnil"
   },
   {
-    "description": "Saint-Germain (boulevard, côté pair) - 75105",
+    "description": "Saint-Germain (boulevard, cote pair) - 75105",
     "latitude": 48.853393,
     "lines": [{"line": "rer-b", "position": 27}],
     "longitude": 2.345018,
@@ -619,7 +619,7 @@
     "latitude": 48.702869,
     "lines": [{"line": "rer-b", "position": 1}],
     "longitude": 2.0706,
-    "name": "Saint-Rémy-lès-Chevreuse"
+    "name": "Saint-Remy-les-Chevreuse"
   },
   {
     "description": "Romain Roland (rue, rue de la Paix) - 94037",
@@ -629,11 +629,11 @@
     "name": "Gentilly"
   },
   {
-    "description": "Verrières (avenue de) - 91377",
+    "description": "Verrieres (avenue de) - 91377",
     "latitude": 48.734601,
     "lines": [{"line": "rer-b", "position": 12}],
     "longitude": 2.273282,
-    "name": "Massy-Verrières"
+    "name": "Massy-Verrieres"
   },
   {
     "description": "Nicolas Samson (boulevard) - 91477",
@@ -734,7 +734,7 @@
     "name": "Aulnay-sous-Bois"
   },
   {
-    "description": "Gare (place de la, 11 rue René Roeckel) - 92014",
+    "description": "Gare (place de la, 11 rue Rene Roeckel) - 92014",
     "latitude": 48.780051,
     "lines": [{"line": "rer-b", "position": 18}],
     "longitude": 2.312163,
@@ -1150,7 +1150,7 @@
     "name": "Parc pierre lagravere"
   },
   {
-    "description": "Victor Hugo (4 place, angle avec l'avenue Raymond Poincarré) - 75116",
+    "description": "Victor Hugo (4 place, angle avec l'avenue Raymond Poincarre) - 75116",
     "latitude": 48.869865,
     "lines": [{"line": "ligne-2", "position": 2}],
     "longitude": 2.285226,
@@ -1167,7 +1167,7 @@
     "name": "Pigalle"
   },
   {
-    "description": "Chapelle (entrée sous viaduc face au 35 boulevard de la) - 75110",
+    "description": "Chapelle (entree sous viaduc face au 35 boulevard de la) - 75110",
     "latitude": 48.884389,
     "lines": [{"line": "ligne-2", "position": 14}],
     "longitude": 2.359277,
@@ -1191,31 +1191,31 @@
     "name": "Place de Clichy"
   },
   {
-    "description": "République (avenue de la) - 75111",
+    "description": "Republique (avenue de la) - 75111",
     "latitude": 48.863161,
     "lines": [
       {"line": "ligne-2", "position": 21},
       {"line": "ligne-3", "position": 22}
     ],
     "longitude": 2.38726,
-    "name": "Père-Lachaise"
+    "name": "Pere-Lachaise"
   },
   {
-    "description": "Foch (avenue, côté impair) - 75116",
+    "description": "Foch (avenue, cote impair) - 75116",
     "latitude": 48.871792,
     "lines": [{"line": "ligne-2", "position": 1}],
     "longitude": 2.27487,
-    "name": "Porte Dauphine (Maréchal de Lattre de Tassigny)"
+    "name": "Porte Dauphine (Marechal de Lattre de Tassigny)"
   },
   {
-    "description": "Rochechouart (2 boulevard de, vers le boulevard Barbès) - 75109",
+    "description": "Rochechouart (2 boulevard de, vers le boulevard Barbes) - 75109",
     "latitude": 48.88368,
     "lines": [
       {"line": "ligne-4", "position": 5},
       {"line": "ligne-2", "position": 13}
     ],
     "longitude": 2.349533,
-    "name": "Barbès-Rochechouart"
+    "name": "Barbes-Rochechouart"
   },
   {
     "description": "Villette (terre-plein face au 1 boulevard de la) - 75119",
@@ -1270,7 +1270,7 @@
     "name": "Anvers"
   },
   {
-    "description": "République Dominicaine (1 place de la) - 75108",
+    "description": "Republique Dominicaine (1 place de la) - 75108",
     "latitude": 48.880577,
     "lines": [{"line": "ligne-2", "position": 6}],
     "longitude": 2.309416,
@@ -1291,7 +1291,7 @@
     "name": "Avron"
   },
   {
-    "description": "Villette (entrée sous viaduc face au 196 boulevard de la) - 75119",
+    "description": "Villette (entree sous viaduc face au 196 boulevard de la) - 75119",
     "latitude": 48.882769,
     "lines": [
       {"line": "ligne-7-bis", "position": 2},
@@ -1299,14 +1299,14 @@
       {"line": "ligne-2", "position": 16}
     ],
     "longitude": 2.369946,
-    "name": "Jaurès"
+    "name": "Jaures"
   },
   {
-    "description": "Ménilmontant (139/148 boulevard de) - 75111",
+    "description": "Menilmontant (139/148 boulevard de) - 75111",
     "latitude": 48.865706,
     "lines": [{"line": "ligne-2", "position": 20}],
     "longitude": 2.384429,
-    "name": "Ménilmontant"
+    "name": "Menilmontant"
   },
   {
     "description": "Ternes (place des) - 75117",
@@ -1344,7 +1344,7 @@
     "name": "Saint-Placide"
   },
   {
-    "description": "Saint-Denis (9 rue, 114 boulevard de Sébastopol) - 75102",
+    "description": "Saint-Denis (9 rue, 114 boulevard de Sebastopol) - 75102",
     "latitude": 48.869632,
     "lines": [
       {"line": "ligne-8", "position": 0},
@@ -1371,7 +1371,7 @@
     "latitude": 48.853447,
     "lines": [{"line": "ligne-4", "position": 17}],
     "longitude": 2.333046,
-    "name": "Saint-Germain des Prés"
+    "name": "Saint-Germain des Pres"
   },
   {
     "description": "Strasbourg (terre plein face au 93 boulevard de) - 75110",
@@ -1402,11 +1402,11 @@
     "name": "Etienne Marcel"
   },
   {
-    "description": "Château Rouge (48 place du) - 75118",
+    "description": "Chateau Rouge (48 place du) - 75118",
     "latitude": 48.887086,
     "lines": [{"line": "ligne-4", "position": 4}],
     "longitude": 2.34937,
-    "name": "Château Rouge"
+    "name": "Chateau Rouge"
   },
   {
     "description": "Saint-Michel (place, vers le 5 boulevard Saint-Michel) - 75105",
@@ -1420,10 +1420,10 @@
     "latitude": 48.872454,
     "lines": [{"line": "ligne-4", "position": 8}],
     "longitude": 2.356056,
-    "name": "Château d'Eau"
+    "name": "Chateau d'Eau"
   },
   {
-    "description": "Général Leclerc (42 avenue du) - 75114",
+    "description": "General Leclerc (42 avenue du) - 75114",
     "latitude": 48.832192,
     "lines": [{"line": "ligne-4", "position": 24}],
     "longitude": 2.330407,
@@ -1434,7 +1434,7 @@
     "latitude": 48.828066,
     "lines": [{"line": "ligne-4", "position": 25}],
     "longitude": 2.326827,
-    "name": "Alésia"
+    "name": "Alesia"
   },
   {
     "description": "Dunkerque (18 rue de, rue du Faubourg Saint-Denis) - 75110",
@@ -1448,24 +1448,24 @@
     "name": "Gare du Nord"
   },
   {
-    "description": "Verrières (place des, Forum des Halles) - 75101",
+    "description": "Verrieres (place des, Forum des Halles) - 75101",
     "latitude": 48.862012,
     "lines": [{"line": "ligne-4", "position": 12}],
     "longitude": 2.346476,
     "name": "Les Halles"
   },
   {
-    "description": "Saint-Germain (93 boulevard, rue de l'Ecole de Médecine) - 75106",
+    "description": "Saint-Germain (93 boulevard, rue de l'Ecole de Medecine) - 75106",
     "latitude": 48.852198,
     "lines": [
       {"line": "ligne-10", "position": 15},
       {"line": "ligne-4", "position": 16}
     ],
     "longitude": 2.33878,
-    "name": "Odéon"
+    "name": "Odeon"
   },
   {
-    "description": "Général Leclerc (4 avenue du, 2 rue Daguerre) - 75114",
+    "description": "General Leclerc (4 avenue du, 2 rue Daguerre) - 75114",
     "latitude": 48.834277,
     "lines": [
       {"line": "ligne-6", "position": 15},
@@ -1511,14 +1511,14 @@
     "name": "Place d'Italie"
   },
   {
-    "description": "Préfecture Trésorerie - 93008",
+    "description": "Prefecture Tresorerie - 93008",
     "latitude": 48.907147,
     "lines": [{"line": "ligne-5", "position": 1}],
     "longitude": 2.449458,
     "name": "Bobigny-Pablo-Picasso"
   },
   {
-    "description": "Villette (parc de la, Zénith et Conservatoire) - 75119",
+    "description": "Villette (parc de la, Zenith et Conservatoire) - 75119",
     "latitude": 48.888584,
     "lines": [
       {"line": "ligne-5", "position": 5},
@@ -1528,14 +1528,14 @@
     "name": "Porte de Pantin"
   },
   {
-    "description": "Jean Lolive (avenue, côté pair) - 93055",
+    "description": "Jean Lolive (avenue, cote pair) - 93055",
     "latitude": 48.893633,
     "lines": [{"line": "ligne-5", "position": 3}],
     "longitude": 2.4129,
     "name": "Eglise de Pantin"
   },
   {
-    "description": "Hôpital (boulevard de l', côté impair Salpêtrières) - 75113",
+    "description": "Hopital (boulevard de l', cote impair Salpetrieres) - 75113",
     "latitude": 48.839442,
     "lines": [{"line": "ligne-5", "position": 20}],
     "longitude": 2.36164,
@@ -1552,11 +1552,11 @@
     "name": "Oberkampf"
   },
   {
-    "description": "Laumière (43 avenue de) - 75119",
+    "description": "Laumiere (43 avenue de) - 75119",
     "latitude": 48.884932,
     "lines": [{"line": "ligne-5", "position": 7}],
     "longitude": 2.379091,
-    "name": "Laumière"
+    "name": "Laumiere"
   },
   {
     "description": "Paris (7 rue de, Bobigny Bus) - 93008",
@@ -1570,10 +1570,10 @@
     "latitude": 48.856768,
     "lines": [{"line": "ligne-5", "position": 16}],
     "longitude": 2.370774,
-    "name": "Bréguet-Sabin"
+    "name": "Breguet-Sabin"
   },
   {
-    "description": "Hôpital (106/112 boulevard de l') - 75113",
+    "description": "Hopital (106/112 boulevard de l') - 75113",
     "latitude": 48.835551,
     "lines": [{"line": "ligne-5", "position": 21}],
     "longitude": 2.358752,
@@ -1587,7 +1587,7 @@
     "name": "Richard-Lenoir"
   },
   {
-    "description": "Jean Lolive (60 avenue, rue du Pré Saint-Gervais) - 93055",
+    "description": "Jean Lolive (60 avenue, rue du Pre Saint-Gervais) - 93055",
     "latitude": 48.891499,
     "lines": [{"line": "ligne-5", "position": 4}],
     "longitude": 2.403125,
@@ -1598,10 +1598,10 @@
     "latitude": 48.885031,
     "lines": [{"line": "ligne-3", "position": 5}],
     "longitude": 2.297135,
-    "name": "Péreire"
+    "name": "Pereire"
   },
   {
-    "description": "Réaumur (97 rue) - 75102",
+    "description": "Reaumur (97 rue) - 75102",
     "latitude": 48.86735,
     "lines": [{"line": "ligne-3", "position": 15}],
     "longitude": 2.347567,
@@ -1618,7 +1618,7 @@
       {"line": "ligne-9", "position": 25}
     ],
     "longitude": 2.364037,
-    "name": "République"
+    "name": "Republique"
   },
   {
     "description": "Saint-Denis (182 rue) - 75102",
@@ -1628,10 +1628,10 @@
       {"line": "ligne-3", "position": 16}
     ],
     "longitude": 2.352485,
-    "name": "Réaumur-Sébastopol"
+    "name": "Reaumur-Sebastopol"
   },
   {
-    "description": "Général Leclerc (place, côté pair et rue Anatole France et rue Voltaire) - 92044",
+    "description": "General Leclerc (place, cote pair et rue Anatole France et rue Voltaire) - 92044",
     "latitude": 48.892019,
     "lines": [{"line": "ligne-3", "position": 2}],
     "longitude": 2.285517,
@@ -1676,7 +1676,7 @@
       {"line": "ligne-3", "position": 17}
     ],
     "longitude": 2.356108,
-    "name": "Arts-et-Métiers"
+    "name": "Arts-et-Metiers"
   },
   {
     "description": "Villiers (74 avenue de) - 75117",
@@ -1690,7 +1690,7 @@
     "latitude": 48.89731,
     "lines": [{"line": "ligne-3", "position": 1}],
     "longitude": 2.280769,
-    "name": "Pont de Levallois-Bécon"
+    "name": "Pont de Levallois-Becon"
   },
   {
     "description": "Saint-Lazare (97 rue) - 75108",
@@ -1705,14 +1705,14 @@
     "name": "Saint-Lazare"
   },
   {
-    "description": "Gare routière - 93006",
+    "description": "Gare routiere - 93006",
     "latitude": 48.863263,
     "lines": [{"line": "ligne-3", "position": 25}],
     "longitude": 2.415975,
     "name": "Gallieni (Parc de Bagnolet)"
   },
   {
-    "description": "Père-Lachaise (avenue du, rue des Pyrénées) - 75120",
+    "description": "Pere-Lachaise (avenue du, rue des Pyrenees) - 75120",
     "latitude": 48.864783,
     "lines": [
       {"line": "ligne-3-bis", "position": 4},
@@ -1722,7 +1722,7 @@
     "name": "Gambetta"
   },
   {
-    "description": "République (48 avenue de la, 87 avenue Parmentier) - 75111",
+    "description": "Republique (48 avenue de la, 87 avenue Parmentier) - 75111",
     "latitude": 48.86526,
     "lines": [{"line": "ligne-3", "position": 20}],
     "longitude": 2.374757,
@@ -1758,7 +1758,7 @@
       {"line": "ligne-7", "position": 16}
     ],
     "longitude": 2.332255,
-    "name": "Opéra"
+    "name": "Opera"
   },
   {
     "description": "Temple (rue du, angle avec la rue Turbigo) - 75103",
@@ -1768,14 +1768,14 @@
     "name": "Temple"
   },
   {
-    "description": "Villiers (48 avenue de, Musée Henner) - 75117",
+    "description": "Villiers (48 avenue de, Musee Henner) - 75117",
     "latitude": 48.882536,
     "lines": [{"line": "ligne-3", "position": 7}],
     "longitude": 2.311009,
     "name": "Malesherbes"
   },
   {
-    "description": "Haussmann (boulevard, côté pair et vers la rue Caumartin) - 75109",
+    "description": "Haussmann (boulevard, cote pair et vers la rue Caumartin) - 75109",
     "latitude": 48.873462,
     "lines": [
       {"line": "ligne-3", "position": 11},
@@ -1812,7 +1812,7 @@
     "name": "Nation"
   },
   {
-    "description": "Tuileries (jardin des, le long du jardin et face È la place Concorde) PARIS-08 - 75108",
+    "description": "Tuileries (jardin des, le long du jardin et face e la place Concorde) PARIS-08 - 75108",
     "latitude": 48.865678,
     "lines": [
       {"line": "ligne-8", "position": 0},
@@ -1845,17 +1845,17 @@
     "latitude": 48.845369,
     "lines": [{"line": "ligne-1", "position": 2}],
     "longitude": 2.428245,
-    "name": "Bérault"
+    "name": "Berault"
   },
   {
-    "description": "Clémenceau (place) - 75108",
+    "description": "Clemenceau (place) - 75108",
     "latitude": 48.867744,
     "lines": [
       {"line": "ligne-13", "position": 13},
       {"line": "ligne-1", "position": 16}
     ],
     "longitude": 2.314123,
-    "name": "Champs-Elysées-Clémenceau"
+    "name": "Champs-Elysees-Clemenceau"
   },
   {
     "description": "Diderot (73 boulevard) - 75112",
@@ -1868,14 +1868,14 @@
     "name": "Reuilly-Diderot"
   },
   {
-    "description": "Champs-Elysées (118 avenue des) - 75108",
+    "description": "Champs-Elysees (118 avenue des) - 75108",
     "latitude": 48.872046,
     "lines": [{"line": "ligne-1", "position": 18}],
     "longitude": 2.300769,
     "name": "George V"
   },
   {
-    "description": "Grande Armée (36 avenue de la) - 75117",
+    "description": "Grande Armee (36 avenue de la) - 75117",
     "latitude": 48.875672,
     "lines": [{"line": "ligne-1", "position": 20}],
     "longitude": 2.289444,
@@ -1899,7 +1899,7 @@
       {"line": "ligne-7", "position": 18}
     ],
     "longitude": 2.336574,
-    "name": "Palais-Royal (Musée du Louvre)"
+    "name": "Palais-Royal (Musee du Louvre)"
   },
   {
     "description": "Charles de Gaulle (209 avenue) - 92051",
@@ -1913,21 +1913,21 @@
     "latitude": 48.846238,
     "lines": [{"line": "ligne-1", "position": 3}],
     "longitude": 2.419,
-    "name": "Saint-Mandé"
+    "name": "Saint-Mande"
   },
   {
     "description": "Paris (14 avenue de) - 94080",
     "latitude": 48.844325,
     "lines": [{"line": "ligne-1", "position": 1}],
     "longitude": 2.440552,
-    "name": "Château de Vincennes"
+    "name": "Chateau de Vincennes"
   },
   {
     "description": "Sculpteurs (voie des) - 92062",
     "latitude": 48.888358,
     "lines": [{"line": "ligne-1", "position": 24}],
     "longitude": 2.249937,
-                    "name": "Esplanade de la Défense"
+                    "name": "Esplanade de la Defense"
   },
   {
     "description": "Victoria (7 avenue, 4 rue Saint-Martin) - 75101",
@@ -1940,7 +1940,7 @@
       {"line": "ligne-7", "position": 20}
     ],
     "longitude": 2.347933,
-    "name": "Châtelet"
+    "name": "Chatelet"
   },
   {
     "description": "Verdun (16 place de) - 75117",
@@ -2012,10 +2012,10 @@
       {"line": "ligne-1", "position": 10}
     ],
     "longitude": 2.352074,
-    "name": "Hôtel de Ville"
+    "name": "Hotel de Ville"
   },
   {
-    "description": "Carpeaux (rue, gare du RER La Défense) - 92062",
+    "description": "Carpeaux (rue, gare du RER La Defense) - 92062",
     "latitude": 48.891827,
     "lines": [
       {"line": "tramway-2", "position": 8},
@@ -2023,10 +2023,10 @@
       {"line": "ligne-1", "position": 25}
     ],
     "longitude": 2.237992,
-    "name": "La Défense (Grande Arche)"
+    "name": "La Defense (Grande Arche)"
   },
   {
-    "description": "Sérurier (Boulevard) - 75120",
+    "description": "Serurier (Boulevard) - 75120",
     "latitude": 48.876938,
     "lines": [
       {"line": "ligne-3-bis", "position": 1},
@@ -2055,17 +2055,17 @@
     "latitude": 48.855685,
     "lines": [{"line": "ligne-4", "position": 14}],
     "longitude": 2.346203,
-    "name": "Cité"
+    "name": "Cite"
   },
   {
-    "description": "Légion Etrangère (rue de la) - 75114",
+    "description": "Legion Etrangere (rue de la) - 75114",
     "latitude": 48.822817,
     "lines": [
       {"line": "tramway-3a", "position": 10},
       {"line": "ligne-4", "position": 26}
     ],
     "longitude": 2.325073,
-    "name": "Porte d'Orléans (Général Leclerc)"
+    "name": "Porte d'Orleans (General Leclerc)"
   },
   {
     "description": "Rennes (69 rue de) - 75106",
@@ -2075,14 +2075,14 @@
     "name": "Saint-Sulpice"
   },
   {
-    "description": "Saint-Mandé (46 avenue de) - 75112",
+    "description": "Saint-Mande (46 avenue de) - 75112",
     "latitude": 48.845323,
     "lines": [{"line": "ligne-6", "position": 27}],
     "longitude": 2.401786,
     "name": "Picpus"
   },
   {
-    "description": "Jean Jaurès (161 avenue, rue des Ardennes) - 75119",
+    "description": "Jean Jaures (161 avenue, rue des Ardennes) - 75119",
     "latitude": 48.886619,
     "lines": [{"line": "ligne-5", "position": 6}],
     "longitude": 2.385484,
@@ -2099,11 +2099,11 @@
     "name": "Gare d'Austerlitz"
   },
   {
-    "description": "Rapée (quai de la, place Nazas) - 75112",
+    "description": "Rapee (quai de la, place Nazas) - 75112",
     "latitude": 48.845966,
     "lines": [{"line": "ligne-5", "position": 18}],
     "longitude": 2.366913,
-    "name": "Quai de la Rapée"
+    "name": "Quai de la Rapee"
   },
   {
     "description": "Magenta (30 boulevard de, place Jacques Bonsergent) - 75110",
@@ -2117,7 +2117,7 @@
     "latitude": 48.844996,
     "lines": [{"line": "ligne-6", "position": 10}],
     "longitude": 2.310865,
-    "name": "Sèvres-Lecourbe"
+    "name": "Sevres-Lecourbe"
   },
   {
     "description": "Picpus (34 boulevard de) - 75112",
@@ -2137,14 +2137,14 @@
     "name": "Bercy"
   },
   {
-    "description": "Kléber (15 avenue) - 75116",
+    "description": "Kleber (15 avenue) - 75116",
     "latitude": 48.871306,
     "lines": [{"line": "ligne-6", "position": 2}],
     "longitude": 2.293331,
-    "name": "Kléber"
+    "name": "Kleber"
   },
   {
-    "description": "Nélaton (rue) - 75115",
+    "description": "Nelaton (rue) - 75115",
     "latitude": 48.854327,
     "lines": [{"line": "ligne-6", "position": 6}],
     "longitude": 2.28881,
@@ -2165,7 +2165,7 @@
     "name": "Dupleix"
   },
   {
-    "description": "Garibaldi (terre-plein face au 2 boulevard, côté pair) - 75115",
+    "description": "Garibaldi (terre-plein face au 2 boulevard, cote pair) - 75115",
     "latitude": 48.847699,
     "lines": [{"line": "ligne-6", "position": 9}],
     "longitude": 2.302039,
@@ -2183,10 +2183,10 @@
     "latitude": 48.830861,
     "lines": [{"line": "ligne-6", "position": 17}],
     "longitude": 2.344551,
-    "name": "Glacière"
+    "name": "Glaciere"
   },
   {
-    "description": "Pondichéry (25 rue de) - 75115",
+    "description": "Pondichery (25 rue de) - 75115",
     "latitude": 48.849019,
     "lines": [
       {"line": "ligne-8", "position": 0},
@@ -2228,14 +2228,14 @@
     "name": "Chevaleret"
   },
   {
-    "description": "Trocadéro et Onze-Novembre (place du, avenue Paul Doumer) - 75116",
+    "description": "Trocadero et Onze-Novembre (place du, avenue Paul Doumer) - 75116",
     "latitude": 48.862667,
     "lines": [
       {"line": "ligne-6", "position": 4},
       {"line": "ligne-9", "position": 12}
     ],
     "longitude": 2.287263,
-    "name": "Trocadéro"
+    "name": "Trocadero"
   },
   {
     "description": "Saint-Jacques (terre-plein face au 46 boulevard) - 75114",
@@ -2259,31 +2259,31 @@
       {"line": "ligne-6", "position": 25}
     ],
     "longitude": 2.395788,
-    "name": "Daumesnil (Félix Eboué)"
+    "name": "Daumesnil (Felix Eboue)"
   },
   {
-    "description": "Auguste Blanqui (terre-plein face au boulevard, côté impair) - 75113",
+    "description": "Auguste Blanqui (terre-plein face au boulevard, cote impair) - 75113",
     "latitude": 48.829603,
     "lines": [{"line": "ligne-6", "position": 18}],
     "longitude": 2.34937,
     "name": "Corvisart"
   },
   {
-    "description": "Kléber (57 avenue) - 75116",
+    "description": "Kleber (57 avenue) - 75116",
     "latitude": 48.866856,
     "lines": [{"line": "ligne-6", "position": 3}],
     "longitude": 2.290038,
-    "name": "Boissière"
+    "name": "Boissiere"
   },
   {
-    "description": "Maxime Gorky (boulevard, côté pair) - 94076",
+    "description": "Maxime Gorky (boulevard, cote pair) - 94076",
     "latitude": 48.795994,
     "lines": [{"line": "ligne-7", "position": 32}],
     "longitude": 2.368231,
-    "name": "Villejuif-Paul Vaillant Couturier (Hôpital Paul Brousse)"
+    "name": "Villejuif-Paul Vaillant Couturier (Hopital Paul Brousse)"
   },
   {
-    "description": "Maxime Gorky (boulevard, gare routière) - 94076",
+    "description": "Maxime Gorky (boulevard, gare routiere) - 94076",
     "latitude": 48.786638,
     "lines": [{"line": "ligne-7", "position": 33}],
     "longitude": 2.367111,
@@ -2297,7 +2297,7 @@
     "name": "Pierre et Marie Curie"
   },
   {
-    "description": "Jean Jaurès (57 avenue) - 93027",
+    "description": "Jean Jaures (57 avenue) - 93027",
     "latitude": 48.920515,
     "lines": [{"line": "ligne-7", "position": 1}],
     "longitude": 2.410226,
@@ -2308,7 +2308,7 @@
     "latitude": 48.877353,
     "lines": [{"line": "ligne-7", "position": 12}],
     "longitude": 2.349381,
-    "name": "Poissonnière"
+    "name": "Poissonniere"
   },
   {
     "description": "Porte d'Ivry (53 avenue de la) - 75113",
@@ -2325,17 +2325,17 @@
     "latitude": 48.878457,
     "lines": [{"line": "ligne-7", "position": 10}],
     "longitude": 2.362054,
-    "name": "Château Landon"
+    "name": "Chateau Landon"
   },
   {
     "description": "Fontainebleau (92/96 avenue de) - 94043",
     "latitude": 48.810385,
     "lines": [{"line": "ligne-7", "position": 30}],
     "longitude": 2.361831,
-    "name": "Le Kremlin-Bicêtre"
+    "name": "Le Kremlin-Bicetre"
   },
   {
-    "description": "Liné (39 rue) - 75105",
+    "description": "Line (39 rue) - 75105",
     "latitude": 48.845968,
     "lines": [
       {"line": "ligne-10", "position": 19},
@@ -2383,7 +2383,7 @@
     "name": "Pont Neuf"
   },
   {
-    "description": "Masséna (boulevard, square Hélène Boucher) - 75113",
+    "description": "Massena (boulevard, square Helene Boucher) - 75113",
     "latitude": 48.818717,
     "lines": [
       {"line": "tramway-3a", "position": 15},
@@ -2393,14 +2393,14 @@
     "name": "Porte d'Italie"
   },
   {
-    "description": "Hôtel de Ville (quai de l') - 75104",
+    "description": "Hotel de Ville (quai de l') - 75104",
     "latitude": 48.853464,
     "lines": [{"line": "ligne-7", "position": 21}],
     "longitude": 2.357384,
-    "name": "Pont Marie (Cité des Arts)"
+    "name": "Pont Marie (Cite des Arts)"
   },
   {
-    "description": "République (144 avenue de la) - 93001",
+    "description": "Republique (144 avenue de la) - 93001",
     "latitude": 48.903898,
     "lines": [{"line": "ligne-7", "position": 3}],
     "longitude": 2.39248,
@@ -2418,10 +2418,10 @@
     "latitude": 48.80377,
     "lines": [{"line": "ligne-7", "position": 31}],
     "longitude": 2.363909,
-    "name": "Villejuif-Léo Lagrange"
+    "name": "Villejuif-Leo Lagrange"
   },
   {
-    "description": "Jean Jaurès (213 avenue) - 93001",
+    "description": "Jean Jaures (213 avenue) - 93001",
     "latitude": 48.914057,
     "lines": [{"line": "ligne-7", "position": 2}],
     "longitude": 2.403576,
@@ -2435,7 +2435,7 @@
     "name": "Maison Blanche"
   },
   {
-    "description": "Opéra (19 av de l'Opéra, devant le Royal Opéra) - 75101",
+    "description": "Opera (19 av de l'Opera, devant le Royal Opera) - 75101",
     "latitude": 48.866497,
     "lines": [
       {"line": "ligne-14", "position": 3},
@@ -2452,7 +2452,7 @@
       {"line": "ligne-9", "position": 20}
     ],
     "longitude": 2.333426,
-    "name": "Chaussée d'Antin (La Fayette)"
+    "name": "Chaussee d'Antin (La Fayette)"
   },
   {
     "description": "Gobelins (47 avenue des) - 75113",
@@ -2500,7 +2500,7 @@
     "name": "Place Monge (Jardin des Plantes)"
   },
   {
-    "description": "Masséna (130 boulevard, vers l'avenue de Choisy) - 75113",
+    "description": "Massena (130 boulevard, vers l'avenue de Choisy) - 75113",
     "latitude": 48.819902,
     "lines": [
       {"line": "tramway-3a", "position": 16},
@@ -2514,7 +2514,7 @@
     "latitude": 48.890289,
     "lines": [{"line": "ligne-7", "position": 6}],
     "longitude": 2.376779,
-    "name": "Crimée"
+    "name": "Crimee"
   },
   {
     "description": "Corentin Cariou (5 avenue) - 75119",
@@ -2549,7 +2549,7 @@
     "latitude": 48.88016,
     "lines": [{"line": "ligne-7-bis", "position": 7}],
     "longitude": 2.398587,
-    "name": "Pré-Saint-Gervais"
+    "name": "Pre-Saint-Gervais"
   },
   {
     "description": "Botzaris (28 rue) - 75119",
@@ -2559,21 +2559,21 @@
     "name": "Buttes-Chaumont"
   },
   {
-    "description": "Fêtes (place des, rue Compans) - 75119",
+    "description": "Fetes (place des, rue Compans) - 75119",
     "latitude": 48.877224,
     "lines": [
       {"line": "ligne-7-bis", "position": 6},
       {"line": "ligne-11", "position": 10}
     ],
     "longitude": 2.392765,
-    "name": "Place des Fêtes"
+    "name": "Place des Fetes"
   },
   {
-    "description": "Félix Faure (place) - 75115",
+    "description": "Felix Faure (place) - 75115",
     "latitude": 48.842825,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.292225,
-    "name": "Félix Faure"
+    "name": "Felix Faure"
   },
   {
     "description": "Montreuil (205 rue de) - 75111",
@@ -2597,7 +2597,7 @@
       {"line": "tramway-3a", "position": 22}
     ],
     "longitude": 2.406185,
-    "name": "Porte Dorée"
+    "name": "Porte Doree"
   },
   {
     "description": "Daumesnil (253 avenue, 122 rue de Picpus) - 75112",
@@ -2614,7 +2614,7 @@
     "name": "Commerce"
   },
   {
-    "description": "La Tour Maubourg (boulevard de, côté impair et face au 60) - 75107",
+    "description": "La Tour Maubourg (boulevard de, cote impair et face au 60) - 75107",
     "latitude": 48.857228,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.309796,
@@ -2639,7 +2639,7 @@
     "latitude": 48.860975,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.367262,
-    "name": "Saint-Sébastien-Froissart"
+    "name": "Saint-Sebastien-Froissart"
   },
   {
     "description": "Temple (2 boulevard du) - 75103",
@@ -2663,7 +2663,7 @@
     "name": "Ledru-Rollin"
   },
   {
-    "description": "Poissonnière (8 boulevard) - 75109",
+    "description": "Poissonniere (8 boulevard) - 75109",
     "latitude": 48.870577,
     "lines": [
       {"line": "ligne-8", "position": 0},
@@ -2673,7 +2673,7 @@
     "name": "Bonne Nouvelle"
   },
   {
-    "description": "Poissonnière (32 boulevard) - 75109",
+    "description": "Poissonniere (32 boulevard) - 75109",
     "latitude": 48.871575,
     "lines": [
       {"line": "ligne-8", "position": 0},
@@ -2693,7 +2693,7 @@
     "name": "Richelieu-Drouot"
   },
   {
-    "description": "Poniatowsky (68 boulevard, angle avec la rue Ferdinand-de-Béhagle) - 75112",
+    "description": "Poniatowsky (68 boulevard, angle avec la rue Ferdinand-de-Behagle) - 75112",
     "latitude": 48.83266,
     "lines": [
       {"line": "ligne-8", "position": 0},
@@ -2707,10 +2707,10 @@
     "latitude": 48.825637,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.407411,
-    "name": "Liberté"
+    "name": "Liberte"
   },
   {
-    "description": "Général Leclerc (26/28 avenue du) - 94046",
+    "description": "General Leclerc (26/28 avenue du) - 94046",
     "latitude": 48.808225,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.436276,
@@ -2728,10 +2728,10 @@
     "latitude": 48.815076,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.421632,
-    "name": "Ecole Vétérinaire de Maisons-Alfort"
+    "name": "Ecole Veterinaire de Maisons-Alfort"
   },
   {
-    "description": "Université (rue de l') - 75107",
+    "description": "Universite (rue de l') - 75107",
     "latitude": 48.861093,
     "lines": [
       {"line": "ligne-8", "position": 0},
@@ -2741,7 +2741,7 @@
     "name": "Invalides"
   },
   {
-    "description": "Victor (8 boulevard, angle avec l'avenue de la Porte de Sèvres côté pair) - 75115",
+    "description": "Victor (8 boulevard, angle avec l'avenue de la Porte de Sevres cote pair) - 75115",
     "latitude": 48.836815,
     "lines": [
       {"line": "ligne-8", "position": 0},
@@ -2755,14 +2755,14 @@
     "latitude": 48.796601,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.449532,
-    "name": "Créteil-L'Echat (Hôpital Henri Mondor)"
+    "name": "Creteil-L'Echat (Hopital Henri Mondor)"
   },
   {
-    "description": "Ferdinand de Lesseps (rue, université et mail des Mêches) - 94028",
+    "description": "Ferdinand de Lesseps (rue, universite et mail des Meches) - 94028",
     "latitude": 48.789724,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.450836,
-    "name": "Créteil-Université"
+    "name": "Creteil-Universite"
   },
   {
     "description": "Louis Pergaud (2 rue) - 94046",
@@ -2772,14 +2772,14 @@
     "name": "Maisons-Alfort-Les Juilliottes"
   },
   {
-    "description": "Félix Faure (41 avenue) - 75115",
+    "description": "Felix Faure (41 avenue) - 75115",
     "latitude": 48.841025,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.287924,
     "name": "Boucicaut"
   },
   {
-    "description": "Félix Faure (100 avenue, 161 rue de Lourmel) - 75115",
+    "description": "Felix Faure (100 avenue, 161 rue de Lourmel) - 75115",
     "latitude": 48.838668,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.282248,
@@ -2801,10 +2801,10 @@
     "latitude": 48.779757,
     "lines": [{"line": "ligne-8", "position": 0}],
     "longitude": 2.459314,
-    "name": "Créteil-Préfecture (Hôtel de Ville)"
+    "name": "Creteil-Prefecture (Hotel de Ville)"
   },
   {
-    "description": "Général Leclerc (88 bis avenue du) - 92012",
+    "description": "General Leclerc (88 bis avenue du) - 92012",
     "latitude": 48.832088,
     "lines": [{"line": "ligne-9", "position": 2}],
     "longitude": 2.238161,
@@ -2832,7 +2832,7 @@
     "name": "Buzenval"
   },
   {
-    "description": "Président Wilson (4 avenue du) - 75116",
+    "description": "President Wilson (4 avenue du) - 75116",
     "latitude": 48.864299,
     "lines": [{"line": "ligne-9", "position": 14}],
     "longitude": 2.301251,
@@ -2846,11 +2846,11 @@
     "name": "Robespierre"
   },
   {
-    "description": "Pont de Sèvres (204 rond-point du) - 92012",
+    "description": "Pont de Sevres (204 rond-point du) - 92012",
     "latitude": 48.82969,
     "lines": [{"line": "ligne-9", "position": 1}],
     "longitude": 2.230528,
-    "name": "Pont de Sèvres"
+    "name": "Pont de Sevres"
   },
   {
     "description": "Mozart (5 avenue) - 75116",
@@ -2871,7 +2871,7 @@
     "latitude": 48.857664,
     "lines": [{"line": "ligne-9", "position": 28}],
     "longitude": 2.380036,
-    "name": "Voltaire (Léon Blum)"
+    "name": "Voltaire (Leon Blum)"
   },
   {
     "description": "Voltaire (188 boulevard) - 75111",
@@ -2895,11 +2895,11 @@
     "name": "Mairie de Montreuil"
   },
   {
-    "description": "Iéna (7 place d', angle avec le 10 avenue d'Iéna) - 75116",
+    "description": "Iena (7 place d', angle avec le 10 avenue d'Iena) - 75116",
     "latitude": 48.86435,
     "lines": [{"line": "ligne-9", "position": 13}],
     "longitude": 2.294045,
-    "name": "Iéna"
+    "name": "Iena"
   },
   {
     "description": "Molitor (34 rue, angle avec le 37 rue Michel-Ange) - 75116",
@@ -2970,7 +2970,7 @@
     "name": "Saint-Augustin"
   },
   {
-    "description": "Pyrénées (67 bis rue des, en face) - 75120",
+    "description": "Pyrenees (67 bis rue des, en face) - 75120",
     "latitude": 48.8526,
     "lines": [{"line": "ligne-9", "position": 33}],
     "longitude": 2.406385,
@@ -3002,27 +3002,27 @@
     "latitude": 48.846865,
     "lines": [{"line": "ligne-10", "position": 10}],
     "longitude": 2.307269,
-    "name": "Ségur"
+    "name": "Segur"
   },
   {
     "description": "Saint-Germain (62 boulevard) - 75105",
     "latitude": 48.849717,
     "lines": [{"line": "ligne-10", "position": 17}],
     "longitude": 2.348926,
-    "name": "Maubert-Mutualité"
+    "name": "Maubert-Mutualite"
   },
   {
-    "description": "Velpeau (rue, face au Bon Marché) - 75107",
+    "description": "Velpeau (rue, face au Bon Marche) - 75107",
     "latitude": 48.850939,
     "lines": [
       {"line": "ligne-10", "position": 13},
       {"line": "ligne-12", "position": 18}
     ],
     "longitude": 2.326115,
-    "name": "Sèvres-Babylone"
+    "name": "Sevres-Babylone"
   },
   {
-    "description": "Sèvres (97 rue de) - 75107",
+    "description": "Sevres (97 rue de) - 75107",
     "latitude": 48.848701,
     "lines": [{"line": "ligne-10", "position": 12}],
     "longitude": 2.32124,
@@ -3047,7 +3047,7 @@
     "latitude": 48.845964,
     "lines": [{"line": "ligne-10", "position": 6}],
     "longitude": 2.277815,
-    "name": "Javel-André-Citroen"
+    "name": "Javel-Andre-Citroen"
   },
   {
     "description": "Maurice Thorez (rue, intersection avec le boulevard du Couchant) - 92050",
@@ -3061,7 +3061,7 @@
     "latitude": 48.901458,
     "lines": [{"line": "rer-a", "position": 7}],
     "longitude": 2.215467,
-    "name": "Nanterre-Université"
+    "name": "Nanterre-Universite"
   },
   {
     "description": "Parking municipal de la Gare - 94071",
@@ -3092,14 +3092,14 @@
     "name": "Nogent-sur-Marne"
   },
   {
-    "description": "Marché (place du, parvis de la gare et 35 rue du Pont de Créteil) - 94068",
+    "description": "Marche (place du, parvis de la gare et 35 rue du Pont de Creteil) - 94068",
     "latitude": 48.80642,
     "lines": [{"line": "rer-a", "position": 19}],
     "longitude": 2.472045,
-    "name": "Saint-Maur Créteil"
+    "name": "Saint-Maur Creteil"
   },
   {
-    "description": "Jean-Paul Sartre (allée, centre quartier du Luzard) - 77337",
+    "description": "Jean-Paul Sartre (allee, centre quartier du Luzard) - 77337",
     "latitude": 48.843485,
     "lines": [{"line": "rer-a", "position": 21}],
     "longitude": 2.616615,
@@ -3113,17 +3113,17 @@
       {"line": "rer-b", "position": 28}
     ],
     "longitude": 2.346844,
-    "name": "Châtelet-Les Halles"
+    "name": "Chatelet-Les Halles"
   },
   {
-    "description": "Gallieni (boulevard, côté pair) - 93049",
+    "description": "Gallieni (boulevard, cote pair) - 93049",
     "latitude": 48.85346,
     "lines": [{"line": "rer-a", "position": 17}],
     "longitude": 2.513761,
     "name": "Neuilly-Plaisance"
   },
   {
-    "description": "Croissy (route de, quartier du Val Maubuée) - 77468",
+    "description": "Croissy (route de, quartier du Val Maubuee) - 77468",
     "latitude": 48.839728,
     "lines": [{"line": "rer-a", "position": 23}],
     "longitude": 2.655903,
@@ -3162,10 +3162,10 @@
     "latitude": 48.794934,
     "lines": [{"line": "rer-a", "position": 22}],
     "longitude": 2.513045,
-    "name": "La Varenne-Chennevières"
+    "name": "La Varenne-Chennevieres"
   },
   {
-    "description": "Jean Jaurès (rue) - 94042",
+    "description": "Jean Jaures (rue) - 94042",
     "latitude": 48.82107,
     "lines": [{"line": "rer-a", "position": 18}],
     "longitude": 2.463835,
@@ -3190,7 +3190,7 @@
     "latitude": 49.035944,
     "lines": [{"line": "rer-a", "position": 3}],
     "longitude": 2.080144,
-    "name": "Cergy-Préfecture"
+    "name": "Cergy-Prefecture"
   },
   {
     "description": "Rue des Pas Perdus - 95127",
@@ -3200,7 +3200,7 @@
     "name": "Cergy-Saint-Christophe"
   },
   {
-    "description": "Entrée Ouest de la Gare - 93051",
+    "description": "Entree Ouest de la Gare - 93051",
     "latitude": 48.843076,
     "lines": [{"line": "rer-a", "position": 20}],
     "longitude": 2.581876,
@@ -3225,17 +3225,17 @@
     "latitude": 48.970077,
     "lines": [{"line": "rer-a", "position": 6}],
     "longitude": 2.077618,
-    "name": "Achères-Ville"
+    "name": "Acheres-Ville"
   },
   {
     "description": "Pesaro (boulevard de) - 92050",
     "latitude": 48.89566,
     "lines": [{"line": "rer-a", "position": 8}],
     "longitude": 2.2231,
-    "name": "Nanterre-Préfecture"
+    "name": "Nanterre-Prefecture"
   },
   {
-    "description": "Louvière (place de la) - 94068",
+    "description": "Louviere (place de la) - 94068",
     "latitude": 48.80528,
     "lines": [{"line": "rer-a", "position": 20}],
     "longitude": 2.485594,
@@ -3246,7 +3246,7 @@
     "latitude": 48.920646,
     "lines": [{"line": "rer-a", "position": 5}],
     "longitude": 2.184412,
-    "name": "Houilles Carrières-sur-Seine"
+    "name": "Houilles Carrieres-sur-Seine"
   },
   {
     "description": "Cours de l'escaut - 77449",
@@ -3260,7 +3260,7 @@
     "latitude": 48.898351,
     "lines": [{"line": "rer-a", "position": 2}],
     "longitude": 2.121829,
-    "name": "Le Vésinet-Le Pecq"
+    "name": "Le Vesinet-Le Pecq"
   },
   {
     "description": "Gare de Cergy-Le-haut - 95127",
@@ -3274,7 +3274,7 @@
     "latitude": 48.890096,
     "lines": [{"line": "rer-a", "position": 3}],
     "longitude": 2.134375,
-    "name": "Le Vésinet-Centre"
+    "name": "Le Vesinet-Centre"
   },
   {
     "description": "ZUP de Fontenay - 94033",
@@ -3298,7 +3298,7 @@
     "name": "Sartrouville"
   },
   {
-    "description": "Gare routière - 92063",
+    "description": "Gare routiere - 92063",
     "latitude": 48.887222,
     "lines": [{"line": "rer-a", "position": 5}],
     "longitude": 2.170623,
@@ -3309,6 +3309,6 @@
     "latitude": 48.868497,
     "lines": [{"line": "rer-a", "position": 26}],
     "longitude": 2.78226,
-    "name": "Marne-la-Vallée Chessy"
+    "name": "Marne-la-Vallee Chessy"
   }
 ]
