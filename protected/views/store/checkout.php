@@ -149,7 +149,7 @@ echo CHtml::hiddenField('mobile_country_code',Yii::app()->functions->getAdminCou
 	  	    
 	    <div class="box-grey rounded top-line-green">      
 	    
-	    <form id="form-signup" class="form-signup uk-panel uk-panel-box uk-form" method="POST">
+	    <form id="form-signup" class="form-signup uk-panel uk-panel-box " method="POST">
 	     <?php echo CHtml::hiddenField('action','clientRegistration')?>
         <?php echo CHtml::hiddenField('currentController','store')?>
          <?php echo CHtml::hiddenField('redirect',Yii::app()->createUrl('/store/paymentoption'))?>
