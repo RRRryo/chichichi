@@ -4189,9 +4189,17 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 		   
 		   $date = $this->data['delivery_date'];
 		   
-		   $timechange = $date.' '.$time; 
-		   
-		  
+		   $timechange = $date.' '.$time;
+
+          if($this->data['delivery_type']=='metro') {
+              //clear address
+              $_SESSION['kr_search_address']=NULL;
+
+			  //client lat lng
+			  $_SESSION['client_location']=NULL;
+          }
+
+
 		    /**check if customer order after Max Limit */
 		   $res = Yii::app()->functions->getRecentMaxOrders($merchant_id,$date,$time,$delivery_asap);
 		      $max_order_limit = $res[0]['max_order'];
@@ -4836,7 +4844,7 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 	    {
             //check address
-			if(!isset($this->data['client_address'])) {
+			if(!isset($this->data['client_address']) || $this->data['client_address']=='') {
 				$this->msg=Yii::t("default","address invalid");
 				return;
 			}
@@ -16258,12 +16266,20 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 		public function setAddress()
 
 		{
+			if(isset($this->data['address_book_id'])){
+				$address_book=Yii::app()->functions->getAddressBookByID($this->data['address_book_id']);
+				$_SESSION['kr_search_address'] = $address_book['street'];
+				$_SESSION['use_new_address']=false;
 
-			if (isset($this->data['client_address'])){
-
+			} else if (isset($this->data['client_address'])) {
 				$_SESSION['kr_search_address']=$this->data['client_address'];
+				//show custom address and hide address book
+				$_SESSION['use_new_address']=true;
+			}
 
-				if ($lat_res=Yii::app()->functions->geodecodeAddress($this->data['client_address'])){
+			if (isset($_SESSION['kr_search_address'])){
+
+				if ($lat_res=Yii::app()->functions->geodecodeAddress($_SESSION['kr_search_address'])){
 
 					$merchant_id=$_SESSION['kr_merchant_id'];
 					$mt_delivery_miles=Yii::app()->functions->getOption("merchant_delivery_miles",$merchant_id);
@@ -16318,9 +16334,9 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 				//get metro station location
 				$json = file_get_contents(ROOTPATH."/assets/resources/metro-stops.json");
 				$stations = json_decode($json);
-				$lat_res['lat']='';
-				$lat_res['long']='';
-				$lat_res['lines']= array();;
+				$lat_res['lat']=NULL;
+				$lat_res['long']=NULL;
+				$lat_res['lines']= array();
 
 				foreach ($stations as $station) {
 					if ($station->name == $this->data['client_metro']) {
@@ -16330,10 +16346,6 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 						foreach ($station->lines as $lineInfo) {
 							array_push($lat_res['lines'], $lineInfo->line);
 						}
-						/*error_log("station name:".$station->name);
-						error_log("station lat:".$lat_res['lat']);
-						error_log("station long:".$lat_res['long']);*/
-
 						break;
 					}
 				}
@@ -16375,7 +16387,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 						$this->code=1;$this->msg=Yii::t("default","Successful");
 					}
 
-				} else $this->msg=Yii::t("default","Invalid adress");
+				} else $this->msg=Yii::t("default","Invalid metro name");
 
 
 			} else $this->msg=Yii::t("default","Address is required");
