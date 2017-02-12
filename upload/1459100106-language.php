@@ -276,7 +276,7 @@ $lang["Delivery Distance"] = "送餐距离";
 $lang["Delivery Fee"] = "送餐费";
 
 
-
+$lang["delivery fee"] = "送餐费";
 
 
 $lang["Votes"] = "票数";
@@ -1681,7 +1681,7 @@ $lang["You need to login first."] = "您需要登录";
 
 
 $lang["Pickup information"] = "自取信息";
-$lang["Pickup nformation"] = "自取信息";
+$lang["Pickup Information"] = "自取信息";
 
 
 $lang["Delivery Information"] = "送餐信息";
@@ -1694,11 +1694,11 @@ $lang["Restaurant"] = "餐厅";
 $lang["metro"] = "地铁站取";
 $lang["Metro"] = "地铁站取";
 
+$lang["will at"] = "将于";
 
+$lang["ASAP"] = "尽快送餐";
 
-$lang["ASAP"] = "ASAP";
-
-
+$lang["please enter your address"] = "请输入您的地址";
 
 
 
@@ -3192,7 +3192,7 @@ $lang["Please select your credit card"] = "请选择信用卡";
 $lang["Map not available"] = "地图不可用";
 
 
-
+$lang["Invalid metro name"] = "地铁站名不正确";
 
 
 $lang["Are you sure you want to delete this review? This action cannot be undone."] = "是否确实要删除此项审查 ? 此操作无法撤消";
@@ -3213,7 +3213,7 @@ $lang["Got a total of _TOTAL_ Merchant to show (_START_ to _END_)"] = "有总数
 
 
 
-$lang["Got a total of _TOTAL_ Records to show (_START_ to _END_)"] = "有总记录总数的显示 ( 开始到结束 )";
+$lang["Got a total of _TOTAL_ Records to show (_START_ to _END_)"] = "一共_TOTAL_条记录 显示_START_到_END_";
 
 
 
@@ -4871,13 +4871,13 @@ $lang["km"] ="公里";
 
 $lang["Kilometers"] ="公里";
 
+$lang["kilometers"] ="公里";
 
-
-
+$lang["km"] ="公里";
 
 $lang["Payline Settings"] ="";
 
-
+$lang["deliver to this address"] ="送到这个地址";
 
 
 
