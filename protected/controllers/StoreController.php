@@ -705,12 +705,12 @@ class StoreController extends CController
 		    		Yii::app()->timeZone=$mt_timezone;
 		    	}
 
-				$merchant_delivery_distance='';
+/*				$merchant_delivery_distance='';
 
 				$distance_type='';
-				$distance_type_orig='';
+				$distance_type_orig='';*/
 		    	$distance='';
-		    	$delivery_fee=0;
+//		    	$delivery_fee=0;
 
 				$metro_distance_type='';
 				$metro_distance_type_orig='';
@@ -745,11 +745,11 @@ class StoreController extends CController
 		             }
 
 		             		             
-		             $delivery_fee=FunctionsV3::getMerchantDeliveryFee(
+		             /*$delivery_fee=FunctionsV3::getMerchantDeliveryFee(
 		                          $merchant_id,
 		                          $res['delivery_charges'],
 		                          $distance,
-		                          $distance_type_raw);
+		                          $distance_type_raw);*/
 		    		
 		    	}
 
@@ -789,7 +789,7 @@ class StoreController extends CController
 		    	/*SESSION REF*/
 		    	$_SESSION['kr_merchant_id']=$merchant_id;
                 $_SESSION['kr_merchant_slug']=$data['merchant'];
-		    	$_SESSION['shipping_fee']=$delivery_fee;
+//		    	$_SESSION['shipping_fee']=$delivery_fee;
 				$_SESSION['metro_shipping_fee']=$metro_delivery_fee;
 
 				/*CHECK IF BOOKING IS ENABLED*/
@@ -830,7 +830,7 @@ class StoreController extends CController
 					'distance_type'=>$distance_type,
 				   	'distance_type_orig'=>$distance_type_orig,
 				   	'distance'=>$distance,
-				   	'delivery_fee'=>$delivery_fee,
+//				   	'delivery_fee'=>$delivery_fee,
 
 					'metro_distance_type'=>$metro_distance_type,
 					'metro_distance_type_orig'=>$metro_distance_type_orig,
@@ -946,44 +946,20 @@ class StoreController extends CController
 		}
 
 
-		// BEGIN update $_SESSION['shipping_fee']
-		$distance_type=FunctionsV3::getMerchantDistanceType($current_merchant);
-		$distance_type_raw = $distance_type=="M"?"miles":"kilometers";
+		Yii::app()->functions->calculateShippingFeeForAllType();
 
-		if(!empty(FunctionsV3::$distance_type_result)){
-			$distance_type_raw=FunctionsV3::$distance_type_result;
-			$distance_type=t(FunctionsV3::$distance_type_result);
+
+		$show_address_book=true;
+		if (isset($_SESSION['use_new_address']) && $_SESSION['use_new_address']) {
+			//do not show address book
+			$_SESSION['use_new_address']=NULL;
+			$show_address_book = false;
 		}
-
-		$res=FunctionsV3::getMerchantBySlug($_SESSION['kr_merchant_slug']);
-		$distance=FunctionsV3::getDistanceBetweenPlot(
-			isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'',
-			isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'',
-			$res['latitude'],$res['lontitude'],$distance_type
-		);
-
-		$delivery_type = $_SESSION['kr_delivery_options']['delivery_type'];
-		$delivery_fee = 0;
-		if ($delivery_type == 'delivery') {
-			$delivery_fee = FunctionsV3::getMerchantDeliveryFee(
-				$current_merchant,
-				$res['delivery_charges'],
-				$distance,
-				$distance_type_raw);
-		} else if ($delivery_type == 'metro') {
-			$delivery_fee = FunctionsV3::getMerchantMetroDeliveryFee(
-				$current_merchant,
-				$res['delivery_charges'],
-				$distance,
-				$distance_type_raw);
-		}
-
-		$_SESSION['shipping_fee']=$delivery_fee;
-		// END update $_SESSION['shipping_fee']
 
 
 		$this->render('payment-option',array(
 		  'website_enabled_map_address'=>getOptionA('website_enabled_map_address'),
+			'show_address_book'=>$show_address_book,
 		  'address_book'=>Yii::app()->functions->showAddressBook()
 		));
 	}
@@ -1776,6 +1752,8 @@ class StoreController extends CController
 	
 	public function actionGuestCheckout()
 	{
+		Yii::app()->functions->calculateShippingFeeForAllType();
+
 		/*POINTS PROGRAM*/
 		if (FunctionsV3::hasModuleAddon("pointsprogram")){
 		   PointsProgram::includeFrontEndFiles();	
