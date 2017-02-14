@@ -13,6 +13,7 @@ $orderId = $_GET['id'];
 if (!isset($orderId)) {
     $orderId = $_GET['out_trade_no'];
 }
+$merchant_id=NULL;
 if ($data = Yii::app()->functions->getOrder2($orderId)) {
     $merchant_id = $data['merchant_id'];
     $json_details = !empty($data['json_details']) ? json_decode($data['json_details'], true) : false;
