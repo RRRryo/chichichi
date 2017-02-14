@@ -346,7 +346,7 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
       <div class="box-grey rounded  relative">
       
         <div class="star-float" style="left: 80%;"></div>
-      
+
         <!--DELIVERY INFO-->
         <div class="inner center">
          <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close">
@@ -385,6 +385,19 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 				<?php endforeach; ?>
 			<?php endif; ?>
 			</div>
+			<div class="top10">
+				<p>
+					<?php
+					if ($distance){
+						echo t("Distance to the restaurant").": ".number_format($distance,1)." $distance_type";
+					} else echo  t("Distance to the restaurant").": ".t("not available");
+					?>
+				</p>
+				<a href="javascript:;" class="top10 green-color change-address block text-center">
+					[<?php echo t("Change Your Address here")?>]
+				</a>
+			</div>
+
 
 
         </div>
