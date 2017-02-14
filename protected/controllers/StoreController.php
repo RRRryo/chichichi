@@ -740,7 +740,7 @@ class StoreController extends CController
 
 		             
 		              if(!empty(FunctionsV3::$distance_type_result)){
-		             	$distance_type_raw=FunctionsV3::$distance_type_result;
+//		             	$distance_type_raw=FunctionsV3::$distance_type_result;
 		             	$distance_type=t(FunctionsV3::$distance_type_result);
 		             }
 
@@ -758,7 +758,7 @@ class StoreController extends CController
 
 					/*get the distance from client address to merchant Address*/
 					$metro_distance_type=FunctionsV3::getMerchantDistanceType($merchant_id);
-					$metro_distance_type_orig=$metro_distance_type;
+//					$metro_distance_type_orig=$metro_distance_type;
 
 					$metro_distance=FunctionsV3::getDistanceBetweenPlot(
 						$_SESSION['client_metro_location']['lat'],
@@ -775,7 +775,7 @@ class StoreController extends CController
 						$metro_distance_type=t(FunctionsV3::$distance_type_result);
 					}
 
-					$metro_merchant_delivery_distance=getOption($merchant_id,'merchant_delivery_miles');
+//					$metro_merchant_delivery_distance=getOption($merchant_id,'merchant_delivery_miles');
 
 					$metro_delivery_fee=FunctionsV3::getMerchantMetroDeliveryFee(
 						$merchant_id,
