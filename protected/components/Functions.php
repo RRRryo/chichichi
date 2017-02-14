@@ -6232,38 +6232,7 @@ class Functions extends CApplicationComponent
 
 					$total_price=$val['qty']*$price;
 
-
-
-					/** check if item is taxable*/
-
-					//dump($val);
-
-					$food_taxable=true;
-
-					if (isset($val['non_taxable'])){
-
-						if ( $val['non_taxable']==2){
-
-							$food_taxable=false;
-
-						}
-
-					}
-
-
-
 					$subtotal=$subtotal+$total_price;
-
-
-
-					if ($food_taxable==false){
-
-						$subtotal_non=$subtotal_non+$total_price;
-
-					}
-
-
-
 
 					/** Translation */
 
@@ -6541,12 +6510,6 @@ class Functions extends CApplicationComponent
 
 										$subtotal+=$addon_item_price;
 
-										if ($food_taxable==false){
-
-											$subtotal_non+=$addon_item_price;
-
-										}
-
 									}
 
 								} else {
@@ -6554,12 +6517,6 @@ class Functions extends CApplicationComponent
 									/** check if item is taxable*/
 
 									$subtotal+=$addon_item_price;
-
-									if ($food_taxable==false){
-
-										$subtotal_non+=$addon_item_price;
-
-									}
 
 								}
 
@@ -6759,16 +6716,6 @@ class Functions extends CApplicationComponent
 
 					$subtotal=$subtotal-$less_voucher;
 
-
-
-					/** check if item is taxable*/
-
-					if ($food_taxable==false){
-
-						$subtotal_non=$subtotal_non-$less_voucher;
-
-					}
-
 				}
 
 
@@ -6800,15 +6747,6 @@ class Functions extends CApplicationComponent
 							$subtotal=$subtotal-$discounted_amount;
 
 
-
-							/** check if item is taxable*/
-
-							if ($food_taxable==false){
-
-								$subtotal_non=$subtotal_non-$discounted_amount;
-
-							}
-
 						}
 
 					}
@@ -6831,15 +6769,6 @@ class Functions extends CApplicationComponent
 
 							$subtotal=$subtotal-$discounted_amount;
 
-
-
-							/** check if item is taxable*/
-
-							if ($food_taxable==false){
-
-								$subtotal_non=$subtotal_non-$discounted_amount;
-
-							}
 
 						}
 
@@ -6868,6 +6797,8 @@ class Functions extends CApplicationComponent
 								$delivery_charges=0;
 
 								$free_delivery=true;
+
+								$_SESSION['free_delivery']=true;
 
 							}
 
@@ -7192,17 +7123,7 @@ class Functions extends CApplicationComponent
 
 
 				if ( $free_delivery==true){
-
-					/*$htm.='<div class="a">'.Yii::t("default","Delivery Fee").':</div>';
-
-			         $htm.='<div class="manage">';
-
-			           $htm.='<div class="b">'.t("Free").'</div>';
-
-			         $htm.='</div>';*/
-
 					$htm.=FunctionsV3::receiptRowTotal("Delivery Fee", t("Free") );
-
 				}
 
 
