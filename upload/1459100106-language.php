@@ -4847,9 +4847,9 @@ $lang["Address is required"] ="必须有地址";
 
 
 
-$lang["Change Your Address here"] ="在这里更改地址";
+$lang["Change Your Address here"] ="更改我的地址";
 
-
+$lang["Distance to the restaurant"] ="我到餐厅的距离";
 
 
 
