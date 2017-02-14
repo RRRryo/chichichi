@@ -5,13 +5,15 @@ class ScriptManager
 	{		
 		$baseUrl = Yii::app()->baseUrl; 
         $cs = Yii::app()->getClientScript();
-        //$cs->registerScriptFile('//code.jquery.com/jquery-1.10.2.min.js',CClientScript::POS_END);            
-        $cs->registerScriptFile($baseUrl."/assets/vendor/jquery-1.10.2.min.js",CClientScript::POS_END);            
+
+		$cs->registerScriptFile($baseUrl."/assets/js/jquery-3.1.1.min.js",CClientScript::POS_BEGIN);
+
+        $cs->registerScriptFile($baseUrl."/assets/vendor/jquery-1.10.2.min.js",CClientScript::POS_END);
         
-        $cs->registerScriptFile("//code.jquery.com/ui/1.10.3/jquery-ui.js"
-		,CClientScript::POS_END); 
-        
-        $js_lang=Yii::app()->functions->jsLanguageAdmin();
+//        $cs->registerScriptFile("//code.jquery.com/ui/1.10.3/jquery-ui.js",CClientScript::POS_END);
+		$cs->registerScriptFile($baseUrl."/assets/vendor/jquery-ui-1.11.4/jquery-ui.js",CClientScript::POS_END);
+
+		$js_lang=Yii::app()->functions->jsLanguageAdmin();
         $js_lang_validator=Yii::app()->functions->jsLanguageValidator();
         
         $cs->registerScript(
@@ -93,20 +95,12 @@ class ScriptManager
 		
 		$cs->registerScriptFile($baseUrl."/assets/vendor/ajaxupload/fileuploader.js"
 		,CClientScript::POS_END); 
-						
-		/*$cs->registerScriptFile($baseUrl."/assets/vendor/bar-rating/jquery.barrating.min.js"
-		,CClientScript::POS_END);*/ 
-		
-		/*$cs->registerScriptFile($baseUrl."/assets/vendor/jquery.nicescroll.min.js"
-		,CClientScript::POS_END); */
-		
+
 		$cs->registerScriptFile($baseUrl."/assets/vendor/iCheck/icheck.js"
-		,CClientScript::POS_END); 
+		,CClientScript::POS_END);
+
 		$cs->registerScriptFile($baseUrl."/assets/vendor/chosen/chosen.jquery.min.js"
-		,CClientScript::POS_END); 
-		
-		/*$cs->registerScriptFile("//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0/src/markerclusterer.js"
-		,CClientScript::POS_END);*/
+		,CClientScript::POS_END);
 		
 		$cs->registerScriptFile($baseUrl."/assets/vendor/markercluster.js"
 		,CClientScript::POS_END); 
@@ -123,10 +117,10 @@ class ScriptManager
 		$cs->registerScriptFile($baseUrl."/assets/vendor/jquery.geocomplete.min.js"
 		,CClientScript::POS_END); 
 						
-		if ( Yii::app()->functions->getOptionAdmin('fb_flag')=="" ){
+		/*if ( Yii::app()->functions->getOptionAdmin('fb_flag')=="" ){
 			$cs->registerScriptFile($baseUrl."/assets/js/fblogin.js?ver=1"
 		    ,CClientScript::POS_END); 
-		}
+		}*/
 		
 		$cs->registerScriptFile($baseUrl."/assets/vendor/jquery.printelement.js"
 		,CClientScript::POS_END); 
@@ -134,37 +128,16 @@ class ScriptManager
 		,CClientScript::POS_END); 
 		
 		$cs->registerScriptFile($baseUrl."/assets/vendor/jquery.appear.js"
-		,CClientScript::POS_END); 
-		
-		/*$cs->registerScriptFile($baseUrl."/assets/vendor/flexslider/jquery.flexslider-min.js"
-		,CClientScript::POS_END); */
-		
+		,CClientScript::POS_END);
+
 		$cs->registerScriptFile($baseUrl."/assets/vendor/magnific-popup/jquery.magnific-popup.js"
-		,CClientScript::POS_END); 
-		
-		/*$cs->registerScriptFile($baseUrl."/assets/vendor/bxslider/jquery.bxslider.min.js"
-		,CClientScript::POS_END); */
-		
+		,CClientScript::POS_END);
+
 		$cs->registerScriptFile($baseUrl."/assets/vendor/imagesloaded.pkgd.js"
 		,CClientScript::POS_END); 
 		$cs->registerScriptFile($baseUrl."/assets/vendor/intel/build/js/intlTelInput.js?ver=2.1.5"
 		,CClientScript::POS_END); 
-		
-		/*$cs->registerScriptFile("//www.google.com/recaptcha/api.js?onload=KMRSCaptchaCallback&render=explicit"
-		,CClientScript::POS_END,array(
-		  'async'=>"async"
-		)); */
-				
-		/*$cs->registerScriptFile("//www.google.com/recaptcha/api.js"
-		,CClientScript::POS_END,array(
-		  'async'=>'async',
-		  'defer'=>'defer'
-		)); */
-						
-		/*$cs->registerScriptFile("//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-		,CClientScript::POS_END); */
-		/* UIKIT */
-		
+
 		$cs->registerScriptFile($baseUrl."/assets/vendor/uikit/js/uikit.js"
 		,CClientScript::POS_END); 
 		
@@ -188,7 +161,8 @@ class ScriptManager
 		,CClientScript::POS_END); 
 		
 		$cs->registerScriptFile("//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"
-		,CClientScript::POS_END); 
+//		$cs->registerScriptFile($baseUrl."/assets/vendor/bootstrap-select.min.js"
+			,CClientScript::POS_END);
 		
 		$cs->registerScriptFile($baseUrl."/assets/vendor/waypoints/jquery.waypoints.min.js"
 		,CClientScript::POS_END); 
@@ -231,13 +205,16 @@ class ScriptManager
 		,CClientScript::POS_END); 
 		
 		$cs->registerScriptFile($baseUrl."/assets/js/store.js?ver=3"
-		,CClientScript::POS_END); 
+		,CClientScript::POS_END);
 		
 		$cs->registerScriptFile($baseUrl."/assets/js/store-v3.js?ver=3"
-		,CClientScript::POS_END); 
+		,CClientScript::POS_END);
 		
 		$cs->registerScriptFile($baseUrl."/assets/js/owl.carousel.js"
 		,CClientScript::POS_END);
+
+		$cs->registerScriptFile("//www.google.com/recaptcha/api.js?onload=onloadMyCallback&render=explicit"
+			,CClientScript::POS_END,array('id'=>'async'));
 	}
 	
 	public static function registerAllCSSFiles()
@@ -246,11 +223,10 @@ class ScriptManager
 		$cs = Yii::app()->getClientScript();
 		$cs->registerCssFile($baseUrl.'/assets/css/store.css?ver=1.0');
 		$cs->registerCssFile($baseUrl.'/assets/css/patch.css');
-		$cs->registerCssFile('//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css');
+		$cs->registerCssFile($baseUrl.'/assets/vendor/jquery-ui-1.11.4/jquery-ui.css');
 		
-		$cs->registerCssFile("//fonts.googleapis.com/css?family=Open+Sans|Podkova|Rosario|Abel|PT+Sans|Source+Sans+Pro:400,600,300|Roboto|Montserrat:400,700|Lato:400,300,100italic,100,300italic,400italic,700,700italic,900,900italic|Raleway:300,400,600,800");					
+//		$cs->registerCssFile("//fonts.googleapis.com/css?family=Open+Sans|Podkova|Rosario|Abel|PT+Sans|Source+Sans+Pro:400,600,300|Roboto|Montserrat:400,700|Lato:400,300,100italic,100,300italic,400italic,700,700italic,900,900italic|Raleway:300,400,600,800");
 				
-		//$cs->registerCssFile("//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 		$cs->registerCssFile($baseUrl."/assets/vendor/font-awesome/css/font-awesome.min.css");
 				
 		
@@ -273,17 +249,15 @@ class ScriptManager
 		//$cs->registerCssFile("//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 		$cs->registerCssFile($baseUrl."/assets/vendor/ionicons-2.0.1/css/ionicons.min.css");	
 		
-		$cs->registerCssFile("//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css");	
-		
+//		$cs->registerCssFile("//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css");
+		$cs->registerCssFile($baseUrl."/assets/vendor/compress/bootstrap-select.min.css");
+
 		$cs->registerCssFile($baseUrl."/assets/vendor/nprogress/nprogress.css");
 		
 		$cs->registerCssFile($baseUrl."/assets/vendor/justified-gallery/css/justifiedGallery.min.css");
 		
 		$cs->registerCssFile($baseUrl."/assets/vendor/EasyAutocomplete/easy-autocomplete.min.css");		
-		
-		/*$cs->registerCssFile($baseUrl."/assets/vendor/pickadate.js/lib/themes/default.css");
-		$cs->registerCssFile($baseUrl."/assets/vendor/pickadate.js/lib/themes/default.time.css");*/	
-		
+
 		/* UIKIT */
 		
 		$cs->registerCssFile($baseUrl."/assets/vendor/uikit/css/uikit.almost-flat.min.css");
@@ -307,7 +281,7 @@ class ScriptManager
 	
 	public static function registerGlobalVariables()
 	{				
-		echo CHtml::hiddenField('fb_app_id',Yii::app()->functions->getOptionAdmin('fb_app_id'));
+//		echo CHtml::hiddenField('fb_app_id',Yii::app()->functions->getOptionAdmin('fb_app_id'));
 		echo CHtml::hiddenField('admin_country_set',Yii::app()->functions->getOptionAdmin('admin_country_set'));
 		echo CHtml::hiddenField('google_auto_address',Yii::app()->functions->getOptionAdmin('google_auto_address'));
 		echo CHtml::hiddenField('google_default_country',getOptionA('google_default_country'));
