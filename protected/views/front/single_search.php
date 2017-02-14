@@ -9,7 +9,7 @@
   <div class="search-input-wraps rounded30">
      <div class="row">
      
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
 <script>
 $(document).ready(function(){
     $(".toggel-click").click(function(){
