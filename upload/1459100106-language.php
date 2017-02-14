@@ -8874,7 +8874,7 @@ $lang['Enabled Table Rates']='启用表价格';
 
 $lang['Free']='免费';
 
-
+$lang['free']='免费';
 
 
 
