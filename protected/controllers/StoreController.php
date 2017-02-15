@@ -848,7 +848,11 @@ class StoreController extends CController
 				   'theme_reviews_tab'=>getOptionA('theme_reviews_tab'),
 				   'theme_map_tab'=>getOptionA('theme_map_tab'),
 				   'theme_info_tab'=>getOptionA('theme_info_tab'),
-				   'theme_photos_tab'=>getOptionA('theme_photos_tab')
+				   'theme_photos_tab'=>getOptionA('theme_photos_tab'),
+
+					'free_delivery_above_price'=>getOption($merchant_id,'free_delivery_above_price'),
+					'free_metro_delivery_above_price'=>getOption($merchant_id,'free_metro_delivery_above_price')
+
 				));	
 								
 			}  else  $this->render('error',array(
