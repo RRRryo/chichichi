@@ -173,7 +173,28 @@ class FunctionsV3
     			break; 
     		case 3:
     			$htm.='<li>'.t("Pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
-    			break; 
+    			break;
+
+			case 4:
+				$htm.='<li>'.t("Metro pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				break;
+
+			case 5:
+				$htm.='<li>'.t("Delivery").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				$htm.='<li>'.t("Metro pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				break;
+
+			case 6:
+				$htm.='<li>'.t("Pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				$htm.='<li>'.t("Metro pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				break;
+
+			case 7:
+				$htm.='<li>'.t("Delivery").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				$htm.='<li>'.t("Pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				$htm.='<li>'.t("Metro pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				break;
+
     			
     		default:
     			break;
@@ -617,10 +638,15 @@ class FunctionsV3
     public static function getFreeDeliveryTag($merchant_id='')
     {
     	$fee=getOption($merchant_id,'free_delivery_above_price');
+		$metro_fee=getOption($merchant_id,'free_metro_delivery_above_price');
+		$html = '';
     	if ($fee>0){
-    		return '<span class="label label-default">'. t("Free Delivery On Orders Over")." ". self::prettyPrice($fee).'</span>';
+			$html='<p><span class="label label-default">'. t("Free Domicile Delivery On Orders Over")." ". self::prettyPrice($fee).'</span></p>';
     	}
-    	return '&nbsp;';
+		if ($metro_fee>0){
+			$html.= '<p><span class="label label-default">'. t("Free Metro Delivery On Orders Over")." ". self::prettyPrice($metro_fee).'</span></p>';
+		}
+    	return $html;
     }
     
     public static function getDeliveryEstimation($merchant_id='')
