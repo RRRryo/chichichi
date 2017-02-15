@@ -354,7 +354,13 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
          </button>
 
 	        <p class="bold"><?php echo t("Delivery Information")?></p>
-			<p><?php echo t("Pickup free")?></p>
+			<p>
+				<?php
+				if ($distance){
+					echo t("Distance to the restaurant").": ".number_format($distance,1)." $distance_type";
+				} else echo  t("Distance to the restaurant").": ".t("not available");
+				?>
+			</p>
 			<p>
 				<?php
 				if (!empty($merchant_delivery_distance)){
@@ -366,6 +372,9 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 				<?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id)?>
 			</p>
 			<div class="top10">
+			<p><?php echo t("Pickup free")?></p>
+			</div>
+			<div class="top10">
 			<?php if ( $resp=Yii::app()->functions->getShippingRates($merchant_id)):?>
 				<p><?php echo t('delivery to domicile')?></p>
 				<?php foreach ($resp as $val): ?>
@@ -373,6 +382,7 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 						<?php echo t('to').$val['distance_to'].$val['shipping_units']?>
 						<?php echo '€ '.standardPrettyFormat($val['distance_price'])?></p>
 				<?php endforeach; ?>
+				<p><?php echo t('above to ').'€ '.standardPrettyFormat($free_delivery_above_price).t(' free for deliver') ?></p>
 			<?php endif; ?>
 			</div>
 			<div class="top10">
@@ -383,16 +393,11 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 						<?php echo t('to').$val['distance_to'].$val['shipping_units']?>
 						<?php echo '€ '.standardPrettyFormat($val['distance_price'])?></p>
 				<?php endforeach; ?>
+				<p><?php echo t('above to ').'€ '.standardPrettyFormat($free_metro_delivery_above_price).t(' free for deliver') ?></p>
 			<?php endif; ?>
 			</div>
 			<div class="top10">
-				<p>
-					<?php
-					if ($distance){
-						echo t("Distance to the restaurant").": ".number_format($distance,1)." $distance_type";
-					} else echo  t("Distance to the restaurant").": ".t("not available");
-					?>
-				</p>
+
 				<a href="javascript:;" class="top10 green-color change-address block text-center">
 					[<?php echo t("Change Your Address here")?>]
 				</a>
