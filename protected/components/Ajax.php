@@ -1739,6 +1739,9 @@ $this->msg=t("We have sent bank information instruction to your email")." :$merc
     	Yii::app()->functions->updateOption("free_delivery_above_price",
     	isset($this->data['free_delivery_above_price'])?$this->data['free_delivery_above_price']:'',$mtid);
 
+		Yii::app()->functions->updateOption("free_metro_delivery_above_price",
+			isset($this->data['free_metro_delivery_above_price'])?$this->data['free_metro_delivery_above_price']:'',$mtid);
+
 		//domicile delivery
     	if (is_array($this->data['distance_from']) && count($this->data['distance_from'])>=1){    		
     		$x=0;
