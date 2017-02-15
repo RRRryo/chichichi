@@ -157,7 +157,8 @@ echo CHtml::hiddenField('admin_currency_position',
                                             <?php if ($free_delivery): ?>
                                                 <?php echo t("delivery fee").': '.t('free') ?>
                                             <?php else: ?>
-                                                <?php echo t("delivery fee").': '. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id).$_SESSION['free_delivery'] ?>
+
+                                                <?php echo t("delivery fee").': '. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id).$free_delivery ?>
                                             <?php endif ;?>
                                         </p>
                                     </div>
@@ -340,7 +341,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                                 <?php if ($free_delivery): ?>
                                                     <?php echo t("delivery fee").': '.t('free') ?>
                                                 <?php else: ?>
-                                                    <?php echo t("delivery fee").': '. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id).$_SESSION['free_delivery'] ?>
+                                                    <?php echo t("delivery fee").': '. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id).$free_delivery ?>
                                                 <?php endif ;?>
                                             </p>
                                         </div>
