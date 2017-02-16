@@ -4843,11 +4843,6 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 	    public function placeOrder()
 
 	    {
-            //check address
-			if(!isset($this->data['client_address']) || $this->data['client_address']=='') {
-				$this->msg=Yii::t("default","address invalid");
-				return;
-			}
 
 	    	$mtid=$_SESSION['kr_merchant_id'];
 
@@ -4889,13 +4884,13 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 		    	if (!FunctionsV3::reCheckDelivery($mtid,$this->data)){
 
-		    		$mt_delivery_miles=getOption($mtid,'merchant_delivery_miles'); 
+//		    		$mt_delivery_miles=getOption($mtid,'merchant_delivery_miles');
 
-		    		$distance_type=FunctionsV3::getMerchantDistanceType($mtid); 
+//		    		$distance_type=FunctionsV3::getMerchantDistanceType($mtid);
 
-		    		$unit=$distance_type=="M"?t("miles"):t("kilometers");
+//		    		$unit=$distance_type=="M"?t("miles"):t("kilometers");
 
-		    		$this->msg=t("Sorry but this merchant delivers only with in ").$mt_delivery_miles." $unit";
+		    		$this->msg=t("Please input the correct address information");
 
 		    		return ;
 
@@ -16339,7 +16334,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 				$lat_res['lines']= array();
 
 				foreach ($stations as $station) {
-					if ($station->name == $this->data['client_metro']) {
+					if (strtolower($station->name) == strtolower($this->data['client_metro'])) {
 						$lat_res['lat']=$station->latitude;
 						$lat_res['long']=$station->longitude;
 
@@ -16390,7 +16385,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 				} else $this->msg=Yii::t("default","Invalid metro name");
 
 
-			} else $this->msg=Yii::t("default","Address is required");
+			} else $this->msg=Yii::t("default","Metro name is required");
 
 		}
 
