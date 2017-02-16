@@ -4238,9 +4238,20 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 		   	  $booking_time='';
 
-		   }	    
+		   }
 
+			//todo isMerchantReady
 
+			/*$deliveryEstimationMinutes = FunctionsV3::getDeliveryEstimation($merchant_id);
+
+			$current = date('Y-m-d h:i:s');
+
+			$booking_time_format=date("G:i", strtotime($booking_time));
+			$res=($booking_time_format - $current);
+			error_log("booking_time".$booking_time);
+			error_log("res".$res);
+			error_log("current".$current);
+			error_log("full_booking_day".$full_booking_day);*/
 
 		   //$merchant_id=isset($this->data['merchant_id'])?$this->data['merchant_id']:'';		   
 
@@ -4258,9 +4269,13 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 			    return ;
 
-			}					
+			}
 
-	       $this->code=1;$this->msg=Yii::t("default","OK");	  
+
+
+
+
+			$this->code=1;$this->msg=Yii::t("default","OK");
 
 	       $this->details=Yii::app()->createUrl('store/checkout');
 
