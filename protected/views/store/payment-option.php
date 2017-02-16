@@ -134,9 +134,8 @@ echo CHtml::hiddenField('admin_currency_position',
                                         )) ?>
                                     </div>
                                     <div class="col-md-5 top8">
-                                        <p class="right">
-                                            <?php
-
+                                        <p class="left">
+                                            <?php echo t('correspondence info').': ';
                                             if(isset($_SESSION['client_location']['lines'])) {
                                                 foreach($_SESSION['client_location']['lines'] as $line) {
                                                     echo $line.' ';
@@ -148,7 +147,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 </div>
                                 <div class="row top10">
-                                    <div class="col-md-5 col-xs-5">
+                                    <div class="col-md-5">
                                         <input type="submit" class="calculate_shipment_fee  green-button block medium full-width " value=" <?php echo t("delivery to this station") ?>">
                                     </div>
 
