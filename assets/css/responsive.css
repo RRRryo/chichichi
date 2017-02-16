@@ -1045,10 +1045,15 @@ font-size:20px;
 	.search-input-wraps{ width:95%;}
 	body {overflow-x:hidden;}
 	.col-xs-1.menu-nav-mobile.border.relative {
-    padding: 16px 0;
-    text-align: center;
-    width: 38px;
-}
+        padding: 16px 0;
+        text-align: center;
+        width: 38px;
+    }
+    .col-xs-1.cart-mobile-handle.border.relative {
+        padding: 16px 0;
+        text-align: center;
+        width: 38px;
+    }
 
 .restourant-slider{ width:90%; margin:0px auto;}
 .owl-buttons .owl-prev::before{ left:-20px;}
