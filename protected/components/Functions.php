@@ -17440,14 +17440,6 @@ EOF;
 
 		$business_hours=Yii::app()->functions->getBusinnesHours($merchant_id);
 
-		//dump($business_hours);
-
-		/*dump($merchant_id);
-
-	   dump($full_booking_day);
-
-	   dump($booking_time);*/
-
 		if (is_array($business_hours) && count($business_hours)>=1){
 
 			if (!array_key_exists($full_booking_day,$business_hours)){
@@ -17568,7 +17560,7 @@ EOF;
 
 		$date3 = DateTime::createFromFormat('H:i a', $sunset);
 
-		if ($date1 > $date2 && $date1 < $date3) {
+		if ($date1 >= $date2 && $date1 <= $date3) {
 
 			return true;
 
