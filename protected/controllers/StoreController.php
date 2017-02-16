@@ -723,7 +723,8 @@ class StoreController extends CController
 
 				$distance_type=FunctionsV3::getMerchantDistanceType($merchant_id);
 				$merchant_delivery_distance=getOption($merchant_id,'merchant_delivery_miles');
-				$distance_type_raw = $distance_type=="M"?"miles":"kilometers";
+				$distance_type_raw = $distance_type;
+
 				$distance_type=$distance_type=="M"?t("miles"):t("kilometers");
 				$distance_type_orig = $distance_type;
 				if (isset($_SESSION['client_location'])){
@@ -734,10 +735,15 @@ class StoreController extends CController
 		             $distance=FunctionsV3::getDistanceBetweenPlot(
 		                $_SESSION['client_location']['lat'],
 		                $_SESSION['client_location']['long'],
-		                $res['latitude'],$res['lontitude'],$distance_type
-		             );           
-		             		            		 
+		                $res['latitude'],$res['lontitude'],$distance_type_raw
+		             );
 
+//					error_log("menu client_location lat".$_SESSION['client_location']['lat']);
+//					error_log("menu client_location long".$_SESSION['client_location']['long']);
+//					error_log("menu latitude".$res['latitude']);
+//					error_log("menu lontitude".$res['lontitude']);
+//					error_log("menu distance_type".$distance_type);
+//					error_log("menu distance".$distance);
 		             
 		              if(!empty(FunctionsV3::$distance_type_result)){
 //		             	$distance_type_raw=FunctionsV3::$distance_type_result;
