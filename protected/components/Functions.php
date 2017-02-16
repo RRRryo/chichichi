@@ -6822,7 +6822,12 @@ class Functions extends CApplicationComponent
 
 					if(!isset($_GET['backend'])){
 
-						$free_delivery_above_price=Yii::app()->functions->getOption("free_delivery_above_price",$mid);
+						$free_delivery_above_price=NULL;
+						if ($data['delivery_type']=="delivery" ) {
+							$free_delivery_above_price=Yii::app()->functions->getOption("free_delivery_above_price",$mid);
+						} else {
+							$free_delivery_above_price=Yii::app()->functions->getOption("free_metro_delivery_above_price",$mid);
+						}
 
 						if (!empty($free_delivery_above_price)){
 
@@ -6832,7 +6837,7 @@ class Functions extends CApplicationComponent
 
 								$free_delivery=true;
 
-								$_SESSION['free_delivery']=true;
+//								$_SESSION['free_delivery']=true;
 
 							}
 
