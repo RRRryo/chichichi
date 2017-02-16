@@ -1624,17 +1624,10 @@ class FunctionsV3
     	    
     	if($merchant_info=FunctionsV3::getMerchantById($merchant_id)){
     		$distance_type=FunctionsV3::getMerchantDistanceType($merchant_id); 
-    		
-    		/*$lat=isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'';
-    		$lng=isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'';*/
-    		
-//    		$complete_address=$data['street']." ".$data['city']." ".$data['state']." ".$data['zipcode'];
-//			$complete_address=$data['client_address'];
-//			$complete_address=$_SESSION['client_location'];
 
     		$lat=isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'';
 			$lng=isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'';
-			
+
     		/*if address book was used*/
     		if ( isset($data['address_book_id'])){
 	    		if ($address_book=Yii::app()->functions->getAddressBookByID($data['address_book_id'])){
@@ -1661,20 +1654,32 @@ class FunctionsV3
             }
 			
 			if (is_numeric($merchant_delivery_distance)){
-				if ( $distance>$merchant_delivery_distance){
-					 if($distance_type_raw=="ft" || $distance_type_raw=="meter" || $distance_type_raw=="mt"){
-					 	return true;
-					 }
-		             return false;
+
+				if ( !empty($distance) && $distance<=$merchant_delivery_distance){
+					$delivery_fee = NULL;
+					if($data['delivery_type'] == 'metro') {
+						$delivery_fee=self::getMerchantMetroDeliveryFee(
+							$merchant_id,
+							$merchant_info['delivery_charges'],
+							$distance,
+							$distance_type_raw);
+					} else {
+						$delivery_fee=self::getMerchantDeliveryFee(
+							$merchant_id,
+							$merchant_info['delivery_charges'],
+							$distance,
+							$distance_type_raw);
+					}
+
+					$_SESSION['shipping_fee']=$delivery_fee;
+
+					return true;
                 } else {
-                	$delivery_fee=self::getMerchantDeliveryFee(
-								              $merchant_id,
-								              $merchant_info['delivery_charges'],
-								              $distance,
-								              $distance_type_raw);
-                    //dump($delivery_fee);
-                    $_SESSION['shipping_fee']=$delivery_fee;
-                    return true;								              
+					if($distance_type_raw=="ft" || $distance_type_raw=="meter" || $distance_type_raw=="mt"){
+						return true;
+					}
+					return false;
+
                 }
 			}
     	}
