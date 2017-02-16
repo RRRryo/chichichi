@@ -3240,7 +3240,7 @@ $lang["ERROR:"] = "错误 :";
 $lang["Sorry but this merchant delivers only with in "] = "抱歉但此商户只提供小于";
 
 
-
+$lang["Please input the correct address information"] = "请输入正确的地址信息";
 
 
 $lang["miles"] = "英里";
@@ -4853,7 +4853,7 @@ $lang["Save to my address book"] ="保存到我的地址簿";
 
 $lang["Address is required"] ="必须有地址";
 
-
+$lang["Metro name is required"] ="必须填写地铁站";
 
 
 
@@ -8866,7 +8866,7 @@ $lang['Telephone']='电话';
 
 $lang['Enabled Table Rates']='启用表价格';
 
-
+$lang['delivery to this station']='送到这个地铁站';
 
 
 
@@ -8878,13 +8878,17 @@ $lang['Free delivery to metro above Sub Total Order']='免费送餐到地铁站�
 
 $lang['Enabled Table Rates']='启用表价格';
 
+$lang['Use another address']='使用其他地址';
 
+$lang['delivery to']='送至';
 
-
+$lang['address is not set yet']='地址还未填写';
 
 $lang['Free']='免费';
 
 $lang['free']='免费';
+
+$lang['Metro station']="地铁站";
 
 
 
