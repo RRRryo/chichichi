@@ -4240,20 +4240,19 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 		   }
 
-			//todo isMerchantReady
-
-			/*$deliveryEstimationMinutes = FunctionsV3::getDeliveryEstimation($merchant_id);
-
-			$current = date('Y-m-d h:i:s');
-
-			$booking_time_format=date("G:i", strtotime($booking_time));
-			$res=($booking_time_format - $current);
-			error_log("booking_time".$booking_time);
-			error_log("res".$res);
-			error_log("current".$current);
-			error_log("full_booking_day".$full_booking_day);*/
-
-		   //$merchant_id=isset($this->data['merchant_id'])?$this->data['merchant_id']:'';		   
+			// check Delivery Estimation
+			$deliveryEstimationMinutes = FunctionsV3::getDeliveryEstimation($merchant_id);
+			$deliveryEstimationMinutes = is_numeric($deliveryEstimationMinutes)?$deliveryEstimationMinutes:0;
+			$current = date('Y-m-d h:i');
+			$diff=(strtotime($full_booking_time) - strtotime($current))/60;
+			$readyTime = new DateTime($current);
+			$readyTime->add(new DateInterval('PT' . $deliveryEstimationMinutes . 'M'));
+			$readyStamp = $readyTime->format('Y-m-d h:i');
+			if($diff < $deliveryEstimationMinutes) {
+				$this->msg=t("Sorry but the restaurant need to prepare and delivery the food for about").$deliveryEstimationMinutes
+					." ".t("minutes").", ".t("please select the booking time later than").$readyStamp;
+				return;
+			}
 
 		   if ( !Yii::app()->functions->isMerchantOpenTimes($merchant_id,$full_booking_day,$booking_time)){	
 
