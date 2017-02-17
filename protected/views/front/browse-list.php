@@ -66,7 +66,7 @@ if ( empty($val['latitude'])){
               <p><?php echo t("Minimum Order").": ".FunctionsV3::prettyPrice($val['minimum_order'])?></p>
               
               <?php if($val['service']!=3):?>
-              <p><?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id)?></p>
+              <p><?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id).t("minutes")?></p>
               <?php endif;?>
               
               <p>
