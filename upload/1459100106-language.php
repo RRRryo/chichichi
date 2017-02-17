@@ -281,7 +281,7 @@ $lang["delivery fee"] = "送餐费";
 
 $lang["Votes"] = "票数";
 
-
+$lang["minutes"] = "分钟";
 
 
 
@@ -2379,7 +2379,7 @@ $lang["Delivery Estimation"] = "预计送餐时间";
 
 $lang["1 hour approx."] = "大约1小时";
 
-
+$lang["1 hour approx."] = "大约60分钟";
 
 
 
@@ -8868,6 +8868,7 @@ $lang['Enabled Table Rates']='启用表价格';
 
 $lang['delivery to this station']='送到这个地铁站';
 
+$lang['correspondence info']='换乘信息';
 
 
 $lang['Free delivery to domicile above Sub Total Order']='免费送餐上门金额';
@@ -9019,15 +9020,15 @@ $lang['SMS sent']='短信已发送';
 
 $lang['Sorry but we are closed on']='抱歉，我们已关闭了';
 
+$lang['Sorry but the restaurant need to prepare and delivery the food for about']='抱歉 本餐厅准备以及运送大约需要';
 
-
-
+$lang['please select the booking time later than']='请将预订时间设置晚于';
 
 $lang['Please check merchant opening hours']='请检查商户开放时间';
 
 $lang['Opening Hours']='营业时间';
 
-
+$lang['no item found on this category']='该目录下暂时没有东西';
 
 
 
@@ -9429,7 +9430,6 @@ $lang['Please wait for a minute to receive your code']='';
 
 $lang['Your verification code has been sent to']='';
 
-$lang['minutes']='';
 
 $lang['We have sent verification code to your mobile number']='';
 
