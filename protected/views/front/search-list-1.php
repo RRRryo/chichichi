@@ -16,29 +16,28 @@
         </a>
         
         <h2 class="concat-text"><?php echo clearString($val['restaurant_name'])?></h2>
-        <p class="merchant-address concat-text"><?php echo $val['merchant_address']?></p>
+        <p class="merchant-address text-center"><?php echo $val['merchant_address']?></p>
         
         <div class="mytable">
           <div class="mycol a">
              <div class="rating-stars" data-score="<?php echo $ratings['ratings']?>"></div>   
-             <p><?php echo $ratings['votes']." ".t("Reviews")?></p>
+             <p class="text-center"><?php echo $ratings['votes']." ".t("Reviews")?></p>
           </div>
           <div class="mycol b">
-             <?php echo FunctionsV3::prettyPrice($val['minimum_order'])?>
-             <p><?php echo t("Minimum Order")?></p>
+             <p class="text-center"><?php echo t("Minimum Order").": ".FunctionsV3::prettyPrice($val['minimum_order'])?></p>
           </div>
         </div> <!--mytable-->
 
-        <div class="top25"></div>
-        
+        <div class="top25 ">
+
         <?php echo FunctionsV3::merchantOpenTag($merchant_id)?>
-        <?php echo FunctionsV3::getFreeDeliveryTag($merchant_id)?>                        
-        
-        <p class="top15 cuisine concat-text">
+        <?php echo FunctionsV3::getFreeDeliveryTagAlignCenter($merchant_id)?>
+
+        <p class="top15 cuisine text-center">
         <?php echo FunctionsV3::displayCuisine($val['cuisine']);?>
         </p>                
                                  
-        <p>
+        <p class="text-center">
         <?php 
         if ($distance){
         	echo t("Distance").": ".number_format($distance,1)." $distance_type";
@@ -47,10 +46,10 @@
         </p>
         
         <?php if($val['service']!=3):?>
-        <p><?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id)?></p>
+            <p class="text-center"><?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id)?></p>
         <?php endif;?>
-        
-        <p>
+
+        <p class="text-center">
         <?php 
         if($val['service']!=3){
 	        if (!empty($merchant_delivery_distance)){
@@ -59,8 +58,8 @@
         }
         ?>
         </p>
-                                
-        <p>
+
+        <p class="text-center">
         <?php 
         if($val['service']!=3){
 	        if ($delivery_fee){
@@ -76,7 +75,7 @@
         class="orange-button rounded3 medium">
         <?php echo t("Order Now")?>
         </a>
-        
+        </div>
         
     </div> <!--inner-->
  </div> <!--col-->          
