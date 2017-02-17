@@ -266,7 +266,7 @@ $lang["Delivery Est"] = "送餐等待时间";
 
 $lang["By Delivery"] = "运餐方式";
 
-$lang["By Cuisines"] = "餐系";
+$lang["By Cuisines"] = "菜系";
 
 
 $lang["Delivery Distance"] = "送餐距离";
