@@ -1030,7 +1030,7 @@ jQuery(document).ready(function() {
    	 
    	 /*check if delivery/pickup date is empty*/   	 
    	
-   	 if ( $("#delivery_type").val()=="delivery"){
+   	 if ( $("#delivery_type").val()=="delivery" || $("#delivery_type").val()=="metro"){
 	   	  if ( $("#minimum_order").length>=1){   	  	  
 	   	  	  var minimum= parseFloat($("#minimum_order").val());	   	  	  
 	   	  	  if (isNaN(subtotal)){
