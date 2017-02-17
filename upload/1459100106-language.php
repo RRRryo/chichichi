@@ -264,7 +264,9 @@ $lang["miles"] = "英里";
 $lang["Delivery Est"] = "送餐等待时间";
 
 
+$lang["By Delivery"] = "运送模式";
 
+$lang["By Cuisines"] = "餐系";
 
 
 $lang["Delivery Distance"] = "送餐距离";
