@@ -271,9 +271,9 @@ $lang["By Cuisines"] = "菜系";
 
 $lang["Delivery Distance"] = "送餐距离";
 
+$lang["Filters"] = "条件搜索";
 
-
-
+$lang["enter restaurant name"] = "输入餐厅名字";
 
 $lang["Delivery Fee"] = "送餐费";
 
