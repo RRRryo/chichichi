@@ -1,6 +1,6 @@
 <?php
 $this->renderPartial('/front/default-header',array(
-   'h1'=>t("Restaurant  by cuisine"),
+   'h1'=>t("Restaurant by cuisine"),
    'sub_text'=>t("choose from your favorite restaurant")
 ));
 ?>
