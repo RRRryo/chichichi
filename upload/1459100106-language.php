@@ -1295,6 +1295,16 @@ $lang["Your Order"] = "您的订单";
 
 $lang["Metro Pickup"] = "地铁站取";
 
+$lang["Metro pickup"] = "地铁站取";
+
+
+$lang["Metro & Pickup & Delivery"] = "送餐 & 自取 & 地铁站取";
+
+$lang["Metro Only"] = "仅地铁站取";
+
+$lang["Metro & Delivery"] = "送餐 & 地铁站取";
+
+$lang["Metro & Pickup"] = "自取 & 地铁站取";
 
 $lang["Subtotal must exceed"] = "小计必须超过";
 
@@ -2973,13 +2983,13 @@ $lang["User Name"] = "用户名";
 
 
 
-$lang["Delivery & Pickup"] = "送餐或自取";
+$lang["Delivery & Pickup"] = "送餐 & 自取";
 
 
 
 
 
-$lang["Delivery Only"] = "只送餐";
+$lang["Delivery Only"] = "仅送餐";
 
 
 
@@ -3230,7 +3240,7 @@ $lang["ERROR:"] = "错误 :";
 $lang["Sorry but this merchant delivers only with in "] = "抱歉但此商户只提供小于";
 
 
-
+$lang["Please input the correct address information"] = "请输入正确的地址信息";
 
 
 $lang["miles"] = "英里";
@@ -4843,7 +4853,7 @@ $lang["Save to my address book"] ="保存到我的地址簿";
 
 $lang["Address is required"] ="必须有地址";
 
-
+$lang["Metro name is required"] ="必须填写地铁站";
 
 
 
@@ -6596,7 +6606,7 @@ $lang['change? For how much?']='更改吗 ? 为多少 ?';
 $lang['Change']='更改';
 
 
-
+$lang['RMB Total']='人民币总计';
 
 
 $lang['gallery not available']='图库不可用';
@@ -8856,25 +8866,29 @@ $lang['Telephone']='电话';
 
 $lang['Enabled Table Rates']='启用表价格';
 
+$lang['delivery to this station']='送到这个地铁站';
 
 
 
-
-$lang['Free delivery above Sub Total Order']='免费提供上述分总订单';
-
+$lang['Free delivery to domicile above Sub Total Order']='免费送餐上门金额';
 
 
+$lang['Free delivery to metro above Sub Total Order']='免费送餐到地铁站金额';
 
 
 $lang['Enabled Table Rates']='启用表价格';
 
+$lang['Use another address']='使用其他地址';
 
+$lang['delivery to']='送至';
 
-
+$lang['address is not set yet']='地址还未填写';
 
 $lang['Free']='免费';
 
 $lang['free']='免费';
+
+$lang['Metro station']="地铁站";
 
 
 
@@ -8892,7 +8906,12 @@ $lang['Net Amount']='净金额';
 
 $lang['Free Delivery On Orders Over']='免费送货订单超过';
 
+$lang['Free Domicile Delivery On Orders Over']='免费送餐上门订单超过';
 
+$lang['Free Metro Delivery On Orders Over']='免费送餐到地铁站订单超过';
+
+$lang['above to ']='满';
+$lang[' free for deliver']='免送餐费';
 
 
 

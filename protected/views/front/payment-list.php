@@ -10,17 +10,7 @@
          array('class'=>"icheck payment_option",'value'=>$key))?> <span style="font-weight:normal"><?php echo t($val)?></span>
      </div> 
   </div>
-  
-  <?php if ( $key=="cod"):?>
-  <div class="row top10 indent20 change_wrap">
-    <?php echo CHtml::textField('order_change','',array(
-      'placeholder'=>t("change? For how much?"),
-      'style'=>"width:200px;",
-      'class'=>"grey-fields rounded"
-     ))?>
-  </div>
-  <?php endif;?>
-  
+    
   <?php if ( $key=="pyr"):?>
   <?php   
   $provider_list=Yii::app()->functions->getPaymentProviderMerchant($merchant_id);

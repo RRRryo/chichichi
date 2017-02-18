@@ -396,6 +396,40 @@ class Functions extends CApplicationComponent
 
 					break;
 
+				case 4:
+
+					return array(
+
+						'metro'=>Yii::t("default","Metro Pickup"),
+
+					);
+
+					break;
+
+				case 5:
+
+					return array(
+
+						'delivery'=>Yii::t("default","Delivery"),
+
+						'metro'=>Yii::t("default","Metro Pickup"),
+
+					);
+
+					break;
+
+				case 6:
+
+					return array(
+
+						'pickup'=>Yii::t("default","Pickup"),
+
+						'metro'=>Yii::t("default","Metro Pickup"),
+
+					);
+
+					break;
+
 				case 7:
 
 					return array(
@@ -6788,7 +6822,12 @@ class Functions extends CApplicationComponent
 
 					if(!isset($_GET['backend'])){
 
-						$free_delivery_above_price=Yii::app()->functions->getOption("free_delivery_above_price",$mid);
+						$free_delivery_above_price=NULL;
+						if ($data['delivery_type']=="delivery" ) {
+							$free_delivery_above_price=Yii::app()->functions->getOption("free_delivery_above_price",$mid);
+						} else {
+							$free_delivery_above_price=Yii::app()->functions->getOption("free_metro_delivery_above_price",$mid);
+						}
 
 						if (!empty($free_delivery_above_price)){
 
@@ -6798,7 +6837,7 @@ class Functions extends CApplicationComponent
 
 								$free_delivery=true;
 
-								$_SESSION['free_delivery']=true;
+//								$_SESSION['free_delivery']=true;
 
 							}
 
@@ -17401,14 +17440,6 @@ EOF;
 
 		$business_hours=Yii::app()->functions->getBusinnesHours($merchant_id);
 
-		//dump($business_hours);
-
-		/*dump($merchant_id);
-
-	   dump($full_booking_day);
-
-	   dump($booking_time);*/
-
 		if (is_array($business_hours) && count($business_hours)>=1){
 
 			if (!array_key_exists($full_booking_day,$business_hours)){
@@ -17529,7 +17560,7 @@ EOF;
 
 		$date3 = DateTime::createFromFormat('H:i a', $sunset);
 
-		if ($date1 > $date2 && $date1 < $date3) {
+		if ($date1 >= $date2 && $date1 <= $date3) {
 
 			return true;
 

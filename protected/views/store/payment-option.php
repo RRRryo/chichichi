@@ -12,7 +12,7 @@ $this->renderPartial('/front/order-progress-bar', array(
 
 $s = $_SESSION;
 $continue = false;
-
+$lines=NULL;
 $merchant_address = '';
 $merchant_id = isset($s['kr_merchant_id'])? $s['kr_merchant_id']:NULL;
 $free_delivery= isset($_SESSION['free_delivery'])?$_SESSION['free_delivery']:NULL;
@@ -121,7 +121,6 @@ echo CHtml::hiddenField('admin_currency_position',
                                     " " . t("at") . " " . $s['kr_delivery_options']['delivery_time'] . "</span> " . t("to");
                                 ?>
                             </p>
-                            <?php FunctionsV3::sectionHeader('Metro station') ?>
 
                             <form id="frm-modal-enter-address" class="frm-modal-enter-address" method="POST" onsubmit="return false;" >
                                 <?php echo CHtml::hiddenField('action','setMetro');?>
@@ -135,9 +134,8 @@ echo CHtml::hiddenField('admin_currency_position',
                                         )) ?>
                                     </div>
                                     <div class="col-md-5 top8">
-                                        <p class="right">
-                                            <?php
-                                            $lines='';
+                                        <p class="left">
+                                            <?php echo t('correspondence info').': ';
                                             if(isset($_SESSION['client_location']['lines'])) {
                                                 foreach($_SESSION['client_location']['lines'] as $line) {
                                                     echo $line.' ';
@@ -149,16 +147,18 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 </div>
                                 <div class="row top10">
-                                    <div class="col-md-5 col-xs-5">
+                                    <div class="col-md-5">
                                         <input type="submit" class="calculate_shipment_fee  green-button block medium full-width " value=" <?php echo t("delivery to this station") ?>">
                                     </div>
+
                                     <div class="col-md-5 col-xs-5 top8">
                                         <p class="right" >
-                                            <?php if ($free_delivery): ?>
-                                                <?php echo t("delivery fee").': '.t('free') ?>
-                                            <?php else: ?>
-                                                <?php echo t("delivery fee").': '. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id).$_SESSION['free_delivery'] ?>
-                                            <?php endif ;?>
+                                           <!-- <?php /*if ($free_delivery): */?>
+                                                <?php /*echo t("delivery fee").': '.t('free') */?>
+                                            <?php /*else: */?>
+
+                                                <?php /*echo t("delivery fee").': '. baseCurrency() . prettyFormat($shipping_fee, $merchant_id).$free_delivery */?>
+                                            --><?php /*endif ;*/?>
                                         </p>
                                     </div>
                                 </div>
@@ -173,6 +173,8 @@ echo CHtml::hiddenField('admin_currency_position',
                                 echo CHtml::hiddenField('cart_tip_value', '');
                                 echo CHtml::hiddenField('client_order_sms_code');
                                 echo CHtml::hiddenField('client_order_session');
+                                echo CHtml::hiddenField('client_address', $kr_search_address.';'.$lines);
+
                                 if (isset($is_guest_checkout)) {
                                     echo CHtml::hiddenField('is_guest_checkout', 2);
                                 }
@@ -208,16 +210,6 @@ echo CHtml::hiddenField('admin_currency_position',
                                         <?php Widgets::AddressByMap() ?>
                                     </div>
                                 <?php endif; ?>
-
-                                <div class="address-block">
-                                    <div class="row top10">
-                                        <div class="col-md-10">
-<!--                                            //TODO-->
-                                            <?php echo CHtml::hiddenField('client_address', isset($_SESSION['metro_address'])?$_SESSION['metro_address'].';'.$lines:'') ?>
-                                        </div>
-                                    </div>
-
-                                </div> <!--address-block-->
 
                                 <div class="row top10">
                                     <div class="col-md-10">
@@ -289,18 +281,26 @@ echo CHtml::hiddenField('admin_currency_position',
                                         " ".t("at"). " ". $s['kr_delivery_options']['delivery_time']."</span> ".t("to");*/
 
                                         echo '<span class="bold">' . Yii::app()->functions->translateDate(date("M d Y", strtotime($s['kr_delivery_options']['delivery_date']))) .
-                                            " " . t("at") . " " . $s['kr_delivery_options']['delivery_time'] . "</span> " . t("to");
+                                            " " . t("at") . " " . $s['kr_delivery_options']['delivery_time'] . "</span> " . t("delivery to");
                                     }
                                     ?>
                                 </p>
                                 <form id="frm-modal-enter-address" class="frm-modal-enter-address" method="POST" onsubmit="return false;" >
                                     <?php echo CHtml::hiddenField('action','setAddress');?>
+                                    <div class="row top10 bottom20">
+                                        <div class="col-md-10">
+                                            <p>
+                                                <span class="bold"><?php echo !empty($kr_search_address)?$kr_search_address:t("address is not set yet");  ?></span>
+                                            </p>
+                                        </div>
+                                    </div>
 
-                                    <?php /*echo CHtml::hiddenField('web_session_id', isset($this->data['web_session_id'])?$this->data['web_session_id']:'');*/?>
+
+                                    <?php  FunctionsV3::sectionHeader('Use another address')?>
 
                                     <div class="row top10 address-block">
                                         <div class="col-md-10">
-                                            <?php echo CHtml::textField('client_address', $kr_search_address/*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
+                                            <?php echo CHtml::textField('client_address', $kr_search_address, array(
                                                 'class' => 'grey-fields full-width',
                                                 'placeholder' => Yii::t("default", "please enter your address"),
                                                 'data-validation' => "required"
@@ -329,22 +329,12 @@ echo CHtml::hiddenField('admin_currency_position',
                                             </div>
                                         </div> <!--address_book_wrap-->
                                     <?php endif; ?>
-
                                     <div class="row top10">
                                         <div class="col-md-3  col-xs-6 ">
                                             <input type="submit" class="calculate_shipment_fee  green-button  inline " value=" <?php echo t("deliver to this address") ?>">
                                         </div>
-                                        <div class="col-md-7  col-xs-6 top8">
-                                            <p class="right" >
-                                                <?php echo $kr_search_address?>
-                                                <?php if ($free_delivery): ?>
-                                                    <?php echo t("delivery fee").': '.t('free') ?>
-                                                <?php else: ?>
-                                                    <?php echo t("delivery fee").': '. baseCurrency() . prettyFormat($_SESSION['shipping_fee'], $merchant_id).$_SESSION['free_delivery'] ?>
-                                                <?php endif ;?>
-                                            </p>
-                                        </div>
                                     </div>
+
                                 </form>
                             <form id="frm-delivery" class="frm-delivery" method="POST" onsubmit="return false;">
                                 <?php

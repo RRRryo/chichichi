@@ -173,7 +173,28 @@ class FunctionsV3
     			break; 
     		case 3:
     			$htm.='<li>'.t("Pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
-    			break; 
+    			break;
+
+			case 4:
+				$htm.='<li>'.t("Metro pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				break;
+
+			case 5:
+				$htm.='<li>'.t("Delivery").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				$htm.='<li>'.t("Metro pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				break;
+
+			case 6:
+				$htm.='<li>'.t("Pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				$htm.='<li>'.t("Metro pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				break;
+
+			case 7:
+				$htm.='<li>'.t("Delivery").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				$htm.='<li>'.t("Pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				$htm.='<li>'.t("Metro pickup").' <i class="green-color ion-android-checkmark-circle"></i></li>';
+				break;
+
     			
     		default:
     			break;
@@ -617,10 +638,15 @@ class FunctionsV3
     public static function getFreeDeliveryTag($merchant_id='')
     {
     	$fee=getOption($merchant_id,'free_delivery_above_price');
+		$metro_fee=getOption($merchant_id,'free_metro_delivery_above_price');
+		$html = '';
     	if ($fee>0){
-    		return '<span class="label label-default">'. t("Free Delivery On Orders Over")." ". self::prettyPrice($fee).'</span>';
+			$html='<p><span class="label label-default">'. t("Free Domicile Delivery On Orders Over")." ". self::prettyPrice($fee).'</span></p>';
     	}
-    	return '&nbsp;';
+		if ($metro_fee>0){
+			$html.= '<p><span class="label label-default">'. t("Free Metro Delivery On Orders Over")." ". self::prettyPrice($metro_fee).'</span></p>';
+		}
+    	return $html;
     }
     
     public static function getDeliveryEstimation($merchant_id='')
@@ -1369,9 +1395,9 @@ class FunctionsV3
 		}
 		
 		$payment_accepted='';
-		if (array_key_exists('cod',(array)$new_payment_list)){			
+		/*if (array_key_exists('cod',(array)$new_payment_list)){
 			$payment_accepted="<p class=\"cod-text\">".t("Cash on delivery available")."</p>";
-		}
+		}*/
 		if (array_key_exists('ocr',(array)$new_payment_list)){
 			if(!empty($payment_accepted)){
 				$payment_accepted.='<div style="height:5px;"></div>';
@@ -1598,17 +1624,10 @@ class FunctionsV3
     	    
     	if($merchant_info=FunctionsV3::getMerchantById($merchant_id)){
     		$distance_type=FunctionsV3::getMerchantDistanceType($merchant_id); 
-    		
-    		/*$lat=isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'';
-    		$lng=isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'';*/
-    		
-//    		$complete_address=$data['street']." ".$data['city']." ".$data['state']." ".$data['zipcode'];
-//			$complete_address=$data['client_address'];
-//			$complete_address=$_SESSION['client_location'];
 
     		$lat=isset($_SESSION['client_location']['lat'])?$_SESSION['client_location']['lat']:'';
 			$lng=isset($_SESSION['client_location']['long'])?$_SESSION['client_location']['long']:'';
-			
+
     		/*if address book was used*/
     		if ( isset($data['address_book_id'])){
 	    		if ($address_book=Yii::app()->functions->getAddressBookByID($data['address_book_id'])){
@@ -1635,20 +1654,32 @@ class FunctionsV3
             }
 			
 			if (is_numeric($merchant_delivery_distance)){
-				if ( $distance>$merchant_delivery_distance){
-					 if($distance_type_raw=="ft" || $distance_type_raw=="meter" || $distance_type_raw=="mt"){
-					 	return true;
-					 }
-		             return false;
+
+				if ( !empty($distance) && $distance<=$merchant_delivery_distance){
+					$delivery_fee = NULL;
+					if($data['delivery_type'] == 'metro') {
+						$delivery_fee=self::getMerchantMetroDeliveryFee(
+							$merchant_id,
+							$merchant_info['delivery_charges'],
+							$distance,
+							$distance_type_raw);
+					} else {
+						$delivery_fee=self::getMerchantDeliveryFee(
+							$merchant_id,
+							$merchant_info['delivery_charges'],
+							$distance,
+							$distance_type_raw);
+					}
+
+					$_SESSION['shipping_fee']=$delivery_fee;
+
+					return true;
                 } else {
-                	$delivery_fee=self::getMerchantDeliveryFee(
-								              $merchant_id,
-								              $merchant_info['delivery_charges'],
-								              $distance,
-								              $distance_type_raw);
-                    //dump($delivery_fee);
-                    $_SESSION['shipping_fee']=$delivery_fee;
-                    return true;								              
+					if($distance_type_raw=="ft" || $distance_type_raw=="meter" || $distance_type_raw=="mt"){
+						return true;
+					}
+					return false;
+
                 }
 			}
     	}

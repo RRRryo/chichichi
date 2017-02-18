@@ -630,8 +630,10 @@ Yii::app()->functions->getOption("merchant_tax_charges",$merchant_id)==2?true:fa
 <label class="uk-form-label"><?php echo Yii::t("default","Delivery Estimation")?></label>
 <?php 
   echo CHtml::textField('merchant_delivery_estimation',$merchant_delivery_estimation,array(
-  'placeholder'=>Yii::t("default","1 hour approx.")
+      "class"=>"numeric_only",
+      'placeholder'=>Yii::t("default","60 mins approx.")
   ));
+  echo ' '.t('minutes');
   ?>
 </div>
 

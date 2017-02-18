@@ -8,10 +8,20 @@
     <?php echo CHtml::hiddenField('id', isset($_GET['id']) ? $_GET['id'] : ""); ?>
 
     <div class="uk-form-row">
-        <label class="uk-form-label"><?php echo Yii::t("default", "Free delivery above Sub Total Order") ?></label>
+        <label class="uk-form-label"><?php echo Yii::t("default", "Free delivery to domicile above Sub Total Order") ?></label>
         <?php
         echo CHtml::textField('free_delivery_above_price',
             Yii::app()->functions->getOption("free_delivery_above_price", $mtid)
+            , array('class' => "numeric_only"));
+        ?>
+        <span style="padding-left:8px;"><?php echo adminCurrencySymbol(); ?></span>
+    </div>
+
+    <div class="uk-form-row">
+        <label class="uk-form-label"><?php echo Yii::t("default", "Free delivery to metro above Sub Total Order") ?></label>
+        <?php
+        echo CHtml::textField('free_metro_delivery_above_price',
+            Yii::app()->functions->getOption("free_metro_delivery_above_price", $mtid)
             , array('class' => "numeric_only"));
         ?>
         <span style="padding-left:8px;"><?php echo adminCurrencySymbol(); ?></span>

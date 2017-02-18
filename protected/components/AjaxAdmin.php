@@ -4238,11 +4238,23 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 		   	  $booking_time='';
 
-		   }	    
+		   }
 
-
-
-		   //$merchant_id=isset($this->data['merchant_id'])?$this->data['merchant_id']:'';		   
+			// check Delivery Estimation
+			if(!$delivery_asap) {
+				$deliveryEstimationMinutes = FunctionsV3::getDeliveryEstimation($merchant_id);
+				$deliveryEstimationMinutes = is_numeric($deliveryEstimationMinutes)?$deliveryEstimationMinutes:0;
+				$current = date('Y-m-d h:i');
+				$diff=(strtotime($full_booking_time) - strtotime($current))/60;
+				$readyTime = new DateTime($current);
+				$readyTime->add(new DateInterval('PT' . $deliveryEstimationMinutes . 'M'));
+				$readyStamp = $readyTime->format('Y-m-d h:i');
+				if($diff < $deliveryEstimationMinutes) {
+					$this->msg=t("Sorry but the restaurant need to prepare and delivery the food for about").$deliveryEstimationMinutes
+						." ".t("minutes").", ".t("please select the booking time later than").$readyStamp;
+					return;
+				}
+			}
 
 		   if ( !Yii::app()->functions->isMerchantOpenTimes($merchant_id,$full_booking_day,$booking_time)){	
 
@@ -4258,9 +4270,13 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 			    return ;
 
-			}					
+			}
 
-	       $this->code=1;$this->msg=Yii::t("default","OK");	  
+
+
+
+
+			$this->code=1;$this->msg=Yii::t("default","OK");
 
 	       $this->details=Yii::app()->createUrl('store/checkout');
 
@@ -4843,11 +4859,6 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 	    public function placeOrder()
 
 	    {
-            //check address
-			if(!isset($this->data['client_address']) || $this->data['client_address']=='') {
-				$this->msg=Yii::t("default","address invalid");
-				return;
-			}
 
 	    	$mtid=$_SESSION['kr_merchant_id'];
 
@@ -4889,13 +4900,13 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 		    	if (!FunctionsV3::reCheckDelivery($mtid,$this->data)){
 
-		    		$mt_delivery_miles=getOption($mtid,'merchant_delivery_miles'); 
+//		    		$mt_delivery_miles=getOption($mtid,'merchant_delivery_miles');
 
-		    		$distance_type=FunctionsV3::getMerchantDistanceType($mtid); 
+//		    		$distance_type=FunctionsV3::getMerchantDistanceType($mtid);
 
-		    		$unit=$distance_type=="M"?t("miles"):t("kilometers");
+//		    		$unit=$distance_type=="M"?t("miles"):t("kilometers");
 
-		    		$this->msg=t("Sorry but this merchant delivers only with in ").$mt_delivery_miles." $unit";
+		    		$this->msg=t("Please input the correct address information");
 
 		    		return ;
 
@@ -16339,7 +16350,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 				$lat_res['lines']= array();
 
 				foreach ($stations as $station) {
-					if ($station->name == $this->data['client_metro']) {
+					if (strtolower($station->name) == strtolower($this->data['client_metro'])) {
 						$lat_res['lat']=$station->latitude;
 						$lat_res['long']=$station->longitude;
 
@@ -16390,7 +16401,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 				} else $this->msg=Yii::t("default","Invalid metro name");
 
 
-			} else $this->msg=Yii::t("default","Address is required");
+			} else $this->msg=Yii::t("default","Metro name is required");
 
 		}
 
