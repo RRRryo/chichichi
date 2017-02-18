@@ -213,8 +213,8 @@ class ScriptManager
 		$cs->registerScriptFile($baseUrl."/assets/js/owl.carousel.js"
 		,CClientScript::POS_END);
 
-		$cs->registerScriptFile("//www.google.com/recaptcha/api.js?onload=onloadMyCallback&render=explicit"
-			,CClientScript::POS_END,array('id'=>'async'));
+		/*$cs->registerScriptFile("//www.google.com/recaptcha/api.js?onload=onloadMyCallback&render=explicit"
+			,CClientScript::POS_END,array('id'=>'async'));*/
 	}
 	
 	public static function registerAllCSSFiles()
