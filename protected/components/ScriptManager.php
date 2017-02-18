@@ -117,10 +117,10 @@ class ScriptManager
 		$cs->registerScriptFile($baseUrl."/assets/vendor/jquery.geocomplete.min.js"
 		,CClientScript::POS_END); 
 						
-		if ( Yii::app()->functions->getOptionAdmin('fb_flag')=="" ){
+		/*if ( Yii::app()->functions->getOptionAdmin('fb_flag')=="" ){
 			$cs->registerScriptFile($baseUrl."/assets/js/fblogin.js?ver=1"
 		    ,CClientScript::POS_END); 
-		}
+		}*/
 		
 		$cs->registerScriptFile($baseUrl."/assets/vendor/jquery.printelement.js"
 		,CClientScript::POS_END); 
@@ -281,7 +281,7 @@ class ScriptManager
 	
 	public static function registerGlobalVariables()
 	{				
-		echo CHtml::hiddenField('fb_app_id',Yii::app()->functions->getOptionAdmin('fb_app_id'));
+//		echo CHtml::hiddenField('fb_app_id',Yii::app()->functions->getOptionAdmin('fb_app_id'));
 		echo CHtml::hiddenField('admin_country_set',Yii::app()->functions->getOptionAdmin('admin_country_set'));
 		echo CHtml::hiddenField('google_auto_address',Yii::app()->functions->getOptionAdmin('google_auto_address'));
 		echo CHtml::hiddenField('google_default_country',getOptionA('google_default_country'));
