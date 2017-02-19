@@ -605,7 +605,7 @@ function toogleModalFilter(id)
    	   $(".modal-close-btn").show();
    	   
    	   if ( id=="#menu-right-content"){
-   	   	  load_item_cart_with_delivery_fee();
+		   load_item_cart_without_delivery_fee();
    	   }
    	   
    }
