@@ -1909,7 +1909,7 @@ function load_item_cart_with_delivery_fee()
 	    }
     	
     	if (data.code==1){
-    		$(".item-order-wrap-with-delivery-fee").html(data.details.html);
+			$(".item-order-wrap-with-delivery-fee").html(data.details.html);
     		$(".checkout").attr("disabled",false);    		
     		$(".checkout").css({ 'pointer-events' : 'auto' });
     		//$(".checkout").addClass("uk-button-success");
@@ -1922,7 +1922,7 @@ function load_item_cart_with_delivery_fee()
             });
     		
     	} else {
-    		$(".item-order-wrap").html('<div class="center">'+data.msg+'</div>');
+    		$(".item-order-wrap-with-delivery-fee").html('<div class="center">'+data.msg+'</div>');
     		$(".checkout").attr("disabled",true);
     		$(".checkout").css({ 'pointer-events' : 'none' });
     		//$(".checkout").removeClass("uk-button-success");

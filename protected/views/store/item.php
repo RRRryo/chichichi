@@ -387,8 +387,8 @@ if ($data['two_flavors']==2){
   <div class="col-md-6 col-xs-6 border ">
  
   
-  <input type="submit" value="<?php echo empty($row)?Yii::t("default","add to cart"):Yii::t("default","update cart");?>" 
-     class="add_to_cart orange-button upper-text">
+  <input type="submit" value="<?php echo empty($row)?Yii::t("default","add to cart"):Yii::t("default","update cart");?>"
+     class="add_to_cart orange-button upper-text" style="line-height: inherit">
   
   </div>
 </div>

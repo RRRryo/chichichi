@@ -32,7 +32,7 @@ isset($this->data['web_session_id'])?$this->data['web_session_id']:''
   <a href="javascript:$.fancybox.close();" class="orange-button inline center"><?php echo t("Close")?></a>
   </div>
   <div class="col-md-3 ">
-     <input type="submit" class="green-button inline" value="<?php echo t("Submit")?>">
+     <input type="submit" class="green-button inline" style="line-height: inherit" value="<?php echo t("Submit")?>">
   </div>
 </div>
 

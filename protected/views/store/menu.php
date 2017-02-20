@@ -345,7 +345,7 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
      <div class="theiaStickySidebar">
       <div class="box-grey rounded  relative">
       
-        <div class="star-float" style="left: 80%;"></div>
+        <div class="star-float" style="left: 70%;"></div>
 
         <!--DELIVERY INFO-->
         <div class="inner center">
