@@ -4183,7 +4183,12 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
         
 	       $delivery_asap = $_SESSION['kr_delivery_options']['delivery_asap'];
 
-	       $time=isset($this->data['delivery_time'])?$this->data['delivery_time']:'';	   
+	       $time=isset($this->data['delivery_time'])?$this->data['delivery_time']:'';
+
+			$current_time=date('h:i A');
+			if($delivery_asap) {
+				$time=$current_time;
+			}
 		   
 		   $full_booking_time=$this->data['delivery_date']." ".$time;
 		   
