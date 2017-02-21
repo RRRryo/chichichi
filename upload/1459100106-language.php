@@ -3441,7 +3441,7 @@ $lang['{delivery-time} = delivery time'] = '{delivery-time} = 送餐时刻';
 $lang['{merchant-address} = merchant address'] = '{merchant-address} = 餐厅地址';
 
 
-$lang['{website-ddress} = Website Address'] = '{website-ddress} = 网站地址';
+$lang['{website-address} = Website Address'] = '{website-address} = 网站地址';
 
 
 $lang['{merchantname} = Merchant name'] = '{merchantname} = 商家名称';
