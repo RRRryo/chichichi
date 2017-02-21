@@ -66,7 +66,7 @@ $merchant_info=Yii::app()->functions->getMerchantInfo();
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{customermobile} = Customer mobile")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{customeraddress} = Customer address")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{amount} = total amount ordered")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{website-ddress} = Website Address")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{website-address} = Website Address")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{payment-type} = payment type")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{transaction-type} = delivery type")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-instruction} = delivery instruction")?></li>
