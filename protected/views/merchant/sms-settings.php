@@ -67,12 +67,12 @@ $merchant_info=Yii::app()->functions->getMerchantInfo();
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{customeraddress} = Customer address")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{amount} = total amount ordered")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{website-ddress} = Website Address")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{payment-type}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{transaction-type}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-instruction}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-date}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-time}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{order-change}")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{payment-type} = payment type")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{transaction-type} = delivery type")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-instruction} = delivery instruction")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-date} = delivery date")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-time} = delivery time")?></li>
+<!--<li style="list-style:none;" class="uk-text-muted">--><?php //echo t("{order-change}")?><!--</li>-->
 </ul>
 
 <div class="spacer"></div>
@@ -101,13 +101,13 @@ $merchant_info=Yii::app()->functions->getMerchantInfo();
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{merchantname} = Merchant name")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{merchantphone} = Merchant phone")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{website-address} = Website Address")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{payment-type}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{transaction-type}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-instruction}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-date}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-time}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{order-change}")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{merchant-address}")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{payment-type} = payment type")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{transaction-type} = delivery type")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-instruction} = delivery instruction")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-date} = delivery date")?></li>
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{delivery-time} = delivery time")?></li>
+<!--<li style="list-style:none;" class="uk-text-muted">--><?php //echo t("{order-change}")?><!--</li>-->
+<li style="list-style:none;" class="uk-text-muted"><?php echo t("{merchant-address} = merchant address")?></li>
 </ul>
 
 

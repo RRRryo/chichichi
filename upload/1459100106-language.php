@@ -3423,6 +3423,24 @@ $lang['{customeraddress} = Customer address'] = '{customeraddress} = 客户地�
 $lang['{amount} = total amount ordered'] = '{amount} = 订单总金额';
 
 
+$lang['{payment-type} = payment type'] = '{payment-type} = 付款类型';
+
+
+$lang['{transaction-type} = delivery type'] = '{transaction-type} = 送餐模式';
+
+
+$lang['{delivery-instruction} = delivery instruction'] = '{delivery-instruction} = 送餐说明';
+
+
+$lang['{delivery-date} = delivery date'] = '{delivery-date} = 送餐日期';
+
+
+$lang['{delivery-time} = delivery time'] = '{delivery-time} = 送餐时刻';
+
+
+$lang['{merchant-address} = merchant address'] = '{merchant-address} = 餐厅地址';
+
+
 $lang['{website-ddress} = Website Address'] = '{website-ddress} = 网站地址';
 
 
