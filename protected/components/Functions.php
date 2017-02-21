@@ -12013,7 +12013,7 @@ EOF;
 
 			$sms_alert_message);
 
-		$sms_alert_message=$this->smarty("website-ddress",websiteUrl(),$sms_alert_message);
+		$sms_alert_message=$this->smarty("website-address",websiteUrl(),$sms_alert_message);
 
 		$sms_alert_message=$this->smarty("website-address",websiteUrl(),$sms_alert_message);
 
@@ -12073,7 +12073,7 @@ EOF;
 
 			$client_sms=$this->smarty("merchantphone",$order_info['merchant_contact_phone'],$client_sms);
 
-			$client_sms=$this->smarty("website-ddress",websiteUrl(),$client_sms);
+			$client_sms=$this->smarty("website-address",websiteUrl(),$client_sms);
 
 			$client_sms=$this->smarty("website-address",websiteUrl(),$client_sms);
 
