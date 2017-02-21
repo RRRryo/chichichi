@@ -2113,7 +2113,7 @@ $lang["Paypal Confirm Purchase"] = "确认使用PayPal购买";
 $lang["Play alert sounds when there is new order"] = "播放警报声音如果有新的订单";
 
 
-$lang["SMS Alert Settings"] = "SMS 警报设置";
+$lang["SMS Alert Settings"] = "短信提醒设置";
 
 
 $lang["Enabled SMS alert"] = "启用 SMS 提醒";
