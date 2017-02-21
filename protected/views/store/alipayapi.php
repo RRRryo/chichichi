@@ -21,7 +21,7 @@
      * 如果不想使用扩展功能请把扩展功能参数赋空值。
      */
 
-	require __DIR__ . '/../../../vendor/autoload.php';
+	require_once(ROOTPATH . '/vendor/autoload.php');
 	require_once(ROOTPATH . "/lib/alipay_submit.class.php");
 	require_once(ROOTPATH . "/protected/config/alipay_config.php");
 
