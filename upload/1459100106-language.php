@@ -1169,7 +1169,13 @@ $lang["Subject"] = "主题";
 $lang["Email Content"] = "电子邮件的内容";
 
 
-$lang["{customer-name} customer name"] = "{ 客户名称 } 客户名称";
+$lang["{customer-name} customer name"] = "{customer-name} = 客户名称";
+
+
+$lang["{customer-name} = Customer name"] = "{customer-name} = 客户名称";
+
+
+$lang["{website-address} = Website Address"] = "{website-address} = 网站地址";
 
 
 $lang["{receipt-number} receipt/Refference number"] = "{接收的号码 } 收据 / 参考号码";
@@ -2116,10 +2122,13 @@ $lang["Enabled SMS alert"] = "启用 SMS 提醒";
 $lang["Notify Mobile Number"] = "通知手机号码";
 
 
-$lang["Mobile number that will receive notification when there is a new order. multiple numbers must be separated by comma. Mobile number include country prefix eg. +1 for USA"] = "手机号码将收到通知时有了新的订单。多个号码之间必须以逗号隔开。 手机号码包含前缀 eg 。 1 对于美国";
+$lang["Mobile number that will receive notification when there is a new order. multiple numbers must be separated by comma. Mobile number include country prefix eg. +1 for USA"] = "新的订单会有手机短信提示。多个号码之间必须以逗号隔开。 手机号码包含前缀例如 +33";
 
 
-$lang["SMS Notification Message"] = "SMS 通知消息";
+$lang["SMS Notification Message When Order Status has change"] = "订单改变时短信提醒";
+
+
+$lang["SMS Notification Message"] = "短信提醒";
 
 
 $lang["Available Tags {customer-name} = client name"] = "可用的标签 { 客户姓名 } = 客户端名称";
@@ -3207,7 +3216,7 @@ $lang['please select email provider'] = '请选择电子邮件提供商';
 $lang['View Website'] = '查看网站';
 
 
-$lang['Available Tags {receipt} = full details or order'] = '可用的标签 { 收 } = 完整的详细信息或订单';
+$lang['Available Tags {receipt} = full details or order'] = '可用的标签 {receipt} = 详细订单信息';
 
 
 $lang['Packaging Charge'] = '餐具费';
@@ -3387,37 +3396,40 @@ $lang['to customer'] = '客户';
 $lang['to merchant'] = '商户';
 
 
-$lang['{customer-name} = client name'] = '{ 客户名称 } = 客户端名称';
+$lang['{customer-name} = client name'] = '{customer-name} = 客户名称';
 
 
-$lang['{receipt} = full details or order'] = '{ 收 } = 完整的详细信息或订单';
+$lang['{receipt} = full details or order'] = '{receipt} = 详细订单信息';
 
 
 $lang["leave empty to if you don't want to send sms to customer"] = "保留为空以便如果您不想发送短信到客户";
 
 
-$lang['{orderno} = Order number'] = '{ 顺序编号 } = 订单编号';
+$lang["leave empty to if you don't want to send sms"] = "保留为空以便如果您不想发送短信";
 
 
-$lang['{customername} = Customer name'] = '{ 客户名称 } = 客户的名称';
+$lang['{orderno} = Order number'] = '{orderno} = 订单编号';
 
 
-$lang['{customermobile} = Customer mobile'] = '{ 客户移动 } = 客户的移动';
+$lang['{customername} = Customer name'] = '{customername} = 客户名称';
 
 
-$lang['{customeraddress} = Customer address'] = '{ 客户 } = 客户地址。';
+$lang['{customermobile} = Customer mobile'] = '{customermobile} = 客户手机';
 
 
-$lang['{amount} = total amount ordered'] = '{ 金额 = 总金额订购';
+$lang['{customeraddress} = Customer address'] = '{customeraddress} = 客户地址';
 
 
-$lang['{website-ddress} = Website Address'] = '{ 网站的地址 } = 网站地址。';
+$lang['{amount} = total amount ordered'] = '{amount} = 订单总金额';
 
 
-$lang['{merchantname} = Merchant name'] = '{ merchantname } = 商家名称。';
+$lang['{website-ddress} = Website Address'] = '{website-ddress} = 网站地址';
 
 
-$lang['{merchantphone} = Merchant phone'] = '{ merchantphone } = 商家电话';
+$lang['{merchantname} = Merchant name'] = '{merchantname} = 商家名称';
+
+
+$lang['{merchantphone} = Merchant phone'] = '{merchantphone} = 商家电话';
 
 
 $lang['Pay On Delivery settings'] = '上支付交付设置';
