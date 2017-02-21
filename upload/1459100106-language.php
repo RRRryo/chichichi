@@ -3411,6 +3411,9 @@ $lang["leave empty to if you don't want to send sms"] = "保留为空以便如�
 $lang['{orderno} = Order number'] = '{orderno} = 订单编号';
 
 
+$lang['OrderNo:'] = '订单编号：';
+
+
 $lang['{customername} = Customer name'] = '{customername} = 客户名称';
 
 
