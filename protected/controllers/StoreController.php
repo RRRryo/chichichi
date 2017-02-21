@@ -1018,8 +1018,8 @@ class StoreController extends CController
 
 	public function actionAlipayCheckout()
 	{
-		require_once("protected/config/alipay_config.php");
-		require __DIR__ . '/../../vendor/autoload.php';
+		require_once(ROOTPATH . '/vendor/autoload.php');
+		require_once(ROOTPATH . "/protected/config/alipay_config.php");
 
 		//计算得出通知验证结果
 		$alipay = new mytharcher\sdk\alipay\Alipay($alipay_config);
