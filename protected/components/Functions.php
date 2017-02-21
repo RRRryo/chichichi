@@ -11957,7 +11957,7 @@ EOF;
 
 			foreach ($data['item'] as $val) {
 
-				$item_order.="(".$val['qty']."x)".$val['item_name']." ".$val['order_notes'].",";
+				$item_order.= $val['item_name']." ".$val['order_notes']." "."x".$val['qty'].",";
 
 				if (isset($val['sub_item'])){
 
