@@ -1141,7 +1141,7 @@ $lang['{customername} = Customer name']='{customername} = Клиент име';
 $lang['{customermobile} = Customer mobile']='{customermobile} = Клиент мобилен';
 $lang['{customeraddress} = Customer address']='{customeraddress} = Клиент адрес';
 $lang['{amount} = total amount ordered']='{amount} = крайна цена';
-$lang['{website-ddress} = Website Address']='{website-ddress} = Уебсайт Адрес';
+$lang['{website-address} = Website Address']='{website-address} = Уебсайт Адрес';
 $lang['{merchantname} = Merchant name']='{merchantname} = Търговец име';
 $lang['{merchantphone} = Merchant phone']='{merchantphone} = Търговец телефон';
 $lang['Pay On Delivery settings']='Плащане при Доставка Настройки';

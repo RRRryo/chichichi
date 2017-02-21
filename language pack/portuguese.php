@@ -1113,7 +1113,7 @@ $lang['{customername} = Customer name']='{customername} = Nome do cliente';
 $lang['{customermobile} = Customer mobile']='{customermobile} = celular cliente';
 $lang['{customeraddress} = Customer address']='{customeraddress} = endereço do Cliente';
 $lang['{amount} = total amount ordered']='{amount} = montante total do pedido';
-$lang['{website-ddress} = Website Address']='{website-ddress} = Endereço do site';
+$lang['{website-address} = Website Address']='{website-address} = Endereço do site';
 $lang['{merchantname} = Merchant name']='{merchantname} = Nome do comerciante';
 $lang['{merchantphone} = Merchant phone']='{merchantphone} = Telefone do comerciante';
 $lang['Pay On Delivery settings']='Cartão de credito pagamento na entrega';

@@ -1113,7 +1113,7 @@ $lang['{customername} = Customer name']='';
 $lang['{customermobile} = Customer mobile']='';
 $lang['{customeraddress} = Customer address']='';
 $lang['{amount} = total amount ordered']='';
-$lang['{website-ddress} = Website Address']='';
+$lang['{website-address} = Website Address']='';
 $lang['{merchantname} = Merchant name']='';
 $lang['{merchantphone} = Merchant phone']='';
 $lang['Pay On Delivery settings']='';
