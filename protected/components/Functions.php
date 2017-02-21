@@ -12019,9 +12019,9 @@ EOF;
 
 
 
-		$sms_alert_message=$this->smarty("payment-type",$order_info['payment_type'],$sms_alert_message);
+		$sms_alert_message=$this->smarty("payment-type",t($order_info['payment_type']),$sms_alert_message);
 
-		$sms_alert_message=$this->smarty("transaction-type",$order_info['trans_type'],$sms_alert_message);
+		$sms_alert_message=$this->smarty("transaction-type",t($order_info['trans_type']),$sms_alert_message);
 
 		$sms_alert_message=$this->smarty("delivery-instruction",$order_info['delivery_instruction'],$sms_alert_message);
 
