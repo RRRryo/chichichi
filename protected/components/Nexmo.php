@@ -5,7 +5,7 @@ class Nexmo
 	public $sender;
 	public $key;
 	public $secret;
-	public $is_curl=false;
+	public $is_curl=true;
 	public $to;
 	public $message;	
 	public $unicode=false;
@@ -37,7 +37,7 @@ class Nexmo
 			$params.="&type=unicode";
 		}
 				
-		if (!preg_match("/+/i", $this->to)) {
+		if (!preg_match('/^\+/', $this->to)) {
 			$this->to="+".$this->to;
 		}
 		
@@ -87,6 +87,12 @@ class Nexmo
 	{
 		 $error_no='';
 		 $ch = curl_init($uri);
+		$other_config = require_once (ROOTPATH . "/protected/config/other_config.php");
+
+		if(isset($other_config['proxy'])){
+			curl_setopt($ch, CURLOPT_PROXY, $other_config['proxy']);
+		}
+
 		 curl_setopt($ch, CURLOPT_POST, 1);		 
 		 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);		 
 		 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
