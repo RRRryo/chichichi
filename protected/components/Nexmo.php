@@ -37,8 +37,9 @@ class Nexmo
 			$params.="&type=unicode";
 		}
 				
-		if (!preg_match('/^\+/', $this->to)) {
-			$this->to="+".$this->to;
+		if (!preg_match('/^\+/', $this->to) && !preg_match('/^00/', $this->to)) {
+			$this->to=ltrim($this->to, '0');
+			$this->to="+33".$this->to;
 		}
 		
 		$params=$this->smarty('api_key',$this->key,$params);
@@ -87,7 +88,7 @@ class Nexmo
 	{
 		 $error_no='';
 		 $ch = curl_init($uri);
-		$other_config = require_once (ROOTPATH . "/protected/config/other_config.php");
+		$other_config = require (ROOTPATH . "/protected/config/other_config.php");
 
 		if(isset($other_config['proxy'])){
 			curl_setopt($ch, CURLOPT_PROXY, $other_config['proxy']);
@@ -98,12 +99,12 @@ class Nexmo
 		 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		 curl_setopt($ch, CURLOPT_HEADER, 0);
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		 $resutl=curl_exec ($ch);		
-		 		 		 		 
-		 if ($error_no==0) {
-		 	 return $resutl;
+		 $result=curl_exec ($ch);
+		curl_close ($ch);
+		if ($error_no==0) {
+		 	 return $result;
 		 } else return false;			 
-		 curl_close ($ch);		 				 		 		 		 		 		
+
 	}
 	
 } /*END CLASS*/
