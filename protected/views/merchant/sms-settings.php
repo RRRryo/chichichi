@@ -62,7 +62,7 @@ $merchant_info=Yii::app()->functions->getMerchantInfo();
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{customer-name} = client name")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{receipt} = full details or order")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{orderno} = Order number")?></li>
-<li style="list-style:none;" class="uk-text-muted"><?php echo t("{customername} = Customer name")?></li>
+<!--<li style="list-style:none;" class="uk-text-muted">--><?php //echo t("{customername} = Customer name")?><!--</li>-->
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{customermobile} = Customer mobile")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{customeraddress} = Customer address")?></li>
 <li style="list-style:none;" class="uk-text-muted"><?php echo t("{amount} = total amount ordered")?></li>
