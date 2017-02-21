@@ -2110,7 +2110,7 @@ $lang["Play alert sounds when there is new order"] = "播放警报声音如果�
 $lang["SMS Alert Settings"] = "SMS 警报设置";
 
 
-$lang["Enabled SMS alert"] = "启用 SMS 警报";
+$lang["Enabled SMS alert"] = "启用 SMS 提醒";
 
 
 $lang["Notify Mobile Number"] = "通知手机号码";
@@ -3276,7 +3276,7 @@ $lang['SMS Gateway to use when sending SMS'] = 'SMS 网关将使用当发送 SMS
 $lang['NEXMO'] = '';
 
 
-$lang['Use CURL'] = '使用卷曲。';
+$lang['Use CURL'] = '使用CURL';
 
 
 $lang['Sender is empty'] = '发件人是空的';
