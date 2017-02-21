@@ -11949,10 +11949,7 @@ EOF;
 
 
 
-			$in_msg=t("OrderNo:").$order_info['order_id']." ";
-
-			$in_msg.=t("ClientName:").$order_info['full_name']." ";
-
+			$in_msg=t("OrderNo:").$order_info['order_id']."\n".$order_info['full_name']."\n";
 
 
 			foreach ($data['item'] as $val) {
@@ -12009,15 +12006,11 @@ EOF;
 
 		$sms_alert_message=$this->smarty("customeraddress",$order_info['client_full_address'],$sms_alert_message);
 
-		$sms_alert_message=$this->smarty("amount",displayPrice(baseCurrency(),normalPrettyPrice($order_info['total_w_tax'])),
+		$sms_alert_message=$this->smarty("amount",displayPrice(baseCurrencyForSMS(),normalPrettyPrice($order_info['total_w_tax'])),
 
 			$sms_alert_message);
 
 		$sms_alert_message=$this->smarty("website-address",websiteUrl(),$sms_alert_message);
-
-		$sms_alert_message=$this->smarty("website-address",websiteUrl(),$sms_alert_message);
-
-
 
 		$sms_alert_message=$this->smarty("payment-type",t($order_info['payment_type']),$sms_alert_message);
 
@@ -12074,10 +12067,6 @@ EOF;
 			$client_sms=$this->smarty("merchantphone",$order_info['merchant_contact_phone'],$client_sms);
 
 			$client_sms=$this->smarty("website-address",websiteUrl(),$client_sms);
-
-			$client_sms=$this->smarty("website-address",websiteUrl(),$client_sms);
-
-
 
 			$client_sms=$this->smarty("payment-type",$order_info['payment_type'],$client_sms);
 
@@ -18872,6 +18861,18 @@ function baseCurrency()
 }
 
 
+
+function baseCurrencyForSMS()
+
+{
+
+	$currency = Yii::app()->functions->getCurrencyCode();
+	if($currency == "&euro;") {
+		return "€";
+	} else
+		return $currency;
+
+}
 
 
 
