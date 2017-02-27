@@ -127,7 +127,7 @@ echo CHtml::hiddenField('admin_currency_position',
 
                                 <div class="row top10">
                                     <div class="col-md-5">
-                                        <?php echo CHtml::textField('client_metro',$kr_search_address   /*isset($client_info['street']) ? $client_info['street'] : ''*/, array(
+                                        <?php echo CHtml::textField('client_metro',$kr_search_address , array(
                                             'class' => 'grey-fields full-width',
                                             'placeholder' => Yii::t("default", "Metro station name"),
                                             'data-validation' => "required"
@@ -303,7 +303,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                             <?php echo CHtml::textField('client_address', $kr_search_address, array(
                                                 'class' => 'grey-fields full-width',
                                                 'placeholder' => Yii::t("default", "please enter your address"),
-                                                'data-validation' => "required"
+//                                                'data-validation' => "required"
                                             )) ?>
                                             <a href="javascript:;" class="show_address_book block top10">
                                                 <i class="ion-compose"></i> <?php echo t("Show address book") ?>
