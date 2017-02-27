@@ -110,9 +110,9 @@ $do=isset($_GET['do'])?$_GET['do']:'';
 <?php else :?>
 
 <div class="bottom10 top10">
-<a class="green-button inline rounded" href="<?php echo Yii::app()->createUrl('/store/profile/?tab=2&do=add')?>">
-<?php echo t("Add New")?>
-</a>
+<!--<a class="green-button inline rounded" href="<?php /*echo Yii::app()->createUrl('/store/profile/?tab=2&do=add')*/?>">
+<?php /*echo t("Add New")*/?>
+</a>-->
 </div>
 
 <form id="frm_table_list" method="POST" >
