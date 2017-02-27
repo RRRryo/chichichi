@@ -101,10 +101,10 @@ class FunctionsV3
                 'url'=>array($signup_link));
 		}       
                 
-        $top_menu[]=array('tag'=>"contact",
+        /*$top_menu[]=array('tag'=>"contact",
                 'visible'=>in_array('contact',(array)$top_menu_activated)?true:false,
                 'label'=>''.Yii::t("default","Contact"),
-                'url'=>array('/store/contact'));                             
+                'url'=>array('/store/contact'));   */
                                        
        $top_menu[]=array('visible'=>$client_signup,
                 'tag'=>"signup",'label'=>''.Yii::t("default","Login & Signup"),
