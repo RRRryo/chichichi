@@ -1547,7 +1547,7 @@ top:2%;
 .navbar-container .container, .navbar-container .container .col-md-3 { padding:0px;}
 .col-md-9.border.col-b.mobile-lang {right:50px;}
 .top-menu-wrapper .logo-ancher {
-    min-width: 120px;
+    min-width: 80px;
     padding-top: 10px;
 }
 }
