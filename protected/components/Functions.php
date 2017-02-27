@@ -6655,7 +6655,7 @@ class Functions extends CApplicationComponent
 
 				}
 
-				if (isset($data['no_delivery_fee']) || $data['delivery_type']=="pickup") {
+				if (isset($data['no_delivery_fee']) || $data['delivery_type']=="pickup" || !isset($_SESSION['kr_search_address'])) {
 //					error_log("no_delivery_fee");
 					$delivery_charges=0;
 				}
