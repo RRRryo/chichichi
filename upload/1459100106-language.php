@@ -5415,6 +5415,7 @@ $lang['Connected as'] = '登录为';
 
 $lang['Update your profile picture'] = '上传您的头像';
 
+$lang['correspondence info'] = '乘坐信息';
 
 /*  Translate for multilanguge site*/
 
