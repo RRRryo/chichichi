@@ -34,8 +34,19 @@
 <div class="sections section-footer">
   <div class="container">
       <div class="row">
-
-          <p class="center"> <a href="http://www.miitbeian.gov.cn/">粤ICP备16107051号</a></p>
+      <div class="col-md-6 col-xs-6">
+          <div class="pull-right">
+              <img src="<?php echo assetsURL()."/images/client_contact_qr.jpg"?>">
+              <div class="center">近味客服</div>
+          </div>
       </div>
+      <div class="col-md-6 col-xs-6">
+          <div class="pull-left">
+              <img src="<?php echo assetsURL()."/images/commerce_contact_qr.jpg"?>">
+              <div class="center">近味商服</div>
+          </div>
+      </div>
+      </div>
+      <p class="center"> <a href="http://www.miitbeian.gov.cn/">粤ICP备16107051号</a></p>
   </div> <!--container-->
 </div> <!--section-footer-->
