@@ -16359,8 +16359,10 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 						$lat_res['lat']=$station->latitude;
 						$lat_res['long']=$station->longitude;
 
-						foreach ($station->lines as $lineInfo) {
-							array_push($lat_res['lines'], $lineInfo->line);
+						if (isset($station->lines) && (is_array($station->lines) || is_object($station->lines))) {
+							foreach ($station->lines as $lineInfo) {
+								array_push($lat_res['lines'], $lineInfo->line);
+							}
 						}
 						break;
 					}
