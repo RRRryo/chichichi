@@ -991,6 +991,25 @@ class FunctionsV3
 		}
 		return '-';
 	}
+
+	public static function getItemMinimumPrice($prices='',$discount='')
+	{
+		$minPrice = PHP_INT_MAX;
+		if (is_array($prices) && count($prices)>=1){
+			foreach ($prices as $price) {
+				if ($price['price'] < $minPrice) {
+					$minPrice = $price['price'];
+				}
+			}
+			if (count($prices)>1) {
+				return self::prettyPrice($minPrice)." ".t("start from");
+			}else {
+				return self::prettyPrice($minPrice);
+			}
+		}
+		return '-';
+	}
+
 		public static function getItemDiscountPrice($prices='',$discount='')
 	{		
 		$size='';

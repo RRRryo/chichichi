@@ -126,23 +126,30 @@ echo CHtml::hiddenField('admin_currency_position',
                                 <?php echo CHtml::hiddenField('action','setMetro');?>
 
                                 <div class="row top10">
-                                    <div class="col-md-5">
+                                    <div class="col-md-5 col-xs-10">
                                         <?php echo CHtml::textField('client_metro',$kr_search_address , array(
                                             'class' => 'grey-fields full-width',
                                             'placeholder' => Yii::t("default", "Metro station name"),
                                             'data-validation' => "required"
                                         )) ?>
                                     </div>
+                                    <div class="col-md-1 top8">
+                                        <?php if (isset($kr_search_address)): ?>
+                                            <span style="color: green"><i class="ion-checkmark"></i> </span>
+                                        <?php endif; ?>
+                                   </div>
                                     <div class="col-md-5 top8">
                                         <p class="left">
-                                            <?php echo t('correspondence info').': ';
+
+
+                                            <?php /*echo t('correspondence info').': ';
                                             if(isset($_SESSION['client_location']['lines'])) {
                                                 foreach($_SESSION['client_location']['lines'] as $line) {
                                                     echo $line.' ';
                                                     $lines.=$line.' ';
                                                 }
                                             }
-                                             ?>
+                                             */?>
                                         </p>
                                     </div>
                                 </div>
@@ -173,7 +180,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                 echo CHtml::hiddenField('cart_tip_value', '');
                                 echo CHtml::hiddenField('client_order_sms_code');
                                 echo CHtml::hiddenField('client_order_session');
-                                echo CHtml::hiddenField('client_address', $kr_search_address.';'.$lines);
+                                echo CHtml::hiddenField('client_address', $kr_search_address/*.';'.$lines*/);
 
                                 if (isset($is_guest_checkout)) {
                                     echo CHtml::hiddenField('is_guest_checkout', 2);

@@ -5417,6 +5417,8 @@ $lang['Update your profile picture'] = '上传您的头像';
 
 $lang['correspondence info'] = '乘坐信息';
 
+$lang['start from'] = '起';
+
 /*  Translate for multilanguge site*/
 
 
