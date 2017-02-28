@@ -5416,6 +5416,8 @@ $lang['Connected as'] = '登录为';
 $lang['Update your profile picture'] = '上传您的头像';
 
 
+$lang['start from'] = '起';
+
 /*  Translate for multilanguge site*/
 
 
