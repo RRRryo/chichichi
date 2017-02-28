@@ -133,18 +133,18 @@ echo CHtml::hiddenField('admin_currency_position',
                                             'data-validation' => "required"
                                         )) ?>
                                     </div>
-                                    <div class="col-md-5 top8">
+                                    <!--<div class="col-md-5 top8">
                                         <p class="left">
-                                            <?php echo t('correspondence info').': ';
+                                            <?php /*echo t('correspondence info').': ';
                                             if(isset($_SESSION['client_location']['lines'])) {
                                                 foreach($_SESSION['client_location']['lines'] as $line) {
                                                     echo $line.' ';
                                                     $lines.=$line.' ';
                                                 }
                                             }
-                                             ?>
+                                             */?>
                                         </p>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="row top10">
                                     <div class="col-md-5">
@@ -173,7 +173,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                 echo CHtml::hiddenField('cart_tip_value', '');
                                 echo CHtml::hiddenField('client_order_sms_code');
                                 echo CHtml::hiddenField('client_order_session');
-                                echo CHtml::hiddenField('client_address', $kr_search_address.';'.$lines);
+                                echo CHtml::hiddenField('client_address', $kr_search_address/*.';'.$lines*/);
 
                                 if (isset($is_guest_checkout)) {
                                     echo CHtml::hiddenField('is_guest_checkout', 2);
