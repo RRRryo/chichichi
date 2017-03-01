@@ -4894,7 +4894,7 @@ $lang['Please wait for a minute to receive your code'] = '';
 
 $lang['Your verification code has been sent to'] = '';
 
-$lang['minutes'] = '';
+$lang['minutes'] = '分钟';
 
 $lang['We have sent verification code to your mobile number'] = '';
 
