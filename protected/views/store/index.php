@@ -12,7 +12,7 @@ if (empty($home_search_subtext)) {
 }
 
 $home_search_mode = Yii::app()->functions->getOptionAdmin('home_search_mode');
-$placholder_search = Yii::t("default", "Street Address,City,State");
+$placholder_search = Yii::t("default", "please enter your address");
 if ($home_search_mode == "postcode") {
     $placholder_search = Yii::t("default", "Enter your postcode");
 }
