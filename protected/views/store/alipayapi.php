@@ -32,7 +32,7 @@
 	$out_trade_no = $_POST['id'];
 
 	//订单名称 必填
-	$subject = '我要下单！';
+	$subject = '近味私厨';
 
 	//付款金额 必填
 	$total_fee = '';
