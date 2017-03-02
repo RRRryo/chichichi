@@ -7013,11 +7013,11 @@ class Functions extends CApplicationComponent
 
 
 
-					$htm.=FunctionsV3::receiptRowTotal("Sub Total",
+					/*$htm.=FunctionsV3::receiptRowTotal("Sub Total",
 
 						displayPrice(baseCurrency(),prettyFormat($subtotal+$less_voucher,$mid)),'','cart_subtotal'
 
-					);
+					);*/
 
 
 
@@ -7055,11 +7055,11 @@ class Functions extends CApplicationComponent
 
 			         $htm.='</div>';*/
 
-					$htm.=FunctionsV3::receiptRowTotal("Sub Total",
+					/*$htm.=FunctionsV3::receiptRowTotal("Sub Total",
 
 						displayPrice(baseCurrency(),prettyFormat($subtotal,$mid))
 
-					);
+					);*/
 
 
 
@@ -7139,11 +7139,11 @@ class Functions extends CApplicationComponent
 
 
 
-					$htm.=FunctionsV3::receiptRowTotal('Sub Total',
+					/*$htm.=FunctionsV3::receiptRowTotal('Sub Total',
 
 						displayPrice(baseCurrency(),prettyFormat($subtotal,$mid)),'','cart_subtotal'
 
-					);
+					);*/
 
 
 
