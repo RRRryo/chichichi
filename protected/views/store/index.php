@@ -197,7 +197,7 @@ $placholder_search = Yii::t("default", $placholder_search);
                                 </div>
                                 <div class="food-detail">
                                     <h3>红烧牛肉</h3>
-                                    <p>20€</p>
+                                    <p>€8.00 起</p>
 
                                 </div>
                             </div>
@@ -213,7 +213,7 @@ $placholder_search = Yii::t("default", $placholder_search);
                                     <img src="<?php echo baseUrl()."/upload/1481324697-5.png" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>四川火锅</h3>
-                                    <p>8€</p>
+                                    <p>€5.00 起</p>
 
                                 </div>
                             </div>
@@ -229,7 +229,21 @@ $placholder_search = Yii::t("default", $placholder_search);
                                     <img src="<?php echo baseUrl()."/upload/1481580406-2.png" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>鱼香肉丝</h3>
-                                    <p>6€</p>
+                                    <p>€6.00</p>
+
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="item">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
+                            <div class="iner-li">
+                                <div class="food-img">
+                                    <img src="<?php echo baseUrl()."/upload/1488387482-21.png" ?>" alt=""/></div>
+                                <div class="food-detail">
+                                    <h3>麻婆豆腐</h3>
+                                    <p>€6.00</p>
 
                                 </div>
                             </div>
@@ -241,25 +255,10 @@ $placholder_search = Yii::t("default", $placholder_search);
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="<?php echo baseUrl()."/upload/1481604155-edadd4eagw1evr1s0z0lgj20kg0kp0xl.jpg" ?>" alt=""/></div>
+                                    <img src="<?php echo baseUrl()."/upload/1488387568-23.png" ?>" alt=""/></div>
                                 <div class="food-detail">
-                                    <h3>test</h3>
-                                    <p>4.1€</p>
-
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
-                            <div class="iner-li">
-                                <div class="food-img">
-
-                                    <img src="<?php echo baseUrl()."/upload/1481580959-6.png" ?>" alt=""/></div>
-                                <div class="food-detail">
-                                    <h3>西红柿</h3>
-                                    <p>4€</p>
+                                    <h3>棒棒鸡</h3>
+                                    <p>€10.00</p>
 
                                 </div>
                             </div>
@@ -272,10 +271,10 @@ $placholder_search = Yii::t("default", $placholder_search);
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="<?php echo baseUrl()."/upload/1481580959-6.png" ?>" alt=""/></div>
+                                    <img src="<?php echo baseUrl()."/upload/1488387625-322.png" ?>" alt=""/></div>
                                 <div class="food-detail">
-                                    <h3>冰淇淋</h3>
-                                    <p>0.1€</p>
+                                    <h3>青城山腊肉</h3>
+                                    <p>€10.00</p>
 
                                 </div>
                             </div>
