@@ -1184,8 +1184,8 @@ class FunctionsV3
     	  'obd'=>t("Offline Bank Deposit"),
     	  'btr' =>t("Braintree"),
     	  'rzr'=>t("Razorpay"),
-		  'itp'=>("alipay"),
-//		  'wcp'=>("wechat pay"),
+		  'itp'=>t("alipay"),
+		  'wcp'=>t("wechat pay"),
     	  /*'mol'=>t("Mollie"),
     	  'ip8'=>t("Ipay88"),*/
     	);
