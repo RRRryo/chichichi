@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>支付宝即时到账交易接口接口</title>
+
 	<?php
+	$this->renderPartial('/front/default-header', array(
+		'h1' => t("Payment Option"),
+		'sub_text' => t("choose your payment")
+	));
+
+
 	/* *
      * 功能：即时到账交易接口接入页
      * 版本：3.3
@@ -132,9 +133,7 @@
 		), "post");
 	}
 
-	?>
-</head>
-<body>
 
-</body>
-</html>
+
+
+	?>
