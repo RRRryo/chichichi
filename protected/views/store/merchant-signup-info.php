@@ -157,17 +157,17 @@ $this->renderPartial('/front/progress-merchantsignup',array(
         </div>
       </div>
       
-      <div class="row top10">
-        <div class="col-md-3"><?php echo t("State/Region")?></div>
+      <!--<div class="row top10">
+        <div class="col-md-3"><?php /*echo t("State/Region")*/?></div>
         <div class="col-md-8">
-		  <?php echo CHtml::textField('state',
+		  <?php /*echo CHtml::textField('state',
 		  isset($data['state'])?$data['state']:""
 		  ,array(
 		  'class'=>'grey-fields full-width',
 		  'data-validation'=>"required"
-		  ))?>           
+		  ))*/?>
         </div>
-      </div>
+      </div>-->
       
       <div class="row top10">
         <div class="col-md-3"><?php echo t("Cuisine")?></div>
