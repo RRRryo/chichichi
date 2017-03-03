@@ -5132,6 +5132,9 @@ h2.hed-sec::after {
     background: #8a4101;
     border-color: #8a4101;
 }
+
+@media only screen and (max-device-width: 768px)  { .slider-img img, .food-img img{  min-height:100px;}  }
+
 .lang_top-menu #menu{ width:80%; margin-right:25px;}
 .lang_top-menu .language-options{ float:right !important; width:auto !important;}
 .language-options .dropdown-menu>li>a{ padding:3px 8px;}
