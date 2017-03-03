@@ -902,7 +902,7 @@ $lang["Mobile Number"] = "手机号码";
 $lang["Delivery instructions"] = "送餐说明";
 
 
-$lang["Cash On delivery"] = "现金";
+$lang["Cash On delivery"] = "现金支付";
 
 
 $lang["Cash on delivery available"] = "";
