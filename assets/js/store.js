@@ -486,7 +486,10 @@ function form_submit(formid)
         				case "paypal":
         				window.location.replace(sites_url+"/paypalinit/?id="+data.details.order_id);
         				break;
-
+						case "wcp":
+							params["id"] = data.details.order_id;
+							post(sites_url+'/wechatpay', params);
+							break;
 						case "itp":
 							var params = new Object();
 							params["id"] = data.details.order_id;
