@@ -2484,6 +2484,8 @@ $lang["Enter your address below"] = "请输入您的以下地址";
 
 $lang["alipay"] = "支付宝";
 
+$lang["wechat pay"] = "微信支付";
+
 $lang["Save to my address book"] = "保存到我的地址簿";
 
 $lang["Address is required"] = "必须有地址";
