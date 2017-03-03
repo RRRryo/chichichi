@@ -626,7 +626,7 @@ $lang["Distance"] = "距离。";
 $lang["Delivery Est"] = "预计送餐时间";
 
 
-$lang["Delivery Distance Covered"] = "送餐距离";
+$lang["Delivery Distance Covered"] = "送餐范围";
 
 
 $lang["miles"] = "英里";
@@ -5211,7 +5211,7 @@ $lang['Sorry but your email address is blocked by website admin'] = '';
 
 $lang['Sorry but your mobile number is blocked by website admin'] = '';
 
-$lang['Sorry but you have selected time that already past'] = '对不起，您先择的时间已经过去';
+$lang['Sorry but you have selected time that already past'] = '您不能选择已经过去的时间';
 
 $lang['at'] = '';
 
