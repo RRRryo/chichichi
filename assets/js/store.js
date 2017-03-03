@@ -487,6 +487,7 @@ function form_submit(formid)
         				window.location.replace(sites_url+"/paypalinit/?id="+data.details.order_id);
         				break;
 						case "wcp":
+							var params = new Object();
 							params["id"] = data.details.order_id;
 							post(sites_url+'/wechatpay', params);
 							break;
