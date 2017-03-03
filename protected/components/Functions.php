@@ -9890,7 +9890,7 @@ class Functions extends CApplicationComponent
 
 			if(!$mail->Send()) {
 
-				//echo "Mailer Error: " . $mail->ErrorInfo;
+				error_log( "Mailer Error: " . $mail->ErrorInfo);
 
 				$mail->ClearAddresses();
 
