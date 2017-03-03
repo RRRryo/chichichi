@@ -1167,12 +1167,10 @@ class FunctionsV3
     	Important: you can change the value but not the key
     	like cod ocr pyr etc 
     	*/
-    	
+    	$maxHeight="style='max-height:24px'";
     	return array(
-    	  'cod'=>t("Cash On delivery"),
     	  'ocr'=>t("Offline Credit Card Payment"),
     	  'pyr'=>t("Pay On Delivery"),
-    	  'pyp'=>t("paypal"),
     	  'stp'=>t("stripe"),
     	  'mcd'=>t("mercapado"),
     	  'ide'=>t("sisow"),
@@ -1184,10 +1182,13 @@ class FunctionsV3
     	  'obd'=>t("Offline Bank Deposit"),
     	  'btr' =>t("Braintree"),
     	  'rzr'=>t("Razorpay"),
-		  'itp'=>t("alipay"),
-		  'wcp'=>t("wechat pay"),
-    	  /*'mol'=>t("Mollie"),
-    	  'ip8'=>t("Ipay88"),*/
+			'cod'=>"<img src=".assetsURL()."/images/paymentLogo/cashLogo.jpg ".$maxHeight.">"." ".t("Cash On delivery"),
+		  'itp'=>"<img src=".assetsURL()."/images/paymentLogo/165x58.png ".$maxHeight.">",
+		  'wcp'=>"<img src=".assetsURL()."/images/paymentLogo/WePayLogo.png ".$maxHeight.">",
+			'pyp'=>"<img src=".assetsURL()."/images/paymentLogo/paypal.jpg ".$maxHeight.">",
+
+			/*'mol'=>t("Mollie"),
+            'ip8'=>t("Ipay88"),*/
     	);
     }
     
