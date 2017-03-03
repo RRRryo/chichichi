@@ -1016,6 +1016,11 @@ class StoreController extends CController
 		$this->render('alipayapi');
 	}
 
+	public function actionWechatPay()
+	{
+		$this->render('wechatpay');
+	}
+
 	public function actionAlipayCheckout()
 	{
 		require_once(ROOTPATH . '/vendor/autoload.php');
