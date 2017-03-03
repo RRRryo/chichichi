@@ -40,6 +40,6 @@ $this->renderPartial('/front/default-header', array(
 ?>
 
 <div class="center">
-	<div>扫描支付模式二</div>
-<img alt="模式二扫码支付" src="http://paysdk.weixin.qq.com/example/qrcode.php?data=<?php echo urlencode($url2);?>" style="width:150px;height:150px;"/>
+	<div class="top25">扫描支付模式二</div>
+<img alt="模式二扫码支付" src="http://paysdk.weixin.qq.com/example/qrcode.php?data=<?php echo urlencode($url2);?>" style="width:300px;height:300px;"/>
 </div>
