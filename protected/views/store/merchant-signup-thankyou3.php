@@ -22,8 +22,7 @@ $this->renderPartial('/front/banner-receipt',array(
 	           <?php echo t("Please check your email for bank deposit instructions")?>
 	           
 	           <div class="top15">
-	           <p class="text-center">           
-	           <p><?php echo t("You will receive email once your merchant has been approved. Thank You.")?></p>
+	           <p class="text-center"><?php echo t("You will receive email once your merchant has been approved. Thank You.")?></p>
 	           </div>
 	           
 	           <a href="<?php echo Yii::app()->createUrl('/store')?>" 
