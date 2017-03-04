@@ -22,7 +22,7 @@ $input->SetAttach("test");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
 $input->SetTotal_fee("1");
 $input->SetTime_start(date("YmdHis"));
-//$input->SetTime_expire(date("YmdHis", time() + 600));
+//$input->SetTime_expire(date("YmdHis", strtotime("+30 minutes")));
 $input->SetGoods_tag("test");
 $input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
 $input->SetTrade_type("NATIVE");
@@ -39,7 +39,12 @@ $this->renderPartial('/front/default-header', array(
 
 ?>
 
-<div class="center">
-	<div class="top25">扫描支付模式二</div>
-<img alt="模式二扫码支付" src="http://paysdk.weixin.qq.com/example/qrcode.php?data=<?php echo urlencode($url2);?>" style="width:300px;height:300px;"/>
+<div class="center top30">
+<img class="img-thumbnail center-block"  src="http://paysdk.weixin.qq.com/example/qrcode.php?data=<?php echo urlencode($url2);?>" style="width:240px;height:auto"/>
+	<h1><span style="color: #F60">&yen;180.00</span></h1>
+
+	<div class="bottom30">
+		<img class="img-responsive center-block" style="max-width: 480px;"  src="<?php echo assetsURL()."/images/paymentLogo/wxPayText.png"?>">
+	</div>
+
 </div>
