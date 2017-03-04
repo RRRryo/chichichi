@@ -384,7 +384,7 @@ $action="<a href=\"$link\" >".Yii::t("default","Details")."</a>";
 	      'restaurant_slug'=>Yii::app()->functions->createSlug($this->data['restaurant_name']),	      
 	      'payment_steps'=>3,	      
 	      'country_code'=>$this->data['country_code'],
-	      'state'=>$this->data['state'],
+//	      'state'=>$this->data['state'],
 	      'is_commission'=>2,
 	      'percent_commision'=>$percent,	      
 	      'abn'=>isset($this->data['abn'])?$this->data['abn']:''
