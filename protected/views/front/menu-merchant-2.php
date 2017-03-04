@@ -71,7 +71,7 @@ if ( $val_item['single_item']==2){
      rel="<?php echo $val_item['item_id']?>"
      data-single="<?php echo $val_item['single_item']?>" 
      <?php echo $atts;?> >
-     <?php echo FunctionsV3::getItemMinimumPrice($val_item['prices'],$val_item['discount']) ?>
+     <?php echo FunctionsV3::getItemDiscountPrice($val_item['prices'],$val_item['discount']) ?>
      </a>
     <?php 
     if ($val_item['discount']>0){
