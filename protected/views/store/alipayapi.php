@@ -39,7 +39,7 @@
 	$total_fee = '';
 
 	//订单描述
-	$body = '好饿好饿！';
+	$body = 'jinwei';
 	//商品展示地址
 	$show_url = '';//$_POST['WIDshow_url'];
 	//需以http://开头的完整路径，例如：http://www.xxx.com/myorder.html
