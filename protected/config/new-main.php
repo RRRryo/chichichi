@@ -88,18 +88,19 @@ return array(
 	    'widgets'=> array(
 	       'class'=>'Widgets'
 	    ),
-	    	    
-	    'Smtpmail'=>array(
-	        'class'=>'application.extension.smtpmail.PHPMailer',
-	        'Host'=>"YOUR HOST",
-            'Username'=>'YOUR USERNAME',
-            'Password'=>'YOUR PASSWORD',
-            'Mailer'=>'smtp',
-            'Port'=>587, // change this port according to your mail server
-            'SMTPAuth'=>true,   
-            'ContentType'=>'utf-8',
-            'SMTPSecure'=>'tls'
-	    ), 
+
+		'Smtpmail'=>array(
+			'class'=>'application.extension.smtpmail.PHPMailer',
+			'Host'=>"YOUR HOST",
+			'Username'=>'YOUR USERNAME',
+			'Password'=>'YOUR PASSWORD',
+			'Mailer'=>'smtp',
+			'Port'=>587, // change this port according to your mail server
+			'SMTPAuth'=>true,
+			'ContentType'=>'text/html',
+			'CharSet'=>'utf-8',
+			'SMTPSecure'=>'ssl'
+		),
 	    
 	    'GoogleApis' => array(
 	         'class' => 'application.extension.GoogleApis.GoogleApis',
