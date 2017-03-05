@@ -1178,10 +1178,10 @@ $lang["{customer-name} = Customer name"] = "{customer-name} = 客户名称";
 $lang["{website-address} = Website Address"] = "{website-address} = 网站地址";
 
 
-$lang["{receipt-number} receipt/Refference number"] = "{接收的号码 } 收据 / 参考号码";
+$lang["{receipt-number} receipt/Refference number"] = "{receipt-number} = 订单编号";
 
 
-$lang["{receipt} Printed Receipt"] = "{ 收 } 打印的收据";
+$lang["{receipt} Printed Receipt"] = "{receipt} 收据";
 
 
 $lang["Start Date"] = "开始日期";
@@ -1711,7 +1711,7 @@ $lang["Sales Summary Report"] = "菜品销售数量统计";
 $lang["Social Settings"] = "社会设置";
 
 
-$lang["Alert Notification"] = "警报通知";
+$lang["Alert Notification"] = "消息提醒";
 
 
 $lang["Merchant List"] = "商户列表";
@@ -2480,7 +2480,7 @@ $lang["View menu"] = "查看菜单";
 
 $lang["choose from your favorite restaurant"] = "";
 
-$lang["Enter your address below"] = "请输入您的以下地址";
+$lang["Enter your address below"] = "请输入您的地址";
 
 $lang["alipay"] = "支付宝";
 
@@ -3566,10 +3566,10 @@ $lang['Failed sending email'] = '无法发送电子邮件。';
 $lang['Your merchant status'] = '您的商户状态。';
 
 
-$lang['Email template sents to customer'] = '电子邮件模板已发送至客户';
+$lang['Email template sents to customer'] = '发送至客户的邮件模板';
 
 
-$lang['Email template sents to merchant'] = '电子邮件模板发送给商户';
+$lang['Email template sents to merchant'] = '发送给商户的邮件模板';
 
 
 $lang['New Order From'] = '新的订单';
@@ -4605,10 +4605,10 @@ $lang['SMS sent'] = '短信已发送';
 /* version 1.1.0 added new words*/
 
 
-$lang['Sorry but we are closed on'] = '抱歉，我们已关闭了';
+$lang['Sorry but we are closed on'] = '这个时间我们关闭了';
 
 
-$lang['Please check merchant opening hours'] = '请检查商户开放时间';
+$lang['Please check merchant opening hours'] = '请检查商户营业时间';
 
 $lang['Opening Hours'] = '营业时间';
 
