@@ -1795,7 +1795,7 @@ $lang["Merchant ID is empty"] = "";
 $lang["Subtotal"] = "小计";
 
 
-$lang["No Item added yet!"] = "没有项目尚未添加 !";
+$lang["No Item added yet!"] = "尚未添加 !";
 
 
 $lang["Days"] = "天";
@@ -5420,6 +5420,8 @@ $lang['Update your profile picture'] = '上传您的头像';
 $lang['correspondence info'] = '乘坐信息';
 
 $lang['start from'] = '起';
+
+$lang['no item found on this category'] = '暂无';
 
 /*  Translate for multilanguge site*/
 
