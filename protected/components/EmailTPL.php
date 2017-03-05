@@ -9,9 +9,9 @@ class EmailTPL extends CApplicationComponent
 	  return <<<HTML
 	  <p>Hi $data[first_name]</p>
 	  <br/>
-	  <p>Click on the link below to change your password.</p>
+	  <p>点击已下链接修改您的密码</p>
 	  <p><a href="$url">$url</a></p>
-	  <p>Thank you.</p>
+	  <p>近味</p>
 	  <p>- $website_title</p>
 HTML;
 	}
@@ -375,7 +375,7 @@ HTML;
 	public static function receiptMerchantTPL()
 	{
 		return <<<HTML
-<p>亲爱的{restaurant_name}，</p>
+<p>亲爱的 {restaurant_name}，</p>
 <br/>
 <p>您有一个新的订单！编号为：{receipt-number}，来自于客户 {customer-name}</p>
 <br/>
