@@ -12062,15 +12062,26 @@ EOF;
 
 			$client_sms=$this->smarty("orderno",$order_info['order_id'],$client_sms);
 
+			$client_sms=$this->smarty("customeraddress",$order_info['client_full_address'],$client_sms);
+
+			$client_sms=$this->smarty("amount",displayPrice(baseCurrencyForSMS(),normalPrettyPrice($order_info['total_w_tax'])),
+
+				$client_sms);
+
+			if (is_array($data) && count($data)>=1){
+				$in_msg=t("OrderNo:").$order_info['order_id']."\n".$order_info['full_name']."\n";
+				$client_sms=$this->smarty("receipt",$in_msg.$item_order,$client_sms);
+			}
+
 			$client_sms=$this->smarty("merchantname",$order_info['merchant_name'],$client_sms);
 
 			$client_sms=$this->smarty("merchantphone",$order_info['merchant_contact_phone'],$client_sms);
 
 			$client_sms=$this->smarty("website-address",websiteUrl(),$client_sms);
 
-			$client_sms=$this->smarty("payment-type",$order_info['payment_type'],$client_sms);
+			$client_sms=$this->smarty("payment-type",t($order_info['payment_type']),$client_sms);
 
-			$client_sms=$this->smarty("transaction-type",$order_info['trans_type'],$client_sms);
+			$client_sms=$this->smarty("transaction-type",t($order_info['trans_type']),$client_sms);
 
 			$client_sms=$this->smarty("delivery-instruction",$order_info['delivery_instruction'],$client_sms);
 
