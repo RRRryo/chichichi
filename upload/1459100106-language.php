@@ -596,7 +596,7 @@ $lang["New Password"] = "新的密码";
 $lang["Confirm Password"] = "确认密码";
 
 
-$lang["ERROR: Invalid token."] = "错误 : 无效的令牌";
+$lang["ERROR: Invalid token."] = "错误 : 无效的token";
 
 
 $lang["Oopps..It Seems that you are using browser which is not supported."] = "Oopps 看来您正在使用的浏览器不支持";
@@ -3569,7 +3569,7 @@ $lang['Your merchant status'] = '您的商户状态。';
 $lang['Email template sents to customer'] = '发送至客户的邮件模板';
 
 
-$lang['Email template sents to merchant'] = '发送给商户的邮件模板';
+$lang['Email template sents to merchant'] = '发送至商户的邮件模板';
 
 
 $lang['New Order From'] = '新的订单';
