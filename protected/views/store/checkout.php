@@ -174,9 +174,9 @@ echo CHtml::hiddenField('mobile_country_code',Yii::app()->functions->getAdminCou
 		    </a>     
 		  </div>    
 		  
-		  <p style="margin-bottom:0;">
-		  <?php echo t("Proceed to checkout, and you will have an option to create an account at the end.")?>
-		  </p>
+		  <!--<p style="margin-bottom:0;">
+		  <?php /*echo t("Proceed to checkout, and you will have an option to create an account at the end.")*/?>
+		  </p>-->
 		  <a href="<?php echo $this->createUrl('/store/guestcheckout');?>" 
 	               class="text-center block orange-text bottom20"><?php echo t("Continue as guest")?></a>
 		  <?php endif;?>
