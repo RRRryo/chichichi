@@ -220,6 +220,20 @@ echo CHtml::hiddenField('admin_currency_position',
 
                                 <div class="row top10">
                                     <div class="col-md-10">
+                                        <?php
+                                        $exitNumber = array(t("metro exit number"), "地铁口 1","地铁口 2", "地铁口 3",
+                                            "地铁口 4", "地铁口 5", "地铁口 6",
+                                            "地铁口 7", "地铁口 8", "地铁口 9");
+                                        echo CHtml::dropDownList('delivery_instruction', '' ,$exitNumber, array(
+                                            'class' => 'grey-fields full-width'
+                                        )) ;
+
+                                        ?>
+                                    </div>
+                                </div>
+
+                                <div class="row top10">
+                                    <div class="col-md-10">
                                         <?php echo CHtml::textField('contact_phone',
                                             isset($client_info['contact_phone']) ? $client_info['contact_phone'] : ''
                                             , array(
@@ -230,14 +244,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 </div>
 
-                                <div class="row top10">
-                                    <div class="col-md-10">
-                                        <?php echo CHtml::textField('delivery_instruction', '', array(
-                                            'class' => 'grey-fields full-width',
-                                            'placeholder' => Yii::t("default", "Delivery instructions")
-                                        )) ?>
-                                    </div>
-                                </div>
+
 
                                 <!--<div class="row top10">
                                     <div class="col-md-10">
