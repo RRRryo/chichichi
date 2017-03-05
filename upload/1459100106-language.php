@@ -5423,6 +5423,8 @@ $lang['start from'] = '起';
 
 $lang['no item found on this category'] = '暂无';
 
+$lang['postmaster@jinwei.info'] = '近味';
+
 /*  Translate for multilanguge site*/
 
 
