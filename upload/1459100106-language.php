@@ -3239,19 +3239,16 @@ $lang['merchant activation email template'] = '商激活的电子邮件模板';
 $lang['merchant forgot password email template'] = '商忘记密码电子邮件模板。';
 
 
-$lang['{restaurant_name}'] = '{ 餐厅名称 }';
+$lang['{restaurant_name}'] = '{restaurant_name}';
 
 
-$lang['{website_title}'] = '{ 网站标题 }';
+$lang['{verification_code}'] = '{verification_code}';
 
 
-$lang['{verification_code}'] = '{ 验证码 }';
+$lang['{activation_key}'] = '{activation_key}';
 
 
-$lang['{activation_key}'] = '{ 激活 key }';
-
-
-$lang['{website_title}'] = '{ 网站标题 }';
+$lang['{website_title}'] = '{website_title}';
 
 
 $lang['{website_url}'] = '';
@@ -3411,6 +3408,9 @@ $lang["leave empty to if you don't want to send sms"] = "保留为空以便如�
 
 
 $lang['{orderno} = Order number'] = '{orderno} = 订单编号';
+
+
+$lang['{order-status} = Order Status'] = '{order-status} = 订单状态';
 
 
 $lang['OrderNo:'] = '订单编号：';
@@ -4531,7 +4531,7 @@ $lang['Free delivery to metro above Sub Total Order'] = '免费送餐到地铁�
 
 $lang['Enabled Table Rates'] = '启用表价格';
 
-$lang['Use another address'] = '使用其他地址';
+$lang['Use another address'] = '输入地址';
 
 $lang['delivery to'] = '送至';
 
@@ -5197,7 +5197,7 @@ $lang['Subject is required'] = '';
 
 $lang['Close'] = '关闭';
 
-$lang['Sorry but your mobile number is already exist in our records'] = '';
+$lang['Sorry but your mobile number is already exist in our records'] = '本号码已经存在在我们的记录中';
 
 $lang['Registration custom fields'] = '';
 
