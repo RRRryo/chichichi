@@ -126,35 +126,28 @@ echo CHtml::hiddenField('admin_currency_position',
                                 <?php echo CHtml::hiddenField('action','setMetro');?>
 
                                 <div class="row top10">
-                                    <div class="col-md-5 col-xs-10">
+                                    <div class="col-md-6 ">
                                         <?php echo CHtml::textField('client_metro',$kr_search_address , array(
                                             'class' => 'grey-fields full-width',
                                             'placeholder' => Yii::t("default", "Metro station name"),
                                             'data-validation' => "required"
                                         )) ?>
+
                                     </div>
-                                    <div class="col-md-1 top8">
-                                        <?php if (isset($kr_search_address)): ?>
+                                    <!--<div class="col-md-1 top8">
+                                        <?php /*if (isset($kr_search_address)): */?>
                                             <span style="color: green"><i class="ion-checkmark"></i> </span>
-                                        <?php endif; ?>
-                                   </div>
-                                    <div class="col-md-5 top8">
-                                        <p class="left">
-
-
-                                            <?php /*echo t('correspondence info').': ';
+                                        <?php /*endif; */?>
+                                   </div>-->
+                                    <?php /*echo t('correspondence info').': ';
                                             if(isset($_SESSION['client_location']['lines'])) {
                                                 foreach($_SESSION['client_location']['lines'] as $line) {
                                                     echo $line.' ';
                                                     $lines.=$line.' ';
                                                 }
-                                            }
-                                             */?>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row top10">
-                                    <div class="col-md-5">
+                                    }
+                                     */?>
+                                    <div class="col-md-4">
                                         <input type="submit" class="calculate_shipment_fee  green-button block medium full-width " value=" <?php echo t("delivery to this station") ?>">
                                     </div>
 
@@ -221,11 +214,14 @@ echo CHtml::hiddenField('admin_currency_position',
                                 <div class="row top10">
                                     <div class="col-md-10">
                                         <?php
-                                        $exitNumber = array(t("metro exit number"), "地铁口 1","地铁口 2", "地铁口 3",
-                                            "地铁口 4", "地铁口 5", "地铁口 6",
-                                            "地铁口 7", "地铁口 8", "地铁口 9");
+
+                                        $exitNumber = array(t("metro exit number") =>"未选择地铁口",
+                                            "地铁口 1" => "地铁口 1" ,"地铁口 2" =>"地铁口 2", "地铁口 3" => "地铁口 3",
+                                            "地铁口 4"=>"地铁口 4", "地铁口 5"=>"地铁口 5", "地铁口 6"=>"地铁口 6",
+                                            "地铁口 7"=>"地铁口 7", "地铁口 8"=>"地铁口 8", "地铁口 9"=>"地铁口 9");
                                         echo CHtml::dropDownList('delivery_instruction', '' ,$exitNumber, array(
-                                            'class' => 'grey-fields full-width'
+                                            'class' => 'grey-fields full-width',
+                                            'data-validation' => "required",
                                         )) ;
 
                                         ?>
