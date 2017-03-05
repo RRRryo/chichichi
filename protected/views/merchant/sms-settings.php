@@ -5,7 +5,7 @@ $sms_notify_number=Yii::app()->functions->getOption("sms_notify_number",$merchan
 $sms_alert_message=Yii::app()->functions->getOption("sms_alert_message",$merchant_id);
 
 if(empty($sms_alert_message)) {
-  $sms_alert_message="您有新订单啦！\n{receipt}\n联系电话：{customermobile}\n支付方式：{payment-type}\n交易方式：{transaction-type}\n送餐地址：{customeraddress}\n总额：{amount}\n送餐时间：{delivery-date} {delivery-time}\n{delivery-instruction}\n{website-address} ";
+  $sms_alert_message="您有新订单啦！\n{receipt}\n联系电话：{customermobile}\n支付方式：{payment-type}\n交易方式：{transaction-type}\n送餐地址：{customeraddress}\n总额：{amount}\n送餐时间：{delivery-date}, {delivery-time}\n{delivery-instruction}\n{website-address} ";
 }
 
 $sms_alert_customer=Yii::app()->functions->getOption("sms_alert_customer",$merchant_id);

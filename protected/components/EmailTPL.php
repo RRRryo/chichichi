@@ -264,14 +264,14 @@ HTML;
 	public static function receiptTPL()
 	{
 		return <<<HTML
-<p>Dear {customer-name},</p>
+<p>亲爱的 {customer-name},</p>
 <br/><br/>
-<p> Thank you for shopping at Jinwei. We hope you enjoy your new purchase! Your order number is {receipt-number}. We have included your order receipt and delivery details below:	</p>
+<p>感谢您对近味的支持。您的订单号码为 {receipt-number}，以下为订单的详细信息：</p>
 <br/>
  {receipt}	
 	
 <br/><br/>
-<p> Kind Regards</p>
+<p>近味团队祝您用餐愉快</p>
 HTML;
 	}
 	
@@ -375,18 +375,18 @@ HTML;
 	public static function receiptMerchantTPL()
 	{
 		return <<<HTML
-<p>hi admin,</p>
+<p>亲爱的{restaurant_name}，</p>
 <br/>
-<p>There is a new order with the reference number {receipt-number} from customer {customer-name}</p>
+<p>您有一个新的订单！编号为：{receipt-number}，来自于客户 {customer-name}</p>
 <br/>
  {receipt}	
 	
 <br/><br/>
-<p><a href="{confirmation-link}">Click here</a> to accept the order<br/>
-or simply visit this link {confirmation-link}
+<p><a href="{confirmation-link}">点击这里</a>接受订单<br/>
+或者访问此链接 {confirmation-link}
 </p>
 <br/>
-<p> Kind Regards</p>
+<p>近味团队</p>
 HTML;
 	}	
 	
