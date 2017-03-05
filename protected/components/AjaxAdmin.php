@@ -4267,7 +4267,7 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 				$date_close=Yii::app()->functions->translateDate($date_close);
 
-				$this->msg=t("Sorry but we are closed on")." ".$date_close;
+				$this->msg=t("Sorry but we are closed on")/*." ".$date_close*/;
 
 				$this->msg.="<br/>";
 
