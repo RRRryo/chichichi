@@ -901,6 +901,7 @@ $lang["Mobile Number"] = "手机号码";
 
 $lang["Delivery instructions"] = "送餐说明";
 
+$lang["metro exit number"] = "请注明几号口取餐";
 
 $lang["Cash On delivery"] = "现金支付";
 
@@ -4542,6 +4543,9 @@ $lang['Free'] = '免费';
 $lang['free'] = '免费';
 
 $lang['Metro station'] = "地铁站";
+
+
+$lang['Metro station name'] = "请输入地铁站名";
 
 
 $lang['Orders Over'] = '订单的';
