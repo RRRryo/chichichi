@@ -266,7 +266,7 @@ HTML;
 		return <<<HTML
 <p>Dear {customer-name},</p>
 <br/><br/>
-<p> Thank you for shopping at Karendera. We hope you enjoy your new purchase! Your order number is {receipt-number}. We have included your order receipt and delivery details below:	</p>
+<p> Thank you for shopping at Jinwei. We hope you enjoy your new purchase! Your order number is {receipt-number}. We have included your order receipt and delivery details below:	</p>
 <br/>
  {receipt}	
 	
