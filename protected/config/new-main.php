@@ -97,7 +97,7 @@ return array(
             'Mailer'=>'smtp',
             'Port'=>587, // change this port according to your mail server
             'SMTPAuth'=>true,   
-            'ContentType'=>'UTF-8',
+            'ContentType'=>'utf-8',
             'SMTPSecure'=>'tls'
 	    ), 
 	    
