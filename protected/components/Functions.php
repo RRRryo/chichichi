@@ -9880,7 +9880,7 @@ class Functions extends CApplicationComponent
 
 
 
-			$mail->SetFrom($from, '');
+			$mail->SetFrom($from, t($from));
 
 			$mail->Subject = $subject;
 
