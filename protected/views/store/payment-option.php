@@ -148,7 +148,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                     }
                                      */?>
                                     <div class="col-md-4">
-                                        <input type="submit" class="calculate_shipment_fee  green-button block medium full-width " value=" <?php echo t("delivery to this station") ?>">
+                                        <input type="submit" class="calculate_shipment_fee  green-button block medium full-width " value="确认">
                                     </div>
 
                                     <div class="col-md-5 col-xs-5 top8">
@@ -212,13 +212,16 @@ echo CHtml::hiddenField('admin_currency_position',
                                 <?php endif; ?>
 
                                 <div class="row top10">
-                                    <div class="col-md-10">
+                                    <div class="col-md-3 top8">
+                                        请选择取餐出口：
+                                    </div>
+                                    <div class="col-md-3">
                                         <?php
 
-                                        $exitNumber = array(t("metro exit number") =>"未选择地铁口",
-                                            "地铁口 1" => "地铁口 1" ,"地铁口 2" =>"地铁口 2", "地铁口 3" => "地铁口 3",
-                                            "地铁口 4"=>"地铁口 4", "地铁口 5"=>"地铁口 5", "地铁口 6"=>"地铁口 6",
-                                            "地铁口 7"=>"地铁口 7", "地铁口 8"=>"地铁口 8", "地铁口 9"=>"地铁口 9");
+                                        $exitNumber = array(
+                                            "地铁出口 1" => "地铁出口 1" ,"地铁出口 2" =>"地铁出口 2", "地铁出口 3" => "地铁出口 3",
+                                            "地铁出口 4"=>"地铁出口 4", "地铁出口 5"=>"地铁出口 5", "地铁出口 6"=>"地铁出口 6",
+                                            "地铁出口 7"=>"地铁出口 7", "地铁出口 8"=>"地铁出口 8", "地铁出口 9"=>"地铁出口 9");
                                         echo CHtml::dropDownList('delivery_instruction', '' ,$exitNumber, array(
                                             'class' => 'grey-fields full-width',
                                             'data-validation' => "required",
