@@ -960,16 +960,17 @@ class StoreController extends CController
 
 
 		$show_address_book=true;
-		if (isset($_SESSION['use_new_address']) && $_SESSION['use_new_address']) {
+		/*if (isset($_SESSION['use_new_address']) && $_SESSION['use_new_address']) {
 			//do not show address book
 			$_SESSION['use_new_address']=NULL;
-			$show_address_book = false;
-		}
+//			$show_address_book = false;
+		}*/
 
 
 		$this->render('payment-option',array(
 		  'website_enabled_map_address'=>getOptionA('website_enabled_map_address'),
 			'show_address_book'=>$show_address_book,
+			'address_book_id'=>$_SESSION['address_book_id'],
 		  'address_book'=>Yii::app()->functions->showAddressBook()
 		));
 	}
