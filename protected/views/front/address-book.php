@@ -27,61 +27,17 @@ $do=isset($_GET['do'])?$_GET['do']:'';
        'data-validation'=>"required"  
       ))?>	  
   </div>
-  <div class="col-md-6">
-    <p class="text-small"><?php echo t("City")?></p>
-	  <?php echo CHtml::textField('city',
-  isset($data['city'])?$data['city']:''
-  ,array(
-   'class'=>'grey-fields full-width',   
-   'data-validation'=>"required"  
-  ))?>	  
-  </div>
+    <div class="col-md-6">
+        <p class="text-small"><?php echo t("Location Name")?></p>
+        <?php echo CHtml::textField('location_name',
+            isset($data['location_name'])?$data['location_name']:''
+            ,array(
+                'class'=>'grey-fields full-width',
+            ))?>
+    </div>
 </div> <!--row-->
 
 
-<div class="row bottom10">
-  <div class="col-md-6">
-    <p class="text-small"><?php echo t("State")?></p>
-    <?php echo CHtml::textField('state',
-          isset($data['state'])?$data['state']:''
-          ,array(
-           'class'=>'grey-fields full-width',           
-           'data-validation'=>"required"  
-          ))?>
-  </div>
-  <div class="col-md-6">
-    <p class="text-small"><?php echo t("Zip code")?></p>
-	  <?php echo CHtml::textField('zipcode',
-          isset($data['state'])?$data['zipcode']:''
-          ,array(
-           'class'=>'grey-fields full-width',           
-           'data-validation'=>"required"  
-          ))?>
-  </div>
-</div> <!--row-->
-
-<?php $merchant_default_country=Yii::app()->functions->getOptionAdmin('merchant_default_country'); ?>
-<div class="row bottom10">
-  <div class="col-md-6">
-    <p class="text-small"><?php echo t("Location Name")?></p>
-    <?php echo CHtml::textField('location_name',
-          isset($data['location_name'])?$data['location_name']:''
-          ,array(
-           'class'=>'grey-fields full-width',           
-          ))?>
-  </div>
-  <div class="col-md-6">
-    <p class="text-small"><?php echo t("Country")?></p>
-	 <?php 
-      echo CHtml::dropDownList('country_code',
-      isset($data['country_code'])?$data['country_code']:$merchant_default_country
-      ,(array)Yii::app()->functions->CountryListMerchant(),array(
-        'class'=>'grey-fields full-width',
-        'data-validation'=>"required"  
-      ));
-      ?>
-  </div>
-</div> <!--row-->
 
 <div class="row bottom10">
 <div class="col-md-6">
