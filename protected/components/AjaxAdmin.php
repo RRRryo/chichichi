@@ -4221,7 +4221,7 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 			  }
 			  else
 			  {
-				  $this->msg.= t("You cannot make order at this time");
+				  $this->msg.= "商家此刻的订单已接满<br>请选择其他时间下单";
 			      return ;
 			  }
 		   }
