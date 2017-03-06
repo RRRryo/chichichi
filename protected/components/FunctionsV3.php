@@ -1182,11 +1182,11 @@ class FunctionsV3
     	  'obd'=>t("Offline Bank Deposit"),
     	  'btr' =>t("Braintree"),
     	  'rzr'=>t("Razorpay"),
-			'cod'=>"<img src=".assetsURL()."/images/paymentLogo/cashLogo.jpg ".$maxHeight.">"." ".t("Cash On delivery"),
+
 		  'itp'=>"<img src=".assetsURL()."/images/paymentLogo/165x58.png ".$maxHeight.">",
 		  'wcp'=>"<img src=".assetsURL()."/images/paymentLogo/WePayLogo.png ".$maxHeight.">",
 			'pyp'=>"<img src=".assetsURL()."/images/paymentLogo/paypal.jpg ".$maxHeight.">",
-
+			'cod'=>"<img src=".assetsURL()."/images/paymentLogo/cashLogo.jpg ".$maxHeight.">"." ".t("Cash On delivery"),
 			/*'mol'=>t("Mollie"),
             'ip8'=>t("Ipay88"),*/
     	);
