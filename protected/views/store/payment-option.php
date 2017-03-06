@@ -336,12 +336,12 @@ echo CHtml::hiddenField('admin_currency_position',
                                                         ));
                                                     ?>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-3 col-xs-5">
                                                     <a href="javascript:;" class="edit_address_book block top10">
                                                         <i class="ion-document"></i> <?="使用新地址" ?>
                                                     </a>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-3 col-xs-5">
                                                     <a href="<?=dirname($_SERVER['REQUEST_URI']).'/profile' ?>" target="_blank" class="block top10">
                                                         <i class="ion-compose"></i> <?= "管理地址簿" ?>
                                                     </a>
