@@ -17,7 +17,7 @@ $merchant_address = '';
 $merchant_id = isset($s['kr_merchant_id'])? $s['kr_merchant_id']:NULL;
 $free_delivery= isset($_SESSION['free_delivery'])?$_SESSION['free_delivery']:NULL;
 $show_address_block="none";
-if (!empty($is_guest_checkout) && $is_guest_checkout) {
+if (!$address_book || !empty($is_guest_checkout) && $is_guest_checkout) {
     $show_address_block = "block";
 }
 
