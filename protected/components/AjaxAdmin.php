@@ -16324,10 +16324,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 //						$_SESSION['use_new_address'] = $use_new_address;
 
-						if($use_new_address) {
-							if(empty($this->data['location_name'])) {
-								$this->data['location_name']='';
-							}
+						if($use_new_address && isset($this->data['location_name'])) {
 							$this->saveToAddressBook();
 							/*$addressBook = Yii::app()->functions->showAddressBook();
 							$_SESSION['address_book_id'] = $addressBook['id'];*/
