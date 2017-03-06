@@ -16282,20 +16282,21 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 		public function setAddress()
 
 		{
+			$kr_search_address = NULL;
+			$use_new_address = NULL;
 			if(isset($this->data['address_book_id'])){
 				$address_book=Yii::app()->functions->getAddressBookByID($this->data['address_book_id']);
-				$_SESSION['kr_search_address'] = $address_book['street'];
-				$_SESSION['use_new_address']=false;
+				$kr_search_address = $address_book['street'];
+				$use_new_address = false;
 
 			} else if (isset($this->data['client_address'])) {
-				$_SESSION['kr_search_address']=$this->data['client_address'];
-				//show custom address and hide address book
-				$_SESSION['use_new_address']=true;
+				$kr_search_address =$this->data['client_address'];
+				$use_new_address = true;
 			}
 
-			if (isset($_SESSION['kr_search_address'])){
+			if (isset($kr_search_address)){
 
-				if ($lat_res=Yii::app()->functions->geodecodeAddress($_SESSION['kr_search_address'])){
+				if ($lat_res=Yii::app()->functions->geodecodeAddress($kr_search_address)){
 
 					$merchant_id=$_SESSION['kr_merchant_id'];
 					$mt_delivery_miles=Yii::app()->functions->getOption("merchant_delivery_miles",$merchant_id);
@@ -16316,6 +16317,13 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 						$this->msg=Yii::t("default","Sorry but this merchant delivers only with in");
 						$this->msg=t("Sorry but this merchant delivers only with in ").$mt_delivery_miles." $distance_type_raw";
 					} else {
+
+						//SUCCESS
+
+						$_SESSION['kr_search_address'] = $kr_search_address;
+
+						$_SESSION['use_new_address'] = $use_new_address;
+
 						$_SESSION['client_location']=array(
 
 							'lat'=>$lat_res['lat'],
