@@ -244,16 +244,6 @@ echo CHtml::hiddenField('admin_currency_position',
                                 </div>
 
 
-
-                                <!--<div class="row top10">
-                                    <div class="col-md-10">
-                                        <?php
-/*                                        echo CHtml::checkBox('saved_address', false, array('class' => "icheck", 'value' => 2));
-                                        echo " " . t("Save to my address book");
-                                        */?>
-                                    </div>
-                                </div>-->
-
                                 <?php if (isset($is_guest_checkout)): ?>
                                     <div class="row top10">
                                         <div class="col-md-10">
@@ -300,27 +290,32 @@ echo CHtml::hiddenField('admin_currency_position',
                                 </p>
                                 <form id="frm-modal-enter-address" class="frm-modal-enter-address" method="POST" onsubmit="return false;" >
                                     <?php echo CHtml::hiddenField('action','setAddress');?>
-                                    <div class="row top10 bottom20">
-                                        <div class="col-md-10">
-                                            <p>
-                                                <span class="bold"><?php echo !empty($kr_search_address)?$kr_search_address:t("address is not set yet");  ?></span>
-                                            </p>
-                                        </div>
-                                    </div>
 
 
-                                    <?php  FunctionsV3::sectionHeader('Use another address')?>
 
-                                    <div class="row top10 address-block">
-                                        <div class="col-md-10">
+                                    <div class="row  address-block" style="display: block">
+                                        <div class="col-md-10 top10">
+
                                             <?php echo CHtml::textField('client_address', $kr_search_address, array(
                                                 'class' => 'grey-fields full-width',
                                                 'placeholder' => Yii::t("default", "please enter your address"),
 //                                                'data-validation' => "required"
                                             )) ?>
-                                            <a href="javascript:;" class="show_address_book block top10">
-                                                <i class="ion-compose"></i> <?php echo t("Show address book") ?>
-                                            </a>
+
+                                        </div>
+                                        <div class="col-md-10 top10">
+                                            <?php echo CHtml::textField('location_name',
+                                                isset($client_info['location_name']) ? $client_info['location_name'] : ''
+                                                , array(
+                                                    'class' => 'grey-fields full-width',
+                                                    'placeholder' => Yii::t("default", "Apartment suite, unit number, or company name")
+                                                )) ?>
+
+                                        </div>
+                                        <div class="col-md-10 top10">
+                                            <div class="">
+                                                <input type="submit" class="calculate_shipment_fee  green-button  inline " value=" <?php echo t("deliver to this address") ?>">
+                                            </div>
                                         </div>
                                     </div>
 
@@ -330,21 +325,34 @@ echo CHtml::hiddenField('admin_currency_position',
                                                 <div class="col-md-10">
                                                     <?php
                                                     $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
-                                                    echo CHtml::dropDownList('address_book_id', $address_book['id'],
+                                                    echo CHtml::dropDownList('address_book_id', $address_book_id,
                                                         (array)$address_list, array(
-                                                            'class' => "grey-fields full-width"
+                                                            'class' => "grey-fields full-width",
+                                                            'onchange' => "$('#frm-modal-enter-address').submit()"
                                                         ));
                                                     ?>
+                                                </div>
+                                                <div class="col-md-3">
                                                     <a href="javascript:;" class="edit_address_book block top10">
-                                                        <i class="ion-compose"></i> <?php echo t("Edit") ?>
+                                                        <i class="ion-document"></i> <?="使用新地址" ?>
                                                     </a>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <a href="<?=dirname($_SERVER['REQUEST_URI']).'/profile' ?>" target="_blank" class="block top10">
+                                                        <i class="ion-compose"></i> <?= "管理地址簿" ?>
+                                                    </a>
+                                                </div>
+
                                             </div>
                                         </div> <!--address_book_wrap-->
                                     <?php endif; ?>
-                                    <div class="row top10">
-                                        <div class="col-md-3  col-xs-6 ">
-                                            <input type="submit" class="calculate_shipment_fee  green-button  inline " value=" <?php echo t("deliver to this address") ?>">
+
+
+                                    <div class="row top10 address-block" style="display: block">
+                                        <div class="col-md-10">
+                                            <a href="javascript:;" class="show_address_book block top10">
+                                                <i class="ion-compose"></i> <?php echo t("Show address book") ?>
+                                            </a>
                                         </div>
                                     </div>
 
@@ -400,21 +408,6 @@ echo CHtml::hiddenField('admin_currency_position',
 
 
 
-                                <div class="address-block">
-
-                                    <div class="row top10">
-                                        <div class="col-md-10">
-                                            <?php echo CHtml::textField('location_name',
-                                                isset($client_info['location_name']) ? $client_info['location_name'] : ''
-                                                , array(
-                                                    'class' => 'grey-fields full-width',
-                                                    'placeholder' => Yii::t("default", "Apartment suite, unit number, or company name")
-                                                )) ?>
-                                        </div>
-                                    </div>
-
-                                </div> <!--address-block-->
-
                                 <div class="row top10">
                                     <div class="col-md-10">
                                         <?php echo CHtml::textField('contact_phone',
@@ -436,14 +429,14 @@ echo CHtml::hiddenField('admin_currency_position',
                                     </div>
                                 </div>
 
-                                <div class="row top10">
+                                <!--<div class="row top10">
                                     <div class="col-md-10">
                                         <?php
-                                        echo CHtml::checkBox('saved_address', false, array('class' => "icheck", 'value' => 2));
+/*                                        echo CHtml::checkBox('saved_address', false, array('class' => "icheck", 'value' => 2));
                                         echo " " . t("Save to my address book");
-                                        ?>
+                                        */?>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <?php if (isset($is_guest_checkout)): ?>
                                     <div class="row top10">
@@ -653,9 +646,6 @@ echo CHtml::hiddenField('admin_currency_position',
             });
         }
     });
-
-
-
 
 
 </script>
