@@ -16,6 +16,10 @@ $lines=NULL;
 $merchant_address = '';
 $merchant_id = isset($s['kr_merchant_id'])? $s['kr_merchant_id']:NULL;
 $free_delivery= isset($_SESSION['free_delivery'])?$_SESSION['free_delivery']:NULL;
+$show_address_block="none";
+if (!empty($is_guest_checkout) && $is_guest_checkout) {
+    $show_address_block = "block";
+}
 
 if (isset($merchant_id) && $merchant_info = Yii::app()->functions->getMerchant($merchant_id)) {
     $merchant_address = $merchant_info['street'] . " " . $merchant_info['city'] . " " . $merchant_info['state'];
@@ -293,7 +297,7 @@ echo CHtml::hiddenField('admin_currency_position',
 
 
 
-                                    <div class="row  address-block" style="display: block">
+                                    <div class="row  address-block" style="display: <?=$show_address_block?>">
                                         <div class="col-md-10 top10">
 
                                             <?php echo CHtml::textField('client_address', $kr_search_address, array(
@@ -348,7 +352,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                     <?php endif; ?>
 
 
-                                    <div class="row top10 address-block" style="display: block">
+                                    <div class="row top10 address-block" style="display: <?=$show_address_block?>">
                                         <div class="col-md-10">
                                             <a href="javascript:;" class="show_address_book block top10">
                                                 <i class="ion-compose"></i> <?php echo t("Show address book") ?>
