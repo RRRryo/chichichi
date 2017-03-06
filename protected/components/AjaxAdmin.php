@@ -4253,10 +4253,10 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 				$diff=(strtotime($full_booking_time) - strtotime($current))/60;
 				$readyTime = new DateTime($current);
 				$readyTime->add(new DateInterval('PT' . $deliveryEstimationMinutes . 'M'));
-				$readyStamp = $readyTime->format('Y-m-d h:i');
+				$readyStamp = $readyTime->format('H:i');
 				if($diff < $deliveryEstimationMinutes) {
-					$this->msg=t("Sorry but the restaurant need to prepare and delivery the food for about").$deliveryEstimationMinutes
-						." ".t("minutes").", ".t("please select the booking time later than").$readyStamp;
+					$this->msg="备菜需要".$deliveryEstimationMinutes
+						." ".t("minutes")."<br> 请选择".$readyStamp."之后的时间";
 					return;
 				}
 			}
