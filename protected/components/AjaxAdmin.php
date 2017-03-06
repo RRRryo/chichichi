@@ -5608,39 +5608,7 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 				            if ( $this->data['saved_address']==2){
 
-				            	$sql_up="UPDATE {{address_book}}
-
-					     		SET as_default='1' 	     		
-
-					     		";
-
-					     		$this->qry($sql_up);
-
-				            	$params_i=array(
-
-				            	  'client_id'=>Yii::app()->functions->getClientId(),
-
-				            	  'street'=>$this->data['client_address'],
-
-//				            	  'city'=>$this->data['city'],
-
-//				            	  'state'=>$this->data['state'],
-
-//				            	  'zipcode'=>$this->data['zipcode'],
-
-				            	  'location_name'=>$this->data['location_name'],
-
-				            	  'date_created'=>date('c'),
-
-				            	  'ip_address'=>$_SERVER['REMOTE_ADDR'],
-
-				            	  'country_code'=>Yii::app()->functions->adminCountry(true),
-
-				            	  'as_default'=>2
-
-				            	);
-
-				            	$this->insertData("{{address_book}}",$params_i);
+								$this->saveToAddressBook();
 
 				            }				            			            
 
@@ -5804,7 +5772,38 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    }
 
-	    
+
+		public function saveToAddressBook() {
+
+			$sql_up="UPDATE {{address_book}}
+
+							SET as_default='1'
+
+							";
+
+			$this->qry($sql_up);
+
+			$params_i=array(
+
+				'client_id'=>Yii::app()->functions->getClientId(),
+
+				'street'=>$this->data['client_address'],
+
+				'location_name'=>$this->data['location_name'],
+
+				'date_created'=>date('c'),
+
+				'ip_address'=>$_SERVER['REMOTE_ADDR'],
+
+				'country_code'=>Yii::app()->functions->adminCountry(true),
+
+				'as_default'=>2
+
+			);
+
+			$this->insertData("{{address_book}}",$params_i);
+
+		}
 
 	    public function addRating()
 
@@ -16289,6 +16288,8 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 				$kr_search_address = $address_book['street'];
 				$use_new_address = false;
 
+				$_SESSION['address_book_id'] = $this->data['address_book_id'];
+
 			} else if (isset($this->data['client_address'])) {
 				$kr_search_address =$this->data['client_address'];
 				$use_new_address = true;
@@ -16322,7 +16323,13 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 						$_SESSION['kr_search_address'] = $kr_search_address;
 
-						$_SESSION['use_new_address'] = $use_new_address;
+//						$_SESSION['use_new_address'] = $use_new_address;
+
+						if($use_new_address) {
+							$this->saveToAddressBook();
+							$addressBook = Yii::app()->functions->showAddressBook();
+							$_SESSION['address_book_id'] = $addressBook['id'];
+						}
 
 						$_SESSION['client_location']=array(
 
