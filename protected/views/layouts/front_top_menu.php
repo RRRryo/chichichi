@@ -18,7 +18,7 @@
   
   <?php if ( Yii::app()->controller->action->id =="menu"):?>
   <div class="col-xs-1 cart-mobile-handle border relative">     
-      <div class="badge cart_count"></div>
+      <div class="badge cart_count top8"></div>
      <a href="javascript:;">       
        <i class="ion-ios-cart"></i>
      </a>
