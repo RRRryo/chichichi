@@ -370,7 +370,7 @@ $action="<a href=\"$link\" >".Yii::t("default","Details")."</a>";
 	      'contact_name'=>$p->purify($this->data['contact_name']),
 	      'contact_phone'=>$p->purify($this->data['contact_phone']),
 	      'contact_email'=>$p->purify($this->data['contact_email']),
-	      'street'=>$p->purify($this->data['street']),
+	      'street'=>$p->purify($this->data['client_address']),
 	      'city'=>$p->purify($this->data['city']),
 	      'post_code'=>$this->data['post_code'],
 	      'cuisine'=>json_encode($this->data['cuisine']),
@@ -2821,10 +2821,10 @@ $this->msg=t("We have sent bank information instruction to your email")." :$merc
      {     	
      	$params=array(
      	  'client_id'=>Yii::app()->functions->getClientId(),
-     	  'street'=>$this->data['street'],
-     	  'city'=>$this->data['city'],
+     	  'street'=>$this->data['client_address'],
+     	  /*'city'=>$this->data['city'],
      	  'state'=>$this->data['state'],
-     	  'zipcode'=>$this->data['zipcode'],
+     	  'zipcode'=>$this->data['zipcode'],*/
      	  'location_name'=>isset($this->data['location_name'])?$this->data['location_name']:'',
      	  'as_default'=>isset($this->data['as_default'])?$this->data['as_default']:1,
      	  'date_created'=>date('c'),

@@ -16288,7 +16288,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 				$kr_search_address = $address_book['street'];
 				$use_new_address = false;
 
-				$_SESSION['address_book_id'] = $this->data['address_book_id'];
+//				$_SESSION['address_book_id'] = $this->data['address_book_id'];
 
 			} else if (isset($this->data['client_address'])) {
 				$kr_search_address =$this->data['client_address'];
@@ -16325,9 +16325,12 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 //						$_SESSION['use_new_address'] = $use_new_address;
 
 						if($use_new_address) {
+							if(empty($this->data['location_name'])) {
+								$this->data['location_name']='';
+							}
 							$this->saveToAddressBook();
-							$addressBook = Yii::app()->functions->showAddressBook();
-							$_SESSION['address_book_id'] = $addressBook['id'];
+							/*$addressBook = Yii::app()->functions->showAddressBook();
+							$_SESSION['address_book_id'] = $addressBook['id'];*/
 						}
 
 						$_SESSION['client_location']=array(
@@ -16358,8 +16361,6 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 		{
 
 			if (isset($this->data['client_metro'])){
-
-				$_SESSION['kr_search_address']=$this->data['client_metro'];
 
 				//get metro station location
 				$json = file_get_contents(ROOTPATH."/assets/resources/metro-stops.json");
@@ -16405,6 +16406,8 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 					} else {
 
 						//update session info
+
+						$_SESSION['kr_search_address']=$this->data['client_metro'];
 
 						$_SESSION['client_location']=array(
 

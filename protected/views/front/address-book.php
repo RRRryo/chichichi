@@ -20,7 +20,7 @@ $do=isset($_GET['do'])?$_GET['do']:'';
   <div class="col-md-6">
     <p class="text-small"><?php echo t("Address")?></p>
     <?php 
-	  echo CHtml::textField('street',
+	  echo CHtml::textField('client_address',
       isset($data['street'])?$data['street']:''
       ,array(
        'class'=>'grey-fields full-width',
@@ -95,3 +95,17 @@ $do=isset($_GET['do'])?$_GET['do']:'';
 <?php endif;?>
 
 </div> <!--box-grey-->
+
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        var google_auto_address= $("#google_auto_address").val();
+        if ( google_auto_address =="yes") {
+        } else {
+            $("#client_address").geocomplete({
+                country: $("#admin_country_set").val()
+            });
+        }
+    });
+</script>

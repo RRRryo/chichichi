@@ -960,18 +960,21 @@ class StoreController extends CController
 
 
 		$show_address_book=true;
-		/*if (isset($_SESSION['use_new_address']) && $_SESSION['use_new_address']) {
-			//do not show address book
-			$_SESSION['use_new_address']=NULL;
-//			$show_address_book = false;
-		}*/
+
+		$address_book = Yii::app()->functions->showAddressBook();
+		if($_SESSION['kr_delivery_options']['delivery_type'] == 'delivery' && !empty($address_book)) {
+			$_SESSION['kr_search_address'] = $address_book['address'];
+			if ($lat_res=Yii::app()->functions->geodecodeAddress($_SESSION['kr_search_address'])){
+				$_SESSION['client_location']['lat']=$lat_res['lat'];
+				$_SESSION['client_location']['long']=$lat_res['long'];
+			}
+		}
 
 
 		$this->render('payment-option',array(
 		  'website_enabled_map_address'=>getOptionA('website_enabled_map_address'),
 			'show_address_book'=>$show_address_book,
-			'address_book_id'=>$_SESSION['address_book_id'],
-		  'address_book'=>Yii::app()->functions->showAddressBook()
+		  'address_book'=>$address_book
 		));
 	}
 	

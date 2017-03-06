@@ -329,10 +329,11 @@ echo CHtml::hiddenField('admin_currency_position',
                                                 <div class="col-md-10">
                                                     <?php
                                                     $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
-                                                    echo CHtml::dropDownList('address_book_id', $address_book_id,
+                                                    echo CHtml::dropDownList('address_book_id', $address_book['id'],
                                                         (array)$address_list, array(
                                                             'class' => "grey-fields full-width",
-                                                            'onchange' => "$('#frm-modal-enter-address').submit()"
+                                                            'onchange' => "$('#frm-modal-enter-address').submit()",
+                                                            'onload' => "alert(123)"
                                                         ));
                                                     ?>
                                                 </div>
@@ -351,15 +352,20 @@ echo CHtml::hiddenField('admin_currency_position',
                                         </div> <!--address_book_wrap-->
                                     <?php endif; ?>
 
-
+                                    <?php if (!isset($is_guest_checkout)): ?>
                                     <div class="row top10 address-block" style="display: <?=$show_address_block?>">
-                                        <div class="col-md-10">
+                                        <div class="col-md-3 col-xs-5">
                                             <a href="javascript:;" class="show_address_book block top10">
                                                 <i class="ion-compose"></i> <?php echo t("Show address book") ?>
                                             </a>
                                         </div>
+                                        <div class="col-md-3 col-xs-5">
+                                            <a href="<?=dirname($_SERVER['REQUEST_URI']).'/profile' ?>" target="_blank" class="block top10">
+                                                <i class="ion-compose"></i> <?= "管理地址簿" ?>
+                                            </a>
+                                        </div>
                                     </div>
-
+                                    <?php endif; ?>
                                 </form>
                             <form id="frm-delivery" class="frm-delivery" method="POST" onsubmit="return false;">
                                 <?php
