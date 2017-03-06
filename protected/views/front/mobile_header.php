@@ -1,7 +1,7 @@
 
 <div id="mobile-header" class="container">
 <div class="row" style=" margin-right: initial;">
- <div class="col-xs-1 center"> 
+ <div class="col-xs-1 center top8">
     <!--<a class="back-mobile" href="<?php echo Yii::app()->createUrl('/store/menu/merchant/'.$slug)?>">-->
     <a class="back-mobile" href="<?php echo Yii::app()->createUrl('/menu-'.$slug)?>">
     <i class="ion-ios-arrow-back"></i>
