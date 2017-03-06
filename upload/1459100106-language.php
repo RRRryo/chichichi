@@ -666,7 +666,7 @@ $lang["Metro & Delivery"] = "送餐 & 地铁站取";
 
 $lang["Metro & Pickup"] = "自取 & 地铁站取";
 
-$lang["Subtotal must exceed"] = "小计必须超过";
+$lang["Subtotal must exceed"] = "除送餐费的金额必须超过";
 
 
 $lang["Delivery Options"] = "送餐选项";
@@ -1832,7 +1832,7 @@ $lang["Filter Results"] = "过滤结果";
 $lang["Choose Cuisine"] = "选择美食";
 
 
-$lang["Minimum Delivery"] = "起送";
+$lang["Minimum Delivery"] = "最低消费额";
 
 
 $lang["Edit your review"] = "编辑您的评论";
@@ -3683,6 +3683,9 @@ $lang['received'] = '收到';
 
 
 $lang['Browse by cuisine'] = '菜系浏览';
+
+$lang['By Cuisines'] = '按菜系';
+
 $lang['choose from your favorite cuisine'] = '选择最喜爱的菜';
 
 
@@ -5428,6 +5431,10 @@ $lang['start from'] = '起';
 $lang['no item found on this category'] = '暂无';
 
 $lang['postmaster@jinwei.info'] = '近味';
+
+$lang['By Delivery'] = '按送餐模式';
+
+$lang['enter restaurant name'] = '输入餐厅名称';
 
 /*  Translate for multilanguge site*/
 
