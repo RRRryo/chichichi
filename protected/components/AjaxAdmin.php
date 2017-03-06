@@ -16315,8 +16315,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 						if ($distance_type_raw == "ft" || $distance_type_raw == "meter" || $distance_type_raw == "mt") {
 							;
 						}
-						$this->msg=Yii::t("default","Sorry but this merchant delivers only with in");
-						$this->msg=t("Sorry but this merchant delivers only with in ").$mt_delivery_miles." $distance_type_raw";
+						$this->msg=t("Sorry but this merchant delivers only with in ").$mt_delivery_miles.t($distance_type_raw);
 					} else {
 
 						//SUCCESS
