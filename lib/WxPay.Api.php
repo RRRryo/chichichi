@@ -526,7 +526,7 @@ class WxPayApi
 	{		
 		$ch = curl_init();
 		//设置超时
-		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_TIMEOUT, $second);
 		
 		//如果有配置代理这里就设置代理
 		if(WxPayConfig::CURL_PROXY_HOST != "0.0.0.0" 
