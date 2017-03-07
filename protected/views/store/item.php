@@ -164,20 +164,17 @@ if ($data['two_flavors']==2){
        <div class="col-md-1 col-xs-1 border into-row-2 text-to-left">
          <a href="javascript:;" class="qty-plus green-button inline"><i class="ion-plus"></i></a>
        </div>
-       <div class="col-md-8 col-xs-8 border into-row">
-         <a href="javascript:;" class="special-instruction orange-button inline"><?php echo t("Special Instructions")?></a>
-       </div>
     </div> <!--row-->
   </div> <!-- section-label--> 
   
-  <div class="notes-wrap">
+  <div>
   <?php echo CHtml::textArea('notes',
   isset($item_data['notes'])?$item_data['notes']:""
   ,array(
    'class'=>'uk-width-1-1',
    'placeholder'=>Yii::t("default","Special Instructions")
   ))?>
-  </div> <!--notes-wrap-->
+  </div>
   
   <?php else :?>
   <!--do nothing-->
