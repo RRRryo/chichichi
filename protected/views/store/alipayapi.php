@@ -4,8 +4,11 @@
 		'h1' => t("Payment Option"),
 		'sub_text' => t("choose your payment")
 	));
-
-
+	?>
+	<div class="container">
+		页面跳转中...请稍等
+	</div>
+	<?php
 	/* *
      * 功能：即时到账交易接口接入页
      * 版本：3.3
