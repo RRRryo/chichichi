@@ -633,7 +633,7 @@ Yii::app()->functions->getOption("merchant_tax_charges",$merchant_id)==2?true:fa
       "class"=>"numeric_only",
       'placeholder'=>Yii::t("default","60 mins approx.")
   ));
-  echo ' '.t('minutes');
+  echo ' '."小时";
   ?>
 </div>
 

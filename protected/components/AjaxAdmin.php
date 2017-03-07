@@ -4247,7 +4247,8 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 
 			// check Delivery Estimation
 			if(!$delivery_asap) {
-				$deliveryEstimationMinutes = FunctionsV3::getDeliveryEstimation($merchant_id);
+				$deliveryEstimationHours = FunctionsV3::getDeliveryEstimation($merchant_id);
+				$deliveryEstimationMinutes = $deliveryEstimationHours*60;
 				$deliveryEstimationMinutes = is_numeric($deliveryEstimationMinutes)?$deliveryEstimationMinutes:0;
 				$current = date('Y-m-d h:i');
 				$diff=(strtotime($full_booking_time) - strtotime($current))/60;
@@ -4255,8 +4256,8 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 				$readyTime->add(new DateInterval('PT' . $deliveryEstimationMinutes . 'M'));
 				$readyStamp = $readyTime->format('H:i');
 				if($diff < $deliveryEstimationMinutes) {
-					$this->msg="备菜需要".$deliveryEstimationMinutes
-						." ".t("minutes")."<br> 请选择".$readyStamp."之后的时间";
+					$this->msg="备菜需要".$deliveryEstimationHours
+						."小时<br> 请选择".$readyStamp."之后的时间";
 					return;
 				}
 			}

@@ -369,7 +369,7 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 				?>
 			</p>
 			<p>
-				<?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id).' '.t('minutes')?>
+				<?php echo t("Delivery Est")?>: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id).' '."小时"?>
 			</p>
 			<div class="top10">
 			<p><?php echo t("Pickup free")?></p>
