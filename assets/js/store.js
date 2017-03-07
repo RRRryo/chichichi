@@ -489,7 +489,7 @@ function form_submit(formid)
 						case "wcp":
 							var params = new Object();
 							params["id"] = data.details.order_id;
-							//post(sites_url+'/wechatpay', params);
+							post(sites_url+'/wechatpay', params);
 							break;
 						case "itp":
 							var params = new Object();
