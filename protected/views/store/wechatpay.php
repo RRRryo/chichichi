@@ -21,17 +21,6 @@ $total_fee = '';
 
 //订单描述
 $body = 'jinwei';
-//商品展示地址
-$show_url = '';//$_POST['WIDshow_url'];
-//需以http://开头的完整路径，例如：http://www.xxx.com/myorder.html
-
-//防钓鱼时间戳
-$anti_phishing_key = "";
-//若要使用请调用类文件submit中的query_timestamp函数
-
-//客户端的IP地址
-$exter_invoke_ip = "";
-//非局域网的外网IP地址，如：221.0.0.1
 
 $merchant_id='';
 
@@ -61,6 +50,7 @@ if ( $ok==TRUE){
 
 }
 
+
 	$total_fee=0.01;
 
 
@@ -85,11 +75,16 @@ $input = new WxPayUnifiedOrder();
 $input->SetBody($body);
 $input->SetAttach("attach");
 $input->SetOut_trade_no($out_trade_no);
-$input->SetTotal_fee($total_fee);
+//WXPAY DO NOT ACCEPT POINT
+$input->SetTotal_fee($total_fee*100);
 $input->SetTime_start(date("YmdHis"));
 //$input->SetTime_expire(date("YmdHis", strtotime("+30 minutes")));
 $input->SetGoods_tag("good_tags");
-$input->SetNotify_url("http://www.jinwei.info/wxpaycheckout");
+$input->SetNotify_url("http://localhost:8080/chichichi/wxpaycheckout");
+//$input->SetNotify_url("http://www.jinwei.info/wxpaycheckout");
+//$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
+//$input->SetNotify_url("http://localhost/chichichi/protected/views/store/notify.php");
+
 $input->SetTrade_type("NATIVE");
 $input->SetProduct_id("123456789");
 $result = $notify->GetPayUrl($input);
@@ -109,7 +104,7 @@ $this->renderPartial('/front/default-header', array(
 	<h1><span style="color: #F60">&yen;<?=$total_fee?></span></h1>
 
 	<div class="bottom30">
-		<img class="img-responsive center-block" style="max-width: 480px;"  src="<?php echo assetsURL()."/images/paymentLogo/wxPayText.png"?>">
+		<img alt="扫码支付" class="img-responsive center-block" style="max-width: 480px;"  src="<?php echo assetsURL()."/images/paymentLogo/wxPayText.png"?>">
 	</div>
 
 </div>

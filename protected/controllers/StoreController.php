@@ -1099,6 +1099,11 @@ class StoreController extends CController
 		}
 	}
 
+	public function actionWxPayCheckout()
+	{
+		$this->render('notify');
+	}
+
 	public function actionPaypalVerify()
 	{
 		$this->render('paypal-verify');

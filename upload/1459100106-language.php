@@ -4588,13 +4588,13 @@ $lang['Pickup Time is required'] = '必须有接送时间';
 $lang['Pickup Date is required'] = '请输入自取时间';
 
 
-$lang['Delivery Date is required'] = '交货日期是必需的';
+$lang['Delivery Date is required'] = '请输入交付时间';
 
 
 $lang['Make Delivery Time Required'] = '送餐所需时间';
 
 
-$lang['Delivery Time is required'] = '交货时间是必需的';
+$lang['Delivery Time is required'] = '请输入交付时间';
 
 
 $lang['Send SMS To Customer'] = '发送短信到客户';
