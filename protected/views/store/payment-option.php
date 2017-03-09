@@ -343,7 +343,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                                     </a>
                                                 </div>
                                                 <div class="col-md-3 col-xs-5">
-                                                    <a href="<?=dirname($_SERVER['REQUEST_URI']).'/profile' ?>" target="_blank" class="block top10">
+                                                    <a href="<?=Yii::app()->request->baseUrl.'/profile' ?>" target="_blank" class="block top10">
                                                         <i class="ion-compose"></i> <?= "管理地址簿" ?>
                                                     </a>
                                                 </div>
