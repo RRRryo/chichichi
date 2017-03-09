@@ -14,15 +14,15 @@ if (!isset($orderId)) {
     $orderId = $_GET['out_trade_no'];
 }
 $merchant_id=NULL;
-error_log("BEFORE getOrder2".$orderId);
+//error_log("BEFORE getOrder2".$orderId);
 if ($data = Yii::app()->functions->getOrder2($orderId)) {
 
-    error_log("new order created, orderid=".$orderId);
+//    error_log("new order created, orderid=".$orderId);
 
     $merchant_id = $data['merchant_id'];
     $json_details = !empty($data['json_details']) ? json_decode($data['json_details'], true) : false;
     if ($json_details != false) {
-        error_log("json_details is true");
+//        error_log("json_details is true");
         Yii::app()->functions->displayOrderHTML(array(
             'merchant_id' => $data['merchant_id'],
             'delivery_type' => $data['trans_type'],
