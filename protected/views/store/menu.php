@@ -378,6 +378,10 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 			<?php if ( $resp=Yii::app()->functions->getShippingRates($merchant_id)):?>
 				<?php if ($free_delivery_above_price == "0"):?>
 					<p>免费送餐上门</p>
+				<?php elseif(count($resp) == 1):?>
+					<p>送餐上门: <?php echo '€ '.standardPrettyFormat($resp[0]['distance_price'])?></p>
+					<p><?php echo $free_delivery_above_price=="" ?  NULL :  t('above to ').'€ '.standardPrettyFormat($free_delivery_above_price).t(' free for deliver') ?></p>
+
 				<?php else :?>
 					<p><?php echo t('delivery to domicile')?></p>
 
@@ -396,9 +400,13 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 			<?php if ( $resp=Yii::app()->functions->getMetroShippingRates($merchant_id)):?>
 				<?php if ($free_metro_delivery_above_price == "0"):?>
 					<p>免费送到地铁站</p>
-				<?php else :?>
-					<p><?php echo t('delivery to metro')?></p>
+					<?php elseif(count($resp) == 1):?>
+					<p>送到地铁站: <?php echo '€ '.standardPrettyFormat($resp[0]['distance_price'])?></p>
+					<p><?php echo $free_metro_delivery_above_price =="" ? NULL : t('above to ').'€ '.standardPrettyFormat($free_metro_delivery_above_price).t(' free for deliver') ?></p>
 
+				<?php else :?>
+
+					<p><?php echo t('delivery to metro')?></p>
 					<?php foreach ($resp as $val): ?>
 						<p><?php echo $val['distance_from'].$val['shipping_units']?>
 							<?php echo t('to').$val['distance_to'].$val['shipping_units']?>
