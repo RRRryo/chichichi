@@ -323,13 +323,13 @@ echo CHtml::hiddenField('admin_currency_position',
                                         </div>
                                     </div>
 
-                                    <?php if ($address_book && $show_address_book): ?>
+                                    <?php if ($address_book): ?>
                                         <div class="address_book_wrap">
                                             <div class="row top10">
                                                 <div class="col-md-10">
                                                     <?php
-                                                    $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
-                                                    echo CHtml::dropDownList('address_book_id', $address_book['id'],
+
+                                                    echo CHtml::dropDownList('address_book_id', $_SESSION['address_book_id'],
                                                         (array)$address_list, array(
                                                             'class' => "grey-fields full-width",
                                                             'onchange' => "$('#frm-modal-enter-address').submit()",
