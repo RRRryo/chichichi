@@ -1,13 +1,14 @@
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
+
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-
-RewriteCond %{HTTP_HOST} ^jinwei\.info
-RewriteRule ^(.*)$ http://www.jinwei.info$1 [R=permanent,L]
 
 </IfModule>

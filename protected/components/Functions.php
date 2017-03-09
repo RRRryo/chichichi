@@ -340,6 +340,21 @@ class Functions extends CApplicationComponent
 
 	}
 
+	public function SingleServices()
+
+	{
+
+		return array(
+
+			8=>Yii::t("default","Delivery"),
+
+			9=>yii::t("default","Pickup"),
+
+			10=>yii::t("default","Metro"),
+
+		);
+
+	}
 
 
 	public function Services()

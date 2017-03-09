@@ -314,7 +314,16 @@ class FunctionsV3
 		//dump($getdata);		
 		if (isset($getdata['filter_delivery_type'])){			
 			switch ($getdata['filter_delivery_type']) {
-				case 1:
+				case 8:
+					$and = "AND ( service='1' OR service ='2' OR service='5' OR service='7')";
+					break;
+				case 9:
+					$and = "AND ( service='1' OR service ='3' OR service='6' OR service='7')";
+					break;
+				case 10:
+					$and = "AND ( service='4' OR service ='5' OR service='6' OR service='7')";
+					break;
+				/*case 1:
 					$and = "AND ( service='1' OR service ='2' OR service='3')";
 					break;			
 				case 2:
@@ -322,7 +331,7 @@ class FunctionsV3
 					break;
 				case 3:
 					$and = "AND ( service='1' OR service ='3')";
-					break;		
+					break;	*/
 				default:
 					break;
 			}		

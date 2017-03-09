@@ -2938,6 +2938,7 @@ font-size:13px;
 .enter-address-wrap{
 
 max-width:500px;
+min-width:300px;
 
 padding:10px 20px;
 

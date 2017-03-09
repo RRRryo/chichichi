@@ -107,7 +107,7 @@ echo CHtml::hiddenField('clien_long',$data['client']['long']);
            <?php if (!empty($filter_delivery_type)):?>                      
            <a href="<?php echo FunctionsV3::clearSearchParams('filter_delivery_type')?>">[<?php echo t("Clear")?>]</a>
            <?php endif;?>
-           <?php if ( $services=Yii::app()->functions->Services() ):?>
+           <?php if ( $services=Yii::app()->functions->SingleServices() ):?>
            <div class="filter-box">
 	           <a href="javascript:;">	             
 	             <span>
