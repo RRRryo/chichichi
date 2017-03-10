@@ -425,9 +425,9 @@ class Functions extends CApplicationComponent
 
 					return array(
 
-						'delivery'=>Yii::t("default","Delivery"),
-
 						'metro'=>Yii::t("default","Metro Pickup"),
+
+						'delivery'=>Yii::t("default","Delivery"),
 
 					);
 
@@ -449,11 +449,11 @@ class Functions extends CApplicationComponent
 
 					return array(
 
-						'delivery'=>Yii::t("default","Delivery"),
-
 						'pickup'=>Yii::t("default","Pickup"),
 
 						'metro'=>Yii::t("default","Metro Pickup"),
+
+						'delivery'=>Yii::t("default","Delivery"),
 
 					);
 
@@ -463,9 +463,9 @@ class Functions extends CApplicationComponent
 
 					return array(
 
-						'delivery'=>Yii::t("default","Delivery"),
+						'pickup'=>Yii::t("default","Pickup"),
 
-						'pickup'=>Yii::t("default","Pickup")
+						'delivery'=>Yii::t("default","Delivery")
 
 					);
 
@@ -477,9 +477,9 @@ class Functions extends CApplicationComponent
 
 			return array(
 
-				'delivery'=>Yii::t("default","Delivery"),
+				'pickup'=>Yii::t("default","Pickup"),
 
-				'pickup'=>Yii::t("default","Pickup")
+				'delivery'=>Yii::t("default","Delivery")
 
 			);
 

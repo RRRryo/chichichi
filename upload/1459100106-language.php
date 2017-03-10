@@ -626,7 +626,7 @@ $lang["Distance"] = "距离。";
 $lang["Delivery Est"] = "预计送餐时间";
 
 
-$lang["Delivery Distance Covered"] = "送餐范围";
+$lang["Delivery Distance Covered"] = "配送范围";
 
 
 $lang["miles"] = "英里";
@@ -653,23 +653,23 @@ $lang["This restaurant has not published their menu yet."] = "这家餐厅还没
 $lang["Your Order"] = "您的订单";
 
 
-$lang["Metro Pickup"] = "地铁站取";
+$lang["Metro Pickup"] = "配送至地铁口";
 
-$lang["Metro pickup"] = "地铁站取";
+$lang["Metro pickup"] = "配送至地铁口";
 
 
-$lang["Metro & Pickup & Delivery"] = "送餐 & 自取 & 地铁站取";
+$lang["Metro & Pickup & Delivery"] = "配送上门 & 自取 & 配送至地铁口";
 
 $lang["Metro Only"] = "仅地铁站取";
 
-$lang["Metro & Delivery"] = "送餐 & 地铁站取";
+$lang["Metro & Delivery"] = "配送上门 & 配送至地铁口";
 
-$lang["Metro & Pickup"] = "自取 & 地铁站取";
+$lang["Metro & Pickup"] = "自取 & 配送至地铁口";
 
 $lang["Subtotal must exceed"] = "除送餐费的金额必须超过";
 
 
-$lang["Delivery Options"] = "送餐选项";
+$lang["Delivery Options"] = "配送选项";
 
 
 $lang["Delivery Time"] = "送餐时间";
@@ -874,8 +874,8 @@ $lang["not available"] = "无法使用";
 
 $lang["Restaurant"] = "餐厅";
 
-$lang["metro"] = "地铁站取";
-$lang["Metro"] = "地铁站取";
+$lang["metro"] = "配送至地铁口";
+$lang["Metro"] = "配送至地铁口";
 
 $lang["will at"] = "将于";
 
@@ -1530,7 +1530,7 @@ $lang["Expiration Date"] = "到期日期";
 $lang["User Name"] = "用户名";
 
 
-$lang["Delivery & Pickup"] = "送餐 & 自取";
+$lang["Delivery & Pickup"] = "配送上门 & 自取";
 
 
 $lang["Delivery Only"] = "仅送餐";
@@ -1539,7 +1539,7 @@ $lang["Delivery Only"] = "仅送餐";
 $lang["Pickup Only"] = "仅自取";
 
 
-$lang["Delivery"] = "送餐";
+$lang["Delivery"] = "配送上门";
 
 
 $lang["Pickup"] = "自取";
@@ -1548,7 +1548,7 @@ $lang["Pickup free"] = "自取免费";
 
 $lang["delivery to domicile"] = "送餐上门";
 
-$lang["delivery to metro"] = "地铁站取";
+$lang["delivery to metro"] = "配送至地铁口";
 
 $lang["You are about to permanently delete the selected items.\n'Cancel' to stop, 'OK' to delete.?"] = "你将永久删除选中的项目。 \ n “取消”以停止 , “确定”删除。";
 
@@ -2496,7 +2496,7 @@ $lang["Metro name is required"] = "必须填写地铁站";
 
 $lang["Change Your Address here"] = "更改我的地址";
 
-$lang["Distance to the restaurant"] = "我到餐厅的距离";
+$lang["Distance to the restaurant"] = "距离餐厅";
 
 
 $lang["SMS Transaction"] = "SMS 事务处理";
@@ -2585,7 +2585,7 @@ $lang["pyl"] = "";
 $lang["sow"] = "";
 
 
-$lang["delivery"] = "送餐";
+$lang["delivery"] = "配送上门";
 
 
 $lang['Cooking Preference'] = '口味偏好';
