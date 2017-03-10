@@ -379,12 +379,12 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 			<div class="top10">
 				<?php if ( $resp=Yii::app()->functions->getMetroShippingRates($merchant_id)):?>
 					<?php if ($free_metro_delivery_above_price == "0"):?>
-						<p>免费配送至地铁站</p>
+						<p>配送至地铁口免费</p>
 					<?php elseif(count($resp) == 1):?>
 						<?php if($resp[0]['distance_price'] == 0):?>
-							<p>免费配送至地铁站</p>
+							<p>配送至地铁口免费</p>
 						<?php else :?>
-							<p>配送至地铁站: <?php echo '€ '.standardPrettyFormat($resp[0]['distance_price'])?></p>
+							<p>配送至地铁口: <?php echo '€ '.standardPrettyFormat($resp[0]['distance_price'])?></p>
 							<p><?php echo $free_metro_delivery_above_price =="" ? NULL : t('above to ').'€ '.standardPrettyFormat($free_metro_delivery_above_price)."免费配送" ?></p>
 						<?php endif; ?>
 
@@ -407,10 +407,10 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 			<div class="top10">
 			<?php if ( $resp=Yii::app()->functions->getShippingRates($merchant_id)):?>
 				<?php if ($free_delivery_above_price == "0"):?>
-					<p>免费配送上门</p>
+					<p>配送上门免费</p>
 				<?php elseif(count($resp) == 1):?>
 					<?php if($resp[0]['distance_price'] == 0):?>
-						<p>免费配送上门</p>
+						<p>配送上门免费</p>
 					<?php else :?>
 						<p>配送上门: <?php echo '€ '.standardPrettyFormat($resp[0]['distance_price'])?></p>
 						<p><?php echo $free_delivery_above_price=="" ?  NULL :  t('above to ').'€ '.standardPrettyFormat($free_delivery_above_price)."免费配送" ?></p>
@@ -459,15 +459,19 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
            <!--MAX AND MIN ORDR-->
            <?php if ($minimum_order>0):?>
            <div class="delivery-min">
-              <p class="small center"><?php echo Yii::t("default","Subtotal must exceed")?> 
+              <p class="small center">
               <?php echo displayPrice(baseCurrency(),prettyFormat($minimum_order,$merchant_id))?>
+			  <?php echo Yii::t("default","Subtotal must exceed")?>
+			  </p>
            </div>
            <?php endif;?>
            
            <?php if ($merchant_minimum_order_pickup>0):?>
            <div class="pickup-min">
-              <p class="small center"><?php echo Yii::t("default","Subtotal must exceed")?> 
+              <p class="small center">
               <?php echo displayPrice(baseCurrency(),prettyFormat($merchant_minimum_order_pickup,$merchant_id))?>
+			  <?php echo Yii::t("default","Subtotal must exceed")?>
+			  </p>
            </div>
            <?php endif;?>
               

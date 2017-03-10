@@ -666,7 +666,7 @@ $lang["Metro & Delivery"] = "配送上门 & 配送至地铁口";
 
 $lang["Metro & Pickup"] = "自取 & 配送至地铁口";
 
-$lang["Subtotal must exceed"] = "除送餐费的金额必须超过";
+$lang["Subtotal must exceed"] = "起送";
 
 
 $lang["Delivery Options"] = "配送选项";
