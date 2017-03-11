@@ -163,15 +163,15 @@ if (isset($_GET['id'])){
           ))?>
         </div>
 		
-		<div class="uk-form-row">
-		<label class="uk-form-label"><?php echo Yii::t("default","State/Region")?></label>
-		<?php echo CHtml::textField('state',
+		<!--<div class="uk-form-row">
+		<label class="uk-form-label"><?php /*echo Yii::t("default","State/Region")*/?></label>
+		<?php /*echo CHtml::textField('state',
 		isset($data['state'])?$data['state']:""
 		,array(
 		'class'=>'uk-form-width-large',
 		'data-validation'=>"required"
-		))?>
-		</div>    		
+		))*/?>
+		</div>    -->
 
         <div class="uk-form-row">
           <label class="uk-form-label"><?php echo Yii::t("default","Cuisine")?></label>
