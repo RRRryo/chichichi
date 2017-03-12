@@ -187,33 +187,17 @@ $placholder_search = Yii::t("default", $placholder_search);
             <div id="demo">
                 <div id="owl-demo2" class="owl-carousel">
                     <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/xianmingchi" ?>" class="slider-img">
 
                             <div class="iner-li">
-                                <div class="food-img">
+                                <div class="food-img ">
 
-                                    <img src="<?php echo baseUrl()."/upload/1481148194-3.png" ?>" alt=""/>
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485039507-img_1182.jpg" ?>" alt=""/>
 
                                 </div>
                                 <div class="food-detail">
-                                    <h3>红烧牛肉</h3>
-                                    <p>€8.00 起</p>
-
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="item">
-
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
-                            <div class="iner-li">
-                                <div class="food-img">
-
-                                    <img src="<?php echo baseUrl()."/upload/1481324697-5.png" ?>" alt=""/></div>
-                                <div class="food-detail">
-                                    <h3>四川火锅</h3>
-                                    <p>€5.00 起</p>
+                                    <h3>经典腊汁肉夹馍 </h3>
+                                    <p>€4.00</p>
 
                                 </div>
                             </div>
@@ -222,14 +206,14 @@ $placholder_search = Yii::t("default", $placholder_search);
                     </div>
                     <div class="item">
 
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/weixiaobao" ?>" class="slider-img">
                             <div class="iner-li">
-                                <div class="food-img">
+                                <div class="food-img ">
 
-                                    <img src="<?php echo baseUrl()."/upload/1481580406-2.png" ?>" alt=""/></div>
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1488835023-IMG_0271.JPG" ?>" alt=""/></div>
                                 <div class="food-detail">
-                                    <h3>鱼香肉丝</h3>
-                                    <p>€6.00</p>
+                                    <h3>虫草老花鸭煲</h3>
+                                    <p>€35.00</p>
 
                                 </div>
                             </div>
@@ -237,13 +221,15 @@ $placholder_search = Yii::t("default", $placholder_search);
 
                     </div>
                     <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
+
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/004" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
-                                    <img src="<?php echo baseUrl()."/upload/1488387482-21.png" ?>" alt=""/></div>
+
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485042669-img_1190.jpg" ?>" alt=""/></div>
                                 <div class="food-detail">
-                                    <h3>麻婆豆腐</h3>
-                                    <p>€6.00</p>
+                                    <h3>郭氏夫妻肺片</h3>
+                                    <p>€10.80</p>
 
                                 </div>
                             </div>
@@ -251,14 +237,28 @@ $placholder_search = Yii::t("default", $placholder_search);
 
                     </div>
                     <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/005" ?>" class="slider-img">
+                            <div class="iner-li">
+                                <div class="food-img">
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485189931-211.png" ?>" alt=""/></div>
+                                <div class="food-detail">
+                                    <h3>五花咸蛋黄大肉粽</h3>
+                                    <p>€2.00</p>
+
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="item">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/chengduchufang" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="<?php echo baseUrl()."/upload/1488387568-23.png" ?>" alt=""/></div>
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1488561413-.png" ?>" alt=""/></div>
                                 <div class="food-detail">
-                                    <h3>棒棒鸡</h3>
-                                    <p>€10.00</p>
+                                    <h3>私房小龙虾</h3>
+                                    <p>€21.00 起</p>
 
                                 </div>
                             </div>
@@ -267,14 +267,14 @@ $placholder_search = Yii::t("default", $placholder_search);
                     </div>
 
                     <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/11" ?>" class="slider-img">
+                        <a href="<?php echo baseUrl() . "/store/menu/merchant/004" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img src="<?php echo baseUrl()."/upload/1488387625-322.png" ?>" alt=""/></div>
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485042132-img_1188.jpg" ?>" alt=""/></div>
                                 <div class="food-detail">
-                                    <h3>青城山腊肉</h3>
-                                    <p>€10.00</p>
+                                    <h3>冷吃兔丁</h3>
+                                    <p>€12.80</p>
 
                                 </div>
                             </div>

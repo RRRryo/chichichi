@@ -323,13 +323,13 @@ echo CHtml::hiddenField('admin_currency_position',
                                         </div>
                                     </div>
 
-                                    <?php if ($address_book && $show_address_book): ?>
+                                    <?php if ($address_book): ?>
                                         <div class="address_book_wrap">
                                             <div class="row top10">
                                                 <div class="col-md-10">
                                                     <?php
-                                                    $address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
-                                                    echo CHtml::dropDownList('address_book_id', $address_book['id'],
+
+                                                    echo CHtml::dropDownList('address_book_id', $_SESSION['address_book_id'],
                                                         (array)$address_list, array(
                                                             'class' => "grey-fields full-width",
                                                             'onchange' => "$('#frm-modal-enter-address').submit()",
@@ -343,7 +343,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                                     </a>
                                                 </div>
                                                 <div class="col-md-3 col-xs-5">
-                                                    <a href="<?=dirname($_SERVER['REQUEST_URI']).'/profile' ?>" target="_blank" class="block top10">
+                                                    <a href="<?=Yii::app()->request->baseUrl.'/profile' ?>" target="_blank" class="block top10">
                                                         <i class="ion-compose"></i> <?= "管理地址簿" ?>
                                                     </a>
                                                 </div>
@@ -625,7 +625,7 @@ echo CHtml::hiddenField('admin_currency_position',
                         <!--END SMS Order verification-->
 
                         <div class="text-center top25">
-                            <a href="javascript:;" class="place_order green-button medium inline block">
+                            <a href="javascript:;" class="place_order orange-button medium inline block">
                                 <?php echo t("Place Order") ?>
                             </a>
                         </div>

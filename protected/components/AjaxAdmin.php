@@ -16289,8 +16289,6 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 				$kr_search_address = $address_book['street'];
 				$use_new_address = false;
 
-//				$_SESSION['address_book_id'] = $this->data['address_book_id'];
-
 			} else if (isset($this->data['client_address'])) {
 				$kr_search_address =$this->data['client_address'];
 				$use_new_address = true;
@@ -16327,8 +16325,10 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 						if($use_new_address && isset($this->data['location_name'])) {
 							$this->saveToAddressBook();
-							/*$addressBook = Yii::app()->functions->showAddressBook();
-							$_SESSION['address_book_id'] = $addressBook['id'];*/
+							$addressBook = Yii::app()->functions->showAddressBook();
+							$_SESSION['address_book_id'] = $addressBook['id'];
+						} else {
+							$_SESSION['address_book_id'] = $this->data['address_book_id'];
 						}
 
 						$_SESSION['client_location']=array(

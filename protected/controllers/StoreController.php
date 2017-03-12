@@ -959,9 +959,14 @@ class StoreController extends CController
 		Yii::app()->functions->calculateShippingFeeForAllType();
 
 
-		$show_address_book=true;
+		$address_list = Yii::app()->functions->addressBook(Yii::app()->functions->getClientId());
 
 		$address_book = Yii::app()->functions->showAddressBook();
+
+		if(empty($address_book) && count($address_list) > 0) {
+			$address_book = array_values($address_list)[0];
+		}
+
 		if($_SESSION['kr_delivery_options']['delivery_type'] == 'delivery' && !empty($address_book)) {
 			$_SESSION['kr_search_address'] = $address_book['address'];
 			if ($lat_res=Yii::app()->functions->geodecodeAddress($_SESSION['kr_search_address'])){
@@ -973,8 +978,8 @@ class StoreController extends CController
 
 		$this->render('payment-option',array(
 		  'website_enabled_map_address'=>getOptionA('website_enabled_map_address'),
-			'show_address_book'=>$show_address_book,
-		  'address_book'=>$address_book
+		  	'address_book'=>$address_book,
+			'address_list'=>$address_list,
 		));
 	}
 	
@@ -1787,7 +1792,7 @@ class StoreController extends CController
 		  array(
 		     'is_guest_checkout'=>true,
 		     'website_enabled_map_address'=>getOptionA('website_enabled_map_address'),
-		     'address_book'=>Yii::app()->functions->showAddressBook()
+		     'address_book'=>false
 		));
 	}
 	

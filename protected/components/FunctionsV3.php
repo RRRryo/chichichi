@@ -650,9 +650,9 @@ class FunctionsV3
 		$metro_fee=getOption($merchant_id,'free_metro_delivery_above_price');
 		$html = '';
     	if ($fee>0){
-			$html='<p><span class="label label-default">'. t("Free Domicile Delivery On Orders Over")." ". self::prettyPrice($fee).'</span></p>';
+			$html='<p><span class="label label-default">'."订单超过 ". self::prettyPrice($fee).' 免费配送上门</span></p>';
     	} else if ($metro_fee>0){
-			$html= '<p><span class="label label-default">'. t("Free Metro Delivery On Orders Over")." ". self::prettyPrice($metro_fee).'</span></p>';
+			$html= '<p><span class="label label-default">'."订单超过 ". self::prettyPrice($metro_fee).' 免费配送至地铁口</span></p>';
 		} else {
 			$html.='<p>&nbsp;</p>';
 		}
@@ -665,9 +665,9 @@ class FunctionsV3
 		$metro_fee=getOption($merchant_id,'free_metro_delivery_above_price');
 		$html = '';
 		if ($fee>0){
-			$html='<p class="text-center"><span class="label label-default">'. t("Free Domicile Delivery On Orders Over")." ". self::prettyPrice($fee).'</span></p>';
+			$html='<p class="text-center"><span class="label label-default">'."订单超过 ". self::prettyPrice($fee).' 免费配送上门</span></p>';
 		} else if ($metro_fee>0){
-			$html= '<p class="text-center"><span class="label label-default">'. t("Free Metro Delivery On Orders Over")." ". self::prettyPrice($metro_fee).'</span></p>';
+			$html= '<p class="text-center"><span class="label label-default">'."订单超过 ". self::prettyPrice($metro_fee).' 免费配送至地铁口</span></p>';
 		} else {
 			$html.='<p class="text-center">&nbsp;</p>';
 		}
