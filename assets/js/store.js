@@ -2490,7 +2490,7 @@ function apply_voucher()
     	busy(false);      	
     	if (data.code==1){    	
     		//console.debug(action);
-    		load_item_cart_without_delivery_fee();
+    		load_item_cart_with_delivery_fee();
     		if ( action=="removeVoucher"){
     			$(".apply_voucher").text(js_lang.trans_24);    		
     			$("#voucher_code").show();
@@ -2499,7 +2499,7 @@ function apply_voucher()
     			$(".apply_voucher").text(js_lang.trans_23);
     		}    		
     		    		
-    		if ( $(".tip_percentage").html()!="0%" ){    			
+    		/*if ( $(".tip_percentage").html()!="0%" ){
     			setTimeout( function(){    				
     				    			
     				if($(".tips.active").data("type")=="tip"){
@@ -2511,14 +2511,14 @@ function apply_voucher()
 			            var tip_raw = tip*cart_subtotal;
 			            dump(tip_raw.toFixed(2));		
 			            
-			            display_tip(tip_percentage,tip_raw.toFixed(2));
+			            //display_tip(tip_percentage,tip_raw.toFixed(2));
 			            	
-    				} else {
+    				}/!* else {
     					display_tip(0,0);
-    				}
+    				}*!/
     				   				
     			} , 1000);
-    		}
+    		}*/
     		
     	} else {
            uk_msg(data.msg);
