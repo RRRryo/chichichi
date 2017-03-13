@@ -2402,7 +2402,7 @@ $lang["You have entered voucher code that already been used."] = "您输入的�
 $lang["Remove Voucher"] = "删除折扣码";
 
 
-$lang["Less Voucher"] = "更少的折扣码";
+$lang["Less Voucher"] = "已优惠";
 
 
 $lang["Sub Total"] = "小计";
