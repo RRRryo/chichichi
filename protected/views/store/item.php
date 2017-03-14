@@ -293,7 +293,7 @@ if ($data['two_flavors']==2){
         }
 	  ?>	    
 	    <div class="row top10">
-	        <div class="col-md-5 col-xs-5 border into-row ">
+	        <div class="col-md-5 col-xs-12 border">
 	        <?php 
 	         if ( $val['multi_option']=="custom" || $val['multi_option']=="multiple"): 
                             
