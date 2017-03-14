@@ -3132,7 +3132,7 @@ jQuery(document).ready(function() {
 	if ( $("#delivery_type").exists()){
 		var delivery_type=$("#delivery_type").val();		
 		if ( delivery_type=="pickup"){
-			$(".delivery-asap").show();
+			$(".delivery-asap").hide();
 			$("#delivery_time").attr("placeholder",js_lang.trans_38);
 			$(".delivery-fee-wrap").show();
 			$(".delivery-min").show();
