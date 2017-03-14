@@ -5071,7 +5071,7 @@ $lang['fixed ammount'] = '';
 
 $lang['percentage'] = '';
 
-$lang['pickup'] = '';
+$lang['pickup'] = '自取';
 
 $lang['Remove Files'] = '';
 
