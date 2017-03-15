@@ -5229,7 +5229,7 @@ $lang['Yes'] = '';
 
 $lang['Sorry but withdrawals is not available this time. admin has not yet set any payment method'] = '';
 
-$lang['Sorry but you cannot change the order status of this order it has reference already on the withdrawals that you made'] = '';
+$lang['Sorry but you cannot change the order status of this order it has reference already on the withdrawals that you made'] = '提款后不发更改订单状态';
 
 $lang['customer welcome email template'] = '';
 
