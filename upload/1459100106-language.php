@@ -1942,6 +1942,7 @@ $lang["pending"] = "待处理";
 
 $lang["paid"] = "已付款";
 
+$lang["delivered"] = "已送餐";
 
 $lang["Draft"] = "决议草案";
 
