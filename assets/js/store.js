@@ -3135,8 +3135,8 @@ jQuery(document).ready(function() {
 			$(".delivery-asap").hide();
 			$("#delivery_time").attr("placeholder",js_lang.trans_38);
 			$(".delivery-fee-wrap").show();
-			$(".delivery-min").show();
-			$(".pickup-min").show();	
+			$(".delivery-min").hide();
+			$(".pickup-min").show();
 		} else if (delivery_type=="metro") {
 			$(".delivery-asap").hide();
 			$("#delivery_time").attr("placeholder",js_lang.trans_39);
