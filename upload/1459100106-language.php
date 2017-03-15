@@ -1940,7 +1940,7 @@ $lang["expired"] = "已过期";
 $lang["pending"] = "待处理";
 
 
-$lang["paid"] = "支付";
+$lang["paid"] = "已付款";
 
 
 $lang["Draft"] = "决议草案";
@@ -1973,7 +1973,7 @@ $lang["Please choose at least"] = "请至少选择";
 $lang["You have not given a correct e-mail address"] = "您没有输入正确的电子邮件地址";
 
 
-$lang["New Merchant Registration List For Today"] = "今日商船注册列表";
+$lang["New Merchant Registration List For Today"] = "今日商户注册列表";
 
 
 $lang["Merchant Payment History"] = "商户的付款历史记录";
@@ -3029,7 +3029,7 @@ $lang['Invalid file'] = '无效的文件';
 $lang['Validate your language file on this link'] = '验证您的语言的文件该链接';
 
 
-$lang['Incoming orders from merchant for today'] = '传入的订单从商船为今天';
+$lang['Incoming orders from merchant for today'] = '今日订单';
 
 
 $lang['Merchant Sales Report'] = '商家销售报告。';
