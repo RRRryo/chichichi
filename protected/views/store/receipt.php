@@ -116,13 +116,13 @@ $full_merchant_address = $merchant_info['street'] . " " . $merchant_info['city']
 
                             <tr>
                                 <td><?php echo Yii::t("default", "TRN Type") ?></td>
-                                <td class="text-right"><?php echo Yii::t("default", $data['trans_type']) ?></td>
+                                <td class="text-right"><?php echo Yii::t("default", t($data['trans_type'])) ?></td>
                             </tr>
 
                             <?php
                             $print[] = array(
                                 'label' => Yii::t("default", "TRN Type"),
-                                'value' => $data['trans_type']
+                                'value' => t($data['trans_type'])
                             );
                             ?>
 
