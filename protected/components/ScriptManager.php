@@ -107,10 +107,10 @@ class ScriptManager
 							
 		$google_key=getOptionA('google_geo_api_key');
 		if (!empty($google_key)){
-			$cs->registerScriptFile("//".GOOGLE_MAP_URL."/maps/api/js?v=3.exp&libraries=places&key=".$google_key
+			$cs->registerScriptFile("//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=".$google_key
 			,CClientScript::POS_END); 
 		} else {
-			$cs->registerScriptFile("//".GOOGLE_MAP_URL."/maps/api/js?v=3.exp&libraries=places"
+			$cs->registerScriptFile("//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"
 		    ,CClientScript::POS_END); 
 		}
 		
