@@ -311,10 +311,16 @@ $full_merchant_address=$merchant_info['street']." ".$merchant_info['city']. " ".
 		   <?php echo $data2['html'];?>
 		   
 		  </div>
-		  
-		  <div class="print_wrap">
-          <a class="print_element left" href="javascript:;"><i class="fa fa-print"></i> <?php echo Yii::t("default","Click here to print")?></a>
-          <div class="clear"></div>
+			<div class="clear"></div>
+			<div class=" print_wrap row top25 bottom10">
+				<div class="col-md-6">
+					<a class="print_element left" href="javascript:"><i class="fa fa-print"></i> <?php echo Yii::t("default","Click here to print")?></a>
+				</div>
+				<div class="col-md-6">
+					<a data-id="<?=$data['order_id'] ?>" class="accept-order right"  href="javascript:"><i class="fa fa-check"></i> 接受订单</a>
+				</div>
+			</div>
+
           </div>	    
 		  
         </div>
