@@ -7652,6 +7652,8 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    			$action="<div><a data-id=\"".$val['order_id']."\" class=\"accept-order\" href=\"javascript:\">接受</a></div>";
 
+					$action.="<div><a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">编辑</a></div>";
+
 	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"view-receipt\" href=\"javascript:\">".Yii::t("default","View")."</a></div>";
 
 	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"view-order-history\" href=\"javascript:\">历史</a></div>";
