@@ -470,7 +470,25 @@ jQuery(document).ready(function() {
    $( document ).on( "click", ".edit-order", function() {    	       	 	      
        var params="action=editOrder&tbl=viewReceipt&id="+ $(this).data("id")+"&currentController="+$("#currentController").val();
        open_fancy_box(params);
-   });	
+   });
+
+	$( document ).on( "click", ".accept-order", function() {
+		var params="action=acceptOrder&id="+ $(this).data("id")+"&currentController="+$("#currentController").val();
+		busy(true);
+		$.ajax({
+			type: "POST",
+			url: ajax_url,
+			data: params,
+			dataType: 'json',
+			success: function(data){
+				busy(false);
+				uk_msg_sucess(data.msg);
+			},
+			error: function(){
+				busy(false);
+			}
+		});
+	});
       
    $( ".export_btn" ).click(function(){
       var params="action=export&rpt="+$(this).attr("rel")+"&tbl=export";

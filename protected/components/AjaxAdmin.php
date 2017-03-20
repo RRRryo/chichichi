@@ -6890,7 +6890,17 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    }
 
-	    
+
+		public function acceptOrder() {
+			if (isset($this->data['id'])){
+
+				$params=array('viewed'=>2, 'status'=>'accepted');
+
+				$this->updateData("{{order}}",$params,'order_id',$this->data['id']);
+				$this->msg="订单已接受";
+			}
+
+		}
 
 	    public function editOrder()
 
@@ -7640,13 +7650,13 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    			$new='';
 
-	    			$action="<a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">".Yii::t("default","Edit")."</a>";
+	    			$action="<div><a data-id=\"".$val['order_id']."\" class=\"accept-order\" href=\"javascript:\">接受</a></div>";
 
-	    			$action.="<a data-id=\"".$val['order_id']."\" class=\"view-receipt\" href=\"javascript:\">".Yii::t("default","View")."</a>";
+					$action.="<div><a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">编辑</a></div>";
 
-	    			
+	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"view-receipt\" href=\"javascript:\">".Yii::t("default","View")."</a></div>";
 
-	    			$action.="<a data-id=\"".$val['order_id']."\" class=\"view-order-history\" href=\"javascript:\">".Yii::t("default","History")."</a>";
+	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"view-order-history\" href=\"javascript:\">历史</a></div>";
 
 	    			
 
