@@ -18175,7 +18175,7 @@ $last_login=$val['last_login']=="0000-00-00 00:00:00"?"":date('M d,Y G:i:s',strt
 
 	    			  prettyFormat($val['total_w_tax'],$merchant_id),
 
-	    			  ucwords($val['status']),
+						t($val['status']),
 
 	    			  $date.$action,
 
