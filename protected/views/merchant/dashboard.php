@@ -22,12 +22,12 @@ echo FormatDateTime(date('c'),false);
             <th width="2%"><?php echo Yii::t('default',"Ref#")?></th>
             <th width="6%"><?php echo Yii::t('default',"Name")?></th>
             <th width="6%"><?php echo Yii::t('default',"Contact#")?></th>
-            <th width="3%"><?php echo Yii::t('default',"Item")?></th>            
+            <th width="6%"><?php echo Yii::t('default',"Item")?></th>
             <th width="3%"><?php echo Yii::t('default',"TransType")?></th>
             <th width="3%"><?php echo Yii::t('default',"Payment Type")?></th>
+<!--            <th width="3%">--><?php //echo Yii::t('default',"Total")?><!--</th>-->
+<!--            <th width="3%">--><?php //echo Yii::t('default',"Tax")?><!--</th>-->
             <th width="3%"><?php echo Yii::t('default',"Total")?></th>
-            <th width="3%"><?php echo Yii::t('default',"Tax")?></th>
-            <th width="3%"><?php echo Yii::t('default',"Total W/Tax")?></th>
             <th width="3%"><?php echo Yii::t('default',"Status")?></th>
             <th width="3%"><?php echo Yii::t('default',"Date")?></th>
             <th width="3%"></th>

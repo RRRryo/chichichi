@@ -483,6 +483,7 @@ jQuery(document).ready(function() {
 			success: function(data){
 				busy(false);
 				uk_msg_sucess(data.msg);
+				table_reload();
 			},
 			error: function(){
 				busy(false);

@@ -6832,15 +6832,15 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    	if ( $res=$DbExt->rst($stmt)){
 
-	    		foreach ($res as $val) {	    			    			
+	    		foreach ($res as $val) {
 
-	    			$action="<a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">".Yii::t("default","Edit")."</a>";
+					$action="<div><a data-id=\"".$val['order_id']."\" class=\"accept-order\" href=\"javascript:\">接受</a></div>";
 
-	    			$action.="<a data-id=\"".$val['order_id']."\" class=\"view-receipt\" href=\"javascript:\">".Yii::t("default","View")."</a>";
+//	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">".Yii::t("default","Edit")."</a></div>";
 
-	    			
+	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"view-receipt\" href=\"javascript:\">".Yii::t("default","View")."</a></div>";
 
-	    			$action.="<a data-id=\"".$val['order_id']."\" class=\"view-order-history\" href=\"javascript:\">".Yii::t("default","History")."</a>";
+	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"view-order-history\" href=\"javascript:\">历史</a></div>";
 
 	    			
 
@@ -6866,9 +6866,9 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    			  FunctionsV3::prettyPaymentType('payment_order',$val['payment_type'],$val['order_id']),
 
-	    			  prettyFormat($val['sub_total'],$merchant_id),
+//	    			  prettyFormat($val['sub_total'],$merchant_id),
 
-	    			  prettyFormat($val['taxable_total'],$merchant_id),
+//	    			  prettyFormat($val['taxable_total'],$merchant_id),
 
 	    			  prettyFormat($val['total_w_tax'],$merchant_id),
 
@@ -6892,13 +6892,179 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 
 		public function acceptOrder() {
+
+			$status = 'accepted';
+
+			$DbExt=new DbExt;
+
+			$merchant_id=Yii::app()->functions->getMerchantID();
+
+			$mt_timezone=Yii::app()->functions->getOption("merchant_timezone",$merchant_id);
+
+			if (!empty($mt_timezone)){
+
+				Yii::app()->timeZone=$mt_timezone;
+
+			}
+
+
+			/** check if merchant has initiate widthrawals*/
+
+			if ( Yii::app()->functions->isMerchantCommission($merchant_id)){
+
+				if ( FunctionsK::validateChangeOrder($this->data['id'])){
+
+					$this->msg=t("Sorry but you cannot change the order status of this order it has reference already on the withdrawals that you made");
+
+					return;
+
+				}
+
+			}
+
+
+			$date_now=date('Y-m-d');
+
 			if (isset($this->data['id'])){
 
-				$params=array('viewed'=>2, 'status'=>'accepted');
+				$order_id=$this->data['id'];
 
-				$this->updateData("{{order}}",$params,'order_id',$this->data['id']);
-				$this->msg="订单已接受";
-			}
+				if ( $resp=Yii::app()->functions->verifyOrderIdByOwner($order_id,$merchant_id) ){
+
+					$params=array('status'=>$status,'date_modified'=>date('c'),'viewed'=>2);
+
+					/*check if merchant can change the status*/
+
+					$can_edit=Yii::app()->functions->getOptionAdmin('merchant_days_can_edit_status');
+
+					if (is_numeric($can_edit) && !empty($can_edit)){
+
+						$base_option=getOptionA('merchant_days_can_edit_status_basedon');
+
+						if ( $base_option==2){
+
+							$date_created=date("Y-m-d",
+
+								strtotime($resp['delivery_date']." ".$resp['delivery_time']));
+
+						} else $date_created=date("Y-m-d",strtotime($resp['date_created']));
+
+						$date_interval=Yii::app()->functions->dateDifference($date_created,$date_now);
+
+						if (is_array($date_interval) && count($date_interval)>=1){
+
+							if ( $date_interval['days']>$can_edit){
+
+								$this->msg=t("Sorry but you cannot change the order status anymore. Order is lock by the website admin");
+
+								$this->details=json_encode($date_interval);
+
+								return ;
+
+							}
+
+						}
+
+					}
+
+
+					$mechant_sms_enabled= Yii::app()->functions->getOptionAdmin("mechant_sms_enabled");
+
+
+					/*check if order has past for 2 days*/
+
+					$this->details['order_id']=$order_id;
+
+					$this->details['show_sms']=2;
+
+					$date_created=date("Y-m-d g:i:s a",strtotime($resp['date_created']));
+
+					$date_interval=Yii::app()->functions->dateDifference($date_created,$date_now);
+
+					if (is_array($date_interval) && count($date_interval)>=1){
+
+						if ( $date_interval['days']>2){
+
+							$this->details['show_sms']=1;
+
+						}
+
+					}
+
+					if ( $mechant_sms_enabled=="yes"){
+
+						$this->details['show_sms']=1;
+
+					}
+
+					/**check if admin has disabled the sending of sms*/
+
+					if (getOptionA('merchant_changeorder_sms')==2){
+
+						$this->details['show_sms']=1;
+
+					}
+
+					if ($DbExt->updateData('{{order}}',$params,'order_id',$order_id)){
+
+						$this->code=1;
+
+						$this->msg="订单已接受";
+
+						/*Now we insert the order history*/
+
+						$params_history=array(
+
+							'order_id'=>$order_id,
+
+							'status'=>$status,
+
+							'remarks'=>isset($this->data['remarks'])?$this->data['remarks']:'',
+
+							'date_created'=>date('c'),
+
+							'ip_address'=>$_SERVER['REMOTE_ADDR']
+
+						);
+
+						$DbExt->insertData("{{order_history}}",$params_history);
+
+
+						if (FunctionsV3::hasModuleAddon("mobileapp")){
+
+							/** Mobile save logs for push notification */
+
+							Yii::app()->setImport(array(
+
+								'application.modules.mobileapp.components.*',
+
+							));
+
+							AddonMobileApp::savedOrderPushNotification($this->data);
+
+						}
+
+
+
+						if (FunctionsV3::hasModuleAddon("driver")){
+
+							/*Driver app*/
+
+							Yii::app()->setImport(array(
+
+								'application.modules.driver.components.*',
+
+							));
+
+							Driver::addToTask($order_id);
+
+						}
+
+					} else $this->msg=Yii::t("default","ERROR: cannot update order.");
+
+				} else $this->msg=Yii::t("default","This Order does not belong to you.");
+
+			} else $this->msg=Yii::t("default","Missing parameters");
 
 		}
 
@@ -7652,7 +7818,7 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    			$action="<div><a data-id=\"".$val['order_id']."\" class=\"accept-order\" href=\"javascript:\">接受</a></div>";
 
-					$action.="<div><a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">编辑</a></div>";
+//					$action.="<div><a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">编辑</a></div>";
 
 	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"view-receipt\" href=\"javascript:\">".Yii::t("default","View")."</a></div>";
 
@@ -7702,9 +7868,9 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    			  FunctionsV3::prettyPaymentType('payment_order',$val['payment_type'],$val['order_id']),
 
-	    			  prettyFormat($val['sub_total'],$merchant_id),
+//	    			  prettyFormat($val['sub_total'],$merchant_id),
 
-	    			  prettyFormat($val['taxable_total'],$merchant_id),
+//	    			  prettyFormat($val['taxable_total'],$merchant_id),
 
 	    			  prettyFormat($val['total_w_tax'],$merchant_id),
 

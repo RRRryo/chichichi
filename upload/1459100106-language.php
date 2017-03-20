@@ -1944,6 +1944,8 @@ $lang["paid"] = "已付款";
 
 $lang["delivered"] = "已送餐";
 
+$lang["accepted"] = "已接受";
+
 $lang["Draft"] = "决议草案";
 
 
