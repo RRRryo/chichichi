@@ -1562,7 +1562,7 @@ $lang["Last 30 days Total Sales"] = "最近 30 天销售额";
 $lang["Last 30 days Total Sales By Item"] = "最近 30 天各类菜品销售额";
 
 
-$lang["New Order has been placed."] = "新订单已发出。";
+$lang["New Order has been placed."] = " 您有新的订单，";
 
 
 $lang["Hour"] = "小时";
@@ -1580,7 +1580,7 @@ $lang["Your merchant membership is expired. Please renew your membership."] = "�
 $lang["No data available in table"] = "无可用数据表";
 
 
-$lang["Showing _START_ to _END_ of _TOTAL_ entries"] = "显示 _ _ _ _ 结束的 _ 全部条目。";
+$lang["Showing _START_ to _END_ of _TOTAL_ entries"] = "一共_TOTAL_条记录，显示_START_到_END_";
 
 
 $lang["Showing 0 to 0 of 0 entries"] = "显示 0 到 0 , 0 的条目";
@@ -1589,7 +1589,7 @@ $lang["Showing 0 to 0 of 0 entries"] = "显示 0 到 0 , 0 的条目";
 $lang["(filtered from _MAX_ total entries)"] = "过滤 _ 最大值 _ 总条目数";
 
 
-$lang["Show _MENU_ entries"] = "显示 _ 菜单条目";
+$lang["Show _MENU_ entries"] = "显示_MENU_条记录";
 
 
 $lang["Loading..."] = "正在加载 ...";
@@ -3806,7 +3806,7 @@ $lang['Offline Credit Card Payment'] = '离线信用卡支付';
 $lang['Set this link as Notification for WEB payments in your Epaybg account'] = '设置此链接通知网付款您的帐户 Epaybg';
 
 
-$lang['Click here to view'] = '点击这里查看';
+$lang['Click here to view'] = '请点击查看';
 
 
 $lang['Merchant Commission details'] = '商户委员会的详细信息';
