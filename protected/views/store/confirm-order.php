@@ -1,9 +1,12 @@
-
-
-<div class="page-right-sidebar payment-option-page">
-  <div class="main">
-  <div class="inner" style="min-height:240px;">
-  <p><?php echo $data?></p>
+<?php
+$this->renderPartial('/front/default-header', array(
+    'h1' => t("Payment Option"),
+    'sub_text' => "接受订单"
+));
+?>
+<div class="container">
+  <div class="top25">
+    <p><?php echo $data?></p>
   </div>
-  </div>
+
 </div>
