@@ -263,6 +263,7 @@ HTML;
 	
 	public static function receiptTPL()
 	{
+		$url=Yii::app()->getBaseUrl(true);
 		return <<<HTML
 <p>亲爱的 {customer-name},</p>
 <br/><br/>
@@ -272,6 +273,7 @@ HTML;
 	
 <br/><br/>
 <p>近味团队祝您用餐愉快</p>
+<p>$url</p>
 HTML;
 	}
 	
@@ -374,6 +376,7 @@ HTML;
 	
 	public static function receiptMerchantTPL()
 	{
+		$url=Yii::app()->getBaseUrl(true);
 		return <<<HTML
 <p>亲爱的 {restaurant_name}，</p>
 <br/>
@@ -387,6 +390,7 @@ HTML;
 </p>
 <br/>
 <p>近味团队</p>
+<p>$url</p>
 HTML;
 	}	
 	
