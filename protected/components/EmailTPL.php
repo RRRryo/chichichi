@@ -135,7 +135,7 @@ HTML;
 					}
 					
 					$tr.="<tr>";
-				    $tr.="<td>".$item['qty']." ".$item['item_name'].$size.$notes.$cookref.$ingredients."</td>";
+				    $tr.="<td>".$item['item_name'].$size.$notes.$cookref.$ingredients." x ".$item['qty']."</td>";
 				    $tr.="<td>".prettyFormat($item_total,$mid)."</td>";
 				    $tr.="</tr>";
 				    
@@ -216,7 +216,7 @@ HTML;
 			$tr.="</tr>";
 			endif;
 			
-			if(isset($item_details['total']['tax_amt'])){
+			if(!empty($item_details['total']['tax_amt'])){
 				$tr.="<tr>";
 				$tr.="<td>".Yii::t("default","Tax")." ".$item_details['total']['tax_amt']."%</td>";
 				$tr.="<td>".prettyFormat($item_details['total']['taxable_total'],$mid)."</td>";
