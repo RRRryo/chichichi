@@ -597,7 +597,7 @@ $receipt_subject = Yii::app()->functions->getOption("receipt_subject", $merchant
 if (empty($receipt_subject)) {
     $receipt_subject = getOptionA('receipt_default_subject');
     if (empty($receipt_subject)) {
-        $receipt_subject = "We have receive your order";
+        $receipt_subject = "我们收到了您的订单";
     }
 }
 if (empty($receipt_sender)) {
