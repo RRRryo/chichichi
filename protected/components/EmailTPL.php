@@ -111,31 +111,31 @@ HTML;
 					$notes='';
 					$item_total=$item['qty']*$item['discounted_price'];
 					if (!empty($item['order_notes'])){
-					    $notes="<p>".$item['order_notes']."</p>";
+					    $notes=" ".$item['order_notes']." ";
 					}
 					$cookref='';
 					if (!empty($item['cooking_ref'])){
-					    $cookref="<p>".$item['cooking_ref']."</p>";
+					    $cookref=" ".$item['cooking_ref']." ";
 					}
 					$size='';
 					if (!empty($item['size_words'])){
-					    $size="<p>".$item['size_words']."</p>";
+					    $size=" ".$item['size_words']." ";
 					}
 					
 					$ingredients='';
 					if (isset($item['ingredients'])){
 						if (is_array($item['ingredients']) && count($item['ingredients'])>=1){
-							$ingredients.="<p>".t("Ingredients")."</p>";
-							$ingredients.="<p>";
+							$ingredients.=" ".t("Ingredients")." ";
+							$ingredients.=" ";
 							foreach ($item['ingredients'] as $ingredients_val) {
-								$ingredients.="- $ingredients_val<br/>";
+								$ingredients.="- $ingredients_val ";
 							}
-							$ingredients.="</p>";
+							$ingredients.=" ";
 						}
 					}
 					
 					$tr.="<tr>";
-				    $tr.="<td>".$item['item_name'].$size.$notes.$cookref.$ingredients." x ".$item['qty']."</td>";
+				    $tr.="<td  style=\"min-width: 100% !important; white-space:nowrap !important;\">".$item['item_name'].$size.$notes.$cookref.$ingredients." x ".$item['qty']."</td>";
 				    $tr.="<td>".prettyFormat($item_total,$mid)."</td>";
 				    $tr.="</tr>";
 				    
@@ -199,7 +199,7 @@ HTML;
 						
 			$tr.="<tr>";
 			$tr.="<td>".Yii::t("default","Subtotal").":</td>";
-			$tr.="<td>".prettyFormat($item_details['total']['subtotal'],$mid)."</td>";
+			$tr.="<td>".$item_details['total']['curr'].prettyFormat($item_details['total']['subtotal'],$mid)."</td>";
 			$tr.="</tr>";
 			
 			if (!empty($item_details['total']['delivery_charges'])):
@@ -252,7 +252,7 @@ HTML;
 		<?php echo Widgets::receiptLogo();?>
 		</div>
 		<h3><?php echo Yii::t("default","Order Details")?></h3>		
-		<table border="0" style="width: 100%; !important">
+		<table border="0"  style="min-width: 100% !important;">
 		<?php echo $tr;?>		
 		</table>
 		<?php	
