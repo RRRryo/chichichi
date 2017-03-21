@@ -649,6 +649,7 @@ if (!in_array($data['order_id'], (array)$_SESSION['kr_receipt'])) {
             $final_tpl = smarty('customer-name', $data['full_name'], $final_tpl);
             $final_tpl = smarty('receipt', $receipt, $final_tpl);
             $final_tpl = smarty('confirmation-link', $confirmation_link, $final_tpl);
+            $final_tpl = smarty('restaurant_name', $merchant_info['restaurant_name'], $final_tpl);
         } else $final_tpl = $tpl;
 
         $global_admin_sender_email = Yii::app()->functions->getOptionAdmin('global_admin_sender_email');
