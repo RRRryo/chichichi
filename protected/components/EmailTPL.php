@@ -252,7 +252,7 @@ HTML;
 		<?php echo Widgets::receiptLogo();?>
 		</div>
 		<h3><?php echo Yii::t("default","Order Details")?></h3>		
-		<table border="0">
+		<table border="0" style="width: 100%; !important">
 		<?php echo $tr;?>		
 		</table>
 		<?php	
