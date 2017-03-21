@@ -385,8 +385,7 @@ HTML;
  {receipt}	
 	
 <br/><br/>
-<p><a href="{confirmation-link}">点击这里</a>接受订单<br/>
-或者访问此链接 {confirmation-link}
+<p><a href="{confirmation-link}">点击这里</a>接受订单
 </p>
 <br/>
 <p>近味团队</p>
