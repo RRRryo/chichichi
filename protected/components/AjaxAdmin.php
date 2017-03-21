@@ -4250,7 +4250,7 @@ $resto_info.="<p><span class=\"uk-text-bold\">".Yii::t("default","Delivery Est")
 				$deliveryEstimationHours = FunctionsV3::getDeliveryEstimation($merchant_id);
 				$deliveryEstimationMinutes = $deliveryEstimationHours*60;
 				$deliveryEstimationMinutes = is_numeric($deliveryEstimationMinutes)?$deliveryEstimationMinutes:0;
-				$current = date('Y-m-d h:i');
+				$current = date('Y-m-d H:i');
 				$diff=(strtotime($full_booking_time) - strtotime($current))/60;
 				$readyTime = new DateTime($current);
 				$readyTime->add(new DateInterval('PT' . $deliveryEstimationMinutes . 'M'));
