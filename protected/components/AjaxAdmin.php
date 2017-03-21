@@ -6834,7 +6834,11 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 
 	    		foreach ($res as $val) {
 
-					$action="<div><a data-id=\"".$val['order_id']."\" class=\"accept-order\" href=\"javascript:\">接受</a></div>";
+					$action="";
+
+					if ('accepted' != $val['status']) {
+						$action.="<div><a data-id=\"".$val['order_id']."\" class=\"accept-order\" href=\"javascript:\">接受</a></div>";
+					}
 
 //	    			$action.="<div><a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">".Yii::t("default","Edit")."</a></div>";
 
@@ -7815,8 +7819,11 @@ $params['cart_tip_value']=isset($this->data['cart_tip_value'])?$this->data['cart
 	    		foreach ($res as $val) {	    			
 
 	    			$new='';
+					$action="";
 
-	    			$action="<div><a data-id=\"".$val['order_id']."\" class=\"accept-order\" href=\"javascript:\">接受</a></div>";
+					if ('accepted' != $val['status']) {
+						$action.="<div><a data-id=\"".$val['order_id']."\" class=\"accept-order\" href=\"javascript:\">接受</a></div>";
+					}
 
 //					$action.="<div><a data-id=\"".$val['order_id']."\" class=\"edit-order\" href=\"javascript:\">编辑</a></div>";
 
