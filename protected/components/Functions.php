@@ -7719,7 +7719,7 @@ class Functions extends CApplicationComponent
 
 		(
 
-		select concat(first_name,' ',last_name) as full_name
+		select concat(last_name,' ',first_name) as full_name
 
 		from
 
@@ -7893,7 +7893,7 @@ class Functions extends CApplicationComponent
 
 		(
 
-		select concat(first_name,' ',last_name) as full_name
+		select concat(last_name,' ',first_name) as full_name
 
 		from
 
