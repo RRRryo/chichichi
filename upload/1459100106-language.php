@@ -3585,7 +3585,7 @@ $lang['Token is invalid or not belong to the merchant'] = '令牌是无效的或
 $lang['Failed cannot update order'] = '失败不能更新订单';
 
 
-$lang['Order Status has been change to received, Thank you!'] = '订单状态已更改为已收到 , 谢谢 !';
+$lang['Order Status has been change to received, Thank you!'] = '订单状态已更新为已接受, 谢谢 !';
 
 
 $lang['Disabled Registration'] = '注册已禁用';
