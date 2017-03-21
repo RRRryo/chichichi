@@ -5439,6 +5439,8 @@ $lang['By Delivery'] = '按送餐模式';
 
 $lang['enter restaurant name'] = '输入餐厅名称';
 
+$lang['Invalid Voucher code'] = '无效的折扣码';
+
 /*  Translate for multilanguge site*/
 
 
