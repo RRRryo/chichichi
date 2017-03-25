@@ -1,4 +1,4 @@
-<nav id="header" class="navbar navbar-fixed-top" style="max-height: 50px;">
+<nav id="header" class="navbar navbar-fixed-top" style="max-height: 60px;">
 <div id="header-container" class="container navbar-container">
 <div class="top-menu-wrapper <?php echo "top-".$action;?>">
 
