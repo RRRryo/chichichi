@@ -22,7 +22,7 @@ $placholder_search = Yii::t("default", $placholder_search);
 
 <div class="parallax-container parallax-home"
      data-parallax="scroll" data-position="top" data-bleed="10"
-     data-image-src="<?php echo assetsURL() . "/images/noodle_banner.jpg" ?>">
+     data-image-src="<?php echo assetsURL() . "/images/banner-noodle.jpg" ?>">
 
     <?php
     if ($home_search_mode == "address" || $home_search_mode == "") {
