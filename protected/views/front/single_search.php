@@ -1,5 +1,5 @@
 
-<div class="search-wraps single-search">
+<div class="search-wraps single-search mobile-search-wraps">
 
   <h1><?php echo $home_search_text;?></h1>
 <!--  <p>--><?php //echo $home_search_subtext;?><!--</p>-->
