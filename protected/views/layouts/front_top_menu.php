@@ -1,4 +1,4 @@
-<nav id="header" class="navbar navbar-fixed-top" style="max-height: 60px;">
+<nav id="header" class="navbar navbar-fixed-top" style="height: 50px;">
 <div id="header-container" class="container navbar-container">
 <div class="top-menu-wrapper <?php echo "top-".$action;?>">
 
@@ -18,8 +18,8 @@
 
   <?php if ( Yii::app()->controller->action->id =="menu"):?>
   <div class="col-xs-1 cart-mobile-handle border relative">
-      <div class="badge cart_count top8"></div>
-     <a href="javascript:;">
+      <div class="badge cart_count"></div>
+     <a href="javascript:">
        <i class="ion-ios-cart"></i>
      </a>
   </div> <!--cart-mobile-handle-->

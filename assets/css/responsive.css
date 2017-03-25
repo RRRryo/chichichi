@@ -10,7 +10,7 @@
 
 .menu-top-menu {
     background: #ffffff none repeat scroll 0 0;
-    margin-top:65px;
+    margin-top:50px;
     position: fixed;
     width: 100%;
     z-index:999;
@@ -1048,12 +1048,12 @@ font-size:20px;
 	.search-input-wraps{ width:95%;}
 	body {overflow-x:hidden;}
 	.col-xs-1.menu-nav-mobile.border.relative {
-        padding: 16px 0;
+        padding: 9px 0;
         text-align: center;
         width: 38px;
     }
     .col-xs-1.cart-mobile-handle.border.relative {
-        padding: 16px 0;
+        padding: 9px 0;
         text-align: center;
         width: 38px;
     }
