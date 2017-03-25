@@ -84,7 +84,7 @@ class StoreController extends CController
 		   Yii::app()->functions->setSEO($seo_title,$seo_meta,$seo_key);
 		}
 
-		$this->pageTitle = "近味 巴黎私厨";
+		$this->pageTitle = "近味 巴黎私厨平台";
 		
 		$this->render('index',array(
 		   'home_search_mode'=>getOptionA('home_search_mode'),
