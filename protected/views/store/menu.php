@@ -372,12 +372,12 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 				配送时间: <?php echo FunctionsV3::getDeliveryEstimation($merchant_id).' '."小时"?>
 			</p>
 			<div class="top10">
-			<p><?php echo t("Pickup free")?></p>
+			<p><?=array_key_exists('pickup',$deliveryOption) ?t("Pickup free"):null?></p>
 			</div>
 
 
 			<div class="top10">
-				<?php if ( $resp=Yii::app()->functions->getMetroShippingRates($merchant_id)):?>
+				<?php if (array_key_exists('metro',$deliveryOption) && $resp=Yii::app()->functions->getMetroShippingRates($merchant_id)):?>
 					<?php if ($free_metro_delivery_above_price == "0"):?>
 						<p>配送至地铁口免费</p>
 					<?php elseif(count($resp) == 1):?>
@@ -405,7 +405,7 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 
 
 			<div class="top10">
-			<?php if ( $resp=Yii::app()->functions->getShippingRates($merchant_id)):?>
+			<?php if (array_key_exists('delivery',$deliveryOption) && $resp=Yii::app()->functions->getShippingRates($merchant_id)):?>
 				<?php if ($free_delivery_above_price == "0"):?>
 					<p>配送上门免费</p>
 				<?php elseif(count($resp) == 1):?>
@@ -425,8 +425,8 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
 							<?php echo '€ '.standardPrettyFormat($val['distance_price'])?></p>
 					<?php endforeach; ?>
 					<p><?php echo $free_delivery_above_price=="" ?  NULL :  t('above to ').'€ '.standardPrettyFormat($free_delivery_above_price)."免费配送" ?></p>
-				<?php endif; ?>
-			<?php endif; ?>
+				<?php endif; ?> <!--count($resp) == 1-->
+			<?php endif; ?> <!--getShippingRates-->
 			</div>
 
 
@@ -486,7 +486,7 @@ Yii::app()->getBaseUrl(true).FunctionsV3::getMerchantLogo($merchant_id)
            <p class="bold"><?php echo t("Delivery Options")?></p>
            
            <?php echo CHtml::dropDownList('delivery_type',$now,
-           (array)Yii::app()->functions->DeliveryOptions($merchant_id),array(
+           (array)$deliveryOption,array(
              'class'=>'grey-fields'
            ))?>
            
