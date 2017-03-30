@@ -10,8 +10,7 @@
 
 .menu-top-menu {
     background: #ffffff none repeat scroll 0 0;
-    display: block;
-    margin-top:65px;
+    margin-top:50px;
     position: fixed;
     width: 100%;
     z-index:999;
@@ -20,7 +19,7 @@
 
 .top-menu-wrapper img.logo{
 
-border:0px solid white;
+border:0 solid white;
 
 }
 
@@ -127,6 +126,10 @@ padding-top:20px;
 
 padding-top:0;
 
+}
+
+.mobile-search-wraps {
+    padding-top:80px !important;
 }
 
 
@@ -1045,12 +1048,12 @@ font-size:20px;
 	.search-input-wraps{ width:95%;}
 	body {overflow-x:hidden;}
 	.col-xs-1.menu-nav-mobile.border.relative {
-        padding: 16px 0;
+        padding: 9px 0;
         text-align: center;
         width: 38px;
     }
     .col-xs-1.cart-mobile-handle.border.relative {
-        padding: 16px 0;
+        padding: 9px 0;
         text-align: center;
         width: 38px;
     }

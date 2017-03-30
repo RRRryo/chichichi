@@ -1,4 +1,4 @@
-<nav id="header" class="navbar navbar-fixed-top">
+<nav id="header" class="navbar navbar-fixed-top" style="height: 50px;">
 <div id="header-container" class="container navbar-container">
 <div class="top-menu-wrapper <?php echo "top-".$action;?>">
 
@@ -11,15 +11,15 @@
     </a>
     <?php endif;?>
   </div>
-  
+
   <div class="col-xs-1 menu-nav-mobile border relative">
      <a href="#"><i class="ion-android-menu"></i></a>
   </div> <!--menu-nav-mobile-->
-  
+
   <?php if ( Yii::app()->controller->action->id =="menu"):?>
-  <div class="col-xs-1 cart-mobile-handle border relative">     
-      <div class="badge cart_count top8"></div>
-     <a href="javascript:;">       
+  <div class="col-xs-1 cart-mobile-handle border relative">
+      <div class="badge cart_count"></div>
+     <a href="javascript:">
        <i class="ion-ios-cart"></i>
      </a>
   </div> <!--cart-mobile-handle-->
@@ -32,16 +32,16 @@
   <?php
 //         Widgets::languageBar("store",true);
     ?>
-      
-    <?php $this->widget('zii.widgets.CMenu', FunctionsV3::getMenu() );?> 
-     
+
+    <?php $this->widget('zii.widgets.CMenu', FunctionsV3::getMenu() );?>
+
         </div>
     <div class="clear"></div>
   </div>
-  
- 
-  
-  
+
+
+
+
 </div> <!--container-->
 
 </div> <!--END top-menu-->

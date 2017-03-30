@@ -3,7 +3,8 @@ $kr_search_adrress = FunctionsV3::getSessionAddress();
 
 $home_search_text = Yii::app()->functions->getOptionAdmin('home_search_text');
 if (empty($home_search_text)) {
-    $home_search_text = Yii::t("default", "Find restaurants near you");
+//    $home_search_text = Yii::t("default", "Find restaurants near you");
+    $home_search_text="&nbsp";
 }
 
 $home_search_subtext = Yii::app()->functions->getOptionAdmin('home_search_subtext');
@@ -12,18 +13,16 @@ if (empty($home_search_subtext)) {
 }
 
 $home_search_mode = Yii::app()->functions->getOptionAdmin('home_search_mode');
-$placholder_search = Yii::t("default", "please enter your address");
+$placholder_search = "请输入地址搜索附近美食";
 if ($home_search_mode == "postcode") {
     $placholder_search = Yii::t("default", "Enter your postcode");
 }
 $placholder_search = Yii::t("default", $placholder_search);
 ?>
 
-<img class="mobile-home-banner" src="<?php echo assetsURL() . "/images/banner.jpg" ?>">
-
-<div id="parallax-wrap" class="parallax-container parallax-home"
+<div class="parallax-container parallax-home"
      data-parallax="scroll" data-position="top" data-bleed="10"
-     data-image-src="<?php echo assetsURL() . "/images/banner.jpg" ?>">
+     data-image-src="<?php echo assetsURL() . "/images/banner-noodle.jpg" ?>">
 
     <?php
     if ($home_search_mode == "address" || $home_search_mode == "") {
@@ -55,48 +54,6 @@ $placholder_search = Yii::t("default", $placholder_search);
     ?>
 
 </div> <!--parallax-container-->
-
-<?php if ($theme_hide_how_works <> 2): ?>
-    <!--HOW IT WORKS SECTIONS-->
-    <!--<div class="sections section-how-it-works">
-    <div class="container">
-     <h2>< ?php echo t("How it works")?></h2>
-     <p class="center">< ?php echo t("Get your favourite food in 4 simple steps")?></p>
-
-     <div class="row">
-       <div class="col-md-3 col-sm-3 center">
-          <div class="steps step1-icon">
-            <img src="< ?php echo assetsURL()."/images/step1.png"?>">
-          </div>
-          <h3>< ?php echo t("Search")?></h3>
-          <p>< ?php echo t("Find all restaurants available near you")?></p>
-       </div>
-       <div class="col-md-3 col-sm-3 center">
-          <div class="steps step2-icon">
-             <img src="< ?php echo assetsURL()."/images/step2.png"?>">
-          </div>
-          <h3>< ?php echo t("Choose")?></h3>
-          <p>< ?php echo t("Browse hundreds of menus to find the food you like")?></p>
-       </div>
-       <div class="col-md-3 col-sm-3  center">
-          <div class="steps step2-icon">
-            <img src="< ?php echo assetsURL()."/images/step3.png"?>">
-          </div>
-          <h3>< ?php echo t("Pay")?></h3>
-          <p>< ?php echo t("It's quick, secure and easy")?></p>
-       </div>
-       <div class="col-md-3 col-sm-3  center">
-         <div class="steps step2-icon">
-           <img src="< ?php echo assetsURL()."/images/step4.png"?>">
-         </div>
-          <h3>< ?php echo t("Enjoy")?></h3>
-          <p>< ?php echo t("Food is prepared & delivered to your door")?></p>
-       </div>
-     </div>
-
-     </div> <!--container-->
-    <!--</div>--> <!--section-how-it-works-->
-<?php endif; ?>
 
 
 <!--FEATURED RESTAURANT SECIONS-->

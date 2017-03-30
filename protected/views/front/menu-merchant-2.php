@@ -63,15 +63,15 @@ if ( $val_item['single_item']==2){
      rel="<?php echo $val_item['item_id']?>"
      data-single="<?php echo $val_item['single_item']?>" 
      <?php echo $atts;?> ><?php echo $del;?>
-     <?php echo FunctionsV3::getItemMinimumPrice($val_item['prices'],$val_item['discount']) ?><?php echo $delend;?>
+     <?php echo FunctionsV3::getItemMinimumPrice($val_item['prices'],$val_item['discount']).$delend;?>
      </a>
      
      <a href="javascript:;" 
-     class="mbile orange-button inline rounded3 menu-item <?php echo $val_item['not_available']==2?"item_not_available":''?>"
+     class="<?php echo $beforediscount;?> mbile orange-button inline rounded3 menu-item <?php echo $val_item['not_available']==2?"item_not_available":''?>"
      rel="<?php echo $val_item['item_id']?>"
      data-single="<?php echo $val_item['single_item']?>" 
-     <?php echo $atts;?> >
-     <?php echo FunctionsV3::getItemDiscountPrice($val_item['prices'],$val_item['discount']) ?>
+     <?php echo $atts;?> ><?php echo $del;?>
+     <?php echo FunctionsV3::getItemMinimumPrice($val_item['prices'],$val_item['discount']).$delend;?>
      </a>
     <?php 
     if ($val_item['discount']>0){
@@ -81,6 +81,11 @@ if ( $val_item['single_item']==2){
      rel="<?php echo $val_item['item_id']?>"
      data-single="<?php echo $val_item['single_item']?>" 
      <?php echo $atts;?>> <?php echo FunctionsV3::getItemDiscountPrice($val_item['prices'],$val_item['discount']) ?></a>
+    <a href="javascript:;"
+       class="mbile orange-button inline rounded3 menu-item <?php echo $val_item['not_available']==2?"item_not_available":''?>"
+       rel="<?php echo $val_item['item_id']?>"
+       data-single="<?php echo $val_item['single_item']?>"
+        <?php echo $atts;?>> <?php echo FunctionsV3::getItemDiscountPrice($val_item['prices'],$val_item['discount']) ?></a>
 		<?php 	}
     ?>
      </div>

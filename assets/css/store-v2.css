@@ -143,7 +143,7 @@ padding:5px 15px;;
 
 {
 
-color:#f75d34;
+font-weight: bold;
 
 }
 
@@ -209,16 +209,23 @@ padding:0;
 
 .parallax-container{
 
-border:0px solid red;
+border:0 solid;
 
 min-height:570px;
 
 width:100%;
 
-background: rgb(0, 0, 0); 
+/*background: rgb(0, 0, 0); */
 
-background:rgba(0, 0, 0, 0.25);
+/*background:rgba(0, 0, 0, 0.25);*/
 
+}
+
+@media only screen and (max-width : 1024px) {
+	.parallax-container{
+		height:300px;
+		min-height:300px;
+	}
 }
 
 
@@ -229,7 +236,7 @@ background:rgba(0, 0, 0, 0.25);
 
 {
 
-border:0px solid red;
+border:0 solid;
 
 min-height:300px;
 
@@ -299,7 +306,7 @@ padding-top:220px;
 
 padding-top:100px;
 
-border:0px solid red;
+border:0 solid;
 
 }
 
@@ -4926,7 +4933,7 @@ display:none;
 /*sticky nav 19-12-16*/
 
  .navbar.navbar-fixed-top.fixed-theme {
-    background:#8A4101;
+    background:#FF5733;
     /*border-color: #080808;
     box-shadow: 0 0 5px rgba(0,0,0,.8);*/
 	border:0px;
