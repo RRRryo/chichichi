@@ -332,8 +332,7 @@ echo CHtml::hiddenField('admin_currency_position',
                                                     echo CHtml::dropDownList('address_book_id', $_SESSION['address_book_id'],
                                                         (array)$address_list, array(
                                                             'class' => "grey-fields full-width",
-                                                            'onchange' => "$('#frm-modal-enter-address').submit()",
-                                                            'onload' => "alert(123)"
+                                                            'onchange' => "$('#frm-modal-enter-address').submit()"
                                                         ));
                                                     ?>
                                                 </div>
