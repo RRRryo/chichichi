@@ -972,7 +972,6 @@ class StoreController extends CController
 		}
 
 		if($_SESSION['kr_delivery_options']['delivery_type'] == 'delivery' && !empty($address_book)) {
-			$_SESSION['kr_search_address'] = $address_book['address'];
 			if ($lat_res=Yii::app()->functions->geodecodeAddress($_SESSION['kr_search_address'])){
 				$_SESSION['client_location']['lat']=$lat_res['lat'];
 				$_SESSION['client_location']['long']=$lat_res['long'];
