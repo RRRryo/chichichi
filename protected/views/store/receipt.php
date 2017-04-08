@@ -7,6 +7,7 @@ $this->renderPartial('/front/banner-receipt', array(
     'sub_text' => t("Your order has been placed.")
 ));
 
+$sendEmail=true;
 $data = '';
 $ok = false;
 $orderId = $_GET['id'];
@@ -17,7 +18,10 @@ $merchant_id=NULL;
 //error_log("BEFORE getOrder2".$orderId);
 if ($data = Yii::app()->functions->getOrder2($orderId)) {
 
-//    error_log("new order created, orderid=".$orderId);
+    //alipay sendEmail in the asynchronous return function
+    if($data['payment_type'] == "itp") {
+        $sendEmail = false;
+    }
 
     $merchant_id = $data['merchant_id'];
     $json_details = !empty($data['json_details']) ? json_decode($data['json_details'], true) : false;
@@ -615,7 +619,9 @@ if (!in_array($data['order_id'], (array)$_SESSION['kr_receipt'])) {
         return;
     }
 
-    sendEmail($to, $receipt_sender, $receipt_subject, $tpl);
+    if($sendEmail) {
+        sendEmail($to, $receipt_sender, $receipt_subject, $tpl);
+    }
 
     /*send email to merchant address*/
     $merchant_notify_email = Yii::app()->functions->getOption("merchant_notify_email", $merchant_id);
@@ -650,7 +656,7 @@ if (!in_array($data['order_id'], (array)$_SESSION['kr_receipt'])) {
 
         // fixed if email is multiple
         $merchant_notify_email = explode(",", $merchant_notify_email);
-        if (is_array($merchant_notify_email) && count($merchant_notify_email) >= 1) {
+        if ($sendEmail && is_array($merchant_notify_email) && count($merchant_notify_email) >= 1) {
             foreach ($merchant_notify_email as $merchant_notify_email_val) {
                 if (!empty($merchant_notify_email_val)) {
                     sendEmail(trim($merchant_notify_email_val), $global_admin_sender_email, $merchant_receipt_subject, $final_tpl);

@@ -1086,10 +1086,158 @@ class StoreController extends CController
 				//调试用，写文本函数记录程序运行情况是否正常
 				error_log($out_trade_no." TRADE_SUCCESS");
 
+				//update order status
 				$command = Yii::app()->db->createCommand();
 				$params=array('status'=>'paid');
 				$command->update('{{order}}' , $params ,
 					'order_id=:order_id' , array(':order_id'=> addslashes($out_trade_no)));
+
+                //send email
+                if ($data = Yii::app()->functions->getOrder2($out_trade_no)) {
+                    $to = isset($data['email_address']) ? $data['email_address'] : '';
+                    $merchant_id = $data['merchant_id'];
+                    $receipt_sender = Yii::app()->functions->getOption("receipt_sender", $merchant_id);
+                    $receipt_subject = Yii::app()->functions->getOption("receipt_subject", $merchant_id);
+
+                    $tpl = Yii::app()->functions->getOption("receipt_content", $merchant_id);
+                    $merchant_info = Yii::app()->functions->getMerchant(isset($merchant_id) ? $merchant_id : '');
+                    $full_merchant_address = $merchant_info['street'] . " " . $merchant_info['city'] . " " . $merchant_info['state'] ." " . $merchant_info['post_code'];
+                    $delivery_address = $data['client_full_address'];
+
+                    $print = '';
+                    $print[] = array('label' => Yii::t("default", "Customer Name"), 'value' => $data['full_name']);
+                    $print[] = array('label' => Yii::t("default", "Merchant Name"), 'value' => $data['merchant_name']);
+                    if (isset($data['abn']) && !empty($data['abn'])) {
+                        $print[] = array('label' => Yii::t("default", "ABN"),'value' => $data['abn']);
+                    }
+                    $print[] = array('label' => Yii::t("default", "Telephone"),'value' => $data['merchant_contact_phone']);
+                    $print[] = array('label' => Yii::t("default", "Address"),'value' => $full_merchant_address);
+                    $print[] = array('label' => Yii::t("default", "TRN Type"),'value' => t($data['trans_type']));
+                    $print[] = array('label' => Yii::t("default", "Payment Type"),'value' => FunctionsV3::prettyPaymentType('payment_order', $data['payment_type'], $out_trade_no));
+                    if ($data['payment_provider_name']){
+                        $print[] = array('label' => Yii::t("default", "Card#"), 'value' => strtoupper($data['payment_provider_name']));
+                    }
+                    if ($data['payment_type'] == "pyp"){
+                        $print[] = array('label' => Yii::t("default", "Paypal Transaction ID"), 'value' => isset($paypal_info['TRANSACTIONID']) ? $paypal_info['TRANSACTIONID'] : '');
+                    }
+                    $print[] = array('label' => Yii::t("default", "Reference #"), 'value' => Yii::app()->functions->formatOrderNumber($data['order_id']));
+                    if (!empty($data['payment_reference'])){
+                        $print[] = array('label' => Yii::t("default", "Payment Ref"), 'value' => Yii::app()->functions->formatOrderNumber($data['order_id']));
+                    }
+                    $trn_date = date('M d,Y G:i:s', strtotime($data['date_created']));
+                    $delivery_asap = $_SESSION['kr_delivery_options']['delivery_asap'] == 1 ? t("Yes") : '';
+
+                    $print[] = array('label' => Yii::t("default", "TRN Date"), 'value' => $trn_date);
+                    if ($data['trans_type'] == "delivery"){
+                        if (isset($_SESSION['kr_delivery_options']['delivery_date'])){
+                            $deliver_date = prettyDate($_SESSION['kr_delivery_options']['delivery_date']);
+                            $print[] = array('label' => Yii::t("default", "Delivery Date"), 'value' => $deliver_date);
+                        }
+                        if (isset($_SESSION['kr_delivery_options']['delivery_time'])){
+                            if (!empty($_SESSION['kr_delivery_options']['delivery_time'])){
+                                $print[] = array('label' => Yii::t("default", "Delivery Time"), 'value' => Yii::app()->functions->timeFormat($_SESSION['kr_delivery_options']['delivery_time'], true));
+                            }
+                        }
+                        if (isset($_SESSION['kr_delivery_options']['delivery_asap'])){
+                            if (!empty($_SESSION['kr_delivery_options']['delivery_asap'])){
+                                $print[] = array('label' => Yii::t("default", "Deliver ASAP"), 'value' => $delivery_asap);
+                            }
+                        }
+
+                        $print[] = array('label' => Yii::t("default", "Deliver to"), 'value' => $delivery_address);
+                        $print[] = array('label' => Yii::t("default", "Delivery Instruction"), 'value' => $data['delivery_instruction']);
+                        $print[] = array('label' => Yii::t("default", "Location Name"), 'value' => $data['location_name']);
+                        $print[] = array('label' => Yii::t("default", "Contact Number"), 'value' => $data['contact_phone']);
+                        if ($data['order_change'] >= 0.1){
+                            $print[] = array('label' => Yii::t("default", "Change"), 'value' => normalPrettyPrice($data['order_change']));
+                        }
+                    } elseif ($data['trans_type'] == "metro") {
+                        if (isset($_SESSION['kr_delivery_options']['delivery_date'])){
+                            $deliver_date = prettyDate($_SESSION['kr_delivery_options']['delivery_date']);
+                            $print[] = array('label' => Yii::t("default", "Delivery Date"), 'value' => $deliver_date);
+                        }
+                        if (!empty($_SESSION['kr_delivery_options']['delivery_time'])){
+                            $print[] = array('label' => Yii::t("default", "Delivery Time"), 'value' => Yii::app()->functions->timeFormat($_SESSION['kr_delivery_options']['delivery_time'], true));
+                        }
+                        if (!empty($_SESSION['kr_delivery_options']['delivery_asap'])){
+                            $print[] = array('label' => Yii::t("default", "Deliver ASAP"), 'value' => $delivery_asap);
+                        }
+                        $print[] = array('label' => Yii::t("default", "Deliver to"), 'value' => $delivery_address);
+                        $print[] = array('label' => Yii::t("default", "Delivery Instruction"), 'value' => $data['delivery_instruction']);
+                        $print[] = array('label' => Yii::t("default", "Location Name"), 'value' => $data['location_name']);
+                        $print[] = array('label' => Yii::t("default", "Contact Number"), 'value' => $data['contact_phone']);
+                        if ($data['order_change'] >= 0.1) {
+                            $print[] = array('label' => Yii::t("default", "Change"), 'value' => normalPrettyPrice($data['order_change'])
+                            );
+                        }
+                    } else {
+                        $print[] = array('label' => Yii::t("default", "Contact Number"), 'value' => $data['contact_phone']);
+                        if (isset($_SESSION['kr_delivery_options']['delivery_date'])){
+                            $print[] = array('label' => Yii::t("default", "Pickup Date"), 'value' => $_SESSION['kr_delivery_options']['delivery_date']
+                            );
+                        }
+                        if (!empty($_SESSION['kr_delivery_options']['delivery_time'])){
+                            $print[] = array('label' => Yii::t("default", "Pickup Time"), 'value' => Yii::app()->functions->timeFormat($_SESSION['kr_delivery_options']['delivery_time'], true));
+                        }
+                        if ($data['order_change'] >= 0.1) {
+                            $print[] = array('label' => Yii::t("default", "Change"), 'value' => $data['order_change']);
+                        }
+                    }
+
+                    $receipt = EmailTPL::salesReceipt($print, Yii::app()->functions->details['raw']);
+
+                    if (empty($tpl)) {
+                        $tpl = EmailTPL::receiptTPL();
+                    }
+                    $tpl = Yii::app()->functions->smarty('receipt', $receipt, $tpl);
+                    $tpl = Yii::app()->functions->smarty('customer-name', $data['full_name'], $tpl);
+                    $tpl = Yii::app()->functions->smarty('receipt-number', Yii::app()->functions->formatOrderNumber($data['order_id']), $tpl);
+
+                    //CLIENT
+                    sendEmail($to, $receipt_sender, $receipt_subject, $tpl);
+
+                    //MERCHANT
+                    $merchant_notify_email = Yii::app()->functions->getOption("merchant_notify_email", $merchant_id);
+                    $enabled_alert_notification = Yii::app()->functions->getOption("enabled_alert_notification", $merchant_id);
+                    /*dump($merchant_notify_email);
+                    dump($enabled_alert_notification);   */
+                    if ($enabled_alert_notification == "") {
+
+                        $merchant_receipt_subject = Yii::app()->functions->getOption("merchant_receipt_subject", $merchant_id);
+
+                        $merchant_receipt_subject = empty($merchant_receipt_subject) ? t("New Order From") .
+                            " " . $data['full_name'] : $merchant_receipt_subject;
+
+                        $merchant_receipt_content = Yii::app()->functions->getMerchantReceiptTemplate($merchant_id);
+
+                        $final_tpl = '';
+                        if (!empty($merchant_receipt_content)) {
+                            $merchant_token = Yii::app()->functions->getMerchantActivationToken($merchant_id);
+                            $confirmation_link = Yii::app()->getBaseUrl(true) . "/store/confirmorder/?id=" . $data['order_id'] . "&token=$merchant_token";
+                            $final_tpl = smarty('receipt-number', Yii::app()->functions->formatOrderNumber($data['order_id'])
+                                , $merchant_receipt_content);
+                            $final_tpl = smarty('customer-name', $data['full_name'], $final_tpl);
+                            $final_tpl = smarty('receipt', $receipt, $final_tpl);
+                            $final_tpl = smarty('confirmation-link', $confirmation_link, $final_tpl);
+                            $final_tpl = smarty('restaurant_name', $merchant_info['restaurant_name'], $final_tpl);
+                        } else $final_tpl = $tpl;
+
+                        $global_admin_sender_email = Yii::app()->functions->getOptionAdmin('global_admin_sender_email');
+                        if (empty($global_admin_sender_email)) {
+                            $global_admin_sender_email = $receipt_sender;
+                        }
+
+                        // fixed if email is multiple
+                        $merchant_notify_email = explode(",", $merchant_notify_email);
+                        if (is_array($merchant_notify_email) && count($merchant_notify_email) >= 1) {
+                            foreach ($merchant_notify_email as $merchant_notify_email_val) {
+                                if (!empty($merchant_notify_email_val)) {
+                                    sendEmail(trim($merchant_notify_email_val), $global_admin_sender_email, $merchant_receipt_subject, $final_tpl);
+                                }
+                            }
+                        }
+                    }
+                }
 			}
 
 			//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
