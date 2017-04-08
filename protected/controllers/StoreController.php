@@ -1093,11 +1093,34 @@ class StoreController extends CController
 					'order_id=:order_id' , array(':order_id'=> addslashes($out_trade_no)));
 
                 //send email
+                $_GET['backend']=" ";
                 if ($data = Yii::app()->functions->getOrder2($out_trade_no)) {
+
+                    $json_details = !empty($data['json_details']) ? json_decode($data['json_details'], true) : false;
+                    if ($json_details != false) {
+                        Yii::app()->functions->displayOrderHTML(array(
+                            'merchant_id' => $data['merchant_id'],
+                            'delivery_type' => $data['trans_type'],
+                            'delivery_charge' => $data['delivery_charge'],
+                            'packaging' => $data['packaging'],
+                            'cart_tip_value' => $data['cart_tip_value'],
+                            'cart_tip_percentage' => $data['cart_tip_percentage'],
+                            'card_fee' => $data['card_fee'],
+                            'points_discount' => isset($data['points_discount']) ? $data['points_discount'] : '' /*POINTS PROGRAM*/
+                        ), $json_details, true);
+                    }
+
+
                     $to = isset($data['email_address']) ? $data['email_address'] : '';
                     $merchant_id = $data['merchant_id'];
                     $receipt_sender = Yii::app()->functions->getOption("receipt_sender", $merchant_id);
                     $receipt_subject = Yii::app()->functions->getOption("receipt_subject", $merchant_id);
+                    if (empty($receipt_subject)) {
+                        $receipt_subject = getOptionA('receipt_default_subject');
+                        if (empty($receipt_subject)) {
+                            $receipt_subject = "我们收到了您的订单";
+                        }
+                    }
 
                     $tpl = Yii::app()->functions->getOption("receipt_content", $merchant_id);
                     $merchant_info = Yii::app()->functions->getMerchant(isset($merchant_id) ? $merchant_id : '');
