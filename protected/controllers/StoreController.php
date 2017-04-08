@@ -828,6 +828,8 @@ class StoreController extends CController
 		    	if ( getOptionA('theme_photos_tab')==2){
 		    		$photo_enabled=false;
 		    	}
+
+				$deliveryOption = Yii::app()->functions->DeliveryOptions($merchant_id);
 						    
 				$this->render('menu' ,array(
 				   	'data'=>$res,
@@ -858,7 +860,8 @@ class StoreController extends CController
 				   'theme_photos_tab'=>getOptionA('theme_photos_tab'),
 
 					'free_delivery_above_price'=>$free_delivery_above_price,
-					'free_metro_delivery_above_price'=>getOption($merchant_id,'free_metro_delivery_above_price')
+					'free_metro_delivery_above_price'=>getOption($merchant_id,'free_metro_delivery_above_price'),
+					'deliveryOption'=>$deliveryOption
 
 				));	
 								
@@ -969,7 +972,6 @@ class StoreController extends CController
 		}
 
 		if($_SESSION['kr_delivery_options']['delivery_type'] == 'delivery' && !empty($address_book)) {
-			$_SESSION['kr_search_address'] = $address_book['address'];
 			if ($lat_res=Yii::app()->functions->geodecodeAddress($_SESSION['kr_search_address'])){
 				$_SESSION['client_location']['lat']=$lat_res['lat'];
 				$_SESSION['client_location']['long']=$lat_res['long'];

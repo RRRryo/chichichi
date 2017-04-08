@@ -1733,7 +1733,7 @@ $lang["Contact Settings"] = "联系人设置";
 $lang["Manage Currency"] = "管理货币";
 
 
-$lang["Manage Language"] = "管理语言。";
+$lang["Manage Language"] = "管理语言";
 
 
 $lang["SEO"] = "SEO";
@@ -2951,7 +2951,7 @@ $lang['Google Analytics'] = '';
 $lang['You can add your google analytics code here or any snippet code.'] = '您可以添加您的 Google Analytics 代码在这里或任何片段的代码。';
 
 
-$lang['Customer List'] = '客户列表。';
+$lang['Customer List'] = '客户列表';
 
 
 $lang['Client updated.'] = '客户端的更新。';
@@ -3035,7 +3035,7 @@ $lang['Validate your language file on this link'] = '验证您的语言的文件
 $lang['Incoming orders from merchant for today'] = '今日订单';
 
 
-$lang['Merchant Sales Report'] = '商家销售报告。';
+$lang['Merchant Sales Report'] = '商家销售报告';
 
 
 $lang['Email Address that will receive notification when there is new booking'] = '电子邮件地址 , 将会收到通知当有新的订房';
@@ -3267,7 +3267,7 @@ $lang['lastname'] = '姓';
 $lang['Export to Mailchimp mailing list'] = '导出邮件的黑猩猩的邮件列表';
 
 
-$lang['Payment Gateway Settings'] = '支付网关的设置。';
+$lang['Payment Gateway Settings'] = '支付网关的设置';
 
 
 $lang['list of enabled payment gateway on merchant'] = '列表中已启用的支付网关的商户';
@@ -4210,7 +4210,7 @@ $lang['Credit Card Payment Management'] = '信用卡付款的管理';
 $lang['ABN'] = '';
 
 
-$lang['Merchant Sales Summary Report'] = '商家销售总结报告。';
+$lang['Merchant Sales Summary Report'] = '商家销售总结报告';
 
 
 $lang['Please select'] = '请选择';

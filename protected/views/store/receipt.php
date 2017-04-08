@@ -615,16 +615,7 @@ if (!in_array($data['order_id'], (array)$_SESSION['kr_receipt'])) {
         return;
     }
 
-    $send_email_customer = true;
-    if (isset($_SESSION['kr_client']['is_guest'])) {
-        if ($_SESSION['kr_client']['is_guest'] == 1) {
-            $send_email_customer = false;
-        }
-    }
-
-    if ($send_email_customer) {
-        sendEmail($to, $receipt_sender, $receipt_subject, $tpl);
-    }
+    sendEmail($to, $receipt_sender, $receipt_subject, $tpl);
 
     /*send email to merchant address*/
     $merchant_notify_email = Yii::app()->functions->getOption("merchant_notify_email", $merchant_id);
