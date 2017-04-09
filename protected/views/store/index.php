@@ -212,7 +212,7 @@ $placholder_search = Yii::t("default", $placholder_search);
                             <div class="iner-li">
                                 <div class="food-img">
 
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1488561413-.png" ?>" alt=""/></div>
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1488561413-.jpg" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>私房小龙虾</h3>
                                     <p>€21.00 起</p>
