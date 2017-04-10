@@ -197,7 +197,7 @@ $placholder_search = Yii::t("default", $placholder_search);
                         <a href="<?php echo baseUrl() . "/store/menu/merchant/005" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485189931-211.png" ?>" alt=""/></div>
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485189931-211.jpg" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>五花咸蛋黄大肉粽</h3>
                                     <p>€2.00</p>
