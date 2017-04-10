@@ -20,9 +20,17 @@ if ($home_search_mode == "postcode") {
 $placholder_search = Yii::t("default", $placholder_search);
 ?>
 
-<div class="parallax-container parallax-home"
-     data-parallax="scroll" data-position="top" data-bleed="10"
-     data-image-src="<?php echo assetsURL() . "/images/banner-noodle.jpg" ?>">
+<div id="parallax1" class="parallax-container parallax-home"
+     data-parallax="scroll" data-position="top" data-bleed="10">
+    <script>
+        var width = screen.width;
+        var img ="<?php echo assetsURL() . "/images/banner-noodle.jpg" ?>";
+        if (width < 736) {
+            img ="<?php echo assetsURL() . "/images/banner-noodle_small.jpg" ?>";
+        }
+
+        document.getElementById('parallax1').setAttribute("data-image-src", img);
+    </script>
 
     <?php
     if ($home_search_mode == "address" || $home_search_mode == "") {
