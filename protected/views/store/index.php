@@ -20,9 +20,17 @@ if ($home_search_mode == "postcode") {
 $placholder_search = Yii::t("default", $placholder_search);
 ?>
 
-<div class="parallax-container parallax-home"
-     data-parallax="scroll" data-position="top" data-bleed="10"
-     data-image-src="<?php echo assetsURL() . "/images/banner-noodle.jpg" ?>">
+<div id="parallax1" class="parallax-container parallax-home"
+     data-parallax="scroll" data-position="top" data-bleed="10">
+    <script>
+        var width = screen.width;
+        var img ="<?php echo assetsURL() . "/images/banner-noodle.jpg" ?>";
+        if (width < 736) {
+            img ="<?php echo assetsURL() . "/images/banner-noodle_small.jpg" ?>";
+        }
+
+        document.getElementById('parallax1').setAttribute("data-image-src", img);
+    </script>
 
     <?php
     if ($home_search_mode == "address" || $home_search_mode == "") {
@@ -249,7 +257,7 @@ $placholder_search = Yii::t("default", $placholder_search);
                         <a href="<?php echo baseUrl() . "/store/menu/merchant/005" ?>" class="slider-img">
                             <div class="iner-li">
                                 <div class="food-img">
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485189931-211.png" ?>" alt=""/></div>
+                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485189931-211.jpg" ?>" alt=""/></div>
                                 <div class="food-detail">
                                     <h3>五花咸蛋黄大肉粽</h3>
                                     <p>€2.00</p>
