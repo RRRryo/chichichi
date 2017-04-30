@@ -56,6 +56,58 @@ $placholder_search = Yii::t("default", $placholder_search);
 </div> <!--parallax-container-->
 
 
+<?php if ($theme_hide_cuisine <> 2): ?>
+    <!--CUISINE SECTIONS-->
+    <?php if ($list = FunctionsV3::getCuisine()): ?>
+        <div class="sections section-cuisine">
+            <h2 ><?php echo t("Browse by cuisine") ?></h2>
+            <div class="container  nopad">
+                <script>
+                    $(document).ready(function () {
+                        var owl = $("#owl-demo3");
+                        owl.owlCarousel({
+                            itemsCustom: [
+                                [0, 2],
+                                [450, 2],
+                                [600, 3],
+                                [700, 4],
+                                [1000, 5],
+                                [1200, 5],
+                                [1400, 5],
+                                [1600, 5]
+                            ],
+                            navigation: true,
+                            pagination: false
+                        });
+                    });
+                </script>
+
+                <div class=" restourant-slider">
+                    <div id="demo">
+                        <div id="owl-demo3" class="owl-carousel">
+                            <?php foreach ($list as $val): //dump($val);?>
+                                <div class="item">
+                                    <a href="<?php echo Yii::app()->createUrl('/store/cuisine', array("category" => $val['cuisine_id'])) ?>"
+                                       class="slider-img">
+                                        <?php
+                                        $cuisine_json['cuisine_name_trans'] = !empty($val['cuisine_name_trans']) ? json_decode($val['cuisine_name_trans'], true) : '';
+                                        echo qTranslate($val['cuisine_name'], 'cuisine_name', $cuisine_json);
+
+                                        ?>
+                                    </a>
+
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div> <!--container-->
+        </div> <!--section-cuisine-->
+    <?php endif; ?>
+<?php endif; ?>
+
 <!--FEATURED RESTAURANT SECIONS-->
 <?php if ($disabled_featured_merchant == ""): ?>
     <?php if (getOptionA('disabled_featured_merchant') != "yes"): ?>
@@ -307,46 +359,6 @@ $placholder_search = Yii::t("default", $placholder_search);
 <!--local discount E-->
 
 
-<?php if ($theme_hide_cuisine <> 2): ?>
-    <!--CUISINE SECTIONS-->
-    <?php if ($list = FunctionsV3::getCuisine()): ?>
-        <div class="sections section-cuisine">
-            <div class="container  nopad">
-
-                <!--<div class="col-md-3 nopad">
-<img src="<?php /*echo assetsURL()."/images/cuisine.png"*/ ?>" class="img-cuisine">
-</div>-->
-
-                <div>
-                    <!--    class="col-md-9  nopad"-->
-                    <h2><?php echo t("Browse by cuisine") ?></h2>
-                    <p class="sub-text center"><?php echo t("choose from your favorite cuisine") ?></p>
-
-                    <div class="row">
-                        <?php $x = 1; ?>
-                        <?php foreach ($list as $val): ?>
-                            <div class="col-md-4 col-sm-4 indent-5percent nopad">
-                                <a href="<?php echo Yii::app()->createUrl('/store/cuisine', array("category" => $val['cuisine_id'])) ?>"
-                                   class="<?php echo ($x % 2) ? "even" : 'odd' ?>">
-                                    <?php
-                                    $cuisine_json['cuisine_name_trans'] = !empty($val['cuisine_name_trans']) ? json_decode($val['cuisine_name_trans'], true) : '';
-                                    echo qTranslate($val['cuisine_name'], 'cuisine_name', $cuisine_json);
-                                    /*if($val['total']>0){
-                                        echo "<span>(".$val['total'].")</span>";
-                                    }*/
-                                    ?>
-                                </a>
-                            </div>
-                            <?php $x++; ?>
-                        <?php endforeach; ?>
-                    </div>
-
-                </div>
-
-            </div> <!--container-->
-        </div> <!--section-cuisine-->
-    <?php endif; ?>
-<?php endif; ?>
 
 
 <?php if ($theme_show_app == 2): ?>
