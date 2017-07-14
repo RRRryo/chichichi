@@ -1,0 +1,414 @@
+body{
+  background-color: #f1f1f1;
+  /*line-height: 0;*/
+  padding-top: 66px;
+}
+p,dl,dt,dd{
+  margin:0;
+  padding: 0;
+}
+a,a:link,a:visited,a:hover,a:active{
+  text-decoration: none;
+}
+/*.header{
+  width: 100%;
+  background-color: #ff5733;
+}*/
+.lf{
+  float:left;
+}
+.rf{
+  float: right;
+}
+.after::after{
+  content:"";
+  display:block;
+  clear:both;
+}
+
+.header{
+width: 100%;
+  background-color: #ff5733;
+  padding-top: 10px;
+  padding-left:10px;
+  padding-right: 10px;
+  position: fixed	;
+  top: 0;
+  left: 0;
+}
+.navbar-modify{
+  background-color:transparent;
+  border-color:transparent;
+  border: none;
+  margin:0;
+  min-height:auto;
+}
+.container-limit{
+  width:100%;
+  max-width: 1200px;
+  padding:0;
+}
+.navbar>.container-fluid .navbar-pic{
+    margin: 0;
+    padding:0;
+    height: auto;
+}
+.navbar-default .navbar-nav>li>a{
+  padding-top: 10px;
+  color: #f8f8f8;
+  font-size:16px;
+}
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header{
+  margin:0;
+}
+.img-pic{
+  width: 60%;
+}
+.navbar-xy{
+  border:none;
+  margin-top: 4px;
+}
+/* soso */
+
+.soso{
+  width:280px;
+    position:absolute;
+    top:0;
+    right: 30px;
+}
+.soso-input-group{
+}
+.span-input-group{
+  padding: 6px 18px;
+}
+.span-input-group,.input-form-control{
+  background-color: #fff;
+  border: none;
+}
+.input-form-control{
+  padding: 18px 0px;
+  box-shadow:none;
+  -webkit-box-shadow:none;
+}
+.form-control:focus{
+  box-shadow:none;
+  -webkit-box-shadow:none;
+}
+dt,dd{
+  margin:0 auto;
+  text-align: center;
+}
+/*.main-container{
+  width:1200px;
+}*/
+.swiper-container {
+    width: 100%;
+}  
+.banner .swiper-container,.banner .swiper-wrapper .swiper-slide,.banner .swiper-container img{
+  width: 100%;
+}
+.banner .swiper-pagination-bullet,.banner  .swiper-pagination-bullet-active{
+  width: 16px;
+  height: 16px;
+  background-color: rgba(255,87,51,.7);
+}
+.banner  .swiper-pagination-bullet-active{
+  background-color: rgba(255,87,51,.8);
+}
+/*.header{
+  position:relative;
+}*/
+ .header{
+  box-shadow:0 0 20px rgba(0,0,0,1);
+  z-index:99;
+}
+.food-recom,.Merchant-title{
+  max-width: 438px;
+  margin: 0 auto;
+  background-color:#fff;
+}
+.food-recom .title,.Merchant-title{
+	margin-top:3%;
+}
+.food-recom .title img{
+	width:100%;
+}
+.menu{
+  background-color: #fff;
+  padding:30px 0;
+}
+.menu .col-xs-3{
+  margin: 0;  
+}
+.menu img{
+	width:100%;
+}
+
+/*菜品推荐*/
+.food-recom-content .swiper-container {
+    width: 100%;
+}
+.food-recom-content  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    width: 30%;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+/*.food-recom-content  .swiper-slide:nth-child(2n) {
+    width: 60%;
+}
+.food-recom-content .swiper-slide:nth-child(3n) {
+    width: 40%;
+}*/
+.caipin,.Merchant{
+	background:#fff;
+	margin-top:2%;
+}
+.food-recom-content,.Merchant-content{
+  margin-top:4%;
+}
+
+
+
+.caipin-pic{
+	width:90%;
+}
+.caipin-pic img{
+	width:100%;
+	border:1px solid #e2e2e2;
+}
+.caipin-text{
+	margin: 14% 0 13% 0;
+	color:#242424;
+}
+.caipin-text,.caipin-money{
+	text-align:left;
+}
+.caipin-money{
+	margin-bottom:12%;
+	color:#ff0000;
+}
+/*
+	商家推荐
+*/
+.Merchant{
+	padding:0;
+	background-color:#fff;
+	/*text-align:center;*/
+}
+ 
+.Merchant-title img{
+	width:100%;
+}
+
+.Merchant-content .col-lg-6,.Merchant-content.col-sm-12{
+  min-height:150px;
+}
+.Merchant-content .Merchant-list{
+  padding: 20px 11px 20px 17px;
+  border:1px solid #EFEFEF;
+  width: 541px;
+  height: 151px;
+  margin-bottom: 30px;
+}
+.Merchant .Merchant-img{
+  width: 146px;
+  height: 110px;
+  border:1px solid #E2E2E2;
+  margin-right: 20px;
+}
+
+.Merchant .Merchant-name{
+  font-size:24px;
+  color:#212121;
+}
+.Merchant .delivery-price{
+  font-size:18px;
+  color:#7B7B7B;
+}
+.Merchant .price-num{
+  font-size:26px;
+  color:#FF0000;
+}
+
+.Merchant .praise-stars .star-solid{
+  display:inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background:url("../images/shangjiatuijian/shixin.png") no-repeat center center;
+  background-size:100% 100%;
+}
+.Merchant .praise-stars .star-hollow{
+  display:inline-block;
+  width: 20px;
+  height: 20px;
+  background:url("../images/shangjiatuijian/kongxin.png") no-repeat center center;
+  background-size:100% 100%;
+}
+.Merchant .star-num{
+  color:#FFCC01;
+  font-size: 19px;
+  line-height: 22px;
+  vertical-align: top;
+}
+.Merchant .delivery{
+  font-size:18px;
+  color:#5A5A5A;
+}
+.Merchant  .support-reservation{
+  display: block;
+  width: 74px;
+  height: 26px;
+  background-color: #5BC0DE;
+  color:#fff;
+  font-size:16px;
+  text-align: center;
+  line-height:26px;
+  border-radius: 4px;
+}
+.Merchant-details{
+  width: 344px;
+}
+.Merchant-details>p,.Merchant-details>a{
+  display:block;
+}
+.footer{
+  background-color: #111417;
+  padding:25px 0 32px 0;
+  height: 270px;
+  color:#ACACAB;
+}
+.footer .QR-codes{
+  margin:0 auto;
+  width: 208px;
+}
+.footer .QR-codes .text{
+  width: 88px;
+  text-align: center;
+  margin: 0;
+  margin-top: 10px;
+}
+.footer .jinweikefu-code,.footer .jinweishangfu-code{
+  width: 88px;
+  height: 88px;
+  margin-right: 32px;
+  background:url("../images/footer/jinweikefu.jpg") no-repeat center center;
+  background-size: 100%;
+}
+.footer .jinweishangfu-code{
+  background:url("../images/footer/jinweishangfu.jpg") no-repeat center center;
+  margin-right: 0;
+}
+.footer .info{
+  width: 900px;
+  margin: 27px auto 0;
+  width: 510px;
+}
+ .footer .info .preparation-no,.footer .info .company-name,.footer .info .other{
+    text-align: center;
+  }
+  .footer .info .other{
+  }
+.header .span-input-group{
+  /*padding-left: 40%;*/
+}
+@media (min-width: 1200px){
+  .container {
+      width: 1200px;
+  }
+}
+@media (max-width: 768px){
+  div#example-navbar-collapse {
+    z-index: 20;
+     position: relative; 
+    background-color: #ff5733;
+}
+  .header .soso{
+    position:absolute;
+    top:53px;
+    left:0;
+    width: 100%;
+    z-index: 10;
+  }
+  .navbar-modify{
+    min-height: 100px;
+  }
+  .caipin-text{
+	font-size:14px;
+  }
+	.caipin-text{
+		margin: 20% 0;
+	}
+	.Merchant-content .Merchant-list{
+		border:none;
+		width:100%;
+		margin-bottom:0;
+	}
+	.Merchant .Merchant-img{
+		width:32%;
+		height:auto;
+		margin-right: 4%;
+	}
+	.Merchant .Merchant-img img{
+		width:100%;
+	}
+	.Merchant .Merchant-name{
+		font-size:16px;
+	}
+	.Merchant-details{
+		width:62%;
+	}
+	.Merchant  .support-reservation{
+		font-size:14px;
+	}
+	.Merchant .delivery-price {
+		font-size: 12px;
+		color: #7B7B7B;
+	}
+	.Merchant .delivery{
+		font-size:12px;
+	}
+	.Merchant .price-num{
+		font-size:16px;
+	}
+	.Merchant .praise-stars .star-solid,.Merchant .praise-stars .star-hollow{
+		background-size:77%;
+		margin-right: 0;
+	}
+	.footer .info{
+		width:100%;
+	}
+	.footer-nav{
+		margin:0;
+	}
+}
+@media (min-width: 1200px){
+  .footer {
+      height: 294px;
+       padding:55px 0 83px 0;
+  }
+  .footer .info{
+    margin-top: 13px;
+    width: 870px;
+  }
+  .footer .info .preparation-no,.footer .info .company-name,.footer .info .other{
+    text-align: center;
+  }
+    .footer .info .other{
+    width: 297px;
+  }
+}
