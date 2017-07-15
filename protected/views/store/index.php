@@ -1,432 +1,230 @@
-<?php
-$kr_search_adrress = FunctionsV3::getSessionAddress();
 
-$home_search_text = Yii::app()->functions->getOptionAdmin('home_search_text');
-if (empty($home_search_text)) {
-//    $home_search_text = Yii::t("default", "Find restaurants near you");
-    $home_search_text="&nbsp";
-}
+<!-- <div class="shadow">
 
-$home_search_subtext = Yii::app()->functions->getOptionAdmin('home_search_subtext');
-if (empty($home_search_subtext)) {
-    $home_search_subtext = Yii::t("default", "Order Delivery Food Online From Local Restaurants");
-}
+        </div> -->
+<!-- slider  start-->
+<div class="banner container">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="<?=assetsURL()."/images/banner/jinwei_banner_02.jpg" ?>"></div>
+            <div class="swiper-slide"><img src="<?=assetsURL()."/images/banner/jinwei_banner_02.jpg" ?>"></div>
+            <div class="swiper-slide"><img src="<?=assetsURL()."/images/banner/jinwei_banner_02.jpg" ?>"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
 
-$home_search_mode = Yii::app()->functions->getOptionAdmin('home_search_mode');
-$placholder_search = "请输入地址搜索附近美食";
-if ($home_search_mode == "postcode") {
-    $placholder_search = Yii::t("default", "Enter your postcode");
-}
-$placholder_search = Yii::t("default", $placholder_search);
-?>
-
-<div id="parallax1" class="parallax-container parallax-home"
-     data-parallax="scroll" data-position="top" data-bleed="10">
-    <script>
-        var width = screen.width;
-        var img ="<?php echo assetsURL() . "/images/banner-noodle.jpg" ?>";
-        if (width < 736) {
-            img ="<?php echo assetsURL() . "/images/banner-noodle_small.jpg" ?>";
-        }
-
-        document.getElementById('parallax1').setAttribute("data-image-src", img);
-    </script>
-
-    <?php
-    if ($home_search_mode == "address" || $home_search_mode == "") {
-        if ($enabled_advance_search == "yes") {
-            $this->renderPartial('/front/advance_search', array(
-                'home_search_text' => $home_search_text,
-                'kr_search_adrress' => $kr_search_adrress,
-                'placholder_search' => $placholder_search,
-                'home_search_subtext' => $home_search_subtext,
-                'theme_search_merchant_name' => getOptionA('theme_search_merchant_name'),
-                'theme_search_street_name' => getOptionA('theme_search_street_name'),
-                'theme_search_cuisine' => getOptionA('theme_search_cuisine'),
-                'theme_search_foodname' => getOptionA('theme_search_foodname'),
-                'theme_search_merchant_address' => getOptionA('theme_search_merchant_address'),
-            ));
-        } else $this->renderPartial('/front/single_search', array(
-            'home_search_text' => $home_search_text,
-            'kr_search_adrress' => $kr_search_adrress,
-            'placholder_search' => $placholder_search,
-            'home_search_subtext' => $home_search_subtext
-        ));
-    } else {
-        $this->renderPartial('/front/search_postcode', array(
-            'home_search_text' => $home_search_text,
-            'placholder_search' => $placholder_search,
-            'home_search_subtext' => t("Enter your post code")
-        ));
-    }
-    ?>
-
-</div> <!--parallax-container-->
-
-
-<?php if ($theme_hide_cuisine <> 2): ?>
-    <!--CUISINE SECTIONS-->
-    <?php if ($list = FunctionsV3::getCuisine()): ?>
-        <div class="sections section-cuisine">
-            <h2 ><?php echo t("Browse by cuisine") ?></h2>
-            <div class="container  nopad">
-                <script>
-                    $(document).ready(function () {
-                        var owl = $("#owl-demo3");
-                        owl.owlCarousel({
-                            itemsCustom: [
-                                [0, 2],
-                                [450, 2],
-                                [600, 3],
-                                [700, 4],
-                                [1000, 5],
-                                [1200, 5],
-                                [1400, 5],
-                                [1600, 5]
-                            ],
-                            navigation: true,
-                            pagination: false
-                        });
-                    });
-                </script>
-
-                <div class=" restourant-slider">
-                    <div id="demo">
-                        <div id="owl-demo3" class="owl-carousel">
-                            <?php foreach ($list as $val): //dump($val);?>
-                                <div class="item">
-                                    <a href="<?php echo Yii::app()->createUrl('/store/cuisine', array("category" => $val['cuisine_id'])) ?>"
-                                       class="slider-img">
-                                        <?php
-                                        $cuisine_json['cuisine_name_trans'] = !empty($val['cuisine_name_trans']) ? json_decode($val['cuisine_name_trans'], true) : '';
-                                        echo qTranslate($val['cuisine_name'], 'cuisine_name', $cuisine_json);
-
-                                        ?>
-                                    </a>
-
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div> <!--container-->
-        </div> <!--section-cuisine-->
-    <?php endif; ?>
-<?php endif; ?>
-
-<!--FEATURED RESTAURANT SECIONS-->
-<?php if ($disabled_featured_merchant == ""): ?>
-    <?php if (getOptionA('disabled_featured_merchant') != "yes"): ?>
-        <?php if ($res = Yii::app()->functions->getFeatureMerchant2()): ?>
-            <div class="sections section-feature-resto">
-                <div class="container">
-
-                    <script>
-                        $(document).ready(function () {
-                            var owl = $("#owl-demo");
-                            owl.owlCarousel({
-                                itemsCustom: [
-                                    [0, 2],
-                                    [450, 2],
-                                    [600, 3],
-                                    [700, 4],
-                                    [1000, 5],
-                                    [1200, 5],
-                                    [1400, 5],
-                                    [1600, 5]
-                                ],
-                                navigation: true,
-                                pagination: false
-                            });
-                        });
-                    </script>
-                    <h2 class="hed-sec"><?php echo t("Featured Restaurants") ?></h2>
-
-                    <div class=" restourant-slider">
-                        <div id="demo">
-                            <div id="owl-demo" class="owl-carousel">
-                                <?php foreach ($res as $val): //dump($val);?>
-                                    <div class="item">
-                                        <a href="<?php echo baseUrl() . "/store/menu/merchant/" . $val['restaurant_slug'] ?>"
-                                           class="slider-img">
-                                            <div class="iner-li">
-                                                <div class="food-img">
-                                                    <img src="<?php echo FunctionsV3::getMerchantLogo($val['merchant_id']); ?>"
-                                                         alt=""/>
-                                                </div>
-                                            <div class="food-detail"><h3><?php echo $val['restaurant_name']?></h3></div>
-                                            </div>
-                                        </a>
-
-                                    </div>
-                                <?php endforeach; ?>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div> <!--container-->
-            </div>
-        <?php endif; ?>
-    <?php endif; ?>
-<?php endif; ?>
-<!--END FEATURED RESTAURANT SECIONS-->
-
-<script>
-    $(document).ready(function () {
-        var owl = $("#owl-demo2");
-        owl.owlCarousel({
-            itemsCustom: [
-                [0, 2],
-                [450, 2],
-                [600, 3],
-                [700, 4],
-                [1000, 5],
-                [1200, 5],
-                [1400, 5],
-                [1600, 5]
-            ],
-            navigation: true,
-            pagination: false
-        });
-    });
-</script>
-<!--featured-food S-->
-
-<div class="sections section-feature-resto">
+<!-- slider end -->
+<!-- menu start -->
+<div class="menu">
     <div class="container">
-        <h2 class="hed-sec"><?php echo t("Featured Food") ?></h2>
-        <div class=" restourant-slider">
-            <div id="demo">
-                <div id="owl-demo2" class="owl-carousel">
-                    <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/xianmingchi" ?>" class="slider-img">
 
-                            <div class="iner-li">
-                                <div class="food-img ">
+        <div class="row">
+            <div class="col-lg-6 col-md-12" >
+                <dl class="col-xs-3">
+                    <dt><a href="<?= Yii::app()->createUrl('/cuisine?cateroy=18')?>"><img src="<?=assetsURL()."/images/navpic/beijingcai.png" ?>"></a></dt>
+                    <dd>北京菜</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><a href="<?= Yii::app()->createUrl('/cuisine?cateroy=20')?>"><img src="<?=assetsURL()."/images/navpic/chuancai.png" ?>"></a></dt>
+                    <dd>川菜</dd>
+                </dl>
+                <dl  class="col-xs-3">
+                    <dt><a href="<?= Yii::app()->createUrl('/cuisine?cateroy=22')?>"><img src="<?=assetsURL()."/images/navpic/shanxicai.png" ?>"></a></dt>
+                    <dd>陕西菜</dd>
+                </dl>
+                <dl  class="col-xs-3">
+                    <dt><a href="<?= Yii::app()->createUrl('/cuisine?cateroy=23')?>"><img src="<?=assetsURL()."/images/navpic/zhejiangcai.png" ?>"></a></dt>
+                    <dd>浙江菜</dd>
+                </dl>
+            </div>
+            <div class="col-lg-6 col-md-12" >
+                <dl class="col-xs-3">
+                    <dt><a href="<?= Yii::app()->createUrl('/cuisine?cateroy=27')?>"><img src="<?=assetsURL()."/images/navpic/hanguocai.png" ?>"></a></dt>
+                    <dd>韩国菜</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><a href="#"><img src="<?=assetsURL()."/images/navpic/ribencai.png" ?>"></a></dt>
+                    <dd>日本菜</dd>
+                </dl>
+                <dl  class="col-xs-3">
+                    <dt><a href="<?= Yii::app()->createUrl('/cuisine?cateroy=24')?>"><img src="<?=assetsURL()."/images/navpic/baolei.png" ?>"></a></dt>
+                    <dd>煲类</dd>
+                </dl>
+                <dl  class="col-xs-3">
+                    <dt><a href="#"><img src="<?=assetsURL()."/images/navpic/qita.png" ?>"></a></dt>
+                    <dd>其他</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
 
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485039507-img_1182.jpg" ?>" alt=""/>
 
-                                </div>
-                                <div class="food-detail">
-                                    <h3>经典腊汁肉夹馍 </h3>
-                                    <p>€4.00</p>
-
-                                </div>
-                            </div>
-                        </a>
-
+<!-- menu  end-->
+<!-- 菜品推荐 start -->
+<div class=" caipin">
+    <div class="container">
+        <div class="food-recom">
+            <div class="title after">
+                <img src="<?=assetsURL()."/images/caipintuijian/caipintuijian_title.png" ?>" alt="" />
+            </div>
+        </div>
+        <div class="food-recom-content">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/xianmingchi" ?>" >
+                                <img src="<?=baseUrl()."/upload/1485039507-img_1182.jpg" ?>" alt="" />
+                                <div class="caipin-text">经典腊汁肉夹馍</div>
+                                <div class="caipin-money">€4.00</div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="item">
-
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/weixiaobao" ?>" class="slider-img">
-                            <div class="iner-li">
-                                <div class="food-img ">
-
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1488835023-IMG_0271.JPG" ?>" alt=""/></div>
-                                <div class="food-detail">
-                                    <h3>虫草老花鸭煲</h3>
-                                    <p>€35.00</p>
-
-                                </div>
-                            </div>
-                        </a>
-
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?=baseUrl() . "/store/menu/merchant/weixiaobao" ?>" >
+                                <img src="<?=baseUrl()."/upload/1488835023-IMG_0271.JPG" ?>" alt="" />
+                                <div class="caipin-text">虫草老花鸭煲</div>
+                                <div class="caipin-money">€35.00</div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="item">
-
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/004" ?>" class="slider-img">
-                            <div class="iner-li">
-                                <div class="food-img">
-
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485042669-img_1190.jpg" ?>" alt=""/></div>
-                                <div class="food-detail">
-                                    <h3>郭氏夫妻肺片</h3>
-                                    <p>€10.80</p>
-
-                                </div>
-                            </div>
-                        </a>
-
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?=baseUrl() . "/store/menu/merchant/004" ?>" >
+                                <img class="full-width" src="<?= baseUrl()."/upload/1485042669-img_1190.jpg" ?>" alt=""/>
+                                <div class="caipin-text">郭氏夫妻肺片</div>
+                                <div class="caipin-money">€10.80</div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/005" ?>" class="slider-img">
-                            <div class="iner-li">
-                                <div class="food-img">
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485189931-211.jpg" ?>" alt=""/></div>
-                                <div class="food-detail">
-                                    <h3>五花咸蛋黄大肉粽</h3>
-                                    <p>€2.00</p>
-
-                                </div>
-                            </div>
-                        </a>
-
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/005" ?>" >
+                                <img src="<?=baseUrl()."/upload/1485189931-211.jpg" ?>" alt="" />
+                                <div class="caipin-text">五花咸蛋黄大肉粽</div>
+                                <div class="caipin-money">€2.00</div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/chengduchufang" ?>" class="slider-img">
-                            <div class="iner-li">
-                                <div class="food-img">
-
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1488561413-.jpg" ?>" alt=""/></div>
-                                <div class="food-detail">
-                                    <h3>私房小龙虾</h3>
-                                    <p>€21.00 起</p>
-
-                                </div>
-                            </div>
-                        </a>
-
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/chengduchufang" ?>" >
+                                <img src="<?=baseUrl()."/upload/1488561413-.jpg" ?>" alt="" />
+                                <div class="caipin-text">私房小龙虾</div>
+                                <div class="caipin-money">€21.00起</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/004" ?>" >
+                                <img src="<?=baseUrl()."/upload/1485042132-img_1188.jpg" ?>" alt="" />
+                                <div class="caipin-text">冷吃兔丁</div>
+                                <div class="caipin-money">€12.80</div>
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="item">
-                        <a href="<?php echo baseUrl() . "/store/menu/merchant/004" ?>" class="slider-img">
-                            <div class="iner-li">
-                                <div class="food-img">
-
-                                    <img class="full-width" src="<?php echo baseUrl()."/upload/1485042132-img_1188.jpg" ?>" alt=""/></div>
-                                <div class="food-detail">
-                                    <h3>冷吃兔丁</h3>
-                                    <p>€12.80</p>
-
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-<!--featured-food E-->
+<!-- 菜品推荐 end -->
+<!-- 商家推荐 start -->
 
-<!--local discount E-->
-<div class="sections section-feature-resto">
-    <div class="container">
+<div class=" Merchant">
+    <div class="container ">
+        <div class="Merchant-title">
+            <img src="<?=assetsURL()."/images/shangjiatuijian/shangjiatuijian_title.png" ?>" alt="" />
+        </div>
+        <div class="Merchant-content">
+            <div class="row all-Merchant">
+                <?php  ($res = Yii::app()->functions->getFeatureMerchant2()) ?>
 
-        <script>
-            $(document).ready(function () {
-                var owl = $("#owl-demo1");
-                owl.owlCarousel({
-                    itemsCustom: [
-                        [0, 2],
-                        [450, 2],
-                        [600, 3],
-                        [700, 4],
-                        [1000, 5],
-                        [1200, 5],
-                        [1400, 5],
-                        [1600, 5]
-                    ],
-                    navigation: true,
-                    pagination: false
-                });
-            });
-        </script>
-<!--        <h2 class="hed-sec">--><?php //echo t("Local Discount") ?><!--</h2>-->
+                <?php foreach ($res as $val): //dump($val);?>
 
-        <!--  <div class=" restourant-slider">-->
-        <!--        <div id="demo">-->
-        <!--        <div id="owl-demo1" class="owl-carousel">-->
-        <!---->
-        <!--          <div class="item">-->
-        <!--        --><?php ////echo baseUrl()."/store/menu/merchant/11"?>
-        <!--          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481148194-3.png" alt="" /></a>-->
-        <!--          </div>-->
-        <!--           <div class="item">-->
-        <!--          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481324697-5.png" alt="" /></a>-->
-        <!--          </div>-->
-        <!--           <div class="item">-->
-        <!--          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481580406-2.png" alt="" /></a>-->
-        <!--          </div>-->
-        <!--           <div class="item">-->
-        <!--          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481604155-edadd4eagw1evr1s0z0lgj20kg0kp0xl.jpg" alt="" /></a>-->
-        <!--          </div>-->
-        <!--           <div class="item">-->
-        <!--          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481580959-6.png" alt="" /></a>-->
-        <!--          </div>-->
-        <!--           <div class="item">-->
-        <!--          	<a href="javascript: void(0)" class="slider-img"><img src="upload/1481146615-1.png" alt="" /></a>-->
-        <!--          </div>-->
-        <!---->
-        <!---->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--    	</div>-->
+                    <div class="col-lg-6 col-sm-12 Merchant-list">
+						<span class="Merchant-img lf">
+                            <img  src="<?= FunctionsV3::getMerchantLogo($val['merchant_id']); ?>" alt="" />
+						</span>
+                        <div class="Merchant-details lf">
+                            <p class="after">
+                                <span class="Merchant-name lf"><?=$val['restaurant_name']?></span>
+								<span class="delivery-price rf">
+                                    <?php $minimum_order=Yii::app()->functions->getOption('merchant_minimum_order', $val['merchant_id']); ?>
+                                    <?php if (!empty($minimum_order)):?>
+                                        <span class="price-num">€&nbsp;<?=$minimum_order?></span>
+                                        起送
+                                    <?php else:?>
+                                        <span class="price-num">0€</span>起送
+                                    <?php endif?>
+
+								</span>
+                            </p>
+                            <p class="praise-stars">
+                                <?php $ratings = Yii::app()->functions->getRatings($val['merchant_id']); ?>
+                                <?php for  ($i = 0; $i < $ratings['ratings'] ; $i = $i+1 ) : ?>
+                                    <span class="star-solid"></span>
+                                <?php endfor ?>
+                                <span class="star-num">(<?=$val['merchant_id']['votes'] ?>)</span>
+                            </p>
+                            <p class="delivery">
+                                <span class="delivery-scope">配送范围:<?=getOption($val['merchant_id'],'merchant_delivery_miles');?>公里</span>/
+								<span class="delivery-time">
+									配送时间:<?=FunctionsV3::getDeliveryEstimation( $val['merchant_id'])?>小时
+								</span>
+                            </p>
+                            <a href="<?php echo baseUrl() . "/store/menu/merchant/" . $val['restaurant_slug'] ?>"
+                               class="support-reservation">可预订</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
 
 
-    </div> <!--container-->
+
+            </div>
+
+        </div>
+    </div>
 </div>
+<!-- 商家推荐 end -->
+<script>
+    $(function(){
+        var numberList=0;
+        var isPc=$(".caipin").width();
+        if(isPc>768){
+            numberList=5
+        }else{
+            numberList=3
+        }
+        // $("#example-navbar-collapse").css({"margin-left":"100vw","height":"100vh"});
+        var mySwiper = new Swiper ('.banner .swiper-container', {
+            direction: 'horizontal',
+            loop: true,
+            autoplay : 3000,
+            // 如果需要分页器
+            pagination: '.swiper-pagination'
+        })
 
-<!--local discount E-->
+        var zdySwiper = new Swiper ('.food-recom-content .swiper-container', {
+            slidesPerView : numberList
+        })
+        $(".Merchant-list:even").css({
+            "margin-right":"9.83%"
+        })
+    })
+    /*$(".navbar-header>button").click(function(){
 
+     $("#example-navbar-collapse").animate({
+     "margin-left":0,
+     "height":"100vh",
+     "display":"block"
+     },500)
+     })*/
 
-
-
-<?php if ($theme_show_app == 2): ?>
-    <!--MOBILE APP SECTION-->
-    <div id="mobile-app-sections" class="container">
-        <div class="container-medium">
-            <div class="row">
-                <div class="col-xs-5 into-row border app-image-wrap">
-                    <img class="app-phone" src="<?php echo assetsURL() . "/images/getapp-2.jpg" ?>">
-                </div> <!--col-->
-                <div class="col-xs-7 into-row border">
-                    <h2><?php echo getOptionA('website_title') . " " . t("in your mobile") ?>! </h2>
-                    <h3 class="green-text"><?php echo t("Get our app, it's the fastest way to order food on the go") ?>
-                        .</h3>
-
-                    <div class="row border" id="getapp-wrap">
-                        <?php if (!empty($theme_app_ios) && $theme_app_ios != "http://"): ?>
-                            <div class="col-xs-4 border">
-                                <a href="<?php echo $theme_app_ios ?>" target="_blank">
-                                    <img class="get-app" src="<?php echo assetsURL() . "/images/get-app-store.png" ?>">
-                                </a>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if (!empty($theme_app_android) && $theme_app_android != "http://"): ?>
-                            <div class="col-xs-4 border">
-                                <a href="<?php echo $theme_app_android ?>" target="_blank">
-                                    <img class="get-app"
-                                         src="<?php echo assetsURL() . "/images/get-google-play.png" ?>">
-                                </a>
-                            </div>
-                        <?php endif; ?>
-
-                    </div> <!--row-->
-
-                </div> <!--col-->
-            </div> <!--row-->
-        </div> <!--container-medium-->
-
-        <div class="mytable border" id="getapp-wrap2">
-            <?php if (!empty($theme_app_ios) && $theme_app_ios != "http://"): ?>
-                <div class="mycol border">
-                    <a href="<?php echo $theme_app_ios ?>" target="_blank">
-                        <img class="get-app" src="<?php echo assetsURL() . "/images/get-app-store.png" ?>">
-                    </a>
-                </div> <!--col-->
-            <?php endif; ?>
-            <?php if (!empty($theme_app_android) && $theme_app_android != "http://"): ?>
-                <div class="mycol border">
-                    <a href="<?php echo $theme_app_android ?>" target="_blank">
-                        <img class="get-app" src="<?php echo assetsURL() . "/images/get-google-play.png" ?>">
-                    </a>
-                </div> <!--col-->
-            <?php endif; ?>
-        </div> <!--mytable-->
-
-
-    </div> <!--container-->
-    <!--END MOBILE APP SECTION-->
-<?php endif; ?>
-
-
- 
+</script>

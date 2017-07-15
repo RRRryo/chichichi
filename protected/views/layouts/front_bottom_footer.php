@@ -51,12 +51,12 @@
 
           <div class="col-md-2 col-xs-12 col-md-offset-1">
               <div class="center">
-                  <a href="http://www.miitbeian.gov.cn/">粤ICP备16107051号</a>
+                  <a href="http://www.miitbeian.gov.cn/">鄂ICP备17011255号</a>
               </div>
           </div>
           <div class="col-md-4 col-xs-12">
               <div class="center">
-                深圳市南山区南山大道中兴之家E座616
+                  马赛科技（武汉）有限公司
               </div>
           </div>
           <div class="col-md-1 col-xs-4">

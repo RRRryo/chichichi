@@ -6,10 +6,10 @@ class ScriptManager
 		$baseUrl = Yii::app()->baseUrl; 
         $cs = Yii::app()->getClientScript();
 
-		$cs->registerScriptFile($baseUrl."/assets/js/jquery-3.1.1.min.js",CClientScript::POS_BEGIN);
+		$cs->registerScriptFile("https://code.jquery.com/jquery-3.2.1.js",CClientScript::POS_BEGIN);
 
         $cs->registerScriptFile($baseUrl."/assets/vendor/jquery-1.10.2.min.js",CClientScript::POS_END);
-        
+
 //        $cs->registerScriptFile("//code.jquery.com/ui/1.10.3/jquery-ui.js",CClientScript::POS_END);
 		$cs->registerScriptFile($baseUrl."/assets/vendor/jquery-ui-1.11.4/jquery-ui.js",CClientScript::POS_END);
 
@@ -151,9 +151,12 @@ class ScriptManager
 		,CClientScript::POS_END); 
 		
 		/* UIKIT*/
-		$cs->registerScriptFile($baseUrl."/assets/vendor/bootstrap/js/bootstrap.min.js"
-		,CClientScript::POS_END); 
-		
+		$cs->registerScriptFile("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		,CClientScript::POS_END);
+
+		$cs->registerScriptFile("https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"
+			,CClientScript::POS_END);
+
 		$cs->registerScriptFile($baseUrl."/assets/vendor/parallax.js/parallax.min.js"
 		,CClientScript::POS_END); 
 		
@@ -276,9 +279,13 @@ class ScriptManager
 		$cs->registerCssFile($baseUrl.'/assets/css/responsive.css?ver=1.0');
 		$cs->registerCssFile($baseUrl.'/assets/css/owl.carousel.css');
 		$cs->registerCssFile($baseUrl.'/assets/css/owl.theme.css');
-		
-	}	
-	
+
+		//index page
+		$cs->registerCssFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+		$cs->registerCssFile($baseUrl.'/assets/css/style.css');
+		$cs->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css');
+	}
+
 	public static function registerGlobalVariables()
 	{				
 //		echo CHtml::hiddenField('fb_app_id',Yii::app()->functions->getOptionAdmin('fb_app_id'));
