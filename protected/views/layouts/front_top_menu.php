@@ -1,136 +1,50 @@
-<nav id="header" class="navbar navbar-fixed-top" style="height: 50px;">
-<div id="header-container" class="container navbar-container">
-<div class="top-menu-wrapper <?php echo "top-".$action;?>">
+<div class="header">
+<nav class="navbar navbar-default navbar-modify" role="navigation">
+    <div class="container-fluid container-limit">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-xy" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand navbar-pic" href="<?= Yii::app()->createUrl('/store/home')?>">
+                <img src="<?=assetsURL()."/images/header/logo/jinwei_logo.png" ?>" alt="" class="img-responsive img-pic" />
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
 
-<div class="container border" >
-  <div class="col-md-3 col-xs-3 border col-a">
-    <?php if ( $theme_hide_logo<>2):?>
-    <a class="logo-ancher" href="<?php echo Yii::app()->createUrl('/store/home')?>">
-     <img src="<?php echo FunctionsV3::getDesktopLogo();?>" class="logo logo-desktop">
-     <img src="<?php echo FunctionsV3::getMobileLogo();?>" class="logo logo-mobile">
-    </a>
-    <?php endif;?>
-  </div>
+                <li><a href="<?= Yii::app()->createUrl('/store/home')?>">主页</a></li>
+                <li><a href="<?= Yii::app()->createUrl('/store/browse')?>">浏览餐厅</a></li>
+                <li><a href="<?= Yii::app()->createUrl('/store/merchantsignupselection')?>">餐厅注册</a></li>
+                <li><a href="<?= Yii::app()->createUrl('/store/signup')?>">登录和注册</a></li>
 
-  <div class="col-xs-1 menu-nav-mobile border relative">
-     <a href="#"><i class="ion-android-menu"></i></a>
-  </div> <!--menu-nav-mobile-->
-
-  <?php if ( Yii::app()->controller->action->id =="menu"):?>
-  <div class="col-xs-1 cart-mobile-handle border relative">
-      <div class="badge cart_count"></div>
-     <a href="javascript:">
-       <i class="ion-ios-cart"></i>
-     </a>
-  </div> <!--cart-mobile-handle-->
-  <?php endif;?>
-  
-  
-  <div class="col-md-9 border col-b mobile-lang">
-  <div class="lang_top-menu mobile-top-menu">
-
-  <?php
-//         Widgets::languageBar("store",true);
-    ?>
-
-    <?php $this->widget('zii.widgets.CMenu', FunctionsV3::getMenu() );?>
+            </ul>
 
         </div>
-    <div class="clear"></div>
-  </div>
-
-
-
-
-</div> <!--container-->
-
-</div> <!--END top-menu-->
-</div>
+        <div class="pull-right soso ">
+            <form class="bs-example bs-example-form"  id="forms-search" role="form"  action="<?php echo Yii::app()->createUrl('store/searcharea')?>">
+                <div class="input-group soso-input-group">
+                    <span class="input-group-addon span-input-group">
+                        <img src="<?=assetsURL()."/images/header/soso/soso.png" ?>" class="" alt="" style="max-width: none"/>
+                    </span>
+                    <input type="text" name="s" id="s" autocomplete="off" required class="form-control input-form-control search-input" placeholder="请输入地址搜索附近美食">
+                    <input type="submit" style="display:none"/>
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
 </nav>
 
-
-<div class="menu-top-menu" style="background:#fff0cd">
-    <?php $this->widget('zii.widgets.CMenu', FunctionsV3::getMenu('mobile-menu') );?>
-    <div class="clear"></div>
-</div> <!--menu-top-menu-->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+</div>
 <script>
-$(document).ready(function(){
-
-/**
- * This object controls the nav bar. Implement the add and remove
- * action over the elements of the nav bar that we want to change.
- *
- * @type {{flagAdd: boolean, elements: string[], add: Function, remove: Function}}
- */
-var myNavBar = {
-
-    flagAdd: true,
-
-    elements: [],
-
-    init: function (elements) {
-        this.elements = elements;
-    },
-
-    add : function() {
-        if(this.flagAdd) {
-            for(var i=0; i < this.elements.length; i++) {
-                document.getElementById(this.elements[i]).className += " fixed-theme";
-            }
-            this.flagAdd = false;
+    document.getElementById('s').onkeydown = function(e){
+        if(e.keyCode == 13){
+            // submit
+            this.form.submit();
         }
-    },
-
-    remove: function() {
-        for(var i=0; i < this.elements.length; i++) {
-            document.getElementById(this.elements[i]).className =
-                    document.getElementById(this.elements[i]).className.replace( /(?:^|\s)fixed-theme(?!\S)/g , '' );
-        }
-        this.flagAdd = true;
-    }
-
-};
-
-/**
- * Init the object. Pass the object the array of elements
- * that we want to change when the scroll goes down
- */
-myNavBar.init(  [
-    "header",
-    //"header-container",
-    //"brand"
-]);
-
-/**
- * Function that manage the direction
- * of the scroll
- */
-function offSetManager(){
-
-    var yOffset = 0;
-    var currYOffSet = window.pageYOffset;
-
-    if(yOffset < currYOffSet) {
-        myNavBar.add();
-    }
-    else if(currYOffSet == yOffset){
-        myNavBar.remove();
-    }
-
-}
-
-/**
- * bind to the document scroll detection
- */
-window.onscroll = function(e) {
-    offSetManager();
-}
-
-/**
- * We have to do a first detectation of offset because the page
- * could be load with scroll down set.
- */
-offSetManager();
-});
+    };
 </script>

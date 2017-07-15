@@ -2583,7 +2583,7 @@ jQuery(document).ready(function() {
 	
 		
 	/*auto get geolocation*/
-	if ( $(".forms-search").exists() ) {
+	if ( $("#forms-search").exists() ) {
 		if (navigator.geolocation) {
 		   if ( $("#disabled_share_location").val()==""){	
 		   	  dump('detect current location');

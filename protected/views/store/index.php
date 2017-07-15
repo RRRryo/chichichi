@@ -150,7 +150,7 @@
 
                     <div class="col-lg-6 col-sm-12 Merchant-list">
 						<span class="Merchant-img lf">
-                            <img  src="<?= FunctionsV3::getMerchantLogo($val['merchant_id']); ?>" alt="" />
+                            <img  src="<?= FunctionsV3::getMerchantLogo($val['merchant_id']); ?>" alt="" style="max-height: 100%;" />
 						</span>
                         <div class="Merchant-details lf">
                             <p class="after">
