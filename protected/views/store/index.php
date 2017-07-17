@@ -105,7 +105,7 @@
                         <div class="caipin-pic">
                             <a href="<?= baseUrl() . "/store/menu/merchant/005" ?>" >
                                 <img src="<?=baseUrl()."/upload/1485189931-211.jpg" ?>" alt="" />
-                                <div class="caipin-text">五花咸蛋黄大肉粽</div>
+                                <div class="caipin-text">五花咸蛋黄肉粽</div>
                                 <div class="caipin-money">€2.00</div>
                             </a>
                         </div>
