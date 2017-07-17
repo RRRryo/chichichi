@@ -128,7 +128,51 @@
                             </a>
                         </div>
                     </div>
-
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/jiujiajiu" ?>" >
+                                <img src="<?=baseUrl()."/upload/niurouliangpi.jpg" ?>" alt="" />
+                                <div class="caipin-text">牛肉凉皮</div>
+                                <div class="caipin-money">€6.00</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/nanchangxiaopu" ?>" >
+                                <img src="<?=baseUrl()."/upload/mizhifenzhengrou.jpg" ?>" alt="" />
+                                <div class="caipin-text">秘制粉蒸肉</div>
+                                <div class="caipin-money">€18.00</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/tianjinliuji" ?>" >
+                                <img src="<?=baseUrl()."/upload/tiebanyouyu.jpg" ?>" alt="" />
+                                <div class="caipin-text">铁板鱿鱼须</div>
+                                <div class="caipin-money">€14.00</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/mingyuanxiaochao" ?>" >
+                                <img src="<?=baseUrl()."/upload/koushuiji.jpg" ?>" alt="" />
+                                <div class="caipin-text">铭源口水鸡</div>
+                                <div class="caipin-money">€6.80</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="caipin-pic">
+                            <a href="<?= baseUrl() . "/store/menu/merchant/hanshiwaimai" ?>" >
+                                <img src="<?=baseUrl()."/upload/youyubanfan.jpg" ?>" alt="" />
+                                <div class="caipin-text">鱿鱼拌饭</div>
+                                <div class="caipin-money">€12.00</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -171,6 +215,11 @@
                                 <?php for  ($i = 0; $i < $ratings['ratings'] ; $i = $i+1 ) : ?>
                                     <span class="star-solid"></span>
                                 <?php endfor ?>
+                                <span class="star-solid"></span>
+                                <span class="star-solid"></span>
+                                <span class="star-solid"></span>
+                                <span class="star-solid"></span>
+                                <span class="star-solid"></span>
                                 <span class="star-num">(<?=$val['merchant_id']['votes'] ?>)</span>
                             </p>
                             <p class="delivery">
